@@ -1,0 +1,4514 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebVTT: The Web Video Text Tracks File Format</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <!-- 
+      === NOTA BENE ===
+      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,
+     -->
+    <!-- old but local:
+    <script src='../../2009/dap/ReSpec.js/js/respec.js' class='remove'></script>
+    -->
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
+    <script class='remove'>
+      var respecConfig = {
+          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+          specStatus:           "WD",
+          
+          // the specification's short name, as in http://www.w3.org/TR/short-name/
+          shortName:            "webvtt",
+
+          // if your specification has a subtitle that goes below the main
+          // formal title, define it here
+          // subtitle   :  "",
+
+          // if you wish the publication date to be other than today, set this
+          // publishDate:  "2009-08-06",
+
+          // if the specification's copyright date is a range of years, specify
+          // the start date here:
+          copyrightStart: "2011",
+
+          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+          // and its maturity status
+          previousPublishDate:  "2013-03-11",
+          previousMaturity:  "WD",
+
+          // if there a publicly available Editor's Draft, this is the link
+          edDraftURI:           "https://dvcs.w3.org/hg/text-tracks/raw-file/default/webvtt/webvtt.html",
+
+          // if this is a LCWD, uncomment and set the end of its review period
+          // lcEnd: "2009-08-05",
+
+          // if you want to have extra CSS, append them to this list
+          // it is recommended that the respec.css stylesheet be kept
+          extraCSS:             ["https://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
+
+          // editors, add as many as you like
+          // only "name" is required
+          editors:  [
+              { name: "Silvia Pfeiffer", url: "mailto:silviapfeiffer1@gmail.com",
+                company: "NICTA", companyURL: "http://nicta.com.au/" },
+              { name: "Ian Hickson (previous editor)", url: "mailto:ian@hixie.ch",
+                company: "Google", companyURL: "http://google.com/" },
+          ],
+
+          // authors, add as many as you like. 
+          // This is optional, uncomment if you have authors as well as editors.
+          // only "name" is required. Same format as editors.
+
+          //authors:  [
+          //    { name: "Your Name", url: "http://example.org/",
+          //      company: "Your Company", companyURL: "http://example.com/" },
+          //],
+          
+          // name of the WG
+          wg:           "Text Tracks Community Group",
+          
+          // URI of the public WG page
+          wgURI:        "http://www.w3.org/community/texttracks/",
+          
+          // name (without the @w3c.org) of the public mailing to which comments are due
+          wgPublicList: "public-texttracks",
+          
+          // URI of the patent status for this WG, for Rec-track documents
+          // !!!! IMPORTANT !!!!
+          // This is important for Rec-track documents, do not copy a patent URI from a random
+          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+          // Team Contact.
+          wgPatentURI:  "",
+
+          // formatting
+          noIDLIn: "true",
+          noIDLSorting: "true",
+
+          additionalHeaderContent: "<p class='copyright'>Copyright © 2011 the Contributors to the VTT Specification, published by the <a href='http://www.w3.org/community/texttracks/'>W3C Web Media Text Tracks Community Group</a> under the <a href='http://www.w3.org/community/about/agreements/cla/'>W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href='http://www.w3.org/community/about/agreements/cla-deed/'>summary</a> is available.</p><p class='copyright'>This specification is not a W3C Standard nor is it on the W3C Standards Track. It was originally created by the WHATWG and is being further developed by the <a href='http://www.w3.org/community/texttracks/'>W3C Web Media Text Tracks Community Group</a>. Please note that under the <a href='http://www.w3.org/community/about/agreements/cla/'>W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href='http://www.w3.org/community/'>W3C Community and Business Groups</a>.",
+      };
+    </script>
+    <script>
+    var copyright = null;
+    setTimeout(function() {
+      copyright = document.getElementsByClassName('copyright')[0];
+      if (copyright != null) {
+        copyright.insertAdjacentHTML('afterend', respecConfig.additionalHeaderContent);
+      }
+    }, 2000);
+    </script>
+    <style>
+    pre.idl_whatwg {
+      border: solid 0.0625em;
+      background: #EEEEEE;
+      color: black;
+      padding: 0.5em 1em;
+      font-family: monospace, Droid Sans Fallback, sans-serif;
+    }
+    pre.idl_whatwg::before {
+      content: 'IDL';
+      font: bold 0.8em sans-serif;
+      padding: 0.5em;
+      position: absolute;
+      top: auto;
+      margin: -0.703125em 0 0 -3.75em /* 1em/0.8 + 1.5em + 0.5em*2 */;
+      width: 1.5em;
+      background: inherit;
+      border: 0.078125em;
+      border-style: solid none solid solid;
+      border-radius: 1em 0 0 1em;
+    }
+    </style>
+  </head>
+  <!-- v2 feature requests:
+
+         Explicitly allow random comments on the line after the
+         signature line, for metadata, copyrights, etc.
+
+         Inline CSS, maybe as below. See http://www.w3.org/Bugs/Public/show_bug.cgi?id=15023
+
+            STYLE
+            ::cue(.narration) { color: blue; }
+
+         Default settings, maybe as below. See http://www.w3.org/Bugs/Public/show_bug.cgi?id=15024
+
+            DEFAULTS
+            line:-1 align:middle size:50%
+
+  -->
+  <body>
+  <section id='abstract'>
+      <p></p>
+  </section>
+
+  <section>
+  <h2>Introduction</h2>
+
+  <p><i>This section is non-normative.</i></p>
+
+  <p>The <dfn>WebVTT</dfn> format (Web Video Text Tracks) is a
+  format intended for marking up external text track resources.</p>
+
+  <p>The main use for WebVTT files is captioning video content. Here
+  is a sample file that captions an interview:</p>
+
+  <pre>WEBVTT
+
+00:11.000 --> 00:13.000
+&lt;v Roger Bingham>We are in New York City
+
+00:13.000 --> 00:16.000
+&lt;v Roger Bingham>We're actually at the Lucern Hotel, just down the street
+
+00:16.000 --> 00:18.000
+&lt;v Roger Bingham>from the American Museum of Natural History
+
+00:18.000 --> 00:20.000
+&lt;v Roger Bingham>And with me is Neil deGrasse Tyson
+
+00:20.000 --> 00:22.000
+&lt;v Roger Bingham>Astrophysicist, Director of the Hayden Planetarium
+
+00:22.000 --> 00:24.000
+&lt;v Roger Bingham>at the AMNH.
+
+00:24.000 --> 00:26.000
+&lt;v Roger Bingham>Thank you for walking down here.
+
+00:27.000 --> 00:30.000
+&lt;v Roger Bingham>And I want to do a follow-up on the last conversation we did.
+
+00:30.000 --> 00:31.500 align:end size:50%
+&lt;v Roger Bingham>When we e-mailed&mdash;
+
+00:30.500 --> 00:32.500 align:start size:50%
+&lt;v Neil deGrasse Tyson>Didn't we talk about enough in that conversation?
+
+00:32.000 --> 00:35.500 align:end size:50%
+&lt;v Roger Bingham>No! No no no no; 'cos 'cos obviously 'cos
+
+00:32.500 --> 00:33.500 align:start size:50%
+&lt;v Neil deGrasse Tyson>&lt;i>Laughs&lt;/i>
+
+00:35.500 --> 00:38.000
+&lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.</pre>
+
+
+  <section>
+  <h3>Cues with multiple lines</h3>
+
+  <p><i>This section is non-normative.</i></p>
+
+  <p>Line breaks in cues are honored. User agents will also insert extra line breaks if necessary to
+  fit the cue in the cue's width. In general, therefore, authors are encouraged to write cues all on
+  one line except when a line break is definitely necessary, and to not manually line-wrap for
+  aesthetic reasons alone.</p>
+
+  <div class="example">
+
+   <p>These captions on a public service announcement video demonstrate line breaking:</p>
+
+   <pre>WEBVTT
+
+00:01.000 --> 00:04.000
+Never drink liquid nitrogen.
+
+00:05.000 --> 00:09.000
+&mdash; It will perforate your stomach.
+&mdash; You could die.
+
+00:10.000 --> 00:14.000
+The Organisation for Sample Public Service Announcements accepts no liability for the content of this advertisement, or for the consequences of any actions taken on the basis of the information provided.</pre>
+
+   <p>The first cue is simple, it will probably just display on one line. The second will take two
+   lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
+   multiple lines. For example, the three cues could look like this:</p>
+
+<!-- 50 -->
+   <pre>           Never drink liquid nitrogen.
+
+        &mdash; It will perforate your stomach.
+                &mdash; You could die.
+
+    The Organisation for Sample Public Service
+    Announcements accepts no liability for the
+    content of this advertisement, or for the
+     consequences of any actions taken on the
+        basis of the information provided.</pre>
+
+   <p>If the width of the cues is smaller, the first two cues could wrap as well, as in the following
+   example. Note how the second cue's explicit line break is still honored, however:</p>
+
+<!-- 25 -->
+   <pre>       Never drink
+    liquid nitrogen.
+
+  &mdash; It will perforate
+      your stomach.
+    &mdash; You could die.
+
+  The Organisation for
+  Sample Public Service
+  Announcements accepts
+  no liability for the
+     content of this
+  advertisement, or for
+   the consequences of
+  any actions taken on
+    the basis of the
+  information provided.</pre>
+
+   <p>Also notice how the wrapping is done so as to keep the line lengths balanced.</p>
+
+  </div>
+  </section>
+
+  <section>
+  <h3>Comments</h3>
+
+  <p><i>This section is non-normative.</i></p>
+
+  <p>Comments can be included in WebVTT files.</p>
+
+  <p>Comments are just blocks that start with the word "<code title="">NOTE</code>" (followed by a
+  space or newline). A comment ends at the first blank line.</p>
+
+  <div class="example">
+
+   <p>Here, a one-line comment is used to note a possible problem with a cue.</p>
+
+   <pre>WEBVTT
+
+00:01.000 --> 00:04.000
+Never drink liquid nitrogen.
+
+NOTE I'm not sure the timing is right on the following cue.
+
+00:05.000 --> 00:09.000
+&mdash; It will perforate your stomach.
+&mdash; You could die.</pre>
+
+  </div>
+
+  <div class="example">
+
+   <p>In this example, the author has written many comments.</p>
+
+   <pre>WEBVTT
+
+NOTE
+This file was written by Jill. I hope
+you enjoy reading it. Some things to
+bear in mind:
+- I was lip-reading, so the cues may
+not be 100% accurate
+- I didn't pay too close attention to
+when the cues should start or end.
+
+00:01.000 --> 00:04.000
+Never drink liquid nitrogen.
+
+NOTE check next cue
+
+00:05.000 --> 00:09.000
+&mdash; It will perforate your stomach.
+&mdash; You could die.
+
+NOTE end of file</pre>
+
+  </div>
+  </section>
+
+  <section>
+  <h3>Other features</h3>
+
+  <p><i>This section is non-normative.</i></p>
+
+  <p>WebVTT also supports some less-often used features.</p>
+
+  <div class="example">
+
+   <p>In this example, one of the cues has an identifier:</p>
+
+   <pre>WEBVTT
+
+00:00.000 --> 00:02.000
+That's an, an, that's an L!
+
+transcription-credit
+00:04.000 --> 00:05.000
+Transcribed by Celestials&trade;</pre>
+
+   <p>This allows a style sheet to specifically target that cue:</p>
+
+   <pre>::cue(#transcription-credit) { color: red }</pre>
+
+  </div>
+
+  <div class="example">
+
+   <p>In this example, each cue says who is talking using voice spans. In the first cue, the span
+   specifying the speaker is also annotated with two classes, "first" and "loud". In the third cue,
+   there is also some italics text (not associated with a specific speaker). The last cue is
+   annotated with just the class "loud".</p>
+
+   <pre>WEBVTT
+
+00:00.000 --> 00:02.000
+&lt;v.first.loud Esme>It's a blue apple tree!
+
+00:02.000 --> 00:04.000
+&lt;v Mary>No way!
+
+00:04.000 --> 00:06.000
+&lt;v Esme>Hee!&lt;/v> &lt;i>laughter&lt;/i>
+
+00:06.000 --> 00:08.000
+&lt;v.loud Mary>That's awesome!</pre>
+
+   <p>Notice that as a special exception, the voice spans don't have to be closed if they cover the
+   entire cue text.</p>
+
+   <p>Style sheets can style these spans:</p>
+
+   <pre>::cue(v[voice="Esme"]) { color: blue }
+::cue(v[voice="Mary"]) { color: green }
+::cue(i) { font-style: italic }
+::cue(.loud) { font-size: 2em }</pre>
+
+  </div>
+  </section>
+
+  </section>
+
+  <section>
+  <h2>Conformance</h2>
+
+  <p class="XXX">This section remains to be written. In the meantime, please see the HTML standard. <a href="#refsHTML">[HTML]</a></p>
+
+  <section>
+  <h3>Dependencies</h3>
+
+  <p>This specification relies upon the following terms defined in the
+  HTML standard. <a href="#refsHTML">[HTML]</a></p>
+
+  <ul class="brief">
+   <li><dfn>MIME type</dfn>
+   <li><dfn>Decoded as UTF-8, with error handling</dfn>
+   <li><dfn>Case-sensitive</dfn>
+   <li><dfn>Collect a sequence of characters</dfn>
+   <li><dfn>ASCII digits</dfn>
+   <li><dfn>Space character</dfn>
+   <li><dfn>Skip whitespace</dfn>
+   <li><dfn>Split a string on spaces</dfn>
+   <li><dfn>HTML namespace</dfn>
+   <li><dfn>Media element</dfn>
+   <li><dfn>Current playback position</dfn>
+   <li><dfn>Expose a user interface to the user</dfn>
+   <li><dfn>List of text tracks</dfn>
+   <li><dfn>Text track</dfn>
+   <li><dfn>Text track kind</dfn>
+   <li><dfn>Text track mode</dfn>
+   <li><dfn>Text track showing</dfn>
+   <li><dfn>Text track cue</dfn>
+   <li><dfn>Text track list of cues</dfn>
+   <li><dfn>Text track cue order</dfn>
+   <li><dfn>Text track cue identifier</dfn>
+   <li><dfn>Text track cue start time</dfn>
+   <li><dfn>Text track cue end time</dfn>
+   <li><dfn>Text track cue pause-on-exit flag</dfn>
+   <li><dfn>Text track cue text</dfn>
+   <li><dfn>Text track cue active flag</dfn>
+   <li><dfn>Text track cue display state</dfn>
+   <li><dfn>Rules for updating the text track rendering</dfn>
+   <li><dfn>Rules for rendering the cue in isolation</dfn>
+   <li><dfn><code>TextTrackCue</code></dfn> interface
+  </ul>
+  </section>
+  </section>
+
+  <section>
+  <h2>Data model</h2>
+
+  <p>WebVTT cues are HTML <span title="text track cue">text track cues</span> that additionally
+  consist of the following: <a href="#refsHTML">[HTML]</a></p>
+
+  <dl>
+
+   <dt><dfn title="text track cue writing direction">A writing direction</dfn>
+   <dd>
+    <p>A writing direction, either <dfn title="text track cue horizontal writing
+    direction">horizontal</dfn> (a line extends horizontally and is positioned vertically, with
+    consecutive lines displayed below each other), <dfn title="text track cue vertical growing left
+    writing direction">vertical growing left</dfn> (a line extends vertically and is positioned
+    horizontally, with consecutive lines displayed to the left of each other<!-- used for east
+    asian-->), or <dfn title="text track cue vertical growing right writing direction">vertical
+    growing right</dfn> (a line extends vertically and is positioned horizontally, with consecutive
+    lines displayed to the right of each other<!-- used for mongolian -->).</p>
+
+    <p>If the <span title="text track cue writing direction">writing direction</span> is <span
+    title="text track cue horizontal writing direction">horizontal</span>, then <span title="text
+    track cue line position">line position</span> percentages are relative to the height of the
+    video, and <span title="text track cue text position">text position</span> and <span title="text
+    track cue size">size</span> percentages are relative to the width of the video.</p>
+
+    <p>Otherwise, <span title="text track cue line position">line position</span> percentages are
+    relative to the width of the video, and <span title="text track cue text position">text
+    position</span> and <span title="text track cue size">size</span> percentages are relative to
+    the height of the video.</p>
+   </dd>
+
+   <dt><dfn title="text track cue snap-to-lines flag">A snap-to-lines flag</dfn>
+   <dd>
+
+    <p>A boolean indicating whether the <span title="text track cue line position">line's
+    position</span> is a line position (positioned to a multiple of the line dimensions of the first
+    line of the cue), or whether it is a percentage of the dimension of the video.</p>
+
+    <p>Cues whose <span>text track cue snap-to-lines flag</span> is set will be placed within the
+    title-safe area on user agents that use overscan. Cues with the flag unset will be positioned as
+    requested (modulo overlap avoidance if multiple cues are in the same place).</p>
+
+   </dd>
+
+   <dt><dfn title="text track cue line position">A line position</dfn>
+   <dd>
+    <p>Either a number giving the position of the lines of the cue, to be interpreted as defined by
+    the <span title="text track cue writing direction">writing direction</span> and <span
+    title="text track cue snap-to-lines flag">snap-to-lines flag</span> of the cue, or the special
+    value <dfn title="text track cue automatic line position">auto</dfn>, which means the position
+    is to depend on the other active tracks.</p>
+
+    <p>A <span>text track cue</span> has a <dfn>text track cue computed line position</dfn> whose
+    value is that returned by the following algorithm, which is defined in terms of the other
+    aspects of the cue:</p>
+
+    <ol>
+
+     <li><p>If the <span>text track cue line position</span> is numeric, the <span>text track cue
+     snap-to-lines flag</span> of the <span>text track cue</span> is not set, and the <span>text
+     track cue line position</span> is negative or greater than 100, then return 100 and abort these
+     steps.</p></li>
+
+     <li><p>If the <span>text track cue line position</span> is numeric, return the value of the
+     <span>text track cue line position</span> and abort these steps. (Either the <span>text track
+     cue snap-to-lines flag</span> is set, so any value, not just those in the range 0..100, is
+     valid, or the value is in the range 0..100 and is thus valid regardless of the value of that
+     flag.)</p></li>
+
+     <li><p>If the <span>text track cue snap-to-lines flag</span> of the <span>text track cue</span>
+     is not set, return the value 100 and abort these steps. (The <span>text track cue line
+     position</span> is the special value <span title="text track cue automatic line
+     position">auto</span>.)</p></li>
+
+     <li><p>Let <var title="">cue</var> be the <span>text track cue</span>.</p></li>
+
+     <li><p>If <var title="">cue</var> is not in a <span title="text track list of cues">list of
+     cues</span> of a <span>text track</span>, or if that <span>text track</span> is not in the
+     <span>list of text tracks</span> of a <span>media element</span>, return &#x2212;1 and abort
+     these steps.</p></li>
+
+     <li><p>Let <var title="">track</var> be the <span>text track</span> whose <span title="text
+     track list of cues">list of cues</span> the <var title="">cue</var> is in.</p></li>
+
+     <li><p>Let <var title="">n</var> be the number of <span title="text track">text tracks</span>
+     whose <span>text track mode</span> is <span title="text track showing">showing</span> and that
+     are in the <span>media element</span>'s <span>list of text tracks</span> before <var
+     title="">track</var>.</p></li>
+
+     <li><p>Increment <var title="">n</var> by one.</p></li>
+
+     <li><p>Negate <var title="">n</var>.</p></li>
+
+     <li><p>Return <var title="">n</var>.</p></li>
+
+    </ol>
+
+   </dd>
+
+   <dt><dfn title="text track cue text position">A text position</dfn>
+   <dd>
+    <p>A number giving the position of the text of the cue within each line, to be interpreted as a
+    percentage of the video, as defined by the <span title="text track cue writing
+    direction">writing direction</span>.</p>
+   </dd>
+
+   <dt><dfn title="text track cue size">A size</dfn>
+   <dd>
+    <p>A number giving the size of the box within which the text of each line of the cue is to be
+    aligned, to be interpreted as a percentage of the video, as defined by the <span title="text
+    track cue writing direction">writing direction</span>.</p>
+   </dd>
+
+   <dt><dfn title="text track cue alignment">An alignment</dfn>
+   <dd>
+
+    <p>An alignment for the text of each line of the cue, one of:</p>
+
+    <dl>
+
+     <dt><dfn title="text track cue start alignment">Start alignment</dfn></dt>
+     <dd>The text is aligned towards its start side.</dd>
+
+     <dt><dfn title="text track cue middle alignment">Middle alignment</dfn></dt>
+     <dd>The text is aligned centered between its start and end sides.</dd>
+
+     <dt><dfn title="text track cue end alignment">End alignment</dfn></dt>
+     <dd>The text is aligned towards its end side.</dd>
+
+     <dt><dfn title="text track cue left alignment">Left alignment</dfn></dt>
+     <dd>The text is aligned to the left.</dd>
+
+     <dt><dfn title="text track cue right alignment">Right alignment</dfn></dt>
+     <dd>The text is aligned to the right.</dd>
+
+    </dl>
+
+    <p>Which sides are the start and end sides depends on the Unicode bidirectional algorithm and
+    the <span title="text track cue writing direction">writing direction</span>. <a
+    href="#refsBIDI">[BIDI]</a></p>
+
+   </dd>
+
+  </dl>
+
+  <p>The associated <span>rules for updating the text track rendering</span> of WebVTT <span
+  title="text track cue">text track cues</span> are the <span>rules for updating the display of
+  WebVTT text tracks</span>.</p>
+
+  <div class="impl">
+
+  <p>When a WebVTT <span>text track cue</span> whose <span title="text track cue active flag">active
+  flag</span> is set has its <span title="text track cue writing direction">writing
+  direction</span>, <span title="text track cue snap-to-lines flag">snap-to-lines flag</span>, <span
+  title="text track cue line position">line position</span>, <span title="text track cue text
+  position">text position</span>, <span title="text track cue size">size</span>, <span title="text
+  track cue alignment">alignment</span>, or <span title="text track cue text">text</span> change
+  value, then the user agent must empty the <span>text track cue display state</span>, and then
+  immediately run the <span>text track</span>'s <span>rules for updating the display of WebVTT text
+  tracks</span>.</p>
+
+  </div>
+
+  </section>
+
+  <section>
+  <h2>The WebVTT file format</h2>
+
+  <section>
+  <h3>Syntax</h3>
+
+  <p>A <dfn>WebVTT file</dfn> must consist of a <span>WebVTT file
+  body</span> encoded as UTF-8 and labeled with the <span>MIME
+  type</span> <code>text/vtt</code>. <a href="#refsRFC3629">[RFC3629]</a></p>
+
+  <p>A <dfn>WebVTT file body</dfn> consists of the following
+  components, in the following order:</p>
+
+  <ol>
+
+   <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.</li>
+
+   <li>The string "<code title="">WEBVTT</code>".</li>
+
+   <li>Optionally, either a U+0020 SPACE character or a U+0009
+   CHARACTER TABULATION (tab) character followed by any number of
+   characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE
+   RETURN (CR) characters.</li> <!-- allows for Emacs line -->
+
+   <li>Two or more <span title="WebVTT line terminator">WebVTT line
+   terminators</span>.</li> <!-- the first one to terminate the magic
+   line, the second one to terminate the header block: in the future,
+   we can add a metadata block before the first blank line -->
+
+   <li>Zero or more <span title="WebVTT cue">WebVTT cues</span> and <span title="WebVTT
+   comment">WebVTT comments</span> separated from each other by two or more <span title="WebVTT
+   line terminator">WebVTT line terminators</span>.</li>
+
+   <li>Zero or more <span title="WebVTT line terminator">WebVTT line
+   terminators</span>.</li>
+
+  </ol>
+
+  <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
+  the given order:</p>
+
+  <ol>
+   <li>Optionally, a <span>WebVTT cue identifier</span> followed by a <span>WebVTT line terminator</span>.</li>
+   <li><span>WebVTT cue timings</span>.</li>
+   <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters followed by <span>WebVTT cue settings</span>.</li>
+   <li>A <span>WebVTT line terminator</span>.</li>
+   <li>The <dfn>cue payload</dfn>: either <span>WebVTT cue text</span>, <span>WebVTT chapter title text</span>, or <span>WebVTT metadata text</span>, but it must not contain the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+  </ol>
+
+  <p class="note">A <span>WebVTT cue</span> corresponds to one piece
+  of time-aligned text or data in the <span>WebVTT file</span>, for
+  example one subtitle. The <span>cue payload</span> is the text or
+  data associated with the cue.</p>
+
+  <p><span>WebVTT chapter title text</span> is syntactically a subset
+  of <span>WebVTT cue text</span>, and <span>WebVTT cue text</span> is
+  syntactically a subset of <span>WebVTT metadata text</span>.
+  Conformance checkers, when validating <span>WebVTT</span> files, may
+  offer to restrict all cues to only having <span>WebVTT chapter title
+  text</span> or <span>WebVTT cue text</span> as their <span>cue
+  payload</span>; <span>WebVTT metadata text</span> cues are only
+  useful for scripted applications (using the <code
+  title="dom-TextTrack-kind-metadata">metadata</code> <span>text
+  track kind</span>).</p>
+
+  <p>A <span>WebVTT file</span> whose cues all have a <span>cue
+  payload</span> that is <span>WebVTT chapter title text</span> is
+  said to be a <dfn>WebVTT file using chapter title text</dfn>.</p>
+
+  <p>A <span>WebVTT file</span> whose cues all have a <span>cue
+  payload</span> that is <span>WebVTT cue text</span> is said to be a
+  <dfn>WebVTT file using cue text</dfn>. By definition, any file that
+  is a <span>WebVTT file using chapter title text</span> is also a
+  <span>WebVTT file using cue text</span>.</p>
+
+
+  <p>A <dfn>WebVTT comment</dfn> consists of the  following components, in
+  the given order:</p>
+
+  <ol>
+   <li>The string "<code title="">NOTE</code>".</li>
+   <li>Optionally, the following components, in the given order:
+    <ol>
+     <li>Either:
+      <ul>
+       <li>A U+0020 SPACE character or U+0009 CHARACTER TABULATION (tab) character.</li>
+       <li>A <span>WebVTT line terminator</span>.</li>
+      </ul>
+     <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
+     U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a
+     <span>WebVTT line terminator</span>, except that the entire resulting string must not contain
+     the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
+    </ol>
+   </li>
+  </ol>
+
+  <p class="note">A <span>WebVTT comment</span> is ignored by the parser.</p>
+
+
+  <p>A <dfn>WebVTT line terminator</dfn> consists of one of the
+  following:</p>
+
+  <ul class="brief">
+   <li>A U+000D CARRIAGE RETURN U+000A LINE FEED (CRLF) character pair.</li>
+   <li>A single U+000A LINE FEED (LF) character.</li>
+   <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
+  </ul>
+
+  <p>A <dfn>WebVTT cue identifier</dfn> is any sequence of one or more
+  characters not containing the substring "<code title="">--&gt;</code>"
+  (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
+  SIGN), nor containing any U+000A LINE FEED (LF) characters or U+000D
+  CARRIAGE RETURN (CR) characters.</p>
+
+  <p class="note">A <span>WebVTT cue identifier</span> can be used to
+  reference a specific cue, for example from script or CSS.</p>
+
+  <p>The <dfn>WebVTT cue timings</dfn> part of a <span>WebVTT
+  cue</span> consists of the following components, in the given
+  order:</p>
+
+  <ol>
+
+   <!-- we could allow leading and trailing spaces and tabs, and make
+   the space between the arrow either optional or allow multiple
+   spaces or tabs -->
+
+   <li>A <span>WebVTT timestamp</span> representing the start time
+   offset of the cue. The time represented by this <span>WebVTT
+   timestamp</span> must be greater than or equal to the start time
+   offsets of all previous cues in the file.</li>
+
+   <li>One or more U+0020 SPACE characters or U+0009 CHARACTER
+   TABULATION (tab) characters.</li>
+
+   <li>The string "<code title="">--></code>" (U+002D HYPHEN-MINUS,
+   U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+
+   <li>One or more U+0020 SPACE characters or U+0009 CHARACTER
+   TABULATION (tab) characters.</li>
+
+   <li>A <span>WebVTT timestamp</span> representing the end time
+   offset of the cue. The time represented by this <span>WebVTT
+   timestamp</span> must be greater than the start time offset of the
+   cue.</li>
+
+  </ol>
+
+  <p class="note">The <span>WebVTT cue timings</span> give the start
+  and end offsets of the <span>WebVTT cue</span>. Different cues can
+  overlap. Cues are always listed ordered by their start time.</p>
+
+  <p>A <span>WebVTT file</span> whose cues all have an end time offset
+  <var title="">x</var> greater than or equal to the end time offsets
+  of all the cues whose start time offsets are less than <var
+  title="">x</var> is said to be a <dfn>WebVTT file using only nested
+  cues</dfn>.</p>
+
+  <div class="example">
+
+   <p>The following example matches this definition:</p>
+
+  <pre>WEBVTT
+
+00:00.000 --> 01:24.000
+Introduction
+
+00:00.000 --> 00:44.000
+Topics
+
+00:44.000 --> 01:19.000
+Presenters
+
+01:24.000 --> 05:00.000
+Scrolling Effects
+
+01:35.000 --> 03:00.000
+Achim's Demo
+
+03:00.000 --> 05:00.000
+Timeline Panel</pre>
+
+   <p>Notice how you can express the cues in this WebVTT file as a
+   tree structure:</p>
+
+   <ul>
+    <li>WebVTT file
+     <ul>
+      <li>Introduction
+       <ul>
+        <li>Topics
+        <li>Presenters
+       </ul>
+      </li>
+      <li>Scrolling Effects
+       <ul>
+        <li>Achim's Demo
+        <li>Timeline Panel
+       </ul>
+      </li>
+     </ul>
+    </li>
+   </ul>
+
+   <p>If the file has cues that can't be expressed in this fashion,
+   then they don't match the definition of a <span>WebVTT file using
+   only nested cues</span>. For example:</p>
+
+  <pre>WEBVTT
+
+00:00.000 --> 01:00.000
+The First Minute
+
+00:30.000 --> 01:30.000
+The Final Minute</pre>
+
+   <p>In this ninety-second example, the two cues partly overlap, with
+   the first ending before the second ends and the second starting
+   before the first ends. This therefore is not a <span>WebVTT file
+   using only nested cues</span>.</p>
+
+  </div>
+
+  <p>A <dfn>WebVTT timestamp</dfn> representing a time in seconds and
+  fractions of a second is a <span>WebVTT timestamp</span>
+  representing hours <var
+  title="">hours</var>, minutes <var title="">minutes</var>, seconds
+  <var title="">seconds</var>, and thousandths of a second <var
+  title="">seconds-frac</var>, calculated as follows:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">seconds</var> be the integer part of the
+   time.</p></li>
+
+   <li><p>Let <var title="">seconds-frac</var> be the fractional
+   component of the time, expressed as the digits of the decimal
+   fraction given to three decimal digits.</p></li>
+
+   <li><p>If <var title="">seconds</var> is greater than 59, then let
+   <var title="">minutes</var> be the integer component of <var
+   title="">seconds</var> divided by sixty, and then let <var
+   title="">seconds</var> be the remainder of dividing <var
+   title="">seconds</var> divided by sixty. Otherwise, let <var
+   title="">minutes</var> be zero.</p></li>
+
+   <li><p>If <var title="">minutes</var> is greater than 59, then let
+   <var title="">hours</var> be the integer component of <var
+   title="">minutes</var> divided by sixty, and then let <var
+   title="">minutes</var> be the remainder of dividing <var
+   title="">minutes</var> divided by sixty. Otherwise, let <var
+   title="">hours</var> be zero.</p></li>
+
+  </ol>
+
+  <p>A <span>WebVTT timestamp</span> representing hours <var
+  title="">hours</var>, minutes <var title="">minutes</var>, seconds
+  <var title="">seconds</var>, and thousandths of a second <var
+  title="">seconds-frac</var>, consists of the following components,
+  in the given order:</p>
+
+  <ol>
+
+   <li>Optionally (required if <var title="">hour</var> is non-zero):
+
+    <ol>
+
+     <li>Two or more <span>ASCII digits</span>, representing the <var title="">hours</var> as a base
+     ten integer.</li>
+
+     <li>A U+003A COLON character (:)</li>
+
+    </ol>
+
+   </li>
+
+   <li>Two <span>ASCII digits</span>, representing the <var title="">minutes</var> as a base ten
+   integer in the range 0&nbsp;&le;&nbsp;<var title="">minutes</var>&nbsp;&le;&nbsp;59.</li>
+
+   <li>A U+003A COLON character (:)</li>
+
+   <li>Two <span>ASCII digits</span>, representing the <var title="">seconds</var> as a base ten
+   integer in the range 0&nbsp;&le;&nbsp;<var title="">seconds</var>&nbsp;&le;&nbsp;59.</li>
+
+   <li>A U+002E FULL STOP character (.).</li>
+
+   <li>Three <span>ASCII digits</span>, representing the thousandths of a second <var
+   title="">seconds-frac</var> as a base ten integer.</li>
+
+  </ol>
+
+  <p>The <dfn>WebVTT cue settings</dfn> part of a <span>WebVTT
+  cue</span> consists of zero or more of the following components, in
+  any order, separated from each other by one or more U+0020 SPACE
+  characters or U+0009 CHARACTER TABULATION (tab) characters. Each
+  component must not be included more than once per <span>WebVTT cue
+  settings</span> string.</p>
+
+  <ul class="brief"> 
+   <li>A <span>WebVTT vertical text cue setting</span>.</li> <!-- vertical:rl/lr -->
+   <li>A <span>WebVTT line position cue setting</span>.</li> <!-- line:100% line:1 line:-1 -->
+   <li>A <span>WebVTT text position cue setting</span>.</li> <!-- position:100% -->
+   <li>A <span>WebVTT size cue setting</span>.</li>          <!-- size:100% -->
+   <li>A <span>WebVTT alignment cue setting</span>.</li>     <!-- align:start/middle/end/left/right -->
+  </ul>
+
+  <p class="note"><span>WebVTT cue settings</span> give configuration
+  options regarding the position and alignment of the cue. For
+  example, it allows a cue to be aligned to the left or positioned at
+  the top right.</p>
+
+  <p>A <dfn>WebVTT vertical text cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li>The string "<code title="">vertical</code>".</li>
+   <li>A U+003A COLON character (:).</li>
+   <li>One of the following strings: "<code title="">rl</code>", "<code title="">lr</code>".</li>
+  </ol>
+
+  <p class="note">A <span>WebVTT vertical text cue setting</span>
+  configures the cue to use vertical text layout rather than
+  horizontal text layout. Vertical text layout is sometimes used in
+  Japanese, for example. The default is horizontal layout.</p>
+
+  <p>A <dfn>WebVTT line position cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code title="">line</code>".</p></li>
+   <li><p>A U+003A COLON character (:).</p></li>
+   <li>Either:
+    <dl>
+     <dt>To represent a specific position relative to the video frame</dt>
+     <dd>
+      <ol>
+       <li>One or more <span>ASCII digits</span>.</li>
+       <li>A U+0025 PERCENT SIGN character (%).</li>
+      </ol>
+     </dd>
+     <dt>To represent a line number</dt>
+     <dd>
+      <ol>
+       <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
+       <li>One or more <span>ASCII digits</span>.</li>
+      </ol>
+     </dd>
+    </dl>
+   </li>
+  </ol>
+
+  <p class="note">A <span>WebVTT line position cue setting</span>
+  configures the position of the cue. For horizontal cues, this is the
+  vertical position. The position can be given either as a percentage,
+  which gives the distance from the top of the frame, or as a line
+  number. Line numbers are based on the size of the first line of the
+  cue. Positive line numbers count from the top of the frame (the top
+  line is numbered 0), negative line numbers from the bottom of the
+  frame (the bottom line is numbered &#x2212;1).</p>
+
+  <p>A <dfn>WebVTT text position cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code title="">position</code>".</p></li>
+   <li>A U+003A COLON character (:).</li>
+   <li>One or more <span>ASCII digits</span>.</li>
+   <li>A U+0025 PERCENT SIGN character (%).</li>
+  </ol>
+
+  <p class="note">A <span>WebVTT text position cue setting</span>
+  configures the position of the text in the direction orthogonal to
+  the <span>WebVTT line position cue setting</span>. For horizontal
+  cues, this is the horizontal position. The <span>WebVTT text
+  position cue setting</span> is given as a percentage, calculated
+  from the edge of the frame that the text begins (so for
+  left-to-right English text, the left edge).</p>
+
+  <p>A <dfn>WebVTT size cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code title="">size</code>".</p></li>
+   <li>A U+003A COLON character (:).</li>
+   <li>One or more <span>ASCII digits</span>.</li>
+   <li>A U+0025 PERCENT SIGN character (%).</li>
+  </ol>
+
+  <p class="note">A <span>WebVTT size cue setting</span> configures
+  the size of the cue in the same direction as the <span>WebVTT text
+  position cue setting</span>. For horizontal cues, this is the width
+  of the cue. It is given as a percentage of the width of the
+  frame.</p>
+
+  <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code title="">align</code>".</p></li>
+   <li>A U+003A COLON character (:).</li>
+   <li>One of the following strings: "<code title="">start</code>", "<code title="">middle</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>"</li>
+  </ol>
+
+  <p class="note">A <span>WebVTT alignment cue setting</span>
+  configures the alignment of the text within the cue. The keywords
+  are relative to the text direction; for left-to-right English text,
+  "<code title="">start</code>" means left-aligned.</p>
+
+
+  <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
+  or more characters other than U+000A LINE FEED (LF) characters and
+  U+000D CARRIAGE RETURN (CR) characters, each optionally separated
+  from the next by a <span>WebVTT line terminator</span>. (In other
+  words, any text that does not have two consecutive <span
+  title="WebVTT line terminator">WebVTT line terminators</span> and
+  does not start or end with a <span>WebVTT line
+  terminator</span>.)</p>
+
+
+  <p><dfn>WebVTT chapter title text</dfn> consists of zero or more of
+  the following, each optionally separated from the next by a
+  <span>WebVTT line terminator</span>:</p>
+
+  <ul>
+   <li>A <span>WebVTT cue text span</span>, representing the text of the cue.</li>
+   <li>A <span>WebVTT cue amp escape</span>, representing a "&amp;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue lt escape</span>, representing a "&lt;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue gt escape</span>, representing a "&gt;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue lrm escape</span>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <span>WebVTT cue rlm escape</span>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <span>WebVTT cue nbsp escape</span>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
+  </ul>
+
+
+  <p><dfn>WebVTT cue text</dfn> consists of zero or more <span>WebVTT
+  cue components</span>, in any order, each optionally separated from
+  the next by a <span>WebVTT line terminator</span>.</p>
+
+  <p>The <dfn>WebVTT cue components</dfn> are:</p>
+
+  <ul>
+
+   <li>A <span>WebVTT cue class span</span>.</li>
+   <li>A <span>WebVTT cue italics span</span>.</li>
+   <li>A <span>WebVTT cue bold span</span>.</li>
+   <li>A <span>WebVTT cue underline span</span>.</li>
+   <li>A <span>WebVTT cue ruby span</span>.</li>
+   <li>A <span>WebVTT cue voice span</span>.</li>
+   <li>A <span>WebVTT cue language span</span>.</li>
+
+   <li>A <span>WebVTT cue timestamp</span>.</li>
+
+   <li>A <span>WebVTT cue text span</span>, representing the text of the cue.</li>
+
+   <li>A <span>WebVTT cue amp escape</span>, representing a "&amp;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue lt escape</span>, representing a "&lt;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue gt escape</span>, representing a "&gt;" character in the text of the cue.</li>
+   <li>A <span>WebVTT cue lrm escape</span>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <span>WebVTT cue rlm escape</span>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <span>WebVTT cue nbsp escape</span>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
+
+  </ul>
+
+  <p><dfn>WebVTT cue internal text</dfn> consists of an optional
+  <span>WebVTT line terminator</span>, followed by zero or more
+  <span>WebVTT cue components</span>, in any order, each optionally
+  followed by a <span>WebVTT line terminator</span>.</p>
+
+
+  <p>A <dfn>WebVTT cue class span</dfn> consists of a <span>WebVTT cue
+  span start tag</span> "<code title="">c</code>" that disallows an
+  annotation, <span>WebVTT cue internal text</span> representing cue
+  text, and a <span>WebVTT cue span end tag</span> "<code
+  title="">c</code>".</p>
+
+  <p>A <dfn>WebVTT cue italics span</dfn> consists of a <span>WebVTT
+  cue span start tag</span> "<code title="">i</code>" that disallows
+  an annotation, <span>WebVTT cue internal text</span> representing
+  the italicized text, and a <span>WebVTT cue span end tag</span>
+  "<code title="">i</code>".</p>
+
+  <p>A <dfn>WebVTT cue bold span</dfn> consists of a <span>WebVTT cue
+  span start tag</span> "<code title="">b</code>" that disallows an
+  annotation, <span>WebVTT cue internal text</span> representing the
+  boldened text, and a <span>WebVTT cue span end tag</span> "<code
+  title="">b</code>".</p>
+
+  <p>A <dfn>WebVTT cue underline span</dfn> consists of a <span>WebVTT
+  cue span start tag</span> "<code title="">u</code>" that disallows
+  an annotation, <span>WebVTT cue internal text</span> representing
+  the underlined text, and a <span>WebVTT cue span end tag</span>
+  "<code title="">u</code>".</p>
+
+  <p>A <dfn>WebVTT cue ruby span</dfn> consists of the following
+  components, in the order given:</p>
+
+  <ol>
+   <li>A <span>WebVTT cue span start tag</span> "<code title="">ruby</code>" that disallows an annotation.</li>
+   <li>One or more occurrences of the following group of components, in the order given:
+    <ol>
+     <li><span>WebVTT cue internal text</span>, representing the ruby base.</li>
+     <li>A <span>WebVTT cue span start tag</span> "<code title="">rt</code>" that disallows an annotation.</li>
+     <li>A <dfn>WebVTT cue ruby text span</dfn>: <span>WebVTT cue internal text</span>, representing the ruby text component of the ruby annotation.</li>
+     <li>A <span>WebVTT cue span end tag</span> "<code title="">rt</code>".
+     If this is the last occurrence of this group of components in the
+     <span>WebVTT cue ruby span</span>, then this last end tag string
+     may be omitted.</li>
+    </ol>
+   </li>
+   <li>If the last end tag string was not omitted: Optionally, a <span>WebVTT line terminator</span>.</li>
+   <li>If the last end tag string was not omitted: Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters, each optionally followed by a <span>WebVTT line terminator</span>.</li>
+   <li>A <span>WebVTT cue span end tag</span> "<code title="">ruby</code>".</li>
+  </ol>
+
+  <p>A <dfn>WebVTT cue voice span</dfn> consists of the following
+  components, in the order given:</p>
+
+  <ol>
+   <li>A <span>WebVTT cue span start tag</span> "<code title="">v</code>" that requires an annotation; the annotation represents the name of the voice.</li>
+   <li><span>WebVTT cue internal text</span>.</li>
+   <li>A <span>WebVTT cue span end tag</span> "<code title="">v</code>". If this <span>WebVTT cue voice span</span> is the only <span title="WebVTT cue components">component</span> of its <span>WebVTT cue text</span> sequence, then the end tag may be omitted for brevity.</li>
+  </ol>
+
+  <p>A <dfn>WebVTT cue language span</dfn> consists of the following
+  components, in the order given:</p>
+
+  <ol>
+   <li>A <span>WebVTT cue span start tag</span> "<code title="">lang</code>" that requires an annotation; the annotation represents the language of the following component, and must be a valid BCP 47 language tag. <a href="#refsBCP47">[BCP47]</a></li>
+   <li><span>WebVTT cue internal text</span>.</li>
+   <li>A <span>WebVTT cue span end tag</span> "<code title="">lang</code>".</li>
+  </ol>
+
+
+  <p>A <dfn>WebVTT cue span start tag</dfn> has a <var title="">tag
+  name</var> and either <!--allows,--> requires<!--,--> or disallows
+  an annotation, and consists of the following components, in the
+  order given:</p>
+
+  <ol>
+
+   <li>A U+003C LESS-THAN SIGN character (&lt;).</li>
+
+   <li>The <var title="">tag name</var>.</li>
+
+   <li>Zero or more occurrences of the following sequence:
+
+    <ol>
+
+     <li>U+002E FULL STOP character (.)</li>
+
+     <li>One or more characters other than U+0009 CHARACTER TABULATION
+     (tab) characters, U+000A LINE FEED (LF) characters, U+000D
+     CARRIAGE RETURN (CR) characters, U+0020 SPACE characters, U+0026
+     AMPERSAND characters (&amp;), U+003C LESS-THAN SIGN characters
+     (&lt;), U+003E GREATER-THAN SIGN characters (>), and U+002E FULL
+     STOP characters (.), representing a class that describes the cue
+     span's significance.</li>
+
+    </ol>
+
+   </li>
+
+   <li>
+<!--
+    <dl class="switch">
+
+     <dt>If the start tag allows an annotation:</dt>
+
+     <dd>Optionally, a <span>WebVTT cue span start tag annotation</span>.</dd>
+
+     <dt>-->If the start tag requires an annotation:<!--</dt>
+
+     <dd>A <span>WebVTT cue span start tag annotation</span>.</dd>
+
+    </dl>
+
+    <p>A <dfn>WebVTT cue span start tag annotation</dfn> consists of-->
+    a U+0020 SPACE character or a U+0009 CHARACTER TABULATION (tab)
+    character, followed by one or more of the following components,
+    the concatenation of their representations having a value that
+    contains at least one character other than U+0020 SPACE and U+0009
+    CHARACTER TABULATION (tab) characters:<!--</p>-->
+
+    <ul>
+     <li><span>WebVTT cue span start tag annotation text</span>, representing the text of the annotation.</li>
+     <li>A <span>WebVTT cue amp escape</span>, representing a "&amp;" character in the text of the annotation.</li>
+     <li>A <span>WebVTT cue lt escape</span>, representing a "&lt;" character in the text of the annotation.</li>
+     <li>A <span>WebVTT cue gt escape</span>, representing a "&gt;" character in the text of the annotation.</li>
+     <li>A <span>WebVTT cue lrm escape</span>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+     <li>A <span>WebVTT cue rlm escape</span>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+     <li>A <span>WebVTT cue nbsp escape</span>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
+    </ul>
+
+   </li>
+
+   <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
+
+  </ol>
+
+  <p>A <dfn>WebVTT cue span end tag</dfn> has a <var title="">tag
+  name</var> and consists of the following components, in the order
+  given:</p>
+
+  <ol>
+   <li>A U+003C LESS-THAN SIGN character (&lt;).</li>
+   <li>U+002F SOLIDUS character (/).</li>
+   <li>The <var title="">tag name</var>.</li>
+   <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
+  </ol>
+
+
+  <p>A <dfn>WebVTT cue timestamp</dfn> consists of a U+003C LESS-THAN
+  SIGN character (&lt;), followed by a <span>WebVTT timestamp</span>
+  representing the time that the given point in the cue becomes
+  active, followed by a U+003E GREATER-THAN SIGN character (>). The
+  time represented by the <span>WebVTT timestamp</span> must be
+  greater than the times represented by any previous <span
+  title="WebVTT cue timestamp">WebVTT cue timestamps</span> in the
+  cue, as well as greater than the cue's start time offset, and less
+  than the cue's end time offset.</p>
+
+  <p>A <dfn>WebVTT cue text span</dfn> consists of one or more
+  characters other than U+000A LINE FEED (LF) characters, U+000D
+  CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND characters (&amp;),
+  and U+003C LESS-THAN SIGN characters (&lt;).</p>
+
+  <p><dfn>WebVTT cue span start tag annotation text</dfn> consists of
+  one or more characters other than U+000A LINE FEED (LF) characters,
+  U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND characters
+  (&amp;), and U+003E GREATER-THAN SIGN characters (&gt;).</p>
+
+  <p>A <dfn>WebVTT cue amp escape</dfn> is the five character string
+  "<code title="">&amp;amp;</code>".</p>
+
+  <p>A <dfn>WebVTT cue lt escape</dfn> is the four character string
+  "<code title="">&amp;lt;</code>".</p>
+
+  <p>A <dfn>WebVTT cue gt escape</dfn> is the four character string
+  "<code title="">&amp;gt;</code>".</p>
+
+  <p>A <dfn>WebVTT cue lrm escape</dfn> is the five character string
+  "<code title="">&amp;lrm;</code>".</p>
+
+  <p>A <dfn>WebVTT cue rlm escape</dfn> is the five character string
+  "<code title="">&amp;rlm;</code>".</p>
+
+  <p>A <dfn>WebVTT cue nbsp escape</dfn> is the six character string
+  "<code title="">&amp;nbsp;</code>".</p>
+
+  </section>
+
+
+  <section>
+
+  <h3>Parsing</h3>
+
+  <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a
+  <span>text track list of cues</span> <var title="">output</var>,
+  must <span title="decoded as UTF-8, with error handling">decode the
+  byte stream as UTF-8, with error handling</span>, and then must
+  parse the resulting string according to the <span>WebVTT parser
+  algorithm</span> below. This results in <span title="text track
+  cue">text track cues</span> being added to <var
+  title="">output</var>. <a href="#refsRFC3629">[RFC3629]</a></p>
+
+  <p>A <span>WebVTT parser</span>, specifically its conversion and
+  parsing steps, is typically run asynchronously, with the input byte
+  stream being updated incrementally as the resource is downloaded;
+  this is called an <dfn>incremental WebVTT parser</dfn>.</p>
+
+  <p>A <span>WebVTT parser</span> verifies a file signature before
+  parsing the provided byte stream. If the stream lacks this WebVTT
+  file signature, then the parser aborts.</p>
+
+  <p>The <dfn>WebVTT parser algorithm</dfn> is as follows:</p>
+
+  <ol>
+
+   <li>
+
+    <p>Let <var title="">input</var> be the string being parsed, after
+    conversion to Unicode, and with the following transformations
+    applied:</p>
+
+    <ul>
+
+     <li><p>Replace all U+0000 NULL characters by U+FFFD REPLACEMENT
+     CHARACTERs.</p></li>
+
+     <li><p>Replace each U+000D CARRIAGE RETURN U+000A LINE FEED
+     (CRLF) character pair by a single U+000A LINE FEED (LF)
+     character.</p></li>
+
+     <li><p>Replace all remaining U+000D CARRIAGE RETURN characters by
+     U+000A LINE FEED (LF) characters.</p></li>
+
+    </ul>
+
+   </li>
+
+   <li><p>Let <var title="">position</var> be a pointer into <var
+   title="">input</var>, initially pointing at the start of the
+   string. In an <span>incremental WebVTT parser</span>, when this
+   algorithm (or further algorithms that it uses) moves the <var
+   title="">position</var> pointer, the user agent must wait until
+   appropriate further characters from the byte stream have been added
+   to <var title="">input</var> before moving the pointer, so that the
+   algorithm never reads past the end of the <var title="">input</var>
+   string. Once the byte stream has ended, and all characters have
+   been added to <var title="">input</var>, then the <var
+   title="">position</var> pointer may, when so instructed by the
+   algorithms, be moved past the end of <var
+   title="">input</var>.</p></li>
+
+   <li><p>If the character indicated by <var title="">position</var>
+   is a U+FEFF BYTE ORDER MARK (BOM) character, advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+
+   <li>Let <var title="">line</var> be a string variable. Unset the
+   <var title="">already collected line</var> flag.</li>
+
+
+   <!-- SIGNATURE CHECK -->
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   <em>not</em> U+000A LINE FEED (LF) characters. Let <var
+   title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If <var title="">line</var> is less than six characters
+   long, then abort these steps. The file does not start with the
+   correct <span>WebVTT file</span> signature and was therefore not
+   successfully processed.</p></li>
+
+   <li><p>If <var title="">line</var> is exactly six characters long
+   but does not exactly equal "<code title="">WEBVTT</code>", then
+   abort these steps. The file does not start with the correct
+   <span>WebVTT file</span> signature and was therefore not
+   successfully processed.</p></li>
+
+   <li><p>If <var title="">line</var> is more than six characters long
+   but the first six characters do not exactly equal "<code
+   title="">WEBVTT</code>", or the seventh character is neither a
+   U+0020 SPACE character nor a U+0009 CHARACTER TABULATION (tab)
+   character, then abort these steps. The file does not start with the
+   correct <span>WebVTT file</span> signature and was therefore not
+   successfully processed.</p></li>
+
+   <li><p>If <var title="">position</var> is past the end of <var
+   title="">input</var>, then abort these steps. The file was
+   successfully processed, but it contains no useful data and so no
+   <span title="text track cue">text track cues</span> where added to
+   <var title="">output</var>.</p></li>
+
+
+   <li><p>The character indicated by <var title="">position</var> is a
+   U+000A LINE FEED (LF) character. Advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+
+   <li><p><i title="">Header</i>: <span>Collect a sequence of
+   characters</span> that are <em>not</em> U+000A LINE FEED (LF)
+   characters. Let <var title="">line</var> be those characters, if
+   any.</p></li>
+
+   <li><p>If <var title="">position</var> is past the end of <var
+   title="">input</var>, then jump to the step labeled
+   <i>end</i>.</p></li>
+
+   <li><p>The character indicated by <var title="">position</var> is a
+   U+000A LINE FEED (LF) character. Advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+   <li><p>If <var title="">line</var> contains the three-character
+   substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D
+   HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var
+   title="">already collected line</var> flag and jump to the step
+   labeled <i>cue loop</i>.</p></li>
+
+   <!-- In v2, this is where we can put header metadata processing -->
+
+   <li><p>If <var title="">line</var> is not the empty string, then
+   jump back to the step labeled <i title="">header</i>.</p></li>
+
+
+   <li><p><i>Cue loop</i>: If the <var title="">already collected
+   line</var> flag is set, then jump to the step labeled <var
+   title="">cue creation</var>.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   U+000A LINE FEED (LF) characters.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   <em>not</em> U+000A LINE FEED (LF) characters. Let <var
+   title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If <var title="">line</var> is the empty string, then jump
+   to the step labeled <i>end</i>. (In such a case, <var
+   title="">position</var> is also forcibly past the end of <var
+   title="">input</var><!-- since we've just collected newlines, so we
+   have none of those, and we've failed to collect anything that's not
+   a newline, so we have none of that either, meaning we have nothing.
+   -->.)</p></li>
+
+   <li><p><i>Cue creation</i>: Let <var title="">cue</var> be a new
+   <span>text track cue</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   identifier</span> be the empty string.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   pause-on-exit flag</span> be false.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   writing direction</span> be <span title="text track cue
+   horizontal writing direction">horizontal</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   snap-to-lines flag</span> be true.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue line
+   position</span> be <span title="text track cue automatic line
+   position">auto</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   text position</span> be 50.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   size</span> be 100.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   alignment</span> be <span title="text track cue middle
+   alignment">middle alignment</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   text</span> be the empty string.</p></li>
+
+   <li><p>If <var title="">line</var> contains the three-character
+   substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D
+   HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then jump to the step
+   labeled <i>timings</i> below.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   identifier</span> be <var title="">line</var>.<p></li>
+
+   <li><p>If <var title="">position</var> is past the end of <var
+   title="">input</var>, then discard <var title="">cue</var> and jump
+   to the step labeled <i>end</i>.</p></li>
+
+   <li><p>If the character indicated by <var title="">position</var>
+   is a U+000A LINE FEED (LF) character, advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   <em>not</em> U+000A LINE FEED (LF) characters. Let <var
+   title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If <var title="">line</var> is the empty string, then
+   discard <var title="">cue</var> and jump to the step labeled <i>cue
+   loop</i>.</p></li>
+
+   <li><p><i>Timings</i>: Unset the <var title="">already collected
+   line</var> flag.</p></li>
+
+   <li><p><span>Collect WebVTT cue timings and settings</span> from
+   <var title="">line</var>, using <var title="">cue</var> for the
+   results. If that fails, jump to the step labeled <i>bad
+   cue</i>.</p></li>
+
+   <li><p>Let <var title="">cue text</var> be the empty
+   string.</p></li>
+
+   <li><p><i>Cue text loop</i>: If <var title="">position</var> is
+   past the end of <var title="">input</var>, then jump to the step
+   labeled <i>cue text processing</i>.</p></li>
+
+   <li><p>If the character indicated by <var title="">position</var>
+   is a U+000A LINE FEED (LF) character, advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   <em>not</em> U+000A LINE FEED (LF) characters. Let <var
+   title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If <var title="">line</var> is the empty string, then jump
+   to the step labeled <i>cue text processing</i>.</p></li>
+
+   <li><p>If <var title="">line</var> contains the three-character
+   substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D
+   HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var
+   title="">already collected line</var> flag and jump to the step
+   labeled <i>cue text processing</i>.</p></li>
+
+   <li><p>If <var title="">cue text</var> is not empty, append a
+   U+000A LINE FEED (LF) character to <var title="">cue
+   text</var>.</p></li>
+
+   <li><p>Let <var title="">cue text</var> be the concatenation of
+   <var title="">cue text</var> and <var title="">line</var>.</p></li>
+
+   <li><p>Return to the step labeled <i>cue text loop</i>.</p></li>
+
+   <li><p><i>Cue text processing</i>: Let the <span>text track cue text</span> of <var
+   title="">cue</var> be <var title="">cue text</var>, and let the <span>rules for rendering the cue
+   in isolation</span> be the <span>rules for interpreting WebVTT cue text</span>.</p></li>
+
+   <li><p>Add <var title="">cue</var> to the <span>text track list of
+   cues</span> <var title="">output</var>.</p></li>
+
+   <li><p>Jump to the step labeled <i>cue loop</i>.</p></li>
+
+
+   <li><p><i>Bad cue</i>: Discard <var title="">cue</var>.</p></li>
+
+   <li><p><i>Bad cue loop</i>: If <var title="">position</var> is
+   past the end of <var title="">input</var>, then jump to the step
+   labeled <i>end</i>.</p></li>
+
+   <li><p>If the character indicated by <var title="">position</var>
+   is a U+000A LINE FEED (LF) character, advance <var
+   title="">position</var> to the next character in <var
+   title="">input</var>.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are
+   <em>not</em> U+000A LINE FEED (LF) characters. Let <var
+   title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If <var title="">line</var> contains the three-character
+   substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D
+   HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var
+   title="">already collected line</var> flag and jump to the step
+   labeled <i>cue loop</i>.</p></li>
+
+   <li><p>If <var title="">line</var> is the empty string, then jump
+   to the step labeled <i>cue loop</i>.</p></li>
+
+   <li><p>Otherwise, jump to the step labeled <i>bad cue
+   loop</i>.</p></li>
+
+
+   <li><p><i>End</i>: The file has ended. Abort these steps. The
+   <span>WebVTT parser</span> has finished. The file was successfully
+   processed.</p></li>
+
+  </ol>
+
+  <p>When the algorithm above requires that the user agent
+  <dfn>collect WebVTT cue timings and settings</dfn> from a string
+  <var title="">input</var> for a <span>text track cue</span> <var
+  title="">cue</var>, the user agent must run the following
+  algorithm.</p>
+
+  <ol>
+
+   <li><p>Let <var title="">input</var> be the string being
+   parsed.</p></li>
+
+   <li><p>Let <var title="">position</var> be a pointer into <var
+   title="">input</var>, initially pointing at the start of the
+   string.</p></li>
+
+   <li><p><span>Skip whitespace</span>.</p></li>
+
+   <li><p><span>Collect a WebVTT timestamp</span>. If that algorithm
+   fails, then abort these steps and return failure. Otherwise, let
+   <var title="">cue</var>'s <span>text track cue start time</span>
+   be the collected time.</p></li>
+
+   <li><p><span>Skip whitespace</span>.</p></li>
+
+   <!-- we can't be beyond the end of the string until we've seen the
+   arrow, since we know the arrow is in the string and nothing we've
+   done so far would move us past the first "-". -->
+
+   <li><p>If <!--<var title="">position</var> is beyond the end of
+   <var title="">input</var> or if--> the character at <var
+   title="">position</var> is not a U+002D HYPHEN-MINUS character (-)
+   then abort these steps and return failure. Otherwise, move <var
+   title="">position</var> forwards one character.</p></li>
+
+   <li><p>If <!--<var title="">position</var> is beyond the end of
+   <var title="">input</var> or if--> the character at <var
+   title="">position</var> is not a U+002D HYPHEN-MINUS character (-)
+   then abort these steps and return failure. Otherwise, move <var
+   title="">position</var> forwards one character.</p></li>
+
+   <li><p>If <!--<var title="">position</var> is beyond the end of
+   <var title="">input</var> or if--> the character at <var
+   title="">position</var> is not a U+003E GREATER-THAN SIGN character
+   (>) then abort these steps and return failure. Otherwise, move <var
+   title="">position</var> forwards one character.</p></li>
+
+   <li><p><span>Skip whitespace</span>.</p></li>
+
+   <li><p><span>Collect a WebVTT timestamp</span>. If that algorithm
+   fails, then abort these steps and return failure. Otherwise, let
+   <var title="">cue</var>'s <span>text track cue end time</span>
+   be the collected time.</p></li>
+
+   <li><p>Let <var title="">remainder</var> be the trailing substring
+   of <var title="">input</var> starting at <var
+   title="">position</var>.</p></li>
+
+   <li><p><span>Parse the WebVTT settings</span> given by <var
+   title="">remainder</var> for <var title="">cue</var>.</p></li>
+
+  </ol>
+
+  <p>When the user agent is to <dfn>parse the WebVTT settings</dfn>
+  given by a string <var title="">input</var> for a <span>text track
+  cue</span> <var title="">cue</var>, the user agent must run the
+  following steps:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">settings</var> be the result of <span
+   title="split a string on spaces">splitting <var
+   title="">input</var> on spaces</span>.</p></li>
+
+   <li>
+
+    <p>For each token <var title="">setting</var> in the list <var
+    title="">settings</var>, run the following substeps:</p>
+
+    <ol>
+
+     <li><p>If <var title="">setting</var> does not contain a U+003A
+     COLON character (:), or if the first U+003A COLON character (:)
+     in <var title="">setting</var> is either the first or last
+     character of <var title="">setting</var>, then jump to the step
+     labeled <i>next setting</i>.</p></li>
+
+     <li><p>Let <var title="">name</var> be the leading substring of
+     <var title="">setting</var> up to and excluding the first U+003A
+     COLON character (:) in that string.</p></li>
+
+     <li><p>Let <var title="">value</var> be the trailing substring of
+     <var title="">setting</var> starting from the character
+     immediately after the first U+003A COLON character (:) in that
+     string.</p></li>
+
+     <li>
+
+      <p>Run the appropriate substeps that apply for the value of <var
+      title="">name</var>, as follows:</p>
+
+      <dl>
+
+       <dt>If <var title="">name</var> is a <span>case-sensitive</span> match for "<code title="">vertical</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">rl</code>", then let <var title="">cue</var>'s
+         <span>text track cue writing direction</span> be <span
+         title="text track cue vertical growing left writing
+         direction">vertical growing left</span>.</p></li>
+
+         <li><p>Otherwise, if <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">lr</code>", then let <var title="">cue</var>'s
+         <span>text track cue writing direction</span> be <span
+         title="text track cue vertical growing right writing
+         direction">vertical growing right</span>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var title="">name</var> is a <span>case-sensitive</span> match for "<code title="">line</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <var title="">value</var> contains any characters other than U+002D HYPHEN-MINUS
+         characters (-), U+0025 PERCENT SIGN characters (%), and <span>ASCII digits</span>, then
+         jump to the step labeled <i>next setting</i>.</p></li>
+
+         <li><p>If <var title="">value</var> does not contain at least one <span title="ASCII
+         digits">ASCII digit</span>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+         <li><p>If any character in <var title="">value</var> other
+         than the first character is a U+002D HYPHEN-MINUS character
+         (-), then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If any character in <var title="">value</var> other
+         than the last character is a U+0025 PERCENT SIGN character
+         (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If the first character in <var title="">value</var> is
+         a U+002D HYPHEN-MINUS character (-) <em>and</em> the last
+         character in <var title="">value</var> is a U+0025 PERCENT
+         SIGN character (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>Ignoring the trailing percent sign, if any, interpret
+         <var title="">value</var> as a (potentially signed) integer,
+         and let <var title="">number</var> be that number.</p></li>
+
+         <li><p>If the last character in <var title="">value</var> is
+         a U+0025 PERCENT SIGN character (%), but <var
+         title="">number</var> is not in the range
+         0&nbsp;&le;&nbsp;<var
+         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Let <var title="">cue</var>'s <span>text track cue
+         line position</span> be <var title="">number</var>.</p></li>
+
+         <li><p>If the last character in <var title="">value</var> is
+         a U+0025 PERCENT SIGN character (%), then let <var
+         title="">cue</var>'s <span>text track cue snap-to-lines
+         flag</span> be false. Otherwise, let it be true.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var title="">name</var> is a <span>case-sensitive</span> match for "<code title="">position</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
+         characters (%) and <span>ASCII digits</span>, then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If <var title="">value</var> does not contain at least one <span title="ASCII
+         digits">ASCII digit</span>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+         <li><p>If any character in <var title="">value</var> other
+         than the last character is a U+0025 PERCENT SIGN character
+         (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If the last character in <var title="">value</var> is
+         not a U+0025 PERCENT SIGN character (%), then jump to the
+         step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Ignoring the trailing percent sign, interpret <var
+         title="">value</var> as an integer, and let <var
+         title="">number</var> be that number.</p></li>
+
+         <li><p>If <var title="">number</var> is not in the range
+         0&nbsp;&le;&nbsp;<var
+         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Let <var title="">cue</var>'s <span>text track cue text
+         position</span> be <var title="">number</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var title="">name</var> is a <span>case-sensitive</span> match for "<code title="">size</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
+         characters (%) and <span>ASCII digits</span>, then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If <var title="">value</var> does not contain at least one <span title="ASCII
+         digits">ASCII digit</span>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+         <li><p>If any character in <var title="">value</var> other
+         than the last character is a U+0025 PERCENT SIGN character
+         (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
+
+         <li><p>If the last character in <var title="">value</var> is
+         not a U+0025 PERCENT SIGN character (%), then jump to the
+         step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Ignoring the trailing percent sign, interpret <var
+         title="">value</var> as an integer, and let <var
+         title="">number</var> be that number.</p></li>
+
+         <li><p>If <var title="">number</var> is not in the range
+         0&nbsp;&le;&nbsp;<var
+         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Let <var title="">cue</var>'s <span>text track cue
+         size</span> be <var title="">number</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var title="">name</var> is a <span>case-sensitive</span> match for "<code title="">align</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">start</code>", then let <var title="">cue</var>'s
+         <span>text track cue alignment</span> be <span title="text
+         track cue start alignment">start alignment</span>.</p></li>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">middle</code>", then let <var title="">cue</var>'s
+         <span>text track cue alignment</span> be <span title="text
+         track cue middle alignment">middle alignment</span>.</p></li>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">end</code>", then let <var title="">cue</var>'s
+         <span>text track cue alignment</span> be <span title="text
+         track cue end alignment">end alignment</span>.</p></li>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">left</code>", then let <var title="">cue</var>'s
+         <span>text track cue alignment</span> be <span title="text
+         track cue left alignment">left alignment</span>.</p></li>
+
+         <li><p>If <var title="">value</var> is a
+         <span>case-sensitive</span> match for the string "<code
+         title="">right</code>", then let <var title="">cue</var>'s
+         <span>text track cue alignment</span> be <span title="text
+         track cue right alignment">right alignment</span>.</p></li>
+
+        </ol>
+
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p><i>Next setting</i>: Continue to the next token, if
+     any.</p></li> <!-- this step is just here to give the algorithms
+     above a clean way to 'break' -->
+
+    </ol>
+
+   </li>
+
+  </ol>
+
+  <p>When this specification says that a user agent is to
+  <dfn>collect a WebVTT timestamp</dfn>, the user agent must run the
+  following steps:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">input</var> and <var
+   title="">position</var> be the same variables as those of the same
+   name in the algorithm that invoked these steps.</p></li>
+
+   <li><p>Let <var title="">most significant units</var> be <i
+   title="">minutes</i>.</p></li>
+
+   <li><p>If <var title="">position</var> is past the end of <var
+   title="">input</var>, return an error and abort these
+   steps.</p></li>
+
+   <li><p>If the character indicated by <var title="">position</var>
+   is not an <span title="ASCII digits">ASCII digit</span>, then
+   return an error and abort these steps.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are <span>ASCII digits</span>, and let
+   <var title="">string</var> be the collected substring.</p></li>
+
+   <li><p>Interpret <var title="">string</var> as a base-ten
+   integer. Let <var title="">value<sub>1</sub></var> be that
+   integer.</p></li>
+
+   <li><p>If <var title="">string</var> is not exactly two characters
+   in length, or if <var title="">value<sub>1</sub></var> is greater
+   than 59, let <var title="">most significant units</var> be <i
+   title="">hours</i>.</p></li>
+
+   <li><p>If <var title="">position</var> is beyond the end of <var
+   title="">input</var> or if the character at <var
+   title="">position</var> is not a U+003A COLON character (:), then
+   return an error and abort these steps. Otherwise, move <var
+   title="">position</var> forwards one character.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are <span>ASCII digits</span>, and let
+   <var title="">string</var> be the collected substring.</p></li>
+
+   <li><p>If <var title="">string</var> is not exactly two characters
+   in length, return an error and abort these steps.</p></li>
+
+   <li><p>Interpret <var title="">string</var> as a base-ten
+   integer. Let <var title="">value<sub>2</sub></var> be that
+   integer.</p></li>
+
+   <li>
+
+    <p>If <var title="">most significant units</var> is <i
+    title="">hours</i>, or if <var title="">position</var> is not
+    beyond the end of <var title="">input</var> and the character at
+    <var title="">position</var> is a U+003A COLON character (:), run
+    these substeps:</p>
+
+    <ol>
+
+     <li><p>If <var title="">position</var> is beyond the end of <var
+     title="">input</var> or if the character at <var
+     title="">position</var> is not a U+003A COLON character (:), then
+     return an error and abort these steps. Otherwise, move <var
+     title="">position</var> forwards one character.</p></li>
+
+     <li><p><span>Collect a sequence of characters</span> that are <span>ASCII digits</span>, and
+     let <var title="">string</var> be the collected substring.</p></li>
+
+     <li><p>If <var title="">string</var> is not exactly two
+     characters in length, return an error and abort these
+     steps.</p></li>
+
+     <li><p>Interpret <var title="">string</var> as a base-ten
+     integer. Let <var title="">value<sub>3</sub></var> be that
+     integer.</p></li>
+
+    </ol>
+
+    <p>Otherwise (if <var title="">most significant units</var> is not
+    <i title="">hours</i>, and either <var title="">position</var> is
+    beyond the end of <var title="">input</var>, or the character at
+    <var title="">position</var> is not a U+003A COLON character (:)),
+    let <var title="">value<sub>3</sub></var> have the value of <var
+    title="">value<sub>2</sub></var>, then <var
+    title="">value<sub>2</sub></var> have the value of <var
+    title="">value<sub>1</sub></var>, then let <var
+    title="">value<sub>1</sub></var> equal zero.</p>
+
+   </li>
+
+   <li><p>If <var title="">position</var> is beyond the end of <var
+   title="">input</var> or if the character at <var
+   title="">position</var> is not a U+002E FULL STOP character (.),
+   then return an error and abort these steps. Otherwise, move <var
+   title="">position</var> forwards one character.</p></li>
+
+   <li><p><span>Collect a sequence of characters</span> that are <span>ASCII digits</span>, and let
+   <var title="">string</var> be the collected substring.</p></li>
+
+   <li><p>If <var title="">string</var> is not exactly three
+   characters in length, return an error and abort these
+   steps.</p></li>
+
+   <li><p>Interpret <var title="">string</var> as a base-ten
+   integer. Let <var title="">value<sub>4</sub></var> be that
+   integer.</p></li>
+
+   <li><p>If <var title="">value<sub>2</sub></var> is greater than 59
+   or if <var title="">value<sub>3</sub></var> is greater than 59,
+   return an error and abort these steps.</p></li>
+
+   <!-- no need to check if <var title="">value<sub>4</sub></var> is
+   greater than 999, since we know it had exactly three characters in
+   the range 0-9, so we know it's a number in the range 0-999 -->
+
+   <li><p>Let <var title="">result</var> be <span title=""><var
+   title="">value<sub>1</sub></var>&times;60&times;60 + <var
+   title="">value<sub>2</sub></var>&times;60 + <var
+   title="">value<sub>3</sub></var> + <var
+   title="">value<sub>4</sub></var>&#x2215;1000</span>. <!-- &#x00f7;
+   is the division sign if people prefer that to the slash
+   --></p></li>
+
+   <li><p>Return <var title="">result</var>.</p></li>
+
+  </ol>
+  </section>
+
+  <section>
+  <h3><dfn>WebVTT cue text parsing rules</dfn></h3>
+
+  <p>A <dfn>WebVTT Node Object</dfn> is a conceptual construct used to
+  represent components of <span>WebVTT cue text</span> so that its
+  processing can be described without reference to the underlying
+  syntax.</p>
+
+  <p>There are two broad classes of <span title="WebVTT Node
+  Object">WebVTT Node Objects</span>: <span title="WebVTT Internal
+  Node Object">WebVTT Internal Node Objects</span> and <span
+  title="WebVTT Leaf Node Object">WebVTT Leaf Node Objects</span>.</p>
+
+  <p><dfn title="WebVTT Internal Node Object">WebVTT Internal Node Objects</dfn> are those that can
+  contain further <span title="WebVTT Node Object">WebVTT Node Objects</span>. They are conceptually
+  similar to elements in HTML or the DOM. <span title="WebVTT Internal Node Object">WebVTT Internal
+  Node Objects</span> have an ordered list of child <span title="WebVTT Node Object">WebVTT Node
+  Objects</span>. The <span>WebVTT Internal Node Object</span> is said to be the <i>parent</i> of
+  the children. Cycles do not occur; the parent-child relationships so constructed form a tree
+  structure. <span title="WebVTT Internal Node Object">WebVTT Internal Node Objects</span> also have
+  an ordered list of class names, known as their <dfn title="WebVTT Node Object's applicable
+  classes">applicable classes</dfn>, and a language, known as their <dfn title="WebVTT Node Object's
+  applicable language">applicable language</dfn>, which is to be interpreted as a BCP 47 language
+  code. <a href="#refsBCP47">[BCP47]</a></p>
+
+  <p>There are several concrete classes of <span title="WebVTT
+  Internal Node Object">WebVTT Internal Node Objects</span>:</p>
+
+  <dl>
+
+   <dt><dfn title="List of WebVTT Node Objects">Lists of WebVTT Node Objects</dfn></dt>
+   <dd>
+    <p>These are used as root nodes for trees of <span title="WebVTT
+    Node Object">WebVTT Node Objects</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Class Object">WebVTT Class Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of text (a <span>WebVTT cue class
+    span</span>) in <span>WebVTT cue text</span>, and are used to
+    annotate parts of the cue with <span title="WebVTT Node Object's
+    applicable classes">applicable classes</span> without implying
+    further meaning (such as italics or bold).</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Italic Object">WebVTT Italic Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of italic text (a <span>WebVTT cue
+    italics span</span>) in <span>WebVTT cue text</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Bold Object">WebVTT Bold Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of bold text (a <span>WebVTT cue
+    bold span</span>) in <span>WebVTT cue text</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Underline Object">WebVTT Underline Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of underline text (a <span>WebVTT cue
+    underline span</span>) in <span>WebVTT cue text</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Ruby Object">WebVTT Ruby Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of ruby (a <span>WebVTT cue
+    ruby span</span>) in <span>WebVTT cue text</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of ruby text (a <span>WebVTT cue ruby
+    text span</span>) in <span>WebVTT cue text</span>.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Voice Object">WebVTT Voice Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of text associated with a specific voice
+    (a <span>WebVTT cue voice span</span>) in <span>WebVTT cue
+    text</span>. A <span>WebVTT Voice Object</span> has a value, which
+    is the name of the voice.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Language Object">WebVTT Language Objects</dfn></dt>
+   <dd>
+    <p>These represent spans of text (a <span>WebVTT cue language span</span>) in <span>WebVTT cue
+    text</span>, and are used to annotate parts of the cue where the <span title="WebVTT Node
+    Object's applicable language">applicable language</span> might be different than the surrounding
+    text's, without implying further meaning (such as italics or bold).</p>
+   </dd>
+
+  </dl>
+
+  <p><dfn title="WebVTT Leaf Node Object">WebVTT Leaf Node
+  Objects</dfn> are those that contain data, such as text, and cannot
+  contain child <span title="WebVTT Node Object">WebVTT Node
+  Objects</span>.</p>
+
+  <p>There are two concrete classes of <span title="WebVTT Leaf Node
+  Object">WebVTT Leaf Node Objects</span>:</p>
+
+  <dl>
+
+   <dt><dfn title="WebVTT Text Object">WebVTT Text Objects</dfn></dt>
+   <dd>
+    <p>A fragment of text. A <span>WebVTT Text Object</span> has a
+    value, which is the text it represents.</p>
+   </dd>
+
+   <dt><dfn title="WebVTT Timestamp Object">WebVTT Timestamp Objects</dfn></dt>
+   <dd>
+    <p>A timestamp. A <span>WebVTT Timestamp Object</span> has a
+    value, in seconds and fractions of a second, which is the time
+    represented by the timestamp.</p>
+   </dd>
+
+  </dl>
+
+  <p>To parse a string <var title="">input</var> supposedly containing
+  <span>WebVTT cue text</span>, user agents must use the following
+  algorithm. This algorithm returns a <span>list of WebVTT Node
+  Objects</span>.</p>
+
+  <ol>
+
+   <li><p>Let <var title="">input</var> be the string being
+   parsed.</p></li>
+
+   <li><p>Let <var title="">position</var> be a pointer into <var
+   title="">input</var>, initially pointing at the start of the
+   string.</p></li>
+
+   <li><p>Let <var title="">result</var> be a <span>List of WebVTT
+   Node Objects</span>, initially empty.</p></li>
+
+   <li><p>Let <var title="">current</var> be the <span>WebVTT Internal
+   Node Object</span> <var title="">result</var>.</p></li>
+
+   <li><p>Let <var title="">language stack</var> be a stack of language codes, initially
+   empty.</p></li>
+
+   <li><p><i>Loop</i>: If <var title="">position</var> is past the end
+   of <var title="">input</var>, return <var title="">result</var> and
+   abort these steps.</p></li>
+
+   <li><p>Let <var title="">token</var> be the result of invoking the
+   <span>WebVTT cue text tokenizer</span>.</p></li>
+
+   <li>
+
+    <p>Run the appropriate steps given the type of <var
+    title="">token</var>:</p>
+
+    <dl>
+
+     <dt>If <var title="">token</var> is a string</dt>
+     <dd>
+
+      <ol>
+
+       <li><p>Create a <span>WebVTT Text Object</span> whose value is
+       the value of the string token <var
+       title="">token</var>.</p></li>
+
+       <li><p>Append the newly created <span>WebVTT Text Object</span>
+       to <var title="">current</var>.</p></li>
+
+      </ol>
+
+     </dd>
+
+     <dt>If <var title="">token</var> is a start tag</dt>
+     <dd>
+
+      <p>How the start tag token <var title="">token</var> is
+      processed depends on its tag name, as follows:</p>
+
+      <dl>
+<!--
+       <dt>If the tag name is the empty string</dt>
+       <dd>
+        <p>Ignore the token.</p>
+       </dd>
+-->
+       <dt>If the tag name is "<code title="">c</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Class Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">i</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Italic Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">b</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Bold Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">u</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Underline Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">ruby</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Ruby Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">rt</code>"</dt>
+       <dd>
+        <p>If <var title="">current</var> is a <span>WebVTT Ruby
+        Object</span>, then <span title="attach a WebVTT Internal Node
+        Object">attach</span> a <span>WebVTT Ruby Text
+        Object</span>.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">v</code>"</dt>
+       <dd>
+        <p><span title="attach a WebVTT Internal Node
+        Object">Attach</span> a <span>WebVTT Voice Object</span>, and
+        set its value to the token's annotation string, or the empty
+        string if there is no annotation string.</p>
+       </dd>
+
+       <dt>If the tag name is "<code title="">lang</code>"</dt>
+       <dd>
+        <p>Push the value of the token's annotation string, or the empty string if there is no
+        annotation string, onto the <var title="">language stack</var>; then <span title="attach a
+        WebVTT Internal Node Object">attach</span> a <span>WebVTT Language Object</span>.</p>
+       </dd>
+
+       <dt>Otherwise</dt>
+       <dd>
+        <p>Ignore the token.</p>
+       </dd>
+
+      </dl>
+
+      <p>When the steps above say to <dfn>attach a WebVTT Internal
+      Node Object</dfn> of a particular concrete class, the user agent
+      must run the following steps:</p>
+
+      <ol>
+
+       <li><p>Create a new <span>WebVTT Internal Node Object</span> of
+       the specified concrete class.</p></li>
+
+       <li><p>Set the new object's list of <span title="WebVTT Node
+       Object's applicable classes">applicable classes</span> to the
+       list of classes in the token, excluding any classes that are
+       the empty string.</p>
+
+       <li><p>Set the new object's <span title="WebVTT Node Object's applicable language">applicable
+       language</span> to the top entry on the <var title="">language stack</var>, if the stack is
+       not empty.</p>
+
+       <li><p>Append the newly created node object to <var
+       title="">current</var>.</p></li>
+
+       <li><p>Let <var title="">current</var> be the newly created
+       node object.</p></li>
+
+      </ol>
+
+     </dd>
+
+     <dt>If <var title="">token</var> is an end tag</dt>
+     <dd>
+
+      <p>If any of the following conditions is true, then let <var
+      title="">current</var> be the parent node of <var
+      title="">current</var>.</p>
+
+      <ul class="brief">
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">c</code>" and <var title="">current</var> is
+       a <span>WebVTT Class Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">i</code>" and <var title="">current</var> is
+       a <span>WebVTT Italic Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">b</code>" and <var title="">current</var> is
+       a <span>WebVTT Bold Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">u</code>" and <var title="">current</var> is
+       a <span>WebVTT Underline Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">ruby</code>" and <var title="">current</var> is
+       a <span>WebVTT Ruby Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">rt</code>" and <var title="">current</var> is
+       a <span>WebVTT Ruby Text Object</span>.</li>
+
+       <li>The tag name of the end tag token <var title="">token</var>
+       is "<code title="">v</code>" and <var title="">current</var> is
+       a <span>WebVTT Voice Object</span>.</li>
+
+      </ul>
+
+      <p>Otherwise, if the tag name of the end tag token <var title="">token</var> is "<code
+      title="">lang</code>" and <var title="">current</var> is a <span>WebVTT Language
+      Object</span>, then let <var title="">current</var> be the parent node of <var
+      title="">current</var>, and pop the top value from the <var title="">language stack</var>.</p>
+
+      <p>Otherwise, if the tag name of the end tag token <var
+      title="">token</var> is "<code title="">ruby</code>" and <var
+      title="">current</var> is a <span>WebVTT Ruby Text
+      Object</span>, then let <var title="">current</var> be the
+      parent node of the parent node of <var
+      title="">current</var>.</p>
+
+      <p>Otherwise, ignore the token.</p>
+
+     </dd>
+
+     <dt>If <var title="">token</var> is a timestamp tag</dt>
+     <dd>
+
+      <ol>
+
+       <li><p>Let <var title="">input</var> be the tag value.</p></li>
+
+       <li><p>Let <var title="">position</var> be a pointer into
+       <var title="">input</var>, initially pointing at the start of
+       the string.</p></li>
+
+       <li><p><span>Collect a WebVTT timestamp</span>.</p></li>
+
+       <li>
+
+        <p>If that algorithm does not fail, and if <var
+        title="">position</var> now points at the end of <var
+        title="">input</var> (i.e. there are no trailing characters
+        after the timestamp), then create a <span>WebVTT Timestamp
+        Object</span> whose value is the collected time, then append
+        it to <var title="">current</var>.</p>
+
+        <p>Otherwise, ignore the token.</p>
+
+       </li>
+
+      </ol>
+
+     </dd>
+
+    </dl>
+
+   </li>
+
+   <li><p>Jump to the step labeled <i>loop</i>.</p></li>
+
+  </ol>
+
+  <p>The <dfn>WebVTT cue text tokenizer</dfn> is as follows. It emits
+  a token, which is either a string (whose value is a sequence of
+  characters), a start tag (with a tag name, a list of classes, and
+  optionally an annotation), an end tag (with a tag name), or a
+  timestamp tag (with a tag value).</p>
+
+  <ol>
+
+   <li><p>Let <var title="">input</var> and <var
+   title="">position</var> be the same variables as those of the same
+   name in the algorithm that invoked these steps.</p></li>
+
+   <li><p>Let <var title="">tokenizer state</var> be <span>WebVTT data
+   state</span>.</p></li>
+
+   <li><p>Let <var title="">result</var> be the empty string.</p></li>
+
+   <li><p>Let <var title="">buffer</var> be the empty string.</p></li>
+
+   <li><p>Let <var title="">classes</var> be an empty list.</p></li>
+
+   <li>
+
+    <p><i>Loop</i>: If <var title="">position</var> is past the end of
+    <var title="">input</var>, let <var title="">c</var> be an
+    end-of-file marker. Otherwise, let <var title="">c</var> be the
+    character in <var title="">input</var> pointed to by <var
+    title="">position</var>.</p>
+
+    <p class="note">An end-of-file marker is not a Unicode character,
+    it is used to end the tokenizer.</p>
+
+   </li>
+
+   <li>
+
+    <p>Jump to the state given by <var title="">tokenizer
+    state</var>:</p>
+
+    <dl>
+
+     <dt><dfn>WebVTT data state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+0026 AMPERSAND (&amp;)</dt>
+       <dd>
+        <p>Set <var title="">buffer</var> to <var title="">c</var>,
+        set <var title="">tokenizer state</var> to the <span>WebVTT
+        escape state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd>
+
+       <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
+       <dd>
+        <p>If <var title="">result</var> is the empty string, then set
+        <var title="">tokenizer state</var> to the <span>WebVTT tag
+        state</span> and jump to the step labeled <i>next</i>.</p>
+        <p>Otherwise, return a string token whose value is <var
+        title="">result</var> and abort these steps.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Return a string token whose value is <var
+        title="">result</var> and abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">result</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT escape state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+0026 AMPERSAND (&amp;)</dt>
+       <dd>
+        <p>Append <var title="">buffer</var> to <var
+        title="">result</var>, set <var title="">buffer</var> to <var
+        title="">c</var>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd>
+
+       <dt><span>Alphanumeric ASCII characters</span></dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">buffer</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd>
+
+       <dt>U+003B SEMICOLON character (;)</dt>
+       <dd>
+
+        <p>First, examine the value of <var title="">buffer</var>:</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;amp</code>", then append a U+0026 AMPERSAND
+        character (&amp;) to <var title="">result</var>.</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;lt</code>", then append a U+003C LESS-THAN SIGN
+        character (&lt;) to <var title="">result</var>.</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;gt</code>", then append a U+003E GREATER-THAN SIGN
+        character (&gt;) to <var title="">result</var>.</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;lrm</code>", then append a U+200E LEFT-TO-RIGHT
+        MARK character to <var title="">result</var>.</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;rlm</code>", then append a U+200F RIGHT-TO-LEFT
+        MARK character to <var title="">result</var>.</p>
+
+        <p>If <var title="">buffer</var> is the string "<code
+        title="">&amp;nbsp</code>", then append a U+00A0 NO-BREAK
+        SPACE character to <var title="">result</var>.</p>
+
+        <p>Otherwise, append <var title="">buffer</var> followed by a
+        U+003B SEMICOLON character (;) to <var
+        title="">result</var>.</p>
+
+        <p>Then, in any case, set <var title="">tokenizer state</var>
+        to the <span>WebVTT data state</span>, and jump to the step
+        labeled <i>next</i>.</p>
+
+       </dd>
+
+       <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Append <var title="">buffer</var> to <var
+        title="">result</var>, return a string token whose value is
+        <var title="">result</var>, and abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">buffer</var> to <var
+        title="">result</var>, append <var title="">c</var> to <var
+        title="">result</var>, set <var title="">tokenizer state</var>
+        to the <span>WebVTT data state</span>, and jump to the step
+        labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT tag state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+0009 CHARACTER TABULATION (tab) character</dt>
+       <dt>U+000A LINE FEED (LF) character</dt>
+       <dt>U+000C FORM FEED (FF) character</dt>
+       <dt>U+0020 SPACE character</dt>
+       <dd>
+        <!-- assert: >result< is the empty string -->
+        <p>Set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag annotation state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+002E FULL STOP character (.)</dt>
+       <dd>
+        <!-- assert: >result< is the empty string -->
+        <p>Set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag class state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+002F SOLIDUS character (/)</dt>
+       <dd>
+        <p>Set <var title="">tokenizer state</var> to the <span>WebVTT
+        end tag state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd>
+
+       <dt><span>ASCII digits</span></dt>
+       <dd>
+        <p>Set <var title="">result</var> to <var title="">c</var>,
+        set <var title="">tokenizer state</var> to the <span>WebVTT
+        timestamp tag state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Return a start tag whose tag name is the empty string, with
+        no classes and no annotation, and abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Set <var title="">result</var> to <var title="">c</var>,
+        set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT start tag state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+0009 CHARACTER TABULATION (tab) character</dt>
+       <dt>U+000C FORM FEED (FF) character</dt>
+       <dt>U+0020 SPACE character</dt>
+       <dd>
+        <p>Set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag annotation state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+000A LINE FEED (LF) character</dt>
+       <dd>
+        <p>Set <var title="">buffer</var> to <var title="">c</var>,
+        set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag annotation state</span>, and jump to the step
+        labeled <i>next</i>.</p>
+       </dd>
+
+       <dt>U+002E FULL STOP character (.)</dt>
+       <dd>
+        <p>Set <var title="">tokenizer state</var> to the <span>WebVTT
+        start tag class state</span>, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Return a start tag whose tag name is <var
+        title="">result</var>, with no classes and no annotation, and
+        abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">result</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT start tag class state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+0009 CHARACTER TABULATION (tab) character</dt>
+       <dt>U+000C FORM FEED (FF) character</dt>
+       <dt>U+0020 SPACE character</dt>
+       <dd>
+        <p>Append to <var title="">classes</var> an entry whose value
+        is <var title="">buffer</var>, set <var title="">buffer</var>
+        to the empty string, set <var title="">tokenizer state</var>
+        to the <span>WebVTT start tag annotation state</span>, and
+        jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+000A LINE FEED (LF) character</dt>
+       <dd>
+        <p>Append to <var title="">classes</var> an entry whose value
+        is <var title="">buffer</var>, set <var title="">buffer</var>
+        to <var title="">c</var>, set <var title="">tokenizer
+        state</var> to the <span>WebVTT start tag annotation
+        state</span>, and jump to the step labeled <i>next</i>.</p>
+       </dd>
+
+       <dt>U+002E FULL STOP character (.)</dt>
+       <dd>
+        <p>Append to <var title="">classes</var> an entry whose value
+        is <var title="">buffer</var>, set <var title="">buffer</var>
+        to the empty string, and jump to the step labeled
+        <i>next</i>.</p>
+       </dd> 
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Append to <var title="">classes</var> an entry whose value
+        is <var title="">buffer</var>, then return a start tag whose
+        tag name is <var title="">result</var>, with the classes given
+        in <var title="">classes</var> but no annotation, and abort
+        these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">buffer</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT start tag annotation state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Remove any leading or trailing <span title="space
+        character">space characters</span> from <var
+        title="">buffer</var>, and replace any sequence of one or more
+        consecutive <span title="space character">space
+        characters</span> in <var title="">buffer</var> with a single
+        U+0020 SPACE character; then, return a start tag whose tag
+        name is <var title="">result</var>, with the classes given in
+        <var title="">classes</var>, and with <var
+        title="">buffer</var> as the annotation, and abort these
+        steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">buffer</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT end tag state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <!-- should we ignore anything after spaces, tabs, and line feeds? -->
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Return an end tag whose tag name is <var
+        title="">result</var> and abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">result</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd> 
+
+      </dl>
+
+     </dd>
+
+     <dt><dfn>WebVTT timestamp tag state</dfn></dt>
+
+     <dd>
+
+      <p>Jump to the entry that matches the value of <var
+      title="">c</var>:</p>
+
+      <dl>
+
+       <dt>U+003E GREATER-THAN SIGN character (>)</dt>
+       <dd>
+        <p>Advance <var title="">position</var> to the next character
+        in <var title="">input</var>, then jump to the next "end-of-file
+        marker" entry below.</p>
+       </dd>
+
+       <dt>End-of-file marker</dt>
+       <dd>
+        <p>Return a timestamp tag whose tag name is <var
+        title="">result</var> and abort these steps.</p>
+       </dd>
+
+       <dt>Anything else</dt>
+       <dd>
+        <p>Append <var title="">c</var> to <var title="">result</var>
+        and jump to the step labeled <i>next</i>.</p>
+       </dd>
+
+      </dl>
+
+     </dd>
+
+    </dl>
+
+   </li>
+
+   <li><p><i>Next</i>: Advance <var title="">position</var> to the next
+   character in <var title="">input</var>.</p></li>
+
+   <li><p>Jump to the step labeled <i>loop</i>.</p></li>
+
+  </ol>
+  </section>
+
+  <section>
+  <h3><dfn>WebVTT cue text DOM construction rules</dfn></h3>
+
+  <p>To convert a <span>List of WebVTT Node Objects</span> to a DOM
+  tree for <code>Document</code> <var title="">owner</var>, user
+  agents must create a tree of DOM nodes that is isomorphous to the
+  tree of <span title="WebVTT Node Object">WebVTT Node Objects</span>,
+  with the following mapping of <span title="WebVTT Node
+  Object">WebVTT Node Objects</span> to DOM nodes:</p>
+
+  <table>
+   <thead>
+    <tr>
+     <th><span>WebVTT Node Object</span>
+     <th>DOM node
+   <tbody>
+    <tr>
+     <td><span>List of WebVTT Node Objects</span>
+     <td><code>DocumentFragment</code> node
+    <tr>
+     <td><span>WebVTT Class Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".
+    <tr>
+     <td><span>WebVTT Italic Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>i</code>".
+    <tr>
+     <td><span>WebVTT Bold Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>b</code>".
+    <tr>
+     <td><span>WebVTT Underline Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>u</code>".
+    <tr>
+     <td><span>WebVTT Ruby Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>ruby</code>".
+    <tr>
+     <td><span>WebVTT Ruby Text Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>rt</code>".
+    <tr>
+     <td><span>WebVTT Voice Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-title">title</code> attribute set to the <span>WebVTT Voice Object</span>'s value.
+    <tr>
+     <td><span>WebVTT Class Object</span>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-lang">lang</code> attribute set to the <span>WebVTT Language Object</span>'s <span title="WebVTT Node Object's applicable language">applicable language</span>.
+    <tr>
+     <td><span>WebVTT Text Object</span>
+     <td><code>Text</code> node whose character data is the value of the <span>WebVTT Text Object</span>.
+    <tr>
+     <td><span>WebVTT Timestamp Object</span>
+     <td><code>ProcessingInstruction</code> node whose <code title="dom-ProcessingInstruction-target">target</code> is "<code title="">timestamp</code>" and whose <code title="dom-ProcessingInstruction-data">data</code> is a <span>WebVTT timestamp</span> representing the value of the <span>WebVTT Timestamp Object</span>, with all optional components included, with one leading zero if the <var title="">hours</var> component is less than ten, and with no leading zeros otherwise.
+  </table>
+
+  <p><code>HTMLElement</code> nodes created as part of the mapping described above must have their
+  <code title="dom-Node-namespaceURI">namespaceURI</code> set to the <span>HTML namespace</span>,
+  and, if the corresponding <span>WebVTT Internal Node Object</span> has any <span title="WebVTT
+  Node Object's applicable classes">applicable classes</span>, must have a <code
+  title="attr-class">class</code> attribute set to the string obtained by concatenating all those
+  classes, each separated from the next by a single U+0020 SPACE character.</p>
+
+  <p>The <code title="dom-Node-ownerDocument">ownerDocument</code>
+  attribute of all nodes in the DOM tree must be set to the given
+  document <var title="">owner</var>.</p>
+
+  <p>All characteristics of the DOM nodes that are not described above
+  or dependent on characteristics defined above must be left at their
+  initial values.</p>
+
+  </div>
+  </section>
+
+  </section>
+
+  <section>
+  <h2>Rendering</h2>
+
+  <section>
+  <h3>Cues in isolation</h3>
+
+  <p>The <dfn>rules for interpreting WebVTT cue text</dfn> (e.g. for use as chapter titles) are as
+  follows:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">nodes</var> be the <span>list of WebVTT Node Objects</span> obtained by
+   applying the <span>WebVTT cue text parsing rules</span> to the <var title="">cue</var>'s
+   <span>text track cue text</span>.</p>
+
+   <li><p class="XXX">... <!-- flatten nodes and return a single string somehow -->
+
+  </ol>
+  </section>
+
+  <section>
+  <h3>Cues with video</h3>
+
+  <section>
+  <h4>Processing model</h4>
+
+  <p>The <dfn>rules for updating the display of WebVTT text
+  tracks</dfn> render the <span title="text track">text
+  tracks</span> of a <span>media element</span> (specifically, a
+  <code>video</code> element), or of another playback mechanism, by
+  applying the steps below. All the <span title="text track">text
+  tracks</span> that use these rules for a given <span>media
+  element</span>, or other playback mechanism, are rendered together,
+  to avoid overlapping subtitles from multiple tracks.</p>
+
+  <p>The output of the steps below is a set of CSS boxes that covers
+  the rendering area of the <span>media element</span> or other
+  playback mechanism, which user agents are expected to render in a
+  manner suiting the user.</p>
+
+  <p>The rules are as follows:</p>
+
+  <ol>
+
+   <li><p>If the <span>media element</span> is an <code>audio</code>
+   element, or is another playback mechanism with no rendering area,
+   abort these steps. There is nothing to render.</p></li>
+
+   <li><p>Let <var title="">video</var> be the <span>media
+   element</span> or other playback mechanism.</p></li>
+
+   <li><p>Let <var title="">output</var> be an empty list of
+   absolutely positioned CSS block boxes.</p></li>
+
+   <li><p>If the user agent is <span title="expose a user interface to
+   the user">exposing a user interface</span> for <var
+   title="">video</var>, add to <var title="">output</var> one or more
+   completely transparent positioned CSS block boxes that cover the
+   same region as the user interface.</p>
+
+   <li><p>If the last time these rules were run, the user agent was
+   not <span title="expose a user interface to the user">exposing a
+   user interface</span> for <var title="">video</var>, but now it is,
+   optionally let <var title="">reset</var> be true. Otherwise, let <var
+   title="">reset</var> be false.</p>
+
+   <li><p>Let <var title="">tracks</var> be the subset of <var
+   title="">video</var>'s <span>list of text tracks</span> that have
+   as their <span>rules for updating the text track rendering</span>
+   these <span>rules for updating the display of WebVTT text
+   tracks</span>, and whose <span>text track mode</span> is <span
+   title="text track showing">showing</span>.</p></li>
+
+   <li><p>Let <var title="">cues</var> be an empty list of <span
+   title="text track cue">text track cues</span>.</p></li>
+
+   <li><p>For each track <var title="">track</var> in <var
+   title="">tracks</var>, append to <var title="">cues</var> all the
+   <span title="text track cue">cues</span> from <var
+   title="">track</var>'s <span title="text track list of cues">list
+   of cues</span> that have their <span>text track cue active
+   flag</span> set.</p></li>
+
+   <li><p>If <var title="">reset</var> is false, then, for each
+   <span>text track cue</span> <var title="">cue</var> in <var
+   title="">cues</var>: if <var title="">cue</var>'s <span>text track
+   cue display state</span> has a set of CSS boxes, then add those
+   boxes to <var title="">output</var>, and remove <var
+   title="">cue</var> from <var title="">cues</var>.</p></li>
+
+   <li>
+
+    <p>For each <span>text track cue</span> <var title="">cue</var>
+    in <var title="">cues</var> that has not yet had corresponding CSS
+    boxes added to <var title="">output</var>, in <span>text track
+    cue order</span>, run the following substeps:</p>
+
+    <ol>
+
+     <li><p>Let <var title="">nodes</var> be the <span>list of WebVTT
+     Node Objects</span> obtained by applying the <span>WebVTT cue
+     text parsing rules</span> to the <var title="">cue</var>'s
+     <span>text track cue text</span>.</p>
+
+     <li>
+
+      <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level
+      steps to the concatenation of the values of each <span>WebVTT
+      Text Object</span> in <var title="">nodes</var>, in a pre-order,
+      depth-first traversal, excluding <span title="WebVTT Ruby Text
+      Object">WebVTT Ruby Text Objects</span> and their descendants,
+      to determine the <i>paragraph embedding level</i> of the first
+      Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
+
+      <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such
+      as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means
+      each line of the cue is reordered as if it was a separate paragraph.)</p>
+
+     </li>
+
+     <li>
+
+      <p>If the <i>paragraph embedding level</i> determined in the
+      previous step is even (the <i>paragraph direction</i> is
+      left-to-right), let <var title="">direction</var> be 'ltr',
+      otherwise, let it be 'rtl'.</p>
+
+     </li>
+
+     <li><p>If the <span>text track cue writing direction</span> is
+     <span title="text track cue horizontal writing
+     direction">horizontal</span>, then let <var
+     title="">writing-mode</var> be 'horizontal-tb'. Otherwise, if the
+     <span>text track cue writing direction</span> is <span
+     title="text track cue vertical growing left writing
+     direction">vertical growing left</span>, then let <var
+     title="">writing-mode</var> be 'vertical-rl'. Otherwise, the
+     <span>text track cue writing direction</span> is <span
+     title="text track cue vertical growing right writing
+     direction">vertical growing right</span>; let <var
+     title="">writing-mode</var> be 'vertical-lr'.</p></li>
+
+     <li>
+
+      <p>Determine the value of <var title="">maximum size</var> for
+      <var title="">cue</var> as per the appropriate rules from the
+      following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+          and the <span>text track cue alignment</span> is <span title="text track cue left alignment">left</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>
+              or <span title="text track cue left alignment">left</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>
+              or <span title="text track cue left alignment">left</span></dt>
+       <dd>
+        <p>Let <var title="">maximum size</var> be the <span>text track cue text position</span> subtracted from 100.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+          and the <span>text track cue alignment</span> is <span title="text track cue right alignment">right</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>
+              or <span title="text track cue right alignment">right</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>
+              or <span title="text track cue right alignment">right</span></dt>
+       <dd>
+        <p>Let <var title="">maximum size</var> be the <span>text track cue text position</span>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span>,
+              the <span>text track cue text position</span> is less than or equal to 50</dt>
+       <dd>
+        <p>Let <var title="">maximum size</var> be the <span>text track cue text position</span> multiplied by two.</p>
+       </dd>
+
+       <dt>If the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span>,
+              the <span>text track cue text position</span> is greater than <!-- or equal to --> 50</dt>
+       <dd>
+        <p>Let <var title="">maximum size</var> be the result of subtracting <span>text track cue text position</span> from 100 and then multiplying the result by two.</p>
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p>If the <span>text track cue size</span> is less than <var
+     title="">maximum size</var>, then let <var title="">size</var> be
+     <span>text track cue size</span>. Otherwise, let <var
+     title="">size</var> be <var title="">maximum size</var>.</p></li>
+
+     <li><p>If the <span>text track cue writing direction</span> is
+     <span title="text track cue horizontal writing
+     direction">horizontal</span>, then let <var title="">width</var>
+     be '<var title="">size</var>&#x2009;vw' and <var
+     title="">height</var> be 'auto'. Otherwise, let <var
+     title="">width</var> be 'auto' and <var title="">height</var> be
+     '<var title="">size</var>&#x2009;vh'. (These are CSS values used
+     by the next section to set CSS properties for the rendering; 'vw'
+     and 'vh' are CSS units.) <a
+     href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+
+     <li>
+
+      <p>Determine the value of <var title="">x-position</var> or <var
+      title="">y-position</var> for <var title="">cue</var> as per the
+      appropriate rules from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue left alignment">left</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue left alignment">left</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span> subtracted from 100.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue right alignment">right</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span> minus <var title="">size</var>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue right alignment">right</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span> subtracted from 100, minus <var title="">size</var>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>
+              or <span title="text track cue left alignment">left</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue start alignment">start</span>
+              or <span title="text track cue left alignment">left</span></dt>
+       <dd>
+        <p>Let <var title="">y-position</var> be the <span>text track cue text position</span>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>
+              or <span title="text track cue right alignment">right</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue end alignment">end</span>
+              or <span title="text track cue right alignment">right</span></dt>
+       <dd>
+        <p>Let <var title="">y-position</var> be the <span>text track cue text position</span> minus <var title="">size</var>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span>,
+              and <var title="">direction</var> is 'ltr'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span> minus half of <var title="">size</var>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span>,
+              and <var title="">direction</var> is 'rtl'</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue text position</span> subtracted from 100, minus half of <var title="">size</var>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue alignment</span> is <span title="text track cue middle alignment">middle</span></dt>
+       <dd>
+        <p>Let <var title="">y-position</var> be the <span>text track cue text position</span> minus half of <var title="">size</var>.</p>
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li>
+
+      <p>Determine the value of whichever of <var
+      title="">x-position</var> or <var title="">y-position</var> is
+      not yet calculated for <var title="">cue</var> as per the
+      appropriate rules from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              and the <span>text track cue snap-to-lines flag</span> is set</dt>
+       <dd>
+        <p>Let <var title="">y-position</var> be zero.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+              and the <span>text track cue snap-to-lines flag</span> is not set</dt>
+       <dd>
+        <p>Let <var title="">y-position</var> be the <span>text track cue computed line position</span>.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue snap-to-lines flag</span> is set</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue snap-to-lines flag</span> is set</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be zero.</p>
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span>,
+              and the <span>text track cue snap-to-lines flag</span> is not set</dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span>,
+              and the <span>text track cue snap-to-lines flag</span> is not set</dt>
+       <dd>
+        <p>Let <var title="">x-position</var> be the <span>text track cue computed line position</span>.</p>
+       </dd>
+
+      </dl>
+
+      <p class="note">These are not final positions, they are merely
+      temporary positions used to calculate box dimensions below.</p>
+
+     </li>
+
+     <li>
+
+      <p>If the <span>text track cue snap-to-lines flag</span> is set, then run the appropriate
+      steps from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span></dt>
+       <dd>
+
+        <ol>
+
+         <li><p>Let <var title="">edge margin</var> be a user-agent-defined horizontal length,
+         expressed as a percentage of the width of the <var title="">video</var>'s rendering area,
+         which will be used to define a margin at the left and right edges of the video into which
+         this cue will not be placed. In situations with overscan, this margin should be sufficient
+         to place the cue within the title-safe area. In the absence of overscan, this value should
+         be picked for aesthetics (to avoid text being aligned precisely on the left or right edge
+         of the video, which can be ugly).</p></li>
+
+         <li><p>If <var title="">x-position</var> is less than <var title="">edge margin</var> and
+         the sum of <var title="">x-position</var> and <var title="">size</var> is more than <var
+         title="">edge margin</var>, then increase <var title="">x-position</var> by <var
+         title="">edge margin</var> and decrease <var title="">size</var> by the same
+         amount.</p></li>
+
+         <li><p>Let <var title="">right margin edge</var> be 100 minus <var title="">edge
+         margin</var>.</p></li>
+
+         <li><p>If <var title="">x-position</var> is less than <var title="">right margin
+         edge</var>, and the sum of <var title="">x-position</var> and <var title="">size</var> is
+         more than <var title="">right margin edge</var>, then decrease <var title="">size</var> by
+         <var title="">edge margin</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span></dt>
+       <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span></dt>
+       <dd>
+
+        <ol>
+
+         <li><p>Let <var title="">edge margin</var> be a user-agent-defined vertical length,
+         expressed as a percentage of the height of the <var title="">video</var>'s rendering area,
+         which will be used to define a margin at the top and bottom edges of the video into which
+         this cue will not be placed. In situations with overscan, this margin should be sufficient
+         to place the cue within the title-safe area. In the absence of overscan, this value should
+         be picked for aesthetics (to avoid text being aligned precisely on the top or bottom edge
+         of the video, which can be ugly).</p></li>
+
+         <li><p>If <var title="">y-position</var> is less than <var title="">edge margin</var> and
+         the sum of <var title="">y-position</var> and <var title="">size</var> is more than <var
+         title="">edge margin</var>, then increase <var title="">y-position</var> by <var
+         title="">edge margin</var> and decrease <var title="">size</var> by the same
+         amount.</p></li>
+
+         <li><p>Let <var title="">bottom margin edge</var> be 100 minus <var title="">edge
+         margin</var>.</p></li>
+
+         <li><p>If <var title="">y-position</var> is less than <var title="">bottom margin
+         edge</var>, and the sum of <var title="">y-position</var> and <var title="">size</var> is
+         more than <var title="">right margin edge</var>, then decrease <var title="">size</var> by
+         <var title="">edge margin</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p>Let <var title="">left</var> be '<var
+     title="">x-position</var>&#x2009;vw' and <var title="">top</var>
+     be '<var title="">y-position</var>&#x2009;vh'. (These again are
+     CSS values used by the next section to set CSS properties for the
+     rendering; 'vw' and 'vh' are CSS units.) <a
+     href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+
+     <li>
+
+      <p>Apply the terms of the CSS specifications to <var
+      title="">nodes</var> within the following constraints, thus
+      obtaining a set of CSS boxes positioned relative to an initial
+      containing block: <a href="#refsCSS">[CSS]</a></p>
+
+      <ul>
+
+       <li><p>The <i>document tree</i> is the tree of <span
+       title="WebVTT Node Object">WebVTT Node Objects</span> rooted at
+       <var title="">nodes</var>.</p></li>
+
+       <li><p>For the purposes of processing by the CSS specification,
+       <span title="WebVTT Internal Node Object">WebVTT Internal Node
+       Objects</span> are equivalent to elements with the same
+       contents.</p></li>
+
+       <li>For the purposes of processing by the CSS
+       specification, <span title="WebVTT Text Object">WebVTT Text
+       Objects</span> are equivalent to <code>Text</code> nodes.</li>
+
+       <li>No style sheets are associated with <var
+       title="">nodes</var>. (The nodes are subsequently restyled
+       using style sheets after their boxes are generated, as
+       described below.)</li>
+
+       <li>The children of the <var title="">nodes</var> must be
+       wrapped in an anonymous box whose 'display' property has the
+       value 'inline'. This is the <dfn>WebVTT cue background
+       box</dfn>.</li>
+
+       <li>Runs of children of <span title="WebVTT Ruby Object">WebVTT
+       Ruby Objects</span> that are not <span title="WebVTT Ruby Text
+       Object">WebVTT Ruby Text Objects</span> must be wrapped in
+       anonymous boxes whose 'display' property has the value
+       'ruby-base'. <a href="#refsCSSRUBY">[CSSRUBY]</a></li>
+
+       <li>Properties on <span title="WebVTT Node Object">WebVTT Node
+       Objects</span> have their values set as defined in the next
+       section. (That section uses some of the variables whose values
+       were calculated earlier in this algorithm.)</li>
+
+       <li>Text runs must be wrapped according to the CSS
+       line-wrapping rules, with the following additional constraints:
+
+        <ul>
+
+         <li>Regardless of the value of the 'white-space' property,
+         lines must be wrapped at the edge of their containing blocks,
+         even if doing so requires splitting a word where there is no
+         line breaking opportunity. (Thus, normally text wraps as
+         needed, but if there is a particularly long word, it does not
+         overflow as it normally would in CSS, it is instead forcibly
+         wrapped at the box's edge.)</li>
+
+         <li>Regardless of the value of the 'white-space' property,
+         any line breaks inserted by the user agent for the purposes
+         of line wrapping must be placed so as to minimize &Delta;
+         across each run of consecutive lines between preserved
+         newlines in the source. &Delta; for a set of lines is defined
+         as the sum over each line of the absolute of the difference
+         between the line's length and the mean line length of the
+         set.</li>
+
+        </ul>
+
+       </li>
+
+       <li>The viewport (and initial containing block) is
+       <var title="">video</var>'s rendering area.</li>
+
+      </ul>
+
+      <p>Let <var title="">boxes</var> be the boxes generated as
+      descendants of the initial containing block, along with their
+      positions.</p>
+
+     </li>
+
+     <li><p>If there are no line boxes in <var title="">boxes</var>,
+     skip the remainder of these substeps for <var
+     title="">cue</var>. The cue is ignored.</p></li>
+
+     <li>
+
+      <p>Adjust the positions of <var title="">boxes</var> according
+      to the appropriate steps from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If <var title="">cue</var>'s <span>text track cue snap-to-lines flag</span> is set</dt>
+
+       <dd>
+
+        <p>Many of the steps in this algorithm vary according to the
+        <span>text track cue writing direction</span>. Steps labeled
+        "<strong>Horizontal</strong>" must be followed only when the
+        <span>text track cue writing direction</span> is <span
+        title="text track cue horizontal writing
+        direction">horizontal</span>, steps labeled
+        "<strong>Vertical</strong>" must be followed when the
+        <span>text track cue writing direction</span> is either <span
+        title="text track cue vertical growing left writing
+        direction">vertical growing left</span> or <span title="text
+        track cue vertical growing right writing direction">vertical
+        growing right</span>, steps labeled "<strong>Vertical Growing
+        Left</strong>" must be followed only when the <span>text
+        track cue writing direction</span> is <span title="text track
+        cue vertical growing left writing direction">vertical growing
+        left</span>, and steps labeled "<strong>Vertical Growing
+        Right</strong>" must be followed only when the <span>text
+        track cue writing direction</span> is <span title="text track
+        cue vertical growing right writing direction">vertical growing
+        right</span>.</p>
+
+        <ol>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var title="">margin</var> be a user-agent-defined
+          vertical length which will be used to define a margin at the top and bottom edges of the
+          video into which cues will not be placed. In situations with overscan, this margin should
+          be sufficient to place all cues within the title-safe area. In the absence of overscan,
+          this value should be picked for aesthetics (to avoid text being aligned precisely on the
+          bottom edge of the video, which can be ugly).</p>
+
+          <p><strong>Vertical</strong>: Let <var title="">margin</var> be a user-agent-defined
+          horizontal length which will be used to define a margin at the left and right edges of the
+          video into which cues will not be placed. In situations with overscan, this margin should
+          be sufficient to place all cues within the title-safe area. In the absence of overscan,
+          this value should be picked for aesthetics (to avoid text being aligned precisely on the
+          left or right edges of the video, which can be ugly).</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var title="">full dimension</var> be the height of
+          <var title="">video</var>'s rendering area.</p>
+
+          <p><strong>Vertical</strong>: Let <var title="">full dimension</var> be the width of <var
+          title="">video</var>'s rendering area.</p>
+
+          <p>These dimensions must not be adjusted for overscan. (The algorithm does that
+          separately.)</p>
+
+         </li>
+
+         <li>
+
+          <p>Let <var title="">max dimension</var> be <span title=""><var
+          title="">full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;<var
+          title="">margin</var>)</span>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var title="">step</var>
+          be the height of the first line box in <var
+          title="">boxes</var>.</p>
+
+          <p><strong>Vertical</strong>: Let <var title="">step</var>
+          be the width of the first line box in <var
+          title="">boxes</var>.</p>
+
+         </li>
+
+         <li><p>If <var title="">step</var> is zero, then jump to the
+         step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>Let <var title="">line position</var> be the
+         <span>text track cue computed line position</span>.</p></li>
+
+         <li><p><strong>Vertical Growing Left</strong>: Add one to
+         <var title="">line position</var> then negate it.</p></li>
+
+         <li><p>Let <var title="">position</var> be the result of
+         multiplying <var title="">step</var> and <var title="">line
+         position</var>.</p></li>
+
+         <li><p><strong>Vertical Growing Left</strong>: Decrease <var
+         title="">position</var> by the width of the bounding box of
+         the boxes in <var title="">boxes</var>, then increase <var
+         title="">position</var> by <var title="">step</var>.</p></li>
+
+         <li>
+
+          <p>If <var title="">line position</var> is less than zero then increase <var
+          title="">position</var> by <var title="">max dimension</var>, and negate <var
+          title="">step</var>.</p>
+
+          <p>Otherwise, increase <var title="">position</var> by <var title="">margin</var>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Move all the boxes in <var
+          title="">boxes</var> down by the distance given by <var
+          title="">position</var>.</p>
+
+          <p><strong>Vertical</strong>: Move all the boxes in <var
+          title="">boxes</var> right by the distance given by <var
+          title="">position</var>.</p>
+
+         </li>
+
+         <li><p>Remember the position of all the boxes in <var title="">boxes</var> as their <var
+         title="">specified position</var>.</p></li>
+
+         <li><p>Let <var title="">best position</var> be null. It will hold a position for <var
+         title="">boxes</var>, much like <var title="">specified position</var> in the previous
+         step.</p>
+
+         <li><p>Let <var title="">best position score</var> be null.</p></li>
+
+         <li><p>Let <var title="">switched</var> be false.</p></li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var title="">title area</var> be a box that covers
+          all of the <var title="">video</var>'s rendering area except for a height of <var
+          title="">margin</var> at the top of the rendering area and a height of <var
+          title="">margin</var> at the bottom of the rendering area.</p>
+
+          <p><strong>Vertical</strong>: Let <var title="">title area</var> be a box that covers all
+          of the <var title="">video</var>'s rendering area except for a width of <var
+          title="">margin</var> at the left of the rendering area and a width of <var
+          title="">margin</var> at the right of the rendering area.</p>
+
+         </li>
+
+         <li><p><i>Step loop</i>: If none of the boxes in <var title="">boxes</var> would overlap
+         any of the boxes in <var title="">output</var>, and all of the boxes in <var
+         title="">output</var> are entirely within the <var title="">title area</var> box, then jump
+         to the step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>Let <var title="">current position score</var> be the percentage of the area of the
+         bounding box of the boxes in <var title="">boxes</var> that <!--overlaps the boxes in <var
+         title="">output</var> (if any) or that--> is outside the <var title="">title area</var>
+         box.</p></li>
+
+         <li>
+
+          <p>If <var title="">best position</var> is null (i.e. this is the first run through this
+          loop, <var title="">switched</var> is still false, the boxes in <var title="">boxes</var>
+          are at their <var title="">specified position</var>, and <var title="">best position
+          score</var> is still null), or if <var title="">current position score</var> is a lower
+          percentage than that in <var title="">best position score</var>, then remember the
+          position of all the boxes in <var title="">boxes</var> as their <var title="">best
+          position</var>, and set <var title="">best position score</var> to <var title="">current
+          position score</var>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: If <var title="">step</var> is negative and the top of the
+          first line box in <var title="">boxes</var> is now above the top of the <var
+          title="">title area</var>, or if <var title="">step</var> is positive and the bottom of
+          the first line box in <var title="">boxes</var> is now below the bottom of the <var
+          title="">title area</var>, jump to the step labeled <i>switch direction</i>.</p>
+
+          <p><strong>Vertical</strong>: If <var title="">step</var> is negative and the left edge of
+          the first line box in <var title="">boxes</var> is now to the left of the left edge of the
+          <var title="">title area</var>, or if <var title="">step</var> is positive and the right
+          edge of the first line box in <var title="">boxes</var> is now to the right of the right
+          edge of the <var title="">title area</var>, jump to the step labeled <i>switch
+          direction</i>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Move all the boxes in <var
+          title="">boxes</var> down by the distance given by <var
+          title="">step</var>. (If <var title="">step</var> is
+          negative, then this will actually result in an upwards
+          movement of the boxes in absolute terms.)</p>
+
+          <p><strong>Vertical</strong>: Move all the boxes in <var
+          title="">boxes</var> right by the distance given by <var
+          title="">step</var>. (If <var title="">step</var> is
+          negative, then this will actually result in a leftwards
+          movement of the boxes in absolute terms.)</p>
+
+         </li>
+
+         <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
+
+         <li><p><i>Switch direction</i>: If <var title="">switched</var> is true, then move all the
+         boxes in <var title="">boxes</var> back to their <var title="">best position</var>, and
+         jump to the step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>Otherwise, move all the boxes in <var title="">boxes</var> back to their <var
+         title="">specified position</var> as determined in the earlier step.</p></li>
+
+         <li><p>Negate <var title="">step</var>.</p></li>
+
+         <li><p>Set <var title="">switched</var> to true.</p></li>
+
+         <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var title="">cue</var>'s <span>text track cue snap-to-lines flag</span> is not set</dt>
+       <dd>
+
+        <ol>
+
+         <li>
+
+          <p>Set up <var title="">x</var> and <var title="">y</var> as
+          follows:</p>
+
+          <dl class="switch">
+
+           <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+                  and <var title="">direction</var> is 'ltr'</dt>
+           <dd>
+            <p>Let <var title="">x</var> be a percentage given by the
+            <span>text track cue text position</span>, and let <var
+            title="">y</var> be a percentage given by the <span>text
+            track cue computed line position</span>.</p>
+           </dd>
+
+           <dt>If the <span>text track cue writing direction</span> is <span title="text track cue horizontal writing direction">horizontal</span>,
+                  and <var title="">direction</var> is 'rtl'</dt>
+           <dd>
+            <p>Let <var title="">x</var> be a percentage given by the
+            <span>text track cue text position</span> subtracted from
+            100, and let <var title="">y</var> be a percentage given
+            by the <span>text track cue computed line position</span>.</p>
+           </dd>
+
+           <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing left writing direction">vertical growing left</span></dt>
+           <dd>
+            <p>Let <var title="">x</var> be a percentage given by the
+            <span>text track cue computed line position</span> subtracted from
+            100, and let <var title="">y</var> be a percentage given
+            by the <span>text track cue text position</span>.</p>
+           </dd>
+
+           <dt>If the <span>text track cue writing direction</span> is <span title="text track cue vertical growing right writing direction">vertical growing right</span></dt>
+           <dd>
+            <p>Let <var title="">x</var> be a percentage given by the
+            <span>text track cue computed line position</span>, and let <var
+            title="">y</var> be a percentage given by the <span>text
+            track cue text position</span>.</p>
+           </dd>
+
+          </dl>
+
+         </li>
+
+         <li><p>Position the boxes in <var title="">boxes</var> such
+         that the point <var title="">x</var>% along the width of the
+         bounding box of the boxes in <var title="">boxes</var> is
+         <var title="">x</var>% of the way across the width of the
+         <var title="">video</var>'s rendering area, and the point
+         <var title="">y</var>% along the height of the bounding box
+         of the boxes in <var title="">boxes</var> is <var
+         title="">y</var>% of the way across the height of the <var
+         title="">video</var>'s rendering area, while maintaining the
+         relative positions of the boxes in <var title="">boxes</var>
+         to each other.</p></li>
+
+         <li><p>If none of the boxes in <var title="">boxes</var>
+         would overlap any of the boxes in <var title="">output</var>,
+         and all the boxes in <var title="">output</var> are within
+         the <var title="">video</var>'s rendering area, then jump to
+         the step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>If there is a position to which the boxes in <var
+         title="">boxes</var> can be moved while maintaining the
+         relative positions of the boxes in <var title="">boxes</var>
+         to each other such that none of the boxes in <var
+         title="">boxes</var> would overlap any of the boxes in <var
+         title="">output</var>, and all the boxes in <var
+         title="">output</var> would be within the <var
+         title="">video</var>'s rendering area, then move the boxes in
+         <var title="">boxes</var> to the closest such position to
+         their current position, and then jump to the step labeled
+         <i>done positioning</i> below. If there are multiple such
+         positions that are equidistant from their current position,
+         use the highest one amongst them; if there are several at
+         that height, then use the leftmost one amongst them.</p></li>
+
+         <li><p>Otherwise, jump to the step labeled <i>done
+         positioning</i> below. (The boxes will unfortunately
+         overlap.)</p></li>
+
+        </ol>
+
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p><i>Done positioning</i>: If there are any line boxes in
+     the (possibly now repositioned) <var title="">boxes</var> that do
+     not completely fit inside <var title="">video</var>'s rendering
+     area, remove those offending line boxes from <var
+     title="">boxes</var>.</p></li>
+
+     <li><p>Let <var title="">cue</var>'s <span>text track cue
+     display state</span> have the CSS boxes in <var
+     title="">boxes</var>.</p></li>
+
+     <li><p>Add the CSS boxes in <var title="">boxes</var> to <var
+     title="">output</var>.</p></li>
+
+    </ol>
+
+   </li>
+
+   <li><p>Return <var title="">output</var>.</p></li>
+
+  </ol>
+
+  <p>User agents may allow the user to override the above algorithm's
+  positioning of cues, e.g. by dragging them to another location on
+  the <code>video</code>, or even off the <code>video</code>
+  entirely.</p>
+
+  </section>
+
+  <section>
+  <h4>Applying CSS properties to <span title="WebVTT Node Object">WebVTT Node Objects</span></h4>
+
+  <p>When following the <span>rules for updating the display of WebVTT
+  text tracks</span>, user agents must set properties of <span
+  title="WebVTT Node Object">WebVTT Node Objects</span> at the CSS
+  user agent cascade layer as defined in this section. <a
+  href="#refsCSS">[CSS]</a></p>
+
+  <p>On the (root) <span>List of WebVTT Node Objects</span>, the
+  'position' property must be set to 'absolute', the 'unicode-bidi'
+  property must be set to 'plaintext', the 'direction' property must
+  be set to <var title="">direction</var>, the 'writing-mode' property
+  must be set to <var title="">writing-mode</var>, the 'top' property
+  must be set to <var title="">top</var>, the 'left' property must be
+  set to <var title="">left</var>, the 'width' property must be set to
+  <var title="">width</var>, and the 'height' property must be set to
+  <var title="">height</var>, where <var title="">direction</var>,
+  <var title="">writing-mode</var>, <var title="">top</var>, <var
+  title="">left</var>, <var title="">width</var>, and <var
+  title="">height</var> are the values with those names determined by
+  the <span>rules for updating the display of WebVTT text
+  tracks</span> for the <span>text track cue</span> from whose <span
+  title="text track cue text">text</span> the <span>List of WebVTT
+  Node Objects</span> was constructed.</p>
+
+  <p>The 'text-align' property on the (root) <span>List of WebVTT Node
+  Objects</span> must be set to the value in the second cell of the
+  row of the table below whose first cell is the value of the
+  corresponding <span title="text track cue">cue</span>'s <span>text
+  track cue alignment</span>:</p>
+
+  <table>
+   <thead>
+    <tr> <th><span>Text track cue alignment</span> <th> 'text-align' value
+   <tbody>
+    <tr> <td><span title="text track cue start alignment">Start alignment</span> <td> 'start'
+    <tr> <td><span title="text track cue middle alignment">Middle alignment</span> <td> 'center'
+    <tr> <td><span title="text track cue end alignment">End alignment</span> <td> 'end'
+    <tr> <td><span title="text track cue left alignment">Left alignment</span> <td> 'left'
+    <tr> <td><span title="text track cue right alignment">Right alignment</span> <td> 'right'
+  </table>
+
+  <p>The 'font' shorthand property on the (root) <span>List of WebVTT
+  Node Objects</span> must be set to '5vh sans-serif'. <a
+  href="#refsCSSRUBY">[CSSRUBY]</a> <a
+  href="#refsCSSVALUES">[CSSVALUES]</a></p>
+
+  <p>The 'color' property on the (root) <span>List of WebVTT Node
+  Objects</span> must be set to 'rgba(255,255,255,1)'. <a
+  href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+
+  <p>The 'background' shorthand property on the <span>WebVTT cue
+  background box</span> must be set to 'rgba(0,0,0,0.8)'. <a
+  href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+
+  <p>A text outline or stroke may also be set on the (root) <span>List
+  of WebVTT Node Objects</span>, if supported.</p> <!-- 'text-outline'
+  is in CSS3 Text, but Tab says that's awaiting medical attention. -->
+
+  <p>The 'white-space' property on the (root) <span>List of WebVTT
+  Node Objects</span> must be set to 'pre-line'. <a
+  href="#refsCSS">[CSS]</a></p>
+
+  <p>The 'font-style' property on <span title="WebVTT Italic
+  Object">WebVTT Italic Objects</span> must be set to 'italic'.</p>
+
+  <p>The 'font-weight' property on <span title="WebVTT Bold
+  Object">WebVTT Bold Objects</span> must be set to 'bold'.</p>
+
+  <p>The 'text-decoration' property on <span title="WebVTT Underline
+  Object">WebVTT Underline Objects</span> must be set to 'underline'.</p>
+
+  <p>The 'display' property on <span title="WebVTT Ruby Object">WebVTT
+  Ruby Objects</span> must be set to 'ruby'. <a
+  href="#refsCSSRUBY">[CSSRUBY]</a></p>
+
+  <p>The 'display' property on <span title="WebVTT Ruby Text
+  Object">WebVTT Ruby Text Objects</span> must be set to
+  'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
+
+  <p>All other non-inherited properties must be set to their initial
+  values; inherited properties on the root <span>List of WebVTT Node
+  Objects</span> must inherit their values from the <span>media
+  element</span> for which the <span>text track cue</span> is being
+  rendered, if any. If there is no <span>media element</span> (i.e. if
+  the <span>text track</span> is being rendered for another media
+  playback mechanism), then inherited properties on the root
+  <span>List of WebVTT Node Objects</span> must take their initial
+  values.</p>
+
+  <p>If there are style sheets that apply to the <span>media
+  element</span> or other playback mechanism, then they must be
+  interpreted as defined in the next section.</p>
+
+  </section>
+
+  <section>
+  <h4>CSS extensions</h4>
+
+  <p>When a user agent is rendering one or more <span title="text track cue">text track cues</span>
+  according to the <span>rules for updating the display of WebVTT text tracks</span>, <span
+  title="WebVTT Node Object">WebVTT Node Objects</span> in the <span>list of WebVTT Node
+  Objects</span> used in the rendering can be matched by certain pseudo-selectors as defined below.
+  These selectors can begin or stop matching individual <span title="WebVTT Node Object">WebVTT Node
+  Objects</span> while a <span title="text track cue">cue</span> is being rendered, even in between
+  applications of the <span>rules for updating the display of WebVTT text tracks</span> (which are
+  only run when the set of active cues changes). User agents that support the pseudo-element
+  described below must dynamically update renderings accordingly. When either 'white-space' or one
+  of the properties corresponding to the 'font' shorthand (including 'line-height') changes value,
+  then the <span>text track cue</span>'s <span>text track cue display state</span> must be emptied
+  and the <span>text track</span>'s <span>rules for updating the text track rendering</span> must be
+  immediately rerun.</p>
+
+  <p>Pseudo-elements apply to elements that are matched by
+  selectors. For the purpose of this section, that element is the
+  <i>matched element</i>. The pseudo-elements defined in the following
+  sections affect the styling of parts of <span title="text track
+  cue">text track cues</span> that are being rendered for the
+  <i>matched element</i>.</p>
+
+  <p class="note">If the <i>matched element</i> is not a
+  <code>video</code> element, the pseudo-elements defined below won't
+  have any effect according to this specification.</p>
+
+  <p>A CSS user agent that implements the <span title="text
+  track">text tracks</span> model must implement the '::cue' and
+  '::cue(<var title="">selector</var>)' pseudo-elements, and the <span
+  title="past-pseudo-class">':past'</span> and <span
+  title="future-pseudo-class">':future'</span> pseudo-classes.</p>
+
+
+  <section>
+  <h5>The '::cue' pseudo-element</h5>
+
+  <p>The '<dfn title="pseudo-cue">::cue</dfn>' pseudo-element (with no
+  argument) matches any <span>List of WebVTT Node Objects</span>
+  constructed for the <i>matched element</i>, with the exception that
+  the properties corresponding to the 'background' shorthand must be
+  applied to the <span>WebVTT cue background box</span> rather than
+  the <span>List of WebVTT Node Objects</span>.</p>
+
+  <p>The following properties apply to the '::cue' pseudo-element with
+  no argument; other properties set on the pseudo-element must be
+  ignored:</p>
+
+  <ul class="brief">
+   <li>'color'</li>
+   <li>'opacity'</li>
+   <li>'visibility'</li>
+   <li>'text-decoration'</li>
+   <li>'text-outline'</li>
+   <li>'text-shadow'</li>
+   <li>the properties corresponding to the 'background' shorthand</li>
+   <li>the properties corresponding to the 'outline' shorthand</li>
+   <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
+   <li>'white-space'</li>
+   <!-- add more... -->
+   <!-- definitely not:
+          display, float, position, top, left, right, bottom, width,
+          height, margin-top, margin-bottom, margin-left, margin-right,
+          clip, clear, content, cursor, direction, max-height,
+          min-height, max-width, min-width, orphans, overflow,
+          page-break-*, text-align, unicode-bidi, widows, z-index
+   -->
+  </ul>
+
+  <p>The '<dfn title="pseudo-cue-selector">::cue(<var
+  title="">selector</var>)</dfn>' pseudo-element with an argument must
+  have an argument that consists of a group of selectors. It matches
+  any <span>WebVTT Internal Node Object</span> constructed for the
+  <i>matched element</i> that also matches the given group of
+  selectors, with the nodes being treated as follows:</p>
+
+  <ul>
+
+   <li><p>The <i>document tree</i> against which the selectors are
+   matched is the tree of <span title="WebVTT Node Object">WebVTT Node
+   Objects</span> rooted at the <span>list of WebVTT Node
+   Objects</span> for the cue.</p></li>
+
+   <li><p><span title="WebVTT Internal Node Object">WebVTT Internal
+   Node Objects</span> are elements in the tree.</p></li>
+
+   <li><span title="WebVTT Leaf Node Object">WebVTT Leaf Node
+   Objects</span> cannot be matched.</li>
+
+   <li>
+
+    <p>For the purposes of element type selectors, the names of <span
+    title="WebVTT Internal Node Object">WebVTT Internal Node
+    Objects</span> are as given by the following table, where objects
+    having the concrete class given in a cell in the first column have
+    the name given by the second column of the same row:</p>
+
+    <table>
+
+     <thead>
+      <tr>
+       <th>Concrete class
+       <th>Name
+
+     <tbody>
+      <tr>
+       <td><span title="WebVTT Class Object">WebVTT Class Objects</span>
+       <td><code title="">c</code>
+
+      <tr>
+       <td><span title="WebVTT Italic Object">WebVTT Italic Objects</span>
+       <td><code title="">i</code>
+
+      <tr>
+       <td><span title="WebVTT Bold Object">WebVTT Bold Objects</span>
+       <td><code title="">b</code>
+
+      <tr>
+       <td><span title="WebVTT Underline Object">WebVTT Underline Objects</span>
+       <td><code title="">u</code>
+
+      <tr>
+       <td><span title="WebVTT Ruby Object">WebVTT Ruby Objects</span>
+       <td><code title="">ruby</code>
+
+      <tr>
+       <td><span title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</span>
+       <td><code title="">rt</code>
+
+      <tr>
+       <td><span title="WebVTT Voice Object">WebVTT Voice Objects</span>
+       <td><code title="">v</code>
+
+      <tr>
+       <td><span title="WebVTT Language Object">WebVTT Language Objects</span>
+       <td><code title="">lang</code>
+
+      <tr>
+       <td>Other elements (specifically, <span title="List of WebVTT Node Objects">Lists of WebVTT Node Objects</span>)
+       <td>No explicit name.
+
+    </table>
+
+   </li>
+
+   <li><p>For the purposes of element type and universal selectors,
+   <span title="WebVTT Internal Node Object">WebVTT Internal Node
+   Objects</span> are considered as being in the namespace expressed
+   as the empty string.</p></li>
+
+   <li><p>For the purposes of attribute selector matching, <span title="WebVTT Internal Node
+   Object">WebVTT Internal Node Objects</span> have no attributes, except for <span title="WebVTT
+   Voice Object">WebVTT Voice Objects</span>, which have a single attribute named "<code
+   title="">voice</code>" whose value is the value of the <span>WebVTT Voice Object</span>, and
+   <span title="WebVTT Language Object">WebVTT Language Objects</span>, which have a single
+   attribute named "<code title="">lang</code>" whose value is the object's <span title="WebVTT Node
+   Object's applicable language">applicable language</span>.</p></li>
+
+   <li><p>For the purposes of class selector matching, <span
+   title="WebVTT Internal Node Object">WebVTT Internal Node
+   Objects</span> have the classes described as the <span>WebVTT
+   Node Object's applicable classes</span>.</p></li> <!-- ok, this
+   isn't especially well-defined, but the Selectors spec doesn't
+   really give one much to go on here. -->
+
+   <li><p>For the purposes of the <code title="selector-lang">:lang()</code> pseudo-class, <span
+   title="WebVTT Internal Node Object">WebVTT Internal Node Objects</span> have the language
+   described as the <span>WebVTT Node Object's applicable language</span>.</p></li>
+
+   <li><p>For the purposes of ID selector matching, <span title="List
+   of WebVTT Node Objects">Lists of WebVTT Node Objects</span> have
+   the ID given by the cue's <span>text track cue identifier</span>,
+   if any.</p></li>
+
+  </ul>
+
+  <p>The following properties apply to the '::cue()' pseudo-element
+  with an argument:</p>
+
+  <ul class="brief">
+   <li>'color'</li>
+   <li>'opacity'</li>
+   <li>'visibility'</li>
+   <li>'text-decoration'</li>
+   <li>'text-outline'</li>
+   <li>'text-shadow'</li>
+   <li>the properties corresponding to the 'background' shorthand</li>
+   <li>the properties corresponding to the 'outline' shorthand</li>
+   <li>properties relating to the transition and animation features</li>
+   <!-- add more... -->
+   <!-- but definitely not anything that affects dimensions of boxes, e.g. the 'font' shorthand's properties or 'white-space'; those are listed below instead -->
+  </ul>
+
+  <!--v2
+   Would be nice to support transitions that are directional,
+   e.g. changing text fill colour or shadow size of the start of a
+   segment when the segment becomes "past", and having the change
+   propagate towards the end of the segment so that it reaches the end
+   of the segment when the next segment becomes "past".
+  -->
+
+  <p>In addition, the following properties apply to the '::cue()'
+  pseudo-element with an argument when the selector does not contain
+  the <span title="past-pseudo-class">':past'</span> and <span
+  title="future-pseudo-class">':future'</span> pseudo-classes:</p>
+
+  <ul class="brief">
+   <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
+   <li>'white-space'</li>
+   <!-- add more... -->
+   <!-- definitely not:
+          display, float, position, top, left, right, bottom, width,
+          height, margin-top, margin-bottom, margin-left, margin-right,
+          clip, clear, content, cursor, direction, max-height,
+          min-height, max-width, min-width, orphans, overflow,
+          page-break-*, text-align, unicode-bidi, widows, z-index
+   -->
+  </ul>
+
+  <p>Properties that do not apply must be ignored.</p>
+
+  <p>As a special exception, the properties corresponding to the
+  'background' shorthand, when they would have been applied to the
+  <span>List of WebVTT Node Objects</span>, must instead be applied to
+  the <span>WebVTT cue background box</span>.</p>
+
+  </section>
+
+  <section>
+  <h5>The ':past' and ':future' pseudo-classes</h5>
+
+  <p>The <span title="past-pseudo-class">':past'</span> and <span
+  title="future-pseudo-class">':future'</span> pseudo-classes
+  sometimes match <span title="WebVTT Node Object">WebVTT Node
+  Objects</span>. <a href="#refsSELECTORS">[SELECTORS]</a></p>
+
+  <p>The <dfn title="past-pseudo-class">':past'</dfn> pseudo-class
+  only matches <span title="WebVTT Node Object">WebVTT Node
+  Objects</span> that are <i>in the past</i>.</p>
+
+  <p>A <span>WebVTT Node Object</span> <var title="">c</var> is
+  <dfn>in the past</dfn> if, in a pre-order, depth-first traversal of
+  the <span>text track cue</span>'s <span>List of WebVTT Node
+  Objects</span>, there exists a <span>WebVTT Timestamp Object</span>
+  whose value is less than the <span>current playback position</span>
+  of the <span>media element</span> that is the <i>matched
+  element</i>, entirely after the <span>WebVTT Node Object</span> <var
+  title="">c</var>.</p>
+
+  <p>The <dfn title="future-pseudo-class">':future'</dfn> pseudo-class
+  only matches <span title="WebVTT Node Object">WebVTT Node
+  Objects</span> that are <i>in the future</i>.</p>
+
+  <p>A <span>WebVTT Node Object</span> <var title="">c</var> is
+  <dfn>in the future</dfn> if, in a pre-order, depth-first traversal
+  of the <span>text track cue</span>'s <span>List of WebVTT Node
+  Objects</span>, there exists a <span>WebVTT Timestamp Object</span>
+  whose value is greater than the <span>current playback
+  position</span> of the <span>media element</span> that is the
+  <i>matched element</i>, entirely before the <span>WebVTT Node
+  Object</span> <var title="">c</var>.</p>
+  </section>
+
+  </section>
+
+  </section>
+
+  </section>
+
+  <section>
+  <h2>WebVTT API</h2>
+
+  <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
+
+  <pre class="idl_whatwg">enum <dfn>AutoKeyword</dfn> { "auto" };
+[<span title="dom-TextTrackCue">Constructor</span>(double startTime, double endTime, DOMString text)]
+interface <dfn>WebVTTCue</dfn> : <span>TextTrackCue</span> {
+           attribute DOMString <span title="dom-TextTrackCue-vertical">vertical</span>;
+           attribute boolean <span title="dom-TextTrackCue-snapToLines">snapToLines</span>;
+           attribute (long or <span>AutoKeyword</span>) <span title="dom-TextTrackCue-line">line</span>;
+           attribute long <span title="dom-TextTrackCue-position">position</span>;
+           attribute long <span title="dom-TextTrackCue-size">size</span>;
+           attribute DOMString <span title="dom-TextTrackCue-align">align</span>;
+           attribute DOMString <span title="dom-TextTrackCue-text">text</span>;
+  <span>DocumentFragment</span> <span title="dom-TextTrackCue-getCueAsHTML">getCueAsHTML</span>();
+};</pre>
+
+  <dl class="domintro">
+
+   <dt><var title="">cue</var> = new <code title="dom-TextTrackCue">WebVTTCue</code>( <var title="">startTime</var>, <var title="">endTime</var>, <var title="">text</var> )</dt>
+   <dd>
+    <p>Returns a new <code>TextTrackCue</code> object, for use with the <code title="dom-TextTrack-addCue">addCue()</code> method.</p>
+    <p>The <var title="">startTime</var> argument sets the <span>text track cue start time</span>.</p>
+    <p>The <var title="">endTime</var> argument sets the <span>text track cue end time</span>.</p>
+    <p>The <var title="">text</var> argument sets the <span>text track cue text</span>.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-vertical">vertical</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns a string representing the <span>text track cue writing direction</span>, as follows:</p>
+    <dl class="switch">
+     <dt>If it is <span title="text track cue horizontal writing direction">horizontal</span></dt>
+     <dd><p>The empty string.</p></dd>
+     <dt>If it is <span title="text track cue vertical growing left writing direction">vertical growing left</span></dt>
+     <dd><p>The string "<code title="">rl</code>".</p></dd>
+     <dt>If it is <span title="text track cue vertical growing right writing direction">vertical growing right</span></dt>
+     <dd><p>The string "<code title="">lr</code>".</p></dd>
+    </dl>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-snapToLines">snapToLines</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns true if the <span>text track cue snap-to-lines flag</span> is set, false otherwise.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-line">line</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns the <span>text track cue line position</span>. In the
+    case of the value being <span title="text track cue automatic line
+    position">auto</span>, the string "<code title="">auto</code>" is
+    returned.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-position">position</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns the <span>text track cue text position</span>.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-size">size</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns the <span>text track cue size</span>.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-align">align</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns a string representing the <span>text track cue alignment</span>, as follows:</p>
+    <dl class="switch">
+     <dt>If it is <span title="text track cue start alignment">start alignment</span></dt>
+     <dd><p>The string "<code title="">start</code>".</p></dd>
+     <dt>If it is <span title="text track cue middle alignment">middle alignment</span></dt>
+     <dd><p>The string "<code title="">middle</code>".</p></dd>
+     <dt>If it is <span title="text track cue end alignment">end alignment</span></dt>
+     <dd><p>The string "<code title="">end</code>".</p></dd>
+     <dt>If it is <span title="text track cue left alignment">left alignment</span></dt>
+     <dd><p>The string "<code title="">left</code>".</p></dd>
+     <dt>If it is <span title="text track cue right alignment">right alignment</span></dt>
+     <dd><p>The string "<code title="">right</code>".</p></dd>
+    </dl>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <span title="dom-TextTrackCue-text">text</span> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns the <span>text track cue text</span> in raw unparsed form.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">fragment</var> = <var title="">cue</var> . <span title="dom-TextTrackCue-getCueAsHTML">getCueAsHTML</span>()</dt>
+   <dd>
+    <p>Returns the <span>text track cue text</span> as a <code>DocumentFragment</code> of <span>HTML elements</span> and other DOM nodes.</p>
+   </dd>
+
+  </dl>
+
+  <p>The <dfn title="dom-TextTrackCue"><code>WebVTTCue(<var
+  title="">startTime</var>, <var title="">endTime</var>, <var
+  title="">text</var>)</code></dfn> constructor, when invoked, must
+  run the following steps:</p>
+
+  <ol>
+
+   <li><p>Create a new <span>text track cue</span>. Let <var
+   title="">cue</var> be that <span>text track cue</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue start
+   time</span> be the value of the <var title="">startTime</var>
+   argument, interpreted as a time in seconds.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue end
+   time</span> be the value of the <var title="">endTime</var>
+   argument, interpreted as a time in seconds.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue text</span> be the value of the <var
+   title="">text</var> argument, and let the <span>rules for rendering the cue in isolation</span>
+   be the <span>rules for interpreting WebVTT cue text</span>.</p></li>
+
+   <!-- default settings -->
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   identifier</span> be the empty string.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   pause-on-exit flag</span> be false.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   writing direction</span> be <span title="text track cue
+   horizontal writing direction">horizontal</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   snap-to-lines flag</span> be true.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue line
+   position</span> be <span title="text track cue automatic line
+   position">auto</span>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   text position</span> be 50.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   size</span> be 100.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <span>text track cue
+   alignment</span> be <span title="text track cue middle
+   alignment">middle alignment</span>.</p></li>
+
+   <li><p>Return the <code>TextTrackCue</code> object representing
+   <var title="">cue</var>.</p></li>
+
+  </ol>
+
+  <p>The <dfn
+  title="dom-TextTrackCue-vertical"><code>vertical</code></dfn>
+  attribute, on getting, must return the string from the second cell
+  of the row in the table below whose first cell is the <span>text
+  track cue writing direction</span> of the <span>text track
+  cue</span> that the <code>TextTrackCue</code> object represents:</p>
+
+  <table>
+   <thead>
+    <tr> <th> <span>Text track cue writing direction</span>
+         <th> <code title="dom-TextTrackCue-direction">direction</code> value
+   <tbody>
+    <tr> <td> <span title="text track cue horizontal writing direction">Horizontal</span>
+         <td> "<code title=""></code>" (the empty string)
+    <tr> <td> <span title="text track cue vertical growing left writing direction">Vertical growing left</span>
+         <td> "<code title="">rl</code>"
+    <tr> <td> <span title="text track cue vertical growing right writing direction">Vertical growing right</span>
+         <td> "<code title="">lr</code>"
+  </table>
+
+  <p>On setting, the <span>text track cue writing direction</span> must be set to the value given in
+  the first cell of the row in the table above whose second cell is a <span>case-sensitive</span>
+  match for the new value, if any. If none of the values match, then the user agent must instead
+  throw a <code>SyntaxError</code> exception.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
+  getting, must return true if the <span>text track cue snap-to-lines flag</span> of the <span>text
+  track cue</span> that the <code>TextTrackCue</code> object represents is set; or false otherwise.
+  On setting, the <span>text track cue snap-to-lines flag</span> must be set if the new value is
+  true, and must be unset otherwise.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-line"><code>line</code></dfn> attribute, on getting, must
+  return the <span>text track cue line position</span> of the <span>text track cue</span> that the
+  <code>TextTrackCue</code> object represents. The special value <span title="text track cue
+  automatic line position">auto</span> must be represented as the string "<code
+  title="">auto</code>". On setting, the <span>text track cue line position</span> must be set to
+  the new value; if the new value is the string "<code title="">auto</code>", then it must be
+  interpreted as the special value <span title="text track cue automatic line
+  position">auto</span>.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-position"><code>position</code></dfn> attribute, on getting,
+  must return the <span>text track cue text position</span> of the <span>text track cue</span> that
+  the <code>TextTrackCue</code> object represents. On setting, if the new value is negative or
+  greater than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the
+  <span>text track cue text position</span> must be set to the new value.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-size"><code>size</code></dfn> attribute, on getting, must
+  return the <span>text track cue size</span> of the <span>text track cue</span> that the
+  <code>TextTrackCue</code> object represents. On setting, if the new value is negative or greater
+  than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the <span>text
+  track cue size</span> must be set to the new value.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-align"><code>align</code></dfn> attribute, on getting, must
+  return the string from the second cell of the row in the table below whose first cell is the
+  <span>text track cue alignment</span> of the <span>text track cue</span> that the
+  <code>TextTrackCue</code> object represents:</p>
+
+  <table>
+   <thead>
+    <tr> <th><span>Text track cue alignment</span> <th> <code title="dom-TextTrackCue-align">align</code> value
+   <tbody>
+    <tr> <td><span title="text track cue start alignment">Start alignment</span> <td> "<code title="">start</code>"
+    <tr> <td><span title="text track cue middle alignment">Middle alignment</span> <td> "<code title="">middle</code>"
+    <tr> <td><span title="text track cue end alignment">End alignment</span> <td> "<code title="">end</code>"
+    <tr> <td><span title="text track cue left alignment">Left alignment</span> <td> "<code title="">left</code>"
+    <tr> <td><span title="text track cue right alignment">Right alignment</span> <td> "<code title="">right</code>"
+  </table>
+
+  <p>On setting, the <span>text track cue alignment</span> must be set to the value given in the
+  first cell of the row in the table above whose second cell is a <span>case-sensitive</span> match
+  for the new value, if any. If none of the values match, then the user agent must instead throw a
+  <code>SyntaxError</code> exception.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-text"><code>text</code></dfn> attribute, on getting, must
+  return the raw <span>text track cue text</span> of the <span>text track cue</span> that the
+  <code>TextTrackCue</code> object represents. On setting, the <span>text track cue text</span> must
+  be set to the new value.</p>
+
+  <p>The <dfn title="dom-TextTrackCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
+  convert the <span>text track cue text</span> to a <code>DocumentFragment</code> for the
+  <span>script's document</span> of the <span>entry script</span> by applying the <span>WebVTT cue
+  text DOM construction rules</span> to the result of applying the <span>WebVTT cue text parsing
+  rules</span> to the <span>text track cue text</span>.</p>
+
+  </section>
+
+  <section>
+  <h2 id="iana">IANA considerations</h2>
+  <!-- http://www.w3.org/2002/06/registering-mediatype.html -->
+
+  <section>
+  <h3><dfn><code>text/vtt</code></dfn></h3>
+
+  <p>This registration is for community review and will be submitted
+  to the IESG for review, approval, and registration with IANA.</p>
+
+  <!--
+   To: ietf-types@iana.org
+   Subject: Registration of media type text/cues
+  -->
+
+  <dl>
+   <dt>Type name:</dt>
+   <dd>text</dd>
+   <dt>Subtype name:</dt>
+   <dd>vtt</dd>
+   <dt>Required parameters:</dt>
+   <dd>No parameters</dd>
+   <dt>Optional parameters:</dt>
+   <dd>No parameters</dd>
+   <dt>Encoding considerations:</dt>
+   <dd>8bit (always UTF-8)</dd>
+<!--ADD-TOPIC:Security-->
+   <dt>Security considerations:</dt>
+   <dd>
+    <p>Text track files themselves pose no immediate risk unless
+    sensitive information is included within the
+    data. Implementations, however, are required to follow specific
+    rules when processing text tracks, to ensure that certain
+    origin-based restrictions are honored. Failure to correctly
+    implement these rules can result in information leakage,
+    cross-site scripting attacks, and the like.</p>
+   </dd>
+<!--REMOVE-TOPIC:Security-->
+   <dt>Interoperability considerations:</dt>
+   <dd>
+    <p>Rules for processing both conforming and non-conforming content
+    are defined in this specification.</p>
+   </dd>
+   <dt>Published specification:</dt>
+   <dd>
+    This document is the relevant specification.
+   </dd>
+   <dt>Applications that use this media type:</dt>
+   <dd>
+    Web browsers and other video players.
+   </dd>
+   <dt>Additional information:</dt>
+   <dd>
+    <dl>
+     <dt>Magic number(s):</dt>
+     <dd>
+      <p>WebVTT files all begin with one of the following byte sequences (where "EOF" means the end of the file):</p>
+      <ul class="brief">
+       <li> EF BB BF 57 45 42 56 54 54 0A
+       <li> EF BB BF 57 45 42 56 54 54 0D
+       <li> EF BB BF 57 45 42 56 54 54 20
+       <li> EF BB BF 57 45 42 56 54 54 09
+       <li> EF BB BF 57 45 42 56 54 54 EOF
+       <li>          57 45 42 56 54 54 0A
+       <li>          57 45 42 56 54 54 0D
+       <li>          57 45 42 56 54 54 20
+       <li>          57 45 42 56 54 54 09
+       <li>          57 45 42 56 54 54 EOF
+      </ul>
+      <p class="note">(An optional UTF-8 BOM, the ASCII string "<code title="">WEBVTT</code>", and finally a space, tab, line break, or the end of the file.)
+     </dd>
+     <dt>File extension(s):</dt>
+     <dd>"<code title="">vtt</code>"</dd>
+     <dt>Macintosh file type code(s):</dt>
+     <dd>No specific Macintosh file type codes are recommended for this type.</dd>
+    </dl>
+   </dd>
+   <dt>Person &amp; email address to contact for further information:</dt>
+   <dd>Ian Hickson &lt;ian@hixie.ch></dd>
+   <dt>Intended usage:</dt>
+   <dd>Common</dd>
+   <dt>Restrictions on usage:</dt>
+   <dd>No restrictions apply.</dd>
+   <dt>Author:</dt>
+   <dd>Ian Hickson &lt;ian@hixie.ch></dd>
+   <dt>Change controller:</dt>
+   <dd>W3C</dd>
+  </dl>
+
+  <p>Fragment identifiers have no meaning with
+  <code>text/vtt</code> resources.</p>
+
+  </section>
+
+  </section>
+
+  <section>
+  <h2 class="no-num" id="references">References</h2><!--REFS-->
+
+  <p>All references are normative unless marked "Non-normative".</p>
+
+  <dl>
+<!--REFERENCES ON-->
+
+  <dt id="refsBCP47">[BCP47]</dt>
+  <dd><cite><a href="http://www.ietf.org/rfc/bcp/bcp47.txt">Tags for Identifying Languages; Matching of Language Tags</a></cite>, A. Phillips, M. Davis. IETF.</dd>
+
+  <dt id="refsBIDI">[BIDI]</dt>
+  <dd><cite><a href="http://www.unicode.org/reports/tr9/">UAX #9: Unicode Bidirectional Algorithm</a></cite>, M. Davis. Unicode Consortium.</dd>
+
+  <dt id="refsCSS">[CSS]</dt>
+  <dd><cite><a href="http://www.w3.org/TR/CSS2/">Cascading Style Sheets Level 2 Revision 1</a></cite>, B. Bos, T. &Ccedil;elik, I. Hickson, H. Lie. W3C.</dd>
+
+  <dt id="refsCSSCOLOR">[CSSCOLOR]</dt>
+  <dd><cite><a href="http://dev.w3.org/csswg/css3-color/">CSS Color Module Level 3</a></cite>, T. &Ccedil;elik, C. Lilley, L. Baron. W3C.</dd>
+
+  <dt id="refsCSSRUBY">[CSSRUBY]</dt>
+  <dd><cite><a href="http://dev.w3.org/csswg/css3-ruby/">CSS3 Ruby Module</a></cite>, R. Ishida. W3C.</dd>
+
+  <dt id="refsCSSVALUES">[CSSVALUES]</dt>
+  <dd><cite><a href="http://dev.w3.org/csswg/css3-values/">CSS3 Values and Units</a></cite>, H. Lie, T. Atkins, E. Etemad. W3C.</dd>
+
+  <dt id="refsHTML5">[HTML5]</dt>
+  <dd><cite><a href="http://www.w3.org/TR/html5/">HTML5</a></cite>, R. Berjon, T. Leithead, E. Doyle Navara, E. O'Connor, S. Pfeiffer. W3C.</dd>
+
+  <dt id="refsRFC3629">[RFC3629]</dt>
+  <dd><cite><a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a></cite>, F. Yergeau. IETF.</dd>
+
+  <dt id="refsSELECTORS">[SELECTORS]</dt>
+  <dd><cite><a href="http://dev.w3.org/csswg/selectors4/">Selectors</a></cite>, E. Etemad, T. &Ccedil;elik, D. Glazman, I. Hickson, P. Linss, J. Williams. W3C.</dd>
+
+<!--REFERENCES OFF-->
+  </dl>
+
+  </section>
+
+
+  <section>
+  <h2 class="no-num">Acknowledgements</h2> <!-- ACKS -->
+
+  <p>Thanks to the SubRip community, including in particular Zuggy and ai4spam, for their work on the SubRip software program whose SRT file format was used as the basis for the WebVTT text track file format.</p>
+
+  <p>Thanks to the many contributors to the HTML standard, where WebVTT was originally specified. <a href="#refsHTML">[HTML]</a></p>
+  
+  </section>
+
+</body>
+</html>
