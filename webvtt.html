@@ -97,6 +97,9 @@
     }, 2000);
     </script>
     <style>
+    pre {
+      white-space: pre-wrap;
+    }
     pre.idl_whatwg {
       border: solid 0.0625em;
       background: #EEEEEE;
@@ -116,6 +119,44 @@
       border: 0.078125em;
       border-style: solid none solid solid;
       border-radius: 1em 0 0 1em;
+    }
+    .example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;    
+    }
+    .todo {
+      color: #E50000;
+      background: white;
+      border: solid red;
+      padding: 0.5em;
+      margin: 1em 0;
+    }
+    .todo::before {
+      content: " ** ";
+      position: absolute;
+      left: 0;
+      width: 8em;
+      text-align: right;
+    }
+    table {
+      border-collapse: collapse;
+      border-style: hidden hidden none hidden;
+    }
+    table thead, table tbody {
+      border-bottom: solid;
+    }
+    table td, table th {
+      border-left: solid;
+      border-right: solid;
+      border-bottom: solid thin;
+      vertical-align: top;
+      padding: 0.2em;
     }
     </style>
   </head>
@@ -138,6 +179,7 @@
   <body>
   <section id="sotd">
     <p>This specification was originally created by the WHATWG as a Living Standard and last published at <a href="http://dev.w3.org/html5/webvtt/">http://dev.w3.org/html5/webvtt/</a>.
+    </p>
   </section>
 
   <section id='abstract'>
@@ -388,7 +430,7 @@ Transcribed by Celestials&trade;</pre>
   <section>
   <h2>Conformance</h2>
 
-  <p class="XXX">This section remains to be written. In the meantime, please see the HTML standard. <a href="#refsHTML">[HTML]</a></p>
+  <p class="todo">This section remains to be written. In the meantime, please see the HTML standard. <a href="#refsHTML">[HTML]</a></p>
 
   <section>
   <h3>Dependencies</h3>
@@ -2910,7 +2952,7 @@ The Final Minute</pre>
    applying the <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
    <a>text track cue text</a>.</p>
 
-   <li><p class="XXX">... <!-- flatten nodes and return a single string somehow -->
+   <li><p class="todo">... <!-- flatten nodes and return a single string somehow -->
 
   </ol>
   </section>
