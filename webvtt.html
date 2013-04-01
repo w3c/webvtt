@@ -87,15 +87,6 @@
           additionalHeaderContent: "",
       };
     </script>
-    <script>
-    var copyright = null;
-    setTimeout(function() {
-      copyright = document.getElementsByClassName('copyright')[0];
-      if (copyright != null) {
-        copyright.insertAdjacentHTML('afterend', respecConfig.additionalHeaderContent);
-      }
-    }, 2000);
-    </script>
     <style>
     pre {
       white-space: pre-wrap;
@@ -158,6 +149,22 @@
       vertical-align: top;
       padding: 0.2em;
     }
+    dl.domintro {
+      margin: 2em 0 2em 0;
+      padding: 0.5em 1em 0.5em 2em;
+      border: none;
+      background: #d9e6f8;
+    }
+    dl.domintro:before {
+      display: table;
+      margin: -1em -0.5em -0.5em auto;
+      width: auto;
+      content: 'This box is non-normative. Implementation requirements are given below this box.';
+      color: black;
+      font-style: italic;
+      border: solid 2px;
+      background: white;
+      padding: 0 0.25em;
     </style>
   </head>
   <!-- v2 feature requests:
