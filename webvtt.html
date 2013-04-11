@@ -452,7 +452,7 @@ Transcribed by Celestials&trade;</pre>
    <li><dfn>script's document</dfn>
    <li><dfn>entry script</dfn>
    <li><dfn>MIME type</dfn>
-   <li><dfn>decoded as UTF-8, with error handling</dfn>
+   <li><dfn>UTF-8 decode</dfn>
    <li><dfn>case-sensitive</dfn>
    <li><dfn>Collect a sequence of characters</dfn>
    <li><dfn>ASCII digits</dfn>
@@ -1309,11 +1309,10 @@ The Final Minute</pre>
 
   <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a
   <a>text track list of cues</a> <var title="">output</var>,
-  must <a title="decoded as UTF-8, with error handling">decode the
-  byte stream as UTF-8, with error handling</a>, and then must
-  parse the resulting string according to the <a>WebVTT parser
-  algorithm</a> below. This results in <a title="text track
-  cue">text track cues</a> being added to <var
+  must decode the byte stream using the <a title="UTF-8 decode">UTF-8
+  decode</a> algorithm, and then must parse the resulting string according
+  to the <a>WebVTT parser algorithm</a> below. This results in 
+  <a title="text track cue">text track cues</a> being added to <var
   title="">output</var>. <a href="#refsRFC3629">[RFC3629]</a></p>
 
   <p>A <a>WebVTT parser</a>, specifically its conversion and
@@ -1364,12 +1363,6 @@ The Final Minute</pre>
    title="">position</var> pointer may, when so instructed by the
    algorithms, be moved past the end of <var
    title="">input</var>.</p></li>
-
-   <li><p>If the character indicated by <var title="">position</var>
-   is a U+FEFF BYTE ORDER MARK (BOM) character, advance <var
-   title="">position</var> to the next character in <var
-   title="">input</var>.</p></li>
-
 
    <li>Let <var title="">line</var> be a string variable. Unset the
    <var title="">already collected line</var> flag.</li>
@@ -4550,7 +4543,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   <dd><cite><a href="http://www.whatwg.org/specs/web-apps/current-work/">HTML</a></cite>, I. Hickson. WHATWG.</dd>
 
   <dt id="refsHTML5">[HTML5]</dt>
-  <dd><cite><a href="http://www.w3.org/TR/html51/">HTML 5.1</a></cite>, R. Berjon, T. Leithead, E. Doyle Navara, E. O'Connor, S. Pfeiffer. W3C.</dd>
+  <dd><cite><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html">HTML 5.1</a></cite>, R. Berjon, T. Leithead, E. Doyle Navara, E. O'Connor, S. Pfeiffer. W3C.</dd>
 
   <dt id="refsRFC3629">[RFC3629]</dt>
   <dd><cite><a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a></cite>, F. Yergeau. IETF.</dd>
