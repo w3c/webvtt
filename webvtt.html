@@ -4,10 +4,11 @@
     <meta charset='ascii'>
     <title>WebVTT: The Web Video Text Tracks Format</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-    <!-- local copy:
+    <!-- local copy: -->
     <script src='../../respec/js/require.js' data-main='../../respec/js/profile-w3c-common' async class='remove'></script>
-    -->
+    <!-- remote copy: 
     <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
+    -->
     <script class='remove'>
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -449,38 +450,38 @@ Transcribed by Celestials&trade;</pre>
 
   <ul class="brief">
    <li><dfn>HTML elements</dfn>
-   <li><dfn>script's document</dfn>
-   <li><dfn>entry script</dfn>
+   <li><dfn>Script's document</dfn>
+   <li><dfn>Entry script</dfn>
    <li><dfn>MIME type</dfn>
    <li><dfn>UTF-8 decode</dfn>
-   <li><dfn>case-sensitive</dfn>
+   <li><dfn>Case-sensitive</dfn>
    <li><dfn>Collect a sequence of characters</dfn>
    <li><dfn>ASCII digits</dfn>
    <li><dfn>Alphanumeric ASCII characters</dfn>
-   <li><dfn>space character</dfn>
+   <li><dfn>Space character</dfn>
    <li><dfn>Skip whitespace</dfn>
-   <li><dfn>split a string on spaces</dfn>
+   <li><dfn>Split a string on spaces</dfn>
    <li><dfn>HTML namespace</dfn>
-   <li><dfn>media element</dfn>
-   <li><dfn>current playback position</dfn>
-   <li><dfn>expose a user interface to the user</dfn>
-   <li><dfn>list of text tracks</dfn>
-   <li><dfn>text track</dfn>
-   <li><dfn>text track kind</dfn>
-   <li><dfn>text track mode</dfn>
-   <li><dfn>text track showing</dfn>
-   <li><dfn>text track cue</dfn>
-   <li><dfn>text track list of cues</dfn>
-   <li><dfn>text track cue order</dfn>
-   <li><dfn>text track cue identifier</dfn>
-   <li><dfn>text track cue start time</dfn>
-   <li><dfn>text track cue end time</dfn>
-   <li><dfn>text track cue pause-on-exit flag</dfn>
-   <li><dfn>text track cue text</dfn>
-   <li><dfn>text track cue active flag</dfn>
-   <li><dfn>text track cue display state</dfn>
-   <li><dfn>rules for updating the text track rendering</dfn>
-   <li><dfn>rules for rendering the cue in isolation</dfn>
+   <li><dfn>Media element</dfn>
+   <li><dfn>Current playback position</dfn>
+   <li><dfn>Expose a user interface to the user</dfn>
+   <li><dfn>List of text tracks</dfn>
+   <li><dfn>Text track</dfn>
+   <li><dfn>Text track kind</dfn>
+   <li><dfn>Text track mode</dfn>
+   <li><dfn>Text track showing</dfn>
+   <li><dfn>Text track cue</dfn>
+   <li><dfn>Text track list of cues</dfn>
+   <li><dfn>Text track cue order</dfn>
+   <li><dfn>Text track cue identifier</dfn>
+   <li><dfn>Text track cue start time</dfn>
+   <li><dfn>Text track cue end time</dfn>
+   <li><dfn>Text track cue pause-on-exit flag</dfn>
+   <li><dfn>Text track cue text</dfn>
+   <li><dfn>Text track cue active flag</dfn>
+   <li><dfn>Text track cue display state</dfn>
+   <li><dfn>Rules for updating the text track rendering</dfn>
+   <li><dfn>Rules for rendering the cue in isolation</dfn>
    <li><dfn><code>TextTrackCue</code></dfn> interface
   </ul>
   </section>
@@ -494,7 +495,7 @@ Transcribed by Celestials&trade;</pre>
 
   <dl>
 
-   <dt><dfn title="Text track cue writing direction">A writing direction</dfn>
+   <dt><dfn title="text track cue writing direction">A writing direction</dfn>
    <dd>
     <p>A writing direction, either <dfn title="text track cue horizontal writing
     direction">horizontal</dfn> (a line extends horizontally and is positioned vertically, with
@@ -505,7 +506,7 @@ Transcribed by Celestials&trade;</pre>
     growing right</dfn> (a line extends vertically and is positioned horizontally, with consecutive
     lines displayed to the right of each other<!-- used for mongolian -->).</p>
 
-    <p>If the <a title="Text track cue writing direction">writing direction</a> is <a
+    <p>If the <a title="text track cue writing direction">writing direction</a> is <a
     title="text track cue horizontal writing direction">horizontal</a>, then <a title="text
     track cue line position">line position</a> percentages are relative to the height of the
     video, and <a title="text track cue text position">text position</a> and <a title="text
@@ -533,7 +534,7 @@ Transcribed by Celestials&trade;</pre>
    <dt><dfn title="text track cue line position">A line position</dfn>
    <dd>
     <p>Either a number giving the position of the lines of the cue, to be interpreted as defined by
-    the <a title="Text track cue writing direction">writing direction</a> and <a
+    the <a title="text track cue writing direction">writing direction</a> and <a
     title="text track cue snap-to-lines flag">snap-to-lines flag</a> of the cue, or the special
     value <dfn title="text track cue automatic line position">auto</dfn>, which means the position
     is to depend on the other active tracks.</p>
@@ -588,18 +589,18 @@ Transcribed by Celestials&trade;</pre>
    <dt><dfn title="text track cue text position">A text position</dfn>
    <dd>
     <p>A number giving the position of the text of the cue within each line, to be interpreted as a
-    percentage of the video, as defined by the <a title="Text track cue writing
+    percentage of the video, as defined by the <a title="text track cue writing
     direction">writing direction</a>.</p>
    </dd>
 
    <dt><dfn title="text track cue size">A size</dfn>
    <dd>
     <p>A number giving the size of the box within which the text of each line of the cue is to be
-    aligned, to be interpreted as a percentage of the video, as defined by the <a title="Text
+    aligned, to be interpreted as a percentage of the video, as defined by the <a title="text
     track cue writing direction">writing direction</a>.</p>
    </dd>
 
-   <dt><dfn title="Text track cue alignment">An alignment</dfn>
+   <dt><dfn title="text track cue alignment">An alignment</dfn>
    <dd>
 
     <p>An alignment for the text of each line of the cue, one of:</p>
@@ -624,7 +625,7 @@ Transcribed by Celestials&trade;</pre>
     </dl>
 
     <p>Which sides are the start and end sides depends on the Unicode bidirectional algorithm and
-    the <a title="Text track cue writing direction">writing direction</a>. <a
+    the <a title="text track cue writing direction">writing direction</a>. <a
     href="#refsBIDI">[BIDI]</a></p>
 
    </dd>
@@ -638,10 +639,10 @@ Transcribed by Celestials&trade;</pre>
   <div class="impl">
 
   <p>When a WebVTT <a>text track cue</a> whose <a title="text track cue active flag">active
-  flag</a> is set has its <a title="Text track cue writing direction">writing
+  flag</a> is set has its <a title="text track cue writing direction">writing
   direction</a>, <a title="text track cue snap-to-lines flag">snap-to-lines flag</a>, <a
   title="text track cue line position">line position</a>, <a title="text track cue text
-  position">text position</a>, <a title="text track cue size">size</a>, <a title="Text
+  position">text position</a>, <a title="text track cue size">size</a>, <a title="text
   track cue alignment">alignment</a>, or <a title="text track cue text">text</a> change
   value, then the user agent must empty the <a>text track cue display state</a>, and then
   immediately run the <a>text track</a>'s <a>rules for updating the display of WebVTT text
@@ -1460,7 +1461,7 @@ The Final Minute</pre>
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>Text track cue
+   <li><p>Let <var title="">cue</var>'s <a>text track cue
    writing direction</a> be <a title="text track cue
    horizontal writing direction">horizontal</a>.</p></li>
 
@@ -1477,7 +1478,7 @@ The Final Minute</pre>
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    size</a> be 100.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>Text track cue
+   <li><p>Let <var title="">cue</var>'s <a>text track cue
    alignment</a> be <a title="text track cue middle
    alignment">middle alignment</a>.</p></li>
 
@@ -1706,14 +1707,14 @@ The Final Minute</pre>
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">rl</code>", then let <var title="">cue</var>'s
-         <a>Text track cue writing direction</a> be <a
+         <a>text track cue writing direction</a> be <a
          title="text track cue vertical growing left writing
          direction">vertical growing left</a>.</p></li>
 
          <li><p>Otherwise, if <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">lr</code>", then let <var title="">cue</var>'s
-         <a>Text track cue writing direction</a> be <a
+         <a>text track cue writing direction</a> be <a
          title="text track cue vertical growing right writing
          direction">vertical growing right</a>.</p></li>
 
@@ -1858,31 +1859,31 @@ The Final Minute</pre>
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">start</code>", then let <var title="">cue</var>'s
-         <a>Text track cue alignment</a> be <a title="text
+         <a>text track cue alignment</a> be <a title="text
          track cue start alignment">start alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">middle</code>", then let <var title="">cue</var>'s
-         <a>Text track cue alignment</a> be <a title="text
+         <a>text track cue alignment</a> be <a title="text
          track cue middle alignment">middle alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">end</code>", then let <var title="">cue</var>'s
-         <a>Text track cue alignment</a> be <a title="text
+         <a>text track cue alignment</a> be <a title="text
          track cue end alignment">end alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">left</code>", then let <var title="">cue</var>'s
-         <a>Text track cue alignment</a> be <a title="text
+         <a>text track cue alignment</a> be <a title="text
          track cue left alignment">left alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a>case-sensitive</a> match for the string "<code
          title="">right</code>", then let <var title="">cue</var>'s
-         <a>Text track cue alignment</a> be <a title="text
+         <a>text track cue alignment</a> be <a title="text
          track cue right alignment">right alignment</a>.</p></li>
 
         </ol>
@@ -2151,7 +2152,7 @@ The Final Minute</pre>
 
   <p>To parse a string <var title="">input</var> supposedly containing
   <a>WebVTT cue text</a>, user agents must use the following
-  algorithm. This algorithm returns a <a>List of WebVTT Node
+  algorithm. This algorithm returns a <a>list of WebVTT Node
   Objects</a>.</p>
 
   <ol>
@@ -2163,7 +2164,7 @@ The Final Minute</pre>
    title="">input</var>, initially pointing at the start of the
    string.</p></li>
 
-   <li><p>Let <var title="">result</var> be a <a>List of WebVTT
+   <li><p>Let <var title="">result</var> be a <a>list of WebVTT
    Node Objects</a>, initially empty.</p></li>
 
    <li><p>Let <var title="">current</var> be the <a>WebVTT Internal
@@ -2871,7 +2872,7 @@ The Final Minute</pre>
   <section>
   <h3><dfn>WebVTT cue text DOM construction rules</dfn></h3>
 
-  <p>To convert a <a>List of WebVTT Node Objects</a> to a DOM
+  <p>To convert a <a>list of WebVTT Node Objects</a> to a DOM
   tree for <code>Document</code> <var title="">owner</var>, user
   agents must create a tree of DOM nodes that is isomorphous to the
   tree of <a title="WebVTT Node Object">WebVTT Node Objects</a>,
@@ -2950,7 +2951,7 @@ The Final Minute</pre>
 
   <ol>
 
-   <li><p>Let <var title="">nodes</var> be the <a>List of WebVTT Node Objects</a> obtained by
+   <li><p>Let <var title="">nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by
    applying the <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
    <a>text track cue text</a>.</p>
 
@@ -3038,7 +3039,7 @@ The Final Minute</pre>
 
     <ol>
 
-     <li><p>Let <var title="">nodes</var> be the <a>List of WebVTT
+     <li><p>Let <var title="">nodes</var> be the <a>list of WebVTT
      Node Objects</a> obtained by applying the <a>WebVTT cue
      text parsing rules</a> to the <var title="">cue</var>'s
      <a>text track cue text</a>.</p>
@@ -3068,15 +3069,15 @@ The Final Minute</pre>
 
      </li>
 
-     <li><p>If the <a>Text track cue writing direction</a> is
+     <li><p>If the <a>text track cue writing direction</a> is
      <a title="text track cue horizontal writing
      direction">horizontal</a>, then let <var
      title="">writing-mode</var> be 'horizontal-tb'. Otherwise, if the
-     <a>Text track cue writing direction</a> is <a
+     <a>text track cue writing direction</a> is <a
      title="text track cue vertical growing left writing
      direction">vertical growing left</a>, then let <var
      title="">writing-mode</var> be 'vertical-rl'. Otherwise, the
-     <a>Text track cue writing direction</a> is <a
+     <a>text track cue writing direction</a> is <a
      title="text track cue vertical growing right writing
      direction">vertical growing right</a>; let <var
      title="">writing-mode</var> be 'vertical-lr'.</p></li>
@@ -3089,49 +3090,49 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
               and <var title="">direction</var> is 'ltr'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
               and <var title="">direction</var> is 'rtl'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-          and the <a>Text track cue alignment</a> is <a title="text track cue left alignment">left</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+          and the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
               or <a title="text track cue left alignment">left</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
               or <a title="text track cue left alignment">left</a></dt>
        <dd>
         <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a> subtracted from 100.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
               and <var title="">direction</var> is 'ltr'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
               and <var title="">direction</var> is 'rtl'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-          and the <a>Text track cue alignment</a> is <a title="text track cue right alignment">right</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+          and the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
               or <a title="text track cue right alignment">right</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
               or <a title="text track cue right alignment">right</a></dt>
        <dd>
         <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+       <dt>If the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
               the <a>text track cue text position</a> is less than or equal to 50</dt>
        <dd>
         <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a> multiplied by two.</p>
        </dd>
 
-       <dt>If the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+       <dt>If the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
               the <a>text track cue text position</a> is greater than <!-- or equal to --> 50</dt>
        <dd>
         <p>Let <var title="">maximum size</var> be the result of subtracting <a>text track cue text position</a> from 100 and then multiplying the result by two.</p>
@@ -3146,7 +3147,7 @@ The Final Minute</pre>
      <a>text track cue size</a>. Otherwise, let <var
      title="">size</var> be <var title="">maximum size</var>.</p></li>
 
-     <li><p>If the <a>Text track cue writing direction</a> is
+     <li><p>If the <a>text track cue writing direction</a> is
      <a title="text track cue horizontal writing
      direction">horizontal</a>, then let <var title="">width</var>
      be '<var title="">size</var>&#x2009;vw' and <var
@@ -3165,84 +3166,84 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
               and <var title="">direction</var> is 'ltr'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
               and <var title="">direction</var> is 'ltr'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
               and <var title="">direction</var> is 'rtl'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
               and <var title="">direction</var> is 'rtl'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
               and <var title="">direction</var> is 'ltr'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
               and <var title="">direction</var> is 'ltr'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> minus <var title="">size</var>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
               and <var title="">direction</var> is 'rtl'</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
               and <var title="">direction</var> is 'rtl'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100, minus <var title="">size</var>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
               or <a title="text track cue left alignment">left</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
               or <a title="text track cue left alignment">left</a></dt>
        <dd>
         <p>Let <var title="">y-position</var> be the <a>text track cue text position</a>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
               or <a title="text track cue right alignment">right</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
               or <a title="text track cue right alignment">right</a></dt>
        <dd>
         <p>Let <var title="">y-position</var> be the <a>text track cue text position</a> minus <var title="">size</var>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
               and <var title="">direction</var> is 'ltr'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> minus half of <var title="">size</var>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
-              the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+              the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
               and <var title="">direction</var> is 'rtl'</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100, minus half of <var title="">size</var>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
-              and the <a>Text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+              and the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
        <dd>
         <p>Let <var title="">y-position</var> be the <a>text track cue text position</a> minus half of <var title="">size</var>.</p>
        </dd>
@@ -3260,29 +3261,29 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
               and the <a>text track cue snap-to-lines flag</a> is set</dt>
        <dd>
         <p>Let <var title="">y-position</var> be zero.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
               and the <a>text track cue snap-to-lines flag</a> is not set</dt>
        <dd>
         <p>Let <var title="">y-position</var> be the <a>text track cue computed line position</a>.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
               and the <a>text track cue snap-to-lines flag</a> is set</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
               and the <a>text track cue snap-to-lines flag</a> is set</dt>
        <dd>
         <p>Let <var title="">x-position</var> be zero.</p>
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
               and the <a>text track cue snap-to-lines flag</a> is not set</dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
               and the <a>text track cue snap-to-lines flag</a> is not set</dt>
        <dd>
         <p>Let <var title="">x-position</var> be the <a>text track cue computed line position</a>.</p>
@@ -3302,7 +3303,7 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a></dt>
        <dd>
 
         <ol>
@@ -3333,8 +3334,8 @@ The Final Minute</pre>
 
        </dd>
 
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
-       <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
        <dd>
 
         <ol>
@@ -3472,22 +3473,22 @@ The Final Minute</pre>
        <dd>
 
         <p>Many of the steps in this algorithm vary according to the
-        <a>Text track cue writing direction</a>. Steps labeled
+        <a>text track cue writing direction</a>. Steps labeled
         "<strong>Horizontal</strong>" must be followed only when the
-        <a>Text track cue writing direction</a> is <a
+        <a>text track cue writing direction</a> is <a
         title="text track cue horizontal writing
         direction">horizontal</a>, steps labeled
         "<strong>Vertical</strong>" must be followed when the
-        <a>Text track cue writing direction</a> is either <a
+        <a>text track cue writing direction</a> is either <a
         title="text track cue vertical growing left writing
         direction">vertical growing left</a> or <a title="text
         track cue vertical growing right writing direction">vertical
         growing right</a>, steps labeled "<strong>Vertical Growing
-        Left</strong>" must be followed only when the <a>Text
+        Left</strong>" must be followed only when the <a>text
         track cue writing direction</a> is <a title="text track
         cue vertical growing left writing direction">vertical growing
         left</a>, and steps labeled "<strong>Vertical Growing
-        Right</strong>" must be followed only when the <a>Text
+        Right</strong>" must be followed only when the <a>text
         track cue writing direction</a> is <a title="text track
         cue vertical growing right writing direction">vertical growing
         right</a>.</p>
@@ -3697,7 +3698,7 @@ The Final Minute</pre>
 
           <dl class="switch">
 
-           <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
                   and <var title="">direction</var> is 'ltr'</dt>
            <dd>
             <p>Let <var title="">x</var> be a percentage given by the
@@ -3706,7 +3707,7 @@ The Final Minute</pre>
             track cue computed line position</a>.</p>
            </dd>
 
-           <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
                   and <var title="">direction</var> is 'rtl'</dt>
            <dd>
             <p>Let <var title="">x</var> be a percentage given by the
@@ -3715,7 +3716,7 @@ The Final Minute</pre>
             by the <a>text track cue computed line position</a>.</p>
            </dd>
 
-           <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
            <dd>
             <p>Let <var title="">x</var> be a percentage given by the
             <a>text track cue computed line position</a> subtracted from
@@ -3723,7 +3724,7 @@ The Final Minute</pre>
             by the <a>text track cue text position</a>.</p>
            </dd>
 
-           <dt>If the <a>Text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
            <dd>
             <p>Let <var title="">x</var> be a percentage given by the
             <a>text track cue computed line position</a>, and let <var
@@ -3817,7 +3818,7 @@ The Final Minute</pre>
   user agent cascade layer as defined in this section. <a
   href="#refsCSS">[CSS]</a></p>
 
-  <p>On the (root) <a>List of WebVTT Node Objects</a>, the
+  <p>On the (root) <a>list of WebVTT Node Objects</a>, the
   'position' property must be set to 'absolute', the 'unicode-bidi'
   property must be set to 'plaintext', the 'direction' property must
   be set to <var title="">direction</var>, the 'writing-mode' property
@@ -3831,13 +3832,13 @@ The Final Minute</pre>
   title="">height</var> are the values with those names determined by
   the <a>rules for updating the display of WebVTT text
   tracks</a> for the <a>text track cue</a> from whose <a
-  title="text track cue text">text</a> the <a>List of WebVTT
+  title="text track cue text">text</a> the <a>list of WebVTT
   Node Objects</a> was constructed.</p>
 
-  <p>The 'text-align' property on the (root) <a>List of WebVTT Node
+  <p>The 'text-align' property on the (root) <a>list of WebVTT Node
   Objects</a> must be set to the value in the second cell of the
   row of the table below whose first cell is the value of the
-  corresponding <a title="text track cue">cue</a>'s <a>Text
+  corresponding <a title="text track cue">cue</a>'s <a>text
   track cue alignment</a>:</p>
 
   <table>
@@ -3851,12 +3852,12 @@ The Final Minute</pre>
     <tr> <td><a title="text track cue right alignment">Right alignment</a> <td> 'right'
   </table>
 
-  <p>The 'font' shorthand property on the (root) <a>List of WebVTT
+  <p>The 'font' shorthand property on the (root) <a>list of WebVTT
   Node Objects</a> must be set to '5vh sans-serif'. <a
   href="#refsCSSRUBY">[CSSRUBY]</a> <a
   href="#refsCSSVALUES">[CSSVALUES]</a></p>
 
-  <p>The 'color' property on the (root) <a>List of WebVTT Node
+  <p>The 'color' property on the (root) <a>list of WebVTT Node
   Objects</a> must be set to 'rgba(255,255,255,1)'. <a
   href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
@@ -3864,11 +3865,11 @@ The Final Minute</pre>
   background box</a> must be set to 'rgba(0,0,0,0.8)'. <a
   href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
-  <p>A text outline or stroke may also be set on the (root) <a>List
+  <p>A text outline or stroke may also be set on the (root) <a>list
   of WebVTT Node Objects</a>, if supported.</p> <!-- 'text-outline'
   is in CSS3 Text, but Tab says that's awaiting medical attention. -->
 
-  <p>The 'white-space' property on the (root) <a>List of WebVTT
+  <p>The 'white-space' property on the (root) <a>list of WebVTT
   Node Objects</a> must be set to 'pre-line'. <a
   href="#refsCSS">[CSS]</a></p>
 
@@ -3890,13 +3891,13 @@ The Final Minute</pre>
   'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
 
   <p>All other non-inherited properties must be set to their initial
-  values; inherited properties on the root <a>List of WebVTT Node
+  values; inherited properties on the root <a>list of WebVTT Node
   Objects</a> must inherit their values from the <a>media
   element</a> for which the <a>text track cue</a> is being
   rendered, if any. If there is no <a>media element</a> (i.e. if
   the <a>text track</a> is being rendered for another media
   playback mechanism), then inherited properties on the root
-  <a>List of WebVTT Node Objects</a> must take their initial
+  <a>list of WebVTT Node Objects</a> must take their initial
   values.</p>
 
   <p>If there are style sheets that apply to the <a>media
@@ -3910,7 +3911,7 @@ The Final Minute</pre>
 
   <p>When a user agent is rendering one or more <a title="text track cue">text track cues</a>
   according to the <a>rules for updating the display of WebVTT text tracks</a>, <a
-  title="WebVTT Node Object">WebVTT Node Objects</a> in the <a>List of WebVTT Node
+  title="WebVTT Node Object">WebVTT Node Objects</a> in the <a>list of WebVTT Node
   Objects</a> used in the rendering can be matched by certain pseudo-selectors as defined below.
   These selectors can begin or stop matching individual <a title="WebVTT Node Object">WebVTT Node
   Objects</a> while a <a title="text track cue">cue</a> is being rendered, even in between
@@ -3944,11 +3945,11 @@ The Final Minute</pre>
   <h5>The '::cue' pseudo-element</h5>
 
   <p>The '<dfn title="pseudo-cue">::cue</dfn>' pseudo-element (with no
-  argument) matches any <a>List of WebVTT Node Objects</a>
+  argument) matches any <a>list of WebVTT Node Objects</a>
   constructed for the <i>matched element</i>, with the exception that
   the properties corresponding to the 'background' shorthand must be
   applied to the <a>WebVTT cue background box</a> rather than
-  the <a>List of WebVTT Node Objects</a>.</p>
+  the <a>list of WebVTT Node Objects</a>.</p>
 
   <p>The following properties apply to the '::cue' pseudo-element with
   no argument; other properties set on the pseudo-element must be
@@ -3986,7 +3987,7 @@ The Final Minute</pre>
 
    <li><p>The <i>document tree</i> against which the selectors are
    matched is the tree of <a title="WebVTT Node Object">WebVTT Node
-   Objects</a> rooted at the <a>List of WebVTT Node
+   Objects</a> rooted at the <a>list of WebVTT Node
    Objects</a> for the cue.</p></li>
 
    <li><p><a title="WebVTT Internal Node Object">WebVTT Internal
@@ -4044,7 +4045,7 @@ The Final Minute</pre>
        <td><code title="">lang</code>
 
       <tr>
-       <td>Other elements (specifically, <a title="List of WebVTT Node Objects">Lists of WebVTT Node Objects</a>)
+       <td>Other elements (specifically, <a title="list of WebVTT Node Objects">lists of WebVTT Node Objects</a>)
        <td>No explicit name.
 
     </table>
@@ -4075,8 +4076,8 @@ The Final Minute</pre>
    title="WebVTT Internal Node Object">WebVTT Internal Node Objects</a> have the language
    described as the <a>WebVTT Node Object's applicable language</a>.</p></li>
 
-   <li><p>For the purposes of ID selector matching, <a title="List
-   of WebVTT Node Objects">Lists of WebVTT Node Objects</a> have
+   <li><p>For the purposes of ID selector matching, <a title="list
+   of WebVTT Node Objects">lists of WebVTT Node Objects</a> have
    the ID given by the cue's <a>text track cue identifier</a>,
    if any.</p></li>
 
@@ -4129,7 +4130,7 @@ The Final Minute</pre>
 
   <p>As a special exception, the properties corresponding to the
   'background' shorthand, when they would have been applied to the
-  <a>List of WebVTT Node Objects</a>, must instead be applied to
+  <a>list of WebVTT Node Objects</a>, must instead be applied to
   the <a>WebVTT cue background box</a>.</p>
 
   </section>
@@ -4148,7 +4149,7 @@ The Final Minute</pre>
 
   <p>A <a>WebVTT Node Object</a> <var title="">c</var> is
   <dfn>in the past</dfn> if, in a pre-order, depth-first traversal of
-  the <a>text track cue</a>'s <a>List of WebVTT Node
+  the <a>text track cue</a>'s <a>list of WebVTT Node
   Objects</a>, there exists a <a>WebVTT Timestamp Object</a>
   whose value is less than the <a>current playback position</a>
   of the <a>media element</a> that is the <i>matched
@@ -4161,7 +4162,7 @@ The Final Minute</pre>
 
   <p>A <a>WebVTT Node Object</a> <var title="">c</var> is
   <dfn>in the future</dfn> if, in a pre-order, depth-first traversal
-  of the <a>text track cue</a>'s <a>List of WebVTT Node
+  of the <a>text track cue</a>'s <a>list of WebVTT Node
   Objects</a>, there exists a <a>WebVTT Timestamp Object</a>
   whose value is greater than the <a>current playback
   position</a> of the <a>media element</a> that is the
@@ -4205,7 +4206,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
 
    <dt><var title="">cue</var> . <a title="dom-TextTrackCue-vertical">vertical</a> [ = <var title="">value</var> ]</dt>
    <dd>
-    <p>Returns a string representing the <a>Text track cue writing direction</a>, as follows:</p>
+    <p>Returns a string representing the <a>text track cue writing direction</a>, as follows:</p>
     <dl class="switch">
      <dt>If it is <a title="text track cue horizontal writing direction">horizontal</a></dt>
      <dd><p>The empty string.</p></dd>
@@ -4246,7 +4247,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
 
    <dt><var title="">cue</var> . <a title="dom-TextTrackCue-align">align</a> [ = <var title="">value</var> ]</dt>
    <dd>
-    <p>Returns a string representing the <a>Text track cue alignment</a>, as follows:</p>
+    <p>Returns a string representing the <a>text track cue alignment</a>, as follows:</p>
     <dl class="switch">
      <dt>If it is <a title="text track cue start alignment">start alignment</a></dt>
      <dd><p>The string "<code title="">start</code>".</p></dd>
@@ -4305,7 +4306,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>Text track cue
+   <li><p>Let <var title="">cue</var>'s <a>text track cue
    writing direction</a> be <a title="text track cue
    horizontal writing direction">horizontal</a>.</p></li>
 
@@ -4322,7 +4323,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    size</a> be 100.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>Text track cue
+   <li><p>Let <var title="">cue</var>'s <a>text track cue
    alignment</a> be <a title="text track cue middle
    alignment">middle alignment</a>.</p></li>
 
@@ -4334,13 +4335,13 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   <p>The <dfn
   title="dom-TextTrackCue-vertical"><code>vertical</code></dfn>
   attribute, on getting, must return the string from the second cell
-  of the row in the table below whose first cell is the <a>Text
+  of the row in the table below whose first cell is the <a>text
   track cue writing direction</a> of the <a>text track
   cue</a> that the <code>TextTrackCue</code> object represents:</p>
 
   <table>
    <thead>
-    <tr> <th> <a>Text track cue writing direction</a>
+    <tr> <th> <a>text track cue writing direction</a>
          <th> <code title="dom-TextTrackCue-direction">direction</code> value
    <tbody>
     <tr> <td> <a title="text track cue horizontal writing direction">Horizontal</a>
@@ -4351,7 +4352,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
          <td> "<code title="">lr</code>"
   </table>
 
-  <p>On setting, the <a>Text track cue writing direction</a> must be set to the value given in
+  <p>On setting, the <a>text track cue writing direction</a> must be set to the value given in
   the first cell of the row in the table above whose second cell is a <a>case-sensitive</a>
   match for the new value, if any. If none of the values match, then the user agent must instead
   throw a <code>SyntaxError</code> exception.</p>
@@ -4385,7 +4386,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>The <dfn title="dom-TextTrackCue-align"><code>align</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
-  <a>Text track cue alignment</a> of the <a>text track cue</a> that the
+  <a>text track cue alignment</a> of the <a>text track cue</a> that the
   <code>TextTrackCue</code> object represents:</p>
 
   <table>
@@ -4399,7 +4400,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
     <tr> <td><a title="text track cue right alignment">Right alignment</a> <td> "<code title="">right</code>"
   </table>
 
-  <p>On setting, the <a>Text track cue alignment</a> must be set to the value given in the
+  <p>On setting, the <a>text track cue alignment</a> must be set to the value given in the
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
   for the new value, if any. If none of the values match, then the user agent must instead throw a
   <code>SyntaxError</code> exception.</p>
