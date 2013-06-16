@@ -770,13 +770,10 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h2>The WebVTT file format</h2>
+  <h2>The WebVTT file format: Syntax</h2>
 
   <section>
-  <h3>Syntax</h3>
-
-  <section>
-  <h4>WebVTT file structure</h4>
+  <h3>WebVTT file structure</h3>
 
   <p>A <dfn>WebVTT file</dfn> must consist of a <a>WebVTT file
   body</a> encoded as UTF-8 and labeled with the <a>MIME
@@ -970,7 +967,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h4>WebVTT comments</h4>
+  <h3>WebVTT comments</h3>
 
   <p>A <dfn>WebVTT comment</dfn> consists of the  following components, in
   the given order:</p>
@@ -997,7 +994,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h4>WebVTT files using metadata content</h4>
+  <h3>WebVTT files using metadata content</h3>
 
   <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
   or more characters other than U+000A LINE FEED (LF) characters and
@@ -1021,7 +1018,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h4>WebVTT files using chapter title text</h4>
+  <h3>WebVTT files using chapter title text</h3>
 
   <p><dfn>WebVTT chapter title text</dfn> consists of <dfn>WebVTT cue text</dfn>.</p>
 
@@ -1107,7 +1104,7 @@ The Final Minute</pre>
   </section>
 
   <section>
-  <h4>WebVTT files using caption cue text</h4>
+  <h3>WebVTT files using caption cue text</h3>
 
   <p>The <dfn>WebVTT cue settings</dfn> part of a <a>WebVTT
   cue</a> consists of zero or more of the following components, in
@@ -1469,7 +1466,11 @@ The Final Minute</pre>
 
   <section>
 
-  <h3>Parsing</h3>
+  <h2>WebVTT file format: Parsing</h3>
+
+  <section>
+
+  <h3>WebVTT file structure parsing</h3>
 
   <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a
   <a>text track list of cues</a> <var title="">output</var>,
