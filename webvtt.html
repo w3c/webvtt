@@ -46,8 +46,7 @@
           // editors, add as many as you like
           // only "name" is required
           editors:  [
-              { name: "Silvia Pfeiffer", url: "mailto:silviapfeiffer1@gmail.com",
-                company: "NICTA", companyURL: "http://nicta.com.au/" },
+              { name: "Silvia Pfeiffer", url: "mailto:silviapfeiffer1@gmail.com" },
               { name: "Ian Hickson", url: "mailto:ian@hixie.ch",
                 company: "Google", companyURL: "http://google.com/", note: "previous editor" },
           ],
@@ -705,7 +704,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h3>Text track region</h3>
+  <h3>Text Track Region</h3>
   
   <p>A <dfn title="text track region">text track region</dfn> represents a subpart of the video viewport and provides a rendering area for <a title="text track cue">text track cues</a>.</p>
 
@@ -755,7 +754,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h3>Text track list of regions</h3>
+  <h3>Text Track List of Regions</h3>
 
   <dl>
   <dt><dfn title="text track list of regions">A text track list of regions</dfn></dfn>
@@ -776,6 +775,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <section>
   <h3>Syntax</h3>
 
+  <section>
+  <h4>WebVTT file structure</h4>
+
   <p>A <dfn>WebVTT file</dfn> must consist of a <a>WebVTT file
   body</a> encoded as UTF-8 and labeled with the <a>MIME
   type</a> <code>text/vtt</code>. <a href="#refsRFC3629">[RFC3629]</a></p>
@@ -794,10 +796,15 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE
    RETURN (CR) characters.</li> <!-- allows for Emacs line -->
 
-   <li>Two or more <a title="WebVTT line terminator">WebVTT line
-   terminators</a>.</li> <!-- the first one to terminate the magic
-   line, the second one to terminate the header block: in the future,
-   we can add a metadata block before the first blank line -->
+   <li>One or more <a title="WebVTT line terminator">WebVTT line terminators</a> to
+   terminate the line with the file magic and separate it from the rest of the body.</li>
+
+   <li>Zero or more <a title="WebVTT metadata header">WebVTT metadata headers</a> and
+   <a title="WebVTT comment">WebVTT comments</a> separated from each other by two or more
+   <a title="WebVTT line terminator">WebVTT line terminators</a>.</li>
+
+   <li>One or more <a title="WebVTT line terminator">WebVTT line terminators</a> to
+   terminate the header block and separate the cues from the file header.</li>
 
    <li>Zero or more <a title="WebVTT cue">WebVTT cues</a> and <a title="WebVTT
    comment">WebVTT comments</a> separated from each other by two or more <a title="WebVTT
@@ -808,67 +815,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   </ol>
 
-  <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
-  the given order:</p>
-
-  <ol>
-   <li>Optionally, a <a>WebVTT cue identifier</a> followed by a <a>WebVTT line terminator</a>.</li>
-   <li><a>WebVTT cue timings</a>.</li>
-   <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters followed by <a>WebVTT cue settings</a>.</li>
-   <li>A <a>WebVTT line terminator</a>.</li>
-   <li>The <dfn>cue payload</dfn>: either <a>WebVTT cue text</a>, <a>WebVTT chapter title text</a>, or <a>WebVTT metadata text</a>, but it must not contain the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
-  </ol>
-
-  <p class="note">A <a>WebVTT cue</a> corresponds to one piece
-  of time-aligned text or data in the <a>WebVTT file</a>, for
-  example one subtitle. The <a>cue payload</a> is the text or
-  data associated with the cue.</p>
-
-  <p><a>WebVTT chapter title text</a> is syntactically a subset
-  of <a>WebVTT cue text</a>, and <a>WebVTT cue text</a> is
-  syntactically a subset of <a>WebVTT metadata text</a>.
-  Conformance checkers, when validating <a>WebVTT</a> files, may
-  offer to restrict all cues to only having <a>WebVTT chapter title
-  text</a> or <a>WebVTT cue text</a> as their <a>cue
-  payload</a>; <a>WebVTT metadata text</a> cues are only
-  useful for scripted applications (using the <code
-  title="dom-TextTrack-kind-metadata">metadata</code> <a>text
-  track kind</a>).</p>
-
-  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
-  payload</a> that is <a>WebVTT chapter title text</a> is
-  said to be a <dfn>WebVTT file using chapter title text</dfn>.</p>
-
-  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
-  payload</a> that is <a>WebVTT cue text</a> is said to be a
-  <dfn>WebVTT file using cue text</dfn>. By definition, any file that
-  is a <a>WebVTT file using chapter title text</a> is also a
-  <a>WebVTT file using cue text</a>.</p>
-
-
-  <p>A <dfn>WebVTT comment</dfn> consists of the  following components, in
-  the given order:</p>
-
-  <ol>
-   <li>The string "<code title="">NOTE</code>".</li>
-   <li>Optionally, the following components, in the given order:
-    <ol>
-     <li>Either:
-      <ul>
-       <li>A U+0020 SPACE character or U+0009 CHARACTER TABULATION (tab) character.</li>
-       <li>A <a>WebVTT line terminator</a>.</li>
-      </ul>
-     <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
-     U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a
-     <a>WebVTT line terminator</a>, except that the entire resulting string must not contain
-     the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
-    </ol>
-   </li>
-  </ol>
-
-  <p class="note">A <a>WebVTT comment</a> is ignored by the parser.</p>
-
-
   <p>A <dfn>WebVTT line terminator</dfn> consists of one of the
   following:</p>
 
@@ -877,6 +823,22 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A single U+000A LINE FEED (LF) character.</li>
    <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
   </ul>
+
+  <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
+  the given order:</p>
+
+  <ol>
+   <li>Optionally, a <a>WebVTT cue identifier</a> followed by a <a>WebVTT line terminator</a>.</li>
+   <li><a>WebVTT cue timings</a>.</li>
+   <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters followed by <a>WebVTT cue settings</a>.</li>
+   <li>A <a>WebVTT line terminator</a>.</li>
+   <li>The <dfn>cue payload</dfn>: either <a>WebVTT caption cue text</a>, <a>WebVTT chapter title text</a>, or <a>WebVTT metadata text</a>, but it must not contain the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+  </ol>
+
+  <p class="note">A <a>WebVTT cue</a> corresponds to one piece
+  of time-aligned text or data in the <a>WebVTT file</a>, for
+  example one subtitle. The <a>cue payload</a> is the text or
+  data associated with the cue.</p>
 
   <p>A <dfn>WebVTT cue identifier</dfn> is any sequence of one or more
   characters not containing the substring "<code title="">--></code>"
@@ -921,6 +883,155 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p class="note">The <a>WebVTT cue timings</a> give the start
   and end offsets of the <a>WebVTT cue</a>. Different cues can
   overlap. Cues are always listed ordered by their start time.</p>
+
+  <p>A <dfn>WebVTT timestamp</dfn> representing a time in seconds and
+  fractions of a second is a <a>WebVTT timestamp</a>
+  representing hours <var
+  title="">hours</var>, minutes <var title="">minutes</var>, seconds
+  <var title="">seconds</var>, and thousandths of a second <var
+  title="">seconds-frac</var>, calculated as follows:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">seconds</var> be the integer part of the
+   time.</p></li>
+
+   <li><p>Let <var title="">seconds-frac</var> be the fractional
+   component of the time, expressed as the digits of the decimal
+   fraction given to three decimal digits.</p></li>
+
+   <li><p>If <var title="">seconds</var> is greater than 59, then let
+   <var title="">minutes</var> be the integer component of <var
+   title="">seconds</var> divided by sixty, and then let <var
+   title="">seconds</var> be the remainder of dividing <var
+   title="">seconds</var> divided by sixty. Otherwise, let <var
+   title="">minutes</var> be zero.</p></li>
+
+   <li><p>If <var title="">minutes</var> is greater than 59, then let
+   <var title="">hours</var> be the integer component of <var
+   title="">minutes</var> divided by sixty, and then let <var
+   title="">minutes</var> be the remainder of dividing <var
+   title="">minutes</var> divided by sixty. Otherwise, let <var
+   title="">hours</var> be zero.</p></li>
+
+  </ol>
+
+  <p>A <a>WebVTT timestamp</a> representing hours <var
+  title="">hours</var>, minutes <var title="">minutes</var>, seconds
+  <var title="">seconds</var>, and thousandths of a second <var
+  title="">seconds-frac</var>, consists of the following components,
+  in the given order:</p>
+
+  <ol>
+
+   <li>Optionally (required if <var title="">hour</var> is non-zero):
+
+    <ol>
+
+     <li>Two or more <a>ASCII digits</a>, representing the <var title="">hours</var> as a base
+     ten integer.</li>
+
+     <li>A U+003A COLON character (:)</li>
+
+    </ol>
+
+   </li>
+
+   <li>Two <a>ASCII digits</a>, representing the <var title="">minutes</var> as a base ten
+   integer in the range 0&nbsp;&le;&nbsp;<var title="">minutes</var>&nbsp;&le;&nbsp;59.</li>
+
+   <li>A U+003A COLON character (:)</li>
+
+   <li>Two <a>ASCII digits</a>, representing the <var title="">seconds</var> as a base ten
+   integer in the range 0&nbsp;&le;&nbsp;<var title="">seconds</var>&nbsp;&le;&nbsp;59.</li>
+
+   <li>A U+002E FULL STOP character (.).</li>
+
+   <li>Three <a>ASCII digits</a>, representing the thousandths of a second <var
+   title="">seconds-frac</var> as a base ten integer.</li>
+
+  </ol>
+
+  <p><dfn>WebVTT cue text</dfn> consists of zero or more of
+  the following, each optionally separated from the next by a
+  <a>WebVTT line terminator</a>:</p>
+
+  <ul>
+   <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
+   <li>A <a>WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the cue.</li>
+   <li>A <a>WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the cue.</li>
+   <li>A <a>WebVTT cue gt escape</a>, representing a "&gt;" character in the text of the cue.</li>
+   <li>A <a>WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <a>WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional formatting character in the text of the cue.</li>
+   <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
+  </ul>
+
+
+  </section>
+
+  <section>
+  <h4>WebVTT comments</h4>
+
+  <p>A <dfn>WebVTT comment</dfn> consists of the  following components, in
+  the given order:</p>
+
+  <ol>
+   <li>The string "<code title="">NOTE</code>".</li>
+   <li>Optionally, the following components, in the given order:
+    <ol>
+     <li>Either:
+      <ul>
+       <li>A U+0020 SPACE character or U+0009 CHARACTER TABULATION (tab) character.</li>
+       <li>A <a>WebVTT line terminator</a>.</li>
+      </ul>
+     <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
+     U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a
+     <a>WebVTT line terminator</a>, except that the entire resulting string must not contain
+     the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
+    </ol>
+   </li>
+  </ol>
+
+  <p class="note">A <a>WebVTT comment</a> is ignored by the parser.</p>
+
+  </section>
+
+  <section>
+  <h4>WebVTT files using metadata content</h4>
+
+  <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
+  or more characters other than U+000A LINE FEED (LF) characters and
+  U+000D CARRIAGE RETURN (CR) characters, each optionally separated
+  from the next by a <a>WebVTT line terminator</a>. (In other
+  words, any text that does not have two consecutive <a
+  title="WebVTT line terminator">WebVTT line terminators</a> and
+  does not start or end with a <a>WebVTT line
+  terminator</a>.)</p>
+
+  <p><a>WebVTT chapter title text</a> and <a>WebVTT caption cue text</a>
+  are syntactically a subset of <a>WebVTT metadata text</a>.  
+  Conformance checkers, when validating <a>WebVTT</a> files, may
+  offer to restrict all cues to only having <a>WebVTT chapter title
+  text</a> or <a>WebVTT caption cue text</a> as their <a>cue
+  payload</a>; <a>WebVTT metadata text</a> cues are only
+  useful for scripted applications (using the <code
+  title="dom-TextTrack-kind-metadata">metadata</code> <a>text
+  track kind</a>).</p>
+
+  </section>
+
+  <section>
+  <h4>WebVTT files using chapter title text</h4>
+
+  <p><dfn>WebVTT chapter title text</dfn> consists of <dfn>WebVTT cue text</dfn>.</p>
+
+  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
+  payload</a> that is <a>WebVTT chapter title text</a> is
+  said to be a <dfn>WebVTT file using chapter title text</dfn>.</p>
+
+  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
+  payload</a> that is <a>WebVTT caption cue text</a> is said to be a
+  <dfn>WebVTT file using caption cue text</dfn>.</p>
 
   <p>A <a>WebVTT file</a> whose cues all have an end time offset
   <var title="">x</var> greater than or equal to the end time offsets
@@ -993,73 +1104,10 @@ The Final Minute</pre>
 
   </div>
 
-  <p>A <dfn>WebVTT timestamp</dfn> representing a time in seconds and
-  fractions of a second is a <a>WebVTT timestamp</a>
-  representing hours <var
-  title="">hours</var>, minutes <var title="">minutes</var>, seconds
-  <var title="">seconds</var>, and thousandths of a second <var
-  title="">seconds-frac</var>, calculated as follows:</p>
+  </section>
 
-  <ol>
-
-   <li><p>Let <var title="">seconds</var> be the integer part of the
-   time.</p></li>
-
-   <li><p>Let <var title="">seconds-frac</var> be the fractional
-   component of the time, expressed as the digits of the decimal
-   fraction given to three decimal digits.</p></li>
-
-   <li><p>If <var title="">seconds</var> is greater than 59, then let
-   <var title="">minutes</var> be the integer component of <var
-   title="">seconds</var> divided by sixty, and then let <var
-   title="">seconds</var> be the remainder of dividing <var
-   title="">seconds</var> divided by sixty. Otherwise, let <var
-   title="">minutes</var> be zero.</p></li>
-
-   <li><p>If <var title="">minutes</var> is greater than 59, then let
-   <var title="">hours</var> be the integer component of <var
-   title="">minutes</var> divided by sixty, and then let <var
-   title="">minutes</var> be the remainder of dividing <var
-   title="">minutes</var> divided by sixty. Otherwise, let <var
-   title="">hours</var> be zero.</p></li>
-
-  </ol>
-
-  <p>A <a>WebVTT timestamp</a> representing hours <var
-  title="">hours</var>, minutes <var title="">minutes</var>, seconds
-  <var title="">seconds</var>, and thousandths of a second <var
-  title="">seconds-frac</var>, consists of the following components,
-  in the given order:</p>
-
-  <ol>
-
-   <li>Optionally (required if <var title="">hour</var> is non-zero):
-
-    <ol>
-
-     <li>Two or more <a>ASCII digits</a>, representing the <var title="">hours</var> as a base
-     ten integer.</li>
-
-     <li>A U+003A COLON character (:)</li>
-
-    </ol>
-
-   </li>
-
-   <li>Two <a>ASCII digits</a>, representing the <var title="">minutes</var> as a base ten
-   integer in the range 0&nbsp;&le;&nbsp;<var title="">minutes</var>&nbsp;&le;&nbsp;59.</li>
-
-   <li>A U+003A COLON character (:)</li>
-
-   <li>Two <a>ASCII digits</a>, representing the <var title="">seconds</var> as a base ten
-   integer in the range 0&nbsp;&le;&nbsp;<var title="">seconds</var>&nbsp;&le;&nbsp;59.</li>
-
-   <li>A U+002E FULL STOP character (.).</li>
-
-   <li>Three <a>ASCII digits</a>, representing the thousandths of a second <var
-   title="">seconds-frac</var> as a base ten integer.</li>
-
-  </ol>
+  <section>
+  <h4>WebVTT files using caption cue text</h4>
 
   <p>The <dfn>WebVTT cue settings</dfn> part of a <a>WebVTT
   cue</a> consists of zero or more of the following components, in
@@ -1178,33 +1226,29 @@ The Final Minute</pre>
   are relative to the text direction; for left-to-right English text,
   "<code title="">start</code>" means left-aligned.</p>
 
+  <p>A <dfn>WebVTT region cue setting</dfn> consists of the
+  following components, in the order given:</p>
 
-  <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
-  or more characters other than U+000A LINE FEED (LF) characters and
-  U+000D CARRIAGE RETURN (CR) characters, each optionally separated
-  from the next by a <a>WebVTT line terminator</a>. (In other
-  words, any text that does not have two consecutive <a
-  title="WebVTT line terminator">WebVTT line terminators</a> and
-  does not start or end with a <a>WebVTT line
-  terminator</a>.)</p>
+  <ol>
+    <li><p>The string "<code>region</code>".</p></li>
+    <li><p>A U+003A COLON character (:).</p></li>
+    <li><p>An arbitrary string of one or more characters other than U+0020 SPACE
+    or U+0009 CHARACTER TABULATION character. The string must not contain the substring
+    "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+    U+003E GREATER-THAN SIGN).</p></li>
+  </ol>
 
-
-  <p><dfn>WebVTT chapter title text</dfn> consists of zero or more of
-  the following, each optionally separated from the next by a
-  <a>WebVTT line terminator</a>:</p>
-
-  <ul>
-   <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
-   <li>A <a>WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the cue.</li>
-   <li>A <a>WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the cue.</li>
-   <li>A <a>WebVTT cue gt escape</a>, representing a "&gt;" character in the text of the cue.</li>
-   <li>A <a>WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional formatting character in the text of the cue.</li>
-   <li>A <a>WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional formatting character in the text of the cue.</li>
-   <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
-  </ul>
+  <p class ="note">A <a>WebVTT region cue setting</a>
+  configures a cue to become part of a region by referencing the region's identifier unless
+  the cue has a <a>"vertical"</a>, <a>"line"</a> or <a>"size"</a> cue setting. If a cue is
+  part of a region, its cue settings for <a>"position"</a> and
+  <a>"align"</a> are applied to the line boxes in the cue relative to the
+  region box.</p>
 
 
-  <p><dfn>WebVTT cue text</dfn> consists of zero or more <a>WebVTT
+  <p><dfn>WebVTT caption cue text</dfn> consists of <dfn>WebVTT cue text</dfn>.
+
+  <p><dfn>WebVTT caption cue text</dfn> consists of zero or more <a>WebVTT
   cue components</a>, in any order, each optionally separated from
   the next by a <a>WebVTT line terminator</a>.</p>
 
@@ -1222,7 +1266,7 @@ The Final Minute</pre>
 
    <li>A <a>WebVTT cue timestamp</a>.</li>
 
-   <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
+   <li>A <a>WebVTT cue text span</a>, representing the text of the caption cue.</li>
 
    <li>A <a>WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the cue.</li>
    <li>A <a>WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the cue.</li>
@@ -1290,7 +1334,7 @@ The Final Minute</pre>
   <ol>
    <li>A <a>WebVTT cue span start tag</a> "<code title="">v</code>" that requires an annotation; the annotation represents the name of the voice.</li>
    <li><a>WebVTT cue internal text</a>.</li>
-   <li>A <a>WebVTT cue span end tag</a> "<code title="">v</code>". If this <a>WebVTT cue voice span</a> is the only <a title="WebVTT cue components">component</a> of its <a>WebVTT cue text</a> sequence, then the end tag may be omitted for brevity.</li>
+   <li>A <a>WebVTT cue span end tag</a> "<code title="">v</code>". If this <a>WebVTT cue voice span</a> is the only <a title="WebVTT cue components">component</a> of its <a>WebVTT caption cue text</a> sequence, then the end tag may be omitted for brevity.</li>
   </ol>
 
   <p>A <dfn>WebVTT cue language span</dfn> consists of the following
@@ -1421,6 +1465,7 @@ The Final Minute</pre>
 
   </section>
 
+  </section><!-- end of syntax -->
 
   <section>
 
@@ -2151,10 +2196,10 @@ The Final Minute</pre>
   </section>
 
   <section>
-  <h3><dfn>WebVTT cue text parsing rules</dfn></h3>
+  <h3><dfn>WebVTT caption cue text parsing rules</dfn></h3>
 
   <p>A <dfn>WebVTT Node Object</dfn> is a conceptual construct used to
-  represent components of <a>WebVTT cue text</a> so that its
+  represent components of <a>WebVTT caption cue text</a> so that its
   processing can be described without reference to the underlying
   syntax.</p>
 
@@ -4414,7 +4459,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue text</a> be the value of the <var
    title="">text</var> argument, and let the <a>rules for rendering the cue in isolation</a>
-   be the <a>rules for interpreting WebVTT cue text</a>.</p></li>
+   be the <a>rules for interpreting WebVTT caption cue text</a>.</p></li>
 
    <!-- default settings -->
 
@@ -4531,7 +4576,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   <p>The <dfn title="dom-TextTrackCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
   convert the <a>text track cue text</a> to a <code>DocumentFragment</code> for the
   <a>script's document</a> of the <a>entry script</a> by applying the <a>WebVTT cue
-  text DOM construction rules</a> to the result of applying the <a>WebVTT cue text parsing
+  text DOM construction rules</a> to the result of applying the <a>WebVTT caption cue text parsing
   rules</a> to the <a>text track cue text</a>.</p>
 
   </section>
