@@ -1009,7 +1009,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text of the cue.</li>
   </ul>
 
-
   </section>
 
   <section>
@@ -1043,6 +1042,10 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <section>
   <h3>WebVTT files using metadata content</h3>
 
+  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
+  payload</a> that is <a>WebVTT metadata text</a> is
+  said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
+
   <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
   or more characters other than U+000A LINE FEED (LF) characters and
   U+000D CARRIAGE RETURN (CR) characters, each optionally separated
@@ -1067,15 +1070,14 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <section>
   <h3>WebVTT files using chapter title text</h3>
 
-  <p><dfn>WebVTT chapter title text</dfn> consists of <dfn>WebVTT cue text</dfn>.</p>
-
   <p>A <a>WebVTT file</a> whose cues all have a <a>cue
   payload</a> that is <a>WebVTT chapter title text</a> is
   said to be a <dfn>WebVTT file using chapter title text</dfn>.</p>
 
-  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
-  payload</a> that is <a>WebVTT caption cue text</a> is said to be a
-  <dfn>WebVTT file using caption cue text</dfn>.</p>
+  <p><dfn>WebVTT chapter title text</dfn> consists of <dfn>WebVTT cue text</dfn>.</p>
+
+  <p class="note">A <a>WebVTT file using chapter title text</a> is typically also a
+  <a>WebVTT file using only nested cues</a>.</p>
 
   <p>A <a>WebVTT file</a> whose cues all have an end time offset
   <var title="">x</var> greater than or equal to the end time offsets
@@ -1152,6 +1154,158 @@ The Final Minute</pre>
 
   <section>
   <h3>WebVTT files using caption cue text</h3>
+
+  <p>A <a>WebVTT file</a> whose cues all have a <a>cue
+  payload</a> that is <a>WebVTT caption cue text</a> is
+  said to be a <dfn>WebVTT file using caption cue text</dfn>.</p>
+
+  <section>
+  <h4>WebVTT regions</h4>
+
+  <p>A <a>WebVTT file using caption cue text</a> may make use of
+  <a title="text track region">text track regions</a>. To define
+  a region, a <a>WebVTT region metadata header</a> is specified.</p>
+
+  <p>A <dfn>WebVTT region metadata header</dfn> is a special kind of
+  <a>WebVTT metadata header</a> where both of the following apply:</p>
+  
+  <ul>
+    <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
+    <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.
+    </li>
+  </ul>
+
+  <p>The <dfn title="WebVTT region setting">WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of zero or more of the following components, in any order, separated from each other by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be included more than once per <a>WebVTT region setting list</a> string.</p>
+
+  <ul> 
+   <li>A <a>WebVTT region identifier</a>.</li> <!-- id:fred -->
+   <li>A <a>WebVTT region width setting</a>.</li> <!-- width:80.5% -->
+   <li>A <a>WebVTT region lines setting</a>.</li> <!-- lines:3 -->
+   <li>A <a>WebVTT region anchor setting</a>.</li> <!-- regionanchor:0%,100% -->
+   <li>A <a>WebVTT region viewport anchor setting</a>.</li> <!-- viewportanchor:10.5%,90.5% -->
+   <li>A <a>WebVTT region scroll setting</a>.</li> <!-- scroll:up -->
+  </ul>
+
+  <p class="note">The <a>WebVTT region setting list</a> gives configuration
+  options regarding the dimensions, positioning and anchoring of the region. For
+  example, it allows a group of cues within a region to be anchored in the center of the
+  region and the center of the video viewport. In this example, when the font size grows,
+  the region grows uniformly in all directions from the center.</p>
+
+  <p>A <dfn>WebVTT region identifier</dfn> consists of the
+  following components, in the order given:</p>
+  <ol>
+    <li><p>The string "<code>id</code>.</p></li>
+    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+    <li><p>An arbitrary string of one or more characters other than U+0020 SPACE
+    or U+0009 CHARACTER TABULATION character. The string must not contain the substring
+    "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+    U+003E GREATER-THAN SIGN).</p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region identifier</a> gives
+  a name to the region so it can be referenced by the cues that belong to the region.</p>
+
+  <p>A <dfn >WebVTT region width setting</dfn> consists of the
+  following components, in the order given:</p>
+  <ol>
+   <li><p>The string "<code>width</code>".</p></li>
+   <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>An optional U+002E DOT character (.).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region width setting</a> provides
+  a fixed width as a percentage of the video width for the region into which cues are
+  rendered and based on which alignment is calculated.</p>
+
+  <p>A <dfn>WebVTT region lines setting</dfn> consists of the
+  following components, in the order given:</p>
+  <ol>
+   <li><p>The string "<code>lines</code>".</p></li>
+   <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region lines setting</a> provides
+  a fixed height as a number of lines for the region into which cues are rendered. As such, it
+  defines the height of the roll-up region if it is a scroll region.</p>
+
+  <p>A <dfn>WebVTT region anchor setting</dfn> consists of the
+  following components, in the order given:</p>
+  <ol>
+   <li><p>The string "<code>regionanchor</code>".</p></li>
+   <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>An optional U+002E DOT character (.).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
+   <li><p>A U+002C COMMA character (,).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>An optional U+002E DOT character (.).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region anchor setting</a> provides
+  a tuple of two percentages that specify the point within the region box that is fixed in
+  location. The first percentage measures the x-dimension and the second percentage
+  y-dimension from the top left corner of the region box. If no
+  <a>WebVTT region anchor setting</a> is given, the anchor
+  defaults to 0%, 100% (i.e. the bottom left corner).</p>
+
+  <p>A <dfn>WebVTT region viewport anchor setting</dfn>
+  consists of the following components, in the order given:</p>
+  <ol>
+   <li><p>The string "<code>viewportanchor</code>".</p></li>
+   <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>An optional U+002E DOT character (.).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
+   <li><p>A U+002C COMMA character (,).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>An optional U+002E DOT character (.).</p></li>
+   <li><p>One or more <span>ASCII digits</span>.</p></li>
+   <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region viewport
+  anchor setting</a> provides a tuple of two percentages that specify the point within
+  the video viewport that the region anchor point is anchored to. The first percentage
+  measures the x-dimension and the second percentage measures the y-dimension from the
+  top left corner of the video viewport box. If no viewport anchor is given, it defaults
+  to 0%, 100% (i.e. the bottom left corner).</p>
+
+  <p class ="note">For browsers, the region maps to an absolute positioned CSS box relative
+  to the video viewport, i.e. there is a relative positioned box that represents the video
+  viewport relative to which the regions are absolutely positioned. Overflow is hidden.</p>
+  
+  <p>A <dfn>WebVTT region scroll setting</dfn> consists of the
+  following components, in the order given:</p>
+  <ol>
+    <li><p>The string "<code>scroll</code>".</p></li>
+    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+    <li><p>The string "<code>up</code>".</code></p></li>
+  </ol>
+  <p class ="note">The <a>WebVTT region scroll setting</a>
+  specifies whether cues rendered into the region are allowed to move out of their initial
+  rendering place and roll up, i.e. move towards the top of the video viewport. If the
+  scroll setting is omitted, cues do not move from their rendered position.</p> 
+
+  <p class="note">Cues are added to a region one line at a time below existing cue lines.
+  When an existing rendered cue line is removed, and it was above another already rendered
+  cue line, that cue line moves into its space, thus scrolling in the given direction. If
+  there is not enough space for a new cue line to be added to a region, the top-most cue
+  line is pushed off the visible region (thus slowly becoming invisible as it moves into
+  overflow:hidden). This eventually makes space for the new cue line and allows it to be
+  added.</p>
+    
+  <p class="note">When there is no scroll direction, cue lines are added in the empty line
+  closest to the line in the bottom of the region. If no empty line is available, the oldest
+  line is replaced.</p>
+
+  </section>
+
+  <section>
+  <h4>WebVTT cue settings</h4>
 
   <p>The <a>WebVTT cue settings list</a> part of a <a>WebVTT
   caption cue</a> consists of zero or more of the following settings. Each
@@ -1292,7 +1446,11 @@ The Final Minute</pre>
   <a>"align"</a> are applied to the line boxes in the cue relative to the
   region box.</p>
 
+  </section>
 
+  <section>
+  <h4>WebVTT caption cue text</h4>
+  
   <p><dfn>WebVTT caption cue text</dfn> consists of <dfn>WebVTT cue text</dfn>.
 
   <p><dfn>WebVTT caption cue text</dfn> consists of zero or more <a>WebVTT
@@ -1511,6 +1669,8 @@ The Final Minute</pre>
   "<code title="">&amp;nbsp;</code>".</p>
 
   </section>
+
+  </section><!-- end of caption cue text -->
 
   </section><!-- end of syntax -->
 
