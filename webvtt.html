@@ -821,13 +821,31 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
   </ul>
 
+  <p>A <dfn>WebVTT metadata header</dfn> consists of the following components, in
+  the given order:</p>
+
+  <ol>
+    <li>A <a title="WebVTT metadata header name">WebVTT metadata header name</a>.</li>
+    <li>A U+003A COLON (colon) character.</li>
+    <li>A <a title="WebVTT metadata header value">WebVTT metadata header value</a>.</li>
+  </ol>
+
+  <p>A <dfn>WebVTT metadata header name</dfn> and
+  a <dfn>WebVTT metadata header value</dfn>
+  each consist of any sequence of zero or more characters other than
+  U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
+  except that the entire resulting string must not contain the substring
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  U+003E GREATER-THAN SIGN).</p>
+
+
   <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
   the given order:</p>
 
   <ol>
    <li>Optionally, a <a>WebVTT cue identifier</a> followed by a <a>WebVTT line terminator</a>.</li>
    <li><a>WebVTT cue timings</a>.</li>
-   <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters followed by <a>WebVTT cue settings</a>.</li>
+   <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters followed by a <a>WebVTT cue settings list</a>.</li>
    <li>A <a>WebVTT line terminator</a>.</li>
    <li>The <dfn>cue payload</dfn>: either <a>WebVTT caption cue text</a>, <a>WebVTT chapter title text</a>, or <a>WebVTT metadata text</a>, but it must not contain the substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
   </ol>
@@ -948,6 +966,24 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    title="">seconds-frac</var> as a base ten integer.</li>
 
   </ol>
+
+  <p>A <dfn>WebVTT cue settings list</dfn> consist of a sequence of zero or more
+  <dfn>WebVTT cue settings</dfn> in any order, separated from each other
+  by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.
+  Each setting consists of the following components, in the order given:</p>
+  
+  <ol>
+    <li>A <a title="WebVTT cue setting name">WebVTT cue setting name</a>.</li>
+    <li>An optional U+003A COLON (colon) character.</li>
+    <li>An optional <a title="WebVTT cue setting value">WebVTT cue setting value</a>.</li>
+  </ol>
+
+  <p>A <dfn>WebVTT cue setting name</dfn> and a <dfn>WebVTT cue setting value</dfn>
+  each consist of any sequence of zero or more characters other than
+  U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
+  except that the entire resulting string must not contain the substring
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  U+003E GREATER-THAN SIGN).</p>
 
   <p><dfn>WebVTT cue text</dfn> consists of zero or more of
   the following, each optionally separated from the next by a
@@ -1106,12 +1142,10 @@ The Final Minute</pre>
   <section>
   <h3>WebVTT files using caption cue text</h3>
 
-  <p>The <dfn>WebVTT cue settings</dfn> part of a <a>WebVTT
-  cue</a> consists of zero or more of the following components, in
-  any order, separated from each other by one or more U+0020 SPACE
-  characters or U+0009 CHARACTER TABULATION (tab) characters. Each
-  component must not be included more than once per <a>WebVTT cue
-  settings</a> string.</p>
+  <p>The <a>WebVTT cue settings list</a> part of a <a>WebVTT
+  caption cue</a> consists of zero or more of the following settings. Each
+  setting must not be included more than once per <dfn>WebVTT caption cue
+  settings list</dfn>.</p>
 
   <ul class="brief"> 
    <li>A <a>WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr -->
@@ -1121,18 +1155,18 @@ The Final Minute</pre>
    <li>A <a>WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right -->
   </ul>
 
-  <p class="note"><a>WebVTT cue settings</a> give configuration
+  <p class="note">A <a>WebVTT caption cue settings list</a> gives configuration
   options regarding the position and alignment of the cue. For
   example, it allows a cue to be aligned to the left or positioned at
   the top right.</p>
 
-  <p>A <dfn>WebVTT vertical text cue setting</dfn> consists of the
+  <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a>consists of the
   following components, in the order given:</p>
 
   <ol>
-   <li>The string "<code title="">vertical</code>".</li>
-   <li>A U+003A COLON character (:).</li>
-   <li>One of the following strings: "<code title="">rl</code>", "<code title="">lr</code>".</li>
+   <li>The string "<code title="">vertical</code>" as the <a>WebVTT cue setting name</a>.</li>
+   <li><p>A U+003A COLON character (:).</p></li>
+   <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code title="">rl</code>", "<code title="">lr</code>".</li>
   </ol>
 
   <p class="note">A <a>WebVTT vertical text cue setting</a>
@@ -1144,9 +1178,9 @@ The Final Minute</pre>
   following components, in the order given:</p>
 
   <ol>
-   <li><p>The string "<code title="">line</code>".</p></li>
+   <li><p>The string "<code title="">line</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
-   <li>Either:
+   <li>As the <a>WebVTT cue setting value</a> either:
     <dl>
      <dt>To represent a specific position relative to the video frame</dt>
      <dd>
@@ -1179,10 +1213,14 @@ The Final Minute</pre>
   following components, in the order given:</p>
 
   <ol>
-   <li><p>The string "<code title="">position</code>".</p></li>
+   <li><p>The string "<code title="">position</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li>A U+003A COLON character (:).</li>
-   <li>One or more <a>ASCII digits</a>.</li>
-   <li>A U+0025 PERCENT SIGN character (%).</li>
+   <li>As the <a>WebVTT cue setting value</a>:
+    <ol>
+     <li>One or more <a>ASCII digits</a>.</li>
+     <li>A U+0025 PERCENT SIGN character (%).</li>
+    </ol>
+   </li>
   </ol>
 
   <p class="note">A <a>WebVTT text position cue setting</a>
@@ -1197,10 +1235,14 @@ The Final Minute</pre>
   following components, in the order given:</p>
 
   <ol>
-   <li><p>The string "<code title="">size</code>".</p></li>
+   <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li>A U+003A COLON character (:).</li>
-   <li>One or more <a>ASCII digits</a>.</li>
-   <li>A U+0025 PERCENT SIGN character (%).</li>
+   <li>As the <a>WebVTT cue setting value</a>:
+    <ol>
+     <li>One or more <a>ASCII digits</a>.</li>
+     <li>A U+0025 PERCENT SIGN character (%).</li>
+    </ol>
+   </li>
   </ol>
 
   <p class="note">A <a>WebVTT size cue setting</a> configures
@@ -1213,9 +1255,9 @@ The Final Minute</pre>
   following components, in the order given:</p>
 
   <ol>
-   <li><p>The string "<code title="">align</code>".</p></li>
+   <li><p>The string "<code title="">align</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li>A U+003A COLON character (:).</li>
-   <li>One of the following strings: "<code title="">start</code>", "<code title="">middle</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>"</li>
+   <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code title="">start</code>", "<code title="">middle</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>"</li>
   </ol>
 
   <p class="note">A <a>WebVTT alignment cue setting</a>
@@ -1227,12 +1269,9 @@ The Final Minute</pre>
   following components, in the order given:</p>
 
   <ol>
-    <li><p>The string "<code>region</code>".</p></li>
+    <li><p>The string "<code>region</code>" as the <a>WebVTT cue setting name</a>.</p></li>
     <li><p>A U+003A COLON character (:).</p></li>
-    <li><p>An arbitrary string of one or more characters other than U+0020 SPACE
-    or U+0009 CHARACTER TABULATION character. The string must not contain the substring
-    "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
-    U+003E GREATER-THAN SIGN).</p></li>
+    <li><p>As the <a>WebVTT cue setting value</a>: an arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
   </ol>
 
   <p class ="note">A <a>WebVTT region cue setting</a>
