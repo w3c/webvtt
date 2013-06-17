@@ -899,42 +899,21 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   and end offsets of the <a>WebVTT cue</a>. Different cues can
   overlap. Cues are always listed ordered by their start time.</p>
 
-  <p>A <dfn>WebVTT timestamp</dfn> representing a time in seconds and
-  fractions of a second is a <a>WebVTT timestamp</a>
-  representing hours <var
+  <p>A <dfn>WebVTT timestamp</dfn> can be either a
+  <a title="complete WebVTT timestamp">WebVTT timestamp representing
+  hours, minutes, seconds and thousandths of a second</a> or a
+  <a title="partial WebVTT timestamp">WebVTT timestamp representing
+  a time in seconds and fractions of a second</a>.</p>
+
+  <p class="note">A <a>WebVTT timestamp</a> is always interpreted
+  relative to the <a>current playback position</a> of the media data
+  that the WebVTT file is to be synchronised with, which always starts
+  at 0.</p>
+
+  <p>A <dfn title="complete WebVTT timestamp">WebVTT timestamp representing hours <var
   title="">hours</var>, minutes <var title="">minutes</var>, seconds
   <var title="">seconds</var>, and thousandths of a second <var
-  title="">seconds-frac</var>, calculated as follows:</p>
-
-  <ol>
-
-   <li><p>Let <var title="">seconds</var> be the integer part of the
-   time.</p></li>
-
-   <li><p>Let <var title="">seconds-frac</var> be the fractional
-   component of the time, expressed as the digits of the decimal
-   fraction given to three decimal digits.</p></li>
-
-   <li><p>If <var title="">seconds</var> is greater than 59, then let
-   <var title="">minutes</var> be the integer component of <var
-   title="">seconds</var> divided by sixty, and then let <var
-   title="">seconds</var> be the remainder of dividing <var
-   title="">seconds</var> divided by sixty. Otherwise, let <var
-   title="">minutes</var> be zero.</p></li>
-
-   <li><p>If <var title="">minutes</var> is greater than 59, then let
-   <var title="">hours</var> be the integer component of <var
-   title="">minutes</var> divided by sixty, and then let <var
-   title="">minutes</var> be the remainder of dividing <var
-   title="">minutes</var> divided by sixty. Otherwise, let <var
-   title="">hours</var> be zero.</p></li>
-
-  </ol>
-
-  <p>A <a>WebVTT timestamp</a> representing hours <var
-  title="">hours</var>, minutes <var title="">minutes</var>, seconds
-  <var title="">seconds</var>, and thousandths of a second <var
-  title="">seconds-frac</var>, consists of the following components,
+  title="">seconds-frac</var></dfn>, consists of the following components,
   in the given order:</p>
 
   <ol>
@@ -964,6 +943,37 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    <li>Three <a>ASCII digits</a>, representing the thousandths of a second <var
    title="">seconds-frac</var> as a base ten integer.</li>
+
+  </ol>
+
+  <p>A <dfn title="partial WebVTT timestamp">WebVTT timestamp representing a time
+  in seconds and fractions of a second</dfn> is a <a>WebVTT timestamp</a>
+  representing hours <var title="">hours</var>, minutes <var title="">minutes</var>, seconds
+  <var title="">seconds</var>, and thousandths of a second <var
+  title="">seconds-frac</var>, calculated as follows:</p>
+
+  <ol>
+
+   <li><p>Let <var title="">seconds</var> be the integer part of the
+   time.</p></li>
+
+   <li><p>Let <var title="">seconds-frac</var> be the fractional
+   component of the time, expressed as the digits of the decimal
+   fraction given to three decimal digits.</p></li>
+
+   <li><p>If <var title="">seconds</var> is greater than 59, then let
+   <var title="">minutes</var> be the integer component of <var
+   title="">seconds</var> divided by sixty, and then let <var
+   title="">seconds</var> be the remainder of dividing <var
+   title="">seconds</var> divided by sixty. Otherwise, let <var
+   title="">minutes</var> be zero.</p></li>
+
+   <li><p>If <var title="">minutes</var> is greater than 59, then let
+   <var title="">hours</var> be the integer component of <var
+   title="">minutes</var> divided by sixty, and then let <var
+   title="">minutes</var> be the remainder of dividing <var
+   title="">minutes</var> divided by sixty. Otherwise, let <var
+   title="">hours</var> be zero.</p></li>
 
   </ol>
 
