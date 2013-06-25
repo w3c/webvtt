@@ -3599,13 +3599,6 @@ The Final Minute</pre>
    of cues</a> that have their <a>text track cue active
    flag</a> set.</p></li>
 
-   <li><p>If <var title="">reset</var> is false, then, for each
-   <a>text track cue</a> <var title="">cue</var> in <var
-   title="">cues</var>: if <var title="">cue</var>'s <a>text track
-   cue display state</a> has a set of CSS boxes, then add those
-   boxes to <var title="">output</var>, and remove <var
-   title="">cue</var> from <var title="">cues</var>.</p></li>
-
    <li><p>If <var>reset</var> is false, then, for each <span>text track region</span> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
 
    <li><p>Apply the following steps for each <var>regionNode</var>:</p>
@@ -3636,6 +3629,18 @@ The Final Minute</pre>
      </ol>
    </li>
 
+   <li><p>If <var>reset</var> is false, then, for each <span>text track cue</span> <var>cue</var> in <var>cues</var>: if <var>cue</var>'s <span>text track cue display state</span> has a set of CSS boxes, then:</p>
+
+     <ul>
+       <li><p>if there is a <a>WebVTT region</a> whose <a title="WebVTT region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>:</p>
+      <p>add those boxes to that region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
+
+      <li><p>otherwise:</p>
+        <p>add those boxes to <var>output</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
+     </ul>
+
+   </li>
+
    <li>
 
     <p>For each <a>text track cue</a> <var title="">cue</var>
@@ -3643,7 +3648,10 @@ The Final Minute</pre>
     boxes added to <var title="">output</var>, in <a>text track
     cue order</a>, run the following substeps:</p>
 
-    <ol>
+    <ul>
+     <li><p>If <var>cue</var> has an empty <a>text track cue region identifier</a> or there is no <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>, run the following substeps:</p>
+      
+      <ol>
 
      <li><p>Let <var title="">nodes</var> be the <a>list of WebVTT
      Node Objects</a> obtained by applying the <a>WebVTT cue
@@ -4401,7 +4409,45 @@ The Final Minute</pre>
      title="">output</var>.</p></li>
 
     </ol>
+     </li>
 
+     <li><p>Otherwise run the following substeps:</p>
+       <ol>
+         <li><p>Let <var>region</var> be the <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> matches the <a>text track cue region identifier</a> of <var>cue</var>.</p></li>
+
+         <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>'s 'transition-property' to 'top' and 'transition-duration' to '0.433s'.</p></li>
+
+         <li><p>Let <var>nodes</var> be the <span>list of WebVTT Node Objects</span> obtained by applying the <span>WebVTT cue text parsing rules</span> to the <var>cue</var>'s <span>text track cue text</span>.</p></li>
+
+         <li><p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the values of each <span>WebVTT Text Object</span> in <var>nodes</var>, in a pre-order, depth-first traversal, excluding <span>WebVTT Ruby Text Objects</span> and their descendants, to determine the <i>paragraph embedding level</i> of the first
+Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
+           <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each line of the cue is reordered as if it was a separate paragraph.)</p>
+         </li>
+
+         <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p>
+         </li>
+
+         <li><p>Let <var>offset</var> be the <span>text track cue text position</span> multiplied by the <var>width</var> of the <a>WebVTT region object</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p>
+         </li>
+
+         <li><p>If <var>direction</var> is 'ltr' and 'text-align' is 'start' or 'left', or if <var>direction</var> is 'rtl' and 'text-align' is 'end' or 'left', let <var>left</var> be <var>offset</var> and let <var>right</var> be 'auto'</p>
+           <p>If <var>direction</var> is 'ltr' and 'text-align' is 'end' or 'right', or if <var>direction</var> is 'rtl' and 'text-align' is 'start' or 'right', let <var>left</var> be 'auto' and <var>right</var> be <var>offset</var>.</p>
+           <p>If 'text-align' is 'middle', ignore the <var>offset</var>.</p>
+         </li>
+
+         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> in the same way that they are applied to in step 10, substep 12 is applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+           <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with their positions.</p>
+         </li>
+
+         <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>. The cue is ignored.</p></li>
+
+         <li><p>Let <var>cue</var>'s <span>text track cue display state</span> have the CSS boxes in <var>boxes</var>.</p></li>
+
+         <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
+       </ol>
+     </li>
+
+    </ul>
    </li>
 
    <li><p>Return <var title="">output</var>.</p></li>
