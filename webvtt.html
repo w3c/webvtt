@@ -1434,7 +1434,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A <a>WebVTT text position cue setting</a>.</li> <!-- position:100% -->
    <li>A <a>WebVTT size cue setting</a>.</li>          <!-- size:100% -->
    <li>A <a>WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right -->
-   <li>A <a>WebVTT region cue setting</a>.<li>         <!-- region:fred -->
+   <li>A <a>WebVTT region cue setting</a>.</li>         <!-- region:fred -->
   </ul>
 
   <p class="note">A <a>WebVTT cue settings list</a> gives configuration
@@ -1496,7 +1496,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <ol>
    <li><p>The string "<code title="">position</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-   <li>A U+003A COLON character (:).</li>
+   <li><p>A U+003A COLON character (:).</p></li>
    <li>As the <a>WebVTT cue setting value</a>:
     <ol>
      <li>One or more <a>ASCII digits</a>.</li>
@@ -1518,7 +1518,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <ol>
    <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-   <li>A U+003A COLON character (:).</li>
+   <li><p>A U+003A COLON character (:).</p></li>
    <li>As the <a>WebVTT cue setting value</a>:
     <ol>
      <li>One or more <a>ASCII digits</a>.</li>
@@ -1538,7 +1538,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <ol>
    <li><p>The string "<code title="">align</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-   <li>A U+003A COLON character (:).</li>
+   <li><p>A U+003A COLON character (:).</p></li>
    <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code title="">start</code>", "<code title="">middle</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>"</li>
   </ol>
 
@@ -2145,7 +2145,7 @@ The Final Minute</pre>
 
    <li><p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be the <var>percentage</var>.</p></li>
 
-   <li><p>If <var>percentage</var> is outside Throws an the range 0.0% .. 100.0%, fail.</p></li>
+   <li><p>If <var>percentage</var> is outside the range 0.0% .. 100.0%, fail.</p></li>
 
    <li><p>Return <var>percentage</var>.</p></li>
   </ol>
@@ -4494,39 +4494,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   title="text track cue text">text</a> the <a>list of WebVTT
   Node Objects</a> was constructed.</p>
 
-  <p>Every <a href="#webvtt-region-object">WebVTT region object</a> is initialised with the following CSS settings:</p>
-  <ul>
-    <li>the 'position' property must be set to 'absolute'</li>
-    <li>the 'writing-mode' property must be set to 'horizontal-tb'</li>
-    <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
-    <li>the 'word-wrap' property must be set to 'break-word'</li>
-    <li>the 'overflow-wrap' property must be set to 'break-word'</li>
-    <li>the 'font' shorthand property must be set to '(0.0533/1.3)vh sans-serif'</li>
-    <li>the 'line-height' shorthand property must be set to '0.0533vh'</li>
-    <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
-    <li>the 'overflow' property must be set to 'hidden'</li>
-    <li>the 'width' property must be set to <var>width</var></li>
-    <li>the 'min-height' property must be set to '0px'</li>
-    <li>the 'max-height' property must be set to <var>height</var></li>
-    <li>the 'left' property must be set to <var>left</var></li>
-    <li>the 'right' property must be set to <var>right</var></li>
-    <li>the 'top' property must be set to <var>top</var></li>
-    <li>the 'display' property must be set to 'inline-flex'</li>
-    <li>the 'flex-flow' property must be set to 'column'</li>
-    <li>the 'justify-content' property must be set to 'flex-end'</li>
-  </ul>
-  <p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are the values with those names determined by the <a>rules for updating the display of WebVTT text tracks</a> for the <a>text track region</a> from which the <a>WebVTT region object</a> was constructed.</p>
-
-  <p>The children of every <a>WebVTT region object</a> are further initialised with these CSS settings:</p>
-  <ul>
-    <li>the 'position' property must be set to 'relative'</li>
-    <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
-    <li>the 'width' property must be set to 'auto'</li>
-    <li>the 'height' property must be set to <var>height</var></li>
-    <li>the 'left' property must be set to <var>left</var></li>
-    <li>the 'text-align' property must be set as described for <a href="http://dev.w3.org/html5/webvtt/#applying-css-properties-to-webvtt-node-objects" class="externalDFN">(root) List of WebVTT Node Objects</a> not part of a region</li>
-  </ul>
-
   <p>The 'text-align' property on the (root) <a>list of WebVTT Node
   Objects</a> must be set to the value in the second cell of the
   row of the table below whose first cell is the value of the
@@ -4581,6 +4548,39 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <p>The 'display' property on <a title="WebVTT Ruby Text
   Object">WebVTT Ruby Text Objects</a> must be set to
   'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
+
+  <p>Every <a href="#webvtt-region-object">WebVTT region object</a> is initialised with the following CSS settings:</p>
+  <ul>
+    <li>the 'position' property must be set to 'absolute'</li>
+    <li>the 'writing-mode' property must be set to 'horizontal-tb'</li>
+    <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
+    <li>the 'word-wrap' property must be set to 'break-word'</li>
+    <li>the 'overflow-wrap' property must be set to 'break-word'</li>
+    <li>the 'font' shorthand property must be set to '(0.0533/1.3)vh sans-serif'</li>
+    <li>the 'line-height' shorthand property must be set to '0.0533vh'</li>
+    <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
+    <li>the 'overflow' property must be set to 'hidden'</li>
+    <li>the 'width' property must be set to <var>width</var></li>
+    <li>the 'min-height' property must be set to '0px'</li>
+    <li>the 'max-height' property must be set to <var>height</var></li>
+    <li>the 'left' property must be set to <var>left</var></li>
+    <li>the 'right' property must be set to <var>right</var></li>
+    <li>the 'top' property must be set to <var>top</var></li>
+    <li>the 'display' property must be set to 'inline-flex'</li>
+    <li>the 'flex-flow' property must be set to 'column'</li>
+    <li>the 'justify-content' property must be set to 'flex-end'</li>
+  </ul>
+  <p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are the values with those names determined by the <a>rules for updating the display of WebVTT text tracks</a> for the <a>text track region</a> from which the <a>WebVTT region object</a> was constructed.</p>
+
+  <p>The children of every <a>WebVTT region object</a> are further initialised with these CSS settings:</p>
+  <ul>
+    <li>the 'position' property must be set to 'relative'</li>
+    <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
+    <li>the 'width' property must be set to 'auto'</li>
+    <li>the 'height' property must be set to <var>height</var></li>
+    <li>the 'left' property must be set to <var>left</var></li>
+    <li>the 'text-align' property must be set as described for <a href="http://dev.w3.org/html5/webvtt/#applying-css-properties-to-webvtt-node-objects" class="externalDFN">(root) List of WebVTT Node Objects</a> not part of a region</li>
+  </ul>
 
   <p>All other non-inherited properties must be set to their initial
   values; inherited properties on the root <a>list of WebVTT Node
@@ -5141,7 +5141,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
 
   <pre class="idl_whatwg">
 interface <a>TextTrack</a> : EventTarget {
-          attribute TextTrackRegionList? <a title="dom-TextTrack-regions">regions</a>;
+           attribute TextTrackRegionList? <a title="dom-TextTrack-regions">regions</a>;
   void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>TextTrackRegion</a> region);
   void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>TextTrackRegion</a> region);
 };</pre>
@@ -5194,7 +5194,7 @@ interface <a>TextTrack</a> : EventTarget {
 
   <pre class="idl_whatwg">
 interface <a>TextTrackCue</a> : EventTarget {
-          attribute DOMString <a title="dom-TextTrackCue-regionId">regionId</a>;
+           attribute DOMString <a title="dom-TextTrackCue-regionId">regionId</a>;
 };</pre>
 
   <dl class="domintro">
@@ -5219,15 +5219,15 @@ interface <a>TextTrackCue</a> : EventTarget {
   <pre class="idl_whatwg">
 [Constructor]
 interface <dfn>TextTrackRegion</dfn> : EventTarget {
- readonly attribute TextTrack? <a title="dom-TextTrackRegion-track">track</a>;
-          attribute DOMString <a title="dom-TextTrackRegion-id">id</a>;
-          attribute double <a title="dom-TextTrackRegion-width">width</a>;
-          attribute long <a title="dom-TextTrackRegion-lines">lines</a>;
-          attribute double <a title="dom-TextTrackRegion-regionAnchorX">regionAnchorX</a>;
-          attribute double <a title="dom-TextTrackRegion-regionAnchorY">regionAnchorY</a>;
-          attribute double <a title="dom-TextTrackRegion-viewportAnchorX">viewportAnchorX</a>;
-          attribute double <a title="dom-TextTrackRegion-viewportAnchorY">viewportAnchorY</a>;
-          attribute DOMString <a title="dom-TextTrackRegion-scroll">scroll</a>;
+  readonly attribute TextTrack? <a title="dom-TextTrackRegion-track">track</a>;
+           attribute DOMString <a title="dom-TextTrackRegion-id">id</a>;
+           attribute double <a title="dom-TextTrackRegion-width">width</a>;
+           attribute long <a title="dom-TextTrackRegion-lines">lines</a>;
+           attribute double <a title="dom-TextTrackRegion-regionAnchorX">regionAnchorX</a>;
+           attribute double <a title="dom-TextTrackRegion-regionAnchorY">regionAnchorY</a>;
+           attribute double <a title="dom-TextTrackRegion-viewportAnchorX">viewportAnchorX</a>;
+           attribute double <a title="dom-TextTrackRegion-viewportAnchorY">viewportAnchorY</a>;
+           attribute DOMString <a title="dom-TextTrackRegion-scroll">scroll</a>;
 };</pre>
 
   <dl class="domintro">   
@@ -5351,7 +5351,7 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
 
   <pre class="idl_whatwg">
 interface <dfn>TextTrackRegionList</dfn> : EventTarget {
- readonly attribute unsigned long <a title="dom-TextTrackRegionList-length">length</a>;
+  readonly attribute unsigned long <a title="dom-TextTrackRegionList-length">length</a>;
   getter <a title="dom-TextTrackRegion">TextTrackRegion</a> (unsigned long index);
   <a>TextTrackRegion</a>? <a title="dom-TextTrackRegionList-getRegionById">getRegionById</a>(DOMString id);
 };</pre>
