@@ -753,10 +753,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </dd>
   </dl>
 
-  </section>
-
-  <section>
-  <h3>Text Track List of Regions</h3>
+  <p>For parsing, we also need the following:</p>
 
   <dl>
   <dt><dfn title="text track list of regions">A text track list of regions</dfn></dfn>
@@ -1290,6 +1287,8 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     </li>
   </ul>
 
+  <p>A <dfn>WebVTT region</dfn> represents its <a title="WebVTT region setting list">WebVTT region settings</a>.</p>
+
   <p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of zero or more of the following components, in any order, separated from each other by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be included more than once per <a>WebVTT region setting list</a> string.</p>
 
   <ul> 
@@ -1702,12 +1701,10 @@ The Final Minute</pre>
 
 
   <section>
-
   <h2>WebVTT file format: Parsing</h3>
 
   <section>
-
-  <h3>WebVTT file structure parsing</h3>
+  <h3>WebVTT file parsing</h3>
 
   <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a
   <a>text track list of cues</a> <var title="">output</var>,
@@ -1731,6 +1728,8 @@ The Final Minute</pre>
   <ol>
 
    <li>
+
+     <p>Let <var title="">regions</var> to be a <a>text track list of regions</a>.</p>
 
     <p>Let <var title="">input</var> be the string being parsed, after
     conversion to Unicode, and with the following transformations
@@ -1801,17 +1800,54 @@ The Final Minute</pre>
    <a title="text track cue">text track cues</a> where added to
    <var title="">output</var>.</p></li>
 
-
    <li><p>The character indicated by <var title="">position</var> is a
    U+000A LINE FEED (LF) character. Advance <var
    title="">position</var> to the next character in <var
    title="">input</var>.</p></li>
 
-
    <li><p><i title="">Header</i>: <a>Collect a sequence of
    characters</a> that are <em>not</em> U+000A LINE FEED (LF)
    characters. Let <var title="">line</var> be those characters, if
    any.</p></li>
+
+   <!-- METADATA HEADER PARSING -->
+
+   <li><i>Metadata header loop</i>: If <var>line</var> is not the empty string, run the following substeps:
+
+     <ol>
+
+       <li><p><i>Metadata header creation</i>: Let <var>metadata</var> be a new <a>WebVTT metadata header</a>.</p></li>
+
+       <li><p>Let <a title="WebVTT metadata header name">metadata's name</a> be the empty string.</p></li>
+
+       <li><p>Let <a title="WebVTT metadata header value">metadata's value</a> be the empty string.</p></li>
+
+       <li><p>If <var>line</var> contains the character ":" (A U+003A COLON), then set <a title="WebVTT metadata header name">metadata's name</a> to the substring of <var>line</var> before the first ":" character and <a title="WebVTT metadata header value">metadata's value</a> to the substring after this character.</p></li>
+
+       <li><p>If <a title="WebVTT metadata header name">metadata's name</a> equals "Region":</p>
+
+         <ol>
+           <li><i>Region creation</i>: Let <var>region</var> be a new <a>text track region</a>.</li>
+           <li>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be the empty string.</li>
+           <li>Let <var>region</var>'s <a title="text track region width">width</a> be 100.</li>
+           <li>Let <var>region</var>'s <a title="text track region lines">lines</a> be 3.</li>
+           <li>Let <var>region</var>'s <a title="text track region anchor">anchor point</a> be (0,100).</li>
+           <li>Let <var>region</var>'s <a title="text track region viewport anchor">viewport anchor point</a> be (0,100).</li>
+           <li>Let <var>region</var>'s <a title="text track region scroll">scroll value</a> be <a title="text track region scroll none">NONE</a>.</li>
+           <li><a>Collect WebVTT region settings</a> from <a title="WebVTT metadata header value">metadata's value</a> using <var>region</var> for the results.</li>
+
+           <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from <var>region</var>.</li>
+
+           <li>If the <a>text track list of regions</a> <var>regions</var> contains a region with the same <var>region identifier</var> value as <var>region</var>, remove that region.</li><!-- the removed region has never been in effect -->
+
+           <li>Add <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
+        </ol>
+       </li>
+       <li><p>Jump back to the step labeled header.</p></li>
+     </ol>
+   </li>
+
+   <!-- FIXME: right now ignores all WebVTT metadata headers that don't specify regions. -->
 
    <li><p>If <var title="">position</var> is past the end of <var
    title="">input</var>, then jump to the step labeled
@@ -1865,6 +1901,9 @@ The Final Minute</pre>
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    writing direction</a> be <a title="text track cue
    horizontal writing direction">horizontal</a>.</p></li>
+
+   <li><p>Let <var titl="">cue</var>'s <a>text track cue 
+   region identifier</a> be the empty string.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    snap-to-lines flag</a> be true.</p></li>
@@ -1997,6 +2036,121 @@ The Final Minute</pre>
 
   </ol>
 
+  </section>
+
+  <section>
+  <h3>WebVTT region settings parsing</h3>
+
+  <p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region settings</dfn> from a string <var>input</var> for a <a>text track</a>, the user agent must run the following algorithm.</p>
+  
+  <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a> that is used as a root node for <a title="List of WebVTT node objects">lists of WebVTT node objects</a>. This algorithm returns a list of WebVTT Region Objects.</p>
+
+  <ol>
+    <li><p>Let <var>settings</var> be the result of <a title="split a string on spaces">splitting <var>input</var> on spaces</a>.</p></li>
+    
+    <li>For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:</p>
+
+      <ol>
+        <li><p>If <var>setting</var> does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D EQUALS SIGN character (=) in <var>setting</var> is either the first or last character of <var>setting</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+        <li><p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding the first U+003D EQUALS SIGN character (=) in that string.</p></li>
+
+        <li><p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the character immediately after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
+
+        <li><p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
+          
+        <dl>
+          <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
+          <dd><p>Let <var>region's <a title="text track region identifier">identifier</a> be <var>value</var>.</p>
+          </dd>
+
+          <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>width</code>"</p></dt>
+          <dd><p>If <a>parse a percentage string</a> from <var>value</var> returns a <var>percentage</var>, let <var>region</var>'s <a>text track region width</a> be <var>percentage</var>.</p>
+          </dd>
+
+          <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>lines</code>"</dt>
+          <dd>
+            <ol>
+              <li><p>If <var>value</var> contains any characters other than <span>ASCII digits</span>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+              <li><p>Interpret <var>value</var> as an integer, and let <var>number</var> be that number.</p></li>
+
+              <li><p>Let <var>region</var>'s <a>text track region lines</a> be <var>number</var>.</p></li>
+            </ol>
+          </dd>
+
+          <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>regionanchor</code>"</dt>
+          <dd>
+            <ol>
+              <li><p>If <var>value</var> does not contain a U+002C COMMA character (,), then jump to the step labeled <i>next setting</i>.</p></li>
+
+              <li><p>Let <var>anchorX</var> be the leading substring of <var>value</var> up to and excluding the first U+002C COMMA character (,) in that string.</p></li>
+
+              <li><p>Let <var>anchorY</var> be the trailing substring of <var>value</var> starting from the character immediately after the first U+002C COMMA character (,) in that string.</p></li>
+
+              <li><p>If <a>parse a percentage string</a> from <var>anchorX</var> or <a>parse a percentage string</a> from <var>anchorY</var> don't return a <var>percentage</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+              
+              <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region anchor point</a> be the tuple of the <var>percentage</var> values calculated from <var>anchorX</var> and <var>anchorY</var>.</p></li>
+            </ol>
+          </dd>
+
+          <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>viewportanchor</code>"</dt>
+          <dd>
+            <ol>
+              <li><p>If <var>value</var> does not contain a U+002C COMMA character (,), then jump to the step labeled <i>next setting</i>.</p></li>
+
+              <li><p>Let <var>viewportanchorX</var> be the leading substring of <var>value</var> up to and excluding the first U+002C COMMA character (,) in that string.</p></li>
+
+              <li><p>Let <var>viewportanchorY</var> be the trailing substring of <var>value</var> starting from the character immediately after the first U+002C COMMA character (,) in that string.</p></li>
+
+              <li><p>If <a>parse a percentage string</a> from <var>viewportanchorX</var> or <a>parse a percentage string</a> from <var>viewportanchorY</var> don't return a <var>percentage</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+              
+              <li><p>Let <var>region</var>'s <a title="text track region viewport anchor">text track region viewport anchor point</a> be the tuple of the <var>percentage</var> values calculated from <var>viewportanchorX</var> and <var>viewportanchorY</var>.</p></li>
+            </ol>
+          </dd>
+
+          <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>scroll</code>"</dt>
+          <dd>
+            <ol>
+              <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string "<code>up</code>", then let <var>region</var>'s <a title="text track region scroll">scroll value</a> be "<a title="text track region scroll up">scroll up</a>".</li>
+           </ol>
+          </dd>
+        </dl>
+        </li>
+
+        <li><i>Next setting</i>: Continue to the next setting, if any.</li>
+      </ol>
+    </li>
+  </ol>
+
+
+  <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return a percentage value or, if at any point the algorithm says that it "fails", this means that it is aborted at that point with an IndexSizeError and returns nothing.</p>
+
+  <ol>
+   <li><p>Let <var>input</var> be the string being parsed.</p></li>
+
+   <li><p>If <var>input</var> contains any characters other than U+0025 PERCENT SIGN characters (%), U+002E DOT characters (.) and <span>ASCII digits</span>, then fail.</p></li>
+
+   <li><p>If <var>input</var> does not contain at least one <a href="http://www.w3.org/TR/html5/single-page.html#ascii-digits" class="externalDFN">ASCII digit</a>, then fail.</p></li>
+
+   <li><p>If <var>input</var> contains more than one U+002E DOT character (.), then fail.</p></li>
+
+   <li><p>If any character in <var>input</var> other than the last character is a U+0025 PERCENT SIGN character (%), then fail.</p></li>
+
+   <li><p>If the last character in <var>input</var> is not a U+0025 PERCENT SIGN character (%), then fail.</p></li>
+
+   <li><p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be the <var>percentage</var>.</p></li>
+
+   <li><p>If <var>percentage</var> is outside Throws an the range 0.0% .. 100.0%, fail.</p></li>
+
+   <li><p>Return <var>percentage</var>.</p></li>
+  </ol>
+
+  </section>
+
+  <section>
+  <h3>Cue timings and settings parsing</h3>
+
   <p>When the algorithm above requires that the user agent
   <dfn>Collect WebVTT cue timings and settings</dfn> from a string
   <var title="">input</var> for a <a>text track cue</a> <var
@@ -2057,7 +2211,7 @@ The Final Minute</pre>
    <li><p><a>Parse the WebVTT settings</a> given by <var
    title="">remainder</var> for <var title="">cue</var>.</p></li>
 
-  </ol>
+  </ol>  
 
   <p>When the user agent is to <dfn>Parse the WebVTT settings</dfn>
   given by a string <var title="">input</var> for a <a>text track
@@ -2098,6 +2252,15 @@ The Final Minute</pre>
       title="">name</var>, as follows:</p>
 
       <dl>
+
+        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code>region</code>"</dt>
+
+        <dd>
+          <ol>
+            <li>Let <var>cue</var>'s <a>text track cue region identifier</a> be <var>value</var>.</li>
+          </ol>
+        </dd>
+
 
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">vertical</code>"</dt>
 
@@ -2295,6 +2458,8 @@ The Final Minute</pre>
 
      </li>
 
+     <li>If <var>cue</var>'s <a>text track cue line position</a> is not <a>text track cue automatic line position</a> or <var>cue</var>'s <a>text track cue size</a> is not 100 or <var>cue</var>'s <a>text track cue writing direction</a> is not <a title="text track cue horizontal writing direction">horizontal</a>, but <var>cue</var>'s <a>text track cue region identifier</a> is not the empty string, let <var>cue</var>'s <a>text track cue region identifier</a> be the empty string.</li>
+
      <li><p><i>Next setting</i>: Continue to the next token, if
      any.</p></li> <!-- this step is just here to give the algorithms
      above a clean way to 'break' -->
@@ -2304,6 +2469,9 @@ The Final Minute</pre>
    </li>
 
   </ol>
+
+  <p class="note">Step 5 makes sure that no matter in which order the cue settings are provided, if the cue has a <a>text track cue line position</a> or a <a>text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction">growing right writing direction</a>, the <a>text track cue region identifier</a> will be ignored.</p>
+
 
   <p>When this specification says that a user agent is to
   <dfn>Collect a WebVTT timestamp</dfn>, the user agent must run the
@@ -3291,6 +3459,9 @@ The Final Minute</pre>
      <td><a>List of WebVTT Node Objects</a>
      <td><code>DocumentFragment</code> node
     <tr>
+     <td><a>WebVTT Region Object</a>
+     <td><code>DocumentFragment</code> node
+    <tr>
      <td><a>WebVTT Class Object</a>
      <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".
     <tr>
@@ -3416,7 +3587,10 @@ The Final Minute</pre>
    title="text track showing">showing</a>.</p></li>
 
    <li><p>Let <var title="">cues</var> be an empty list of <a
-   title="text track cue">text track cues</a>.</p></li>
+   title="text track cue">text track cues</a> and <var title="">regions</var>
+   be an empty list of <a title="text track region">text track regions</a>. For each track <var>track</var>
+   in <var>tracks</var> append to <var>regions</var> all the <a title="text track region">regions</a> from
+   <var>track</var>'s <a>text track list of regions</a>.</p></li>
 
    <li><p>For each track <var title="">track</var> in <var
    title="">tracks</var>, append to <var title="">cues</var> all the
@@ -3431,6 +3605,36 @@ The Final Minute</pre>
    cue display state</a> has a set of CSS boxes, then add those
    boxes to <var title="">output</var>, and remove <var
    title="">cue</var> from <var title="">cues</var>.</p></li>
+
+   <li><p>If <var>reset</var> is false, then, for each <span>text track region</span> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
+
+   <li><p>Apply the following steps for each <var>regionNode</var>:</p>
+
+     <ol>
+       <li><p>Prepare some variables  for the application of CSS properties to <var>regionNode</var> as follows:</p>
+
+         <ul>
+           <li><p>Let <var>regionWidth</var> be the <a>text track region width</a>. Let <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).<a href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+
+           <li><p>Let <var>lineHeight</var> be '0.0533vh' ('vh' is a CSS unit).<a href="#refsCSSVALUES">[CSSVALUES]</a> and <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
+
+           <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>text track region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted from '<var>viewportAnchorX</var> vw'.</p></li>
+
+           <li><p>Let <var>viewportAnchorY</var> be the y dimension of the <a>text track region viewport anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a>text track region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted from '<var>viewportAnchorY</var> vh'.</p></li>
+         </ul>
+       </li>
+
+       <li><p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following constraints, thus obtaining a CSS box <var>box</var> positioned relative to an initial containing block:</p>
+         <ol>
+           <li><p>No style sheets are associated with <var>regionNode</var>. (The regionNodes are subsequently restyled using style sheets after their boxes are generated, as described below.)</p></li>
+           <li><p>Properties on <var>regionNode</var> have their values set as defined in the next section. (That section uses some of the variables whose values were calculated earlier in this algorithm.)</p></li>
+           <li><p>The viewport (and initial containing block) is video's rendering area.</p></li>
+         </ol>
+       </li>
+
+       <li><p>Add the CSS box <var>box</var> to <var>output</var>.</p></li>
+     </ol>
+   </li>
 
    <li>
 
@@ -4711,6 +4915,9 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    writing direction</a> be <a title="text track cue
    horizontal writing direction">horizontal</a>.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <a title="text track cue region identifier">region identifier</a>
+   be the empty string.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    snap-to-lines flag</a> be true.</p></li>
