@@ -84,7 +84,7 @@
       };
     </script>
     <!-- script to register bugs -->
-    <script src="http://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
+    <script src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
     <meta name="bug.short_desc" content="[WebVTT] ">
     <meta name="bug.product" content="TextTracks CG">
     <meta name="bug.component" content="WebVTT">    <style>
@@ -4887,26 +4887,27 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <h2>WebVTT API for Browsers</h2>
 
   <section>
-  <h3>WebVTTCue interface</h3>
+  <h3>VTTCue interface</h3>
 
   <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 
   <pre class="idl_whatwg">enum <dfn>AutoKeyword</dfn> { "auto" };
-[<a title="dom-TextTrackCue">Constructor</a>(double startTime, double endTime, DOMString text)]
-interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
-           attribute DOMString <a title="dom-TextTrackCue-vertical">vertical</a>;
-           attribute boolean <a title="dom-TextTrackCue-snapToLines">snapToLines</a>;
-           attribute (long or <a>AutoKeyword</a>) <a title="dom-TextTrackCue-line">line</a>;
-           attribute long <a title="dom-TextTrackCue-position">position</a>;
-           attribute long <a title="dom-TextTrackCue-size">size</a>;
-           attribute DOMString <a title="dom-TextTrackCue-align">align</a>;
-           attribute DOMString <a title="dom-TextTrackCue-text">text</a>;
-  DocumentFragment <a title="dom-TextTrackCue-getCueAsHTML">getCueAsHTML</a>();
+[<a title="dom-VTTCue">Constructor</a>(double startTime, double endTime, DOMString text)]
+interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
+           attribute DOMString <a title="dom-VTTCue-regionId">regionId</a>;
+           attribute DOMString <a title="dom-VTTCue-vertical">vertical</a>;
+           attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
+           attribute (long or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
+           attribute long <a title="dom-VTTCue-position">position</a>;
+           attribute long <a title="dom-VTTCue-size">size</a>;
+           attribute DOMString <a title="dom-VTTCue-align">align</a>;
+           attribute DOMString <a title="dom-VTTCue-text">text</a>;
+  DocumentFragment <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
 
   <dl class="domintro">
 
-   <dt><var title="">cue</var> = new <code title="dom-TextTrackCue">WebVTTCue</code>( <var title="">startTime</var>, <var title="">endTime</var>, <var title="">text</var> )</dt>
+   <dt><var title="">cue</var> = new <code title="dom-VTTCue">VTTCue</code>( <var title="">startTime</var>, <var title="">endTime</var>, <var title="">text</var> )</dt>
    <dd>
     <p>Returns a new <code>TextTrackCue</code> object, for use with the <code title="dom-TextTrack-addCue">addCue()</code> method.</p>
     <p>The <var title="">startTime</var> argument sets the <a>text track cue start time</a>.</p>
@@ -4914,7 +4915,13 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
     <p>The <var title="">text</var> argument sets the <a>text track cue text</a>.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-vertical">vertical</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-regionId">regionId</a></dt>
+   <dd>
+    <p>Returns a string representing the <a>text track cue region identifier</a> of the text track region that the <a>TextTrackCue</a> object belongs to. If the <a>TextTrackCue</a> doesn't belong to a text track region, returns the empty string.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-vertical">vertical</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns a string representing the <a>text track cue writing direction</a>, as follows:</p>
     <dl class="switch">
@@ -4928,13 +4935,13 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-snapToLines">snapToLines</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-snapToLines">snapToLines</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns true if the <a>text track cue snap-to-lines flag</a> is set, false otherwise.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-line">line</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-line">line</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue line position</a>. In the
     case of the value being <a title="text track cue automatic line
@@ -4943,19 +4950,19 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-position">position</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-position">position</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text position</a>.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-size">size</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-size">size</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue size</a>.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-align">align</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-align">align</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns a string representing the <a>text track cue alignment</a>, as follows:</p>
     <dl class="switch">
@@ -4973,20 +4980,20 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-text">text</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-text">text</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text</a> in raw unparsed form.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">fragment</var> = <var title="">cue</var> . <a title="dom-TextTrackCue-getCueAsHTML">getCueAsHTML</a>()</dt>
+   <dt><var title="">fragment</var> = <var title="">cue</var> . <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>()</dt>
    <dd>
     <p>Returns the <a>text track cue text</a> as a <code>DocumentFragment</code> of <a>HTML elements</a> and other DOM nodes.</p>
    </dd>
 
   </dl>
 
-  <p>The <dfn title="dom-TextTrackCue"><code>WebVTTCue(<var
+  <p>The <dfn title="dom-VTTCue"><code>VTTCue(<var
   title="">startTime</var>, <var title="">endTime</var>, <var
   title="">text</var>)</code></dfn> constructor, when invoked, must
   run the following steps:</p>
@@ -5046,7 +5053,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   </ol>
 
   <p>The <dfn
-  title="dom-TextTrackCue-vertical"><code>vertical</code></dfn>
+  title="dom-VTTCue-vertical"><code>vertical</code></dfn>
   attribute, on getting, must return the string from the second cell
   of the row in the table below whose first cell is the <a>text
   track cue writing direction</a> of the <a>text track
@@ -5055,7 +5062,7 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   <table>
    <thead>
     <tr> <th> <a>text track cue writing direction</a>
-         <th> <code title="dom-TextTrackCue-direction">direction</code> value
+         <th> <code title="dom-VTTCue-direction">direction</code> value
    <tbody>
     <tr> <td> <a title="text track cue horizontal writing direction">Horizontal</a>
          <td> "<code title=""></code>" (the empty string)
@@ -5070,13 +5077,13 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   match for the new value, if any. If none of the values match, then the user agent must instead
   throw a <code>SyntaxError</code> exception.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
+  <p>The <dfn title="dom-VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
   getting, must return true if the <a>text track cue snap-to-lines flag</a> of the <a>text
   track cue</a> that the <code>TextTrackCue</code> object represents is set; or false otherwise.
   On setting, the <a>text track cue snap-to-lines flag</a> must be set if the new value is
   true, and must be unset otherwise.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-line"><code>line</code></dfn> attribute, on getting, must
+  <p>The <dfn title="dom-VTTCue-line"><code>line</code></dfn> attribute, on getting, must
   return the <a>text track cue line position</a> of the <a>text track cue</a> that the
   <code>TextTrackCue</code> object represents. The special value <a title="text track cue
   automatic line position">auto</a> must be represented as the string "<code
@@ -5085,26 +5092,26 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   interpreted as the special value <a title="text track cue automatic line
   position">auto</a>.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-position"><code>position</code></dfn> attribute, on getting,
+  <p>The <dfn title="dom-VTTCue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a>text track cue text position</a> of the <a>text track cue</a> that
   the <code>TextTrackCue</code> object represents. On setting, if the new value is negative or
   greater than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the
   <a>text track cue text position</a> must be set to the new value.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-size"><code>size</code></dfn> attribute, on getting, must
+  <p>The <dfn title="dom-VTTCue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a>text track cue size</a> of the <a>text track cue</a> that the
   <code>TextTrackCue</code> object represents. On setting, if the new value is negative or greater
   than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the <a>text
   track cue size</a> must be set to the new value.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-align"><code>align</code></dfn> attribute, on getting, must
+  <p>The <dfn title="dom-VTTCue-align"><code>align</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
   <a>text track cue alignment</a> of the <a>text track cue</a> that the
   <code>TextTrackCue</code> object represents:</p>
 
   <table>
    <thead>
-    <tr> <th><a>Text track cue alignment</a> <th> <code title="dom-TextTrackCue-align">align</code> value
+    <tr> <th><a>Text track cue alignment</a> <th> <code title="dom-VTTCue-align">align</code> value
    <tbody>
     <tr> <td><a title="text track cue start alignment">Start alignment</a> <td> "<code title="">start</code>"
     <tr> <td><a title="text track cue middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
@@ -5118,12 +5125,12 @@ interface <dfn>WebVTTCue</dfn> : <a>TextTrackCue</a> {
   for the new value, if any. If none of the values match, then the user agent must instead throw a
   <code>SyntaxError</code> exception.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-text"><code>text</code></dfn> attribute, on getting, must
+  <p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
   return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
   <code>TextTrackCue</code> object represents. On setting, the <a>text track cue text</a> must
   be set to the new value.</p>
 
-  <p>The <dfn title="dom-TextTrackCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
+  <p>The <dfn title="dom-VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
   convert the <a>text track cue text</a> to a <code>DocumentFragment</code> for the
   <a>script's document</a> of the <a>entry script</a> by applying the <a>WebVTT cue
   text DOM construction rules</a> to the result of applying the <a>WebVTT cue text parsing
@@ -5183,30 +5190,6 @@ interface <a>TextTrack</a> : EventTarget {
   </ol>
 
   </section><!-- TextTrack interface -->
-
-  <section>
-  <h3>Extension of the TextTrackCue interface for region support</h3>
-
-  <p>The following attribute is introduced into the <a>TextTrackCue</a> object:</p>
-
-  <pre class="idl_whatwg">
-interface <a>TextTrackCue</a> : EventTarget {
-           attribute DOMString <a title="dom-TextTrackCue-regionId">regionId</a>;
-};</pre>
-
-  <dl class="domintro">
-
-   <dt><var title="">cue</var> . <a title="dom-TextTrackCue-regionId">regionId</a></dt>
-   <dd>
-    <p>Returns the <a>text track cue region identifier</a>.</p>
-   </dd>
-  </dl>
-
-  <p>Initialise <a title="dom-TextTrackCue-regionId">regionId</a> in the <var>TextTrackCue</var> constructor with the empty string.</p>
-
-  <p>The <dfn title="dom-TextTrackCue-regionId">regionId</dfn> attribute, on getting, must return the <a>text track cue region identifier</a> of the text track cue that the <a>TextTrackCue</a> object represents. On setting, the text track region identifier must be set to the new value.</p>
-
-  </section><!-- end TextTrackCue object extension -->
 
   <section>
   <h3>TextTrackRegion interface</h3>
