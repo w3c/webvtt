@@ -4904,15 +4904,17 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 
   <pre class="idl_whatwg">enum <dfn>AutoKeyword</dfn> { "auto" };
+enum <dfn>DirectionSetting</dfn> { "" /* horizontal */, "rl", "lr" };
+enum <dfn>AlignSetting</dfn> { "start", "middle", "end", "left", "right" };
 [<a title="dom-VTTCue">Constructor</a>(double startTime, double endTime, DOMString text)]
 interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute DOMString <a title="dom-VTTCue-regionId">regionId</a>;
-           attribute DOMString <a title="dom-VTTCue-vertical">vertical</a>;
+           attribute <a>DirectionSetting</a> <a title="dom-VTTCue-vertical">vertical</a>;
            attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
            attribute (long or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
            attribute long <a title="dom-VTTCue-position">position</a>;
            attribute long <a title="dom-VTTCue-size">size</a>;
-           attribute DOMString <a title="dom-VTTCue-align">align</a>;
+           attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
            attribute DOMString <a title="dom-VTTCue-text">text</a>;
   DocumentFragment <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
@@ -5551,6 +5553,7 @@ interface <dfn>TextTrackRegionList</dfn> : EventTarget {
   Anne van Kesteren,
   Glenn Maynard,
   Ronny Mennerich,
+  Ms2ger,
   Frank Olivier,
   Giuseppe Pascale,
   Simon Pieters,
