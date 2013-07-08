@@ -796,7 +796,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE
    RETURN (CR) characters.</li> <!-- allows for Emacs line -->
 
-   <li>One or more <a title="WebVTT line terminator">WebVTT line terminators</a> to
+   <li>Exactly one <a title="WebVTT line terminator">WebVTT line terminators</a> to
    terminate the line with the file magic and separate it from the rest of the body.</li>
 
    <li>Zero or more <a title="WebVTT metadata header">WebVTT metadata headers</a>.</li>
@@ -1847,7 +1847,6 @@ The Final Minute</pre>
            <li>Add <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
         </ol>
        </li>
-       <li><p>Jump back to the step labeled header.</p></li>
      </ol>
    </li>
 
@@ -1867,8 +1866,6 @@ The Final Minute</pre>
    HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var
    title="">already collected line</var> flag and jump to the step
    labeled <i>cue loop</i>.</p></li>
-
-   <!-- In v2, this is where we can put header metadata processing -->
 
    <li><p>If <var title="">line</var> is not the empty string, then
    jump back to the step labeled <i title="">header</i>.</p></li>
