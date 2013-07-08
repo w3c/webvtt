@@ -340,8 +340,9 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
 
   <p>Comments can be included in WebVTT files.</p>
 
-  <p>Comments are just blocks that start with the word "<code title="">NOTE</code>" (followed by a
-  space or newline). A comment ends at the first blank line.</p>
+  <p>Comments are just blocks that are preceded by a blank line,
+  start with the word "<code title="">NOTE</code>" (followed by a
+  space or newline), and end at the first blank line.</p>
 
   <div class="example">
 
@@ -1007,7 +1008,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   the given order:</p>
 
   <ol>
-   <li>The string "<code title="">NOTE</code>".</li>
+   <li>The <a>case-sensitive</a> string "<code title="">NOTE</code>".</li>
    <li>Optionally, the following components, in the given order:
     <ol>
      <li>Either:
