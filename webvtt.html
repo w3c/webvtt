@@ -4921,7 +4921,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <dt><var title="">cue</var> = new <code title="dom-VTTCue">VTTCue</code>( <var title="">startTime</var>, <var title="">endTime</var>, <var title="">text</var> )</dt>
    <dd>
-    <p>Returns a new <code>TextTrackCue</code> object, for use with the <code title="dom-TextTrack-addCue">addCue()</code> method.</p>
+    <p>Returns a new <code>VTTCue</code> object, for use with the <code title="dom-TextTrack-addCue">addCue()</code> method.</p>
     <p>The <var title="">startTime</var> argument sets the <a>text track cue start time</a>.</p>
     <p>The <var title="">endTime</var> argument sets the <a>text track cue end time</a>.</p>
     <p>The <var title="">text</var> argument sets the <a>text track cue text</a>.</p>
@@ -4929,7 +4929,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <dt><var title="">cue</var> . <a title="dom-VTTCue-regionId">regionId</a></dt>
    <dd>
-    <p>Returns a string representing the <a>text track cue region identifier</a> of the text track region that the <a>TextTrackCue</a> object belongs to. If the <a>TextTrackCue</a> doesn't belong to a text track region, returns the empty string.</p>
+    <p>Returns a string representing the <a>text track cue region identifier</a> of the text track region that the <a>VTTCue</a> object belongs to. If the <a>VTTCue</a> doesn't belong to a text track region, returns the empty string.</p>
     <p>Can be set.</p>
    </dd>
 
@@ -5029,6 +5029,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <!-- default settings -->
 
+   <li><p>Let <var title="">cue</var>'s <a>text track cue region identifier</a>
+   be the empty string.</p></li>
+
    <li><p>Let <var title="">cue</var>'s <a>text track cue
    identifier</a> be the empty string.</p></li>
 
@@ -5059,17 +5062,23 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    alignment</a> be <a title="text track cue middle
    alignment">middle alignment</a>.</p></li>
 
-   <li><p>Return the <code>TextTrackCue</code> object representing
+   <li><p>Return the <code>VTTCue</code> object representing
    <var title="">cue</var>.</p></li>
 
   </ol>
+
+  <p>The <dfn title="dom-VTTCue-regionId"><code>regionId</code></dfn>
+  attribute, on getting, must return the <a>text track cue region identifier</a> of the <a>text
+  track cue</a> that the <code>VTTCue</code> object represents; or the empty string otherwise.
+  On setting, the <a>text track cue region identifier</a> must be set to the new value if that
+  value refers to a <a>WebVTT region</a>, or unset otherwise.</p>
 
   <p>The <dfn
   title="dom-VTTCue-vertical"><code>vertical</code></dfn>
   attribute, on getting, must return the string from the second cell
   of the row in the table below whose first cell is the <a>text
   track cue writing direction</a> of the <a>text track
-  cue</a> that the <code>TextTrackCue</code> object represents:</p>
+  cue</a> that the <code>VTTCue</code> object represents:</p>
 
   <table>
    <thead>
@@ -5091,13 +5100,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>The <dfn title="dom-VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
   getting, must return true if the <a>text track cue snap-to-lines flag</a> of the <a>text
-  track cue</a> that the <code>TextTrackCue</code> object represents is set; or false otherwise.
+  track cue</a> that the <code>VTTCue</code> object represents is set; or false otherwise.
   On setting, the <a>text track cue snap-to-lines flag</a> must be set if the new value is
   true, and must be unset otherwise.</p>
 
   <p>The <dfn title="dom-VTTCue-line"><code>line</code></dfn> attribute, on getting, must
   return the <a>text track cue line position</a> of the <a>text track cue</a> that the
-  <code>TextTrackCue</code> object represents. The special value <a title="text track cue
+  <code>VTTCue</code> object represents. The special value <a title="text track cue
   automatic line position">auto</a> must be represented as the string "<code
   title="">auto</code>". On setting, the <a>text track cue line position</a> must be set to
   the new value; if the new value is the string "<code title="">auto</code>", then it must be
@@ -5106,20 +5115,20 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>The <dfn title="dom-VTTCue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a>text track cue text position</a> of the <a>text track cue</a> that
-  the <code>TextTrackCue</code> object represents. On setting, if the new value is negative or
+  the <code>VTTCue</code> object represents. On setting, if the new value is negative or
   greater than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the
   <a>text track cue text position</a> must be set to the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a>text track cue size</a> of the <a>text track cue</a> that the
-  <code>TextTrackCue</code> object represents. On setting, if the new value is negative or greater
+  <code>VTTCue</code> object represents. On setting, if the new value is negative or greater
   than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the <a>text
   track cue size</a> must be set to the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-align"><code>align</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
   <a>text track cue alignment</a> of the <a>text track cue</a> that the
-  <code>TextTrackCue</code> object represents:</p>
+  <code>VTTCue</code> object represents:</p>
 
   <table>
    <thead>
@@ -5139,7 +5148,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
   return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
-  <code>TextTrackCue</code> object represents. On setting, the <a>text track cue text</a> must
+  <code>VTTCue</code> object represents. On setting, the <a>text track cue text</a> must
   be set to the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
