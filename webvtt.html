@@ -1581,6 +1581,21 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   title="">x</var> is said to be a <dfn>WebVTT file using only nested
   cues</dfn>.</p>
 
+A WebVTT file which, given any two cues with start and end time offsets (x1, y1) and (x2, y2) respectively, has either (x1 <= x2 and y1 >= y2) or (x1 >= x2 and y1 <= y2), is said to be a WebVTT file using only nested cues.
+
+  <p>A <a>WebVTT file</a> whose cues all follow the following rules
+  is said to be a <dfn>WebVTT file using only nested cues</dfn>:</p>
+
+  <p>given any two cues <var title="">cue1</var> and <var title="">cue2</var> with start and end time
+  offsets <var title="">(x1, y1)</var> and <var title="">(x2, y2)</var> respectively,</p>
+
+  <ul>
+    <li>either <var title="">cue1</var> lies fully within <var title"">cue2</var>, i.e. 
+    <var title="">x1 >= x2</var> and <var title="">y1 &lt;= y2</var></li>
+    <li>or <var title="">cue1</var> fully contains <var title"">cue2</var>, i.e. 
+    <var title="">x1 &lt;= x2</var> and <var title="">y1 >= y2</var.></li>
+  </ul>
+
   <div class="example">
 
    <p>The following example matches this definition:</p>
