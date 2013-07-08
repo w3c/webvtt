@@ -3762,17 +3762,6 @@ The Final Minute</pre>
      <a>text track cue size</a>. Otherwise, let <var
      title="">size</var> be <var title="">maximum size</var>.</p></li>
 
-     <li><p>If the <a>text track cue writing direction</a> is
-     <a title="text track cue horizontal writing
-     direction">horizontal</a>, then let <var title="">width</var>
-     be '<var title="">size</var>&#x2009;vw' and <var
-     title="">height</var> be 'auto'. Otherwise, let <var
-     title="">width</var> be 'auto' and <var title="">height</var> be
-     '<var title="">size</var>&#x2009;vh'. (These are CSS values used
-     by the next section to set CSS properties for the rendering; 'vw'
-     and 'vh' are CSS units.) <a
-     href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
-
      <li>
 
       <p>Determine the value of <var title="">x-position</var> or <var
@@ -3984,6 +3973,17 @@ The Final Minute</pre>
       </dl>
 
      </li>
+
+     <li><p>If the <a>text track cue writing direction</a> is
+     <a title="text track cue horizontal writing
+     direction">horizontal</a>, then let <var title="">width</var>
+     be '<var title="">size</var>&#x2009;vw' and <var
+     title="">height</var> be 'auto'. Otherwise, let <var
+     title="">width</var> be 'auto' and <var title="">height</var> be
+     '<var title="">size</var>&#x2009;vh'. (These are CSS values used
+     by the next section to set CSS properties for the rendering; 'vw'
+     and 'vh' are CSS units.) <a
+     href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
 
      <li><p>Let <var title="">left</var> be '<var
      title="">x-position</var>&#x2009;vw' and <var title="">top</var>
@@ -4871,7 +4871,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
     <p>The <a title="pseudo-cue">same properties that apply to '::cue'</a> apply to the '::cue-region' pseudo-element with no argument; other properties set on the pseudo-element must be ignored.</p>
 
-  <p>When a user agent is rendering one or more text track regions according to the WebVTT cue text rendering rules, <a title="WebVTT region object">WebVTT region objects</a> used in the rendering can be matched by the above pseudo-element. User agents that support the pseudo-element must dynamically update renderings accordingly. When either 'white-space' or one of the properties corresponding to the 'font' shorthand (including 'line-height') changes value, then the text track cue display state of all the text track cues in the region must be emptied and the text track's rules for updating the text track rendering must be immediately rerun.</p>
+  <p>When a user agent is rendering one or more text track regions according to the <a>rules for updating the display of WebVTT text tracks</a>, <a title="WebVTT region object">WebVTT region objects</a> used in the rendering can be matched by the above pseudo-element. User agents that support the pseudo-element must dynamically update renderings accordingly. When either 'white-space' or one of the properties corresponding to the 'font' shorthand (including 'line-height') changes value, then the text track cue display state of all the text track cues in the region must be emptied and the text track's rules for updating the text track rendering must be immediately rerun.</p>
 
   <p>A CSS user agent that implements the text tracks model must implement the '::cue-region' pseudo-element.</p>
 
