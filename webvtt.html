@@ -2143,7 +2143,7 @@ The Final Minute</pre>
 
    <li><p>If <var>input</var> contains any characters other than U+0025 PERCENT SIGN characters (%), U+002E DOT characters (.) and <a>ASCII digits</a>, then fail.</p></li>
 
-   <li><p>If <var>input</var> does not contain at least one <a href="http://www.w3.org/TR/html5/single-page.html#ascii-digits" class="externalDFN">ASCII digit</a>, then fail.</p></li>
+   <li><p>If <var>input</var> does not contain at least one <a title="ASCII digits">ASCII digit</a>, then fail.</p></li>
 
    <li><p>If <var>input</var> contains more than one U+002E DOT character (.), then fail.</p></li>
 
@@ -4586,7 +4586,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     <li>the 'width' property must be set to 'auto'</li>
     <li>the 'height' property must be set to <var>height</var></li>
     <li>the 'left' property must be set to <var>left</var></li>
-    <li>the 'text-align' property must be set as described for <a href="http://dev.w3.org/html5/webvtt/#applying-css-properties-to-webvtt-node-objects" class="externalDFN">(root) List of WebVTT Node Objects</a> not part of a region</li>
+    <li>the 'text-align' property must be set as described for the root <a>List of WebVTT Node Objects</a> not part of a region</li>
   </ul>
 
   <p>All other non-inherited properties must be set to their initial
@@ -5162,7 +5162,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   <section>
   <h3>Extension of the TextTrack interface for region support</h3>
 
-  <p>The following attribute and methods are introduced into the <a href="http://www.w3.org/TR/html5/single-page.html#texttrack" class="externalDFN">TextTrack</a> object:</p>
+  <p>The following attribute and methods are introduced into the <a>TextTrack</a> object:</p>
 
   <pre class="idl_whatwg">
 interface <a>TextTrack</a> : EventTarget {
@@ -5279,7 +5279,7 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-TextTrackRegion-scroll">scroll</a></dt>
-   <dd><p>Returns a string representing the text track region scroll as follows:</p>
+   <dd><p>Returns a string representing the <a>text track region scroll</a> as follows:</p>
     <dl class="switch">
      <dt>If it is unset.</dt>
      <dd><p>The empty string.</p></dd>
@@ -5337,9 +5337,9 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
     <tr> <th> <a>Text track region scroll</a> setting
          <th> <code id="dom-TextTrackRegion-scroll">scroll</code> value
    <tbody>
-    <tr> <td> <a href="#text-track-region-scroll-none" class="interalDFN">None</a>
+    <tr> <td> <a title="text track region scroll none">None</a>
          <td> "<code></code>" (the empty string)
-    <tr> <td> <a href="#text-track-region-scroll-up" class="internalDFN">"Up</a>
+    <tr> <td> <a title="text track region scroll up">Up</a>
          <td> "<code>up</code>"
   </table>
 
@@ -5376,11 +5376,11 @@ interface <dfn>TextTrackRegionList</dfn> : EventTarget {
    </dd>
   </dl>
 
-  <p>A <code>TextTrackRegionList</code> object represents a dynamically updating list of <a href="#text-track-region">text track regions</a> in a given order.</p>
+  <p>A <code>TextTrackRegionList</code> object represents a dynamically updating list of <a title="text track region">text track regions</a> in a given order.</p>
 
-  <p>The <dfn title="dom-TextTrackRegionList-length"><code>length</code></dfn> attribute must return the number of <a href="#text-track-region">regions</a> in the list represented by the <code>TextTrackRegionList</code> object.</p>
+  <p>The <dfn title="dom-TextTrackRegionList-length"><code>length</code></dfn> attribute must return the number of <a title="text track region">regions</a> in the list represented by the <code>TextTrackRegionList</code> object.</p>
 
-  <p>The <a>supported property indices</a> of a <code>TextTrackRegionList</code> object at any instant are the numbers from zero to the number of <a href="#text-track-region" class="internalDFN">regions</a> in the list represented by the <code>TextTrackRegionList</code> object minus one, if any. If there are no <a href="#text-track-region" class="internalDFN">regions</a> in the list, there are no <a>supported property indices</a>.</p>
+  <p>The <a>supported property indices</a> of a <code>TextTrackRegionList</code> object at any instant are the numbers from zero to the number of <a href="#text-track-region" class="internalDFN">regions</a> in the list represented by the <code>TextTrackRegionList</code> object minus one, if any. If there are no <a title="text track region" class="internalDFN">regions</a> in the list, there are no <a>supported property indices</a>.</p>
 
   <p>To <a>determine the value of an indexed property</a> for a given index <var>index</var>, the user agent must return the <var>index</var> of the <a>text track region</a> in the list represented by the <code>TextTrackRegionList</code> object.</p>
 
