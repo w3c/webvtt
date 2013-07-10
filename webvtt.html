@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang='en-US-x-hixie'>
   <head>
-    <meta charset='ascii'>
     <title>WebVTT: The Web Video Text Tracks Format</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
     <!-- local copy:
@@ -719,7 +718,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   
   <p>A <dfn title="text track region">text track region</dfn> represents a subpart of the video viewport and provides a rendering area for <a title="text track cue">text track cues</a>.</p>
 
-  <p>Each <a tile="text track region">text track region</a> consists of:</p>
+  <p>Each <a title="text track region">text track region</a> consists of:</p>
 
   <dl>
 
@@ -1587,9 +1586,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   offsets <var title="">(x1, y1)</var> and <var title="">(x2, y2)</var> respectively,</p>
 
   <ul>
-    <li>either <var title="">cue1</var> lies fully within <var title"">cue2</var>, i.e. 
+    <li>either <var title="">cue1</var> lies fully within <var title="">cue2</var>, i.e. 
     <var title="">x1 >= x2</var> and <var title="">y1 &lt;= y2</var></li>
-    <li>or <var title="">cue1</var> fully contains <var title"">cue2</var>, i.e. 
+    <li>or <var title="">cue1</var> fully contains <var title="">cue2</var>, i.e. 
     <var title="">x1 &lt;= x2</var> and <var title="">y1 >= y2</var.></li>
   </ul>
 
@@ -1915,7 +1914,7 @@ The Final Minute</pre>
    writing direction</a> be <a title="text track cue
    horizontal writing direction">horizontal</a>.</p></li>
 
-   <li><p>Let <var titl="">cue</var>'s <a>text track cue 
+   <li><p>Let <var title="">cue</var>'s <a>text track cue 
    region identifier</a> be the empty string.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue
@@ -4877,7 +4876,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
   <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section, that element is the matched element. The pseudo-element defined below affects the styling of text track regions that are being rendered for the matched element.</p>
 
-  <p clss="note">If the matched element is not a video element, the pseudo-element defined below won't have any effect according to this specification.</p>
+  <p class="note">If the matched element is not a video element, the pseudo-element defined below won't have any effect according to this specification.</p>
 
   <p>The '<dfn title="pseudo-region">::cue-region</dfn>' pseudo-element (with no argument) matches any list of <a title="WebVTT region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
