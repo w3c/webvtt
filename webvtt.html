@@ -764,7 +764,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p>For parsing, we also need the following:</p>
 
   <dl>
-  <dt><dfn title="text track list of regions">A text track list of regions</dfn></dfn>
+  <dt><dfn title="text track list of regions">A text track list of regions</dfn></dt>
 
   <dd>
 
@@ -1036,7 +1036,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <h3>Types of WebVTT cue payload</h3>
 
   <section>
-  <h4>WebVTT metadata text</h3>
+  <h4>WebVTT metadata text</h4>
 
   <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero
   or more characters other than U+000A LINE FEED (LF) characters and
@@ -1055,7 +1055,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h4>WebVTT cue text</h3>
+  <h4>WebVTT cue text</h4>
 
   <p><dfn>WebVTT cue text</dfn> is <a>cue payload</a>
   that consists of zero or more <a>WebVTT cue components</a>, in any order,
@@ -1405,7 +1405,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
     <li><p>The string "<code>scroll</code>".</p></li>
     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-    <li><p>The string "<code>up</code>".</code></p></li>
+    <li><p>The string "<code>up</code>".</p></li>
   </ol>
   <p class ="note">The <a>WebVTT region scroll setting</a>
   specifies whether cues rendered into the region are allowed to move out of their initial
@@ -1589,7 +1589,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <li>either <var title="">cue1</var> lies fully within <var title="">cue2</var>, i.e. 
     <var title="">x1 >= x2</var> and <var title="">y1 &lt;= y2</var></li>
     <li>or <var title="">cue1</var> fully contains <var title="">cue2</var>, i.e. 
-    <var title="">x1 &lt;= x2</var> and <var title="">y1 >= y2</var.></li>
+    <var title="">x1 &lt;= x2</var> and <var title="">y1 >= y2</var>.</li>
   </ul>
 
   <div class="example">
@@ -1716,7 +1716,7 @@ The Final Minute</pre>
 
 
   <section>
-  <h2>WebVTT file format: Parsing</h3>
+  <h2>WebVTT file format: Parsing</h2>
 
   <section>
   <h3>WebVTT file parsing</h3>
@@ -2060,7 +2060,7 @@ The Final Minute</pre>
   <ol>
     <li><p>Let <var>settings</var> be the result of <a title="split a string on spaces">splitting <var>input</var> on spaces</a>.</p></li>
     
-    <li>For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:</p>
+    <li>For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:
 
       <ol>
         <li><p>If <var>setting</var> does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D EQUALS SIGN character (=) in <var>setting</var> is either the first or last character of <var>setting</var>, then jump to the step labeled <i>next setting</i>.</p></li>
@@ -2073,7 +2073,7 @@ The Final Minute</pre>
           
         <dl>
           <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
-          <dd><p>Let <var>region's <a title="text track region identifier">identifier</a> be <var>value</var>.</p>
+          <dd><p>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be <var>value</var>.</p>
           </dd>
 
           <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>width</code>"</p></dt>
@@ -3520,7 +3520,6 @@ The Final Minute</pre>
   or dependent on characteristics defined above must be left at their
   initial values.</p>
 
-  </div>
   </section>
 
   </section>
@@ -5198,7 +5197,7 @@ interface <a>TextTrack</a> : EventTarget {
   <ol>
    <li><p>If the given <var>region</var> is in a <a>text track list of regions</a>, then remove <var>region</var> from that <a>text track list of regions</a>.</p></li>
 
-   <li><p>If the method's <a><code>TextTrack</code></a> object's <a>text track list of regions</a> contains a region with the same identifier as <var>region<var> replace the values of that region's <var>width</var>, <var>lines</var>, <var>anchor point</var>, <var>viewport anchor point</var> and <var>scroll</var> attributes with those of <var>region</var>.</p>
+   <li><p>If the method's <a><code>TextTrack</code></a> object's <a>text track list of regions</a> contains a region with the same identifier as <var>region</var> replace the values of that region's <var>width</var>, <var>lines</var>, <var>anchor point</var>, <var>viewport anchor point</var> and <var>scroll</var> attributes with those of <var>region</var>.</p>
 
    <p>Otherwise: add <var>region</var> to the method's <code>TextTrack</code> object's <a>text track list of regions</a>.</p></li>
   </ol>
