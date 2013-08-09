@@ -5193,16 +5193,16 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <pre class="idl_whatwg">
 interface <a>TextTrack</a> : EventTarget {
-           attribute TextTrackRegionList? <a title="dom-TextTrack-regions">regions</a>;
-  void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>TextTrackRegion</a> region);
-  void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>TextTrackRegion</a> region);
+           attribute VTTRegionList? <a title="dom-TextTrack-regions">regions</a>;
+  void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>VTTRegion</a> region);
+  void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>VTTRegion</a> region);
 };</pre>
 
   <dl class="domintro">
 
    <dt><var title="">textTrack</var> . <a title="dom-TextTrack-regions">regions</a></dt>
    <dd>
-    <p>Returns the <a>text track list of regions</a>, as a <code>TextTrackRegionList</code> object.</p>
+    <p>Returns the <a>text track list of regions</a>, as a <code>VTTRegionList</code> object.</p>
    </dd>
 
    <dt><var title="">textTrack</var> . <a title="dom-TextTrack-addRegion">addRegion</a>(region)</dt>
@@ -5217,7 +5217,7 @@ interface <a>TextTrack</a> : EventTarget {
 
   </dl>
 
-  <p>If the <a>text track mode</a> of the <a>text track</a> that the <var>TextTrack</var> object represents is not the <a>text track disabled</a> mode, then the <dfn title="dom-texttrack-regions">regions</dfn> attribute must return a live <a>TextTrackRegionList</a> object that represents the <a>text track list of regions</a> of the <a>text track</a>. Otherwise, it must return null. When an object is returned, the same object must be returned each time.</p>
+  <p>If the <a>text track mode</a> of the <a>text track</a> that the <var>TextTrack</var> object represents is not the <a>text track disabled</a> mode, then the <dfn title="dom-texttrack-regions">regions</dfn> attribute must return a live <a>VTTRegionList</a> object that represents the <a>text track list of regions</a> of the <a>text track</a>. Otherwise, it must return null. When an object is returned, the same object must be returned each time.</p>
 
   <p>The <dfn title="dom-TextTrack-addRegion"><code>addRegion(<var>region</var>)</code></dfn> method of <code>TextTrack</code> objects, when invoked, must run the following steps:</p>
 
@@ -5240,72 +5240,72 @@ interface <a>TextTrack</a> : EventTarget {
   </section><!-- TextTrack interface -->
 
   <section>
-  <h3>TextTrackRegion interface</h3>
+  <h3>VTTRegion interface</h3>
 
   <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
   <pre class="idl_whatwg">
 [Constructor]
-interface <dfn>TextTrackRegion</dfn> : EventTarget {
-  readonly attribute TextTrack? <a title="dom-TextTrackRegion-track">track</a>;
-           attribute DOMString <a title="dom-TextTrackRegion-id">id</a>;
-           attribute double <a title="dom-TextTrackRegion-width">width</a>;
-           attribute long <a title="dom-TextTrackRegion-lines">lines</a>;
-           attribute double <a title="dom-TextTrackRegion-regionAnchorX">regionAnchorX</a>;
-           attribute double <a title="dom-TextTrackRegion-regionAnchorY">regionAnchorY</a>;
-           attribute double <a title="dom-TextTrackRegion-viewportAnchorX">viewportAnchorX</a>;
-           attribute double <a title="dom-TextTrackRegion-viewportAnchorY">viewportAnchorY</a>;
-           attribute DOMString <a title="dom-TextTrackRegion-scroll">scroll</a>;
+interface <dfn>VTTRegion</dfn> : EventTarget {
+  readonly attribute TextTrack? <a title="dom-VTTRegion-track">track</a>;
+           attribute DOMString <a title="dom-VTTRegion-id">id</a>;
+           attribute double <a title="dom-VTTRegion-width">width</a>;
+           attribute long <a title="dom-VTTRegion-lines">lines</a>;
+           attribute double <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a>;
+           attribute double <a title="dom-VTTRegion-regionAnchorY">regionAnchorY</a>;
+           attribute double <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a>;
+           attribute double <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a>;
+           attribute DOMString <a title="dom-VTTRegion-scroll">scroll</a>;
 };</pre>
 
   <dl class="domintro">   
 
-   <dt><var title="">region</var> = new <code title="dom-TextTrackRegion">TextTrackRegion</code>()</dt>
+   <dt><var title="">region</var> = new <code title="dom-VTTRegion">VTTRegion</code>()</dt>
    <dd>
-    <p>Returns a new <code>TextTrackRegion</code> object, for use with the <code title="dom-TextTrack-addRegion">addRegion()</code> method.</p>
+    <p>Returns a new <code>VTTRegion</code> object, for use with the <code title="dom-TextTrack-addRegion">addRegion()</code> method.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-track">track</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-track">track</a></dt>
    <dd>
     <p>Returns the <var>TextTrack</var> object to which this text track region belongs, if any, or null otherwise.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-id">id</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-id">id</a></dt>
    <dd>
     <p>Returns the text track region identifier. Can be set.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-width">width</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-width">width</a></dt>
    <dd>
     <p>Returns the text track region width as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-lines">lines</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-lines">lines</a></dt>
    <dd>
     <p>Returns the text track region height as a number of lines. Can be set.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-regionAnchorX">regionAnchorX</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
     <p>Returns the text track region anchor X offset as a percentage of the region width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-regionAnchorX">regionAnchorX</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
     <p>Returns the text track region anchor Y offset as a percentage of the region height. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-viewportAnchorX">viewportAnchorX</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a></dt>
    <dd>
     <p>Returns the text track region viewport anchor X offset as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-viewportAnchorY">viewportAnchorY</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a></dt>
    <dd>
     <p>Returns the text track region viewport anchor Y offset as a percentage of the video height. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
    </dd>
 
-   <dt><var title="">region</var> . <a title="dom-TextTrackRegion-scroll">scroll</a></dt>
+   <dt><var title="">region</var> . <a title="dom-VTTRegion-scroll">scroll</a></dt>
    <dd><p>Returns a string representing the <a>text track region scroll</a> as follows:</p>
     <dl class="switch">
      <dt>If it is unset.</dt>
@@ -5317,7 +5317,7 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
    </dd>
   </dl>
 
-  <p>The <dfn title="dom-TextTrackRegion"><code>TextTrackRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
+  <p>The <dfn title="dom-VTTRegion"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
 
   <ol>
     <li><p>Create a new <a>text track region</a>. Let <var>region</var> be that <a>text track region</a>.</p></li>
@@ -5339,30 +5339,30 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
 
     <li><p>Let <var>region</var>'s <a>text track region scroll</a> be the empty string.</p></li>
 
-    <li><p>Return the <code>TextTrackRegion</code> object representing region.</p></li>
+    <li><p>Return the <code>VTTRegion</code> object representing region.</p></li>
   </ol>
 
-  <p>The <dfn title="dom-TextTrackRegion-track"><code>track</code></dfn> attribute, on getting, must return the <code>TextTrack</code> object of the <a>text track</a> in whose list of regions the <a>text track region</a> that the <code>TextTrackRegion</code> object represents finds itself, if any; or null otherwise.</p>
+  <p>The <dfn title="dom-VTTRegion-track"><code>track</code></dfn> attribute, on getting, must return the <code>TextTrack</code> object of the <a>text track</a> in whose list of regions the <a>text track region</a> that the <code>VTTRegion</code> object represents finds itself, if any; or null otherwise.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-id"><code>id</code></dfn> attribute, on getting, must return the <a>text track region identifier</a> of the <a>text track region</a> that the <a><code>TextTrackRegion</code></a> object represents. On setting, the <a>text track region identifier</a> must be set to the new value.</p>
+  <p>The <dfn title="dom-VTTRegion-id"><code>id</code></dfn> attribute, on getting, must return the <a>text track region identifier</a> of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents. On setting, the <a>text track region identifier</a> must be set to the new value.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="dom-VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a>text track region lines</a> of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, as number of lines. On setting, the <a>text track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
+  <p>The <dfn title="dom-VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a>text track region lines</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, as number of lines. On setting, the <a>text track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
   
-  <p>The <dfn title="dom-TextTrackRegion-regionAnchorX"><code>regionAnchor X</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> X offset of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, in percent of region width. On setting, the <a>text track region anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="dom-VTTRegion-regionAnchorX"><code>regionAnchor X</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> X offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region width. On setting, the <a>text track region anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-regionAnchorY"><code>regionAnchor Y</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> Y offset of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, in percent of region height. On setting, the <a>text track region anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="dom-VTTRegion-regionAnchorY"><code>regionAnchor Y</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> Y offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region height. On setting, the <a>text track region anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-viewportAnchorX"><code>viewportAnchor X</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> X offset of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, in percent of video width. On setting, the <a>text track region viewport anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="dom-VTTRegion-viewportAnchorX"><code>viewportAnchor X</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> X offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region viewport anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-viewportAnchorY"><code>viewportAnchor Y</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> Y offset of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents, in percent of video height. On setting, the <a>text track region viewport anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="dom-VTTRegion-viewportAnchorY"><code>viewportAnchor Y</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> Y offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video height. On setting, the <a>text track region viewport anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-TextTrackRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from the second cell of the row in the table below whose first cell is the <a>text track region scroll</a> setting of the <a>text track region</a> that the <code>TextTrackRegion</code> object represents:</p>
+  <p>The <dfn title="dom-VTTRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from the second cell of the row in the table below whose first cell is the <a>text track region scroll</a> setting of the <a>text track region</a> that the <code>VTTRegion</code> object represents:</p>
   <table>
    <thead>
     <tr> <th> <a>Text track region scroll</a> setting
-         <th> <code id="dom-TextTrackRegion-scroll">scroll</code> value
+         <th> <code id="dom-VTTRegion-scroll">scroll</code> value
    <tbody>
     <tr> <td> <a title="text track region scroll none">None</a>
          <td> "<code></code>" (the empty string)
@@ -5372,21 +5372,21 @@ interface <dfn>TextTrackRegion</dfn> : EventTarget {
 
   <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new value, if any. If none of the values match, then the user agent must instead throw a <code>SyntaxError</code> exception.</p>
 
-  </section><!-- end TextTrackRegion object -->
+  </section><!-- end VTTRegion object -->
 
   <section>
-  <h3>TextTrackRegionList interface</h3>
+  <h3>VTTRegionList interface</h3>
 
   <pre class="idl_whatwg">
-interface <dfn>TextTrackRegionList</dfn> : EventTarget {
-  readonly attribute unsigned long <a title="dom-TextTrackRegionList-length">length</a>;
-  getter <a title="dom-TextTrackRegion">TextTrackRegion</a> (unsigned long index);
-  <a>TextTrackRegion</a>? <a title="dom-TextTrackRegionList-getRegionById">getRegionById</a>(DOMString id);
+interface <dfn>VTTRegionList</dfn> : EventTarget {
+  readonly attribute unsigned long <a title="dom-VTTRegionList-length">length</a>;
+  getter <a title="dom-VTTRegion">VTTRegion</a> (unsigned long index);
+  <a>VTTRegion</a>? <a title="dom-VTTRegionList-getRegionById">getRegionById</a>(DOMString id);
 };</pre>
 
   <dl class="domintro">   
 
-   <dt><var title="">regionList</var> . <a title="dom-TextTrackRegionList-length">length</a></dt>
+   <dt><var title="">regionList</var> . <a title="dom-VTTRegionList-length">length</a></dt>
    <dd>
     <p>Returns the number of <var>regions</var> in the list.</p>
    </dd>
@@ -5396,25 +5396,25 @@ interface <dfn>TextTrackRegionList</dfn> : EventTarget {
     <p>Returns the <a>text track region</a> with index <var>index</var> in the list. The regions are sorted in the order in which they were inserted.</p>
    </dd>
 
-   <dt><var title="">regionList</var> . <a title="dom-TextTrackRegionList-getRegionById">getRegionById</a>( id )</dt>
+   <dt><var title="">regionList</var> . <a title="dom-VTTRegionList-getRegionById">getRegionById</a>( id )</dt>
    <dd>
     <p>Returns the first <a>text track region</a> with <a>text track region identifier</a> <var>id</var>.</p>
     <p>Returns null if none of the regions have the given identifier or if the argument is the empty string.</p>
    </dd>
   </dl>
 
-  <p>A <code>TextTrackRegionList</code> object represents a dynamically updating list of <a title="text track region">text track regions</a> in a given order.</p>
+  <p>A <code>VTTRegionList</code> object represents a dynamically updating list of <a title="text track region">text track regions</a> in a given order.</p>
 
-  <p>The <dfn title="dom-TextTrackRegionList-length"><code>length</code></dfn> attribute must return the number of <a title="text track region">regions</a> in the list represented by the <code>TextTrackRegionList</code> object.</p>
+  <p>The <dfn title="dom-VTTRegionList-length"><code>length</code></dfn> attribute must return the number of <a title="text track region">regions</a> in the list represented by the <code>VTTRegionList</code> object.</p>
 
-  <p>The <a>supported property indices</a> of a <code>TextTrackRegionList</code> object at any instant are the numbers from zero to the number of <a title="text track region">regions</a> in the list represented by the <code>TextTrackRegionList</code> object minus one, if any. If there are no <a title="text track region">regions</a> in the list, there are no <a>supported property indices</a>.</p>
+  <p>The <a>supported property indices</a> of a <code>VTTRegionList</code> object at any instant are the numbers from zero to the number of <a title="text track region">regions</a> in the list represented by the <code>VTTRegionList</code> object minus one, if any. If there are no <a title="text track region">regions</a> in the list, there are no <a>supported property indices</a>.</p>
 
-  <p>To <a>determine the value of an indexed property</a> for a given index <var>index</var>, the user agent must return the <var>index</var> of the <a>text track region</a> in the list represented by the <code>TextTrackRegionList</code> object.</p>
+  <p>To <a>determine the value of an indexed property</a> for a given index <var>index</var>, the user agent must return the <var>index</var> of the <a>text track region</a> in the list represented by the <code>VTTRegionList</code> object.</p>
 
-  <p>The <dfn title="dom-TextTrackRegionList-getRegionById"><code>getRegionById(<var>id</var>)</code></dfn> method, when called with an argument other than the empty string, must return the first <a>text track region</a> in the list represented by the <code>TextTrackRegionList</code> object whose <a>text track region identifier</a> is <var>id</var>, if any, or null otherwise. If the argument is the empty string, then the method must return null.</p>
+  <p>The <dfn title="dom-VTTRegionList-getRegionById"><code>getRegionById(<var>id</var>)</code></dfn> method, when called with an argument other than the empty string, must return the first <a>text track region</a> in the list represented by the <code>VTTRegionList</code> object whose <a>text track region identifier</a> is <var>id</var>, if any, or null otherwise. If the argument is the empty string, then the method must return null.</p>
   <p>
 
-  </section><!-- end TextTrackRegionList object -->
+  </section><!-- end VTTRegionList object -->
 
   </section><!-- WebVTT API for browsers -->
 
