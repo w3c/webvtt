@@ -1782,9 +1782,6 @@ The Final Minute</pre>
   <ol>
 
    <li>
-
-     <p>Let <var title="">regions</var> be a <a>text track list of regions</a>.</p>
-
     <p>Let <var title="">input</var> be the string being parsed, after
     conversion to Unicode, and with the following transformations
     applied:</p>
@@ -1866,6 +1863,8 @@ The Final Minute</pre>
 
    <!-- METADATA HEADER PARSING -->
 
+   <li><p>Let <var title="">regions</var> be a <a>text track list of regions</a>.</p></li>
+
    <li><i>Metadata header loop</i>: If <var>line</var> is not the empty string, run the following substeps:
 
      <ol>
@@ -1941,40 +1940,43 @@ The Final Minute</pre>
    -->.)</p></li>
 
    <li><p><i>Cue creation</i>: Let <var title="">cue</var> be a new
-   <a>text track cue</a>.</p></li>
+   <a>text track cue</a> and initialize it with the following
+   attribute values:</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   identifier</a> be the empty string.</p></li>
+    <ol>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     identifier</a> be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   pause-on-exit flag</a> be false.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   writing direction</a> be <a title="text track cue
-   horizontal writing direction">horizontal</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     writing direction</a> be <a title="text track cue
+     horizontal writing direction">horizontal</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue 
-   region identifier</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue 
+     region identifier</a> be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   snap-to-lines flag</a> be true.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     snap-to-lines flag</a> be true.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue line
-   position</a> be <a title="text track cue automatic line
-   position">auto</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue line
+     position</a> be <a title="text track cue automatic line
+     position">auto</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   text position</a> be 50.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     text position</a> be 50.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   size</a> be 100.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     size</a> be 100.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   alignment</a> be <a title="text track cue middle
-   alignment">middle alignment</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     alignment</a> be <a title="text track cue middle
+     alignment">middle alignment</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   text</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue
+     text</a> be the empty string.</p></li>
+    </ol>
 
    <li><p>If <var title="">line</var> contains the three-character
    substring "<code title="">--></code>" (U+002D HYPHEN-MINUS, U+002D
