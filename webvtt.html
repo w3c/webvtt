@@ -4861,6 +4861,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute long <a title="dom-VTTCue-position">position</a>;
            attribute long <a title="dom-VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
+					 attribute DOMString <a title="dom-VTTCue-text">text</a>;
   DocumentFragment <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
 
@@ -4936,6 +4937,12 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
      <dt>If it is <a title="text track cue right alignment">right alignment</a></dt>
      <dd><p>The string "<code title="">right</code>".</p></dd>
     </dl>
+    <p>Can be set.</p>
+   </dd>
+
+	 <dt><var title="">cue</var> . <a title="dom-VTTCue-text">text</a> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns the <a>text track cue text</a> in raw unparsed form.</p>
     <p>Can be set.</p>
    </dd>
 
@@ -5086,6 +5093,11 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
   for the new value, if any. If none of the values match, then the user agent must instead throw a
   <code>SyntaxError</code> exception.</p>
+
+	<p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
+  return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
+  <code>VTTCue</code> object represents. On setting, the <a>text track cue text</a> must
+  be set to the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
   convert the <a>text track cue text</a> to a <code>DocumentFragment</code> for the
