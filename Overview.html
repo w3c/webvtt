@@ -3,14 +3,14 @@
 <head>
     <title>WebVTT: The Web Video Text Tracks Format</title>
     <meta charset="utf-8">
-    <!-- local copy: -->
+    <!-- local copy:
+    <script src='../../respec/builds/respec-w3c-common-3.1.64.js' async class='remove'></script>
+		-->
+    <!-- remote copy: -->
     
-    <!-- remote copy:
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
-  	-->
     
     <!-- script to register bugs -->
-    <script src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
+    
     <meta name="bug.short_desc" content="[WebVTT] ">
     <meta name="bug.product" content="TextTracks CG">
     <meta name="bug.component" content="WebVTT">
@@ -105,7 +105,8 @@
     body > form {
       padding: 4px;
       border: 1px solid red;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.6);
+      top: 5em !important;
     }
     </style>
   <style>/*****************************************************************
@@ -256,7 +257,7 @@ span.note, span.issue { padding: .1em .5em .15em; }
 }
 
 
-</style><link rel="stylesheet" href="https://www.w3.org/community/src/css/spec/cg-draft.css"></head>
+</style><link rel="stylesheet" href="https://www.w3.org/community/src/css/spec/cg-draft.css"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
   <!-- v2 feature requests:
 
          Explicitly allow random comments on the line after the
@@ -273,13 +274,13 @@ span.note, span.issue { padding: .1em .5em .15em; }
             line:-1 align:middle size:50%
 
   -->
-  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body style="" class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
-    <a href="http://www.w3.org/"><img width="72" height="48" src="http://www.w3.org/Icons/w3c_home" alt="W3C"></a>
+    <a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">WebVTT: The Web Video Text Tracks Format</h1>
   
-  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-09-28T22:04:28.000Z" id="draft-community-group-specification-29-september-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-09-29">29 September 2013</time></h2>
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-10-27T13:38:29.000Z" id="draft-community-group-specification-28-october-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-10-28">28 October 2013</time></h2>
   <dl>
     
     
@@ -314,14 +315,14 @@ span.note, span.issue { padding: .1em .5em .15em; }
   </p>
   <hr>
 </div>
-  <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:chapter"><h2 aria-level="1" role="heading" id="h2_abstract">Abstract</h2>
+  <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter"><h2 aria-level="1" role="heading" id="h2_abstract">Abstract</h2>
     <p>This is the specification of WebVTT, the Web Video Text Tracks format.
     </p>
 
     <p>If you wish to make comments or file bugs regarding this document in a manner
       that is tracked by the W3C, please submit them via <a href="http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;short_desc=%5BWebVTT%5D%20">our
       public bug database</a>.</p>
-  </section><section id="sotd" class="introductory" typeof="bibo:Chapter" resource="#sotd" rel="bibo:chapter"><h2 aria-level="1" role="heading" id="h2_sotd">Status of This Document</h2>
+  </section><section id="sotd" class="introductory" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter"><h2 aria-level="1" role="heading" id="h2_sotd">Status of This Document</h2>
   <p>
     This specification was published by the <a href="http://www.w3.org/community/texttracks/">Text Tracks Community Group</a>.
     It is not a W3C Standard nor is it on the W3C Standards Track.
@@ -3752,7 +3753,7 @@ The Final Minute</pre>
       <ol>
 
        <li><a href="#dfn-apply-webvtt-cue-settings" class="internalDFN">Apply WebVTT cue settings</a> to calculate CSS boxes <var title="">boxes</var> from the
-       <a>list of WebVTT Node Object</a> <var title="">nodes</var> obtained by applying the
+       <a href="#dfn-list-of-webvtt-node-objects" class="internalDFN">list of WebVTT Node Objects</a> <var title="">nodes</var> obtained by applying the
        <a href="#dfn-webvtt-cue-text-parsing-rules" class="internalDFN">WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
        <a href="#dfn-text-track-cue-text" class="internalDFN">text track cue text</a>.</li>
 
@@ -3813,7 +3814,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
 
   <p>When the algorithm above requires that the user agent <dfn id="dfn-apply-webvtt-cue-settings">Apply WebVTT cue settings</dfn>
-  to calculate CSS boxes from the <a>list of WebVTT Node Object</a> <var title="">nodes</var>
+  to calculate CSS boxes from the <a href="#dfn-list-of-webvtt-node-objects" class="internalDFN">list of WebVTT Node Objects</a> <var title="">nodes</var>
   obtained by applying the <a href="#dfn-webvtt-cue-text-parsing-rules" class="internalDFN">WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
   <a href="#dfn-text-track-cue-text" class="internalDFN">text track cue text</a>, the user agent must run the following algorithm.</p>
 
@@ -5224,7 +5225,7 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
 
   </section><!-- WebVTT API for browsers -->
 
-  <section typeof="bibo:Chapter" resource="#iana" rel="bibo:chapter" id="iana-considerations">
+  <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="iana-considerations">
   <!--OddPage--><h2 id="iana" aria-level="1" role="heading"><span class="secno">8. </span>IANA considerations</h2>
   <!-- http://www.w3.org/2002/06/registering-mediatype.html -->
 
@@ -5320,7 +5321,7 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
 
   </section>
 
-  <section typeof="bibo:Chapter" resource="#references" rel="bibo:chapter" id="references-1">
+  <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="references-1">
   <!--OddPage--><h2 class="no-num" id="references" aria-level="1" role="heading"><span class="secno">9. </span>References</h2><!--REFS-->
 
   <p>All references are normative unless marked "Non-normative".</p>
@@ -5394,4 +5395,4 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
   </section>
 
 
-<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form></body></html>
+<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form><div id="respec-ui" class="removeOnSave" style="position: fixed; top: 20px; right: 20px; width: 202px; text-align: right; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-weight: bold; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; background-position: initial initial; background-repeat: initial initial; ">ReSpec</button><div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 200px; display: none; text-align: left; margin-top: 5px; margin-right: 5px; background-position: initial initial; background-repeat: initial initial; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">Save Snapshot</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">About ReSpec</button></div></div></body></html>

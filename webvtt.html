@@ -38,10 +38,6 @@
           // if this is a LCWD, uncomment and set the end of its review period
           // lcEnd: "2009-08-05",
 
-          // if you want to have extra CSS, append them to this list
-          // it is recommended that the respec.css stylesheet be kept
-          extraCSS:             ["https://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
-
           // editors, add as many as you like
           // only "name" is required
           editors:  [
@@ -84,7 +80,7 @@
       };
     </script>
     <!-- script to register bugs -->
-    <script src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
+    <script class='remove' src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
     <meta name="bug.short_desc" content="[WebVTT] ">
     <meta name="bug.product" content="TextTracks CG">
     <meta name="bug.component" content="WebVTT">
@@ -179,7 +175,8 @@
     body > form {
       padding: 4px;
       border: 1px solid red;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.6);
+      top: 5em !important;
     }
     </style>
   </head>
@@ -3785,7 +3782,7 @@ The Final Minute</pre>
       <ol>
 
        <li><a>Apply WebVTT cue settings</a> to calculate CSS boxes <var title="">boxes</var> from the
-       <a>list of WebVTT Node Object</a> <var title="">nodes</var> obtained by applying the
+       <a>list of WebVTT Node Objects</a> <var title="">nodes</var> obtained by applying the
        <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
        <a>text track cue text</a>.</li>
 
@@ -3848,7 +3845,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
 
   <p>When the algorithm above requires that the user agent <dfn>Apply WebVTT cue settings</dfn>
-  to calculate CSS boxes from the <a>list of WebVTT Node Object</a> <var title="">nodes</var>
+  to calculate CSS boxes from the <a>list of WebVTT Node Objects</a> <var title="">nodes</var>
   obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
   <a>text track cue text</a>, the user agent must run the following algorithm.</p>
 
