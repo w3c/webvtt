@@ -280,7 +280,7 @@ span.note, span.issue { padding: .1em .5em .15em; }
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">WebVTT: The Web Video Text Tracks Format</h1>
   
-  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-10-27T16:19:55.000Z" id="draft-community-group-specification-28-october-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-10-28">28 October 2013</time></h2>
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-10-27T19:49:54.000Z" id="draft-community-group-specification-28-october-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-10-28">28 October 2013</time></h2>
   <dl>
     
     
@@ -581,7 +581,7 @@ Transcribed by Celestials™</pre>
   </div>
 
   <div class="example">
-  <p>This example shows two regions containing rollup captions for two different speakers. Fred's cues scroll up in a region in the left half of the video, Bill's cues scroll up in a region on the right half of the video. Fred's first cue disappears at 12.5sec  even through it is defined until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:
+  <p>This example shows two regions containing rollup captions for two different speakers. Fred's cues scroll up in a region in the left half of the video, Bill's cues scroll up in a region on the right half of the video. Fred's first cue disappears at 12.5sec even through it is defined until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:
   </p>
 
   <pre>WEBVTT
@@ -823,7 +823,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 		<p>By default, the <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> is 100%.</p>
 
     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_1"><span>Note</span></div><p class="">The position of the <a href="#dfn-cue-box" class="internalDFN">cue box</a> within the video frame's dimensions depends
-    on the value of the <a href="#dfn-computed-text-position-anchor-point" class="internalDFN">computed text position anchor point</a>.</p></div>
+    on the value of the text track text position.</p></div>
     
     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_2"><span>Note</span></div><p class="">Lines are wrapped within the <a href="#dfn-cue-box" class="internalDFN">cue box</a>'s
     <a title="text track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a> if lines lengths make this necessary.</p></div>
@@ -898,37 +898,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     <p>By default, the value of the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> is
     <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a>.</p>
-
-    <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a <dfn id="dfn-computed-text-position-anchor-point">computed text position anchor point</dfn>,
-    which signifies the point in the text whose position within the video frame can be manipulated
-    through the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a> cue setting. The value of
-    the <a href="#dfn-computed-text-position-anchor-point" class="internalDFN">computed text position anchor point</a> is set as follows:</p>
-
-    <ol>
-
-      <li>For <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start aligned</a> cues: the first character
-      of each line of text is positioned at the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> point within
-      the video frame.</li>
-
-      <li>For <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a> cues: the middle character
-      of each line of text is positioned at the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> point within
-      the video frame.</li>
-
-      <li>For <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end aligned</a> cues: the last character
-      of each line of text is positioned at the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> point within
-      the video frame.</li>
-
-      <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left aligned</a> cues with left-to-right
-      <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: the first character of each line of
-      text is positioned at the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> point within the video frame,
-      otherwise the last character is positioned there.</li>
-
-      <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right aligned</a> cues with left-to-right
-      <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: the last character of each line of
-      text is positioned at the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> point within the video frame,
-      otherwise the first character is positioned there.</li>
-
-    </ol>
 
    </dd>
 
@@ -5398,4 +5367,4 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
   </section>
 
 
-<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form><div id="respec-ui" class="removeOnSave" style="position: fixed; top: 20px; right: 20px; width: 202px; text-align: right; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-weight: bold; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; background-position: initial initial; background-repeat: initial initial; ">ReSpec</button><div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 200px; display: none; text-align: left; margin-top: 5px; margin-right: 5px; background-position: initial initial; background-repeat: initial initial; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">Save Snapshot</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">About ReSpec</button></div></div></body></html>
+<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form><div id="respec-ui" class="removeOnSave" style="position: fixed; top: 20px; right: 20px; width: 202px; text-align: right; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-weight: bold; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; background-position: initial initial; background-repeat: initial initial; ">ReSpec</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 102, 0); color: rgb(255, 255, 255); font-weight: bold; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; margin-left: 5px; background-position: initial initial; background-repeat: initial initial; ">1</button><div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 200px; display: none; text-align: left; margin-top: 5px; margin-right: 5px; background-position: initial initial; background-repeat: initial initial; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">Save Snapshot</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">About ReSpec</button></div></div></body></html>
