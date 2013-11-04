@@ -280,7 +280,7 @@ span.note, span.issue { padding: .1em .5em .15em; }
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">WebVTT: The Web Video Text Tracks Format</h1>
   
-  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-10-27T19:49:54.000Z" id="draft-community-group-specification-28-october-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-10-28">28 October 2013</time></h2>
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-11-03T15:39:40.000Z" id="draft-community-group-specification-04-november-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-11-04">04 November 2013</time></h2>
   <dl>
     
     
@@ -581,6 +581,23 @@ Transcribed by Celestials™</pre>
   </div>
 
   <div class="example">
+  <p>This example shows how to position cues at explicit positions in the video viewport.</p>
+
+  <pre>WEBVTT
+
+00:00:00.000 --&gt; 00:00:04.000 position:10%,left align:left size:35%
+Where did he go?
+
+00:00:03.000 --&gt; 00:00:06.500 position:90% align:right size:35%
+I think he went down this lane.
+
+00:00:04.000 --&gt; 00:00:06.500 position:10%,left align:middle size:35%
+What are you waiting for?</pre>
+
+  <p>The cues cover only 35% of the video viewport's width. The first cue has its <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> left aligned at the 10% mark of the video viewport width and the text is left aligned within that box - probably underneath a speaker on the left of the video image. "left" alignment of the cue box is the default for left aligned text, so does not need to be specified in "position". The second cue has its <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> right aligned at the 90% mark of the video viewport width. The same effect can be achieved with "position:55%,left", which explicitly positions the cue box. The third cue has middle aligned text within the same type of cue box as the first cue.</p>
+  </div>
+
+  <div class="example">
   <p>This example shows two regions containing rollup captions for two different speakers. Fred's cues scroll up in a region in the left half of the video, Bill's cues scroll up in a region on the right half of the video. Fred's first cue disappears at 12.5sec even through it is defined until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:
   </p>
 
@@ -719,6 +736,19 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <dl>
 
+   <dt><dfn title="text track cue box" id="dfn-text-track-cue-box">A cue box</dfn>
+   </dt><dd>
+     <p>The cue box of a <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> is a box within which the text of all lines of the
+     cue is to be rendered.</p>
+
+     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_1"><span>Note</span></div><p class="">The position of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> within the video frame's dimensions depends
+     on the value of the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> and the <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a>.</p></div>
+
+     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_2"><span>Note</span></div><p class="">Lines are wrapped within the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s
+     <a title="text track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a> if lines lengths make this necessary.</p></div>
+
+   </dd>
+
    <dt><dfn title="text track cue writing direction" id="dfn-text-track-cue-writing-direction">A writing direction</dfn>
    </dt><dd>
     <p>A writing direction, either <dfn title="text track cue horizontal writing
@@ -730,7 +760,10 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     growing right</dfn> (a line extends vertically and is positioned horizontally, with consecutive
     lines displayed to the right of each other<!-- used for mongolian -->).</p>
 
-    <p>If the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a> is <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>, then <a title="text
+    <p>The writing direction is a property of the text inside the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> which
+    influences the interpretation of the positioning settings of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>.</p>
+
+    <p>If the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a> is <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>, then the <a title="text
     track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a> percentages are relative to the height of the
     video, and <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a> and <a title="text
     track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a> percentages are relative to the width of the video.</p>
@@ -761,12 +794,15 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
-   <dt><dfn title="text track cue line position" id="dfn-text-track-cue-line-position">A line position</dfn>
+   <dt><dfn title="text track cue line position" id="dfn-text-track-cue-line-position">A cue line position</dfn>
    </dt><dd>
-    <p>Either a number giving the position of the lines of the cue, to be interpreted as defined by
-    the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a> and <a title="text track cue snap-to-lines flag" href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">snap-to-lines flag</a> of the cue, or the special
+    <p>The line position defines positioning of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>.</p>
+
+    <p>A line position is either a number giving the position of the lines of the cue, to be
+    interpreted as defined by the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>
+    and <a title="text track cue snap-to-lines flag" href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">snap-to-lines flag</a> of the cue, or the special
     value <dfn title="text track cue automatic line position" id="dfn-text-track-cue-automatic-line-position">auto</dfn>, which means the position
-    is to depend on the other active cues.</p>
+    is to depend on the other <a title="Text track cue active flag" href="#dfn-text-track-cue-active-flag" class="internalDFN">active</a> cues.</p>
 
     <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a <dfn id="dfn-text-track-cue-computed-line-position">text track cue computed line position</dfn> whose
     value is that returned by the following algorithm, which is defined in terms of the other
@@ -814,30 +850,53 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
+   <dt><dfn title="text track cue line alignment" id="dfn-text-track-cue-line-alignment">A cue line alignment</dfn>
+   </dt><dd>
+     <p>An alignment for the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>,
+     one of:</p>
+
+      <dl>
+
+       <dt><dfn title="text track cue line start alignment" id="dfn-text-track-cue-line-start-alignment">Start alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s to side (for
+       <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or left
+       side (otherwise) is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+       </dd>
+
+       <dt><dfn title="text track cue line middle alignment" id="dfn-text-track-cue-line-middle-alignment">Middle alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is centered at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+       </dd>
+
+       <dt><dfn title="text track cue line end alignment" id="dfn-text-track-cue-line-end-alignment">End alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s bottom side (for
+        <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or right
+        side (otherwise) is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+       </dd>
+
+      </dl>
+
+      <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a default <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> of <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start</a>.</p>
+
+   </dd>
+
    <dt><dfn title="text track cue size" id="dfn-text-track-cue-size">A size</dfn>
    </dt><dd>
-    <p>A number giving the size of the box within which the text of each line of the cue is to be
-    rendered, to be interpreted as a percentage of the video, as defined by the <a title="text
-    track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>. This box is called the <dfn id="dfn-cue-box">cue box</dfn>.</p>
+    <p>A number giving the size of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>, to be interpreted as a percentage of the video,
+    as defined by the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>.</p>
 
 		<p>By default, the <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> is 100%.</p>
 
-    <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_1"><span>Note</span></div><p class="">The position of the <a href="#dfn-cue-box" class="internalDFN">cue box</a> within the video frame's dimensions depends
-    on the value of the text track text position.</p></div>
-    
-    <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_2"><span>Note</span></div><p class="">Lines are wrapped within the <a href="#dfn-cue-box" class="internalDFN">cue box</a>'s
-    <a title="text track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a> if lines lengths make this necessary.</p></div>
    </dd>
 
    <dt><dfn title="text track cue text position" id="dfn-text-track-cue-text-position">A text position</dfn>
    </dt><dd>
-     <p>A number giving the position of the <a href="#dfn-cue-box" class="internalDFN">cue box</a> within each line. If the cue is not within
+     <p>A number giving the position of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>. If the cue is not within
 	 		a region, the value is to be interpreted as a percentage of the video, as defined by the
 	    <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>, otherwise to be interpreted
 	    as a percentage of the region width.</p>
 	
      <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a default <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> which is defined
-     in terms of the value of the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a>:</p>
+     in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</p>
      
      <ol>
 
@@ -855,35 +914,92 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </ol>
 
-     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_3"><span>Note</span></div><p class="">Since the default value of the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> is
+     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_3"><span>Note</span></div><p class="">Since the default value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is
      <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle</a>, if there is no
-     <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> setting for a cue, the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a>
+     <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> setting for a cue, the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a>
      defaults to 50%.</p></div>
 
      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4"><span>Note</span></div><p class="">If a <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> setting is provided for a cue, and the cue is
-     not middle aligned, and the <a href="#dfn-cue-box" class="internalDFN">cue box</a> has been defined as a template to be filled with either
+     not middle aligned, and the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> has been defined as a template to be filled with either
      left-to-right or right-to-left <i>paragraph direction</i> text, it is recommended to provide an
      explicit <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a> setting, since otherwise the
-     cue may unexpectedly flip to the other half of the video viewport.</p></div>
+     cue might unexpectedly flip to the other half of the video viewport.</p></div>
 
    </dd>
 
+   <dt><dfn title="text track cue position alignment" id="dfn-text-track-cue-position-alignment">A cue position alignment</dfn>
+   </dt><dd>
+     <p>An alignment for the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the dimension of the
+     <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>, describing which part of the
+     <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is aligned to the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>,
+     one of:</p>
 
-   <dt><dfn title="text track cue alignment" id="dfn-text-track-cue-alignment">An alignment</dfn>
+      <dl>
+
+       <dt><dfn title="text track cue position start alignment" id="dfn-text-track-cue-position-start-alignment">Start alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s left side (for
+       <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or top
+       side (otherwise) is aligned at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
+       </dd>
+
+       <dt><dfn title="text track cue position middle alignment" id="dfn-text-track-cue-position-middle-alignment">Middle alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is centered at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
+       </dd>
+
+       <dt><dfn title="text track cue position end alignment" id="dfn-text-track-cue-position-end-alignment">End alignment</dfn></dt>
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s right side (for
+        <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or bottom
+        side (otherwise) is aligned at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
+       </dd>
+
+      </dl>
+
+      <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a default <a href="#dfn-text-track-cue-position-alignment" class="internalDFN">text track cue position alignment</a> which is defined
+      in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</p>
+
+      <ol>
+
+        <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left aligned</a> cues: <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>.</li>
+
+        <li>For <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a> cues: <a title="text track cue position middle alignment" href="#dfn-text-track-cue-position-middle-alignment" class="internalDFN">middle</a>.</li>
+
+        <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right aligned</a> cues: <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
+
+        <li>For <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start aligned</a> cues with left-to-right
+        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>, otherwise <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
+
+        <li>For <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end aligned</a> cues with left-to-right
+        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>, otherwise <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
+
+      </ol>
+
+      <!-- TOO OBVIOUS?
+      <p class="note">Since the <a>text track cue text position</a> always measures from the left
+      of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
+      or the top (otherwise), the <a>text track cue position alignment</a> <a
+      title="text track cue position start alignment">start value</a> varies between left and top for
+      horizontal and vertical cues, but not between left and right like BIDI.</p>
+      -->
+
+   </dd>
+
+   <dt><dfn title="text track cue text alignment" id="dfn-text-track-cue-text-alignment">A text alignment</dfn>
    </dt><dd>
 
-    <p>An alignment for all lines of text within the <a href="#dfn-cue-box" class="internalDFN">cue box</a>, one of:</p>
+    <p>An alignment for all lines of text within the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>, in the dimension of the
+    <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a> and the
+    <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>, one of:</p>
 
     <dl>
 
      <dt><dfn title="text track cue start alignment" id="dfn-text-track-cue-start-alignment">Start alignment</dfn></dt>
-     <dd>The text is aligned towards the box's start side.</dd>
+     <dd>The text is aligned towards the <i>paragraph direction</i> start side of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>.</dd>
 
      <dt><dfn title="text track cue middle alignment" id="dfn-text-track-cue-middle-alignment">Middle alignment</dfn></dt>
      <dd>The text is aligned centered between the box's start and end sides.</dd>
 
      <dt><dfn title="text track cue end alignment" id="dfn-text-track-cue-end-alignment">End alignment</dfn></dt>
-     <dd>The text is aligned towards the box's end side.</dd>
+     <dd>The text is aligned towards the <i>paragraph direction</i> end side of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>.</dd>
 
      <dt><dfn title="text track cue left alignment" id="dfn-text-track-cue-left-alignment">Left alignment</dfn></dt>
      <dd>The text is aligned to the box's left side.</dd>
@@ -893,10 +1009,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     </dl>
 
-    <p>Which sides are the start and end sides depends on the Unicode bidirectional algorithm and
-    the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>. <a href="#refsBIDI">[BIDI]</a></p>
-
-    <p>By default, the value of the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> is
+    <p>By default, the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is
     <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a>.</p>
 
    </dd>
@@ -917,7 +1030,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   flag</a> is set has its <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing
   direction</a>, <a title="text track cue snap-to-lines flag" href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">snap-to-lines flag</a>, <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>, <a title="text track cue text
   position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>, <a title="text track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a>, <a title="text
-  track cue alignment" href="#dfn-text-track-cue-alignment" class="internalDFN">alignment</a>, <a title="text track region identifier" href="#dfn-text-track-region-identifier" class="internalDFN">region identifier</a>,
+  track cue text alignment" href="#dfn-text-track-cue-text-alignment" class="internalDFN">alignment</a>, <a title="text track region identifier" href="#dfn-text-track-region-identifier" class="internalDFN">region identifier</a>,
   or <a title="text track cue text" href="#dfn-text-track-cue-text" class="internalDFN">text</a> change value, then the user agent must empty
   the <a href="#dfn-text-track-cue-display-state" class="internalDFN">text track cue display state</a>, and then immediately run the <a href="#dfn-text-track" class="internalDFN">text track</a>'s
   <a href="#dfn-rules-for-updating-the-display-of-webvtt-text-tracks" class="internalDFN">rules for updating the display of WebVTT text tracks</a>.</p>
@@ -1706,9 +1819,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </ol>
 
   <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_23"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-size-cue-setting" class="internalDFN">WebVTT size cue setting</a> configures
-  the size of the <a href="#dfn-cue-box" class="internalDFN">cue box</a> in the same direction as the <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text
+  the size of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the same direction as the <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text
   position cue setting</a>. For horizontal cues, this is the width
-  of the <a href="#dfn-cue-box" class="internalDFN">cue box</a>. It is given as a percentage of the width of the
+  of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>. It is given as a percentage of the width of the
   frame.</p></div>
 
   <p>A <dfn id="dfn-webvtt-text-position-cue-setting">WebVTT text position cue setting</dfn> consists of the
@@ -1730,7 +1843,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   the <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a>. For horizontal
   cues, this is the horizontal position. The <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text
   position cue setting</a> is given as a percentage, calculated
-  from the edge of the <a href="#dfn-cue-box" class="internalDFN">cue box</a> that the text begins (so for
+  from the edge of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> that the text begins (so for
   left-to-right English text, the left edge).</p></div>
 
   <p>A <dfn id="dfn-webvtt-alignment-cue-setting">WebVTT alignment cue setting</dfn> consists of the
@@ -2109,8 +2222,8 @@ The Final Minute</pre>
      <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue
      size</a> be 100.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue
-     alignment</a> be <a title="text track cue middle
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue
+     text alignment</a> be <a title="text track cue middle
      alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
 
      <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text" class="internalDFN">text track cue
@@ -2578,27 +2691,27 @@ The Final Minute</pre>
 
          <li><p>If <var title="">value</var> is a
          <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string "<code title="">start</code>", then let <var title="">cue</var>'s
-         <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> be <a title="text
+         <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be <a title="text
          track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string "<code title="">middle</code>", then let <var title="">cue</var>'s
-         <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> be <a title="text
+         <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be <a title="text
          track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string "<code title="">end</code>", then let <var title="">cue</var>'s
-         <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> be <a title="text
+         <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be <a title="text
          track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string "<code title="">left</code>", then let <var title="">cue</var>'s
-         <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> be <a title="text
+         <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be <a title="text
          track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left alignment</a>.</p></li>
 
          <li><p>If <var title="">value</var> is a
          <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string "<code title="">right</code>", then let <var title="">cue</var>'s
-         <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> be <a title="text
+         <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be <a title="text
          track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right alignment</a>.</p></li>
 
         </ol>
@@ -3864,7 +3977,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
     <li>
 
-      <p>If the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> is <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle</a>,
+      <p>If the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle</a>,
       adjust the value of <var title="">x-position</var> or <var title="">y-position</var> for
       <var title="">cue</var> as per the appropriate rules from the following list:</p>
 
@@ -3886,7 +3999,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
     <li>
 
-      <p>If the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> is <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end</a>,
+      <p>If the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end</a>,
       or <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right</a> for a <var title="">direction</var> of 'ltr',
       or <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start</a> for a <var title="">direction</var> of 'rtl',
       adjust the value of <var title="">x-position</var> or <var title="">y-position</var> for
@@ -4310,12 +4423,12 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <p>The 'text-align' property on the (root) <a href="#dfn-list-of-webvtt-node-objects" class="internalDFN">list of WebVTT Node
   Objects</a> must be set to the value in the second cell of the
   row of the table below whose first cell is the value of the
-  corresponding <a title="text track cue" href="#dfn-text-track-cue" class="internalDFN">cue</a>'s <a href="#dfn-text-track-cue-alignment" class="internalDFN">text
-  track cue alignment</a>:</p>
+  corresponding <a title="text track cue" href="#dfn-text-track-cue" class="internalDFN">cue</a>'s <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text
+  track cue text alignment</a>:</p>
 
   <table>
    <thead>
-    <tr> <th><a href="#dfn-text-track-cue-alignment" class="internalDFN">Text track cue alignment</a> </th><th> 'text-align' value
+    <tr> <th><a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> </th><th> 'text-align' value
    </th></tr></thead><tbody>
     <tr> <td><a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">Start alignment</a> </td><td> 'start'
     </td></tr><tr> <td><a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">Middle alignment</a> </td><td> 'center'
@@ -4791,7 +4904,7 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
 
    <dt><var title="">cue</var> . <a title="dom-VTTCue-align" href="#dfn-dom-vttcue-align" class="internalDFN">align</a> [ = <var title="">value</var> ]</dt>
    <dd>
-    <p>Returns a string representing the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a>, as follows:</p>
+    <p>Returns a string representing the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>, as follows:</p>
     <dl class="switch">
      <dt>If it is <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start alignment</a></dt>
      <dd><p>The string "<code title="">start</code>".</p></dd>
@@ -4843,38 +4956,29 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
    <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a>
    be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-identifier" class="internalDFN">text track cue
-   identifier</a> be the empty string.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-identifier" class="internalDFN">text track cue identifier</a> be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-pause-on-exit-flag" class="internalDFN">text track cue
-   pause-on-exit flag</a> be false.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-pause-on-exit-flag" class="internalDFN">text track cue pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue
-   writing direction</a> be <a title="text track cue
-   horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue writing direction</a> be
+   <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a title="text track cue region identifier" href="#dfn-text-track-cue-region-identifier" class="internalDFN">region identifier</a>
    be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue
-   snap-to-lines flag</a> be true.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue snap-to-lines flag</a> be true.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line
-   position</a> be <a title="text track cue automatic line
-   position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> be 
+   <a title="text track cue automatic line position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue
-   text position</a> be 50.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be 50.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue
-   size</a> be 100.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> be 100.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue
-   alignment</a> be <a title="text track cue middle
-   alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be
+   <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
 
-   <li><p>Return the <code>VTTCue</code> object representing
-   <var title="">cue</var>.</p></li>
+   <li><p>Return the <code>VTTCue</code> object representing <var title="">cue</var>.</p></li>
 
   </ol>
 
@@ -4936,12 +5040,12 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
 
   <p>The <dfn title="dom-VTTCue-align" id="dfn-dom-vttcue-align"><code>align</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
-  <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that the
+  <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that the
   <code>VTTCue</code> object represents:</p>
 
   <table>
    <thead>
-    <tr> <th><a href="#dfn-text-track-cue-alignment" class="internalDFN">Text track cue alignment</a> </th><th> <code title="dom-VTTCue-align">align</code> value
+    <tr> <th><a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> </th><th> <code title="dom-VTTCue-align">align</code> value
    </th></tr></thead><tbody>
     <tr> <td><a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">Start alignment</a> </td><td> "<code title="">start</code>"
     </td></tr><tr> <td><a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">Middle alignment</a> </td><td> "<code title="">middle</code>"
@@ -4950,7 +5054,7 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
     </td></tr><tr> <td><a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">Right alignment</a> </td><td> "<code title="">right</code>"
   </td></tr></tbody></table>
 
-  <p>On setting, the <a href="#dfn-text-track-cue-alignment" class="internalDFN">text track cue alignment</a> must be set to the value given in the
+  <p>On setting, the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> must be set to the value given in the
   first cell of the row in the table above whose second cell is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match
   for the new value, if any. If none of the values match, then the user agent must instead throw a
   <code>SyntaxError</code> exception.</p>
@@ -5367,4 +5471,4 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
   </section>
 
 
-<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form><div id="respec-ui" class="removeOnSave" style="position: fixed; top: 20px; right: 20px; width: 202px; text-align: right; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-weight: bold; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; background-position: initial initial; background-repeat: initial initial; ">ReSpec</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 102, 0); color: rgb(255, 255, 255); font-weight: bold; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; margin-left: 5px; background-position: initial initial; background-repeat: initial initial; ">1</button><div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 200px; display: none; text-align: left; margin-top: 5px; margin-right: 5px; background-position: initial initial; background-repeat: initial initial; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">Save Snapshot</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">About ReSpec</button></div></div></body></html>
+<form style="position: fixed; width: 10em; top: 1em; right: 1em; font-family: Tahoma, sans-serif; font-size: 11px; opacity: 0.8; text-align: right; " action="//www.w3.org/Bugs/Public/enter_bug.cgi" target="_blank">See a problem? Select text and <input type="submit" accesskey="f" style="font-family: Tahoma, sans-serif; font-size: 10px; " value="file a bug"><input type="hidden" name="comment" value=""><input type="hidden" name="short_desc" value="[WebVTT] "><input type="hidden" name="product" value="TextTracks CG"><input type="hidden" name="component" value="WebVTT">.</form><div id="respec-ui" class="removeOnSave" style="position: fixed; top: 20px; right: 20px; width: 202px; text-align: right; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-weight: bold; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; background-position: initial initial; background-repeat: initial initial; ">ReSpec</button><div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 200px; display: none; text-align: left; margin-top: 5px; margin-right: 5px; background-position: initial initial; background-repeat: initial initial; "><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">Save Snapshot</button><button style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-style: none; border-right-style: none; border-left-style: none; border-width: initial; border-color: initial; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); width: 100%; text-align: left; font-size: inherit; background-position: initial initial; background-repeat: initial initial; ">About ReSpec</button></div></div></body></html>
