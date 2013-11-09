@@ -2655,33 +2655,54 @@ The Final Minute</pre>
 
         <ol>
 
-         <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
-         characters (%) and <a>ASCII digits</a>, then jump to the step labeled <i>next
-         setting</i>.</p></li>
+          <li><p>If <var title="">value</var> contains a U+002C COMMA character (,), then let
+          <var title="">colpos</var> be the leading substring of <var title="">value</var> up to and
+          excluding the first U+002C COMMA character (,) in that string and let <var title="">colalign</var>
+          be the trailing substring of <var title="">value</var> starting from the character immediately
+          after the first U+002C COMMA character (,) in that string.</p></li>
 
-         <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
+          <li><p>Otherwise let <var title="">colpos</var> be the full <var title="">value</var> string
+          and <var title="">colalign</var> be the empty string.</p></li>
+
+         <li><p>If <var title="">colpos</var> contains any characters other than U+0025 PERCENT SIGN
+         characters (%) and <a>ASCII digits</a>, then jump to the step labeled
+         <i>next setting</i>.</p></li>
+
+         <li><p>If <var title="">colpos</var> does not contain at least one <a title="ASCII
          digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">value</var> other
+         <li><p>If any character in <var title="">colpos</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If the last character in <var title="">value</var> is
+         <li><p>If the last character in <var title="">colpos</var> is
          not a U+0025 PERCENT SIGN character (%), then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Ignoring the trailing percent sign, interpret <var
-         title="">value</var> as an integer, and let <var
-         title="">number</var> be that number.</p></li>
+         <li><p>Ignoring the trailing percent sign, interpret <var title="">colpos</var> as an integer,
+         and let <var title="">number</var> be that number.</p></li>
 
          <li><p>If <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var
-         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a>text track cue text
-         position</a> be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be
+         <var title="">number</var>.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a>case-sensitive</a> match for the string
+         "<code title="">start</code>", then let <var title="">cue</var>'s
+         <a>text track cue text position alignment</a> be
+         <a title="text track cue text position start alignment">start alignment</a>.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a>case-sensitive</a> match for the string
+         "<code title="">middle</code>", then let <var title="">cue</var>'s
+         <a>text track cue text position alignment</a> be
+         <a title="text track cue text position middle alignment">middle alignment</a>.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a>case-sensitive</a> match for the string
+         "<code title="">end</code>", then let <var title="">cue</var>'s
+         <a>text track cue text position alignment</a> be
+         <a title="text track cue text position end alignment">end alignment</a>.</p></li>
 
         </ol>
 
