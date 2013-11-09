@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!-- local copy:
     <script src='../../respec/builds/respec-w3c-common-3.2.4.js' async class='remove'></script>
-		-->
+    -->
     <!-- remote copy: -->
     
     
@@ -280,7 +280,7 @@ span.note, span.issue { padding: .1em .5em .15em; }
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">WebVTT: The Web Video Text Tracks Format</h1>
   
-  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-11-03T16:14:06.000Z" id="draft-community-group-specification-04-november-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-11-04">04 November 2013</time></h2>
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-11-09T14:58:48.000Z" id="draft-community-group-specification-09-november-2013">Draft Community Group Specification <time class="dt-published" datetime="2013-11-09">09 November 2013</time></h2>
   <dl>
     
     
@@ -862,19 +862,28 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <dl>
 
        <dt><dfn title="text track cue line start alignment" id="dfn-text-track-cue-line-start-alignment">Start alignment</dfn></dt>
-       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s to side (for
-       <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or left
-       side (otherwise) is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s top side (for
+       <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues),
+       left side (for
+       <a title="text track cue vertical growing right writing direction" href="#dfn-text-track-cue-vertical-growing-right-writing-direction" class="internalDFN">vertical growing right</a>),
+       or right side (for
+       <a title="text track cue vertical growing left writing direction" href="#dfn-text-track-cue-vertical-growing-left-writing-direction" class="internalDFN">vertical growing left</a>)
+       is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
        </dd>
 
        <dt><dfn title="text track cue line middle alignment" id="dfn-text-track-cue-line-middle-alignment">Middle alignment</dfn></dt>
-       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is centered at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+       <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is centered at the
+       <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
        </dd>
 
        <dt><dfn title="text track cue line end alignment" id="dfn-text-track-cue-line-end-alignment">End alignment</dfn></dt>
        <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s bottom side (for
-        <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or right
-        side (otherwise) is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
+        <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues),
+        right side (for
+        <a title="text track cue vertical growing right writing direction" href="#dfn-text-track-cue-vertical-growing-right-writing-direction" class="internalDFN">vertical growing right</a>),
+        or left side (for
+        <a title="text track cue vertical growing left writing direction" href="#dfn-text-track-cue-vertical-growing-left-writing-direction" class="internalDFN">vertical growing left</a>)
+        is aligned at the <a title="text track cue line position" href="#dfn-text-track-cue-line-position" class="internalDFN">line position</a>.
        </dd>
 
       </dl>
@@ -899,22 +908,18 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 	    <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>, otherwise to be interpreted
 	    as a percentage of the region width.</p>
 	
-     <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a default <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> which is defined
-     in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</p>
+     <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a <df>default text track cue text position which is defined
+     in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</df></p>
      
      <ol>
 
-       <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left aligned</a> cues: 0%.</li>
+       <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left aligned</a> or
+       <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start aligned</a> cues: 0%.</li>
 
        <li>For <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a> cues: 50%.</li>
 
-       <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right aligned</a> cues: 100%.</li>
-
-       <li>For <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start aligned</a> cues with left-to-right
-       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: 0%, otherwise 100%.</li>
-
-       <li>For <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end aligned</a> cues with left-to-right
-       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: 100%, otherwise 0%.</li>
+       <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right aligned</a> or
+       <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end aligned</a> cues: 100%.</li>
 
      </ol>
 
@@ -923,15 +928,18 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> setting for a cue, the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a>
      defaults to 50%.</p></div>
 
-     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4"><span>Note</span></div><p class="">If a <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> setting is provided for a cue, and the cue is
-     not middle aligned, and the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> has been defined as a template to be filled with either
-     left-to-right or right-to-left <i>paragraph direction</i> text, it is recommended to provide an
-     explicit <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a> setting, since otherwise the
-     cue might unexpectedly flip to the other half of the video viewport.</p></div>
+     <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4"><span>Note</span></div><p class="">Even for <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>
+     cues with right-to-left <i>paragraph direction</i> text, the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>
+     is positioned from the left edge of the video frame. This allows defining a rendering space template
+     which can be filled with either left-to-right or right-to-left <i>paragraph direction</i> text. If you
+     define such a <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> template with
+     <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start</a> or <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end</a>
+     aligned text, make sure to control its <a title="text track cue size" href="#dfn-text-track-cue-size" class="internalDFN">size</a> unless you want
+     text to flip from one side of the video frame to the other.</p></div>
 
    </dd>
 
-   <dt><dfn title="text track cue position alignment" id="dfn-text-track-cue-position-alignment">A cue position alignment</dfn>
+   <dt><dfn title="text track cue text position alignment" id="dfn-text-track-cue-text-position-alignment">A text position alignment</dfn>
    </dt><dd>
      <p>An alignment for the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the dimension of the
      <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>, describing which part of the
@@ -940,17 +948,17 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <dl>
 
-       <dt><dfn title="text track cue position start alignment" id="dfn-text-track-cue-position-start-alignment">Start alignment</dfn></dt>
+       <dt><dfn title="text track cue text position start alignment" id="dfn-text-track-cue-text-position-start-alignment">Start alignment</dfn></dt>
        <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s left side (for
        <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or top
        side (otherwise) is aligned at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
        </dd>
 
-       <dt><dfn title="text track cue position middle alignment" id="dfn-text-track-cue-position-middle-alignment">Middle alignment</dfn></dt>
+       <dt><dfn title="text track cue text position middle alignment" id="dfn-text-track-cue-text-position-middle-alignment">Middle alignment</dfn></dt>
        <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> is centered at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
        </dd>
 
-       <dt><dfn title="text track cue position end alignment" id="dfn-text-track-cue-position-end-alignment">End alignment</dfn></dt>
+       <dt><dfn title="text track cue text position end alignment" id="dfn-text-track-cue-text-position-end-alignment">End alignment</dfn></dt>
        <dd>The <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>'s right side (for
         <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues) or bottom
         side (otherwise) is aligned at the <a title="text track cue text position" href="#dfn-text-track-cue-text-position" class="internalDFN">text position</a>.
@@ -958,32 +966,30 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a default <a href="#dfn-text-track-cue-position-alignment" class="internalDFN">text track cue position alignment</a> which is defined
-      in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</p>
+      <p>A <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> has a <dfn id="dfn-default-text-track-cue-text-position-alignment">default text track cue text position alignment</dfn>
+      which is defined in terms of the value of the <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>:</p>
 
       <ol>
 
-        <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left aligned</a> cues: <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>.</li>
+        <li>For <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left</a> or
+        <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start</a> aligned cues:
+        <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start</a>.</li>
 
-        <li>For <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle aligned</a> cues: <a title="text track cue position middle alignment" href="#dfn-text-track-cue-position-middle-alignment" class="internalDFN">middle</a>.</li>
+        <li>For <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle</a> aligned cues:
+        <a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">middle</a>.</li>
 
-        <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right aligned</a> cues: <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
-
-        <li>For <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start aligned</a> cues with left-to-right
-        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>, otherwise <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
-
-        <li>For <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end aligned</a> cues with left-to-right
-        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a title="text track cue position start alignment" href="#dfn-text-track-cue-position-start-alignment" class="internalDFN">start</a>, otherwise <a title="text track cue position end alignment" href="#dfn-text-track-cue-position-end-alignment" class="internalDFN">end</a>.</li>
+        <li>For <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right</a> or
+        <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end</a> aligned cues:
+        <a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">end</a>.</li>
 
       </ol>
 
-      <!-- TOO OBVIOUS?
-      <p class="note">Since the <a>text track cue text position</a> always measures from the left
-      of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
-      or the top (otherwise), the <a>text track cue position alignment</a> <a
-      title="text track cue position start alignment">start value</a> varies between left and top for
-      horizontal and vertical cues, but not between left and right like BIDI.</p>
-      -->
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_5"><span>Note</span></div><p class="">Since the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> always measures from the left
+      of the video (for <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a> cues)
+      or the top (otherwise), the <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a>
+      <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start value</a> varies between left and
+      top for horizontal and vertical cues, but not between left and right even for changing
+      <i>paragraph direction</i>.</p></div>
 
    </dd>
 
@@ -1187,7 +1193,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A <a href="#dfn-webvtt-line-terminator" class="internalDFN">WebVTT line terminator</a>.</li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_5"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue" class="internalDFN">WebVTT cue</a> corresponds to one piece
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_6"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue" class="internalDFN">WebVTT cue</a> corresponds to one piece
   of time-aligned text or data in the <a href="#dfn-webvtt-file" class="internalDFN">WebVTT file</a>, for
   example one subtitle. The <a href="#dfn-cue-payload" class="internalDFN">cue payload</a> is the text or
   data associated with the cue.</p></div>
@@ -1198,7 +1204,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   SIGN), nor containing any U+000A LINE FEED (LF) characters or U+000D
   CARRIAGE RETURN (CR) characters.</p>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_6"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue-identifier" class="internalDFN">WebVTT cue identifier</a> can be used to
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_7"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue-identifier" class="internalDFN">WebVTT cue identifier</a> can be used to
   reference a specific cue, for example from script or CSS.</p></div>
 
   <p>The <dfn id="dfn-webvtt-cue-timings">WebVTT cue timings</dfn> part of a <a href="#dfn-webvtt-cue" class="internalDFN">WebVTT
@@ -1232,7 +1238,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_7"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-cue-timings" class="internalDFN">WebVTT cue timings</a> give the start
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_8"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-cue-timings" class="internalDFN">WebVTT cue timings</a> give the start
   and end offsets of the <a href="#dfn-webvtt-cue" class="internalDFN">WebVTT cue</a>. Different cues can
   overlap. Cues are always listed ordered by their start time.</p></div>
 
@@ -1242,7 +1248,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <a title="partial WebVTT timestamp" href="#dfn-partial-webvtt-timestamp" class="internalDFN">WebVTT timestamp representing
   a time in seconds and fractions of a second</a>.</p>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_8"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-timestamp" class="internalDFN">WebVTT timestamp</a> is always interpreted
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_9"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-timestamp" class="internalDFN">WebVTT timestamp</a> is always interpreted
   relative to the <a href="#dfn-current-playback-position" class="internalDFN">current playback position</a> of the media data
   that the WebVTT file is to be synchronised with, which always starts
   at 0.</p></div>
@@ -1346,7 +1352,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A <a href="#dfn-webvtt-line-terminator" class="internalDFN">WebVTT line terminator</a>.</li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_9"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-comment" class="internalDFN">WebVTT comment</a> is ignored by the parser.</p></div>
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_10"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-comment" class="internalDFN">WebVTT comment</a> is ignored by the parser.</p></div>
 
   </section><!-- end comments -->
 
@@ -1621,7 +1627,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>A <a href="#dfn-webvtt-region-scroll-setting" class="internalDFN">WebVTT region scroll setting</a>.</li> <!-- scroll:up -->
   </ul>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_10"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-setting-list" class="internalDFN">WebVTT region setting list</a> gives configuration
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_11"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-setting-list" class="internalDFN">WebVTT region setting list</a> gives configuration
   options regarding the dimensions, positioning and anchoring of the region. For
   example, it allows a group of cues within a region to be anchored in the center of the
   region and the center of the video viewport. In this example, when the font size grows,
@@ -1637,7 +1643,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
     U+003E GREATER-THAN SIGN).</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_11"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-identifier" class="internalDFN">WebVTT region identifier</a> gives
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_12"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-identifier" class="internalDFN">WebVTT region identifier</a> gives
   a name to the region so it can be referenced by the cues that belong to the region.</p></div>
 
   <p>A <dfn id="dfn-webvtt-region-width-setting">WebVTT region width setting</dfn> consists of the
@@ -1650,7 +1656,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</p></li>
    <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_12"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-width-setting" class="internalDFN">WebVTT region width setting</a> provides
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_13"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-width-setting" class="internalDFN">WebVTT region width setting</a> provides
   a fixed width as a percentage of the video width for the region into which cues are
   rendered and based on which alignment is calculated.</p></div>
 
@@ -1661,7 +1667,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
    <li><p>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_13"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-lines-setting" class="internalDFN">WebVTT region lines setting</a> provides
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_14"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-lines-setting" class="internalDFN">WebVTT region lines setting</a> provides
   a fixed height as a number of lines for the region into which cues are rendered. As such, it
   defines the height of the roll-up region if it is a scroll region.</p></div>
 
@@ -1680,7 +1686,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</p></li>
    <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_14"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-anchor-setting" class="internalDFN">WebVTT region anchor setting</a> provides
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_15"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-anchor-setting" class="internalDFN">WebVTT region anchor setting</a> provides
   a tuple of two percentages that specify the point within the region box that is fixed in
   location. The first percentage measures the x-dimension and the second percentage
   y-dimension from the top left corner of the region box. If no
@@ -1702,14 +1708,14 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</p></li>
    <li><p>A U+0025 PERCENT SIGN character (%).</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_15"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-viewport-anchor-setting" class="internalDFN">WebVTT region viewport
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_16"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-viewport-anchor-setting" class="internalDFN">WebVTT region viewport
   anchor setting</a> provides a tuple of two percentages that specify the point within
   the video viewport that the region anchor point is anchored to. The first percentage
   measures the x-dimension and the second percentage measures the y-dimension from the
   top left corner of the video viewport box. If no viewport anchor is given, it defaults
   to 0%, 100% (i.e. the bottom left corner).</p></div>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_16"><span>Note</span></div><p class="">For browsers, the region maps to an absolute positioned CSS box relative
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_17"><span>Note</span></div><p class="">For browsers, the region maps to an absolute positioned CSS box relative
   to the video viewport, i.e. there is a relative positioned box that represents the video
   viewport relative to which the regions are absolutely positioned. Overflow is hidden.</p></div>
   
@@ -1720,12 +1726,12 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
     <li><p>The string "<code>up</code>".</p></li>
   </ol>
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_17"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-scroll-setting" class="internalDFN">WebVTT region scroll setting</a>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_18"><span>Note</span></div><p class="">The <a href="#dfn-webvtt-region-scroll-setting" class="internalDFN">WebVTT region scroll setting</a>
   specifies whether cues rendered into the region are allowed to move out of their initial
   rendering place and roll up, i.e. move towards the top of the video viewport. If the
   scroll setting is omitted, cues do not move from their rendered position.</p></div> 
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_18"><span>Note</span></div><p class="">Cues are added to a region one line at a time below existing cue lines.
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_19"><span>Note</span></div><p class="">Cues are added to a region one line at a time below existing cue lines.
   When an existing rendered cue line is removed, and it was above another already rendered
   cue line, that cue line moves into its space, thus scrolling in the given direction. If
   there is not enough space for a new cue line to be added to a region, the top-most cue
@@ -1733,7 +1739,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   overflow:hidden). This eventually makes space for the new cue line and allows it to be
   added.</p></div>
     
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_19"><span>Note</span></div><p class="">When there is no scroll direction, cue lines are added in the empty line
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_20"><span>Note</span></div><p class="">When there is no scroll direction, cue lines are added in the empty line
   closest to the line in the bottom of the region. If no empty line is available, the oldest
   line is replaced.</p></div>
 
@@ -1746,18 +1752,21 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   setting must not be included more than once per <a href="#dfn-webvtt-cue-settings-list" class="internalDFN">WebVTT cue settings list</a>.</p>
 
   <ul class="brief"> 
-   <li>A <a href="#dfn-webvtt-vertical-text-cue-setting" class="internalDFN">WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr -->
-   <li>A <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a>.</li> <!-- line:100% line:1 line:-1 -->
+   <li>A <a href="#dfn-webvtt-vertical-text-cue-setting" class="internalDFN">WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr [writing direction] -->
+   <li>A <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a>.</li> <!-- line:100% line:1 line:-1
+                                                       [snap-to-lines & line position & line alignment] -->
    <li>A <a href="#dfn-webvtt-size-cue-setting" class="internalDFN">WebVTT size cue setting</a>.</li>          <!-- size:100% -->
-   <li>A <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a>.</li> <!-- position:100% -->
-   <li>A <a href="#dfn-webvtt-alignment-cue-setting" class="internalDFN">WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right -->
-   <li>A <a href="#dfn-webvtt-region-cue-setting" class="internalDFN">WebVTT region cue setting</a>.</li>        <!-- region:fred -->
+   <li>A <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a>.</li> <!-- position:100%
+                                                       [text position & text position alignment] -->
+   <li>A <a href="#dfn-webvtt-alignment-cue-setting" class="internalDFN">WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right
+                                                       [text alignment] -->
+   <li>A <a href="#dfn-webvtt-region-cue-setting" class="internalDFN">WebVTT region cue setting</a>.</li>        <!-- region:fred [region id] -->
   </ul>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_20"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue-settings-list" class="internalDFN">WebVTT cue settings list</a> gives configuration
-  options regarding the position and alignment of the cue. For
-  example, it allows a cue to be aligned to the left or positioned at
-  the top right.</p></div>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_21"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-cue-settings-list" class="internalDFN">WebVTT cue settings list</a> gives configuration
+  options regarding the position and alignment of the cue box and the cue text within. For
+  example, it allows a cue box to be aligned to the left or positioned at the top right with
+  the cue text within middle aligned.</p></div>
 
   <p>A <dfn id="dfn-webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting</dfn> is a <a href="#dfn-webvtt-cue-setting" class="internalDFN">WebVTT cue setting</a> that
   consists of the following components, in the order given:</p>
@@ -1768,7 +1777,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>One of the following strings as the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a>: "<code title="">rl</code>", "<code title="">lr</code>".</li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_21"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-vertical-text-cue-setting" class="internalDFN">WebVTT vertical text cue setting</a>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_22"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-vertical-text-cue-setting" class="internalDFN">WebVTT vertical text cue setting</a>
   configures the cue to use vertical text layout rather than
   horizontal text layout. Vertical text layout is sometimes used in
   Japanese, for example. The default is horizontal layout.</p></div>
@@ -1779,34 +1788,49 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code title="">line</code>" as the <a href="#dfn-webvtt-cue-setting-name" class="internalDFN">WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
-   <li>As the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a> either:
-    <dl>
-     <dt>To represent a specific position relative to the video frame</dt>
-     <dd>
+   <li>As the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a>:
+     <ol>
+     <li>a position value, either:
+      <dl>
+       <dt>To represent a specific position relative to the video frame</dt>
+       <dd>
+        <ol>
+         <li>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</li>
+         <li>A U+0025 PERCENT SIGN character (%).</li>
+        </ol>
+       </dd>
+       <dt>Or to represent a line number</dt>
+       <dd>
+        <ol>
+         <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
+         <li>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</li>
+        </ol>
+       </dd>
+      </dl>
+    </li>
+    <li>An optional alignment value consisting of the following components:
       <ol>
-       <li>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</li>
-       <li>A U+0025 PERCENT SIGN character (%).</li>
+      <li>A U+002C COMMA character (,).</li>
+      <li>One of the following strings: <code title="">start</code>, <code title="">middle</code>,
+        <code title="">end</code></li>
       </ol>
-     </dd>
-     <dt>To represent a line number</dt>
-     <dd>
-      <ol>
-       <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
-       <li>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</li>
-      </ol>
-     </dd>
-    </dl>
+    </li>
+    </ol>
    </li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_22"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a>
-  configures the position of the cue. For horizontal cues, this is the
-  vertical position. The position can be given either as a percentage,
-  which gives the distance from the top of the frame, or as a line
-  number. Line numbers are based on the size of the first line of the
-  cue. Positive line numbers count from the top of the frame (the top
-  line is numbered 0), negative line numbers from the bottom of the
-  frame (the bottom line is numbered −1).</p></div>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_23"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a> configures the position of the cue box
+  in the direction opposite to the <a title="text track cue writing direction" href="#dfn-text-track-cue-writing-direction" class="internalDFN">writing direction</a>.
+  For horizontal cues, this is the vertical
+  position. The positioning is calculated relative to the <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start</a>,
+  <a title="text track cue line middle alignment" href="#dfn-text-track-cue-line-middle-alignment" class="internalDFN">middle</a>, or <a title="text track cue line end alignment" href="#dfn-text-track-cue-line-end-alignment" class="internalDFN">end</a>
+  of the cue box, depending on the <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> value -
+  <a title="text track cue line middle alignment" href="#dfn-text-track-cue-line-middle-alignment" class="internalDFN">middle</a> by default.
+  The position can be given either as a percentage of the video dimension
+  or as a line number. Line numbers are based on the size of the first line of the
+  cue. Positive line numbers count from the start of the video frame (the first
+  line is numbered 0), negative line numbers from the end of the
+  frame (the last line is numbered −1).</p></div>
 
   <p>A <dfn id="dfn-webvtt-size-cue-setting">WebVTT size cue setting</dfn> consists of the
   following components, in the order given:</p>
@@ -1822,9 +1846,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_23"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-size-cue-setting" class="internalDFN">WebVTT size cue setting</a> configures
-  the size of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the same direction as the <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text
-  position cue setting</a>. For horizontal cues, this is the width
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_24"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-size-cue-setting" class="internalDFN">WebVTT size cue setting</a> configures
+  the size of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the same direction as the
+  <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a>. For horizontal cues, this is the width
   of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a>. It is given as a percentage of the width of the
   frame.</p></div>
 
@@ -1835,20 +1859,34 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>The string "<code title="">position</code>" as the <a href="#dfn-webvtt-cue-setting-name" class="internalDFN">WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
    <li>As the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a>:
+   <ol>
+    <li>a position value consisting of:
     <ol>
      <li>One or more <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>.</li>
      <li>A U+0025 PERCENT SIGN character (%).</li>
     </ol>
+    </li>
+    <li>an optional alignment value consisting of:
+    <ol>
+     <li>A U+002C COMMA character (,).</li>
+     <li>One of the following strings: <code title="">start</code>, <code title="">middle</code>,
+       <code title="">end</code></li>
+    </ol>
+    </li>
+   </ol>
    </li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_24"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a>
-  configures the position of the text in the direction orthogonal to
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_25"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a> configures the position of the
+  <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> in the direction orthogonal to
   the <a href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">WebVTT line position cue setting</a>. For horizontal
-  cues, this is the horizontal position. The <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text
-  position cue setting</a> is given as a percentage, calculated
-  from the edge of the <a title="text track cue box" href="#dfn-text-track-cue-box" class="internalDFN">cue box</a> that the text begins (so for
-  left-to-right English text, the left edge).</p></div>
+  cues, this is the horizontal position. The text position is given as a percentage of the video frame.
+  The positioning is calculated relative to the <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start</a>,
+  <a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">middle</a>, or
+  <a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">end</a>
+  of the cue box, depending on the <a href="#dfn-default-text-track-cue-text-position-alignment" class="internalDFN">default text track cue text position alignment</a> value, which is
+  overridden by the <a href="#dfn-webvtt-text-position-cue-setting" class="internalDFN">WebVTT text position cue setting</a> alignment value.
+  </p></div>
 
   <p>A <dfn id="dfn-webvtt-alignment-cue-setting">WebVTT alignment cue setting</dfn> consists of the
   following components, in the order given:</p>
@@ -1859,7 +1897,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>One of the following strings as the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a>: "<code title="">start</code>", "<code title="">middle</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>"</li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_25"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-alignment-cue-setting" class="internalDFN">WebVTT alignment cue setting</a>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_26"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-alignment-cue-setting" class="internalDFN">WebVTT alignment cue setting</a>
   configures the alignment of the text within the cue. The keywords
   are relative to the text direction; for left-to-right English text,
   "<code title="">start</code>" means left-aligned.</p></div>
@@ -1873,7 +1911,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <li><p>As the <a href="#dfn-webvtt-cue-setting-value" class="internalDFN">WebVTT cue setting value</a>: an arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the substring "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_26"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-region-cue-setting" class="internalDFN">WebVTT region cue setting</a>
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_27"><span>Note</span></div><p class="">A <a href="#dfn-webvtt-region-cue-setting" class="internalDFN">WebVTT region cue setting</a>
   configures a cue to become part of a region by referencing the region's identifier unless
   the cue has a <a title="WebVTT vertical text cue setting" href="#dfn-webvtt-vertical-text-cue-setting" class="internalDFN">"vertical"</a>,
   <a title="WebVTT line position cue setting" href="#dfn-webvtt-line-position-cue-setting" class="internalDFN">"line"</a> or
@@ -2200,38 +2238,34 @@ The Final Minute</pre>
    attribute values:</p></li>
 
     <ol>
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-identifier" class="internalDFN">text track cue
-     identifier</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-identifier" class="internalDFN">text track cue identifier</a> be the empty string.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-pause-on-exit-flag" class="internalDFN">text track cue
-     pause-on-exit flag</a> be false.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-pause-on-exit-flag" class="internalDFN">text track cue pause-on-exit flag</a> be false.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue
-     writing direction</a> be <a title="text track cue
-     horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue writing direction</a> be
+     <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue 
-     region identifier</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> be the empty string.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue
-     snap-to-lines flag</a> be true.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue snap-to-lines flag</a> be true.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line
-     position</a> be <a title="text track cue automatic line
-     position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> be
+     <a title="text track cue automatic line position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue
-     text position</a> be 50.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> be
+     <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start alignment</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue
-     size</a> be 100.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be 50.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue
-     text alignment</a> be <a title="text track cue middle
-     alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a title="" href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+     <a title="text track cue text position alignment" href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">middle alignment</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text" class="internalDFN">text track cue
-     text</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> be 100.</p></li>
+
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> be
+     <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
+
+     <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text" class="internalDFN">text track cue text</a> be the empty string.</p></li>
     </ol>
 
    <li><p>If <var title="">line</var> contains the three-character
@@ -2495,11 +2529,11 @@ The Final Minute</pre>
    <li><p>Let <var title="">remainder</var> be the trailing substring
    of <var title="">input</var> starting at <var title="">position</var>.</p></li>
 
-   <li><p><a href="#dfn-parse-the-webvtt-settings" class="internalDFN">Parse the WebVTT settings</a> given by <var title="">remainder</var> for <var title="">cue</var>.</p></li>
+   <li><p><a href="#dfn-parse-the-webvtt-cue-settings" class="internalDFN">Parse the WebVTT cue settings</a> given by <var title="">remainder</var> for <var title="">cue</var>.</p></li>
 
   </ol>  
 
-  <p>When the user agent is to <dfn id="dfn-parse-the-webvtt-settings">Parse the WebVTT settings</dfn>
+  <p>When the user agent is to <dfn id="dfn-parse-the-webvtt-cue-settings">Parse the WebVTT cue settings</dfn>
   given by a string <var title="">input</var> for a <a href="#dfn-text-track-cue" class="internalDFN">text track
   cue</a> <var title="">cue</var>, the user agent must run the
   following steps:</p>
@@ -2528,6 +2562,10 @@ The Final Minute</pre>
      <var title="">setting</var> starting from the character
      immediately after the first U+003A COLON character (:) in that
      string.</p></li>
+
+     <li><p>Let <var title="">positionSet</var> be false. (This is
+     required to determine if the position settings need to be adjusted
+     for non-middle aligned cue text.)</p></li>
 
      <li>
 
@@ -2571,44 +2609,65 @@ The Final Minute</pre>
 
         <ol>
 
-         <li><p>If <var title="">value</var> contains any characters other than U+002D HYPHEN-MINUS
+         <li><p>If <var title="">value</var> contains a U+002C COMMA character (,), then let
+         <var title="">linepos</var> be the leading substring of <var title="">value</var> up to and
+         excluding the first U+002C COMMA character (,) in that string and let <var title="">linealign</var>
+         be the trailing substring of <var title="">value</var> starting from the character immediately
+         after the first U+002C COMMA character (,) in that string.</p></li>
+
+         <li><p>Otherwise let <var title="">linepos</var> be the full <var title="">value</var> string
+         and <var title="">linealign</var> be the empty string.</p></li>
+
+         <li><p>If <var title="">linepos</var> contains any characters other than U+002D HYPHEN-MINUS
          characters (-), U+0025 PERCENT SIGN characters (%), and <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>, then
          jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
+         <li><p>If <var title="">linepos</var> does not contain at least one <a title="ASCII
          digits" href="#dfn-ascii-digits" class="internalDFN">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">value</var> other
+         <li><p>If any character in <var title="">linepos</var> other
          than the first character is a U+002D HYPHEN-MINUS character
-         (-), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (-), then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">value</var> other
+         <li><p>If any character in <var title="">linepos</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If the first character in <var title="">value</var> is
+         <li><p>If the first character in <var title="">linepos</var> is
          a U+002D HYPHEN-MINUS character (-) <em>and</em> the last
-         character in <var title="">value</var> is a U+0025 PERCENT
-         SIGN character (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         character in <var title="">linepos</var> is a U+0025 PERCENT SIGN character (%),
+         then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>Ignoring the trailing percent sign, if any, interpret
-         <var title="">value</var> as a (potentially signed) integer,
+         <var title="">linepos</var> as a (potentially signed) integer,
          and let <var title="">number</var> be that number.</p></li>
 
-         <li><p>If the last character in <var title="">value</var> is
+         <li><p>If the last character in <var title="">linepos</var> is
          a U+0025 PERCENT SIGN character (%), but <var title="">number</var> is not in the range
          0&nbsp;≤&nbsp;<var title="">number</var>&nbsp;≤&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue
-         line position</a> be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a>
+         be <var title="">number</var>.</p></li>
 
-         <li><p>If the last character in <var title="">value</var> is
-         a U+0025 PERCENT SIGN character (%), then let <var title="">cue</var>'s <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue snap-to-lines
-         flag</a> be false. Otherwise, let it be true.</p></li>
+         <li><p>If the last character in <var title="">linepos</var> is
+         a U+0025 PERCENT SIGN character (%), then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-snap-to-lines-flag" class="internalDFN">text track cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
+
+         <li><p>If <var title="">linealign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">start</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> be
+         <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start alignment</a>.</p></li>
+
+         <li><p>If <var title="">linealign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">middle</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> be
+         <a title="text track cue line middle alignment" href="#dfn-text-track-cue-line-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
+
+         <li><p>If <var title="">linealign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">end</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> be
+         <a title="text track cue line end alignment" href="#dfn-text-track-cue-line-end-alignment" class="internalDFN">end alignment</a>.</p></li>
 
         </ol>
 
@@ -2657,30 +2716,54 @@ The Final Minute</pre>
 
         <ol>
 
-         <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
-         characters (%) and <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>, then jump to the step labeled <i>next
-         setting</i>.</p></li>
+          <li><p>If <var title="">value</var> contains a U+002C COMMA character (,), then let
+          <var title="">colpos</var> be the leading substring of <var title="">value</var> up to and
+          excluding the first U+002C COMMA character (,) in that string and let <var title="">colalign</var>
+          be the trailing substring of <var title="">value</var> starting from the character immediately
+          after the first U+002C COMMA character (,) in that string.</p></li>
 
-         <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
+          <li><p>Otherwise let <var title="">colpos</var> be the full <var title="">value</var> string
+          and <var title="">colalign</var> be the empty string.</p></li>
+
+         <li><p>If <var title="">colpos</var> contains any characters other than U+0025 PERCENT SIGN
+         characters (%) and <a href="#dfn-ascii-digits" class="internalDFN">ASCII digits</a>, then jump to the step labeled
+         <i>next setting</i>.</p></li>
+
+         <li><p>If <var title="">colpos</var> does not contain at least one <a title="ASCII
          digits" href="#dfn-ascii-digits" class="internalDFN">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">value</var> other
+         <li><p>If any character in <var title="">colpos</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If the last character in <var title="">value</var> is
+         <li><p>If the last character in <var title="">colpos</var> is
          not a U+0025 PERCENT SIGN character (%), then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Ignoring the trailing percent sign, interpret <var title="">value</var> as an integer, and let <var title="">number</var> be that number.</p></li>
+         <li><p>Ignoring the trailing percent sign, interpret <var title="">colpos</var> as an integer,
+         and let <var title="">number</var> be that number.</p></li>
 
          <li><p>If <var title="">number</var> is not in the range
          0&nbsp;≤&nbsp;<var title="">number</var>&nbsp;≤&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text
-         position</a> be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be
+         <var title="">number</var> and lte <var title="">positionSet</var> be true.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">start</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+         <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start alignment</a>.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">middle</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+         <a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
+
+         <li><p>If <var title="">colalign</var> is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match for the string
+         "<code title="">end</code>", then let <var title="">cue</var>'s
+         <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+         <a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">end alignment</a>.</p></li>
 
         </ol>
 
@@ -2726,8 +2809,6 @@ The Final Minute</pre>
 
      </li>
 
-     <li>If <var>cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> is not <a href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">text track cue automatic line position</a> or <var>cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> is not 100 or <var>cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue writing direction</a> is not <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>, but <var>cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> is not the empty string, let <var>cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> be the empty string.</li>
-
      <li><p><i>Next setting</i>: Continue to the next token, if
      any.</p></li> <!-- this step is just here to give the algorithms
      above a clean way to 'break' -->
@@ -2736,9 +2817,36 @@ The Final Minute</pre>
 
    </li>
 
+   <li><p>If <var title="">positionSet</var> is false (i.e. the cue box has not been explicitly
+   positioned with a position setting), and <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a>
+   is not <a title="text track cue middle alignment" href="#dfn-text-track-cue-middle-alignment" class="internalDFN">middle alignment</a>, then adjust the
+   <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> and its <a title="text track cue text position alignment" href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">alignment</a>
+   as follows:
+
+   </p><dl>
+     <dt>If <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is <a title="text track cue left alignment" href="#dfn-text-track-cue-left-alignment" class="internalDFN">left</a> or
+     <a title="text track cue start alignment" href="#dfn-text-track-cue-start-alignment" class="internalDFN">start</a></dt>
+     <dd>Let <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be 0% and let <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+     <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start alignment</a>.
+     </dd>
+     
+
+     <dt>If <a href="#dfn-text-track-cue-text-alignment" class="internalDFN">text track cue text alignment</a> is <a title="text track cue right alignment" href="#dfn-text-track-cue-right-alignment" class="internalDFN">right</a> or
+     <a title="text track cue end alignment" href="#dfn-text-track-cue-end-alignment" class="internalDFN">end</a></dt>
+     <dd>Let <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be 100% and let <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+     <a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">end alignment</a>.
+     </dd>
+     
+   </dl>
+
+   </li>
+
+   <li><p>If <var>cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> is not <a href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">text track cue automatic line position</a> or <var>cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> is not 100 or <var>cue</var>'s <a href="#dfn-text-track-cue-writing-direction" class="internalDFN">text track cue writing direction</a> is not <a title="text track cue horizontal writing direction" href="#dfn-text-track-cue-horizontal-writing-direction" class="internalDFN">horizontal</a>, but <var>cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> is not the empty string, let <var>cue</var>'s <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> be the empty string.</p></li>
+
+
   </ol>
 
-  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_27"><span>Note</span></div><p class="">Step 5 makes sure that no matter in which order the cue settings are provided, if the cue has a <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> or a <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction" href="#dfn-text-track-cue-vertical-growing-left-writing-direction" class="internalDFN">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction" href="#dfn-text-track-cue-vertical-growing-right-writing-direction" class="internalDFN">growing right writing direction</a>, the <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> will be ignored.</p></div>
+  <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_28"><span>Note</span></div><p class="">Step 4 makes sure that no matter in which order the cue settings are provided, if the cue has a <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> or a <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction" href="#dfn-text-track-cue-vertical-growing-left-writing-direction" class="internalDFN">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction" href="#dfn-text-track-cue-vertical-growing-right-writing-direction" class="internalDFN">growing right writing direction</a>, the <a href="#dfn-text-track-cue-region-identifier" class="internalDFN">text track cue region identifier</a> will be ignored.</p></div>
 
 
   <p>When this specification says that a user agent is to
@@ -3226,7 +3334,7 @@ The Final Minute</pre>
     end-of-file marker. Otherwise, let <var title="">c</var> be the
     character in <var title="">input</var> pointed to by <var title="">position</var>.</p>
 
-    <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_28"><span>Note</span></div><p class="">An end-of-file marker is not a Unicode character,
+    <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_29"><span>Note</span></div><p class="">An end-of-file marker is not a Unicode character,
     it is used to end the tokenizer.</p></div>
 
    </li>
@@ -3869,7 +3977,7 @@ The Final Minute</pre>
 
          <li><p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the values of each <a href="#dfn-webvtt-text-object" class="internalDFN">WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first traversal, excluding <a title="WebVTT Ruby Text Object" href="#dfn-webvtt-ruby-text-object" class="internalDFN">WebVTT Ruby Text Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of the first
 Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
-           <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_29"><span>Note</span></div><p class="">Within a cue, paragraph boundaries are only denoted by Type B characters, such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each line of the cue is reordered as if it was a separate paragraph.)</p></div>
+           <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_30"><span>Note</span></div><p class="">Within a cue, paragraph boundaries are only denoted by Type B characters, such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each line of the cue is reordered as if it was a separate paragraph.)</p></div>
          </li>
 
          <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p>
@@ -3925,7 +4033,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
      to determine the <i>paragraph embedding level</i> of the first
      Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
-     <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_30"><span>Note</span></div><p class="">Within a cue, paragraph boundaries are only denoted by Type B characters, such
+     <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_31"><span>Note</span></div><p class="">Within a cue, paragraph boundaries are only denoted by Type B characters, such
      as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means
      each line of the cue is reordered as if it was a separate paragraph.)</p></div>
 
@@ -4572,7 +4680,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   cue" href="#dfn-text-track-cue" class="internalDFN">text track cues</a> that are being rendered for the
   <i>matched element</i>.</p>
 
-  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_31"><span>Note</span></div><p class="">If the <i>matched element</i> is not a
+  <div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_32"><span>Note</span></div><p class="">If the <i>matched element</i> is not a
   <code>video</code> element, the pseudo-elements defined below won't
   have any effect according to this specification.</p></div>
 
@@ -4807,7 +4915,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
   <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section, that element is the matched element. The pseudo-element defined below affects the styling of text track regions that are being rendered for the matched element.</p>
 
-  <div class="note"><div class="note-title" aria-level="5" role="heading" id="h_note_32"><span>Note</span></div><p class="">If the matched element is not a video element, the pseudo-element defined below won't have any effect according to this specification.</p></div>
+  <div class="note"><div class="note-title" aria-level="5" role="heading" id="h_note_33"><span>Note</span></div><p class="">If the matched element is not a video element, the pseudo-element defined below won't have any effect according to this specification.</p></div>
 
   <p>The '<dfn title="pseudo-region" id="dfn-pseudo-region">::cue-region</dfn>' pseudo-element (with no argument) matches any list of <a title="WebVTT region object" href="#dfn-webvtt-region-object" class="internalDFN">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
@@ -4842,7 +4950,9 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
            attribute <a href="#dfn-directionsetting" class="internalDFN">DirectionSetting</a> <a title="dom-VTTCue-vertical" href="#dfn-dom-vttcue-vertical" class="internalDFN">vertical</a>;
            attribute boolean <a title="dom-VTTCue-snapToLines" href="#dfn-dom-vttcue-snaptolines" class="internalDFN">snapToLines</a>;
            attribute (long or <a href="#dfn-autokeyword" class="internalDFN">AutoKeyword</a>) <a title="dom-VTTCue-line" href="#dfn-dom-vttcue-line" class="internalDFN">line</a>;
+           attribute <a href="#dfn-alignsetting" class="internalDFN">AlignSetting</a> <a title="dom-VTTCue-lineAlign" href="#dfn-dom-vttcue-linealign" class="internalDFN">lineAlign</a>;
            attribute long <a title="dom-VTTCue-position" href="#dfn-dom-vttcue-position" class="internalDFN">position</a>;
+           attribute <a href="#dfn-alignsetting" class="internalDFN">AlignSetting</a> <a title="dom-VTTCue-positionAlign" href="#dfn-dom-vttcue-positionalign" class="internalDFN">positionAlign</a>;
            attribute long <a title="dom-VTTCue-size" href="#dfn-dom-vttcue-size" class="internalDFN">size</a>;
            attribute <a href="#dfn-alignsetting" class="internalDFN">AlignSetting</a> <a title="dom-VTTCue-align" href="#dfn-dom-vttcue-align" class="internalDFN">align</a>;
 					 attribute DOMString <a title="dom-VTTCue-text" href="#dfn-dom-vttcue-text" class="internalDFN">text</a>;
@@ -4894,9 +5004,37 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
     <p>Can be set.</p>
    </dd>
 
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-lineAlign" href="#dfn-dom-vttcue-linealign" class="internalDFN">lineAlign</a> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns a string representing the <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a>, as follows:</p>
+    <dl class="switch">
+     <dt>If it is <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start alignment</a></dt>
+     <dd><p>The string "<code title="">start</code>".</p></dd>
+     <dt>If it is <a title="text track cue line middle alignment" href="#dfn-text-track-cue-line-middle-alignment" class="internalDFN">middle alignment</a></dt>
+     <dd><p>The string "<code title="">middle</code>".</p></dd>
+     <dt>If it is <a title="text track cue line end alignment" href="#dfn-text-track-cue-line-end-alignment" class="internalDFN">end alignment</a></dt>
+     <dd><p>The string "<code title="">end</code>".</p></dd>
+    </dl>
+    <p>Can be set.</p>
+   </dd>
+
    <dt><var title="">cue</var> . <a title="dom-VTTCue-position" href="#dfn-dom-vttcue-position" class="internalDFN">position</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a>.</p>
+    <p>Can be set.</p>
+   </dd>
+
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-positionAlign" href="#dfn-dom-vttcue-positionalign" class="internalDFN">positionAlign</a> [ = <var title="">value</var> ]</dt>
+   <dd>
+    <p>Returns a string representing the <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a>, as follows:</p>
+    <dl class="switch">
+     <dt>If it is <a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">start alignment</a></dt>
+     <dd><p>The string "<code title="">start</code>".</p></dd>
+     <dt>If it is <a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">middle alignment</a></dt>
+     <dd><p>The string "<code title="">middle</code>".</p></dd>
+     <dt>If it is <a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">end alignment</a></dt>
+     <dd><p>The string "<code title="">end</code>".</p></dd>
+    </dl>
     <p>Can be set.</p>
    </dd>
 
@@ -4975,7 +5113,13 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
    <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-position" class="internalDFN">text track cue line position</a> be 
    <a title="text track cue automatic line position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p></li>
 
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> be
+   <a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">start alignment</a>.</p></li>
+
    <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> be 50.</p></li>
+
+   <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> be
+   <a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">middle alignment</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> be 100.</p></li>
 
@@ -5030,11 +5174,51 @@ interface <dfn id="dfn-vttcue">VTTCue</dfn> : <a href="#dfn-texttrackcue" class=
   interpreted as the special value <a title="text track cue automatic line
   position" href="#dfn-text-track-cue-automatic-line-position" class="internalDFN">auto</a>.</p>
 
+  <p>The <dfn title="dom-VTTCue-lineAlign" id="dfn-dom-vttcue-linealign"><code>lineAlign</code></dfn> attribute, on getting, must
+  return the string from the second cell of the row in the table below whose first cell is the
+  <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that the
+  <code>VTTCue</code> object represents:</p>
+
+  <table>
+   <thead>
+    <tr> <th><a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> </th><th> <code title="dom-VTTCue-lineAlign">lineAlign</code> value
+   </th></tr></thead><tbody>
+    <tr> <td><a title="text track cue line start alignment" href="#dfn-text-track-cue-line-start-alignment" class="internalDFN">Start alignment</a> </td><td> "<code title="">start</code>"
+    </td></tr><tr> <td><a title="text track cue line middle alignment" href="#dfn-text-track-cue-line-middle-alignment" class="internalDFN">Middle alignment</a> </td><td> "<code title="">middle</code>"
+    </td></tr><tr> <td><a title="text track cue line end alignment" href="#dfn-text-track-cue-line-end-alignment" class="internalDFN">End alignment</a> </td><td> "<code title="">end</code>"
+  </td></tr></tbody></table>
+
+  <p>On setting, the <a href="#dfn-text-track-cue-line-alignment" class="internalDFN">text track cue line alignment</a> must be set to the value given in the
+  first cell of the row in the table above whose second cell is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match
+  for the new value, if any. If none of the values match, then the user agent must instead throw a
+  <code>SyntaxError</code> exception.</p>
+
   <p>The <dfn title="dom-VTTCue-position" id="dfn-dom-vttcue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that
   the <code>VTTCue</code> object represents. On setting, if the new value is negative or
   greater than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the
   <a href="#dfn-text-track-cue-text-position" class="internalDFN">text track cue text position</a> must be set to the new value.</p>
+
+  <p>The <dfn title="dom-VTTCue-positionAlign" id="dfn-dom-vttcue-positionalign"><code>positionAlign</code></dfn> attribute, on getting, must
+  return the string from the second cell of the row in the table below whose first cell is the
+  <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that the
+  <code>VTTCue</code> object represents:</p>
+
+  <table>
+   <thead>
+    <tr>
+      <th><a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a>
+      </th><th><code title="dom-VTTCue-positionAlign">positionAlign</code> value
+   </th></tr></thead><tbody>
+    <tr> <td><a title="text track cue text position start alignment" href="#dfn-text-track-cue-text-position-start-alignment" class="internalDFN">Start alignment</a> </td><td> "<code title="">start</code>"
+    </td></tr><tr> <td><a title="text track cue text position middle alignment" href="#dfn-text-track-cue-text-position-middle-alignment" class="internalDFN">Middle alignment</a> </td><td> "<code title="">middle</code>"
+    </td></tr><tr> <td><a title="text track cue text position end alignment" href="#dfn-text-track-cue-text-position-end-alignment" class="internalDFN">End alignment</a> </td><td> "<code title="">end</code>"
+  </td></tr></tbody></table>
+
+  <p>On setting, the <a href="#dfn-text-track-cue-text-position-alignment" class="internalDFN">text track cue text position alignment</a> must be set to the value given in the
+  first cell of the row in the table above whose second cell is a <a href="#dfn-case-sensitive" class="internalDFN">case-sensitive</a> match
+  for the new value, if any. If none of the values match, then the user agent must instead throw a
+  <code>SyntaxError</code> exception.</p>
 
   <p>The <dfn title="dom-VTTCue-size" id="dfn-dom-vttcue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a href="#dfn-text-track-cue-size" class="internalDFN">text track cue size</a> of the <a href="#dfn-text-track-cue" class="internalDFN">text track cue</a> that the
@@ -5374,7 +5558,7 @@ interface <dfn id="dfn-vttregion">VTTRegion</dfn> : EventTarget {
        </li><li>          57 45 42 56 54 54 09
        </li><li>          57 45 42 56 54 54 EOF
       </li></ul>
-      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_33"><span>Note</span></div><p class="">(An optional UTF-8 BOM, the ASCII string "<code title="">WEBVTT</code>", and finally a space, tab, line break, or the end of the file.)
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_34"><span>Note</span></div><p class="">(An optional UTF-8 BOM, the ASCII string "<code title="">WEBVTT</code>", and finally a space, tab, line break, or the end of the file.)
      </p></div></dd>
      <dt>File extension(s):</dt>
      <dd>"<code title="">vtt</code>"</dd>
