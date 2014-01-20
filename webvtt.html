@@ -2028,6 +2028,10 @@ The Final Minute</pre>
    <em>not</em> U+000A LINE FEED (LF) characters. Let <var
    title="">line</var> be those characters, if any.</p></li>
 
+   <li><p>If the first character in <var title="">line</var> is
+   a U+FEFF BYTE ORDER MARK (BOM) character, remove it from
+   <var title="">line</var>.</p></li>
+
    <li><p>If <var title="">line</var> is less than six characters
    long, then abort these steps. The file does not start with the
    correct <a>WebVTT file</a> signature and was therefore not
