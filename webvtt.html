@@ -12,7 +12,7 @@
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
           specStatus:           "CG-DRAFT",
-          
+
           // the specification's short name, as in http://www.w3.org/TR/short-name/
           shortName:            "webvtt",
 
@@ -50,7 +50,7 @@
                 company: "Google", companyURL: "http://google.com/", note: "previous editor" },
           ],
 
-          // authors, add as many as you like. 
+          // authors, add as many as you like.
           // This is optional, uncomment if you have authors as well as editors.
           // only "name" is required. Same format as editors.
 
@@ -58,16 +58,16 @@
           //    { name: "Your Name", url: "http://example.org/",
           //      company: "Your Company", companyURL: "http://example.com/" },
           //],
-          
+
           // name of the WG
           wg:           "Text Tracks Community Group",
-          
+
           // URI of the public WG page
           wgURI:        "http://www.w3.org/community/texttracks/",
-          
+
           // name (without the @w3c.org) of the public mailing to which comments are due
           wgPublicList: "public-texttracks",
-          
+
           // URI of the patent status for this WG, for Rec-track documents
           // !!!! IMPORTANT !!!!
           // This is important for Rec-track documents, do not copy a patent URI from a random
@@ -122,7 +122,7 @@
       border-left-width: .5em;
       border-left-style: solid;
       border-color: #e0cb52;
-      background: #fcfaee;    
+      background: #fcfaee;
     }
     .todo {
       color: #E50000;
@@ -775,20 +775,20 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p>A number giving the size of the <a title="text track cue box">cue box</a>, to be interpreted as a percentage of the video,
     as defined by the <a title="text track cue writing direction">writing direction</a>.</p>
 
-		<p>By default, the <a>text track cue size</a> is 100%.</p>
+    <p>By default, the <a>text track cue size</a> is 100%.</p>
 
    </dd>
 
    <dt><dfn title="text track cue text position">A text position</dfn>
    <dd>
      <p>A number giving the position of the <a title="text track cue box">cue box</a>. If the cue is not within
-	 		a region, the value is to be interpreted as a percentage of the video, as defined by the
-	    <a title="text track cue writing direction">writing direction</a>, otherwise to be interpreted
-	    as a percentage of the region width.</p>
-	
+     a region, the value is to be interpreted as a percentage of the video, as defined by the
+     <a title="text track cue writing direction">writing direction</a>, otherwise to be interpreted
+     as a percentage of the region width.</p>
+
      <p>A <a>text track cue</a> has a <df>default text track cue text position</dfn> which is defined
      in terms of the value of the <a>text track cue text alignment</a>:</p>
-     
+
      <ol>
 
        <li>For <a title="text track cue left alignment">left aligned</a> or
@@ -931,7 +931,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <section>
   <h3>Text Track Region</h3>
-  
+
   <p>A <dfn title="text track region">text track region</dfn> represents a subpart of the video viewport and provides a rendering area for <a title="text track cue">text track cues</a>.</p>
 
   <p>Each <a title="text track region">text track region</a> consists of:</p>
@@ -1204,7 +1204,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <dfn title="WebVTT cue setting">WebVTT cue settings</dfn> in any order, separated from each other
   by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.
   Each setting consists of the following components, in the order given:</p>
-  
+
   <ol>
     <li>A <a title="WebVTT cue setting name">WebVTT cue setting name</a>.</li>
     <li>An optional U+003A COLON (colon) character.</li>
@@ -1504,7 +1504,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <p>A <dfn>WebVTT region metadata header</dfn> is a special kind of
   <a>WebVTT metadata header</a> where both of the following apply:</p>
-  
+
   <ul>
     <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
     <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.
@@ -1515,7 +1515,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of zero or more of the following components, in any order, separated from each other by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be included more than once per <a>WebVTT region setting list</a> string.</p>
 
-  <ul> 
+  <ul>
    <li>A <a>WebVTT region identifier</a>.</li> <!-- id:fred -->
    <li>A <a>WebVTT region width setting</a>.</li> <!-- width:80.5% -->
    <li>A <a>WebVTT region lines setting</a>.</li> <!-- lines:3 -->
@@ -1615,7 +1615,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p class ="note">For browsers, the region maps to an absolute positioned CSS box relative
   to the video viewport, i.e. there is a relative positioned box that represents the video
   viewport relative to which the regions are absolutely positioned. Overflow is hidden.</p>
-  
+
   <p>A <dfn>WebVTT region scroll setting</dfn> consists of the
   following components, in the order given:</p>
   <ol>
@@ -1626,7 +1626,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p class ="note">The <a>WebVTT region scroll setting</a>
   specifies whether cues rendered into the region are allowed to move out of their initial
   rendering place and roll up, i.e. move towards the top of the video viewport. If the
-  scroll setting is omitted, cues do not move from their rendered position.</p> 
+  scroll setting is omitted, cues do not move from their rendered position.</p>
 
   <p class="note">Cues are added to a region one line at a time below existing cue lines.
   When an existing rendered cue line is removed, and it was above another already rendered
@@ -1635,7 +1635,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   line is pushed off the visible region (thus slowly becoming invisible as it moves into
   overflow:hidden). This eventually makes space for the new cue line and allows it to be
   added.</p>
-    
+
   <p class="note">When there is no scroll direction, cue lines are added in the empty line
   closest to the line in the bottom of the region. If no empty line is available, the oldest
   line is replaced.</p>
@@ -1648,7 +1648,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
   setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
 
-  <ul class="brief"> 
+  <ul class="brief">
    <li>A <a>WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr [writing direction] -->
    <li>A <a>WebVTT line position cue setting</a>.</li> <!-- line:100% line:1 line:-1
                                                        [snap-to-lines & line position & line alignment] -->
@@ -1823,7 +1823,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <section>
   <h3>Properties of cue sequences</h3>
-  
+
   <section>
   <h4>WebVTT file using only nested cues</h4>
 
@@ -1834,9 +1834,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   offsets <var title="">(x1, y1)</var> and <var title="">(x2, y2)</var> respectively,</p>
 
   <ul>
-    <li>either <var title="">cue1</var> lies fully within <var title="">cue2</var>, i.e. 
+    <li>either <var title="">cue1</var> lies fully within <var title="">cue2</var>, i.e.
     <var title="">x1 >= x2</var> and <var title="">y1 &lt;= y2</var></li>
-    <li>or <var title="">cue1</var> fully contains <var title="">cue2</var>, i.e. 
+    <li>or <var title="">cue1</var> fully contains <var title="">cue2</var>, i.e.
     <var title="">x1 &lt;= x2</var> and <var title="">y1 >= y2</var>.</li>
   </ul>
 
@@ -1917,7 +1917,7 @@ The Final Minute</pre>
   subset of WebVTT file types are typically authored.</p>
 
   <p>Conformance checkers, when validating <a>WebVTT</a> files, may
-  offer to restrict syntax checking for validating these types.</p>  
+  offer to restrict syntax checking for validating these types.</p>
 
   <section>
   <h4>WebVTT file using metadata content</h4>
@@ -1973,7 +1973,7 @@ The Final Minute</pre>
   <a>text track list of cues</a> <var title="">output</var>,
   must decode the byte stream using the <a title="UTF-8 decode">UTF-8
   decode</a> algorithm, and then must parse the resulting string according
-  to the <a>WebVTT parser algorithm</a> below. This results in 
+  to the <a>WebVTT parser algorithm</a> below. This results in
   <a title="text track cue">text track cues</a> being added to <var
   title="">output</var>. <a href="#refsRFC3629">[RFC3629]</a></p>
 
@@ -2300,12 +2300,12 @@ The Final Minute</pre>
   <h3>WebVTT region settings parsing</h3>
 
   <p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region settings</dfn> from a string <var>input</var> for a <a>text track</a>, the user agent must run the following algorithm.</p>
-  
+
   <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a> that is used as a root node for <a title="List of WebVTT node objects">lists of WebVTT node objects</a>. This algorithm returns a list of <a title="WebVTT region object">WebVTT Region Objects</a>.</p>
 
   <ol>
     <li><p>Let <var>settings</var> be the result of <a title="split a string on spaces">splitting <var>input</var> on spaces</a>.</p></li>
-    
+
     <li>For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:
 
       <ol>
@@ -2316,7 +2316,7 @@ The Final Minute</pre>
         <li><p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the character immediately after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
 
         <li><p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
-          
+
         <dl>
           <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
           <dd><p>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be <var>value</var>.</p>
@@ -2347,7 +2347,7 @@ The Final Minute</pre>
               <li><p>Let <var>anchorY</var> be the trailing substring of <var>value</var> starting from the character immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
               <li><p>If <a>parse a percentage string</a> from <var>anchorX</var> or <a>parse a percentage string</a> from <var>anchorY</var> don't return a <var>percentage</var>, then jump to the step labeled <i>next setting</i>.</p></li>
-              
+
               <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region anchor point</a> be the tuple of the <var>percentage</var> values calculated from <var>anchorX</var> and <var>anchorY</var>.</p></li>
             </ol>
           </dd>
@@ -2362,7 +2362,7 @@ The Final Minute</pre>
               <li><p>Let <var>viewportanchorY</var> be the trailing substring of <var>value</var> starting from the character immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
               <li><p>If <a>parse a percentage string</a> from <var>viewportanchorX</var> or <a>parse a percentage string</a> from <var>viewportanchorY</var> don't return a <var>percentage</var>, then jump to the step labeled <i>next setting</i>.</p></li>
-              
+
               <li><p>Let <var>region</var>'s <a title="text track region viewport anchor">text track region viewport anchor point</a> be the tuple of the <var>percentage</var> values calculated from <var>viewportanchorX</var> and <var>viewportanchorY</var>.</p></li>
             </ol>
           </dd>
@@ -2469,7 +2469,7 @@ The Final Minute</pre>
    <li><p><a>Parse the WebVTT cue settings</a> given by <var
    title="">remainder</var> for <var title="">cue</var>.</p></li>
 
-  </ol>  
+  </ol>
 
   <p>When the user agent is to <dfn>Parse the WebVTT cue settings</dfn>
   given by a string <var title="">input</var> for a <a>text track
@@ -3037,9 +3037,9 @@ The Final Minute</pre>
 
    <dt><dfn title="WebVTT Language Object">WebVTT Language Objects</dfn></dt>
    <dd>
-    <p>These represent spans of text (a <a>WebVTT cue language span</a>) in 
+    <p>These represent spans of text (a <a>WebVTT cue language span</a>) in
     <a>WebVTT cue text</a>, and are used to annotate parts of the cue where the
-    <a title="WebVTT Node Object's applicable language">applicable language</a> might be 
+    <a title="WebVTT Node Object's applicable language">applicable language</a> might be
     different than the surrounding text's, without implying further meaning (such as
     italics or bold).</p>
    </dd>
@@ -3395,7 +3395,7 @@ The Final Minute</pre>
        <dd>
         <p>Append <var title="">c</var> to <var title="">result</var>
         and jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3478,7 +3478,7 @@ The Final Minute</pre>
         title="">result</var>, set <var title="">tokenizer state</var>
         to the <a>WebVTT data state</a>, and jump to the step
         labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3502,7 +3502,7 @@ The Final Minute</pre>
         <p>Set <var title="">tokenizer state</var> to the <a>WebVTT
         start tag annotation state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+002E FULL STOP character (.)</dt>
        <dd>
@@ -3510,7 +3510,7 @@ The Final Minute</pre>
         <p>Set <var title="">tokenizer state</var> to the <a>WebVTT
         start tag class state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+002F SOLIDUS character (/)</dt>
        <dd>
@@ -3525,7 +3525,7 @@ The Final Minute</pre>
         set <var title="">tokenizer state</var> to the <a>WebVTT
         timestamp tag state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+003E GREATER-THAN SIGN character (>)</dt>
        <dd>
@@ -3546,7 +3546,7 @@ The Final Minute</pre>
         set <var title="">tokenizer state</var> to the <a>WebVTT
         start tag state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3568,7 +3568,7 @@ The Final Minute</pre>
         <p>Set <var title="">tokenizer state</var> to the <a>WebVTT
         start tag annotation state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+000A LINE FEED (LF) character</dt>
        <dd>
@@ -3583,7 +3583,7 @@ The Final Minute</pre>
         <p>Set <var title="">tokenizer state</var> to the <a>WebVTT
         start tag class state</a>, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+003E GREATER-THAN SIGN character (>)</dt>
        <dd>
@@ -3603,7 +3603,7 @@ The Final Minute</pre>
        <dd>
         <p>Append <var title="">c</var> to <var title="">result</var>
         and jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3627,7 +3627,7 @@ The Final Minute</pre>
         to the empty string, set <var title="">tokenizer state</var>
         to the <a>WebVTT start tag annotation state</a>, and
         jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+000A LINE FEED (LF) character</dt>
        <dd>
@@ -3644,7 +3644,7 @@ The Final Minute</pre>
         is <var title="">buffer</var>, set <var title="">buffer</var>
         to the empty string, and jump to the step labeled
         <i>next</i>.</p>
-       </dd> 
+       </dd>
 
        <dt>U+003E GREATER-THAN SIGN character (>)</dt>
        <dd>
@@ -3666,7 +3666,7 @@ The Final Minute</pre>
        <dd>
         <p>Append <var title="">c</var> to <var title="">buffer</var>
         and jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3706,7 +3706,7 @@ The Final Minute</pre>
        <dd>
         <p>Append <var title="">c</var> to <var title="">buffer</var>
         and jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -3740,7 +3740,7 @@ The Final Minute</pre>
        <dd>
         <p>Append <var title="">c</var> to <var title="">result</var>
         and jump to the step labeled <i>next</i>.</p>
-       </dd> 
+       </dd>
 
       </dl>
 
@@ -4000,7 +4000,7 @@ The Final Minute</pre>
 
     <ul>
      <li><p>If <var>cue</var> has an empty <a>text track cue region identifier</a> or there is no <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>, run the following substeps:</p>
-      
+
       <ol>
 
        <li><a>Apply WebVTT cue settings</a> to calculate CSS boxes <var title="">boxes</var> from the
@@ -4178,7 +4178,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     </li>
 
     <li>
-      
+
       <p>Determine the value of whichever of <var title="">x-position</var> or <var title="">y-position</var>
       is not yet calculated for <var title="">cue</var> as per the appropriate rules from the following list:</p>
 
@@ -4657,7 +4657,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     not completely fit inside <var title="">video</var>'s rendering
     area, remove those offending line boxes from <var
     title="">boxes</var>.</p></li>
- 
+
   </ol>
 
   </section>
@@ -5133,7 +5133,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-positionAlign">positionAlign</a>;
            attribute long <a title="dom-VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
-					 attribute DOMString <a title="dom-VTTCue-text">text</a>;
+           attribute DOMString <a title="dom-VTTCue-text">text</a>;
   DocumentFragment <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
 
@@ -5240,7 +5240,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-	 <dt><var title="">cue</var> . <a title="dom-VTTCue-text">text</a> [ = <var title="">value</var> ]</dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-text">text</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text</a> in raw unparsed form.</p>
     <p>Can be set.</p>
@@ -5292,7 +5292,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue snap-to-lines flag</a> be true.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a> be 
+   <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a> be
    <a title="text track cue automatic line position">auto</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue line alignment</a> be
@@ -5431,7 +5431,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   for the new value, if any. If none of the values match, then the user agent must instead throw a
   <code>SyntaxError</code> exception.</p>
 
-	<p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
+  <p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
   return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
   <code>VTTCue</code> object represents. On setting, the <a>text track cue text</a> must
   be set to the new value.</p>
@@ -5516,7 +5516,7 @@ interface <dfn>VTTRegion</dfn> : EventTarget {
            attribute DOMString <a title="dom-VTTRegion-scroll">scroll</a>;
 };</pre>
 
-  <dl class="domintro">   
+  <dl class="domintro">
 
    <dt><var title="">region</var> = new <code title="dom-VTTRegion">VTTRegion</code>()</dt>
    <dd>
@@ -5607,7 +5607,7 @@ interface <dfn>VTTRegion</dfn> : EventTarget {
   <p>The <dfn title="dom-VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
 
   <p>The <dfn title="dom-VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a>text track region lines</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, as number of lines. On setting, the <a>text track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
-  
+
   <p>The <dfn title="dom-VTTRegion-regionAnchorX"><code>regionAnchor X</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> X offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region width. On setting, the <a>text track region anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
 
   <p>The <dfn title="dom-VTTRegion-regionAnchorY"><code>regionAnchor Y</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> Y offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region height. On setting, the <a>text track region anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
@@ -5642,7 +5642,7 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
   <a>VTTRegion</a>? <a title="dom-VTTRegionList-getRegionById">getRegionById</a>(DOMString id);
 };</pre>
 
-  <dl class="domintro">   
+  <dl class="domintro">
 
    <dt><var title="">regionList</var> . <a title="dom-VTTRegionList-length">length</a></dt>
    <dd>
@@ -5828,7 +5828,7 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
 
   <p>Thanks to the many contributors to the HTML standard at the WHATWG and W3C HTML Working Group, where WebVTT was originally specified. <a href="#refsHTML">[HTML]</a>, <a href="#refsHTML5">[HTML5]</a></p>
 
-  <p>Thanks to the following active contributors to this spec: 
+  <p>Thanks to the following active contributors to this spec:
   Victor Carbune,
   Eric Carlson,
   Anna Cavender,
@@ -5847,7 +5847,7 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
   Simon Pieters,
   David Singer.
   </p>
-  
+
   </section>
 
 </body>
