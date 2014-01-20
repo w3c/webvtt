@@ -31,10 +31,10 @@
           // and its maturity status
           //previousPublishDate:  "2013-03-11",
           //previousMaturity:  "WD",
-          prevED: "http://dev.w3.org/html5/webvtt/",
+          //prevED: "http://dev.w3.org/html5/webvtt/",
 
           // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "https://dvcs.w3.org/hg/text-tracks/raw-file/default/webvtt/Overview.html",
+          edDraftURI:           "http://dev.w3.org/html5/webvtt/",
 
           // if this is a LCWD, uncomment and set the end of its review period
           // lcEnd: "2009-08-05",
@@ -2027,6 +2027,10 @@ The Final Minute</pre>
    <li><p><a>Collect a sequence of characters</a> that are
    <em>not</em> U+000A LINE FEED (LF) characters. Let <var
    title="">line</var> be those characters, if any.</p></li>
+
+   <li><p>If the first character in <var title="">line</var> is
+   a U+FEFF BYTE ORDER MARK (BOM) character, remove it from
+   <var title="">line</var>.</p></li>
 
    <li><p>If <var title="">line</var> is less than six characters
    long, then abort these steps. The file does not start with the
@@ -4034,7 +4038,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
            <p>If 'text-align' is 'middle', ignore the <var>offset</var>.</p>
          </li>
 
-         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> in the same way that they are applied to in step 10, substep 12 is applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+
            <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with their positions.</p>
          </li>
 
