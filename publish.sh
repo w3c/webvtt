@@ -31,6 +31,13 @@ echo "# Generate static HTML"
 phantomjs respec/tools/respec2html.js webvtt.html html5/webvtt/Overview.html
 
 echo "# Commit to CVS"
+if [ "$1" != "-f" ]; then
+    read -p "Really commit? (y) " CONTINUE
+    if [ "$CONTINUE" != "y" ]; then
+	echo "Not really."
+	exit 1
+    fi
+fi
 COMMIT="$(git rev-parse HEAD)"
 cd html5/webvtt
 cvs commit -m "Sync WebVTT with Git commit $COMMIT"
