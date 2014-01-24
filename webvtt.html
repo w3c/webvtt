@@ -5407,7 +5407,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   <p>The following attribute and methods are introduced into the <a>TextTrack</a> object:</p>
 
   <pre class="idl_whatwg">
-interface <a>TextTrack</a> : EventTarget {
+partial interface <a>TextTrack</a> {
            attribute VTTRegionList? <a title="dom-TextTrack-regions">regions</a>;
   void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>VTTRegion</a> region);
   void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>VTTRegion</a> region);
