@@ -1182,7 +1182,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
-  <p>A <dfn>WebVTT percentage value</dfn> consists of the following components:</p>
+  <p>A <dfn>WebVTT percentage</dfn> consists of the following components:</p>
 
   <ol>
    <li>One or more <a>ASCII digits</a>.</li>
@@ -1525,7 +1525,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code>width</code>".</p></li>
    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-   <li><p>A <a>WebVTT percentage value</a>.</p></li>
+   <li><p>A <a>WebVTT percentage</a>.</p></li>
   </ol>
   <p class ="note">The <a>WebVTT region width setting</a> provides
   a fixed width as a percentage of the video width for the region into which cues are
@@ -1547,9 +1547,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code>regionanchor</code>".</p></li>
    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-   <li><p>A <a>WebVTT percentage value</a>.</p></li>
+   <li><p>A <a>WebVTT percentage</a>.</p></li>
    <li><p>A U+002C COMMA character (,).</p></li>
-   <li><p>A <a>WebVTT percentage value</a>.</p></li>
+   <li><p>A <a>WebVTT percentage</a>.</p></li>
   </ol>
   <p class ="note">The <a>WebVTT region anchor setting</a> provides
   a tuple of two percentages that specify the point within the region box that is fixed in
@@ -1563,9 +1563,9 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code>viewportanchor</code>".</p></li>
    <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-   <li><p>A <a>WebVTT percentage value</a>.</p></li>
+   <li><p>A <a>WebVTT percentage</a>.</p></li>
    <li><p>A U+002C COMMA character (,).</p></li>
-   <li><p>A <a>WebVTT percentage value</a>.</p></li>
+   <li><p>A <a>WebVTT percentage</a>.</p></li>
   </ol>
   <p class ="note">The <a>WebVTT region viewport
   anchor setting</a> provides a tuple of two percentages that specify the point within
@@ -1653,7 +1653,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <dl>
        <dt>To represent a specific position relative to the video frame</dt>
        <dd>
-        <p>A <a>WebVTT percentage value</a>.</p>
+        <p>A <a>WebVTT percentage</a>.</p>
        </dd>
        <dt>Or to represent a line number</dt>
        <dd>
@@ -1695,7 +1695,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
    <li><p>As the <a>WebVTT cue setting value</a>: a
-     <a>WebVTT percentage value</a>.</p></li>
+     <a>WebVTT percentage</a>.</p></li>
   </ol>
 
   <p class="note">A <a>WebVTT size cue setting</a> configures
@@ -1712,7 +1712,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>A U+003A COLON character (:).</p></li>
    <li>As the <a>WebVTT cue setting value</a>:
    <ol>
-    <li>a position value consisting of: a <a>WebVTT percentage value</a>.</li>
+    <li>a position value consisting of: a <a>WebVTT percentage</a>.</li>
     <li>an optional alignment value consisting of:
     <ol>
      <li>A U+002C COMMA character (,).</li>
