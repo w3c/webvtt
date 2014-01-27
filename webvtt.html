@@ -1653,10 +1653,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <dl>
        <dt>To represent a specific position relative to the video frame</dt>
        <dd>
-        <ol>
-         <li>One or more <a>ASCII digits</a>.</li>
-         <li>A U+0025 PERCENT SIGN character (%).</li>
-        </ol>
+        <p>A <a>WebVTT percentage value</a>.</p>
        </dd>
        <dt>Or to represent a line number</dt>
        <dd>
@@ -1697,12 +1694,8 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
-   <li>As the <a>WebVTT cue setting value</a>:
-    <ol>
-     <li>One or more <a>ASCII digits</a>.</li>
-     <li>A U+0025 PERCENT SIGN character (%).</li>
-    </ol>
-   </li>
+   <li><p>As the <a>WebVTT cue setting value</a>: a
+     <a>WebVTT percentage value</a>.</p></li>
   </ol>
 
   <p class="note">A <a>WebVTT size cue setting</a> configures
@@ -1719,12 +1712,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><p>A U+003A COLON character (:).</p></li>
    <li>As the <a>WebVTT cue setting value</a>:
    <ol>
-    <li>a position value consisting of:
-    <ol>
-     <li>One or more <a>ASCII digits</a>.</li>
-     <li>A U+0025 PERCENT SIGN character (%).</li>
-    </ol>
-    </li>
+    <li>a position value consisting of: a <a>WebVTT percentage value</a>.</li>
     <li>an optional alignment value consisting of:
     <ol>
      <li>A U+002C COMMA character (,).</li>
@@ -2528,34 +2516,43 @@ The Final Minute</pre>
          <li><p>Otherwise let <var title="">linepos</var> be the full <var title="">value</var> string
          and <var title="">linealign</var> be the empty string.</p></li>
 
-         <li><p>If <var title="">linepos</var> contains any characters other than U+002D HYPHEN-MINUS
-         characters (-), U+0025 PERCENT SIGN characters (%), and <a>ASCII digits</a>, then
-         jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If <var title="">linepos</var> does not contain at least one <a title="ASCII
          digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If any character in <var title="">linepos</var> other
-         than the first character is a U+002D HYPHEN-MINUS character
-         (-), then jump to the step labeled <i>next setting</i>.</p></li>
-
-         <li><p>If any character in <var title="">linepos</var> other
          than the last character is a U+0025 PERCENT SIGN character
          (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If the first character in <var title="">linepos</var> is
-         a U+002D HYPHEN-MINUS character (-) <em>and</em> the last
-         character in <var title="">linepos</var> is a U+0025 PERCENT SIGN character (%),
-         then jump to the step labeled <i>next setting</i>.</p></li>
+         <li>
+           <dl>
+            <dt><p>If the last character in <var title="">linepos</var> is
+            a U+0025 PERCENT SIGN character (%)</p></dt>
 
-         <li><p>Ignoring the trailing percent sign, if any, interpret
-         <var title="">linepos</var> as a (potentially signed) integer,
-         and let <var title="">number</var> be that number.</p></li>
+            <dd><p>If <a>parse a percentage string</a> from
+            <var title="">linepos</var> doesn't fail, let <var title="">number</var>
+            be the returned <var>percentage</var>, otherwise jump to the
+            step labeled <i>next setting</i>.</p>
+            </dd>
 
-         <li><p>If the last character in <var title="">linepos</var> is
-         a U+0025 PERCENT SIGN character (%), but <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
-         step labeled <i>next setting</i>.</p></li>
+            <dt><p>Otherwise</p></dt>
+
+            <dd>
+             <ol>
+              <li><p>If <var title="">linepos</var> contains any characters other than
+              U+002D HYPHEN-MINUS characters (-) and <a>ASCII digits</a>, then
+              jump to the step labeled <i>next setting</i>.</p></li>
+
+              <li><p>If any character in <var title="">linepos</var> other
+              than the first character is a U+002D HYPHEN-MINUS character
+              (-), then jump to the step labeled <i>next setting</i>.</p></li>
+
+              <li><p>Interpret <var title="">linepos</var> as a (potentially signed)
+              integer, and let <var title="">number</var> be that number.</p></li>
+             </ol>
+            </dd>
+           </dl>
+         </li>
 
          <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a>
          be <var title="">number</var>.</p></li>
@@ -2590,30 +2587,9 @@ The Final Minute</pre>
 
         <ol>
 
-         <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
-         characters (%) and <a>ASCII digits</a>, then jump to the step labeled <i>next
-         setting</i>.</p></li>
-
-         <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
-         digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
-
-         <li><p>If any character in <var title="">value</var> other
-         than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
-
-         <li><p>If the last character in <var title="">value</var> is
-         not a U+0025 PERCENT SIGN character (%), then jump to the
-         step labeled <i>next setting</i>.</p></li>
-
-         <li><p>Ignoring the trailing percent sign, interpret <var
-         title="">value</var> as an integer, and let <var
-         title="">number</var> be that number.</p></li>
-
-         <li><p>If <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var
-         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
-         step labeled <i>next setting</i>.</p></li>
+         <li><p>If <a>parse a percentage string</a> from <var title="">value</var> doesn't fail,
+         let <var title="">number</var> be the returned <var>percentage</var>, otherwise jump to
+         the step labeled <i>next setting</i>.</p>
 
          <li><p>Let <var title="">cue</var>'s <a>text track cue
          size</a> be <var title="">number</var>.</p></li>
@@ -2638,27 +2614,9 @@ The Final Minute</pre>
           <li><p>Otherwise let <var title="">colpos</var> be the full <var title="">value</var> string
           and <var title="">colalign</var> be the empty string.</p></li>
 
-         <li><p>If <var title="">colpos</var> contains any characters other than U+0025 PERCENT SIGN
-         characters (%) and <a>ASCII digits</a>, then jump to the step labeled
-         <i>next setting</i>.</p></li>
-
-         <li><p>If <var title="">colpos</var> does not contain at least one <a title="ASCII
-         digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
-
-         <li><p>If any character in <var title="">colpos</var> other
-         than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next setting</i>.</p></li>
-
-         <li><p>If the last character in <var title="">colpos</var> is
-         not a U+0025 PERCENT SIGN character (%), then jump to the
-         step labeled <i>next setting</i>.</p></li>
-
-         <li><p>Ignoring the trailing percent sign, interpret <var title="">colpos</var> as an integer,
-         and let <var title="">number</var> be that number.</p></li>
-
-         <li><p>If <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
-         step labeled <i>next setting</i>.</p></li>
+         <li><p>If <a>parse a percentage string</a> from <var title="">colpos</var> doesn't fail,
+         let <var title="">number</var> be the returned <var>percentage</var>, otherwise jump to
+         the step labeled <i>next setting</i>.</p>
 
          <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be
          <var title="">number</var> and let <var title="">positionSet</var> be true.</p></li>
@@ -5087,11 +5045,11 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute DOMString <a title="dom-VTTCue-regionId">regionId</a>;
            attribute <a>DirectionSetting</a> <a title="dom-VTTCue-vertical">vertical</a>;
            attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
-           attribute (long or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
+           attribute (double or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-lineAlign">lineAlign</a>;
-           attribute long <a title="dom-VTTCue-position">position</a>;
+           attribute double <a title="dom-VTTCue-position">position</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-positionAlign">positionAlign</a>;
-           attribute long <a title="dom-VTTCue-size">size</a>;
+           attribute double <a title="dom-VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
            attribute DOMString <a title="dom-VTTCue-text">text</a>;
   DocumentFragment <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
