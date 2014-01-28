@@ -5412,7 +5412,7 @@ partial interface <a>TextTrack</a> {
 
   <pre class="idl_whatwg">
 [Constructor]
-interface <dfn>VTTRegion</dfn> : EventTarget {
+interface <dfn>VTTRegion</dfn> {
   readonly attribute TextTrack? <a title="dom-VTTRegion-track">track</a>;
            attribute DOMString <a title="dom-VTTRegion-id">id</a>;
            attribute double <a title="dom-VTTRegion-width">width</a>;
@@ -5544,7 +5544,7 @@ interface <dfn>VTTRegion</dfn> : EventTarget {
   <h3>VTTRegionList interface</h3>
 
   <pre class="idl_whatwg">
-interface <dfn>VTTRegionList</dfn> : EventTarget {
+interface <dfn>VTTRegionList</dfn> {
   readonly attribute unsigned long <a title="dom-VTTRegionList-length">length</a>;
   getter <a title="dom-VTTRegion">VTTRegion</a> (unsigned long index);
   <a>VTTRegion</a>? <a title="dom-VTTRegionList-getRegionById">getRegionById</a>(DOMString id);
@@ -5745,6 +5745,7 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
   Lawrence Forooghian,
   Ralph Giles,
   Loretta Guarino Reid,
+  Kyle Huey,
   Anne van Kesteren,
   Glenn Maynard,
   Ronny Mennerich,
