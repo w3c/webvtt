@@ -5414,6 +5414,7 @@ partial interface <a>TextTrack</a> {
   <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
   <pre class="idl_whatwg">
+enum <dfn>ScrollSetting</dfn> { "" /* none */, "up" };
 [Constructor]
 interface <dfn>VTTRegion</dfn> {
   readonly attribute TextTrack? <a title="dom-VTTRegion-track">track</a>;
@@ -5424,7 +5425,7 @@ interface <dfn>VTTRegion</dfn> {
            attribute double <a title="dom-VTTRegion-regionAnchorY">regionAnchorY</a>;
            attribute double <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a>;
            attribute double <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a>;
-           attribute DOMString <a title="dom-VTTRegion-scroll">scroll</a>;
+           attribute <a>ScrollSetting</a> <a title="dom-VTTRegion-scroll">scroll</a>;
 };</pre>
 
   <dl class="domintro">
