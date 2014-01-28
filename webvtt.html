@@ -5251,8 +5251,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>On setting, the <a>text track cue writing direction</a> must be set to the value given in
   the first cell of the row in the table above whose second cell is a <a>case-sensitive</a>
-  match for the new value, if any. If none of the values match, then the user agent must instead
-  throw a <code>SyntaxError</code> exception.</p>
+  match for the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
   getting, must return true if the <a>text track cue snap-to-lines flag</a> of the <a>text
@@ -5285,8 +5284,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>On setting, the <a>text track cue line alignment</a> must be set to the value given in the
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
-  for the new value, if any. If none of the values match, then the user agent must instead throw a
-  <code>SyntaxError</code> exception.</p>
+  for the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a>text track cue text position</a> of the <a>text track cue</a> that
@@ -5312,8 +5310,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>On setting, the <a>text track cue text position alignment</a> must be set to the value given in the
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
-  for the new value, if any. If none of the values match, then the user agent must instead throw a
-  <code>SyntaxError</code> exception.</p>
+  for the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a>text track cue size</a> of the <a>text track cue</a> that the
@@ -5339,8 +5336,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>On setting, the <a>text track cue text alignment</a> must be set to the value given in the
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
-  for the new value, if any. If none of the values match, then the user agent must instead throw a
-  <code>SyntaxError</code> exception.</p>
+  for the new value.</p>
 
   <p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
   return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
@@ -5540,7 +5536,7 @@ interface <dfn>VTTRegion</dfn> {
          <td> "<code>up</code>"
   </table>
 
-  <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new value, if any. If none of the values match, then the user agent must instead throw a <code>SyntaxError</code> exception.</p>
+  <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new value.</p>
 
   </section><!-- end VTTRegion object -->
 
@@ -5741,6 +5737,7 @@ interface <dfn>VTTRegionList</dfn> {
   <p>Thanks to the many contributors to the HTML standard at the WHATWG and W3C HTML Working Group, where WebVTT was originally specified. <a href="#refsHTML">[HTML]</a>, <a href="#refsHTML5">[HTML5]</a></p>
 
   <p>Thanks to the following active contributors to this spec:
+  Glenn Adams,
   Victor C&#259;rbune,
   Eric Carlson,
   Anna Cavender,
