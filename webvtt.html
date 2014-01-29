@@ -5409,8 +5409,6 @@ partial interface <a>TextTrack</a> {
 enum <dfn>ScrollSetting</dfn> { "" /* none */, "up" };
 [Constructor]
 interface <dfn>VTTRegion</dfn> {
-  readonly attribute TextTrack? <a title="dom-VTTRegion-track">track</a>;
-           attribute DOMString <a title="dom-VTTRegion-id">id</a>;
            attribute double <a title="dom-VTTRegion-width">width</a>;
            attribute long <a title="dom-VTTRegion-lines">lines</a>;
            attribute double <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a>;
@@ -5425,16 +5423,6 @@ interface <dfn>VTTRegion</dfn> {
    <dt><var title="">region</var> = new <code title="dom-VTTRegion">VTTRegion</code>()</dt>
    <dd>
     <p>Returns a new <code>VTTRegion</code> object, for use with the <code title="dom-TextTrack-addRegion">addRegion()</code> method.</p>
-   </dd>
-
-   <dt><var title="">region</var> . <a title="dom-VTTRegion-track">track</a></dt>
-   <dd>
-    <p>Returns the <var>TextTrack</var> object to which this text track region belongs, if any, or null otherwise.</p>
-   </dd>
-
-   <dt><var title="">region</var> . <a title="dom-VTTRegion-id">id</a></dt>
-   <dd>
-    <p>Returns the text track region identifier. Can be set.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-width">width</a></dt>
@@ -5503,10 +5491,6 @@ interface <dfn>VTTRegion</dfn> {
 
     <li><p>Return the <code>VTTRegion</code> object representing region.</p></li>
   </ol>
-
-  <p>The <dfn title="dom-VTTRegion-track"><code>track</code></dfn> attribute, on getting, must return the <code>TextTrack</code> object of the <a>text track</a> in whose list of regions the <a>text track region</a> that the <code>VTTRegion</code> object represents finds itself, if any; or null otherwise.</p>
-
-  <p>The <dfn title="dom-VTTRegion-id"><code>id</code></dfn> attribute, on getting, must return the <a>text track region identifier</a> of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents. On setting, the <a>text track region identifier</a> must be set to the new value.</p>
 
   <p>The <dfn title="dom-VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
 
