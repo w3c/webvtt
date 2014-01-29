@@ -2334,7 +2334,9 @@ The Final Minute</pre>
   </ol>
 
 
-  <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return a percentage value or, if at any point the algorithm says that it "fails", this means that it is aborted at that point with an IndexSizeError and returns nothing.</p>
+  <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return either a
+  number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
+  means that it is aborted at that point and returns nothing.</p>
 
   <ol>
    <li><p>Let <var>input</var> be the string being parsed.</p></li>
@@ -2351,7 +2353,7 @@ The Final Minute</pre>
 
    <li><p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be the <var>percentage</var>.</p></li>
 
-   <li><p>If <var>percentage</var> is outside the range 0.0% .. 100.0%, fail.</p></li>
+   <li><p>If <var>percentage</var> is outside the range 0..100, then fail.</p></li>
 
    <li><p>Return <var>percentage</var>.</p></li>
   </ol>
