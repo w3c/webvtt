@@ -5362,7 +5362,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <pre class="idl_whatwg">
 partial interface <a>TextTrack</a> {
-           attribute VTTRegionList? <a title="dom-TextTrack-regions">regions</a>;
+  readonly attribute <a>VTTRegionList</a>? <a title="dom-TextTrack-regions">regions</a>;
   void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>VTTRegion</a> region);
   void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>VTTRegion</a> region);
 };</pre>
