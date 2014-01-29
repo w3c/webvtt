@@ -866,9 +866,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
-   <dt><dfn title="text track cue region identifier">A region identifier</dfn></dt>
+   <dt><dfn title="text track cue region">A region</dfn></dt>
    <dd>
-    <p>A string that references by identifier the region that a cue belongs to, if it is not null.</p>
+    <p>An optional <a>text track region</a> to which a cue belongs.</p>
    </dd>
 
   </dl>
@@ -884,7 +884,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   direction</a>, <a title="text track cue snap-to-lines flag">snap-to-lines flag</a>, <a
   title="text track cue line position">line position</a>, <a title="text track cue text
   position">text position</a>, <a title="text track cue size">size</a>, <a title="text
-  track cue text alignment">alignment</a>, <a title="text track region identifier">region identifier</a>,
+  track cue text alignment">alignment</a>, <a title="text track cue region">region</a>,
   or <a title="text track cue text">text</a> change value, then the user agent must empty
   the <a>text track cue display state</a>, and then immediately run the <a>text track</a>'s
   <a>rules for updating the display of WebVTT text tracks</a>.</p>
@@ -2107,10 +2107,10 @@ The Final Minute</pre>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
+     <li><p>Let <var title="">cue</var>'s <a>text track cue region</a> be null.</p></li>
+
      <li><p>Let <var title="">cue</var>'s <a>text track cue writing direction</a> be
      <a title="text track cue horizontal writing direction">horizontal</a>.</p></li>
-
-     <li><p>Let <var title="">cue</var>'s <a>text track cue region identifier</a> be the empty string.</p></li>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue snap-to-lines flag</a> be true.</p></li>
 
@@ -2363,9 +2363,10 @@ The Final Minute</pre>
 
   <p>When the algorithm above requires that the user agent
   <dfn>Collect WebVTT cue timings and settings</dfn> from a string
-  <var title="">input</var> for a <a>text track cue</a> <var
-  title="">cue</var>, the user agent must run the following
-  algorithm.</p>
+  <var title="">input</var> using a <a>text track list of
+  regions</a> <var title="">regions</var> for a <a>text track
+  cue</a> <var title="">cue</var>, the user agent must run the
+  following algorithm.</p>
 
   <ol>
 
@@ -2418,15 +2419,17 @@ The Final Minute</pre>
    of <var title="">input</var> starting at <var
    title="">position</var>.</p></li>
 
-   <li><p><a>Parse the WebVTT cue settings</a> given by <var
-   title="">remainder</var> for <var title="">cue</var>.</p></li>
+   <li><p><a>Parse the WebVTT cue settings</a> from
+   <var title="">remainder</var> using <var title="">regions</var> for
+   <var title="">cue</var>.</p></li>
 
   </ol>
 
   <p>When the user agent is to <dfn>Parse the WebVTT cue settings</dfn>
-  given by a string <var title="">input</var> for a <a>text track
-  cue</a> <var title="">cue</var>, the user agent must run the
-  following steps:</p>
+  from a string <var title="">input</var> using a <a>text track list of
+  regions</a> <var title="">regions</var> for a <a>text track cue</a>
+  <var title="">cue</var>, the user agent must run the following
+  steps:</p>
 
   <ol>
 
@@ -2471,7 +2474,9 @@ The Final Minute</pre>
 
         <dd>
           <ol>
-            <li>Let <var>cue</var>'s <a>text track cue region identifier</a> be <var>value</var>.</li>
+            <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the <!-- last --> <a>text
+            track region</a> in <var title="">regions</var> whose <a>text track region
+            identifier</a> is <var>value</var>, if any, or null otherwise.</p></li>
           </ol>
         </dd>
 
@@ -2728,15 +2733,12 @@ The Final Minute</pre>
 
    <li><p>If <var>cue</var>'s <a>text track cue line position</a> is not <a>text track cue automatic line position</a>
    or <var>cue</var>'s <a>text track cue size</a> is not 100 or <var>cue</var>'s <a>text track cue writing direction</a>
-   is not <a title="text track cue horizontal writing direction">horizontal</a>, but <var>cue</var>'s <a>text track cue
-   region identifier</a> is not the empty string, let <var>cue</var>'s <a>text track cue region identifier</a> be the
-   empty string.</p></li>
-
+   is not <a title="text track cue horizontal writing direction">horizontal</a>, let <var>cue</var>'s <a>text track cue
+   region</a> be null.</p></li>
 
   </ol>
 
-  <p class="note">Step 5 makes sure that no matter in which order the cue settings are provided, if the cue has a <a>text track cue line position</a> or a <a>text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction">growing right writing direction</a>, the <a>text track cue region identifier</a> will be ignored.</p>
-
+  <p class="note">Step 5 makes sure that no matter in which order the cue settings are provided, if the cue has a <a>text track cue line position</a> or a <a>text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction">growing right writing direction</a>, the <a>text track cue region</a> will be ignored.</p>
 
   <p>When this specification says that a user agent is to
   <dfn>Collect a WebVTT timestamp</dfn>, the user agent must run the
@@ -3896,11 +3898,10 @@ The Final Minute</pre>
    <li><p>If <var>reset</var> is false, then, for each <a>text track cue</a> <var>cue</var> in <var>cues</var>: if <var>cue</var>'s <a>text track cue display state</a> has a set of CSS boxes, then:</p>
 
      <ul>
-       <li><p>if there is a <a>WebVTT region</a> whose <a title="WebVTT region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>:</p>
-      <p>add those boxes to that region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
-
-      <li><p>otherwise:</p>
-        <p>add those boxes to <var>output</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
+       <li><p>If <var>cue</var>'s <a>text track cue region</a> is not null, add those boxes to that
+       region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
+       <li><p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var>
+       from <var>cues</var>.</p></li>
      </ul>
 
    </li>
@@ -3913,7 +3914,7 @@ The Final Minute</pre>
     cue order</a>, run the following substeps:</p>
 
     <ul>
-     <li><p>If <var>cue</var> has an empty <a>text track cue region identifier</a> or there is no <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>, run the following substeps:</p>
+     <li><p>If <var>cue</var>'s <a>text track cue region</a> is null, run the following substeps:</p>
 
       <ol>
 
@@ -3931,9 +3932,9 @@ The Final Minute</pre>
       </ol>
      </li>
 
-     <li><p>Otherwise run the following substeps:</p>
+     <li><p>Otherwise, run the following substeps:</p>
        <ol>
-         <li><p>Let <var>region</var> be the <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> matches the <a>text track cue region identifier</a> of <var>cue</var>.</p></li>
+         <li><p>Let <var>region</var> be <var>cue</var>'s <a>text track cue region</a>.</p></li>
 
          <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>'s 'transition-property' to 'top' and 'transition-duration' to '0.433s'.</p></li>
 
@@ -3947,7 +3948,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
          <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p>
          </li>
 
-         <li><p>Let <var>offset</var> be the <a>text track cue text position</a> multiplied by the <var>width</var> of the <a>WebVTT region object</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p>
+         <li><p>Let <var>offset</var> be the <a>text track cue text position</a> multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p>
          </li>
 
          <li><p>If <var>direction</var> is 'ltr' and 'text-align' is 'start' or 'left', or if <var>direction</var> is 'rtl' and 'text-align' is 'end' or 'left', let <var>left</var> be <var>offset</var> and let <var>right</var> be 'auto'</p>
@@ -5035,7 +5036,7 @@ enum <dfn>DirectionSetting</dfn> { "" /* horizontal */, "rl", "lr" };
 enum <dfn>AlignSetting</dfn> { "start", "middle", "end", "left", "right" };
 [<a title="dom-VTTCue">Constructor</a>(double startTime, double endTime, DOMString text)]
 interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
-           attribute DOMString <a title="dom-VTTCue-regionId">regionId</a>;
+           attribute <a>VTTRegion</a>? <a title="dom-VTTCue-region">region</a>;
            attribute <a>DirectionSetting</a> <a title="dom-VTTCue-vertical">vertical</a>;
            attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
            attribute (double or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
@@ -5058,9 +5059,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>The <var title="">text</var> argument sets the <a>text track cue text</a>.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-VTTCue-regionId">regionId</a></dt>
+   <dt><var title="">cue</var> . <a title="dom-VTTCue-region">region</a></dt>
    <dd>
-    <p>Returns a string representing the <a>text track cue region identifier</a> of the text track region that the <a>VTTCue</a> object belongs to. If the <a>VTTCue</a> doesn't belong to a text track region, returns the empty string.</p>
+    <p>Returns the <code>VTTRegion</code> object to which this cue belongs, if any, or null otherwise.</p>
     <p>Can be set.</p>
    </dd>
 
@@ -5188,18 +5189,14 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <!-- default settings -->
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue region identifier</a>
-   be the empty string.</p></li>
-
    <li><p>Let <var title="">cue</var>'s <a>text track cue identifier</a> be the empty string.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
+   <li><p>Let <var title="">cue</var>'s <a>text track cue region</a> be null.</p></li>
+
    <li><p>Let <var title="">cue</var>'s <a>text track cue writing direction</a> be
    <a title="text track cue horizontal writing direction">horizontal</a>.</p></li>
-
-   <li><p>Let <var title="">cue</var>'s <a title="text track cue region identifier">region identifier</a>
-   be the empty string.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue snap-to-lines flag</a> be true.</p></li>
 
@@ -5223,11 +5220,10 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   </ol>
 
-  <p>The <dfn title="dom-VTTCue-regionId"><code>regionId</code></dfn>
-  attribute, on getting, must return the <a>text track cue region identifier</a> of the <a>text
-  track cue</a> that the <code>VTTCue</code> object represents; or the empty string otherwise.
-  On setting, the <a>text track cue region identifier</a> must be set to the new value if that
-  value refers to a <a>WebVTT region</a>, or unset otherwise.</p>
+  <p>The <dfn title="dom-VTTCue-region"><code>region</code></dfn> attribute, on getting, must return
+  the <code>VTTRegion</code> object representing the <a>text track cue region</a> of the <a>text
+  track cue</a> that the <code>VTTCue</code> object represents, if any; or null otherwise. On
+  setting, the <a>text track cue region</a> must be set to the new value.</p>
 
   <p>The <dfn
   title="dom-VTTCue-vertical"><code>vertical</code></dfn>
