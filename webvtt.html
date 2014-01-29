@@ -5348,59 +5348,6 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   </section>
 
   <section>
-  <h3>Extension of the TextTrack interface for region support</h3>
-
-  <p>The following attribute and methods are introduced into the <a>TextTrack</a> object:</p>
-
-  <pre class="idl_whatwg">
-partial interface <a>TextTrack</a> {
-  readonly attribute <a>VTTRegionList</a>? <a title="dom-TextTrack-regions">regions</a>;
-  void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>VTTRegion</a> region);
-  void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>VTTRegion</a> region);
-};</pre>
-
-  <dl class="domintro">
-
-   <dt><var title="">textTrack</var> . <a title="dom-TextTrack-regions">regions</a></dt>
-   <dd>
-    <p>Returns the <a>text track list of regions</a>, as a <code>VTTRegionList</code> object.</p>
-   </dd>
-
-   <dt><var title="">textTrack</var> . <a title="dom-TextTrack-addRegion">addRegion</a>(region)</dt>
-   <dd>
-    <p>Adds the given region to <var>TextTrack</var>'s <a>text track list of regions</a>. If that list already contains a region with the same identifier, update that region's attributes with those of <var>region</var>.</p>
-   </dd>
-
-   <dt><var title="">textTrack</var> . <a title="dom-TextTrack-removeRegion">removeRegion</a>(region)</dt>
-   <dd>
-    <p>Removes the given region from <var>TextTrack</var>'s <a>text track list of regions</a>.</p>
-   </dd>
-
-  </dl>
-
-  <p>If the <a>text track mode</a> of the <a>text track</a> that the <var>TextTrack</var> object represents is not the <a>text track disabled</a> mode, then the <dfn title="dom-texttrack-regions">regions</dfn> attribute must return a live <a>VTTRegionList</a> object that represents the <a>text track list of regions</a> of the <a>text track</a>. Otherwise, it must return null. When an object is returned, the same object must be returned each time.</p>
-
-  <p>The <dfn title="dom-TextTrack-addRegion"><code>addRegion(<var>region</var>)</code></dfn> method of <code>TextTrack</code> objects, when invoked, must run the following steps:</p>
-
-  <ol>
-   <li><p>If the given <var>region</var> is in a <a>text track list of regions</a>, then remove <var>region</var> from that <a>text track list of regions</a>.</p></li>
-
-   <li><p>If the method's <a><code>TextTrack</code></a> object's <a>text track list of regions</a> contains a region with the same identifier as <var>region</var> replace the values of that region's <var>width</var>, <var>lines</var>, <var>anchor point</var>, <var>viewport anchor point</var> and <var>scroll</var> attributes with those of <var>region</var>.</p>
-
-   <p>Otherwise: add <var>region</var> to the method's <code>TextTrack</code> object's <a>text track list of regions</a>.</p></li>
-  </ol>
-
-  <p>The <dfn title="dom-TextTrack-removeRegion"><code>removeRegion(<var>region</var>)</code></dfn> method of <code>TextTrack</code> objects, when invoked, must run the following steps:</p>
-
-  <ol>
-   <li><p>If the given <var>region</var> is not currently listed in the method's <code>TextTrack</code> object's <a>text track list of regions</a>, then throw a NotFoundError exception.</p></li>
-
-   <li><p>Otherwise: remove <var>region</var> from that <a>text track list of regions</a>.</p></li>
-  </ol>
-
-  </section><!-- TextTrack interface -->
-
-  <section>
   <h3>VTTRegion interface</h3>
 
   <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
@@ -5422,7 +5369,7 @@ interface <dfn>VTTRegion</dfn> {
 
    <dt><var title="">region</var> = new <code title="dom-VTTRegion">VTTRegion</code>()</dt>
    <dd>
-    <p>Returns a new <code>VTTRegion</code> object, for use with the <code title="dom-TextTrack-addRegion">addRegion()</code> method.</p>
+    <p>Returns a new <code>VTTRegion</code> object.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-width">width</a></dt>
@@ -5519,48 +5466,6 @@ interface <dfn>VTTRegion</dfn> {
   <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new value.</p>
 
   </section><!-- end VTTRegion object -->
-
-  <section>
-  <h3>VTTRegionList interface</h3>
-
-  <pre class="idl_whatwg">
-interface <dfn>VTTRegionList</dfn> {
-  readonly attribute unsigned long <a title="dom-VTTRegionList-length">length</a>;
-  getter <a title="dom-VTTRegion">VTTRegion</a> (unsigned long index);
-  <a>VTTRegion</a>? <a title="dom-VTTRegionList-getRegionById">getRegionById</a>(DOMString id);
-};</pre>
-
-  <dl class="domintro">
-
-   <dt><var title="">regionList</var> . <a title="dom-VTTRegionList-length">length</a></dt>
-   <dd>
-    <p>Returns the number of <var>regions</var> in the list.</p>
-   </dd>
-
-   <dt><var title="">regionList</var>[index]</dt>
-   <dd>
-    <p>Returns the <a>text track region</a> with index <var>index</var> in the list. The regions are sorted in the order in which they were inserted.</p>
-   </dd>
-
-   <dt><var title="">regionList</var> . <a title="dom-VTTRegionList-getRegionById">getRegionById</a>( id )</dt>
-   <dd>
-    <p>Returns the first <a>text track region</a> with <a>text track region identifier</a> <var>id</var>.</p>
-    <p>Returns null if none of the regions have the given identifier or if the argument is the empty string.</p>
-   </dd>
-  </dl>
-
-  <p>A <code>VTTRegionList</code> object represents a dynamically updating list of <a title="text track region">text track regions</a> in a given order.</p>
-
-  <p>The <dfn title="dom-VTTRegionList-length"><code>length</code></dfn> attribute must return the number of <a title="text track region">regions</a> in the list represented by the <code>VTTRegionList</code> object.</p>
-
-  <p>The <a>supported property indices</a> of a <code>VTTRegionList</code> object at any instant are the numbers from zero to the number of <a title="text track region">regions</a> in the list represented by the <code>VTTRegionList</code> object minus one, if any. If there are no <a title="text track region">regions</a> in the list, there are no <a>supported property indices</a>.</p>
-
-  <p>To <a>determine the value of an indexed property</a> for a given index <var>index</var>, the user agent must return the <var>index</var> of the <a>text track region</a> in the list represented by the <code>VTTRegionList</code> object.</p>
-
-  <p>The <dfn title="dom-VTTRegionList-getRegionById"><code>getRegionById(<var>id</var>)</code></dfn> method, when called with an argument other than the empty string, must return the first <a>text track region</a> in the list represented by the <code>VTTRegionList</code> object whose <a>text track region identifier</a> is <var>id</var>, if any, or null otherwise. If the argument is the empty string, then the method must return null.</p>
-  <p>
-
-  </section><!-- end VTTRegionList object -->
 
   </section><!-- WebVTT API for browsers -->
 
