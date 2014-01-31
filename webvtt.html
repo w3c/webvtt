@@ -2031,12 +2031,8 @@ The Final Minute</pre>
            <li>Let <var>region</var>'s <a title="text track region viewport anchor">viewport anchor point</a> be (0,100).</li>
            <li>Let <var>region</var>'s <a title="text track region scroll">scroll value</a> be <a title="text track region scroll none">NONE</a>.</li>
            <li><a>Collect WebVTT region settings</a> from <a title="WebVTT metadata header value">metadata's value</a> using <var>region</var> for the results.</li>
-
            <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from <var>region</var>.</li>
-
-           <li>If the <a>text track list of regions</a> <var>regions</var> contains a region with the same <var>region identifier</var> value as <var>region</var>, remove that region.</li><!-- the removed region has never been in effect -->
-
-           <li>Add <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
+           <li>Append <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
         </ol>
        </li>
      </ol>
@@ -2460,7 +2456,7 @@ The Final Minute</pre>
 
         <dd>
           <ol>
-            <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the <!-- last --> <a>text
+            <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the last <a>text
             track region</a> in <var title="">regions</var> whose <a>text track region
             identifier</a> is <var>value</var>, if any, or null otherwise.</p></li>
           </ol>
