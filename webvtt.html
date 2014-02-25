@@ -3705,45 +3705,60 @@ The Final Minute</pre>
   <table>
    <thead>
     <tr>
-     <th><a>WebVTT Node Object</a>
-     <th>DOM node
+     <th><a>WebVTT Node Object</a></th>
+     <th>DOM node</th>
+    </tr>
+   </thead>
    <tbody>
     <tr>
-     <td><a>List of WebVTT Node Objects</a>
-     <td><code>DocumentFragment</code> node
+     <td><a>List of WebVTT Node Objects</a></td>
+     <td><code>DocumentFragment</code> node</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Region Object</a>
-     <td><code>DocumentFragment</code> node
+     <td><a>WebVTT Region Object</a></td>
+     <td><code>DocumentFragment</code> node</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Class Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".
+     <td><a>WebVTT Class Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Italic Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>i</code>".
+     <td><a>WebVTT Italic Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>i</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Bold Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>b</code>".
+     <td><a>WebVTT Bold Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>b</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Underline Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>u</code>".
+     <td><a>WebVTT Underline Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>u</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Ruby Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>ruby</code>".
+     <td><a>WebVTT Ruby Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>ruby</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Ruby Text Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>rt</code>".
+     <td><a>WebVTT Ruby Text Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>rt</code>".</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Voice Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-title">title</code> attribute set to the <a>WebVTT Voice Object</a>'s value.
+     <td><a>WebVTT Voice Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-title">title</code> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Language Object</a>
-     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-lang">lang</code> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.
+     <td><a>WebVTT Language Object</a></td>
+     <td><code>HTMLElement</code> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-lang">lang</code> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Text Object</a>
-     <td><code>Text</code> node whose character data is the value of the <a>WebVTT Text Object</a>.
+     <td><a>WebVTT Text Object</a></td>
+     <td><code>Text</code> node whose character data is the value of the <a>WebVTT Text Object</a>.</td>
+    </tr>
     <tr>
-     <td><a>WebVTT Timestamp Object</a>
-     <td><code>ProcessingInstruction</code> node whose <code title="dom-ProcessingInstruction-target">target</code> is "<code title="">timestamp</code>" and whose <code title="dom-ProcessingInstruction-data">data</code> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var title="">hours</var> component is less than ten, and with no leading zeros otherwise.
+     <td><a>WebVTT Timestamp Object</a></td>
+     <td><code>ProcessingInstruction</code> node whose <code title="dom-ProcessingInstruction-target">target</code> is "<code title="">timestamp</code>" and whose <code title="dom-ProcessingInstruction-data">data</code> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var title="">hours</var> component is less than ten, and with no leading zeros otherwise.</td>
+    </tr>
+   </tbody>
   </table>
 
   <p><code>HTMLElement</code> nodes created as part of the mapping described above must have their
@@ -4605,13 +4620,33 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
   <table>
    <thead>
-    <tr> <th><a>text track cue text alignment</a> <th> 'text-align' value
+    <tr>
+     <th><a>text track cue text alignment</a></th>
+     <th>'text-align' value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td><a title="text track cue start alignment">Start alignment</a> <td> 'start'
-    <tr> <td><a title="text track cue middle alignment">Middle alignment</a> <td> 'center'
-    <tr> <td><a title="text track cue end alignment">End alignment</a> <td> 'end'
-    <tr> <td><a title="text track cue left alignment">Left alignment</a> <td> 'left'
-    <tr> <td><a title="text track cue right alignment">Right alignment</a> <td> 'right'
+    <tr>
+     <td><a title="text track cue start alignment">Start alignment</a></td>
+     <td>'start'</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue middle alignment">Middle alignment</a></td>
+     <td>'center'</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue end alignment">End alignment</a></td>
+     <td>'end'</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue left alignment">Left alignment</a></td>
+     <td>'left'</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue right alignment">Right alignment</a></td>
+     <td>'right'</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>The 'font' shorthand property on the (root) <a>list of WebVTT
@@ -4822,49 +4857,50 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     the name given by the second column of the same row:</p>
 
     <table>
-
      <thead>
       <tr>
-       <th>Concrete class
-       <th>Name
-
+       <th>Concrete class</th>
+       <th>Name</th>
+      </tr>
+     </thead>
      <tbody>
       <tr>
-       <td><a title="WebVTT Class Object">WebVTT Class Objects</a>
-       <td><code title="">c</code>
-
+       <td><a title="WebVTT Class Object">WebVTT Class Objects</a></td>
+       <td><code title="">c</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Italic Object">WebVTT Italic Objects</a>
-       <td><code title="">i</code>
-
+       <td><a title="WebVTT Italic Object">WebVTT Italic Objects</a></td>
+       <td><code title="">i</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Bold Object">WebVTT Bold Objects</a>
-       <td><code title="">b</code>
-
+       <td><a title="WebVTT Bold Object">WebVTT Bold Objects</a></td>
+       <td><code title="">b</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Underline Object">WebVTT Underline Objects</a>
-       <td><code title="">u</code>
-
+       <td><a title="WebVTT Underline Object">WebVTT Underline Objects</a></td>
+       <td><code title="">u</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Ruby Object">WebVTT Ruby Objects</a>
-       <td><code title="">ruby</code>
-
+       <td><a title="WebVTT Ruby Object">WebVTT Ruby Objects</a></td>
+       <td><code title="">ruby</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a>
-       <td><code title="">rt</code>
-
+       <td><a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a></td>
+       <td><code title="">rt</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Voice Object">WebVTT Voice Objects</a>
-       <td><code title="">v</code>
-
+       <td><a title="WebVTT Voice Object">WebVTT Voice Objects</a></td>
+       <td><code title="">v</code></td>
+      </tr>
       <tr>
-       <td><a title="WebVTT Language Object">WebVTT Language Objects</a>
-       <td><code title="">lang</code>
-
+       <td><a title="WebVTT Language Object">WebVTT Language Objects</a></td>
+       <td><code title="">lang</code></td>
+      </tr>
       <tr>
-       <td>Other elements (specifically, <a title="list of WebVTT Node Objects">lists of WebVTT Node Objects</a>)
-       <td>No explicit name.
-
+       <td>Other elements (specifically, <a title="list of WebVTT Node Objects">lists of WebVTT Node Objects</a>)</td>
+       <td>No explicit name.</td>
+      </tr>
+     </tbody>
     </table>
 
    </li>
@@ -5220,15 +5256,25 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <table>
    <thead>
-    <tr> <th> <a>text track cue writing direction</a>
-         <th> <code title="dom-VTTCue-direction">direction</code> value
+    <tr>
+     <th><a>text track cue writing direction</a></th>
+     <th><code title="dom-VTTCue-direction">direction</code> value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td> <a title="text track cue horizontal writing direction">Horizontal</a>
-         <td> "<code title=""></code>" (the empty string)
-    <tr> <td> <a title="text track cue vertical growing left writing direction">Vertical growing left</a>
-         <td> "<code title="">rl</code>"
-    <tr> <td> <a title="text track cue vertical growing right writing direction">Vertical growing right</a>
-         <td> "<code title="">lr</code>"
+    <tr>
+     <td><a title="text track cue horizontal writing direction">Horizontal</a></td>
+     <td>"<code title=""></code>" (the empty string)</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue vertical growing left writing direction">Vertical growing left</a></td>
+     <td>"<code title="">rl</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue vertical growing right writing direction">Vertical growing right</a></td>
+     <td>"<code title="">lr</code>"</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>On setting, the <a>text track cue writing direction</a> must be set to the value given in
@@ -5257,11 +5303,25 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <table>
    <thead>
-    <tr> <th><a>text track cue line alignment</a> <th> <code title="dom-VTTCue-lineAlign">lineAlign</code> value
+    <tr>
+     <th><a>text track cue line alignment</a></th>
+     <th><code title="dom-VTTCue-lineAlign">lineAlign</code> value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td><a title="text track cue line start alignment">Start alignment</a> <td> "<code title="">start</code>"
-    <tr> <td><a title="text track cue line middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
-    <tr> <td><a title="text track cue line end alignment">End alignment</a> <td> "<code title="">end</code>"
+    <tr>
+     <td><a title="text track cue line start alignment">Start alignment</a></td>
+     <td>"<code title="">start</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue line middle alignment">Middle alignment</a></td>
+     <td>"<code title="">middle</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue line end alignment">End alignment</a></td>
+     <td>"<code title="">end</code>"</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>On setting, the <a>text track cue line alignment</a> must be set to the value given in the
@@ -5282,12 +5342,24 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   <table>
    <thead>
     <tr>
-      <th><a>text track cue text position alignment</a>
-      <th><code title="dom-VTTCue-positionAlign">positionAlign</code> value
+     <th><a>text track cue text position alignment</a></th>
+     <th><code title="dom-VTTCue-positionAlign">positionAlign</code> value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td><a title="text track cue text position start alignment">Start alignment</a> <td> "<code title="">start</code>"
-    <tr> <td><a title="text track cue text position middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
-    <tr> <td><a title="text track cue text position end alignment">End alignment</a> <td> "<code title="">end</code>"
+    <tr>
+     <td><a title="text track cue text position start alignment">Start alignment</a></td>
+     <td>"<code title="">start</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue text position middle alignment">Middle alignment</a></td>
+     <td>"<code title="">middle</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue text position end alignment">End alignment</a></td>
+     <td>"<code title="">end</code>"</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>On setting, the <a>text track cue text position alignment</a> must be set to the value given in the
@@ -5307,13 +5379,33 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <table>
    <thead>
-    <tr> <th><a>text track cue text alignment</a> <th> <code title="dom-VTTCue-align">align</code> value
+    <tr>
+     <th><a>text track cue text alignment</a></th>
+     <th><code title="dom-VTTCue-align">align</code> value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td><a title="text track cue start alignment">Start alignment</a> <td> "<code title="">start</code>"
-    <tr> <td><a title="text track cue middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
-    <tr> <td><a title="text track cue end alignment">End alignment</a> <td> "<code title="">end</code>"
-    <tr> <td><a title="text track cue left alignment">Left alignment</a> <td> "<code title="">left</code>"
-    <tr> <td><a title="text track cue right alignment">Right alignment</a> <td> "<code title="">right</code>"
+    <tr>
+     <td><a title="text track cue start alignment">Start alignment</a></td>
+     <td>"<code title="">start</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue middle alignment">Middle alignment</a></td>
+     <td>"<code title="">middle</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue end alignment">End alignment</a></td>
+     <td>"<code title="">end</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue left alignment">Left alignment</a></td>
+     <td>"<code title="">left</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue right alignment">Right alignment</a></td>
+     <td>"<code title="">right</code>"</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>On setting, the <a>text track cue text alignment</a> must be set to the value given in the
@@ -5440,13 +5532,21 @@ interface <dfn>VTTRegion</dfn> {
   <p>The <dfn title="dom-VTTRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from the second cell of the row in the table below whose first cell is the <a>text track region scroll</a> setting of the <a>text track region</a> that the <code>VTTRegion</code> object represents:</p>
   <table>
    <thead>
-    <tr> <th> <a>Text track region scroll</a> setting
-         <th> <code id="dom-VTTRegion-scroll">scroll</code> value
+    <tr>
+     <th><a>Text track region scroll</a> setting</th>
+     <th><code id="dom-VTTRegion-scroll">scroll</code> value</th>
+    </tr>
+   </thead>
    <tbody>
-    <tr> <td> <a title="text track region scroll none">None</a>
-         <td> "<code></code>" (the empty string)
-    <tr> <td> <a title="text track region scroll up">Up</a>
-         <td> "<code>up</code>"
+    <tr>
+     <td><a title="text track region scroll none">None</a></td>
+     <td>"<code></code>" (the empty string)</td>
+    </tr>
+    <tr>
+     <td><a title="text track region scroll up">Up</a></td>
+     <td>"<code>up</code>"</td>
+    </tr>
+   </tbody>
   </table>
 
   <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new value.</p>
