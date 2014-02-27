@@ -1367,25 +1367,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </li>
 
    <li>
-<!--
-    <dl class="switch">
-
-     <dt>If the start tag allows an annotation:</dt>
-
-     <dd>Optionally, a <a>WebVTT cue span start tag annotation</a>.</dd>
-
-     <dt>-->If the start tag requires an annotation:<!--</dt>
-
-     <dd>A <a>WebVTT cue span start tag annotation</a>.</dd>
-
-    </dl>
-
-    <p>A <dfn>WebVTT cue span start tag annotation</dfn> consists of-->
+    <p>If the start tag requires an annotation:
     a U+0020 SPACE character or a U+0009 CHARACTER TABULATION (tab)
     character, followed by one or more of the following components,
     the concatenation of their representations having a value that
     contains at least one character other than U+0020 SPACE and U+0009
-    CHARACTER TABULATION (tab) characters:<!--</p>-->
+    CHARACTER TABULATION (tab) characters:</p>
 
     <ul>
      <li><a>WebVTT cue span start tag annotation text</a>, representing the text of the annotation.</li>
@@ -3033,12 +3020,7 @@ The Final Minute</pre>
       processed depends on its tag name, as follows:</p>
 
       <dl>
-<!--
-       <dt>If the tag name is the empty string</dt>
-       <dd>
-        <p>Ignore the token.</p>
-       </dd>
--->
+
        <dt>If the tag name is "<code title="">c</code>"</dt>
        <dd>
         <p><a title="attach a WebVTT Internal Node
