@@ -253,7 +253,6 @@
 00:35.500 --> 00:38.000
 &lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.</pre>
 
-
   <section>
   <h3>Cues with multiple lines</h3>
 
@@ -1011,7 +1010,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
-
   <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
   the given order:</p>
 
@@ -1272,7 +1270,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <a>WebVTT cue components</a>, in any order, each optionally
   followed by a <a>WebVTT line terminator</a>.</p>
 
-
   <p>A <dfn>WebVTT cue class span</dfn> consists of a <a>WebVTT cue
   span start tag</a> "<code title="">c</code>" that disallows an
   annotation, <a>WebVTT cue internal text</a> representing cue
@@ -1335,7 +1332,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><a>WebVTT cue internal text</a>.</li>
    <li>A <a>WebVTT cue span end tag</a> "<code title="">lang</code>".</li>
   </ol>
-
 
   <p>A <dfn>WebVTT cue span start tag</dfn> has a <var title="">tag
   name</var> and either <!--allows,--> requires<!--,--> or disallows
@@ -1413,7 +1409,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li>The <var title="">tag name</var>.</li>
    <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
   </ol>
-
 
   <p>A <dfn>WebVTT cue timestamp</dfn> consists of a U+003C LESS-THAN
   SIGN character (&lt;), followed by a <a>WebVTT timestamp</a>
@@ -1900,7 +1895,6 @@ The Final Minute</pre>
 
   </section><!-- end of syntax -->
 
-
   <section>
   <h2>WebVTT file format: Parsing</h2>
 
@@ -1965,7 +1959,6 @@ The Final Minute</pre>
 
    <li>Let <var title="">line</var> be a string variable. Unset the
    <var title="">already collected line</var> flag.</li>
-
 
    <!-- SIGNATURE CHECK -->
 
@@ -2061,7 +2054,6 @@ The Final Minute</pre>
 
    <li><p>If <var title="">line</var> is not the empty string, then
    jump back to the step labeled <i title="">header</i>.</p></li>
-
 
    <li><p><i>Cue loop</i>: If the <var title="">already collected
    line</var> flag is set, then jump to the step labeled <var
@@ -2195,7 +2187,6 @@ The Final Minute</pre>
 
    <li><p>Jump to the step labeled <i>cue loop</i>.</p></li>
 
-
    <li><p><i>Bad cue</i>: Discard <var title="">cue</var>.</p></li>
 
    <li><p><i>Bad cue loop</i>: If <var title="">position</var> is
@@ -2222,7 +2213,6 @@ The Final Minute</pre>
 
    <li><p>Otherwise, jump to the step labeled <i>bad cue
    loop</i>.</p></li>
-
 
    <li><p><i>End</i>: The file has ended. Abort these steps. The
    <a>WebVTT parser</a> has finished. The file was successfully
@@ -2316,7 +2306,6 @@ The Final Minute</pre>
       </ol>
     </li>
   </ol>
-
 
   <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return either a
   number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
@@ -2466,7 +2455,6 @@ The Final Minute</pre>
           </ol>
         </dd>
 
-
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">vertical</code>"</dt>
 
        <dd>
@@ -2491,7 +2479,6 @@ The Final Minute</pre>
 
        </dd>
 
-
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">line</code>"</dt>
 
        <dd>
@@ -2506,7 +2493,6 @@ The Final Minute</pre>
 
          <li><p>Otherwise let <var title="">linepos</var> be the full <var title="">value</var> string
          and <var title="">linealign</var> be the empty string.</p></li>
-
 
          <li><p>If <var title="">linepos</var> does not contain at least one <a title="ASCII
          digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
@@ -2567,7 +2553,6 @@ The Final Minute</pre>
 
        </dd>
 
-
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">size</code>"</dt>
 
        <dd>
@@ -2584,7 +2569,6 @@ The Final Minute</pre>
         </ol>
 
        </dd>
-
 
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">position</code>"</dt>
 
@@ -2629,7 +2613,6 @@ The Final Minute</pre>
         </ol>
 
        </dd>
-
 
        <dt>If <var title="">name</var> is a <a>case-sensitive</a> match for "<code title="">align</code>"</dt>
 
@@ -3982,7 +3965,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   the <code>video</code>, or even off the <code>video</code>
   entirely.</p>
 
-
   <p>When the algorithm above requires that the user agent <dfn>Apply WebVTT cue settings</dfn>
   to calculate CSS boxes from the <a>list of WebVTT Node Objects</a> <var title="">nodes</var>
   obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
@@ -4792,7 +4774,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   '::cue(<var title="">selector</var>)' pseudo-elements, and the <a
   title="past-pseudo-class">':past'</a> and <a
   title="future-pseudo-class">':future'</a> pseudo-classes.</p>
-
 
   <section>
   <h5>The '::cue' pseudo-element</h5>
@@ -5698,7 +5679,6 @@ interface <dfn>VTTRegion</dfn> {
   </dl>
 
   </section>
-
 
   <section>
   <h2 class="no-num">Acknowledgements</h2> <!-- ACKS -->
