@@ -3933,6 +3933,8 @@ The Final Minute</pre>
 
          <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
 
+         <!-- The following steps are the subpart of the "Apply WebVTT cue settings" algorithm
+              that applies to regions -->
          <li>
            <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of the first
 Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
