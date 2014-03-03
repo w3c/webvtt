@@ -3919,6 +3919,8 @@ The Final Minute</pre>
 
          <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
 
+         <!-- The following steps are the subpart of the "Apply WebVTT cue settings" algorithm
+              that applies to regions -->
          <li>
            <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of the first
 Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
@@ -3946,6 +3948,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
          <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p></li>
 
          <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
+
+         <li><p>If the CSS boxes <var>boxes</var> together have a height less than the height of the <var>region</var> box, let <var>diff</var> be the difference between the two height values. Increase <var>top</var> by <var>diff</var> and re-apply it to <var>regionNode</var>.</p></li>
        </ol>
      </li>
 
