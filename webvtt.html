@@ -3964,6 +3964,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
          <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p></li>
 
          <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
+
+         <li><p>If the CSS boxes <var>boxes</var> together have a height less than the height of the <var>region</var> box, let <var>diff</var> be the difference between the two height values. Increase <var>top</var> by <var>diff</var> and re-apply it to <var>regionNode</var>.</p></li>
        </ol>
      </li>
 
