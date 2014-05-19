@@ -802,7 +802,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
-   <dt><dfn title="text track cue text position alignment">A text position alignment</dfn>
+   <dt><dfn title="text track text position alignment">A text position alignment</dfn>
    <dd>
      <p>An alignment for the <a title="text track cue box">cue box</a> in the dimension of the
      <a title="text track cue writing direction">writing direction</a>, describing which part of the
@@ -858,7 +858,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <!-- TOO OBVIOUS?
       <p class="note">Since the <a>text track cue text position</a> always measures from the left
       of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
-      or the top (otherwise), the <a>text track cue text position alignment</a> <a
+      or the top (otherwise), the <a>text track text position alignment</a> <a
       title="text track cue text position start alignment">start value</a> varies between left and top for
       horizontal and vertical cues, but not between left and right like BIDI.</p>
       -->
@@ -2166,8 +2166,8 @@ The Final Minute</pre>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a title="">text track cue text position alignment</a> be
-     <a title="text track cue text position alignment">middle alignment</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a title="">text track text position alignment</a> be
+     <a title="text track text position alignment">middle alignment</a>.</p></li>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
@@ -5015,9 +5015,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute <a>DirectionSetting</a> <a title="dom-VTTCue-vertical">vertical</a>;
            attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
            attribute (long or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
-           attribute <a>AlignSetting</a> <a title="dom-VTTCue-lineAlign">lineAlign</a>;
            attribute long <a title="dom-VTTCue-position">position</a>;
-           attribute <a>AlignSetting</a> <a title="dom-VTTCue-positionAlign">positionAlign</a>;
            attribute long <a title="dom-VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
 					 attribute DOMString <a title="dom-VTTCue-text">text</a>;
@@ -5069,37 +5067,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var title="">cue</var> . <a title="dom-VTTCue-lineAlign">lineAlign</a> [ = <var title="">value</var> ]</dt>
-   <dd>
-    <p>Returns a string representing the <a>text track cue line alignment</a>, as follows:</p>
-    <dl class="switch">
-     <dt>If it is <a title="text track cue line start alignment">start alignment</a></dt>
-     <dd><p>The string "<code title="">start</code>".</p></dd>
-     <dt>If it is <a title="text track cue line middle alignment">middle alignment</a></dt>
-     <dd><p>The string "<code title="">middle</code>".</p></dd>
-     <dt>If it is <a title="text track cue line end alignment">end alignment</a></dt>
-     <dd><p>The string "<code title="">end</code>".</p></dd>
-    </dl>
-    <p>Can be set.</p>
-   </dd>
-
    <dt><var title="">cue</var> . <a title="dom-VTTCue-position">position</a> [ = <var title="">value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text position</a>.</p>
-    <p>Can be set.</p>
-   </dd>
-
-   <dt><var title="">cue</var> . <a title="dom-VTTCue-positionAlign">positionAlign</a> [ = <var title="">value</var> ]</dt>
-   <dd>
-    <p>Returns a string representing the <a>text track cue text position alignment</a>, as follows:</p>
-    <dl class="switch">
-     <dt>If it is <a title="text track cue text position start alignment">start alignment</a></dt>
-     <dd><p>The string "<code title="">start</code>".</p></dd>
-     <dt>If it is <a title="text track cue text position middle alignment">middle alignment</a></dt>
-     <dd><p>The string "<code title="">middle</code>".</p></dd>
-     <dt>If it is <a title="text track cue text position end alignment">end alignment</a></dt>
-     <dd><p>The string "<code title="">end</code>".</p></dd>
-    </dl>
     <p>Can be set.</p>
    </dd>
 
@@ -5182,13 +5152,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a> be 
    <a title="text track cue automatic line position">auto</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue line alignment</a> be
-   <a title="text track cue line middle alignment">middle alignment</a>.</p></li>
-
    <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
-
-   <li><p>Let <var title="">cue</var>'s <a>text track cue text position alignment</a> be
-   <a title="text track cue text position middle alignment">middle alignment</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
@@ -5245,51 +5209,11 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   interpreted as the special value <a title="text track cue automatic line
   position">auto</a>.</p>
 
-  <p>The <dfn title="dom-VTTCue-lineAlign"><code>lineAlign</code></dfn> attribute, on getting, must
-  return the string from the second cell of the row in the table below whose first cell is the
-  <a>text track cue line alignment</a> of the <a>text track cue</a> that the
-  <code>VTTCue</code> object represents:</p>
-
-  <table>
-   <thead>
-    <tr> <th><a>text track cue line alignment</a> <th> <code title="dom-VTTCue-lineAlign">lineAlign</code> value
-   <tbody>
-    <tr> <td><a title="text track cue line start alignment">Start alignment</a> <td> "<code title="">start</code>"
-    <tr> <td><a title="text track cue line middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
-    <tr> <td><a title="text track cue line end alignment">End alignment</a> <td> "<code title="">end</code>"
-  </table>
-
-  <p>On setting, the <a>text track cue line alignment</a> must be set to the value given in the
-  first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
-  for the new value, if any. If none of the values match, then the user agent must instead throw a
-  <code>SyntaxError</code> exception.</p>
-
   <p>The <dfn title="dom-VTTCue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a>text track cue text position</a> of the <a>text track cue</a> that
   the <code>VTTCue</code> object represents. On setting, if the new value is negative or
   greater than 100, then an <code>IndexSizeError</code> exception must be thrown. Otherwise, the
   <a>text track cue text position</a> must be set to the new value.</p>
-
-  <p>The <dfn title="dom-VTTCue-positionAlign"><code>positionAlign</code></dfn> attribute, on getting, must
-  return the string from the second cell of the row in the table below whose first cell is the
-  <a>text track cue text position alignment</a> of the <a>text track cue</a> that the
-  <code>VTTCue</code> object represents:</p>
-
-  <table>
-   <thead>
-    <tr>
-      <th><a>text track cue text position alignment</a>
-      <th><code title="dom-VTTCue-positionAlign">positionAlign</code> value
-   <tbody>
-    <tr> <td><a title="text track cue text position start alignment">Start alignment</a> <td> "<code title="">start</code>"
-    <tr> <td><a title="text track cue text position middle alignment">Middle alignment</a> <td> "<code title="">middle</code>"
-    <tr> <td><a title="text track cue text position end alignment">End alignment</a> <td> "<code title="">end</code>"
-  </table>
-
-  <p>On setting, the <a>text track cue text position alignment</a> must be set to the value given in the
-  first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
-  for the new value, if any. If none of the values match, then the user agent must instead throw a
-  <code>SyntaxError</code> exception.</p>
 
   <p>The <dfn title="dom-VTTCue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a>text track cue size</a> of the <a>text track cue</a> that the
