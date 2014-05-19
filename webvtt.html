@@ -2460,12 +2460,12 @@ The Final Minute</pre>
    of <var title="">input</var> starting at <var
    title="">position</var>.</p></li>
 
-   <li><p><a>Parse the WebVTT cue settings</a> given by <var
+   <li><p><a>Parse the WebVTT settings</a> given by <var
    title="">remainder</var> for <var title="">cue</var>.</p></li>
 
   </ol>  
 
-  <p>When the user agent is to <dfn>Parse the WebVTT cue settings</dfn>
+  <p>When the user agent is to <dfn>Parse the WebVTT settings</dfn>
   given by a string <var title="">input</var> for a <a>text track
   cue</a> <var title="">cue</var>, the user agent must run the
   following steps:</p>
@@ -2545,65 +2545,47 @@ The Final Minute</pre>
 
         <ol>
 
-         <li><p>If <var title="">value</var> contains a U+002C COMMA character (,), then let
-         <var title="">linepos</var> be the leading substring of <var title="">value</var> up to and
-         excluding the first U+002C COMMA character (,) in that string and let <var title="">linealign</var>
-         be the trailing substring of <var title="">value</var> starting from the character immediately
-         after the first U+002C COMMA character (,) in that string.</p></li>
-
-         <li><p>Otherwise let <var title="">linepos</var> be the full <var title="">value</var> string
-         and <var title="">linealign</var> be the empty string.</p></li>
-
-         <li><p>If <var title="">linepos</var> contains any characters other than U+002D HYPHEN-MINUS
+         <li><p>If <var title="">value</var> contains any characters other than U+002D HYPHEN-MINUS
          characters (-), U+0025 PERCENT SIGN characters (%), and <a>ASCII digits</a>, then
          jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If <var title="">linepos</var> does not contain at least one <a title="ASCII
+         <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
          digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">linepos</var> other
+         <li><p>If any character in <var title="">value</var> other
          than the first character is a U+002D HYPHEN-MINUS character
-         (-), then jump to the step labeled <i>next setting</i>.</p></li>
+         (-), then jump to the step labeled <i>next
+         setting</i>.</p></li>
 
-         <li><p>If any character in <var title="">linepos</var> other
+         <li><p>If any character in <var title="">value</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
 
-         <li><p>If the first character in <var title="">linepos</var> is
+         <li><p>If the first character in <var title="">value</var> is
          a U+002D HYPHEN-MINUS character (-) <em>and</em> the last
-         character in <var title="">linepos</var> is a U+0025 PERCENT SIGN character (%),
-         then jump to the step labeled <i>next setting</i>.</p></li>
+         character in <var title="">value</var> is a U+0025 PERCENT
+         SIGN character (%), then jump to the step labeled <i>next
+         setting</i>.</p></li>
 
          <li><p>Ignoring the trailing percent sign, if any, interpret
-         <var title="">linepos</var> as a (potentially signed) integer,
+         <var title="">value</var> as a (potentially signed) integer,
          and let <var title="">number</var> be that number.</p></li>
 
-         <li><p>If the last character in <var title="">linepos</var> is
-         a U+0025 PERCENT SIGN character (%), but <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         <li><p>If the last character in <var title="">value</var> is
+         a U+0025 PERCENT SIGN character (%), but <var
+         title="">number</var> is not in the range
+         0&nbsp;&le;&nbsp;<var
+         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a>
-         be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a>text track cue
+         line position</a> be <var title="">number</var>.</p></li>
 
-         <li><p>If the last character in <var title="">linepos</var> is
-         a U+0025 PERCENT SIGN character (%), then let <var title="">cue</var>'s
-         <a>text track cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
-
-         <li><p>If <var title="">linealign</var> is a <a>case-sensitive</a> match for the string
-         "<code title="">start</code>", then let <var title="">cue</var>'s
-         <a>text track cue line alignment</a> be
-         <a title="text track cue line start alignment">start alignment</a>.</p></li>
-
-         <li><p>If <var title="">linealign</var> is a <a>case-sensitive</a> match for the string
-         "<code title="">middle</code>", then let <var title="">cue</var>'s
-         <a>text track cue line alignment</a> be
-         <a title="text track cue line middle alignment">middle alignment</a>.</p></li>
-
-         <li><p>If <var title="">linealign</var> is a <a>case-sensitive</a> match for the string
-         "<code title="">end</code>", then let <var title="">cue</var>'s
-         <a>text track cue line alignment</a> be
-         <a title="text track cue line end alignment">end alignment</a>.</p></li>
+         <li><p>If the last character in <var title="">value</var> is
+         a U+0025 PERCENT SIGN character (%), then let <var
+         title="">cue</var>'s <a>text track cue snap-to-lines
+         flag</a> be false. Otherwise, let it be true.</p></li>
 
         </ol>
 
