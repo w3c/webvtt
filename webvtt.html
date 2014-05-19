@@ -732,28 +732,19 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <dl>
 
        <dt><dfn title="text track cue line start alignment">Start alignment</dfn></dt>
-       <dd>The <a title="text track cue box">cue box</a>'s top side (for
-       <a title="text track cue horizontal writing direction">horizontal</a> cues),
-       left side (for
-       <a title="text track cue vertical growing right writing direction">vertical growing right</a>),
-       or right side (for
-       <a title="text track cue vertical growing left writing direction">vertical growing left</a>)
-       is aligned at the <a title="text track cue line position">line position</a>.
+       <dd>The <a title="text track cue box">cue box</a>'s to side (for
+       <a title="text track cue horizontal writing direction">horizontal</a> cues) or left
+       side (otherwise) is aligned at the <a title="text track cue line position">line position</a>.
        </dd>
 
        <dt><dfn title="text track cue line middle alignment">Middle alignment</dfn></dt>
-       <dd>The <a title="text track cue box">cue box</a> is centered at the
-       <a title="text track cue line position">line position</a>.
+       <dd>The <a title="text track cue box">cue box</a> is centered at the <a title="text track cue line position">line position</a>.
        </dd>
 
        <dt><dfn title="text track cue line end alignment">End alignment</dfn></dt>
        <dd>The <a title="text track cue box">cue box</a>'s bottom side (for
-        <a title="text track cue horizontal writing direction">horizontal</a> cues),
-        right side (for
-        <a title="text track cue vertical growing right writing direction">vertical growing right</a>),
-        or left side (for
-        <a title="text track cue vertical growing left writing direction">vertical growing left</a>)
-        is aligned at the <a title="text track cue line position">line position</a>.
+        <a title="text track cue horizontal writing direction">horizontal</a> cues) or right
+        side (otherwise) is aligned at the <a title="text track cue line position">line position</a>.
        </dd>
 
       </dl>
@@ -784,13 +775,17 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      
      <ol>
 
-       <li>For <a title="text track cue left alignment">left aligned</a> or
-       <a title="text track cue start alignment">start aligned</a> cues: 0%.</li>
+       <li>For <a title="text track cue left alignment">left aligned</a> cues: 0%.</li>
 
        <li>For <a title="text track cue middle alignment">middle aligned</a> cues: 50%.</li>
 
-       <li>For <a title="text track cue right alignment">right aligned</a> or
-       <a title="text track cue end alignment">end aligned</a> cues: 100%.</li>
+       <li>For <a title="text track cue right alignment">right aligned</a> cues: 100%.</li>
+
+       <li>For <a title="text track cue start alignment">start aligned</a> cues with left-to-right
+       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: 0%, otherwise 100%.</li>
+
+       <li>For <a title="text track cue end alignment">end aligned</a> cues with left-to-right
+       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: 100%, otherwise 0%.</li>
 
      </ol>
 
@@ -799,14 +794,11 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <a>text track cue text alignment</a> setting for a cue, the <a>text track cue text position</a>
      defaults to 50%.</p>
 
-     <p class="note">Even for <a title="text track cue horizontal writing direction">horizontal</a>
-     cues with right-to-left <i>paragraph direction</i> text, the <a title="text track cue box">cue box</a>
-     is positioned from the left edge of the video frame. This allows defining a rendering space template
-     which can be filled with either left-to-right or right-to-left <i>paragraph direction</i> text. If you
-     define such a <a title="text track cue box">cue box</a> template with
-     <a title="text track cue start alignment">start</a> or <a title="text track cue end alignment">end</a>
-     aligned text, make sure to control its <a title="text track cue size">size</a> unless you want
-     text to flip from one side of the video frame to the other.</p>
+     <p class="note">If a <a>text track cue size</a> setting is provided for a cue, and the cue is
+     not middle aligned, and the <a title="text track cue box">cue box</a> has been defined as a template to be filled with either
+     left-to-right or right-to-left <i>paragraph direction</i> text, it is recommended to provide an
+     explicit <a title="text track cue text position">text position</a> setting, since otherwise the
+     cue might unexpectedly flip to the other half of the video viewport.</p>
 
    </dd>
 
@@ -842,25 +834,34 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <ol>
 
-        <li>For <a title="text track cue left alignment">left</a> or
-        <a title="text track cue start alignment">start</a> aligned cues:
-        <a title="text track cue text position start alignment">start</a>.</li>
+        <li>For <a title="text track cue left alignment">left aligned</a> cues: <a
+        title="text track cue text position start alignment">start</a>.</li>
 
-        <li>For <a title="text track cue middle alignment">middle</a> aligned cues:
-        <a title="text track cue text position middle alignment">middle</a>.</li>
+        <li>For <a title="text track cue middle alignment">middle aligned</a> cues: <a
+        title="text track cue text position middle alignment">middle</a>.</li>
 
-        <li>For <a title="text track cue right alignment">right</a> or
-        <a title="text track cue end alignment">end</a> aligned cues:
-        <a title="text track cue text position end alignment">end</a>.</li>
+        <li>For <a title="text track cue right alignment">right aligned</a> cues: <a
+        title="text track cue text position end alignment">end</a>.</li>
+
+        <li>For <a title="text track cue start alignment">start aligned</a> cues with left-to-right
+        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a
+          title="text track cue text position start alignment">start</a>, otherwise <a
+          title="text track cue text position end alignment">end</a>.</li>
+
+        <li>For <a title="text track cue end alignment">end aligned</a> cues with left-to-right
+        <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a
+          title="text track cue text position start alignment">start</a>, otherwise <a
+          title="text track cue text position end alignment">end</a>.</li>
 
       </ol>
 
+      <!-- TOO OBVIOUS?
       <p class="note">Since the <a>text track cue text position</a> always measures from the left
       of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
-      or the top (otherwise), the <a>text track cue text position alignment</a>
-      <a title="text track cue text position start alignment">start value</a> varies between left and
-      top for horizontal and vertical cues, but not between left and right even for changing
-      <i>paragraph direction</i>.</p>
+      or the top (otherwise), the <a>text track cue text position alignment</a> <a
+      title="text track cue text position start alignment">start value</a> varies between left and top for
+      horizontal and vertical cues, but not between left and right like BIDI.</p>
+      -->
 
    </dd>
 
@@ -2161,7 +2162,7 @@ The Final Minute</pre>
      <a title="text track cue automatic line position">auto</a>.</p></li>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue line alignment</a> be
-     <a title="text track cue line start alignment">start alignment</a>.</p></li>
+     <a title="text track cue line start alignment">start</a>.</p></li>
 
      <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
 
@@ -2497,10 +2498,6 @@ The Final Minute</pre>
      immediately after the first U+003A COLON character (:) in that
      string.</p></li>
 
-     <li><p>Let <var title="">positionSet</var> be false. (This is
-     required to determine if the position settings need to be adjusted
-     for non-middle aligned cue text.)</p></li>
-
      <li>
 
       <p>Run the appropriate substeps that apply for the value of <var
@@ -2690,7 +2687,7 @@ The Final Minute</pre>
          step labeled <i>next setting</i>.</p></li>
 
          <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be
-         <var title="">number</var> and lte <var title="">positionSet</var> be true.</p></li>
+         <var title="">number</var>.</p></li>
 
          <li><p>If <var title="">colalign</var> is a <a>case-sensitive</a> match for the string
          "<code title="">start</code>", then let <var title="">cue</var>'s
@@ -2756,6 +2753,8 @@ The Final Minute</pre>
 
      </li>
 
+     <li>If <var>cue</var>'s <a>text track cue line position</a> is not <a>text track cue automatic line position</a> or <var>cue</var>'s <a>text track cue size</a> is not 100 or <var>cue</var>'s <a>text track cue writing direction</a> is not <a title="text track cue horizontal writing direction">horizontal</a>, but <var>cue</var>'s <a>text track cue region identifier</a> is not the empty string, let <var>cue</var>'s <a>text track cue region identifier</a> be the empty string.</li>
+
      <li><p><i>Next setting</i>: Continue to the next token, if
      any.</p></li> <!-- this step is just here to give the algorithms
      above a clean way to 'break' -->
@@ -2763,33 +2762,6 @@ The Final Minute</pre>
     </ol>
 
    </li>
-
-   <li><p>If <var title="">positionSet</var> is false (i.e. the cue box has not been explicitly
-   positioned with a position setting), and <a>text track cue text alignment</a>
-   is not <a title="text track cue middle alignment">middle alignment</a>, then adjust the
-   <a>text track cue text position</a> and its <a title="text track cue text position alignment">alignment</a>
-   as follows:
-
-   <dl>
-     <dt>If <a>text track cue text alignment</a> is <a title="text track cue left alignment">left</a> or
-     <a title="text track cue start alignment">start</a></dt>
-     <dd>Let <a>text track cue text position</a> be 0% and let <a>text track cue text position alignment</a> be
-     <a title="text track cue text position start alignment">start alignment</a>.
-     </dd>
-     </dt>
-
-     <dt>If <a>text track cue text alignment</a> is <a title="text track cue right alignment">right</a> or
-     <a title="text track cue end alignment">end</a></dt>
-     <dd>Let <a>text track cue text position</a> be 100% and let <a>text track cue text position alignment</a> be
-     <a title="text track cue text position end alignment">end alignment</a>.
-     </dd>
-     </dt>
-   </dl>
-
-   </li>
-
-   <li><p>If <var>cue</var>'s <a>text track cue line position</a> is not <a>text track cue automatic line position</a> or <var>cue</var>'s <a>text track cue size</a> is not 100 or <var>cue</var>'s <a>text track cue writing direction</a> is not <a title="text track cue horizontal writing direction">horizontal</a>, but <var>cue</var>'s <a>text track cue region identifier</a> is not the empty string, let <var>cue</var>'s <a>text track cue region identifier</a> be the empty string.</p></li>
-
 
   </ol>
 
@@ -5211,7 +5183,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <a title="text track cue automatic line position">auto</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue line alignment</a> be
-   <a title="text track cue line start alignment">start alignment</a>.</p></li>
+   <a title="text track cue line middle alignment">middle alignment</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
 
