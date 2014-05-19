@@ -694,12 +694,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p>A number giving the size of the box within which the text of each line of the cue is to be
     rendered, to be interpreted as a percentage of the video, as defined by the <a title="text
     track cue writing direction">writing direction</a>. This box is called the <dfn>cue box</dfn>.</p>
-
-    <p class="note">The position of the <a>cue box</a> within the video frame's dimensions depends
-    on the value of the <a>computed text position anchor point</a>.</p>
-    
-    <p class="note">Lines are wrapped within the <a>cue box</a>'s
-    <a title="text track cue size">size</a> if lines lengths make this necessary.</p>
    </dd>
 
    <dt><dfn title="text track cue text position">A text position</dfn>
@@ -767,7 +761,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <a title="text track cue middle alignment">middle aligned</a>.</p>
 
     <p>A <a>text track cue</a> has a <dfn>computed text position anchor point</dfn>,
-    which signifies the point in the text whose position within the video frame can be manipulated
+    which signifies the point in the text whose position within the <a>cue box</a> can be manipulated
     through the <a title="text track cue text position">text position</a> cue setting. The value of
     the <a>computed text position anchor point</a> is set as follows:</p>
 
@@ -775,24 +769,24 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <li>For <a title="text track cue start alignment">start aligned</a> cues: the first character
       of each line of text is positioned at the <a>text track cue text position</a> point within
-      the video frame.</li>
+      the <a>cue box</a>.</li>
 
       <li>For <a title="text track cue middle alignment">middle aligned</a> cues: the middle character
       of each line of text is positioned at the <a>text track cue text position</a> point within
-      the video frame.</li>
+      the <a>cue box</a>.</li>
 
       <li>For <a title="text track cue end alignment">end aligned</a> cues: the last character
       of each line of text is positioned at the <a>text track cue text position</a> point within
-      the video frame.</li>
+      the <a>cue box</a>.</li>
 
       <li>For <a title="text track cue left alignment">left aligned</a> cues with left-to-right
       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: the first character of each line of
-      text is positioned at the <a>text track cue text position</a> point within the video frame,
+      text is positioned at the <a>text track cue text position</a> point within the <a>cue box</a>,
       otherwise the last character is positioned there.</li>
 
       <li>For <a title="text track cue right alignment">right aligned</a> cues with left-to-right
       <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>: the last character of each line of
-      text is positioned at the <a>text track cue text position</a> point within the video frame,
+      text is positioned at the <a>text track cue text position</a> point within the <a>cue box</a>,
       otherwise the first character is positioned there.</li>
 
     </ol>
@@ -3781,20 +3775,20 @@ The Final Minute</pre>
     <ul>
      <li><p>If <var>cue</var> has an empty <a>text track cue region identifier</a> or there is no <a>WebVTT region</a> whose <a title="text track cue region identifier">region identifier</a> is identical to <var>cue</var>'s <a>text track cue region identifier</a>, run the following substeps:</p>
       
-      <ol>
+     <ol>
 
-       <li><a>Apply WebVTT cue settings</a> to calculate CSS boxes <var title="">boxes</var> from the
-       <a>list of WebVTT Node Objects</a> <var title="">nodes</var> obtained by applying the
-       <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
-       <a>text track cue text</a>.</li>
+      <li><a>Apply WebVTT cue settings</a> to calculate CSS boxes <var title="">boxes</var> from the
+      <a>list of WebVTT Node Object</a> <var title="">nodes</var> obtained by applying the
+      <a>WebVTT cue text parsing rules</a> to the <var title="">cue</var>'s
+      <a>text track cue text</a>.</li>
 
-       <li><p>Let <var title="">cue</var>'s <a>text track cue display state</a> have the CSS boxes in <var
-       title="">boxes</var>.</p></li>
+      <li><p>Let <var title="">cue</var>'s <a>text track cue display state</a> have the CSS boxes in <var
+      title="">boxes</var>.</p></li>
 
-       <li><p>Add the CSS boxes in <var title="">boxes</var> to <var
-       title="">output</var>.</p></li>
+      <li><p>Add the CSS boxes in <var title="">boxes</var> to <var
+      title="">output</var>.</p></li>
 
-      </ol>
+     </ol>
      </li>
 
      <li><p>Otherwise run the following substeps:</p>
@@ -3891,17 +3885,70 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     direction">vertical growing right</a>; let <var
     title="">writing-mode</var> be 'vertical-lr'.</p></li>
 
-    <li><p>Let <var title="">size</var> be <a>text track cue size</a>.</li>
+    <li>
 
-    <li><p>If the <a>text track cue writing direction</a> is
-    <a title="text track cue horizontal writing
-    direction">horizontal</a>, then let <var title="">width</var>
-    be '<var title="">size</var>&#x2009;vw' and <var
-    title="">height</var> be 'auto'. Otherwise, let <var
-    title="">width</var> be 'auto' and <var title="">height</var> be
-    '<var title="">size</var>&#x2009;vh'. (These are CSS values used
-    by the next section to set CSS properties for the rendering; 'vw'
-    and 'vh' are CSS units.) <a href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+     <p>Determine the value of <var title="">maximum size</var> for
+     <var title="">cue</var> as per the appropriate rules from the
+     following list:</p>
+
+     <dl class="switch">
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+         and the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+             or <a title="text track cue left alignment">left</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+             or <a title="text track cue left alignment">left</a></dt>
+      <dd>
+       <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a> subtracted from 100.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+         and the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+             or <a title="text track cue right alignment">right</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+             or <a title="text track cue right alignment">right</a></dt>
+      <dd>
+       <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+             the <a>text track cue text position</a> is less than or equal to 50</dt>
+      <dd>
+       <p>Let <var title="">maximum size</var> be the <a>text track cue text position</a> multiplied by two.</p>
+      </dd>
+
+      <dt>If the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+             the <a>text track cue text position</a> is greater than <!-- or equal to --> 50</dt>
+      <dd>
+       <p>Let <var title="">maximum size</var> be the result of subtracting <a>text track cue text position</a> from 100 and then multiplying the result by two.</p>
+      </dd>
+
+     </dl>
+
+    </li>
+
+    <li><p>If the <a>text track cue size</a> is less than <var
+    title="">maximum size</var>, then let <var title="">size</var> be
+    <a>text track cue size</a>. Otherwise, let <var
+    title="">size</var> be <var title="">maximum size</var>.</p></li>
 
     <li>
 
@@ -3911,15 +3958,87 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
      <dl class="switch">
 
-       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>:</dt>
-       <dd>
-        <p>Let <var title="">x-position</var> be the <a>text track cue text position</a>.</p>
-       </dd>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a>.</p>
+      </dd>
 
-       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a> or <a title="text track cue vertical growing right writing direction">vertical growing right</a>:</dt>
-       <dd>
-        <p>Let <var title="">y-position</var> be the <a>text track cue text position</a>.</p>
-       </dd>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue left alignment">left</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> minus <var title="">size</var>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue right alignment">right</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100, minus <var title="">size</var>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+             or <a title="text track cue left alignment">left</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue start alignment">start</a>
+             or <a title="text track cue left alignment">left</a></dt>
+      <dd>
+       <p>Let <var title="">y-position</var> be the <a>text track cue text position</a>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+             or <a title="text track cue right alignment">right</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>
+             or <a title="text track cue right alignment">right</a></dt>
+      <dd>
+       <p>Let <var title="">y-position</var> be the <a>text track cue text position</a> minus <var title="">size</var>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+             and <var title="">direction</var> is 'ltr'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> minus half of <var title="">size</var>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
+             and <var title="">direction</var> is 'rtl'</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue text position</a> subtracted from 100, minus half of <var title="">size</var>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a></dt>
+      <dd>
+       <p>Let <var title="">y-position</var> be the <a>text track cue text position</a> minus half of <var title="">size</var>.</p>
+      </dd>
 
      </dl>
 
@@ -3927,85 +4046,139 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
     <li>
 
-      <p>If the <a>text track cue alignment</a> is <a title="text track cue middle alignment">middle</a>,
-      adjust the value of <var title="">x-position</var> or <var title="">y-position</var> for
-      <var title="">cue</var> as per the appropriate rules from the following list:</p>
+     <p>Determine the value of whichever of <var
+     title="">x-position</var> or <var title="">y-position</var> is
+     not yet calculated for <var title="">cue</var> as per the
+     appropriate rules from the following list:</p>
 
-      <dl class="switch">
+     <dl class="switch">
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>:</dt>
-        <dd>
-         <p>Let <var title="">x-position</var> be <var title="">x-position</var> minus half of <var title="">size</var>.</p>
-        </dd>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             and the <a>text track cue snap-to-lines flag</a> is set</dt>
+      <dd>
+       <p>Let <var title="">y-position</var> be zero.</p>
+      </dd>
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a> or <a title="text track cue vertical growing right writing direction">vertical growing right</a>:</dt>
-        <dd>
-         <p>Let <var title="">y-position</var> be <var title="">y-position</var> minus half of <var title="">size</var>.</p>
-        </dd>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>,
+             and the <a>text track cue snap-to-lines flag</a> is not set</dt>
+      <dd>
+       <p>Let <var title="">y-position</var> be the <a>text track cue computed line position</a>.</p>
+      </dd>
 
-      </dl>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue snap-to-lines flag</a> is set</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue snap-to-lines flag</a> is set</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be zero.</p>
+      </dd>
 
-    </li>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>,
+             and the <a>text track cue snap-to-lines flag</a> is not set</dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>,
+             and the <a>text track cue snap-to-lines flag</a> is not set</dt>
+      <dd>
+       <p>Let <var title="">x-position</var> be the <a>text track cue computed line position</a>.</p>
+      </dd>
 
-    <li>
+     </dl>
 
-      <p>If the <a>text track cue alignment</a> is <a title="text track cue end alignment">end</a>,
-      or <a title="text track cue right alignment">right</a> for a <var title="">direction</var> of 'ltr',
-      or <a title="text track cue left alignment">left</a> for a <var title="">direction</var> of 'rtl',
-      adjust the value of <var title="">x-position</var> or <var title="">y-position</var> for
-      <var title="">cue</var> as per the appropriate rules from the following list:</p>
-
-      <dl class="switch">
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a>:</dt>
-        <dd>
-         <p>Let <var title="">x-position</var> be <var title="">x-position</var> minus <var title="">size</var>.</p>
-        </dd>
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a> or <a title="text track cue vertical growing right writing direction">vertical growing right</a>:</dt>
-        <dd>
-         <p>Let <var title="">y-position</var> be <var title="">y-position</var> minus <var title="">size</var>.</p>
-        </dd>
-
-      </dl>
+     <p class="note">These are not final positions, they are merely
+     temporary positions used to calculate box dimensions below.</p>
 
     </li>
 
     <li>
-      
-      <p>Convert <var title="">x-position</var> and <var title="">y-position</var> to CSS values
-      to be used by the next section to set CSS properties for the rendering as follows
-      ('vw' and 'vh' are CSS units <a href="#refsCSSVALUES">[CSSVALUES]</a>):</p>
 
-      <dl class="switch">
+     <p>If the <a>text track cue snap-to-lines flag</a> is set, then run the appropriate
+     steps from the following list:</p>
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a> and the <var title="">direction</var> is 'ltr':</dt>
-        <dd>
-         <p>Let <var title="">left</var> be '<var title="">x-position</var>&#x2009;vw' and
-         <var title="">top</var> be '<var title="">y-position</var>&#x2009;vh'.</p>
-        </dd>
+     <dl class="switch">
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a> and the <var title="">direction</var> is 'rtl':</dt>
-        <dd>
-         <p>Let <var title="">right</var> be '<var title="">x-position</var>&#x2009;vw' and
-         <var title="">top</var> be '<var title="">y-position</var>&#x2009;vh'.</p>
-        </dd>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a></dt>
+      <dd>
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a>:</dt>
-        <dd>
-         <p>Let <var title="">right</var> be '<var title="">x-position</var>&#x2009;vw' and
-         <var title="">top</var> be '<var title="">y-position</var>&#x2009;vh'.</p>
-        </dd>
+       <ol>
 
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a>:</dt>
-        <dd>
-         <p>Let <var title="">left</var> be '<var title="">x-position</var>&#x2009;vw' and
-         <var title="">top</var> be '<var title="">y-position</var>&#x2009;vh'.</p>
-        </dd>
+        <li><p>Let <var title="">edge margin</var> be a user-agent-defined horizontal length,
+        expressed as a percentage of the width of the <var title="">video</var>'s rendering area,
+        which will be used to define a margin at the left and right edges of the video into which
+        this cue will not be placed. In situations with overscan, this margin should be sufficient
+        to place the cue within the title-safe area. In the absence of overscan, this value should
+        be picked for aesthetics (to avoid text being aligned precisely on the left or right edge
+        of the video, which can be ugly).</p></li>
 
-      </dl>
+        <li><p>If <var title="">x-position</var> is less than <var title="">edge margin</var> and
+        the sum of <var title="">x-position</var> and <var title="">size</var> is more than <var
+        title="">edge margin</var>, then increase <var title="">x-position</var> by <var
+        title="">edge margin</var> and decrease <var title="">size</var> by the same
+        amount.</p></li>
+
+        <li><p>Let <var title="">right margin edge</var> be 100 minus <var title="">edge
+        margin</var>.</p></li>
+
+        <li><p>If <var title="">x-position</var> is less than <var title="">right margin
+        edge</var>, and the sum of <var title="">x-position</var> and <var title="">size</var> is
+        more than <var title="">right margin edge</var>, then decrease <var title="">size</var> by
+        <var title="">edge margin</var>.</p></li>
+
+       </ol>
+
+      </dd>
+
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
+      <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
+      <dd>
+
+       <ol>
+
+        <li><p>Let <var title="">edge margin</var> be a user-agent-defined vertical length,
+        expressed as a percentage of the height of the <var title="">video</var>'s rendering area,
+        which will be used to define a margin at the top and bottom edges of the video into which
+        this cue will not be placed. In situations with overscan, this margin should be sufficient
+        to place the cue within the title-safe area. In the absence of overscan, this value should
+        be picked for aesthetics (to avoid text being aligned precisely on the top or bottom edge
+        of the video, which can be ugly).</p></li>
+
+        <li><p>If <var title="">y-position</var> is less than <var title="">edge margin</var> and
+        the sum of <var title="">y-position</var> and <var title="">size</var> is more than <var
+        title="">edge margin</var>, then increase <var title="">y-position</var> by <var
+        title="">edge margin</var> and decrease <var title="">size</var> by the same
+        amount.</p></li>
+
+        <li><p>Let <var title="">bottom margin edge</var> be 100 minus <var title="">edge
+        margin</var>.</p></li>
+
+        <li><p>If <var title="">y-position</var> is less than <var title="">bottom margin
+        edge</var>, and the sum of <var title="">y-position</var> and <var title="">size</var> is
+        more than <var title="">right margin edge</var>, then decrease <var title="">size</var> by
+        <var title="">edge margin</var>.</p></li>
+
+       </ol>
+
+      </dd>
+
+     </dl>
 
     </li>
+
+    <li><p>If the <a>text track cue writing direction</a> is
+    <a title="text track cue horizontal writing
+    direction">horizontal</a>, then let <var title="">width</var>
+    be '<var title="">size</var>&#x2009;vw' and <var
+    title="">height</var> be 'auto'. Otherwise, let <var
+    title="">width</var> be 'auto' and <var title="">height</var> be
+    '<var title="">size</var>&#x2009;vh'. (These are CSS values used
+    by the next section to set CSS properties for the rendering; 'vw'
+    and 'vh' are CSS units.) <a
+    href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+
+    <li><p>Let <var title="">left</var> be '<var
+    title="">x-position</var>&#x2009;vw' and <var title="">top</var>
+    be '<var title="">y-position</var>&#x2009;vh'. (These again are
+    CSS values used by the next section to set CSS properties for the
+    rendering; 'vw' and 'vh' are CSS units.) <a
+    href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
 
     <li>
 
@@ -4038,6 +4211,12 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
       wrapped in an anonymous box whose 'display' property has the
       value 'inline'. This is the <dfn>WebVTT cue background
       box</dfn>.</li>
+
+      <li>Runs of children of <a title="WebVTT Ruby Object">WebVTT
+      Ruby Objects</a> that are not <a title="WebVTT Ruby Text
+      Object">WebVTT Ruby Text Objects</a> must be wrapped in
+      anonymous boxes whose 'display' property has the value
+      'ruby-base'. <a href="#refsCSSRUBY">[CSSRUBY]</a></li>
 
       <li>Properties on <a title="WebVTT Node Object">WebVTT Node
       Objects</a> have their values set as defined in the next
@@ -4121,16 +4300,40 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
         <li>
 
-         <p><strong>Horizontal</strong>: Let <var title="">max dimension</var> be the height of
-         <var title="">video</var>'s rendering area minus twice the 'padding-top' space defined in the
-         next section.</p>
+         <p><strong>Horizontal</strong>: Let <var title="">margin</var> be a user-agent-defined
+         vertical length which will be used to define a margin at the top and bottom edges of the
+         video into which cues will not be placed. In situations with overscan, this margin should
+         be sufficient to place all cues within the title-safe area. In the absence of overscan,
+         this value should be picked for aesthetics (to avoid text being aligned precisely on the
+         bottom edge of the video, which can be ugly).</p>
 
-         <p><strong>Vertical</strong>: Let <var title="">max dimension</var> be the width of <var
-         title="">video</var>'s rendering area minus twice the 'padding-left' space defined in the
-         next section.</p>
+         <p><strong>Vertical</strong>: Let <var title="">margin</var> be a user-agent-defined
+         horizontal length which will be used to define a margin at the left and right edges of the
+         video into which cues will not be placed. In situations with overscan, this margin should
+         be sufficient to place all cues within the title-safe area. In the absence of overscan,
+         this value should be picked for aesthetics (to avoid text being aligned precisely on the
+         left or right edges of the video, which can be ugly).</p>
 
-         <p>These dimensions must not be adjusted for overscan. (The padding of the next
-         section takes care of this.)</p>
+        </li>
+
+        <li>
+
+         <p><strong>Horizontal</strong>: Let <var title="">full dimension</var> be the height of
+         <var title="">video</var>'s rendering area.</p>
+
+         <p><strong>Vertical</strong>: Let <var title="">full dimension</var> be the width of <var
+         title="">video</var>'s rendering area.</p>
+
+         <p>These dimensions must not be adjusted for overscan. (The algorithm does that
+         separately.)</p>
+
+        </li>
+
+        <li>
+
+         <p>Let <var title="">max dimension</var> be <var
+         title="">full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;<var
+         title="">margin</var>).</p>
 
         </li>
 
@@ -4407,15 +4610,13 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
    <li>the 'direction' property must be set to <var title="">direction</var></li>
    <li>the 'writing-mode' property must be set to <var title="">writing-mode</var></li>
    <li>the 'top' property must be set to <var title="">top</var></li>
-   <li>the 'left' property must be set to <var title="">left</var>, if <var title="">left</var> has a value</li>
-   <li>the 'right' property must be set to <var title="">right</var>, if <var title="">right</var> has a value</li>
+   <li>the 'left' property must be set to <var title="">left</var></li>
    <li>the 'width' property must be set to <var title="">width</var></li>
    <li>the 'height' property must be set to<var title="">height</var></li>
   </ul>
-
   <p>The variables <var title="">direction</var>,
   <var title="">writing-mode</var>, <var title="">top</var>, <var
-  title="">left</var>, <var title="">right</var>, <var title="">width</var>, and <var
+  title="">left</var>, <var title="">width</var>, and <var
   title="">height</var> are the values with those names determined by
   the <a>rules for updating the display of WebVTT text
   tracks</a> for the <a>text track cue</a> from whose <a
@@ -4460,23 +4661,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   Node Objects</a> must be set to 'pre-line'. <a
   href="#refsCSS">[CSS]</a></p>
 
-  <p>The 'padding-top' and 'padding-bottom' property on the <a>WebVTT cue background box</a>
-  must be set to '1.5vh' or another user-agent-defined number to define a margin at the edges of the
-  video into which cues will not be placed. In situations with overscan, this margin should be sufficient
-  to place a cue within the title-safe area. In the absence of overscan, this value should be picked for
-  aesthetics (to avoid text being aligned precisely on the top or bottom edge of the video, which can be
-  ugly).</p>
-
-  <p>The 'padding-left' and 'padding-right' property on the <a>WebVTT cue background box</a>
-  must be set to '1.5vw' or another user-agent-defined number to define a margin at the edges of the
-  video into which cues will not be placed. In situations with overscan, this margin should be sufficient
-  to place a cue within the title-safe area. In the absence of overscan, this value should be picked for
-  aesthetics (to avoid text being aligned precisely on the top or bottom edge of the video, which can be
-  ugly).</p>
-
-  <p>The 'box-sizing' property on the <a>WebVTT cue background box</a>
-  must be set to 'border-box'.</p>
-
   <p>The 'font-style' property on <a title="WebVTT Italic
   Object">WebVTT Italic Objects</a> must be set to 'italic'.</p>
 
@@ -4493,12 +4677,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <p>The 'display' property on <a title="WebVTT Ruby Text
   Object">WebVTT Ruby Text Objects</a> must be set to
   'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
-
-  <p>Runs of children of <a title="WebVTT Ruby Object">WebVTT
-  Ruby Objects</a> that are not <a title="WebVTT Ruby Text
-  Object">WebVTT Ruby Text Objects</a> must be wrapped in
-  anonymous boxes whose 'display' property has the value
-  'ruby-base'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
 
   <p>Every <a>WebVTT region object</a> is initialised with the following CSS settings:</p>
   <ul>
