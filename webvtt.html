@@ -802,7 +802,7 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
-   <dt><dfn title="text track text position alignment">A text position alignment</dfn>
+   <dt><dfn title="text track cue position alignment">A cue position alignment</dfn>
    <dd>
      <p>An alignment for the <a title="text track cue box">cue box</a> in the dimension of the
      <a title="text track cue writing direction">writing direction</a>, describing which part of the
@@ -811,17 +811,17 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <dl>
 
-       <dt><dfn title="text track cue text position start alignment">Start alignment</dfn></dt>
+       <dt><dfn title="text track cue position start alignment">Start alignment</dfn></dt>
        <dd>The <a title="text track cue box">cue box</a>'s left side (for
        <a title="text track cue horizontal writing direction">horizontal</a> cues) or top
        side (otherwise) is aligned at the <a title="text track cue text position">text position</a>.
        </dd>
 
-       <dt><dfn title="text track cue text position middle alignment">Middle alignment</dfn></dt>
+       <dt><dfn title="text track cue position middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="text track cue box">cue box</a> is centered at the <a title="text track cue text position">text position</a>.
        </dd>
 
-       <dt><dfn title="text track cue text position end alignment">End alignment</dfn></dt>
+       <dt><dfn title="text track cue position end alignment">End alignment</dfn></dt>
        <dd>The <a title="text track cue box">cue box</a>'s right side (for
         <a title="text track cue horizontal writing direction">horizontal</a> cues) or bottom
         side (otherwise) is aligned at the <a title="text track cue text position">text position</a>.
@@ -829,37 +829,37 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>text track cue</a> has a default <a>text track text position alignment</a> which is defined
+      <p>A <a>text track cue</a> has a default <a>text track cue position alignment</a> which is defined
       in terms of the value of the <a>text track cue text alignment</a>:</p>
 
       <ol>
 
         <li>For <a title="text track cue left alignment">left aligned</a> cues: <a
-        title="text track cue text position start alignment">start</a>.</li>
+        title="text track cue position start alignment">start</a>.</li>
 
         <li>For <a title="text track cue middle alignment">middle aligned</a> cues: <a
-        title="text track cue text position middle alignment">middle</a>.</li>
+        title="text track cue position middle alignment">middle</a>.</li>
 
         <li>For <a title="text track cue right alignment">right aligned</a> cues: <a
-        title="text track cue text position end alignment">end</a>.</li>
+        title="text track cue position end alignment">end</a>.</li>
 
         <li>For <a title="text track cue start alignment">start aligned</a> cues with left-to-right
         <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a
-          title="text track cue text position start alignment">start</a>, otherwise <a
-          title="text track cue text position end alignment">end</a>.</li>
+          title="text track cue position start alignment">start</a>, otherwise <a
+          title="text track cue position end alignment">end</a>.</li>
 
         <li>For <a title="text track cue end alignment">end aligned</a> cues with left-to-right
         <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>:   <a
-          title="text track cue text position start alignment">start</a>, otherwise <a
-          title="text track cue text position end alignment">end</a>.</li>
+          title="text track cue position start alignment">start</a>, otherwise <a
+          title="text track cue position end alignment">end</a>.</li>
 
       </ol>
 
       <!-- TOO OBVIOUS?
       <p class="note">Since the <a>text track cue text position</a> always measures from the left
       of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
-      or the top (otherwise), the <a>text track text position alignment</a> <a
-      title="text track cue text position start alignment">start value</a> varies between left and top for
+      or the top (otherwise), the <a>text track cue position alignment</a> <a
+      title="text track cue position start alignment">start value</a> varies between left and top for
       horizontal and vertical cues, but not between left and right like BIDI.</p>
       -->
 
@@ -1643,21 +1643,18 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
 
   <ul class="brief"> 
-   <li>A <a>WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr [writing direction] -->
-   <li>A <a>WebVTT line position cue setting</a>.</li> <!-- line:100% line:1 line:-1
-                                                       [snap-to-lines & line position & line alignment] -->
+   <li>A <a>WebVTT vertical text cue setting</a>.</li> <!-- vertical:rl/lr -->
+   <li>A <a>WebVTT line position cue setting</a>.</li> <!-- line:100% line:1 line:-1 -->
    <li>A <a>WebVTT size cue setting</a>.</li>          <!-- size:100% -->
-   <li>A <a>WebVTT text position cue setting</a>.</li> <!-- position:100%
-                                                       [text position & text position alignment] -->
-   <li>A <a>WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right
-                                                       [text alignment] -->
-   <li>A <a>WebVTT region cue setting</a>.</li>        <!-- region:fred [region id] -->
+   <li>A <a>WebVTT text position cue setting</a>.</li> <!-- position:100% -->
+   <li>A <a>WebVTT alignment cue setting</a>.</li>     <!-- align:start/middle/end/left/right -->
+   <li>A <a>WebVTT region cue setting</a>.</li>        <!-- region:fred -->
   </ul>
 
   <p class="note">A <a>WebVTT cue settings list</a> gives configuration
-  options regarding the position and alignment of the cue box and the cue text within. For
-  example, it allows a cue box to be aligned to the left or positioned at the top right with
-  the cue text within middle aligned.</p>
+  options regarding the position and alignment of the cue. For
+  example, it allows a cue to be aligned to the left or positioned at
+  the top right.</p>
 
   <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a> that
   consists of the following components, in the order given:</p>
@@ -1679,49 +1676,34 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
    <li><p>The string "<code title="">line</code>" as the <a>WebVTT cue setting name</a>.</p></li>
    <li><p>A U+003A COLON character (:).</p></li>
-   <li>As the <a>WebVTT cue setting value</a>:
-     <ol>
-     <li>a position value, either:
-      <dl>
-       <dt>To represent a specific position relative to the video frame</dt>
-       <dd>
-        <ol>
-         <li>One or more <a>ASCII digits</a>.</li>
-         <li>A U+0025 PERCENT SIGN character (%).</li>
-        </ol>
-       </dd>
-       <dt>Or to represent a line number</dt>
-       <dd>
-        <ol>
-         <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
-         <li>One or more <a>ASCII digits</a>.</li>
-        </ol>
-       </dd>
-      </dl>
-    </li>
-    <li>An optional alignment value consisting of the following components:
+   <li>As the <a>WebVTT cue setting value</a> either:
+    <dl>
+     <dt>To represent a specific position relative to the video frame</dt>
+     <dd>
       <ol>
-      <li>A U+002C COMMA character (,).</li>
-      <li>One of the following strings: <code title="">start</code>, <code title="">middle</code>,
-        <code title="">end</code></li>
+       <li>One or more <a>ASCII digits</a>.</li>
+       <li>A U+0025 PERCENT SIGN character (%).</li>
       </ol>
-    </li>
-    </ol>
+     </dd>
+     <dt>To represent a line number</dt>
+     <dd>
+      <ol>
+       <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
+       <li>One or more <a>ASCII digits</a>.</li>
+      </ol>
+     </dd>
+    </dl>
    </li>
   </ol>
 
-  <p class="note">A <a>WebVTT line position cue setting</a> configures the position of the cue box
-  in the direction opposite to the <a title="text track cue writing direction">writing direction</a>.
-  For horizontal cues, this is the vertical
-  position. The positioning is calculated relative to the <a title="text track cue line start alignment">start</a>,
-  <a title="text track cue line middle alignment">middle</a>, or <a title="text track cue line end alignment">end</a>
-  of the cue box, depending on the <a>text track cue line alignment</a> value -
-  <a title="text track cue line middle alignment">middle</a> by default.
-  The position can be given either as a percentage of the video dimension
-  or as a line number. Line numbers are based on the size of the first line of the
-  cue. Positive line numbers count from the start of the video frame (the first
-  line is numbered 0), negative line numbers from the end of the
-  frame (the last line is numbered &#x2212;1).</p>
+  <p class="note">A <a>WebVTT line position cue setting</a>
+  configures the position of the cue. For horizontal cues, this is the
+  vertical position. The position can be given either as a percentage,
+  which gives the distance from the top of the frame, or as a line
+  number. Line numbers are based on the size of the first line of the
+  cue. Positive line numbers count from the top of the frame (the top
+  line is numbered 0), negative line numbers from the bottom of the
+  frame (the bottom line is numbered &#x2212;1).</p>
 
   <p>A <dfn>WebVTT size cue setting</dfn> consists of the
   following components, in the order given:</p>
