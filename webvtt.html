@@ -1943,38 +1943,28 @@ The Final Minute</pre>
    attribute values:</p></li>
 
     <ol>
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     identifier</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue identifier</a> be the empty string.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     pause-on-exit flag</a> be false.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     writing direction</a> be <a title="text track cue
-     horizontal writing direction">horizontal</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue writing direction</a> be
+     <a title="text track cue horizontal writing direction">horizontal</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue 
-     region identifier</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue region identifier</a> be the empty string.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     snap-to-lines flag</a> be true.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue snap-to-lines flag</a> be true.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue line
-     position</a> be <a title="text track cue automatic line
-     position">auto</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a> be
+     <a title="text track cue automatic line position">auto</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     text position</a> be 50.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     size</a> be 100.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     alignment</a> be <a title="text track cue middle
-     alignment">middle alignment</a>.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue alignment</a> be
+     <a title="text track cue middle alignment">middle alignment</a>.</p></li>
 
-     <li><p>Let <var title="">cue</var>'s <a>text track cue
-     text</a> be the empty string.</p></li>
+     <li><p>Let <var title="">cue</var>'s <a>text track cue text</a> be the empty string.</p></li>
     </ol>
 
    <li><p>If <var title="">line</var> contains the three-character
@@ -2354,38 +2344,32 @@ The Final Minute</pre>
 
          <li><p>If any character in <var title="">value</var> other
          than the first character is a U+002D HYPHEN-MINUS character
-         (-), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (-), then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If any character in <var title="">value</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If the first character in <var title="">value</var> is
          a U+002D HYPHEN-MINUS character (-) <em>and</em> the last
-         character in <var title="">value</var> is a U+0025 PERCENT
-         SIGN character (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         character in <var title="">value</var> is a U+0025 PERCENT SIGN character (%),
+         then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>Ignoring the trailing percent sign, if any, interpret
          <var title="">value</var> as a (potentially signed) integer,
          and let <var title="">number</var> be that number.</p></li>
 
          <li><p>If the last character in <var title="">value</var> is
-         a U+0025 PERCENT SIGN character (%), but <var
-         title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var
-         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         a U+0025 PERCENT SIGN character (%), but <var title="">number</var> is not in the range
+         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a>text track cue
-         line position</a> be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a>
+         be <var title="">number</var>.</p></li>
 
          <li><p>If the last character in <var title="">value</var> is
-         a U+0025 PERCENT SIGN character (%), then let <var
-         title="">cue</var>'s <a>text track cue snap-to-lines
-         flag</a> be false. Otherwise, let it be true.</p></li>
+         a U+0025 PERCENT SIGN character (%), then let <var title="">cue</var>'s
+         <a>text track cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
 
         </ol>
 
@@ -2438,32 +2422,29 @@ The Final Minute</pre>
         <ol>
 
          <li><p>If <var title="">value</var> contains any characters other than U+0025 PERCENT SIGN
-         characters (%) and <a>ASCII digits</a>, then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         characters (%) and <a>ASCII digits</a>, then jump to the step labeled
+         <i>next setting</i>.</p></li>
 
          <li><p>If <var title="">value</var> does not contain at least one <a title="ASCII
          digits">ASCII digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If any character in <var title="">value</var> other
          than the last character is a U+0025 PERCENT SIGN character
-         (%), then jump to the step labeled <i>next
-         setting</i>.</p></li>
+         (%), then jump to the step labeled <i>next setting</i>.</p></li>
 
          <li><p>If the last character in <var title="">value</var> is
          not a U+0025 PERCENT SIGN character (%), then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Ignoring the trailing percent sign, interpret <var
-         title="">value</var> as an integer, and let <var
-         title="">number</var> be that number.</p></li>
+         <li><p>Ignoring the trailing percent sign, interpret <var title="">value</var> as an integer,
+         and let <var title="">number</var> be that number.</p></li>
 
          <li><p>If <var title="">number</var> is not in the range
-         0&nbsp;&le;&nbsp;<var
-         title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
+         0&nbsp;&le;&nbsp;<var title="">number</var>&nbsp;&le;&nbsp;100, then jump to the
          step labeled <i>next setting</i>.</p></li>
 
-         <li><p>Let <var title="">cue</var>'s <a>text track cue text
-         position</a> be <var title="">number</var>.</p></li>
+         <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be
+         <var title="">number</var>.</p></li>
 
         </ol>
 
@@ -4545,6 +4526,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
    <li>the 'width' property must be set to <var title="">width</var></li>
    <li>the 'height' property must be set to<var title="">height</var></li>
   </ul>
+
   <p>The variables <var title="">direction</var>,
   <var title="">writing-mode</var>, <var title="">top</var>, <var
   title="">left</var>, <var title="">width</var>, and <var
@@ -5085,38 +5067,29 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var title="">cue</var>'s <a>text track cue region identifier</a>
    be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   identifier</a> be the empty string.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue identifier</a> be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   pause-on-exit flag</a> be false.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   writing direction</a> be <a title="text track cue
-   horizontal writing direction">horizontal</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue writing direction</a> be
+   <a title="text track cue horizontal writing direction">horizontal</a>.</p></li>
 
    <li><p>Let <var title="">cue</var>'s <a title="text track cue region identifier">region identifier</a>
    be the empty string.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   snap-to-lines flag</a> be true.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue snap-to-lines flag</a> be true.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue line
-   position</a> be <a title="text track cue automatic line
-   position">auto</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue line position</a> be 
+   <a title="text track cue automatic line position">auto</a>.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   text position</a> be 50.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue text position</a> be 50.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   size</a> be 100.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
-   <li><p>Let <var title="">cue</var>'s <a>text track cue
-   alignment</a> be <a title="text track cue middle
-   alignment">middle alignment</a>.</p></li>
+   <li><p>Let <var title="">cue</var>'s <a>text track cue alignment</a> be
+   <a title="text track cue middle alignment">middle alignment</a>.</p></li>
 
-   <li><p>Return the <code>VTTCue</code> object representing
-   <var title="">cue</var>.</p></li>
+   <li><p>Return the <code>VTTCue</code> object representing <var title="">cue</var>.</p></li>
 
   </ol>
 
