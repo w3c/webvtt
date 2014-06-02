@@ -696,15 +696,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    </dd>
 
-   <dt><dfn title="text track cue size">A size</dfn></dt>
-   <dd>
-    <p>A number giving the size of the <a title="text track cue box">cue box</a>, to be interpreted as a percentage of the video,
-    as defined by the <a title="text track cue writing direction">writing direction</a>.</p>
-
-    <p>By default, the <a>text track cue size</a> is 100%.</p>
-
-   </dd>
-
    <dt><dfn title="text track cue text position">A text position</dfn></dt>
    <dd>
      <p>A number giving the position of the <a title="text track cue box">cue box</a>. If the cue is not within
@@ -791,6 +782,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <a title="text track cue text position start alignment">start value</a> varies between left and
       top for horizontal and vertical cues, but not between left and right even for changing
       <i>paragraph direction</i>.</p>
+
+   </dd>
+
+   <dt><dfn title="text track cue size">A size</dfn></dt>
+   <dd>
+    <p>A number giving the size of the <a title="text track cue box">cue box</a>, to be interpreted as a percentage of the video,
+    as defined by the <a title="text track cue writing direction">writing direction</a>.</p>
+
+    <p>By default, the <a>text track cue size</a> is 100%.</p>
 
    </dd>
 
@@ -1559,8 +1559,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ul class="brief">
    <li>A <a>WebVTT vertical text cue setting</a>.</li>
    <li>A <a>WebVTT line position cue setting</a>.</li>
-   <li>A <a>WebVTT size cue setting</a>.</li>
    <li>A <a>WebVTT text position cue setting</a>.</li>
+   <li>A <a>WebVTT size cue setting</a>.</li>
    <li>A <a>WebVTT alignment cue setting</a>.</li>
    <li>A <a>WebVTT region cue setting</a>.</li>
   </ul>
@@ -1634,22 +1634,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   line is numbered 0), negative line numbers from the end of the
   frame (the last line is numbered &#x2212;1).</p>
 
-  <p>A <dfn>WebVTT size cue setting</dfn> consists of the
-  following components, in the order given:</p>
-
-  <ol>
-   <li><p>The string "<code>size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-   <li><p>A U+003A COLON character (:).</p></li>
-   <li><p>As the <a>WebVTT cue setting value</a>: a
-     <a>WebVTT percentage</a>.</p></li>
-  </ol>
-
-  <p class="note">A <a>WebVTT size cue setting</a> configures
-  the size of the <a title="text track cue box">cue box</a> in the same direction as the
-  <a>WebVTT text position cue setting</a>. For horizontal cues, this is the width
-  of the <a title="text track cue box">cue box</a>. It is given as a percentage of the width of the
-  frame.</p>
-
   <p>A <dfn>WebVTT text position cue setting</dfn> consists of the
   following components, in the order given:</p>
 
@@ -1681,6 +1665,22 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <a title="text track cue text position end alignment">end</a>
   of the cue box, depending on the <a>default text track cue text position alignment</a> value, which is
   overridden by the <a>WebVTT text position cue setting</a> alignment value.</p>
+
+  <p>A <dfn>WebVTT size cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code>size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+   <li><p>A U+003A COLON character (:).</p></li>
+   <li><p>As the <a>WebVTT cue setting value</a>: a
+     <a>WebVTT percentage</a>.</p></li>
+  </ol>
+
+  <p class="note">A <a>WebVTT size cue setting</a> configures
+  the size of the <a title="text track cue box">cue box</a> in the same direction as the
+  <a>WebVTT text position cue setting</a>. For horizontal cues, this is the width
+  of the <a title="text track cue box">cue box</a>. It is given as a percentage of the width of the
+  frame.</p>
 
   <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the
   following components, in the order given:</p>
@@ -2521,23 +2521,6 @@ The Final Minute</pre>
 
        </dd>
 
-       <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>size</code>"</dt>
-
-       <dd>
-
-        <ol>
-
-         <li><p>If <a>parse a percentage string</a> from <var>value</var> doesn't fail,
-         let <var>number</var> be the returned <var>percentage</var>, otherwise jump to
-         the step labeled <i>next setting</i>.</p></li>
-
-         <li><p>Let <var>cue</var>'s <a>text track cue
-         size</a> be <var>number</var>.</p></li>
-
-        </ol>
-
-       </dd>
-
        <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>position</code>"</dt>
 
        <dd>
@@ -2577,6 +2560,23 @@ The Final Minute</pre>
          <a>text track cue text position alignment</a> be
          <a title="text track cue text position end alignment">end alignment</a>
          and let <var>positionAlignSet</var> be true.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>size</code>"</dt>
+
+       <dd>
+
+        <ol>
+
+         <li><p>If <a>parse a percentage string</a> from <var>value</var> doesn't fail,
+         let <var>number</var> be the returned <var>percentage</var>, otherwise jump to
+         the step labeled <i>next setting</i>.</p></li>
+
+         <li><p>Let <var>cue</var>'s <a>text track cue
+         size</a> be <var>number</var>.</p></li>
 
         </ol>
 
