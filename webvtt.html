@@ -4127,12 +4127,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
       value 'inline'. This is the <dfn>WebVTT cue background
       box</dfn>.</li>
 
-      <li>Runs of children of <a title="WebVTT Ruby Object">WebVTT
-      Ruby Objects</a> that are not <a title="WebVTT Ruby Text
-      Object">WebVTT Ruby Text Objects</a> must be wrapped in
-      anonymous boxes whose 'display' property has the value
-      'ruby-base'. <a href="#refsCSSRUBY">[CSSRUBY]</a></li>
-
       <li>Properties on <a title="WebVTT Node Object">WebVTT Node
       Objects</a> have their values set as defined in the next
       section. (That section uses some of the variables whose values
@@ -4594,6 +4588,12 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <p>The 'display' property on <a title="WebVTT Ruby Text
   Object">WebVTT Ruby Text Objects</a> must be set to
   'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
+
+  <p>Runs of children of <a title="WebVTT Ruby Object">WebVTT
+  Ruby Objects</a> that are not <a title="WebVTT Ruby Text
+  Object">WebVTT Ruby Text Objects</a> must be wrapped in
+  anonymous boxes whose 'display' property has the value
+  'ruby-base'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
 
   <p>Every <a>WebVTT region object</a> is initialised with the following CSS settings:</p>
   <ul>
