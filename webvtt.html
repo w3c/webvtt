@@ -5021,7 +5021,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <pre class="idl_whatwg">enum <dfn>AutoKeyword</dfn> { "auto" };
 enum <dfn>DirectionSetting</dfn> { "" /* horizontal */, "rl", "lr" };
 enum <dfn>AlignSetting</dfn> { "start", "middle", "end", "left", "right" };
-[<a title="VTTCue">Constructor</a>(double startTime, double endTime, DOMString text)]
+[<a title="VTTCue-constructor">Constructor</a>(double startTime, double endTime, DOMString text)]
 interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute <a>VTTRegion</a>? <a title="VTTCue-region">region</a>;
            attribute <a>DirectionSetting</a> <a title="VTTCue-vertical">vertical</a>;
@@ -5038,7 +5038,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <dl class="domintro">
 
-   <dt><var>cue</var> = new <code title="VTTCue">VTTCue</code>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )</dt>
+   <dt><var>cue</var> = new <a title="VTTCue-constructor"><code>VTTCue</code></a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )</dt>
    <dd>
     <p>Returns a new <a><code>VTTCue</code></a> object, for use with the <a><code>addCue()</code></a> method.</p>
     <p>The <var>startTime</var> argument sets the <a>text track cue start time</a>.</p>
@@ -5152,7 +5152,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   </dl>
 
-  <p>The <dfn title="VTTCue"><code>VTTCue(<var>startTime</var>, <var>endTime</var>,
+  <p>The <dfn title="VTTCue-constructor"><code>VTTCue(<var>startTime</var>, <var>endTime</var>,
   <var>text</var>)</code></dfn> constructor, when invoked, must run the following steps:</p>
 
   <ol>
@@ -5394,7 +5394,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <pre class="idl_whatwg">
 enum <dfn>ScrollSetting</dfn> { "" /* none */, "up" };
-[Constructor]
+[<a title="VTTRegion-constructor">Constructor</a>]
 interface <dfn>VTTRegion</dfn> {
            attribute double <a title="VTTRegion-width">width</a>;
            attribute long <a title="VTTRegion-lines">lines</a>;
@@ -5407,7 +5407,7 @@ interface <dfn>VTTRegion</dfn> {
 
   <dl class="domintro">
 
-   <dt><var>region</var> = new <code title="VTTRegion">VTTRegion</code>()</dt>
+   <dt><var>region</var> = new <a title="VTTRegion-constructor"><code>VTTRegion</code></a>()</dt>
    <dd>
     <p>Returns a new <a><code>VTTRegion</code></a> object.</p>
    </dd>
@@ -5455,7 +5455,7 @@ interface <dfn>VTTRegion</dfn> {
    </dd>
   </dl>
 
-  <p>The <dfn title="VTTRegion"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
+  <p>The <dfn title="VTTRegion-constructor"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
 
   <ol>
     <li><p>Create a new <a>text track region</a>. Let <var>region</var> be that <a>text track region</a>.</p></li>
