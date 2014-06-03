@@ -184,22 +184,6 @@
     }
     </style>
   </head>
-  <!-- v2 feature requests:
-
-         Explicitly allow random comments on the line after the
-         signature line, for metadata, copyrights, etc.
-
-         Inline CSS, maybe as below. See http://www.w3.org/Bugs/Public/show_bug.cgi?id=15023
-
-            STYLE
-            ::cue(.narration) { color: blue; }
-
-         Default settings, maybe as below. See http://www.w3.org/Bugs/Public/show_bug.cgi?id=15024
-
-            DEFAULTS
-            line:-1 align:middle size:50%
-
-  -->
   <body>
   <section id='abstract'>
     <p>This is the specification of WebVTT, the Web Video Text Tracks format.
@@ -723,7 +707,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-  <h3>Text Track Region</h3>
+  <h3>Text Track Regions</h3>
 
   <p>A <dfn title="text track region">text track region</dfn> represents a subpart of the video viewport and provides a rendering area for <a title="text track cue">text track cues</a>.</p>
 
@@ -1848,12 +1832,8 @@ The Final Minute</pre>
            <li>Let <var>region</var>'s <a title="text track region viewport anchor">viewport anchor point</a> be (0,100).</li>
            <li>Let <var>region</var>'s <a title="text track region scroll">scroll value</a> be <a title="text track region scroll none">NONE</a>.</li>
            <li><a>Collect WebVTT region settings</a> from <a title="WebVTT metadata header value">metadata's value</a> using <var>region</var> for the results.</li>
-
            <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from <var>region</var>.</li>
-
-           <li>If the <a>text track list of regions</a> <var>regions</var> contains a region with the same <var>region identifier</var> value as <var>region</var>, remove that region.</li><!-- the removed region has never been in effect -->
-
-           <li>Add <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
+           <li>Append <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
         </ol>
        </li>
      </ol>
@@ -1959,9 +1939,9 @@ The Final Minute</pre>
    line</var> flag.</p></li>
 
    <li><p><a>Collect WebVTT cue timings and settings</a> from
-   <var title="">line</var>, using <var title="">cue</var> for the
-   results. If that fails, jump to the step labeled <i>bad
-   cue</i>.</p></li>
+   <var title="">line</var> using <var title="">regions</var>
+   for <var title="">cue</var>. If that fails, jump to the step
+   labeled <i>bad cue</i>.</p></li>
 
    <li><p>Let <var title="">cue text</var> be the empty
    string.</p></li>
@@ -2129,7 +2109,9 @@ The Final Minute</pre>
   </ol>
 
 
-  <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return a percentage value or, if at any point the algorithm says that it "fails", this means that it is aborted at that point with an IndexSizeError and returns nothing.</p>
+  <p>The rules to <dfn>parse a percentage string</dfn> are as follows. This will return either a
+  number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
+  means that it is aborted at that point and returns nothing.</p>
 
   <ol>
    <li><p>Let <var>input</var> be the string being parsed.</p></li>
@@ -2146,7 +2128,7 @@ The Final Minute</pre>
 
    <li><p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be the <var>percentage</var>.</p></li>
 
-   <li><p>If <var>percentage</var> is outside the range 0.0% .. 100.0%, fail.</p></li>
+   <li><p>If <var>percentage</var> is outside the range 0..100, then fail.</p></li>
 
    <li><p>Return <var>percentage</var>.</p></li>
   </ol>
@@ -2265,7 +2247,7 @@ The Final Minute</pre>
 
         <dd>
           <ol>
-            <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the <!-- last --> <a>text
+            <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the last <a>text
             track region</a> in <var title="">regions</var> whose <a>text track region
             identifier</a> is <var>value</var>, if any, or null otherwise.</p></li>
           </ol>
@@ -3658,7 +3640,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
            <p>If 'text-align' is 'middle', ignore the <var>offset</var>.</p>
          </li>
 
-         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region.</p>
 
            <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with their positions.</p>
          </li>
@@ -5135,7 +5117,7 @@ interface <dfn>VTTRegion</dfn> {
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-width">width</a></dt>
    <dd>
-    <p>Returns the text track region width as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
+    <p>Returns the text track region width as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0..100.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-lines">lines</a></dt>
@@ -5145,22 +5127,22 @@ interface <dfn>VTTRegion</dfn> {
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
-    <p>Returns the text track region anchor X offset as a percentage of the region width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
+    <p>Returns the text track region anchor X offset as a percentage of the region width. Can be set. Throws an IndexSizeError if the new value is not in the range 0..100.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
-    <p>Returns the text track region anchor Y offset as a percentage of the region height. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
+    <p>Returns the text track region anchor Y offset as a percentage of the region height. Can be set. Throws an IndexSizeError if the new value is not in the range 0..100.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a></dt>
    <dd>
-    <p>Returns the text track region viewport anchor X offset as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
+    <p>Returns the text track region viewport anchor X offset as a percentage of the video width. Can be set. Throws an IndexSizeError if the new value is not in the range 0..100.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a></dt>
    <dd>
-    <p>Returns the text track region viewport anchor Y offset as a percentage of the video height. Can be set. Throws an IndexSizeError if the new value is not in the range 0.0% .. 100.0%.</p>
+    <p>Returns the text track region viewport anchor Y offset as a percentage of the video height. Can be set. Throws an IndexSizeError if the new value is not in the range 0..100.</p>
    </dd>
 
    <dt><var title="">region</var> . <a title="dom-VTTRegion-scroll">scroll</a></dt>
@@ -5367,7 +5349,7 @@ interface <dfn>VTTRegion</dfn> {
   <dd><cite><a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a></cite>, F. Yergeau. IETF.</dd>
 
   <dt id="refsSELECTORS">[SELECTORS]</dt>
-  <dd><cite><a href="http://dev.w3.org/csswg/selectors4/">Selectors</a></cite>, E. Etemad, T. &Ccedil;elik, D. Glazman, I. Hickson, P. Linss, J. Williams. W3C.</dd>
+  <dd><cite><a href="http://www.w3.org/TR/selectors4/">Selectors</a></cite>, E. Etemad, T. Atkins Jr. W3C.</dd>
 
 <!--REFERENCES OFF-->
   </dl>
@@ -5389,6 +5371,7 @@ interface <dfn>VTTRegion</dfn> {
   Anna Cavender,
   Cyril Concolato,
   Rick Eyre,
+  fantasai,
   John Foliot,
   Lawrence Forooghian,
   Ralph Giles,
