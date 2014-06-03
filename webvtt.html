@@ -1536,6 +1536,26 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   line is numbered 0), negative line numbers from the bottom of the
   frame (the bottom line is numbered &#x2212;1).</p>
 
+  <p>A <dfn>WebVTT size cue setting</dfn> consists of the
+  following components, in the order given:</p>
+
+  <ol>
+   <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+   <li><p>A U+003A COLON character (:).</p></li>
+   <li>As the <a>WebVTT cue setting value</a>:
+    <ol>
+     <li>One or more <a>ASCII digits</a>.</li>
+     <li>A U+0025 PERCENT SIGN character (%).</li>
+    </ol>
+   </li>
+  </ol>
+
+  <p class="note">A <a>WebVTT size cue setting</a> configures
+  the size of the cue in the same direction as the <a>WebVTT text
+  position cue setting</a>. For horizontal cues, this is the width
+  of the cue. It is given as a percentage of the width of the
+  frame.</p>
+
   <p>A <dfn>WebVTT text position cue setting</dfn> consists of the
   following components, in the order given:</p>
 
@@ -1557,26 +1577,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   position cue setting</a> is given as a percentage, calculated
   from the edge of the frame that the text begins (so for
   left-to-right English text, the left edge).</p>
-
-  <p>A <dfn>WebVTT size cue setting</dfn> consists of the
-  following components, in the order given:</p>
-
-  <ol>
-   <li><p>The string "<code title="">size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-   <li><p>A U+003A COLON character (:).</p></li>
-   <li>As the <a>WebVTT cue setting value</a>:
-    <ol>
-     <li>One or more <a>ASCII digits</a>.</li>
-     <li>A U+0025 PERCENT SIGN character (%).</li>
-    </ol>
-   </li>
-  </ol>
-
-  <p class="note">A <a>WebVTT size cue setting</a> configures
-  the size of the cue in the same direction as the <a>WebVTT text
-  position cue setting</a>. For horizontal cues, this is the width
-  of the cue. It is given as a percentage of the width of the
-  frame.</p>
 
   <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the
   following components, in the order given:</p>
