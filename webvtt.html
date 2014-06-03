@@ -2409,9 +2409,22 @@ The Final Minute</pre>
 
    </li>
 
-  </ol>
+   <li>
 
-  <p class="note">Step 5 makes sure that no matter in which order the cue settings are provided, if the cue has a <a>text track cue line position</a> or a <a>text track cue size</a> setting or is <a title="text track cue vertical growing left writing direction">text track cue vertical growing left</a> or <a title="text track cue vertical growing right writing direction">growing right writing direction</a>, the <a>text track cue region</a> will be ignored.</p>
+    <p>If <var>cue</var>'s <a>text track cue line position</a> is not <a>text track cue automatic line position</a>
+    or <var>cue</var>'s <a>text track cue size</a> is not 100 or <var>cue</var>'s <a>text track cue writing direction</a>
+    is not <a title="text track cue horizontal writing direction">horizontal</a>, let <var>cue</var>'s <a>text track cue
+    region</a> be null.</p>
+
+    <p class="note">This makes sure that no matter in which order the cue settings are provided, if
+    if the cue has a <a>text track cue line position</a> or a <a>text track cue size</a> setting or
+    is <a title="text track cue vertical growing left writing direction">text track cue vertical
+    growing left</a> or <a title="text track cue vertical growing right writing direction">growing
+    right writing direction</a>, the <a>text track cue region</a> will be ignored.</p>
+
+   </li>
+
+  </ol>
 
   <p>When this specification says that a user agent is to
   <dfn>collect a WebVTT timestamp</dfn>, the user agent must run the
