@@ -186,8 +186,7 @@
   </head>
   <body>
   <section id='abstract'>
-    <p>This is the specification of WebVTT, the Web Video Text Tracks format.
-    </p>
+    <p>This is the specification of WebVTT, the Web Video Text Tracks format.</p>
 
     <p>If you wish to make comments or file bugs regarding this document in a manner
       that is tracked by the W3C, please submit them via <a
@@ -197,8 +196,7 @@
   </section>
 
   <section id='sotd'>
-    <p>This specification is being developed as a Living Specification. There is a plan to take a snapshot and publish it as a W3C Recommendation through the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>.
-    </p>
+    <p>This specification is being developed as a Living Specification. There is a plan to take a snapshot and publish it as a W3C Recommendation through the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>.</p>
   </section>
 
   <section>
@@ -442,8 +440,7 @@ Transcribed by Celestials&trade;</pre>
   </div>
 
   <div class="example">
-  <p>This example shows two regions containing rollup captions for two different speakers. Fred's cues scroll up in a region in the left half of the video, Bill's cues scroll up in a region on the right half of the video. Fred's first cue disappears at 12.5sec even though it is defined until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:
-  </p>
+  <p>This example shows two regions containing rollup captions for two different speakers. Fred's cues scroll up in a region in the left half of the video, Bill's cues scroll up in a region on the right half of the video. Fred's first cue disappears at 12.5sec even though it is defined until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:</p>
 
   <pre>WEBVTT
 Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
@@ -1289,8 +1286,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
   <ul>
     <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
-    <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.
-    </li>
+    <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.</li>
   </ul>
 
   <p>A <dfn>WebVTT region</dfn> represents its <a title="WebVTT region setting list">WebVTT region settings</a>.</p>
@@ -2042,12 +2038,10 @@ The Final Minute</pre>
 
         <dl>
           <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
-          <dd><p>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be <var>value</var>.</p>
-          </dd>
+          <dd><p>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be <var>value</var>.</p></dd>
 
           <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>width</code>"</p></dt>
-          <dd><p>If <a>parse a percentage string</a> from <var>value</var> returns a <var>percentage</var>, let <var>region</var>'s <a>text track region width</a> be <var>percentage</var>.</p>
-          </dd>
+          <dd><p>If <a>parse a percentage string</a> from <var>value</var> returns a <var>percentage</var>, let <var>region</var>'s <a>text track region width</a> be <var>percentage</var>.</p></dd>
 
           <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>lines</code>"</dt>
           <dd>
@@ -2289,8 +2283,7 @@ The Final Minute</pre>
             <dd><p>If <a>parse a percentage string</a> from
             <var title="">value</var> doesn't fail, let <var title="">number</var>
             be the returned <var>percentage</var>, otherwise jump to the
-            step labeled <i>next setting</i>.</p>
-            </dd>
+            step labeled <i>next setting</i>.</p></dd>
 
             <dt><p>Otherwise</p></dt>
 
@@ -3636,11 +3629,9 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
            <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each line of the cue is reordered as if it was a separate paragraph.)</p>
          </li>
 
-         <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p>
-         </li>
+         <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p></li>
 
-         <li><p>Let <var>offset</var> be the <a>text track cue text position</a> multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p>
-         </li>
+         <li><p>Let <var>offset</var> be the <a>text track cue text position</a> multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p></li>
 
          <li>
            <p>If <var>direction</var> is 'ltr' and 'text-align' is 'start' or 'left', or if <var>direction</var> is 'rtl' and 'text-align' is 'end' or 'left', let <var>left</var> be <var>offset</var> and let <var>right</var> be 'auto'</p>
