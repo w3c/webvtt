@@ -75,7 +75,7 @@
           noIDLIn: "true",
           noIDLSorting: "true",
 
-          additionalHeaderContent: "",
+          doRDFa: false,
       };
     </script>
     <!-- script to register bugs -->
@@ -389,20 +389,23 @@ NOTE end of file</pre>
 
   <div class="example">
 
-   <p>In this example, one of the cues has an identifier:</p>
+   <p>In this example, the cues have an identifier:</p>
 
    <pre>WEBVTT
 
+1
 00:00.000 --> 00:02.000
 That's an, an, that's an L!
 
-transcription-credit
+transcript credit
 00:04.000 --> 00:05.000
 Transcribed by Celestials&trade;</pre>
 
-   <p>This allows a style sheet to specifically target that cue:</p>
+   <p>This allows a style sheet to specifically target the cues (notice the use
+   of CSS character escape sequences):</p>
 
-   <pre>::cue(#transcription-credit) { color: red }</pre>
+   <pre>::cue(#\31) { color: green; }
+::cue(#transcript\ credit) { color: red; }</pre>
 
   </div>
 
