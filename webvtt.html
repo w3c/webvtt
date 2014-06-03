@@ -3911,16 +3911,18 @@ The Final Minute</pre>
     boxes added to <var>output</var>, in <a>text track
     cue order</a>, run the following substeps:</p>
 
-    <ul>
+    <ol>
+
+     <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the
+     <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
+
      <li>
       <p>If <var>cue</var>'s <a>text track cue region</a> is null, run the following substeps:</p>
 
       <ol>
 
-       <li><a>Apply WebVTT cue settings</a> to calculate CSS boxes <var>boxes</var> from the
-       <a>list of WebVTT Node Objects</a> <var>nodes</var> obtained by applying the
-       <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s
-       <a>text track cue text</a>.</li>
+       <li><a>Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from
+       <var>nodes</var>.</li>
 
        <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
        <var>boxes</var>.</p></li>
@@ -3937,8 +3939,6 @@ The Final Minute</pre>
          <li><p>Let <var>region</var> be <var>cue</var>'s <a>text track cue region</a>.</p></li>
 
          <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>'s 'transition-property' to 'top' and 'transition-duration' to '0.433s'.</p></li>
-
-         <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
 
          <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm
               that applies to regions -->
@@ -3974,7 +3974,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
        </ol>
      </li>
 
-    </ul>
+    </ol>
    </li>
 
    <li><p>Return <var>output</var>.</p></li>
@@ -3987,9 +3987,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   entirely.</p>
 
   <p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn>
-  to calculate CSS boxes from the <a>list of WebVTT Node Objects</a> <var>nodes</var>
-  obtained by applying the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s
-  <a>text track cue text</a>, the user agent must run the following algorithm.</p>
+  to obtain CSS boxes from a <a>list of WebVTT Node Objects</a> <var>nodes</var>,
+  the user agent must run the following algorithm.</p>
 
   <ol>
 
@@ -4576,6 +4575,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     not completely fit inside <var>video</var>'s rendering
     area, remove those offending line boxes from
     <var>boxes</var>.</p></li>
+
+    <li><p>Return <var>boxes</var>.</p></li>
 
   </ol>
 
