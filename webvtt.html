@@ -4190,6 +4190,9 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
         <li><p>Let <var title="">line position</var> be the
         <a>text track cue computed line position</a>.</p></li>
 
+        <li><p>Round <var title="">line position</var> to an integer
+        by adding 0.5 and then flooring it.</p></li>
+
         <li><p><strong>Vertical Growing Left</strong>: Add one to
         <var title="">line position</var> then negate it.</p></li>
 
@@ -4490,10 +4493,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   background box</a> must be set to 'rgba(0,0,0,0.8)'. <a
   href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
-  <p>A text outline or stroke may also be set on the (root) <a>list
-  of WebVTT Node Objects</a>, if supported.</p> <!-- 'text-outline'
-  is in CSS3 Text, but Tab says that's awaiting medical attention. -->
-
   <p>The 'white-space' property on the (root) <a>list of WebVTT
   Node Objects</a> must be set to 'pre-line'. <a
   href="#refsCSS">[CSS]</a></p>
@@ -4625,7 +4624,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
    <li>'opacity'</li>
    <li>'visibility'</li>
    <li>'text-decoration'</li>
-   <li>'text-outline'</li>
    <li>'text-shadow'</li>
    <li>the properties corresponding to the 'background' shorthand</li>
    <li>the properties corresponding to the 'outline' shorthand</li>
@@ -4756,7 +4754,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
    <li>'opacity'</li>
    <li>'visibility'</li>
    <li>'text-decoration'</li>
-   <li>'text-outline'</li>
    <li>'text-shadow'</li>
    <li>the properties corresponding to the 'background' shorthand</li>
    <li>the properties corresponding to the 'outline' shorthand</li>
@@ -5122,7 +5119,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <pre class="idl_whatwg">
 partial interface <a>TextTrack</a> {
-           attribute VTTRegionList? <a title="dom-TextTrack-regions">regions</a>;
+  readonly attribute <a>VTTRegionList</a>? <a title="dom-TextTrack-regions">regions</a>;
   void <a title="dom-TextTrack-addRegion">addRegion</a>(<a>VTTRegion</a> region);
   void <a title="dom-TextTrack-removeRegion">removeRegion</a>(<a>VTTRegion</a> region);
 };</pre>
@@ -5175,7 +5172,7 @@ partial interface <a>TextTrack</a> {
 
   <pre class="idl_whatwg">
 [Constructor]
-interface <dfn>VTTRegion</dfn> : EventTarget {
+interface <dfn>VTTRegion</dfn> {
   readonly attribute TextTrack? <a title="dom-VTTRegion-track">track</a>;
            attribute DOMString <a title="dom-VTTRegion-id">id</a>;
            attribute double <a title="dom-VTTRegion-width">width</a>;
@@ -5307,7 +5304,7 @@ interface <dfn>VTTRegion</dfn> : EventTarget {
   <h3>VTTRegionList interface</h3>
 
   <pre class="idl_whatwg">
-interface <dfn>VTTRegionList</dfn> : EventTarget {
+interface <dfn>VTTRegionList</dfn> {
   readonly attribute unsigned long <a title="dom-VTTRegionList-length">length</a>;
   getter <a title="dom-VTTRegion">VTTRegion</a> (unsigned long index);
   <a>VTTRegion</a>? <a title="dom-VTTRegionList-getRegionById">getRegionById</a>(DOMString id);
@@ -5504,10 +5501,12 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
   Eric Carlson,
   Anna Cavender,
   Cyril Concolato,
+  Rick Eyre,
   John Foliot,
   Lawrence Forooghian,
   Ralph Giles,
   Loretta Guarino Reid,
+  Kyle Huey,
   Anne van Kesteren,
   Glenn Maynard,
   Ronny Mennerich,
@@ -5515,6 +5514,7 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
   Frank Olivier,
   Giuseppe Pascale,
   Simon Pieters,
+  Caitlin Potter,
   David Singer.
   </p>
 
