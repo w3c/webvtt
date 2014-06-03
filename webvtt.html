@@ -31,10 +31,10 @@
           // and its maturity status
           //previousPublishDate:  "2013-03-11",
           //previousMaturity:  "WD",
-          prevED: "http://dev.w3.org/html5/webvtt/",
+          //prevED: "http://dev.w3.org/html5/webvtt/",
 
           // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "https://dvcs.w3.org/hg/text-tracks/raw-file/default/webvtt/Overview.html",
+          edDraftURI:           "http://dev.w3.org/html5/webvtt/",
 
           // if this is a LCWD, uncomment and set the end of its review period
           // lcEnd: "2009-08-05",
@@ -44,6 +44,8 @@
           editors:  [
               { name: "Silvia Pfeiffer", url: "mailto:silviapfeiffer1@gmail.com",
                 company: "NICTA", companyURL: "http://nicta.com.au/" },
+              { name: "Philip J&auml;genstedt", url: "mailto:philipj@opera.com",
+                company: "Opera Software ASA", companyURL: "http://www.opera.com/" },
               { name: "Ian Hickson", url: "mailto:ian@hixie.ch",
                 company: "Google", companyURL: "http://google.com/", note: "previous editor" },
           ],
@@ -494,8 +496,15 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <section>
   <h3>Dependencies</h3>
 
-  <p>This specification relies upon the following terms defined in the
-  HTML standard. <a href="#refsHTML5">[HTML5]</a></p>
+  <p>This specification relies on several other underlying specifications.</p>
+
+  <p>The following term is defined in the Encoding standard: <a href="#refsENCODING">[ENCODING]</a></p>
+
+  <ul class="brief">
+   <li><a href="http://encoding.spec.whatwg.org/#utf-8-decode"><dfn>UTF-8 decode</dfn></a>
+  </ul>
+
+  <p>The following terms are defined in the HTML standard: <a href="#refsHTML5">[HTML5]</a></p>
 
   <ul class="brief">
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html
@@ -506,8 +515,6 @@ Region: id=bill width=50% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 #entry-script"><dfn>Entry script</dfn></a>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html
 #mime-type"><dfn>MIME type</dfn></a>
-   <li><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html
-#utf-8-decode"><dfn>UTF-8 decode</dfn></a>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html
 #case-sensitive"><dfn>Case-sensitive</dfn></a>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html
@@ -3730,7 +3737,8 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
            <p>If 'text-align' is 'middle', ignore the <var>offset</var>.</p>
          </li>
 
-         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> in the same way that they are applied to in step 10, substep 12 is applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+         <li><p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region, except that the initial containing block is <var>region</var>.</p>
+
            <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with their positions.</p>
          </li>
 
@@ -5505,7 +5513,9 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
    <dt>Restrictions on usage:</dt>
    <dd>No restrictions apply.</dd>
    <dt>Authors:</dt>
-   <dd>Silvia Pfeiffer &lt;silviapfeiffer1@gmail.com>, Ian Hickson &lt;ian@hixie.ch></dd>
+   <dd>Silvia Pfeiffer &lt;silviapfeiffer1@gmail.com>,
+       Philip J&auml;genstedt &lt;philipj@opera.com>,
+       Ian Hickson &lt;ian@hixie.ch></dd>
    <dt>Change controller:</dt>
    <dd>W3C</dd>
   </dl>
@@ -5542,6 +5552,9 @@ interface <dfn>VTTRegionList</dfn> : EventTarget {
 
   <dt id="refsCSSVALUES">[CSSVALUES]</dt>
   <dd><cite><a href="http://dev.w3.org/csswg/css3-values/">CSS3 Values and Units</a></cite>, H. Lie, T. Atkins, E. Etemad. W3C.</dd>
+
+   <dt id="refsENCODING">[ENCODING]</dt>
+   <dd><cite><a href="http://encoding.spec.whatwg.org/">Encoding</a></cite>, A. van Kesteren, J. Bell. WHATWG.</dd>
 
   <dt id="refsHTML">[HTML]</dt>
   <dd><cite><a href="http://www.whatwg.org/specs/web-apps/current-work/">HTML</a></cite>, I. Hickson. WHATWG.</dd>
