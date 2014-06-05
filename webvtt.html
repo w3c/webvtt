@@ -7,33 +7,17 @@
     <script class='remove'>
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-          specStatus:           "CG-DRAFT",
+          specStatus: "CG-DRAFT",
 
           // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "webvtt",
-
-          // if your specification has a subtitle that goes below the main
-          // formal title, define it here
-          // subtitle   :  "",
-
-          // if you wish the publication date to be other than today, set this
-          // publishDate:  "2009-08-06",
+          shortName: "webvtt",
 
           // if the specification's copyright date is a range of years, specify
           // the start date here:
           copyrightStart: "2011",
 
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          //previousPublishDate:  "2013-03-11",
-          //previousMaturity:  "WD",
-          //prevED: "http://dev.w3.org/html5/webvtt/",
-
           // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "http://dev.w3.org/html5/webvtt/",
-
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
+          edDraftURI: "http://dev.w3.org/html5/webvtt/",
 
           // editors, add as many as you like
           // only "name" is required
@@ -46,34 +30,14 @@
                 company: "Google", companyURL: "http://google.com/", note: "previous editor" },
           ],
 
-          // authors, add as many as you like.
-          // This is optional, uncomment if you have authors as well as editors.
-          // only "name" is required. Same format as editors.
-
-          //authors:  [
-          //    { name: "Your Name", url: "http://example.org/",
-          //      company: "Your Company", companyURL: "http://example.com/" },
-          //],
-
           // name of the WG
-          wg:           "Text Tracks Community Group",
+          wg: "Text Tracks Community Group",
 
           // URI of the public WG page
-          wgURI:        "http://www.w3.org/community/texttracks/",
+          wgURI: "http://www.w3.org/community/texttracks/",
 
           // name (without the @w3c.org) of the public mailing to which comments are due
           wgPublicList: "public-texttracks",
-
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "",
-
-          // formatting
-          noIDLIn: "true",
-          noIDLSorting: "true",
 
           doRDFa: false,
       };
@@ -493,9 +457,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ul class="brief">
    <li><a href="http://dom.spec.whatwg.org/#document"><dfn><code>Document</code></dfn></a> interface</li>
    <li><a href="http://dom.spec.whatwg.org/#interface-documentfragment"><dfn><code>DocumentFragment</code></dfn></a> interface</li>
-   <li><a href="http://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a> attribute</li>
    <li><a href="http://dom.spec.whatwg.org/#processinginstruction"><dfn><code>ProcessingInstruction</code></dfn></a> interface</li>
    <li><a href="http://dom.spec.whatwg.org/#text"><dfn><code>Text</code></dfn></a> interface</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-characterdata-data"><dfn><code>data</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-element-localname"><dfn><code>localName</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-element-namespaceuri"><dfn><code>namespaceURI</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-processinginstruction-target"><dfn><code>target</code></dfn></a> attribute</li>
    <li><a href="http://dom.spec.whatwg.org/#indexsizeerror"><dfn><code>IndexSizeError</code></dfn></a></li>
   </ul>
 
@@ -504,6 +472,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ul class="brief">
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#html-elements"><dfn>HTML elements</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#htmlelement"><dfn><code>HTMLElement</code></dfn></a> interface</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-class"><dfn><code>class</code></dfn></a> attribute</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-lang"><dfn><code>lang</code></dfn></a> attribute</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-title"><dfn><code>title</code></dfn></a> attribute</li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#script's-document"><dfn>Script's document</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#entry-script"><dfn>Entry script</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#mime-type"><dfn>MIME type</dfn></a></li>
@@ -516,6 +487,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#split-a-string-on-spaces"><dfn>Split a string on spaces</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#html-namespace"><dfn>HTML namespace</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#media-element"><dfn>Media element</dfn></a></li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#audio"><dfn><code>audio</code></dfn> element</a></li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#video"><dfn><code>video</code></dfn> element</a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#current-playback-position"><dfn>Current playback position</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#expose-a-user-interface-to-the-user"><dfn>Expose a user interface to the user</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#list-of-text-tracks"><dfn>List of text tracks</dfn></a></li>
@@ -874,7 +847,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   each consist of any sequence of zero or more characters other than
   U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
   except that the entire resulting string must not contain the substring
-  "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
   <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
@@ -895,7 +868,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   data associated with the cue.</p>
 
   <p>A <dfn>WebVTT cue identifier</dfn> is any sequence of one or more
-  characters not containing the substring "<code>--&gt;</code>"
+  characters not containing the substring "<code>--></code>"
   (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
   SIGN), nor containing any U+000A LINE FEED (LF) characters or U+000D
   CARRIAGE RETURN (CR) characters.</p>
@@ -958,7 +931,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
 
    <li>
-    Optionally (required if <var>hour</var> is non-zero):
+    Optionally (required if <var>hours</var> is non-zero):
 
     <ol>
 
@@ -1032,7 +1005,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   each consist of any sequence of zero or more characters other than
   U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
   except that the entire resulting string must not contain the substring
-  "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
   <p>A <dfn>WebVTT percentage</dfn> consists of the following components:</p>
@@ -1072,7 +1045,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
      U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a
      <a>WebVTT line terminator</a>, except that the entire resulting string must not contain
-     the substring "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+     the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
     </ol>
    </li>
    <li>A <a>WebVTT line terminator</a>.</li>
@@ -1818,7 +1791,7 @@ The Final Minute</pre>
    <li><p>If <var>position</var> is past the end of
    <var>input</var>, then abort these steps. The file was
    successfully processed, but it contains no useful data and so no
-   <a title="text track cue">text track cues</a> where added to
+   <a title="text track cue">text track cues</a> were added to
    <var>output</var>.</p></li>
 
    <li><p>The character indicated by <var>position</var> is a
@@ -3443,52 +3416,52 @@ The Final Minute</pre>
     </tr>
     <tr>
      <td><a>WebVTT Class Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Italic Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>i</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>i</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Bold Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>b</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>b</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Underline Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>u</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>u</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Ruby Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>ruby</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>ruby</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Ruby Text Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>rt</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>rt</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Voice Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-title">title</code> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>", and a <a><code>title</code></a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
     </tr>
     <tr>
      <td><a>WebVTT Language Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-lang">lang</code> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>", and a <a><code>lang</code></a> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.</td>
     </tr>
     <tr>
      <td><a>WebVTT Text Object</a></td>
-     <td><a><code>Text</code></a> node whose character data is the value of the <a>WebVTT Text Object</a>.</td>
+     <td><a><code>Text</code></a> node whose <a><code>data</code></a> is the value of the <a>WebVTT Text Object</a>.</td>
     </tr>
     <tr>
      <td><a>WebVTT Timestamp Object</a></td>
-     <td><a><code>ProcessingInstruction</code></a> node whose <code title="dom-ProcessingInstruction-target">target</code> is "<code>timestamp</code>" and whose <code title="dom-ProcessingInstruction-data">data</code> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading zeros otherwise.</td>
+     <td><a><code>ProcessingInstruction</code></a> node whose <a><code>target</code></a> is "<code>timestamp</code>" and whose <a><code>data</code></a> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading zeros otherwise.</td>
     </tr>
    </tbody>
   </table>
 
   <p><a><code>HTMLElement</code></a> nodes created as part of the mapping described above must have their
-  <code title="dom-Node-namespaceURI">namespaceURI</code> set to the <a>HTML namespace</a>,
+  <a><code>namespaceURI</code></a> set to the <a>HTML namespace</a>,
   and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a title="WebVTT
-  Node Object's applicable classes">applicable classes</a>, must have a <code
-  title="attr-class">class</code> attribute set to the string obtained by concatenating all those
+  Node Object's applicable classes">applicable classes</a>, must have a
+  <a><code>class</code></a> attribute set to the string obtained by concatenating all those
   classes, each separated from the next by a single U+0020 SPACE character.</p>
 
   <p>The <a><code>ownerDocument</code></a>
@@ -3532,7 +3505,7 @@ The Final Minute</pre>
   <p>The <dfn>rules for updating the display of WebVTT text
   tracks</dfn> render the <a title="text track">text
   tracks</a> of a <a>media element</a> (specifically, a
-  <code>video</code> element), or of another playback mechanism, by
+  <a><code>video</code></a> element), or of another playback mechanism, by
   applying the steps below. All the <a title="text track">text
   tracks</a> that use these rules for a given <a>media
   element</a>, or other playback mechanism, are rendered together,
@@ -3547,7 +3520,7 @@ The Final Minute</pre>
 
   <ol>
 
-   <li><p>If the <a>media element</a> is an <code>audio</code>
+   <li><p>If the <a>media element</a> is an <a><code>audio</code></a>
    element, or is another playback mechanism with no rendering area,
    abort these steps. There is nothing to render.</p></li>
 
@@ -3713,7 +3686,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
   <p>User agents may allow the user to override the above algorithm's
   positioning of cues, e.g. by dragging them to another location on
-  the <code>video</code>, or even off the <code>video</code>
+  the <a><code>video</code></a>, or even off the <a><code>video</code></a>
   entirely.</p>
 
   <p>When the algorithm above requires that the user agent <dfn>Apply WebVTT cue settings</dfn>
@@ -4583,7 +4556,7 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <i>matched element</i>.</p>
 
   <p class="note">If the <i>matched element</i> is not a
-  <code>video</code> element, the pseudo-elements defined below won't
+  <a><code>video</code></a> element, the pseudo-elements defined below won't
   have any effect according to this specification.</p>
 
   <p>A CSS user agent that implements the <a title="text
@@ -4854,22 +4827,22 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
   <pre class="idl_whatwg">enum <dfn>AutoKeyword</dfn> { "auto" };
 enum <dfn>DirectionSetting</dfn> { "" /* horizontal */, "rl", "lr" };
 enum <dfn>AlignSetting</dfn> { "start", "middle", "end", "left", "right" };
-[<a title="dom-VTTCue">Constructor</a>(double startTime, double endTime, DOMString text)]
+[<a title="VTTCue-constructor">Constructor</a>(double startTime, double endTime, DOMString text)]
 interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
-           attribute <a>VTTRegion</a>? <a title="dom-VTTCue-region">region</a>;
-           attribute <a>DirectionSetting</a> <a title="dom-VTTCue-vertical">vertical</a>;
-           attribute boolean <a title="dom-VTTCue-snapToLines">snapToLines</a>;
-           attribute (double or <a>AutoKeyword</a>) <a title="dom-VTTCue-line">line</a>;
-           attribute (double or <a>AutoKeyword</a>) <a title="dom-VTTCue-position">position</a>;
-           attribute double <a title="dom-VTTCue-size">size</a>;
-           attribute <a>AlignSetting</a> <a title="dom-VTTCue-align">align</a>;
-           attribute DOMString <a title="dom-VTTCue-text">text</a>;
-  <a>DocumentFragment</a> <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>();
+           attribute <a>VTTRegion</a>? <a title="VTTCue-region">region</a>;
+           attribute <a>DirectionSetting</a> <a title="VTTCue-vertical">vertical</a>;
+           attribute boolean <a title="VTTCue-snapToLines">snapToLines</a>;
+           attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-line">line</a>;
+           attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-position">position</a>;
+           attribute double <a title="VTTCue-size">size</a>;
+           attribute <a>AlignSetting</a> <a title="VTTCue-align">align</a>;
+           attribute DOMString <a title="VTTCue-text">text</a>;
+  <a>DocumentFragment</a> <a title="VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
 
   <dl class="domintro">
 
-   <dt><var>cue</var> = new <code title="dom-VTTCue">VTTCue</code>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )</dt>
+   <dt><var>cue</var> = new <a title="VTTCue-constructor"><code>VTTCue</code></a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )</dt>
    <dd>
     <p>Returns a new <a><code>VTTCue</code></a> object, for use with the <a><code>addCue()</code></a> method.</p>
     <p>The <var>startTime</var> argument sets the <a>text track cue start time</a>.</p>
@@ -4877,13 +4850,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>The <var>text</var> argument sets the <a>text track cue text</a>.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-region">region</a></dt>
+   <dt><var>cue</var> . <a title="VTTCue-region">region</a></dt>
    <dd>
     <p>Returns the <a><code>VTTRegion</code></a> object to which this cue belongs, if any, or null otherwise.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-vertical">vertical</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-vertical">vertical</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns a string representing the <a>text track cue writing direction</a>, as follows:</p>
     <dl class="switch">
@@ -4897,13 +4870,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-snapToLines">snapToLines</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-snapToLines">snapToLines</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns true if the <a>text track cue snap-to-lines flag</a> is set, false otherwise.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-line">line</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-line">line</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue line position</a>. In the
     case of the value being <a title="text track cue automatic line
@@ -4912,7 +4885,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-position">position</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-position">position</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text position</a>. In the
     case of the value being <a title="text track cue automatic text
@@ -4921,13 +4894,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-size">size</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-size">size</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue size</a>.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-align">align</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-align">align</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns a string representing the <a>text track cue alignment</a>, as follows:</p>
     <dl class="switch">
@@ -4945,20 +4918,20 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>cue</var> . <a title="dom-VTTCue-text">text</a> [ = <var>value</var> ]</dt>
+   <dt><var>cue</var> . <a title="VTTCue-text">text</a> [ = <var>value</var> ]</dt>
    <dd>
     <p>Returns the <a>text track cue text</a> in raw unparsed form.</p>
     <p>Can be set.</p>
    </dd>
 
-   <dt><var>fragment</var> = <var>cue</var> . <a title="dom-VTTCue-getCueAsHTML">getCueAsHTML</a>()</dt>
+   <dt><var>fragment</var> = <var>cue</var> . <a title="VTTCue-getCueAsHTML">getCueAsHTML</a>()</dt>
    <dd>
     <p>Returns the <a>text track cue text</a> as a <a><code>DocumentFragment</code></a> of <a>HTML elements</a> and other DOM nodes.</p>
    </dd>
 
   </dl>
 
-  <p>The <dfn title="dom-VTTCue"><code>VTTCue(<var>startTime</var>, <var>endTime</var>,
+  <p>The <dfn title="VTTCue-constructor"><code>VTTCue(<var>startTime</var>, <var>endTime</var>,
   <var>text</var>)</code></dfn> constructor, when invoked, must run the following steps:</p>
 
   <ol>
@@ -5006,13 +4979,12 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   </ol>
 
-  <p>The <dfn title="dom-VTTCue-region"><code>region</code></dfn> attribute, on getting, must return
+  <p>The <dfn title="VTTCue-region"><code>region</code></dfn> attribute, on getting, must return
   the <a><code>VTTRegion</code></a> object representing the <a>text track cue region</a> of the <a>text
   track cue</a> that the <a><code>VTTCue</code></a> object represents, if any; or null otherwise. On
   setting, the <a>text track cue region</a> must be set to the new value.</p>
 
-  <p>The <dfn
-  title="dom-VTTCue-vertical"><code>vertical</code></dfn>
+  <p>The <dfn title="VTTCue-vertical"><code>vertical</code></dfn>
   attribute, on getting, must return the string from the second cell
   of the row in the table below whose first cell is the <a>text
   track cue writing direction</a> of the <a>text track
@@ -5021,8 +4993,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   <table>
    <thead>
     <tr>
-     <th><a>text track cue writing direction</a></th>
-     <th><code title="dom-VTTCue-direction">direction</code> value</th>
+     <th><a>Text track cue writing direction</a></th>
+     <th><a title="VTTCue-vertical"><code>vertical</code></a> value</th>
     </tr>
    </thead>
    <tbody>
@@ -5045,13 +5017,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   the first cell of the row in the table above whose second cell is a <a>case-sensitive</a>
   match for the new value.</p>
 
-  <p>The <dfn title="dom-VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
+  <p>The <dfn title="VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on
   getting, must return true if the <a>text track cue snap-to-lines flag</a> of the <a>text
   track cue</a> that the <a><code>VTTCue</code></a> object represents is set; or false otherwise.
   On setting, the <a>text track cue snap-to-lines flag</a> must be set if the new value is
   true, and must be unset otherwise.</p>
 
-  <p>The <dfn title="dom-VTTCue-line"><code>line</code></dfn> attribute, on getting, must
+  <p>The <dfn title="VTTCue-line"><code>line</code></dfn> attribute, on getting, must
   return the <a>text track cue line position</a> of the <a>text track cue</a> that the
   <a><code>VTTCue</code></a> object represents. The special value <a title="text track cue
   automatic line position">auto</a> must be represented as the string
@@ -5060,7 +5032,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   interpreted as the special value <a title="text track cue automatic line
   position">auto</a>.</p>
 
-  <p>The <dfn title="dom-VTTCue-position"><code>position</code></dfn> attribute, on getting, must
+  <p>The <dfn title="VTTCue-position"><code>position</code></dfn> attribute, on getting, must
   return the <a>text track cue text position</a> of the <a>text track cue</a> that the
   <a><code>VTTCue</code></a> object represents. The special value <a title="text track cue automatic
   text position">auto</a> must be represented as the string "<code>auto</code>". On setting, if the
@@ -5069,13 +5041,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   if the new value is the string "<code>auto</code>", then it must be interpreted as the special
   value <a title="text track cue automatic text position">auto</a>.</p>
 
-  <p>The <dfn title="dom-VTTCue-size"><code>size</code></dfn> attribute, on getting, must
+  <p>The <dfn title="VTTCue-size"><code>size</code></dfn> attribute, on getting, must
   return the <a>text track cue size</a> of the <a>text track cue</a> that the
   <a><code>VTTCue</code></a> object represents. On setting, if the new value is negative or greater
   than 100, then an <a><code>IndexSizeError</code></a> exception must be thrown. Otherwise, the <a>text
   track cue size</a> must be set to the new value.</p>
 
-  <p>The <dfn title="dom-VTTCue-align"><code>align</code></dfn> attribute, on getting, must
+  <p>The <dfn title="VTTCue-align"><code>align</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
   <a>text track cue alignment</a> of the <a>text track cue</a> that the
   <a><code>VTTCue</code></a> object represents:</p>
@@ -5084,7 +5056,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <thead>
     <tr>
      <th><a>Text track cue alignment</a></th>
-     <th><code title="dom-VTTCue-align">align</code> value</th>
+     <th><a title="VTTCue-align"><code>align</code></a> value</th>
     </tr>
    </thead>
    <tbody>
@@ -5115,12 +5087,12 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match
   for the new value.</p>
 
-  <p>The <dfn title="dom-VTTCue-text"><code>text</code></dfn> attribute, on getting, must
+  <p>The <dfn title="VTTCue-text"><code>text</code></dfn> attribute, on getting, must
   return the raw <a>text track cue text</a> of the <a>text track cue</a> that the
   <a><code>VTTCue</code></a> object represents. On setting, the <a>text track cue text</a> must
   be set to the new value.</p>
 
-  <p>The <dfn title="dom-VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
+  <p>The <dfn title="VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must
   convert the <a>text track cue text</a> to a <a><code>DocumentFragment</code></a> for the
   <a>script's document</a> of the <a>entry script</a> by applying the <a>WebVTT cue
   text DOM construction rules</a> to the result of applying the <a>WebVTT cue text parsing
@@ -5129,61 +5101,61 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
   </section>
 
   <section>
-  <h3>The <code>VTTRegion</code> interface</h3>
+  <h3>The <a><code>VTTRegion</code></a> interface</h3>
 
   <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
   <pre class="idl_whatwg">
 enum <dfn>ScrollSetting</dfn> { "" /* none */, "up" };
-[Constructor]
+[<a title="VTTRegion-constructor">Constructor</a>]
 interface <dfn>VTTRegion</dfn> {
-           attribute double <a title="dom-VTTRegion-width">width</a>;
-           attribute long <a title="dom-VTTRegion-lines">lines</a>;
-           attribute double <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a>;
-           attribute double <a title="dom-VTTRegion-regionAnchorY">regionAnchorY</a>;
-           attribute double <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a>;
-           attribute double <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a>;
-           attribute <a>ScrollSetting</a> <a title="dom-VTTRegion-scroll">scroll</a>;
+           attribute double <a title="VTTRegion-width">width</a>;
+           attribute long <a title="VTTRegion-lines">lines</a>;
+           attribute double <a title="VTTRegion-regionAnchorX">regionAnchorX</a>;
+           attribute double <a title="VTTRegion-regionAnchorY">regionAnchorY</a>;
+           attribute double <a title="VTTRegion-viewportAnchorX">viewportAnchorX</a>;
+           attribute double <a title="VTTRegion-viewportAnchorY">viewportAnchorY</a>;
+           attribute <a>ScrollSetting</a> <a title="VTTRegion-scroll">scroll</a>;
 };</pre>
 
   <dl class="domintro">
 
-   <dt><var>region</var> = new <code title="dom-VTTRegion">VTTRegion</code>()</dt>
+   <dt><var>region</var> = new <a title="VTTRegion-constructor"><code>VTTRegion</code></a>()</dt>
    <dd>
-    <p>Returns a new <code>VTTRegion</code> object.</p>
+    <p>Returns a new <a><code>VTTRegion</code></a> object.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-width">width</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-width">width</a></dt>
    <dd>
     <p>Returns the text track region width as a percentage of the video width. Can be set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-lines">lines</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-lines">lines</a></dt>
    <dd>
     <p>Returns the text track region height as a number of lines. Can be set.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
     <p>Returns the text track region anchor X offset as a percentage of the region width. Can be set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-regionAnchorX">regionAnchorX</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-regionAnchorX">regionAnchorX</a></dt>
    <dd>
     <p>Returns the text track region anchor Y offset as a percentage of the region height. Can be set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-viewportAnchorX">viewportAnchorX</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-viewportAnchorX">viewportAnchorX</a></dt>
    <dd>
     <p>Returns the text track region viewport anchor X offset as a percentage of the video width. Can be set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-viewportAnchorY">viewportAnchorY</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-viewportAnchorY">viewportAnchorY</a></dt>
    <dd>
     <p>Returns the text track region viewport anchor Y offset as a percentage of the video height. Can be set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
    </dd>
 
-   <dt><var>region</var> . <a title="dom-VTTRegion-scroll">scroll</a></dt>
+   <dt><var>region</var> . <a title="VTTRegion-scroll">scroll</a></dt>
    <dd>
     <p>Returns a string representing the <a>text track region scroll</a> as follows:</p>
     <dl class="switch">
@@ -5196,7 +5168,7 @@ interface <dfn>VTTRegion</dfn> {
    </dd>
   </dl>
 
-  <p>The <dfn title="dom-VTTRegion"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
+  <p>The <dfn title="VTTRegion-constructor"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the following steps:</p>
 
   <ol>
     <li><p>Create a new <a>text track region</a>. Let <var>region</var> be that <a>text track region</a>.</p></li>
@@ -5218,27 +5190,27 @@ interface <dfn>VTTRegion</dfn> {
 
     <li><p>Let <var>region</var>'s <a>text track region scroll</a> be the empty string.</p></li>
 
-    <li><p>Return the <code>VTTRegion</code> object representing region.</p></li>
+    <li><p>Return the <a><code>VTTRegion</code></a> object representing region.</p></li>
   </ol>
 
-  <p>The <dfn title="dom-VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return the <a>text track region width</a> of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, in percent of video width. On setting, the <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a>text track region lines</a> of the <a>text track region</a> that the <code>VTTRegion</code> object represents, as number of lines. On setting, the <a>text track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
+  <p>The <dfn title="VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a>text track region lines</a> of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, as number of lines. On setting, the <a>text track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
 
-  <p>The <dfn title="dom-VTTRegion-regionAnchorX"><code>regionAnchorX</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> X offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region width. On setting, the <a>text track region anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="VTTRegion-regionAnchorX"><code>regionAnchorX</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> X offset of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, in percent of region width. On setting, the <a>text track region anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-VTTRegion-regionAnchorY"><code>regionAnchorY</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> Y offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of region height. On setting, the <a>text track region anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="VTTRegion-regionAnchorY"><code>regionAnchorY</code></dfn> attribute, on getting, must return the <a>text track region anchor</a> Y offset of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, in percent of region height. On setting, the <a>text track region anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-VTTRegion-viewportAnchorX"><code>viewportAnchorX</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> X offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video width. On setting, the <a>text track region viewport anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="VTTRegion-viewportAnchorX"><code>viewportAnchorX</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> X offset of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, in percent of video width. On setting, the <a>text track region viewport anchor</a> X distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-VTTRegion-viewportAnchorY"><code>viewportAnchorY</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> Y offset of the <a>text track region</a> that the <code>VTTRegion</code> object represents, in percent of video height. On setting, the <a>text track region viewport anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
+  <p>The <dfn title="VTTRegion-viewportAnchorY"><code>viewportAnchorY</code></dfn> attribute, on getting, must return the <a>text track region viewport anchor</a> Y offset of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents, in percent of video height. On setting, the <a>text track region viewport anchor</a> Y distance must be set to the new value, interpreted as a percentage.</p>
 
-  <p>The <dfn title="dom-VTTRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from the second cell of the row in the table below whose first cell is the <a>text track region scroll</a> setting of the <a>text track region</a> that the <code>VTTRegion</code> object represents:</p>
+  <p>The <dfn title="VTTRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from the second cell of the row in the table below whose first cell is the <a>text track region scroll</a> setting of the <a>text track region</a> that the <a><code>VTTRegion</code></a> object represents:</p>
   <table>
    <thead>
     <tr>
-     <th><a>Text track region scroll</a> setting</th>
-     <th><code id="dom-VTTRegion-scroll">scroll</code> value</th>
+     <th><a>Text track region scroll</a></th>
+     <th><a title="VTTRegion-scroll"><code>scroll</code></a> value</th>
     </tr>
    </thead>
    <tbody>
