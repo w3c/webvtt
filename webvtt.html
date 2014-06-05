@@ -3810,10 +3810,7 @@ The Final Minute</pre>
    title="text track showing">showing</a>.</p></li>
 
    <li><p>Let <var>cues</var> be an empty list of <a
-   title="text track cue">text track cues</a> and <var>regions</var>
-   be an empty list of <a title="text track region">text track regions</a>. For each track <var>track</var>
-   in <var>tracks</var> append to <var>regions</var> all the <a title="text track region">regions</a> from
-   <var>track</var>'s <a>text track list of regions</a>.</p></li>
+   title="text track cue">text track cues</a>.</p></li>
 
    <li><p>For each track <var>track</var> in
    <var>tracks</var>, append to <var>cues</var> all the
@@ -3821,6 +3818,15 @@ The Final Minute</pre>
    <var>track</var>'s <a title="text track list of cues">list
    of cues</a> that have their <a>text track cue active
    flag</a> set.</p></li>
+
+   <li><p>Let <var>regions</var> be an empty list of <a
+   title="text track region">text track regions</a>.</p></li>
+
+   <li><p>For each track <var>track</var> in
+   <var>tracks</var>, append to <var>regions</var> all the
+   <a title="text track region">regions</a> from
+   <var>track</var>'s <a title="text track list of regions">list
+   of regions</a>.</p></li>
 
    <li><p>If <var>reset</var> is false, then, for each <a>text track region</a> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
 
