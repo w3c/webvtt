@@ -7,33 +7,17 @@
     <script class='remove'>
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-          specStatus:           "CG-DRAFT",
+          specStatus: "CG-DRAFT",
 
           // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "webvtt",
-
-          // if your specification has a subtitle that goes below the main
-          // formal title, define it here
-          // subtitle   :  "",
-
-          // if you wish the publication date to be other than today, set this
-          // publishDate:  "2009-08-06",
+          shortName: "webvtt",
 
           // if the specification's copyright date is a range of years, specify
           // the start date here:
           copyrightStart: "2011",
 
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          //previousPublishDate:  "2013-03-11",
-          //previousMaturity:  "WD",
-          //prevED: "http://dev.w3.org/html5/webvtt/",
-
           // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "http://dev.w3.org/html5/webvtt/",
-
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
+          edDraftURI: "http://dev.w3.org/html5/webvtt/",
 
           // editors, add as many as you like
           // only "name" is required
@@ -46,34 +30,14 @@
                 company: "Google", companyURL: "http://google.com/", note: "previous editor" },
           ],
 
-          // authors, add as many as you like.
-          // This is optional, uncomment if you have authors as well as editors.
-          // only "name" is required. Same format as editors.
-
-          //authors:  [
-          //    { name: "Your Name", url: "http://example.org/",
-          //      company: "Your Company", companyURL: "http://example.com/" },
-          //],
-
           // name of the WG
-          wg:           "Text Tracks Community Group",
+          wg: "Text Tracks Community Group",
 
           // URI of the public WG page
-          wgURI:        "http://www.w3.org/community/texttracks/",
+          wgURI: "http://www.w3.org/community/texttracks/",
 
           // name (without the @w3c.org) of the public mailing to which comments are due
           wgPublicList: "public-texttracks",
-
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "",
-
-          // formatting
-          noIDLIn: "true",
-          noIDLSorting: "true",
 
           doRDFa: false,
       };
@@ -493,9 +457,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ul class="brief">
    <li><a href="http://dom.spec.whatwg.org/#document"><dfn><code>Document</code></dfn></a> interface</li>
    <li><a href="http://dom.spec.whatwg.org/#interface-documentfragment"><dfn><code>DocumentFragment</code></dfn></a> interface</li>
-   <li><a href="http://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a> attribute</li>
    <li><a href="http://dom.spec.whatwg.org/#processinginstruction"><dfn><code>ProcessingInstruction</code></dfn></a> interface</li>
    <li><a href="http://dom.spec.whatwg.org/#text"><dfn><code>Text</code></dfn></a> interface</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-characterdata-data"><dfn><code>data</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-element-localname"><dfn><code>localName</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-element-namespaceuri"><dfn><code>namespaceURI</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a> attribute</li>
+   <li><a href="http://dom.spec.whatwg.org/#dom-processinginstruction-target"><dfn><code>target</code></dfn></a> attribute</li>
    <li><a href="http://dom.spec.whatwg.org/#indexsizeerror"><dfn><code>IndexSizeError</code></dfn></a></li>
   </ul>
 
@@ -504,6 +472,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ul class="brief">
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#html-elements"><dfn>HTML elements</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#htmlelement"><dfn><code>HTMLElement</code></dfn></a> interface</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-class"><dfn><code>class</code></dfn></a> attribute</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-lang"><dfn><code>lang</code></dfn></a> attribute</li>
+   <li><a href="http://www.w3.org/html/wg/drafts/html/master/#attr-title"><dfn><code>title</code></dfn></a> attribute</li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#script's-document"><dfn>Script's document</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#entry-script"><dfn>Entry script</dfn></a></li>
    <li><a href="http://www.w3.org/html/wg/drafts/html/master/#mime-type"><dfn>MIME type</dfn></a></li>
@@ -842,7 +813,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   each consist of any sequence of zero or more characters other than
   U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
   except that the entire resulting string must not contain the substring
-  "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
   <p>A <dfn>WebVTT cue</dfn> consists of the following components, in
@@ -863,7 +834,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   data associated with the cue.</p>
 
   <p>A <dfn>WebVTT cue identifier</dfn> is any sequence of one or more
-  characters not containing the substring "<code>--&gt;</code>"
+  characters not containing the substring "<code>--></code>"
   (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
   SIGN), nor containing any U+000A LINE FEED (LF) characters or U+000D
   CARRIAGE RETURN (CR) characters.</p>
@@ -926,7 +897,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <ol>
 
    <li>
-    Optionally (required if <var>hour</var> is non-zero):
+    Optionally (required if <var>hours</var> is non-zero):
 
     <ol>
 
@@ -1000,7 +971,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   each consist of any sequence of zero or more characters other than
   U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters
   except that the entire resulting string must not contain the substring
-  "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
+  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
   U+003E GREATER-THAN SIGN).</p>
 
   <p>A <dfn>WebVTT percentage</dfn> consists of the following components:</p>
@@ -1040,7 +1011,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
      U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a
      <a>WebVTT line terminator</a>, except that the entire resulting string must not contain
-     the substring "<code>--&gt;</code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+     the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
     </ol>
    </li>
    <li>A <a>WebVTT line terminator</a>.</li>
@@ -1789,7 +1760,7 @@ The Final Minute</pre>
    <li><p>If <var>position</var> is past the end of
    <var>input</var>, then abort these steps. The file was
    successfully processed, but it contains no useful data and so no
-   <a title="text track cue">text track cues</a> where added to
+   <a title="text track cue">text track cues</a> were added to
    <var>output</var>.</p></li>
 
    <li><p>The character indicated by <var>position</var> is a
@@ -3413,52 +3384,52 @@ The Final Minute</pre>
     </tr>
     <tr>
      <td><a>WebVTT Class Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Italic Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>i</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>i</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Bold Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>b</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>b</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Underline Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>u</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>u</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Ruby Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>ruby</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>ruby</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Ruby Text Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>rt</code>".</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>rt</code>".</td>
     </tr>
     <tr>
      <td><a>WebVTT Voice Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-title">title</code> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>", and a <a><code>title</code></a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
     </tr>
     <tr>
      <td><a>WebVTT Language Object</a></td>
-     <td><a><code>HTMLElement</code></a> element node with <code title="dom-Node-localName">localName</code> "<code>span</code>", and a <code title="attr-lang">lang</code> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.</td>
+     <td><a><code>HTMLElement</code></a> element node with <a><code>localName</code></a> "<code>span</code>", and a <a><code>lang</code></a> attribute set to the <a>WebVTT Language Object</a>'s <a title="WebVTT Node Object's applicable language">applicable language</a>.</td>
     </tr>
     <tr>
      <td><a>WebVTT Text Object</a></td>
-     <td><a><code>Text</code></a> node whose character data is the value of the <a>WebVTT Text Object</a>.</td>
+     <td><a><code>Text</code></a> node whose <a><code>data</code></a> is the value of the <a>WebVTT Text Object</a>.</td>
     </tr>
     <tr>
      <td><a>WebVTT Timestamp Object</a></td>
-     <td><a><code>ProcessingInstruction</code></a> node whose <code title="dom-ProcessingInstruction-target">target</code> is "<code>timestamp</code>" and whose <code title="dom-ProcessingInstruction-data">data</code> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading zeros otherwise.</td>
+     <td><a><code>ProcessingInstruction</code></a> node whose <a><code>target</code></a> is "<code>timestamp</code>" and whose <a><code>data</code></a> is a <a>WebVTT timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading zeros otherwise.</td>
     </tr>
    </tbody>
   </table>
 
   <p><a><code>HTMLElement</code></a> nodes created as part of the mapping described above must have their
-  <code title="dom-Node-namespaceURI">namespaceURI</code> set to the <a>HTML namespace</a>,
+  <a><code>namespaceURI</code></a> set to the <a>HTML namespace</a>,
   and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a title="WebVTT
-  Node Object's applicable classes">applicable classes</a>, must have a <code
-  title="attr-class">class</code> attribute set to the string obtained by concatenating all those
+  Node Object's applicable classes">applicable classes</a>, must have a
+  <a><code>class</code></a> attribute set to the string obtained by concatenating all those
   classes, each separated from the next by a single U+0020 SPACE character.</p>
 
   <p>The <a><code>ownerDocument</code></a>
