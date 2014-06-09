@@ -548,6 +548,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <dd>
      <p>The cue box of a <a>text track cue</a> is a box within which the text of all lines of the
      cue is to be rendered.</p>
+
      <p class="note">The position of the <a title="text track cue box">cue box</a> within the video frame's
      dimensions depends on the value of the <a>text track cue text position</a> and the <a>text track cue
      line position</a> with the <a>text track cue text alignment</a> and <a>text track cue line
@@ -713,22 +714,34 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <p>The text position defines positioning of the <a title="text track cue box">cue box</a> in the
      direction defined by the <a title="text track cue writing direction">writing direction</a>.</p>
 
-     <p>The text position is a number giving the position of the <a title="text track cue box">cue box</a>
-     as a percentage of the video dimensions, or if the cue is part of a region, as a percentage of the
-     region dimensions.</p>
+     <p>The text position is either a number giving the position of the <a title="text track cue box">cue
+     box</a> as a percentage value or the special value <dfn title="text track cue automatic text
+     position">auto</dfn>, which means the position is to depend on the <a title="text track cue text
+     alignment">text alignment</a> of the cue.</p>
+
+     <p>If the cue is not within a region, the percentage value is to be interpreted as a percentage of the
+     video dimensions, otherwise as a percentage of the region dimensions.</p>
 
      <p>A <a>text track cue</a> has a <dfn>default text track cue text position</dfn> which is defined
      in terms of the value of the <a>text track cue text alignment</a>:</p>
 
      <ol>
 
-       <li>For <a title="text track cue left alignment">left aligned</a> or
-       <a title="text track cue start alignment">start aligned</a> cues: 0%.</li>
+       <li><p>If the <a>text track cue text position</a> is numeric, then return the value of
+       the <a>text track cue text position</a> and abort these steps. (Otherwise, the <a>text track cue text
+       position</a> is the special value <a title="text track cue automatic text
+       position">auto</a>.)</p></li>
 
-       <li>For <a title="text track cue middle alignment">middle aligned</a> cues: 50%.</li>
+       <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue start
+       alignment">start</a> or <a title="text track cue left alignment">left</a>, return 0 and abort
+       these steps.</p></li>
 
-       <li>For <a title="text track cue right alignment">right aligned</a> or
-       <a title="text track cue end alignment">end aligned</a> cues: 100%.</li>
+       <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue end
+       alignment">end</a> or <a title="text track cue right alignment">right</a>, return 100 and abort
+       these steps.</p></li>
+
+       <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue middle
+       alignment">middle</a>, return 50 and abort these steps.</p></li>
 
      </ol>
 
@@ -2071,7 +2084,8 @@ The Final Minute</pre>
      <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be
      <a title="text track cue line start alignment">start alignment</a>.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be 50.</p></li>
+     <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be
+     <a title="text track cue automatic text position">auto</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue text position alignment</a> be
      <a title="text track cue text position alignment">middle alignment</a>.</p></li>
@@ -2559,9 +2573,10 @@ The Final Minute</pre>
           <li><p>Otherwise let <var>colpos</var> be the full <var>value</var> string
           and <var>colalign</var> be the empty string.</p></li>
 
-         <li><p>If <a>parse a percentage string</a> from <var>colpos</var> doesn't fail,
-         let <var>number</var> be the returned <var>percentage</var>, otherwise jump to
-         the step labeled <i>next setting</i>.</p></li>
+          <li><p>If <a>parse a percentage string</a> from <var>colpos</var> doesn't fail,
+          let <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step labeled
+          <i>next setting</i> (<a>text track cue text position</a>'s value remains the special value <a
+          title="text track cue automatic text position">auto</a>).</p></li>
 
          <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be
          <var>number</var> and let <var>positionSet</var> be true.</p></li>
@@ -5038,7 +5053,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute boolean <a title="VTTCue-snapToLines">snapToLines</a>;
            attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-line">line</a>;
            attribute <a>AlignSetting</a> <a title="VTTCue-lineAlign">lineAlign</a>;
-           attribute double <a title="VTTCue-position">position</a>;
+           attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-position">position</a>;
            attribute <a>AlignSetting</a> <a title="VTTCue-positionAlign">positionAlign</a>;
            attribute double <a title="VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="VTTCue-align">align</a>;
@@ -5107,7 +5122,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
    <dt><var>cue</var> . <a title="VTTCue-position">position</a> [ = <var>value</var> ]</dt>
    <dd>
-    <p>Returns the <a>text track cue text position</a>.</p>
+     <p>Returns the <a>text track cue text position</a>. In the case of the value being
+     <a title="text track cue automatic text position">auto</a>, the string "<code>auto</code>" is
+     returned.</p>
     <p>Can be set.</p>
    </dd>
 
@@ -5201,7 +5218,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be
    <a title="text track cue line start alignment">start alignment</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be 50.</p></li>
+   <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be
+   <a title="text track cue automatic text position">auto</a>.</p></li>
 
    <li><p>Let <var>cue</var>'s <a>text track cue text position alignment</a> be
    <a title="text track cue text position middle alignment">middle alignment</a>.</p></li>
@@ -5302,9 +5320,12 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
   <p>The <dfn title="VTTCue-position"><code>position</code></dfn> attribute, on getting,
   must return the <a>text track cue text position</a> of the <a>text track cue</a> that
-  the <a><code>VTTCue</code></a> object represents. On setting, if the new value is negative or
-  greater than 100, then an <a><code>IndexSizeError</code></a> exception must be thrown. Otherwise, the
-  <a>text track cue text position</a> must be set to the new value.</p>
+  the <a><code>VTTCue</code></a> object represents. The special value <a title="text track cue automatic
+  text position">auto</a> must be represented as the string "<code>auto</code>". On setting, if the
+  new value is negative or greater than 100, then an <a><code>IndexSizeError</code></a> exception
+  must be thrown. Otherwise, the <a>text track cue text position</a> must be set to the new value;
+  if the new value is the string "<code>auto</code>", then it must be interpreted as the special
+  value <a title="text track cue automatic text position">auto</a>.</p>
 
   <p>The <dfn title="VTTCue-positionAlign"><code>positionAlign</code></dfn> attribute, on getting, must
   return the string from the second cell of the row in the table below whose first cell is the
