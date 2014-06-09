@@ -4436,53 +4436,6 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
        <ol>
 
-        <li>
-
-         <p>Set up <var>x</var> and <var>y</var> as
-         follows:</p>
-
-         <dl class="switch">
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal writing direction">horizontal</a></dt>
-          <dd>
-           <p>Let <var>x</var> be a percentage given by the
-           <a>text track cue computed text position</a>, and let
-           <var>y</var> be a percentage given by the <a>text
-           track cue computed line position</a>.</p>
-          </dd>
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing left writing direction">vertical growing left</a></dt>
-          <dd>
-           <p>Let <var>x</var> be a percentage given by the
-           <a>text track cue computed line position</a> subtracted from
-           100, and let <var>y</var> be a percentage given
-           by the <a>text track cue computed text position</a>.</p>
-          </dd>
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical growing right writing direction">vertical growing right</a></dt>
-          <dd>
-           <p>Let <var>x</var> be a percentage given by the
-           <a>text track cue computed line position</a>, and let
-           <var>y</var> be a percentage given by the <a>text
-           track cue computed text position</a>.</p>
-          </dd>
-
-         </dl>
-
-        </li>
-
-        <li><p>Position the boxes in <var>boxes</var> such
-        that the point <var>x</var>% along the width of the
-        bounding box of the boxes in <var>boxes</var> is
-        <var>x</var>% of the way across the width of the
-        <var>video</var>'s rendering area, and the point
-        <var>y</var>% along the height of the bounding box
-        of the boxes in <var>boxes</var> is
-        <var>y</var>% of the way across the height of the
-        <var>video</var>'s rendering area, while maintaining the
-        relative positions of the boxes in <var>boxes</var>
-        to each other.</p></li>
-
         <li><p>If none of the boxes in <var>boxes</var>
         would overlap any of the boxes in <var>output</var>,
         and all the boxes in <var>output</var> are within
