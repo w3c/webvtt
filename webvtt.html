@@ -548,9 +548,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <dd>
      <p>The cue box of a <a>text track cue</a> is a box within which the text of all lines of the
      cue is to be rendered.</p>
-
-     <p class="note">The position of the <a title="text track cue box">cue box</a> within the video frame's dimensions depends
-     on the value of the <a>text track cue text position</a> and the <a>text track cue line position</a>.</p>
+     <p class="note">The position of the <a title="text track cue box">cue box</a> within the video frame's
+     dimensions depends on the value of the <a>text track cue text position</a> and the <a>text track cue
+     line position</a> with the <a>text track cue text alignment</a> and <a>text track cue line
+     alignment</a> describing what part of the <a title="text track cue box">cue box</a> is aligned to the
+     <a title="text track cue text position">text position</a> and <a title="text track cue line
+     position">line position</a> respectively.</p>
 
      <p class="note">Lines are wrapped within the <a title="text track cue box">cue box</a>'s
      <a title="text track cue size">size</a> if lines' lengths make this necessary.</p>
@@ -707,10 +710,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
    <dt><dfn title="text track cue text position">A text position</dfn></dt>
    <dd>
-     <p>A number giving the position of the <a title="text track cue box">cue box</a>. If the cue is not within
-     a region, the value is to be interpreted as a percentage of the video, as defined by the
-     <a title="text track cue writing direction">writing direction</a>, otherwise to be interpreted
-     as a percentage of the region width.</p>
+     <p>The text position defines positioning of the <a title="text track cue box">cue box</a> in the
+     direction defined by the <a title="text track cue writing direction">writing direction</a>.</p>
+
+     <p>The text position is a number giving the position of the <a title="text track cue box">cue box</a>
+     as a percentage of the video dimensions, or if the cue is part of a region, as a percentage of the
+     region dimensions.</p>
 
      <p>A <a>text track cue</a> has a <dfn>default text track cue text position</dfn> which is defined
      in terms of the value of the <a>text track cue text alignment</a>:</p>
@@ -747,8 +752,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <dd>
      <p>An alignment for the <a title="text track cue box">cue box</a> in the dimension of the
      <a title="text track cue writing direction">writing direction</a>, describing which part of the
-     <a title="text track cue box">cue box</a> is aligned to the <a title="text track cue text position">text position</a>,
-     one of:</p>
+     <a title="text track cue box">cue box</a> is aligned to the <a title="text track cue text
+     position">text position</a>, one of:</p>
 
       <dl>
 
@@ -758,7 +763,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        side (otherwise) is aligned at the <a title="text track cue text position">text position</a>.</dd>
 
        <dt><dfn title="text track cue text position middle alignment">Middle alignment</dfn></dt>
-       <dd>The <a title="text track cue box">cue box</a> is centered at the <a title="text track cue text position">text position</a>.</dd>
+       <dd>The <a title="text track cue box">cue box</a> is centered at the <a title="text track cue text
+       position">text position</a>.</dd>
 
        <dt><dfn title="text track cue text position end alignment">End alignment</dfn></dt>
        <dd>The <a title="text track cue box">cue box</a>'s right side (for
@@ -788,9 +794,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <p class="note">Since the <a>text track cue text position</a> always measures from the left
       of the video (for <a title="text track cue horizontal writing direction">horizontal</a> cues)
       or the top (otherwise), the <a>text track cue text position alignment</a>
-      <a title="text track cue text position start alignment">start value</a> varies between left and
-      top for horizontal and vertical cues, but not between left and right even for changing
-      <i>paragraph direction</i>.</p>
+      <a title="text track cue text position start alignment">start value</a> when converted to CSS
+      varies between left and top for horizontal and vertical cues, but not between left and right even for
+      a changing <i>paragraph direction</i>.</p>
 
    </dd>
 
