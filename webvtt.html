@@ -1710,7 +1710,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   the cue has a <a title="WebVTT vertical text cue setting">"vertical"</a>,
   <a title="WebVTT line position cue setting">"line"</a> or
   <a title="WebVTT size cue setting">"size"</a> cue setting. If a cue is
-  part of a region, its cue settings for <a title="WebVTT line position cue setting">"position"</a>
+  part of a region, its cue settings for <a title="WebVTT text position cue setting">"position"</a>
   and <a title="WebVTT alignment cue setting">"align"</a> are applied to the line boxes
   in the cue relative to the region box.</p>
 
@@ -3919,13 +3919,28 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
 
          <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise, let it be 'rtl'.</p></li>
 
-         <li><p>Let <var>offset</var> be the <a>text track cue text position</a> multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as a percentage of the region width).</p></li>
+         <li><p>Let <var>offset</var> be the <a>text track cue computed text position</a> multiplied by
+         <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as a
+         percentage of the region width).</p></li>
 
-         <li>
-           <p>If <var>direction</var> is 'ltr' and 'text-align' is 'start' or 'left', or if <var>direction</var> is 'rtl' and 'text-align' is 'end' or 'left', let <var>left</var> be <var>offset</var> and let <var>right</var> be 'auto'</p>
-           <p>If <var>direction</var> is 'ltr' and 'text-align' is 'end' or 'right', or if <var>direction</var> is 'rtl' and 'text-align' is 'start' or 'right', let <var>left</var> be 'auto' and <var>right</var> be <var>offset</var>.</p>
-           <p>If 'text-align' is 'middle', ignore the <var>offset</var>.</p>
+         <li><p>Adjust <var>offset</var> using the <a>text track cue computed text position alignment</a>
+         as follows:
+           <dd>
+             <dl class="switch">
+               <dt>If the <a>text track cue computed text position alignment</a> is
+               <a title="text track cue text position middle alignment">middle alignment</a>:</dt>
+               <dd><p>Subtract half of <var>region</var>'s <a>text track region width</a> from
+               <var>offset</var>.</p></dd>
+
+               <dt>If the <a>text track cue computed text position alignment</a> is
+               <a title="text track cue text position end alignment">end alignment</a>:</dt>
+               <dd><p>Subtract <var>region</var>'s <a>text track region width</a> from
+               <var>offset</var>.</p></dd>
+             </dl>
+           </dd>
          </li>
+
+         <li>Set 'left' to <var>offset</var>.</li>
 
          <li>
            <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region.</p>
