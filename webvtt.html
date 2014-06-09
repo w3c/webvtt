@@ -553,7 +553,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      on the value of the <a>text track cue text position</a> and the <a>text track cue line position</a>.</p>
 
      <p class="note">Lines are wrapped within the <a title="text track cue box">cue box</a>'s
-     <a title="text track cue size">size</a> if lines lengths make this necessary.</p>
+     <a title="text track cue size">size</a> if lines' lengths make this necessary.</p>
 
    </dd>
 
@@ -735,11 +735,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <p class="note">Even for <a title="text track cue horizontal writing direction">horizontal</a>
      cues with right-to-left <i>paragraph direction</i> text, the <a title="text track cue box">cue box</a>
      is positioned from the left edge of the video frame. This allows defining a rendering space template
-     which can be filled with either left-to-right or right-to-left <i>paragraph direction</i> text. If you
-     define such a <a title="text track cue box">cue box</a> template with
+     which can be filled with either left-to-right or right-to-left <i>paragraph direction</i> text. If
+     such a <a title="text track cue box">cue box</a> template is created with
      <a title="text track cue start alignment">start</a> or <a title="text track cue end alignment">end</a>
-     aligned text, make sure to control its <a title="text track cue size">size</a> unless you want
-     text to flip from one side of the video frame to the other.</p>
+     aligned text, it is best to also specify a <a title="text track cue size">size</a> since otherwise
+     the text may flip from one side of the video frame to the other.</p>
 
    </dd>
 
@@ -843,7 +843,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   direction</a>, <a title="text track cue snap-to-lines flag">snap-to-lines flag</a>, <a
   title="text track cue line position">line position</a>, <a title="text track cue text
   position">text position</a>, <a title="text track cue size">size</a>, <a title="text
-  track cue text alignment">alignment</a>, <a title="text track cue region">region</a>,
+  track cue text alignment">text alignment</a>, <a title="text track cue region">region</a>,
   or <a title="text track cue text">text</a> change value, then the user agent must empty
   the <a>text track cue display state</a>, and then immediately run the <a>text track</a>'s
   <a>rules for updating the display of WebVTT text tracks</a>.</p>
