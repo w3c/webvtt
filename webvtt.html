@@ -771,23 +771,34 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
         <a title="text track cue horizontal writing direction">horizontal</a> cues) or bottom
         side (otherwise) is aligned at the <a title="text track cue text position">text position</a>.</dd>
 
+        <dt><dfn title="text track cue text position automatic alignment">Auto alignment</dfn></dt>
+        <dd>The <a title="text track cue box">cue box</a>'s alignment depends on the value of the <a
+        title="text track cue text alignment">text alignment</a> of the cue.</dd>
+
       </dl>
 
-      <p>A <a>text track cue</a> has a <dfn>default text track cue text position alignment</dfn>
-      which is defined in terms of the value of the <a>text track cue text alignment</a>:</p>
+      <p>A <a>text track cue</a> has a <dfn>default text track cue text position alignment</dfn> whose
+      value is that returned by the following algorithm, which is defined in terms of other aspects of the
+      cue:</p>
 
       <ol>
 
-        <li>For <a title="text track cue left alignment">left</a> or
-        <a title="text track cue start alignment">start</a> aligned cues:
-        <a title="text track cue text position start alignment">start</a>.</li>
+        <li><p>If the <a>text track cue text position alignment</a> is set, then return the value of
+        the <a>text track cue text position alignment</a> and abort these steps. (Otherwise, the <a>text
+        track cue text position alignment</a> is the special value <a title="text track cue text position
+        automatic alignment">auto</a>.)</p></li>
 
-        <li>For <a title="text track cue middle alignment">middle</a> aligned cues:
-        <a title="text track cue text position middle alignment">middle</a>.</li>
+        <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue start
+        alignment">start</a> or <a title="text track cue left alignment">left</a>, return <a title="text
+        track cue text position start alignment">start</a> and abort these steps.</p></li>
 
-        <li>For <a title="text track cue right alignment">right</a> or
-        <a title="text track cue end alignment">end</a> aligned cues:
-        <a title="text track cue text position end alignment">end</a>.</li>
+        <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue end
+        alignment">end</a> or <a title="text track cue right alignment">right</a>, return <a title="text
+        track cue text position end alignment">end</a> and abort these steps.</p></li>
+
+        <li><p>If the <a>text track cue text alignment</a> is <a title="text track cue middle
+        alignment">middle</a>, return <a title="text track cue text position middle alignment">middle</a>
+        and abort these steps.</p></li>
 
       </ol>
 
@@ -2084,7 +2095,7 @@ The Final Minute</pre>
      <a title="text track cue automatic text position">auto</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue text position alignment</a> be
-     <a title="text track cue text position alignment">middle alignment</a>.</p></li>
+     <a title="text track cue text position automatic alignment">auto</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
@@ -4982,7 +4993,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
            attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-line">line</a>;
            attribute <a>AlignSetting</a> <a title="VTTCue-lineAlign">lineAlign</a>;
            attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-position">position</a>;
-           attribute <a>AlignSetting</a> <a title="VTTCue-positionAlign">positionAlign</a>;
+           attribute (<a>AlignSetting</a> or <a>AutoKeyword</a>) <a title="VTTCue-positionAlign">positionAlign</a>;
            attribute double <a title="VTTCue-size">size</a>;
            attribute <a>AlignSetting</a> <a title="VTTCue-align">align</a>;
            attribute DOMString <a title="VTTCue-text">text</a>;
@@ -5066,6 +5077,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
      <dd><p>The string "<code>middle</code>".</p></dd>
      <dt>If it is <a title="text track cue text position end alignment">end alignment</a></dt>
      <dd><p>The string "<code>end</code>".</p></dd>
+     <dt>If it is <a title="text track cue text position automatic alignment">automatic alignment</a></dt>
+     <dd><p>The string "<code>auto</code>".</p></dd>
     </dl>
     <p>Can be set.</p>
    </dd>
@@ -5150,7 +5163,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
    <a title="text track cue automatic text position">auto</a>.</p></li>
 
    <li><p>Let <var>cue</var>'s <a>text track cue text position alignment</a> be
-   <a title="text track cue text position middle alignment">middle alignment</a>.</p></li>
+   <a title="text track cue text position automatic alignment">auto</a>.</p></li>
 
    <li><p>Let <var>cue</var>'s <a>text track cue size</a> be 100.</p></li>
 
@@ -5279,6 +5292,10 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     <tr>
      <td><a title="text track cue text position end alignment">End alignment</a></td>
      <td>"<code>end</code>"</td>
+    </tr>
+    <tr>
+     <td><a title="text track cue text position automatic alignment">Automatic alignment</a></td>
+     <td>"<code>auto</code>"</td>
     </tr>
    </tbody>
   </table>
