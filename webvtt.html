@@ -3979,7 +3979,44 @@ Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
     direction">vertical growing right</a>; let
     <var>writing-mode</var> be 'vertical-lr'.</p></li>
 
-    <li><p>Let <var>size</var> be <a>text track cue size</a>.</p></li>
+    <li>
+
+     <p>Determine the value of <var>maximum size</var> for
+     <var>cue</var> as per the appropriate rules from the
+     following list:</p>
+
+     <dl class="switch">
+
+      <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue text position start alignment">start</a></dt>
+      <dd>
+       <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a> subtracted from 100.</p>
+      </dd>
+
+      <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue text position end alignment">end</a></dt>
+      <dd>
+       <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>.</p>
+      </dd>
+
+      <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue text position middle alignment">middle</a>,
+             and the <a>text track cue computed text position</a> is less than or equal to 50</dt>
+      <dd>
+       <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a> multiplied by two.</p>
+      </dd>
+
+      <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue text position middle alignment">middle</a>,
+             and the <a>text track cue computed text position</a> is greater than <!-- or equal to --> 50</dt>
+      <dd>
+       <p>Let <var>maximum size</var> be the result of subtracting <a>text track cue computed text position</a> from 100 and then multiplying the result by two.</p>
+      </dd>
+
+     </dl>
+
+    </li>
+
+    <li><p>If the <a>text track cue size</a> is less than
+    <var>maximum size</var>, then let <var>size</var> be
+    <a>text track cue size</a>. Otherwise, let
+    <var>size</var> be <var>maximum size</var>.</p></li>
 
     <li><p>If the <a>text track cue writing direction</a> is
     <a title="text track cue horizontal writing
