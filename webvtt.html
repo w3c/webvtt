@@ -1035,6 +1035,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   SIGN), nor containing any U+000A LINE FEED (LF) characters or U+000D
   CARRIAGE RETURN (CR) characters.</p>
 
+  <p>A <a>WebVTT cue identifier</a> must be unique amongst all
+  the <a title="WebVTT cue identifier">WebVTT cue identifiers</a> of all
+  <a title="WebVTT cue">WebVTT cues</a> of a <a>WebVTT file</a>.</p>
+
   <p class="note">A <a>WebVTT cue identifier</a> can be used to
   reference a specific cue, for example from script or CSS.</p>
 
@@ -1468,7 +1472,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of zero or more of the following components, in any order, separated from each other by one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be included more than once per <a>WebVTT region setting list</a> string.</p>
 
   <ul>
-   <li>A <a>WebVTT region identifier</a>.</li>
+   <li>A <a>WebVTT region identifier setting</a>.</li>
    <li>A <a>WebVTT region width setting</a>.</li>
    <li>A <a>WebVTT region lines setting</a>.</li>
    <li>A <a>WebVTT region anchor setting</a>.</li>
@@ -1482,7 +1486,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   region and the center of the video viewport. In this example, when the font size grows,
   the region grows uniformly in all directions from the center.</p>
 
-  <p>A <dfn>WebVTT region identifier</dfn> consists of the
+  <p>A <dfn>WebVTT region identifier setting</dfn> consists of the
   following components, in the order given:</p>
   <ol>
     <li><p>The string "<code>id</code>".</p></li>
@@ -1490,8 +1494,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <li><p>An arbitrary string of one or more characters other than U+0020 SPACE
     or U+0009 CHARACTER TABULATION character. The string must not contain the substring
     "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS,
-    U+003E GREATER-THAN SIGN).</p></li>
+    U+003E GREATER-THAN SIGN). The string is called the
+    <dfn>WebVTT region identifier</dfn>.</p></li>
   </ol>
+
+  <p>A <a>WebVTT region identifier</a> must be unique amongst all
+  the <a title="WebVTT region identifier">WebVTT region identifiers</a> of all
+  <a title="WebVTT region">WebVTT regions</a> of a <a>WebVTT file</a>.</p>
+
   <p class ="note">The <a>WebVTT region identifier</a> gives
   a name to the region so it can be referenced by the cues that belong to the region.</p>
 
