@@ -460,7 +460,46 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   <section>
   <h2>Conformance</h2>
 
-  <p class="todo">This section remains to be written. In the meantime, please see the HTML standard. <a href="#refsHTML5">[HTML5]</a></p>
+  <h3>Conformance for authors</h3>
+
+  <section>
+  <p>The <a href="#h2_syntax">Syntax</a> section of this specification defines
+  what consists a valid WebVTT document. Authors need to follow the
+  <a href="#h2_syntax">Syntax</a> specification and are encouraged to use a
+  validator.</p>
+
+  <p>The <a href="#h2_parser">Parser</a> section of this specification defines
+  in some detail the required processing for valid and also for invalid
+  documents. It is a little more tolerant to author errors than the syntax
+  allows, so as to reject less documents and provide for extensibility.
+  However, authors must not take advantage of it. Only documents that follow
+  the <a href="#h2_syntax">Syntax</a> specification are valid.</p>
+  </section>
+
+  <section>
+  <h3>Document Conformance</h3>
+
+  <p>All diagrams, examples, and notes in this specification are non-normative,
+  as are all sections explicitly marked non-normative. Everything else in this
+  specification is normative.</p>
+
+  <p>The key words "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", and
+  "OPTIONAL" in the normative parts of this document are to be interpreted as
+  described in RFC2119. The key word "OPTIONALLY" in the normative parts of
+  this document is to be interpreted with the same normative meaning as "MAY"
+  and "OPTIONAL". For readability, these words do not appear in all uppercase
+  letters in this specification. <a href="refsRFC2119">[RFC2119]</a></p>
+
+  <p>Requirements phrased in the imperative as part of algorithms (such as
+  "strip any leading space characters" or "return false and abort these steps")
+  are to be interpreted with the meaning of the key word ("must", "should",
+  "may", etc) used in introducing the algorithm.</p>
+
+  <p>Conformance requirements phrased as algorithms or specific steps may be
+  implemented in any manner, so long as the end result is equivalent. (In
+  particular, the algorithms defined in this specification are intended to be
+  easy to follow, and not intended to be performant.)</p>
+  </section>
 
   <section>
   <h3>Dependencies</h3>
@@ -5620,6 +5659,9 @@ interface <dfn>VTTRegion</dfn> {
 
   <dt id="refsHTML5">[HTML5]</dt>
   <dd><cite><a href="http://www.w3.org/html/wg/drafts/html/master/">HTML 5.1</a></cite>, R. Berjon, T. Leithead, E. Doyle Navara, E. O'Connor, S. Pfeiffer. W3C.</dd>
+
+  <dt id="refsRFC2119">[RFC2119]</dt>
+  <dd><cite><a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a></cite>, S. Bradner. IETF.</dd>
 
   <dt id="refsRFC3629">[RFC3629]</dt>
   <dd><cite><a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a></cite>, F. Yergeau. IETF.</dd>
