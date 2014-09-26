@@ -4850,16 +4850,16 @@ enum <dfn>PositionAlignSetting</dfn> { "start", "middle", "end", "auto" };
 enum <dfn>AlignSetting</dfn> { "start", "middle", "end", "left", "right" };
 [<a title="VTTCue-constructor">Constructor</a>(double startTime, double endTime, DOMString text)]
 interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
-           attribute <a>VTTRegion</a>? <a title="VTTCue-region">region</a>;
-           attribute <a>DirectionSetting</a> <a title="VTTCue-vertical">vertical</a>;
-           attribute boolean <a title="VTTCue-snapToLines">snapToLines</a>;
-           attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-line">line</a>;
-           attribute <a>LineAlignSetting</a> <a title="VTTCue-lineAlign">lineAlign</a>;
-           attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-position">position</a>;
-           attribute <a>PositionAlignSetting</a> <a title="VTTCue-positionAlign">positionAlign</a>;
-           attribute double <a title="VTTCue-size">size</a>;
-           attribute <a>AlignSetting</a> <a title="VTTCue-align">align</a>;
-           attribute DOMString <a title="VTTCue-text">text</a>;
+  attribute <a>VTTRegion</a>? <a title="VTTCue-region">region</a>;
+  attribute <a>DirectionSetting</a> <a title="VTTCue-vertical">vertical</a>;
+  attribute boolean <a title="VTTCue-snapToLines">snapToLines</a>;
+  attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-line">line</a>;
+  attribute <a>LineAlignSetting</a> <a title="VTTCue-lineAlign">lineAlign</a>;
+  attribute (double or <a>AutoKeyword</a>) <a title="VTTCue-position">position</a>;
+  attribute <a>PositionAlignSetting</a> <a title="VTTCue-positionAlign">positionAlign</a>;
+  attribute double <a title="VTTCue-size">size</a>;
+  attribute <a>AlignSetting</a> <a title="VTTCue-align">align</a>;
+  attribute DOMString <a title="VTTCue-text">text</a>;
   <a>DocumentFragment</a> <a title="VTTCue-getCueAsHTML">getCueAsHTML</a>();
 };</pre>
 
@@ -5243,13 +5243,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 enum <dfn>ScrollSetting</dfn> { "" /* none */, "up" };
 [<a title="VTTRegion-constructor">Constructor</a>]
 interface <dfn>VTTRegion</dfn> {
-           attribute double <a title="VTTRegion-width">width</a>;
-           attribute long <a title="VTTRegion-lines">lines</a>;
-           attribute double <a title="VTTRegion-regionAnchorX">regionAnchorX</a>;
-           attribute double <a title="VTTRegion-regionAnchorY">regionAnchorY</a>;
-           attribute double <a title="VTTRegion-viewportAnchorX">viewportAnchorX</a>;
-           attribute double <a title="VTTRegion-viewportAnchorY">viewportAnchorY</a>;
-           attribute <a>ScrollSetting</a> <a title="VTTRegion-scroll">scroll</a>;
+  attribute double <a title="VTTRegion-width">width</a>;
+  attribute long <a title="VTTRegion-lines">lines</a>;
+  attribute double <a title="VTTRegion-regionAnchorX">regionAnchorX</a>;
+  attribute double <a title="VTTRegion-regionAnchorY">regionAnchorY</a>;
+  attribute double <a title="VTTRegion-viewportAnchorX">viewportAnchorX</a>;
+  attribute double <a title="VTTRegion-viewportAnchorY">viewportAnchorY</a>;
+  attribute <a>ScrollSetting</a> <a title="VTTRegion-scroll">scroll</a>;
 };</pre>
 
     <dl class="domintro">
