@@ -34,7 +34,7 @@ if [ "$1" != "-f" ]; then
     read -p "Create TTWG WD? (y) " WD
     if [ "$WD" != "n" ]; then
         echo "\n# Creating WG WD document"
-        sed 's/cg_config.js/wg_config.js/g' webvtt.html > wd.html
+        sed 's/config-cg.js/config-wg.js/g' webvtt.html > wd.html
         phantomjs respec/tools/respec2html.js wd.html html5/webvtt/webvtt_1_0.html
         rm -f wd.html
     fi
