@@ -27,26 +27,10 @@ else
 fi
 echo
 
-echo "# Pick CG or WG document"
-WD="n"
-if [ "$1" != "-f" ]; then
-    WD="y"
-    read -p "Create TTWG WD? (y) " WD
-    if [ "$WD" != "n" ]; then
-        echo "\n# Creating WG WD document"
-        sed 's/cg_config.js/wg_config.js/g' webvtt.html > wd.html
-        phantomjs respec/tools/respec2html.js wd.html html5/webvtt/webvtt_1_0.html
-        rm -f wd.html
-    fi
-fi
+echo "# Generate static HTML"
+./build.sh -cg html5/webvtt/Overview.html
 
-if [ "$WD" != "y" ]; then
-    echo "\n# Generate static HTML"
-    phantomjs respec/tools/respec2html.js webvtt.html html5/webvtt/Overview.html
-fi
-
-
-echo "\n# Commit to CVS"
+echo "# Commit to CVS"
 if [ "$1" != "-f" ]; then
     read -p "Really commit? (y) " CONTINUE
     if [ "$CONTINUE" != "y" ]; then
