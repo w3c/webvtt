@@ -28,7 +28,7 @@ fi
 echo
 
 echo "# Generate static HTML"
-phantomjs respec/tools/respec2html.js webvtt.html html5/webvtt/Overview.html
+./build.sh -cg html5/webvtt/Overview.html
 
 echo "# Commit to CVS"
 if [ "$1" != "-f" ]; then
