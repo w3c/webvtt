@@ -3816,14 +3816,23 @@ The Final Minute</pre>
           multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e.
           interpret it as a percentage of the region width).</p></li>
 
-          <li><p>Adjust <var>offset</var> using the <a>text track cue computed text position
-          alignment</a> as follows:</p> <dd> <dl class="switch"> <dt>If the <a>text track cue
-          computed text position alignment</a> is <a title="text track cue text position middle
-          alignment">middle alignment</a></dt> <dd><p>Subtract half of <var>region</var>'s <a>text
-          track region width</a> from <var>offset</var>.</p></dd> <dt>If the <a>text track cue
-          computed text position alignment</a> is <a title="text track cue text position end
-          alignment">end alignment</a></dt> <dd><p>Subtract <var>region</var>'s <a>text track region
-          width</a> from <var>offset</var>.</p></dd> </dl> </dd> </li>
+          <li>
+           <p>Adjust <var>offset</var> using the <a>text track cue computed text position
+           alignment</a> as follows:</p>
+           <dd>
+            <dl class="switch">
+             <dt>If the <a>text track cue computed text position alignment</a> is <a title="text
+             track cue text position middle alignment">middle alignment</a></dt>
+             <dd><p>Subtract half of <var>region</var>'s <a>text track region width</a> from
+             <var>offset</var>.</p></dd>
+
+             <dt>If the <a>text track cue computed text position alignment</a> is <a title="text
+             track cue text position end alignment">end alignment</a></dt>
+             <dd><p>Subtract <var>region</var>'s <a>text track region width</a> from
+             <var>offset</var>.</p></dd>
+            </dl>
+           </dd>
+          </li>
 
           <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.) <a
           href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
