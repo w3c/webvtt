@@ -24,7 +24,7 @@ var respecConfig = {
     ],
 
     // name of the WG
-    wg: "Timed Text Community Group",
+    wg: "W3C Timed Text Working Group",
 
     // URI of the public WG page
     wgURI: "http://www.w3.org/AudioVideo/TT/",
