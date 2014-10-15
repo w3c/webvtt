@@ -31,6 +31,7 @@ var respecConfig = {
 
     // name (without the @w3c.org) of the public mailing to which comments are due
     wgPublicList: "public-tt",
+    subjectPrefix: "[webvtt]",
     wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/34314/status#disclosures",
     processVersion: 2014,
 
