@@ -33,7 +33,7 @@ var respecConfig = {
     wgPublicList: "public-texttracks",
 
     bugTracker: {
-        new: "http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;short_desc=%5BWebVTT%5D%20",
+        new: "http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT",
         open: "http://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
     },
 
