@@ -32,5 +32,14 @@ var respecConfig = {
     // name (without the @w3c.org) of the public mailing to which comments are due
     wgPublicList: "public-texttracks",
 
+    bugTracker: {
+        new: "http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;short_desc=%5BWebVTT%5D%20",
+        open: "http://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
+    },
+
+    testSuiteURI: "https://github.com/w3c/web-platform-tests/tree/master/webvtt",
+
+    otherLinks: [{key: "Version history", href:"https://github.com/w3c/webvtt/commits"}],
+
     doRDFa: false,
 };
