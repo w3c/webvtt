@@ -4060,6 +4060,77 @@ The Final Minute</pre>
 
       </li>
 
+      <li>
+
+       <p>If the <a>text track cue snap-to-lines flag</a> is set, then run the appropriate steps
+       from the following list:</p>
+
+       <dl class="switch">
+
+        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+        writing direction">horizontal</a></dt>
+        <dd>
+
+         <ol>
+
+          <li><p>Let <var>edge margin</var> be a user-agent-defined horizontal length, expressed as
+          a percentage of the width of the <var>video</var>'s rendering area, which will be used to
+          define a margin at the left and right edges of the video into which this cue will not be
+          placed. In situations with overscan, this margin should be sufficient to place the cue
+          within the title-safe area. In the absence of overscan, this value should be picked for
+          aesthetics (to avoid text being aligned precisely on the left or right edge of the video,
+          which can be ugly).</p></li>
+
+          <li><p>If <var>x-position</var> is less than <var>edge margin</var> and the sum of
+          <var>x-position</var> and <var>size</var> is more than <var>edge margin</var>, then
+          increase <var>x-position</var> by <var>edge margin</var> and decrease <var>size</var> by
+          the same amount.</p></li>
+
+          <li><p>Let <var>right margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+
+          <li><p>If <var>x-position</var> is less than <var>right margin edge</var>, and the sum of
+          <var>x-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
+          decrease <var>size</var> by <var>edge margin</var>.</p></li>
+
+         </ol>
+
+        </dd>
+
+        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+        growing left writing direction">vertical growing left</a></dt>
+        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+        growing right writing direction">vertical growing right</a></dt>
+        <dd>
+
+         <ol>
+
+          <li><p>Let <var>edge margin</var> be a user-agent-defined vertical length, expressed as a
+          percentage of the height of the <var>video</var>'s rendering area, which will be used to
+          define a margin at the top and bottom edges of the video into which this cue will not be
+          placed. In situations with overscan, this margin should be sufficient to place the cue
+          within the title-safe area. In the absence of overscan, this value should be picked for
+          aesthetics (to avoid text being aligned precisely on the top or bottom edge of the video,
+          which can be ugly).</p></li>
+
+          <li><p>If <var>y-position</var> is less than <var>edge margin</var> and the sum of
+          <var>y-position</var> and <var>size</var> is more than <var>edge margin</var>, then
+          increase <var>y-position</var> by <var>edge margin</var> and decrease <var>size</var> by
+          the same amount.</p></li>
+
+          <li><p>Let <var>bottom margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+
+          <li><p>If <var>y-position</var> is less than <var>bottom margin edge</var>, and the sum of
+          <var>y-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
+          decrease <var>size</var> by <var>edge margin</var>.</p></li>
+
+         </ol>
+
+        </dd>
+
+       </dl>
+
+      </li>
+
       <li><p>Let <var>left</var> be '<var>x-position</var>&#x2009;vw' and <var>top</var> be
       '<var>y-position</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
       properties for the rendering; 'vw' and 'vh' are CSS units.) <a
@@ -4161,16 +4232,39 @@ The Final Minute</pre>
 
           <li>
 
-           <p><strong>Horizontal</strong>: Let <var>max dimension</var> be the height of
-           <var>video</var>'s rendering area minus twice the 'padding-top' space defined in the next
-           section.</p>
+           <p><strong>Horizontal</strong>: Let <var>margin</var> be a user-agent-defined vertical
+           length which will be used to define a margin at the top and bottom edges of the video
+           into which cues will not be placed. In situations with overscan, this margin should be
+           sufficient to place all cues within the title-safe area. In the absence of overscan, this
+           value should be picked for aesthetics (to avoid text being aligned precisely on the
+           bottom edge of the video, which can be ugly).</p>
 
-           <p><strong>Vertical</strong>: Let <var>max dimension</var> be the width of
-           <var>video</var>'s rendering area minus twice the 'padding-left' space defined in the
-           next section.</p>
+           <p><strong>Vertical</strong>: Let <var>margin</var> be a user-agent-defined horizontal
+           length which will be used to define a margin at the left and right edges of the video
+           into which cues will not be placed. In situations with overscan, this margin should be
+           sufficient to place all cues within the title-safe area. In the absence of overscan, this
+           value should be picked for aesthetics (to avoid text being aligned precisely on the left
+           or right edges of the video, which can be ugly).</p>
 
-           <p>These dimensions must not be adjusted for overscan. (The padding of the next section
-           takes care of this.)</p>
+          </li>
+
+          <li>
+
+           <p><strong>Horizontal</strong>: Let <var>full dimension</var> be the height of
+           <var>video</var>'s rendering area.</p>
+
+           <p><strong>Vertical</strong>: Let <var>full dimension</var> be the width of
+           <var>video</var>'s rendering area.</p>
+
+           <p>These dimensions must not be adjusted for overscan. (The algorithm does that
+           separately.)</p>
+
+          </li>
+
+          <li>
+
+           <p>Let <var>max dimension</var> be
+           <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp; <var>margin</var>).</p>
 
           </li>
 
