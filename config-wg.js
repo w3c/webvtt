@@ -30,7 +30,7 @@ var respecConfig = {
     wgURI: "http://www.w3.org/AudioVideo/TT/",
 
     // name (without the @w3c.org) of the public mailing to which comments are due
-    wgPublicList: "public-texttracks",
+    wgPublicList: "public-tt",
     wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/34314/status#disclosures",
     processVersion: 2014,
 
