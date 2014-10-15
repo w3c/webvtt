@@ -24,7 +24,7 @@ var respecConfig = {
     ],
 
     // name of the WG
-    wg: "Text Tracks Community Group",
+    wg: "Web Media Text Tracks Community Group",
 
     // URI of the public WG page
     wgURI: "http://www.w3.org/community/texttracks/",
