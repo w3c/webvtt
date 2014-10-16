@@ -176,18 +176,22 @@
     .snapshot {
       position: fixed;
       bottom: 0;
-      outline: 2px solid white;
+      left: 0;
+      right: 0;
+      background: #fbe9e9;
+      border-top: .5em solid #e05252;
+      text-align: center;
       z-index: 2;
     }
-    .snapshot .note {
-      margin: 0;
+    .snapshot a {
+      color: inherit;
     }
   </style>
  </head>
  <body>
   <div class="snapshot" hidden>
-   <p class="note">This is a snapshot! For the latest updates, possibly including important bug
-   fixes, please look at the <a href="http://dev.w3.org/html5/webvtt/">editor's draft</a> instead.
+   <p>This is a snapshot! For the latest updates, possibly including important bug fixes, please
+   look at the <a href="http://dev.w3.org/html5/webvtt/">editor's draft</a> instead.
    <button>Dismiss</button></p>
   </div>
 
