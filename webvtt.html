@@ -35,6 +35,31 @@
       }
     }, false);
   </script>
+  <script class="snapshot">
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.respecConfig) {
+        // Building with ReSpec. Remove the note from the output of the CG-DRAFT.
+        if (respecConfig.specStatus == "CG-DRAFT") {
+          var elements = document.getElementsByClassName("snapshot");
+          for (var i = elements.length - 1; i >= 0; i--) {
+            elements[i].parentNode.removeChild(elements[i]);
+          }
+        }
+      } else {
+      // Static snapshot. Show the note if it hasn't already been dismissed.
+        var snapshot = document.body.getElementsByClassName("snapshot")[0];
+        var button = snapshot.getElementsByTagName("button")[0];
+        button.addEventListener("click", function() {
+          snapshot.setAttribute("hidden", "");
+          localStorage["webvtt-snapshot-note"] = "hidden";
+        }, false);
+        var hidden = localStorage["webvtt-snapshot-note"] == "hidden";
+        if (!hidden) {
+          snapshot.removeAttribute("hidden");
+        }
+      }
+    }, false);
+  </script>
   <style>
     body {
       line-height: 1.35;
@@ -147,8 +172,25 @@
       text-decoration: underline;
     }
   </style>
+  <style class="snapshot">
+    .snapshot {
+      position: fixed;
+      bottom: 0;
+      outline: 2px solid white;
+      z-index: 2;
+    }
+    .snapshot .note {
+      margin: 0;
+    }
+  </style>
  </head>
  <body>
+  <div class="snapshot" hidden>
+   <p class="note">This is a snapshot! For the latest updates, possibly including important bug
+   fixes, please look at the <a href="http://dev.w3.org/html5/webvtt/">editor's draft</a> instead.
+   <button>Dismiss</button></p>
+  </div>
+
   <section id="abstract">
    <p>This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for
    marking up external text track resources in connection with the HTML &lt;track> element.</p>
