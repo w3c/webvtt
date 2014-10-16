@@ -31,7 +31,7 @@ if [ ! -e html5 ]; then
 else
     echo "# Update CVS"
     cd html5/webvtt
-    cvs update
+    cvs update -C
     cd ../..
 fi
 echo
