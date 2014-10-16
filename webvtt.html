@@ -9,6 +9,15 @@
   <script src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
   <meta name="bug.product" content="TextTracks CG">
   <meta name="bug.component" content="WebVTT">
+  <script class="remove">
+   // Include the spec URL in bug reports.
+   var specUrl = respecConfig.edDraftURI;
+   if (respecConfig.shortName == "webvtt1") {
+     var specUrl = "http://www.w3.org/TR/webvtt1/";
+   }
+   respecConfig.bugTracker.new += "&amp;bug_file_loc=" + encodeURIComponent(specUrl);
+   document.write('<meta name="bug.bug_file_loc" content="' + specUrl + '">');
+  </script>
   <style>
     body {
       line-height: 1.35;
