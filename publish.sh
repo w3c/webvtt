@@ -3,6 +3,15 @@
 
 cd "$(dirname $0)"
 
+while [ -n "$1" ]; do
+    if [ "$1" = "-f" ]; then
+        FORCE=yes
+    elif [ "$1" = "-wg" ]; then
+        SNAPSHOT=yes
+    fi
+    shift
+done
+
 GITUSER="$(git config --get user.email)"
 if [ $GITUSER = philipj@opera.com ]; then
     CVSUSER=pjgenste
@@ -22,20 +31,25 @@ if [ ! -e html5 ]; then
 else
     echo "# Update CVS"
     cd html5/webvtt
-    cvs update
+    cvs update -C
     cd ../..
 fi
 echo
 
 echo "# Generate static HTML"
-./build.sh -cg html5/webvtt/Overview.html
+if [ -z "$SNAPSHOT" ]; then
+    ./build.sh -cg html5/webvtt/Overview.html
+else
+    ./build.sh -wg html5/webvtt/webvtt-staged-snapshot.html
+fi
+echo
 
 echo "# Commit to CVS"
-if [ "$1" != "-f" ]; then
+if [ -z "$FORCE" ]; then
     read -p "Really commit? (y) " CONTINUE
     if [ "$CONTINUE" != "y" ]; then
-	echo "Not really."
-	exit 1
+        echo "Not really."
+        exit 1
     fi
 fi
 COMMIT="$(git rev-parse HEAD)"
