@@ -15,6 +15,6 @@ fi
 
 TEMP="webvtt-tmp.html"
 
-sed "s/config-cg\.js/config$MODE.js/" webvtt.html > "$TEMP"
+sed "s/config-cg\.js/config$MODE.js/;s/\\\$Revision\\\$/$(git rev-parse HEAD)/" webvtt.html > "$TEMP"
 phantomjs --ssl-protocol=any respec/tools/respec2html.js "$TEMP" "$DEST"
 rm -f "$TEMP"
