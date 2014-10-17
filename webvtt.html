@@ -44,18 +44,18 @@
           for (var i = elements.length - 1; i >= 0; i--) {
             elements[i].parentNode.removeChild(elements[i]);
           }
-        }
-      } else {
-      // Static snapshot. Show the note if it hasn't already been dismissed.
-        var snapshot = document.body.getElementsByClassName("snapshot")[0];
-        var button = snapshot.getElementsByTagName("button")[0];
-        button.addEventListener("click", function() {
-          snapshot.setAttribute("hidden", "");
-          localStorage["webvtt-snapshot-note"] = "hidden";
-        }, false);
-        var hidden = localStorage["webvtt-snapshot-note"] == "hidden";
-        if (!hidden) {
-          snapshot.removeAttribute("hidden");
+        } else {
+        // Static snapshot. Show the note if it hasn't already been dismissed.
+          var snapshot = document.body.getElementsByClassName("snapshot")[0];
+          var button = snapshot.getElementsByTagName("button")[0];
+          button.addEventListener("click", function() {
+            snapshot.setAttribute("hidden", "");
+            localStorage["webvtt-snapshot-note"] = "hidden";
+          }, false);
+          var hidden = localStorage["webvtt-snapshot-note"] == "hidden";
+          if (!hidden) {
+            snapshot.removeAttribute("hidden");
+          }
         }
       }
     }, false);
