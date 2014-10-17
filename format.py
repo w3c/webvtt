@@ -9,6 +9,9 @@ pattern = re.compile(r'<(\w+).*?>|</(\w+)>|<!--(.*?)-->', re.DOTALL)
 INDENT = ' '
 COLUMNS = 100
 
+def hasendtag(name):
+    return name not in ['br', 'meta']
+
 def tokenize(source):
     offset = 0
 
@@ -35,7 +38,7 @@ def validate(path, source, tokens):
 
     for token, start, end, name in tokens:
         if token == 'open':
-            if name != 'meta':
+            if hasendtag(name):
                 stack.append(name)
         elif token == 'close':
             if len(stack) == 0 or stack[-1] != name:
@@ -106,7 +109,7 @@ def normalize(path, source, tokens):
     for token, start, end, name in tokens:
         didpreservespace = preservespace()
 
-        if token == 'open' and name != 'meta':
+        if token == 'open' and hasendtag(name):
             # treat children as single line if followed by non-whitespace
             merge = not source[end].isspace()
             stack.append((name, merge))
