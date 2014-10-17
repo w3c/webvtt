@@ -5,10 +5,36 @@
   <meta charset="utf-8">
   <script src="respec/builds/respec-w3c-common.js" async class="remove"></script>
   <script class="remove" src="config-cg.js"></script>
-  <!-- script to register bugs -->
-  <script src="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/assets/scripts/bug-assist.js"></script>
-  <meta name="bug.product" content="TextTracks CG">
-  <meta name="bug.component" content="WebVTT">
+  <script class="remove">
+   // Include the spec URL in bug reports.
+   var specUrl = respecConfig.edDraftURI;
+   if (respecConfig.shortName == "webvtt1") {
+     var specUrl = "http://www.w3.org/TR/webvtt1/";
+   }
+   respecConfig.bugTracker.new += "&amp;bug_file_loc=" + encodeURIComponent(specUrl);
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var bugUi = document.getElementById("bug-ui");
+      var bugLink = bugUi.getElementsByTagName("a")[0];
+      if (window.respecConfig) {
+        // Building with ReSpec. Forward the new bug URL from config.
+        bugLink.href = respecConfig.bugTracker.new;
+      } else {
+        // Static spec. Set up click handler and show UI.
+        bugLink.addEventListener("click", function(event) {
+          var bugUrl = bugLink.href;
+          var selectedText = getSelection().toString();
+          if (selectedText) {
+            bugUrl += "&amp;comment=" + encodeURIComponent('"' + selectedText + '"');
+          }
+          open(bugUrl);
+          event.preventDefault();
+        }, false);
+        bugUi.removeAttribute("hidden");
+      }
+    }, false);
+  </script>
   <style>
     body {
       line-height: 1.35;
@@ -96,21 +122,29 @@
       margin-bottom: 0.25em;
       clear: left;
     }
-    /* fix bug entry form styling */
-    #bug-assist-form {
-      padding: 4px;
-      border: 1px solid red;
-      background-color: rgba(255, 255, 255, 0.6);
+    #bug-ui {
       position: fixed;
       top: 1em;
       right: 1em;
-      width: 115px;
-      opacity: 0.8;
+      background: #fbe9e9;
+      border-left: .5em solid #e05252;
       text-align: right;
     }
-    /* move respec button out of the way of the bug button */
-    #respec-ui{
-        top: 100px !important;
+    #bug-ui p {
+      margin: 1em;
+    }
+    #bug-ui p a {
+      color: inherit;
+    }
+    #bug-ui button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      margin: 0;
+      padding: 0;
+      text-decoration: underline;
     }
   </style>
  </head>
@@ -5659,6 +5693,10 @@ interface <dfn>VTTRegion</dfn> {
    </p>
 
   </section>
+
+  <div id="bug-ui" hidden>
+   <p>See a problem?<br>Select text and <a target="_blank">file a bug</a>!</p>
+  </div>
 
  </body>
 </html>
