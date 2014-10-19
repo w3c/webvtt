@@ -20,7 +20,7 @@ var respecConfig = {
         { name: "Philip J&auml;genstedt", url: "mailto:philipj@opera.com",
           company: "Opera Software ASA", companyURL: "http://www.opera.com/" },
         { name: "Ian Hickson", url: "mailto:ian@hixie.ch",
-          company: "Google", companyURL: "http://google.com/", note: "previous editor" },
+          company: "Google", companyURL: "http://www.google.com/", note: "previous editor" },
     ],
 
     // name of the WG
@@ -33,8 +33,8 @@ var respecConfig = {
     wgPublicList: "public-texttracks",
 
     bugTracker: {
-        new: "http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT",
-        open: "http://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
+        new: "https://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT",
+        open: "https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
     },
 
     testSuiteURI: "https://github.com/w3c/web-platform-tests/tree/master/webvtt",

@@ -36,8 +36,8 @@ var respecConfig = {
     processVersion: 2014,
 
     bugTracker: {
-        new: "http://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT",
-        open: "http://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
+        new: "https://www.w3.org/Bugs/Public/enter_bug.cgi?product=TextTracks%20CG&amp;component=WebVTT",
+        open: "https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---",
     },
 
     testSuiteURI: "https://github.com/w3c/web-platform-tests/tree/master/webvtt",

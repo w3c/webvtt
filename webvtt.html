@@ -518,15 +518,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <section>
     <h3>Conformance for authors</h3>
 
-    <p>The <a href="#h2_syntax">Syntax</a> section of this specification defines what consists a
-    valid WebVTT document. Authors need to follow the <a href="#h2_syntax">Syntax</a> specification
-    and are encouraged to use a validator.</p>
+    <p>The <a href="#syntax">Syntax</a> section of this specification defines what consists a valid
+    WebVTT document. Authors need to follow the <a href="#syntax">Syntax</a> specification and are
+    encouraged to use a validator.</p>
 
-    <p>The <a href="#h2_parser">Parser</a> section of this specification defines in some detail the
+    <p>The <a href="#parsing">Parsing</a> section of this specification defines in some detail the
     required processing for valid and also for invalid documents. It is a little more tolerant to
     author errors than the syntax allows, so as to reject less documents and provide for
     extensibility. However, authors must not take advantage of it. Only documents that follow the <a
-    href="#h2_syntax">Syntax</a> specification are valid.</p>
+    href="#syntax">Syntax</a> specification are valid.</p>
    </section>
 
    <section>
@@ -560,38 +560,36 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     href="#refsENCODING">[ENCODING]</a></p>
 
     <ul class="brief">
-     <li><a href="http://encoding.spec.whatwg.org/#utf-8-decode"><dfn>UTF-8 decode</dfn></a></li>
+     <li><a href="https://encoding.spec.whatwg.org/#utf-8-decode"><dfn>UTF-8 decode</dfn></a></li>
     </ul>
 
     <p>The following terms are defined in the DOM specification: <a href="#refsDOM">[DOM]</a></p>
 
     <ul class="brief">
-     <li><a href="http://dom.spec.whatwg.org/#document"><dfn><code>Document</code></dfn></a>
+     <li><a href="https://dom.spec.whatwg.org/#document"><dfn><code>Document</code></dfn></a>
      interface</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#interface-documentfragment"><dfn><code>DocumentFragment</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#interface-documentfragment"><dfn><code>DocumentFragment</code></dfn></a>
      interface</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#processinginstruction"><dfn><code>ProcessingInstruction</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#processinginstruction"><dfn><code>ProcessingInstruction</code></dfn></a>
      interface</li>
-     <li><a href="http://dom.spec.whatwg.org/#text"><dfn><code>Text</code></dfn></a> interface</li>
+     <li><a href="https://dom.spec.whatwg.org/#text"><dfn><code>Text</code></dfn></a> interface</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#dom-characterdata-data"><dfn><code>data</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#dom-characterdata-data"><dfn><code>data</code></dfn></a>
      attribute</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#dom-element-localname"><dfn><code>localName</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#dom-element-localname"><dfn><code>localName</code></dfn></a>
      attribute</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#dom-element-namespaceuri"><dfn><code>namespaceURI</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#dom-element-namespaceuri"><dfn><code>namespaceURI</code></dfn></a>
      attribute</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#dom-node-ownerdocument"><dfn><code>ownerDocument</code></dfn></a>
      attribute</li>
      <li><a
-     href="http://dom.spec.whatwg.org/#dom-processinginstruction-target"><dfn><code>target</code></dfn></a>
+     href="https://dom.spec.whatwg.org/#dom-processinginstruction-target"><dfn><code>target</code></dfn></a>
      attribute</li>
-     <li><a
-     href="http://dom.spec.whatwg.org/#indexsizeerror"><dfn><code>IndexSizeError</code></dfn></a></li>
     </ul>
 
     <p>The following terms are defined in the HTML standard: <a href="#refsHTML5">[HTML5]</a></p>
@@ -611,10 +609,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li><a
      href="http://www.w3.org/html/wg/drafts/html/master/#attr-title"><dfn><code>title</code></dfn></a>
      attribute</li>
-     <li><a href="http://www.w3.org/html/wg/drafts/html/master/#script's-document"><dfn>Script's
+     <li><a
+     href="http://www.w3.org/html/wg/drafts/html/master/#responsible-document"><dfn>Responsible
      document</dfn></a></li>
-     <li><a href="http://www.w3.org/html/wg/drafts/html/master/#entry-script"><dfn>Entry
-     script</dfn></a></li>
+     <li><a href="http://www.w3.org/html/wg/drafts/html/master/#entry-settings-object"><dfn>Entry
+     settings object</dfn></a></li>
      <li><a href="http://www.w3.org/html/wg/drafts/html/master/#mime-type"><dfn>MIME
      type</dfn></a></li>
      <li><a
@@ -692,6 +691,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li><a
      href="http://www.w3.org/html/wg/drafts/html/master/#dom-texttrack-addcue"><dfn><code>addCue()</code></dfn></a>
      method</li>
+    </ul>
+
+    <p>The following terms are defined in the Web IDL specification: <a
+    href="#refsWEBIDL">[WEBIDL]</a></p>
+
+    <ul>
+     <li><a
+     href="http://heycam.github.io/webidl/#indexsizeerror"><dfn><code>IndexSizeError</code></dfn></a></li>
     </ul>
    </section>
   </section>
@@ -5365,10 +5372,10 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     object represents. On setting, the <a>text track cue text</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must convert
-    the <a>text track cue text</a> to a <a><code>DocumentFragment</code></a> for the <a>script's
-    document</a> of the <a>entry script</a> by applying the <a>WebVTT cue text DOM construction
-    rules</a> to the result of applying the <a>WebVTT cue text parsing rules</a> to the <a>text
-    track cue text</a>.</p>
+    the <a>text track cue text</a> to a <a><code>DocumentFragment</code></a> for the <a>responsible
+    document</a> specified by the <a>entry settings object</a> by applying the <a>WebVTT cue text
+    DOM construction rules</a> to the result of applying the <a>WebVTT cue text parsing rules</a> to
+    the <a>text track cue text</a>.</p>
 
    </section>
 
@@ -5657,23 +5664,23 @@ interface <dfn>VTTRegion</dfn> {
     1</a></cite>, B. Bos, T. &Ccedil;elik, I. Hickson, H. Lie. W3C.</dd>
 
     <dt id="refsCSSCOLOR">[CSSCOLOR]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css3-color/">CSS Color Module Level 3</a></cite>, T.
-    &Ccedil;elik, C. Lilley, L. Baron. W3C.</dd>
+    <dd><cite><a href="http://dev.w3.org/csswg/css-color/">CSS Color Module Level 4</a></cite>, T.
+    Atkins Jr., C. Lilley, L. Baron. W3C.</dd>
 
     <dt id="refsCSSRUBY">[CSSRUBY]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css3-ruby/">CSS3 Ruby Module</a></cite>, R. Ishida.
-    W3C.</dd>
+    <dd><cite><a href="http://dev.w3.org/csswg/css-ruby/">CSS Ruby Layout Module Level 1</a></cite>,
+    E. Etemad, K. Ishii. W3C.</dd>
 
     <dt id="refsCSSVALUES">[CSSVALUES]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css3-values/">CSS3 Values and Units</a></cite>, H.
-    Lie, T. Atkins, E. Etemad. W3C.</dd>
+    <dd><cite><a href="http://dev.w3.org/csswg/css-values/">CSS Values and Units Module Level
+    3</a></cite>, T. Atkins Jr., fantasai, H. Lie. W3C.</dd>
 
     <dt id="refsDOM">[DOM]</dt>
-    <dd><cite><a href="http://dom.spec.whatwg.org/">W3C DOM 4</a></cite>, A. van Kesteren, A.
-    Gregor, Ms2ger. WHATWG.</dd>
+    <dd><cite><a href="https://dom.spec.whatwg.org/">DOM</a></cite>, A. van Kesteren, A. Gregor,
+    Ms2ger. WHATWG.</dd>
 
     <dt id="refsENCODING">[ENCODING]</dt>
-    <dd><cite><a href="http://encoding.spec.whatwg.org/">Encoding</a></cite>, A. van Kesteren, J.
+    <dd><cite><a href="https://encoding.spec.whatwg.org/">Encoding</a></cite>, A. van Kesteren, J.
     Bell. WHATWG.</dd>
 
     <dt id="refsHTML">[HTML]</dt>
@@ -5698,6 +5705,10 @@ interface <dfn>VTTRegion</dfn> {
     <dt id="refsSELECTORS">[SELECTORS]</dt>
     <dd><cite><a href="http://www.w3.org/TR/selectors4/">Selectors</a></cite>, E. Etemad, T. Atkins
     Jr. W3C.</dd>
+
+    <dt id="refsWEBIDL">[WEBIDL]</dt>
+    <dd><cite><a href="http://heycam.github.io/webidl/">Web IDL</a></cite>, C. McCormack, B.
+    Zbarsky. W3C.</dd>
 
    </dl>
 
