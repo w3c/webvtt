@@ -7,12 +7,12 @@
   <script src="respec/builds/respec-w3c-common.js" async class="remove"></script>
   <script class="remove" src="config-cg.js"></script>
   <script class="remove">
-   // Include the spec URL in bug reports.
-   var specUrl = respecConfig.edDraftURI;
-   if (respecConfig.shortName == "webvtt1") {
-     specUrl = "http://www.w3.org/TR/webvtt1/";
-   }
-   respecConfig.bugTracker.new += "&amp;bug_file_loc=" + encodeURIComponent(specUrl);
+    // Include the spec URL in bug reports.
+    var specUrl = respecConfig.edDraftURI;
+    if (respecConfig.shortName == "webvtt1") {
+      specUrl = "http://www.w3.org/TR/webvtt1/";
+    }
+    respecConfig.bugTracker.new += "&amp;bug_file_loc=" + encodeURIComponent(specUrl);
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
