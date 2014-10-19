@@ -42,4 +42,76 @@ var respecConfig = {
     otherLinks: [{key: "Version history", href:"https://github.com/w3c/webvtt/commits"}],
 
     doRDFa: false,
+
+    localBiblio: {
+        "BIDI" : {
+            authors: ["Mark Davis", "Aharon Lanin", "Andrew Glass"],
+            href: "http://www.unicode.org/reports/tr9/",
+            publisher: "Unicode Consortium",
+            status: "Unicode Standard Annex #9",
+            title: "Unicode Bidirectional Algorithm",
+        },
+        "CSS": {
+            aliasOf: "CSS2",
+        },
+        "CSSCOLOR": {
+            authors: ["Tab Atkins Jr.", "Chris Lilley"],
+            href: "http://dev.w3.org/csswg/css-color/",
+            publisher: "W3C",
+            status: "ED",
+            title: "CSS Color Module Level 4",
+        },
+        "CSSRUBY": {
+            authors: ["Elika J. Etemad", "Koji Ishii"],
+            href: "http://dev.w3.org/csswg/css-ruby/",
+            publisher: "W3C",
+            status: "ED",
+            title: "CSS Ruby Layout Module Level 1",
+        },
+        "CSSVALUES": {
+            authors: ["Tab Atkins Jr.", "fantasai"],
+            href: "http://dev.w3.org/csswg/css-values/",
+            publisher: "W3C",
+            status: "ED",
+            title: "CSS Values and Units Module Level 3",
+        },
+        "DOM" : {
+            authors: ["Anne van Kesteren", "Aryeh Gregor", "Ms2ger"],
+            href: "https://dom.spec.whatwg.org/",
+            publisher: "WHATWG",
+            status: "Living Standard",
+            title: "DOM",
+        },
+        "ENCODING" : {
+            authors: ["Anne van Kesteren", "Joshua Bell"],
+            href: "https://encoding.spec.whatwg.org/",
+            publisher: "WHATWG",
+            status: "Living Standard",
+            title: "Encoding",
+        },
+        "HTML" : {
+            authors: ["Ian Hickson"],
+            href: "https://html.spec.whatwg.org/",
+            publisher: "WHATWG",
+            status: "Living Standard",
+            title: "HTML",
+        },
+        "MAUR" : {
+            aliasOf: "media-accessibility-reqs",
+        },
+        "SELECTORS": {
+            authors: ["Elika J. Etemad", "Tab Atkins Jr."],
+            href: "http://dev.w3.org/csswg/selectors/",
+            publisher: "W3C",
+            status: "ED",
+            title: "Selectors Level 4",
+        },
+        "WEBIDL" : {
+            authors: ["Cameron McCormack", "Boris Zbarsky"],
+            href: "http://heycam.github.io/webidl/",
+            publisher: "W3C",
+            status: "ED",
+            title: "Web IDL",
+        },
+    },
 };

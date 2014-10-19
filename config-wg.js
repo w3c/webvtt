@@ -45,4 +45,44 @@ var respecConfig = {
     otherLinks: [{key: "Version history", href:"https://github.com/w3c/webvtt/commits"}],
 
     doRDFa: false,
+
+    localBiblio: {
+        "BIDI" : {
+            authors: ["Mark Davis", "Aharon Lanin", "Andrew Glass"],
+            href: "http://www.unicode.org/reports/tr9/",
+            publisher: "Unicode Consortium",
+            status: "Unicode Standard Annex #9",
+            title: "Unicode Bidirectional Algorithm",
+        },
+        "CSS": {
+            aliasOf: "CSS2",
+        },
+        "CSSCOLOR": {
+            aliasOf: "css3-color",
+        },
+        "CSSRUBY": {
+            aliasOf: "css-ruby-1",
+        },
+        "CSSVALUES": {
+            aliasOf: "css3-values",
+        },
+        "DOM" : {
+            aliasOf: "dom",
+        },
+        "ENCODING" : {
+            aliasOf: "encoding",
+        },
+        "HTML" : {
+            aliasOf: "html5",
+        },
+        "MAUR" : {
+            aliasOf: "media-accessibility-reqs",
+        },
+        "SELECTORS": {
+            aliasOf: "selectors4",
+        },
+        "WEBIDL" : {
+            aliasOf: "WebIDL",
+        },
+    },
 };
