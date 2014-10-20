@@ -201,8 +201,8 @@
    marking up external text track resources in connection with the HTML &lt;track> element.</p>
 
    <p>WebVTT files provide captions or subtitles for video content, and also text video descriptions
-   <a href="#refsMAUR">[MAUR]</a>, chapters for content navigation, and more generally any form of
-   metadata that is time-aligned with audio or video content.</p>
+   [[MAUR]], chapters for content navigation, and more generally any form of metadata that is
+   time-aligned with audio or video content.</p>
   </section>
 
   <section id="sotd">
@@ -540,7 +540,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     normative parts of this document are to be interpreted as described in RFC2119. The key word
     "OPTIONALLY" in the normative parts of this document is to be interpreted with the same
     normative meaning as "MAY" and "OPTIONAL". For readability, these words do not appear in all
-    uppercase letters in this specification. <a href="#refsRFC2119">[RFC2119]</a></p>
+    uppercase letters in this specification. [[!RFC2119]]</p>
 
     <p>Requirements phrased in the imperative as part of algorithms (such as "strip any leading
     space characters" or "return false and abort these steps") are to be interpreted with the
@@ -556,14 +556,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     <p>This specification relies on several other underlying specifications.</p>
 
-    <p>The following term is defined in the Encoding standard: <a
-    href="#refsENCODING">[ENCODING]</a></p>
+    <p>The following term is defined in the Encoding standard: [[!ENCODING]]</p>
 
     <ul class="brief">
      <li><a href="https://encoding.spec.whatwg.org/#utf-8-decode"><dfn>UTF-8 decode</dfn></a></li>
     </ul>
 
-    <p>The following terms are defined in the DOM specification: <a href="#refsDOM">[DOM]</a></p>
+    <p>The following terms are defined in the DOM specification: [[!DOM]]</p>
 
     <ul class="brief">
      <li><a href="https://dom.spec.whatwg.org/#document"><dfn><code>Document</code></dfn></a>
@@ -592,7 +591,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      attribute</li>
     </ul>
 
-    <p>The following terms are defined in the HTML standard: <a href="#refsHTML">[HTML]</a></p>
+    <p>The following terms are defined in the HTML standard: [[!HTML]]</p>
 
     <ul class="brief">
      <li><a href="https://html.spec.whatwg.org/#html-elements"><dfn>HTML elements</dfn></a></li>
@@ -668,8 +667,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      method</li>
     </ul>
 
-    <p>The following terms are defined in the Web IDL specification: <a
-    href="#refsWEBIDL">[WEBIDL]</a></p>
+    <p>The following term is defined in the Web IDL specification: [[!WEBIDL]]</p>
 
     <ul>
      <li><a
@@ -687,7 +685,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <h3>Text track cues</h3>
 
     <p>WebVTT cues are HTML <a title="text track cue">text track cues</a> that additionally consist
-    of the following: <a href="#refsHTML">[HTML]</a></p>
+    of the following: [[!HTML]]</p>
 
     <dl>
 
@@ -971,7 +969,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <p>An alignment for all lines of text within the <a title="text track cue box">cue box</a>, in
       the dimension of the <a title="text track cue writing direction">writing direction</a> and the
-      <i>paragraph direction</i> <a href="#refsBIDI">[BIDI]</a>, one of:</p>
+      <i>paragraph direction</i> [[!BIDI]], one of:</p>
 
       <dl>
 
@@ -1107,8 +1105,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <h3>WebVTT file structure</h3>
 
     <p>A <dfn>WebVTT file</dfn> must consist of a <a>WebVTT file body</a> encoded as UTF-8 and
-    labeled with the <a>MIME type</a> <code>text/vtt</code>. <a
-    href="#refsRFC3629">[RFC3629]</a></p>
+    labeled with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
 
     <p>A <dfn>WebVTT file body</dfn> consists of the following components, in the following
     order:</p>
@@ -1472,7 +1469,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <ol>
       <li>A <a>WebVTT cue span start tag</a> "<code>lang</code>" that requires an annotation; the
       annotation represents the language of the following component, and must be a valid BCP 47
-      language tag. <a href="#refsBCP47">[BCP47]</a></li>
+      language tag. [[!BCP47]]</li>
       <li><a>WebVTT cue internal text</a>.</li>
       <li>A <a>WebVTT cue span end tag</a> "<code>lang</code>".</li>
      </ol>
@@ -2034,7 +2031,7 @@ The Final Minute</pre>
     <var>output</var>, must decode the byte stream using the <a title="UTF-8 decode">UTF-8
     decode</a> algorithm, and then must parse the resulting string according to the <a>WebVTT parser
     algorithm</a> below. This results in <a title="text track cue">text track cues</a> being added
-    to <var>output</var>. <a href="#refsRFC3629">[RFC3629]</a></p>
+    to <var>output</var>. [[!RFC3629]]</p>
 
     <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
     asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -2869,7 +2866,7 @@ The Final Minute</pre>
     ordered list of class names, known as their <dfn title="WebVTT Node Object's applicable
     classes">applicable classes</dfn>, and a language, known as their <dfn title="WebVTT Node
     Object's applicable language">applicable language</dfn>, which is to be interpreted as a BCP 47
-    language code. <a href="#refsBCP47">[BCP47]</a></p>
+    language code. [[!BCP47]]</p>
 
     <p>There are several concrete classes of <a title="WebVTT Internal Node Object">WebVTT Internal
     Node Objects</a>:</p>
@@ -3765,13 +3762,12 @@ The Final Minute</pre>
 
          <ul>
           <li><p>Let <var>regionWidth</var> be the <a>text track region width</a>. Let
-          <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).<a
-          href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+          <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).
+          [[!CSSVALUES]]</p></li>
 
-          <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) <a
-          href="#refsCSSVALUES">[CSSVALUES]</a> and <var>regionHeight</var> be the <a>text track
-          region lines</a>. Let <var>lines</var> be '<var>lineHeight</var> multiplied by
-          <var>regionHeight</var>.</p></li>
+          <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) [[!CSSVALUES]] and
+          <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be
+          '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
 
           <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region
           viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>text track
@@ -3865,7 +3861,7 @@ The Final Minute</pre>
            of the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order,
            depth-first traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text
            Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of
-           the first Unicode paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
+           the first Unicode paragraph of the cue. [[!BIDI]]</p>
            <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters,
            such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR.
            (This means each line of the cue is reordered as if it was a separate paragraph.)</p>
@@ -3895,8 +3891,8 @@ The Final Minute</pre>
            </dl>
           </li>
 
-          <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.) <a
-          href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+          <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.)
+          [[!CSSVALUES]]</p></li>
 
           <li>
            <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same
@@ -3945,7 +3941,7 @@ The Final Minute</pre>
        the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
        traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and
        their descendants, to determine the <i>paragraph embedding level</i> of the first Unicode
-       paragraph of the cue. <a href="#refsBIDI">[BIDI]</a></p>
+       paragraph of the cue. [[!BIDI]]</p>
 
        <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters,
        such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This
@@ -4017,8 +4013,8 @@ The Final Minute</pre>
       writing direction">horizontal</a>, then let <var>width</var> be '<var>size</var>&#x2009;vw'
       and <var>height</var> be 'auto'. Otherwise, let <var>width</var> be 'auto' and
       <var>height</var> be '<var>size</var>&#x2009;vh'. (These are CSS values used by the next
-      section to set CSS properties for the rendering; 'vw' and 'vh' are CSS units.) <a
-      href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+      section to set CSS properties for the rendering; 'vw' and 'vh' are CSS units.)
+      [[!CSSVALUES]]</p></li>
 
       <li>
 
@@ -4194,14 +4190,13 @@ The Final Minute</pre>
 
       <li><p>Let <var>left</var> be '<var>x-position</var>&#x2009;vw' and <var>top</var> be
       '<var>y-position</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
-      properties for the rendering; 'vw' and 'vh' are CSS units.) <a
-      href="#refsCSSVALUES">[CSSVALUES]</a></p></li>
+      properties for the rendering; 'vw' and 'vh' are CSS units.) [[!CSSVALUES]]</p></li>
 
       <li>
 
        <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following
        constraints, thus obtaining a set of CSS boxes positioned relative to an initial containing
-       block: <a href="#refsCSS">[CSS]</a></p>
+       block: [[!CSS]]</p>
 
        <ul>
 
@@ -4223,8 +4218,7 @@ The Final Minute</pre>
 
         <li>Runs of children of <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not
         <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous
-        boxes whose 'display' property has the value 'ruby-base'. <a
-        href="#refsCSSRUBY">[CSSRUBY]</a></li>
+        boxes whose 'display' property has the value 'ruby-base'. [[!CSSRUBY]]</li>
 
         <li>Properties on <a title="WebVTT Node Object">WebVTT Node Objects</a> have their values
         set as defined in the next section. (That section uses some of the variables whose values
@@ -4557,7 +4551,7 @@ The Final Minute</pre>
 
      <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents
      must set properties of <a title="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user
-     agent cascade layer as defined in this section. <a href="#refsCSS">[CSS]</a></p>
+     agent cascade layer as defined in this section. [[!CSS]]</p>
 
      <p>Initialize the (root) <a>list of WebVTT Node Objects</a> with the following CSS
      settings:</p>
@@ -4614,17 +4608,16 @@ The Final Minute</pre>
      </table>
 
      <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set
-     to '5vh sans-serif'. <a href="#refsCSSRUBY">[CSSRUBY]</a> <a
-     href="#refsCSSVALUES">[CSSVALUES]</a></p>
+     to '5vh sans-serif'. [[!CSSRUBY]] [[!CSSVALUES]]</p>
 
      <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-     'rgba(255,255,255,1)'. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+     'rgba(255,255,255,1)'. [[!CSSCOLOR]]</p>
 
      <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> must be set to
-     'rgba(0,0,0,0.8)'. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+     'rgba(0,0,0,0.8)'. [[!CSSCOLOR]]</p>
 
      <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-     'pre-line'. <a href="#refsCSS">[CSS]</a></p>
+     'pre-line'. [[!CSS]]</p>
 
      <p>The 'font-style' property on <a title="WebVTT Italic Object">WebVTT Italic Objects</a> must
      be set to 'italic'.</p>
@@ -4636,10 +4629,10 @@ The Final Minute</pre>
      Objects</a> must be set to 'underline'.</p>
 
      <p>The 'display' property on <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> must be set
-     to 'ruby'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
+     to 'ruby'. [[!CSSRUBY]]</p>
 
      <p>The 'display' property on <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a>
-     must be set to 'ruby-text'. <a href="#refsCSSRUBY">[CSSRUBY]</a></p>
+     must be set to 'ruby-text'. [[!CSSRUBY]]</p>
 
      <p>Every <a>WebVTT region object</a> is initialized with the following CSS settings:</p>
      <ul>
@@ -4896,7 +4889,7 @@ The Final Minute</pre>
 
       <p>The <a title="past-pseudo-class">':past'</a> and <a
       title="future-pseudo-class">':future'</a> pseudo-classes sometimes match <a title="WebVTT Node
-      Object">WebVTT Node Objects</a>. <a href="#refsSELECTORS">[SELECTORS]</a></p>
+      Object">WebVTT Node Objects</a>. [[!SELECTORS]]</p>
 
       <p>The <dfn title="past-pseudo-class">':past'</dfn> pseudo-class only matches <a title="WebVTT
       Node Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
@@ -5620,85 +5613,14 @@ interface <dfn>VTTRegion</dfn> {
   </section>
 
   <section>
-   <h2 class="no-num" id="references">References</h2>
-
-   <p>All references are normative unless marked "Non-normative".</p>
-
-   <dl>
-
-    <dt id="refsBCP47">[BCP47]</dt>
-    <dd><cite><a href="http://www.ietf.org/rfc/bcp/bcp47.txt">Tags for Identifying Languages;
-    Matching of Language Tags</a></cite>, A. Phillips, M. Davis. IETF.</dd>
-
-    <dt id="refsBIDI">[BIDI]</dt>
-    <dd><cite><a href="http://www.unicode.org/reports/tr9/">UAX #9: Unicode Bidirectional
-    Algorithm</a></cite>, M. Davis. Unicode Consortium.</dd>
-
-    <dt id="refsCSS">[CSS]</dt>
-    <dd><cite><a href="http://www.w3.org/TR/CSS2/">Cascading Style Sheets Level 2 Revision
-    1</a></cite>, B. Bos, T. &Ccedil;elik, I. Hickson, H. Lie. W3C.</dd>
-
-    <dt id="refsCSSCOLOR">[CSSCOLOR]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css-color/">CSS Color Module Level 4</a></cite>, T.
-    Atkins Jr., C. Lilley, L. Baron. W3C.</dd>
-
-    <dt id="refsCSSRUBY">[CSSRUBY]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css-ruby/">CSS Ruby Layout Module Level 1</a></cite>,
-    E. Etemad, K. Ishii. W3C.</dd>
-
-    <dt id="refsCSSVALUES">[CSSVALUES]</dt>
-    <dd><cite><a href="http://dev.w3.org/csswg/css-values/">CSS Values and Units Module Level
-    3</a></cite>, T. Atkins Jr., fantasai, H. Lie. W3C.</dd>
-
-    <dt id="refsDOM">[DOM]</dt>
-    <dd><cite><a href="https://dom.spec.whatwg.org/">DOM</a></cite>, A. van Kesteren, A. Gregor,
-    Ms2ger. WHATWG.</dd>
-
-    <dt id="refsENCODING">[ENCODING]</dt>
-    <dd><cite><a href="https://encoding.spec.whatwg.org/">Encoding</a></cite>, A. van Kesteren, J.
-    Bell. WHATWG.</dd>
-
-    <dt id="refsHTML">[HTML]</dt>
-    <dd><cite><a href="https://html.spec.whatwg.org/">HTML</a></cite>, I. Hickson. WHATWG.</dd>
-
-    <dt id="refsHTML5">[HTML5]</dt>
-    <dd><cite><a href="http://www.w3.org/html/wg/drafts/html/master/">HTML 5.1</a></cite>, R.
-    Berjon, T. Leithead, E. Doyle Navara, E. O'Connor, S. Pfeiffer. W3C.</dd>
-
-    <dt id="refsMAUR">[MAUR]</dt>
-    <dd>(Non-normative) <cite><a href="http://www.w3.org/TR/media-accessibility-reqs/">Media
-    Accessibility User Requirements</a></cite>, S. McCarron, M. Cooper, M. Sadecki (eds). W3C.</dd>
-
-    <dt id="refsRFC2119">[RFC2119]</dt>
-    <dd><cite><a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate
-    Requirement Levels</a></cite>, S. Bradner. IETF.</dd>
-
-    <dt id="refsRFC3629">[RFC3629]</dt>
-    <dd><cite><a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO
-    10646</a></cite>, F. Yergeau. IETF.</dd>
-
-    <dt id="refsSELECTORS">[SELECTORS]</dt>
-    <dd><cite><a href="http://www.w3.org/TR/selectors4/">Selectors</a></cite>, E. Etemad, T. Atkins
-    Jr. W3C.</dd>
-
-    <dt id="refsWEBIDL">[WEBIDL]</dt>
-    <dd><cite><a href="http://heycam.github.io/webidl/">Web IDL</a></cite>, C. McCormack, B.
-    Zbarsky. W3C.</dd>
-
-   </dl>
-
-  </section>
-
-  <section>
    <h2 class="no-num">Acknowledgements</h2>
 
    <p>Thanks to the SubRip community, including in particular Zuggy and ai4spam, for their work on
    the SubRip software program whose SRT file format was used as the basis for the WebVTT text track
    file format.</p>
 
-   <p>Thanks to the many contributors to the HTML standard at the WHATWG and W3C HTML Working Group,
-   where WebVTT was originally specified. <a href="#refsHTML">[HTML]</a>, <a
-   href="#refsHTML5">[HTML5]</a></p>
+   <p>Thanks to the many contributors to the HTML standard, where WebVTT was originally specified.
+   [[!HTML]]</p>
 
    <p>
     Thanks to the following active contributors to this spec:
