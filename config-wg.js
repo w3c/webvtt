@@ -47,13 +47,6 @@ var respecConfig = {
     doRDFa: false,
 
     localBiblio: {
-        "BIDI" : {
-            authors: ["Mark Davis", "Aharon Lanin", "Andrew Glass"],
-            href: "http://www.unicode.org/reports/tr9/",
-            publisher: "Unicode Consortium",
-            status: "Unicode Standard Annex #9",
-            title: "Unicode Bidirectional Algorithm",
-        },
         "CSS": {
             aliasOf: "CSS2",
         },
