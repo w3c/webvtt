@@ -1589,309 +1589,304 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section><!-- end cue payload types -->
 
    <section>
+    <h3>WebVTT region definition</h3>
+
+    <p>A <a>WebVTT cue settings list</a> may contain a reference to a <a title="text track
+    region">text track region</a>. To define a region, a <a>WebVTT region metadata header</a> is
+    specified.</p>
+
+    <p>A <dfn>WebVTT region metadata header</dfn> is a special kind of <a>WebVTT metadata header</a>
+    where both of the following apply:</p>
+
+    <ul>
+     <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
+     <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.</li>
+    </ul>
+
+    <p>A <dfn>WebVTT region</dfn> represents its <a title="WebVTT region setting list">WebVTT region
+    settings</a>.</p>
+
+    <p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists
+    of zero or more of the following components, in any order, separated from each other by one or
+    more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component
+    must not be included more than once per <a>WebVTT region setting list</a> string.</p>
+
+    <ul>
+     <li>A <a>WebVTT region identifier setting</a>.</li>
+     <li>A <a>WebVTT region width setting</a>.</li>
+     <li>A <a>WebVTT region lines setting</a>.</li>
+     <li>A <a>WebVTT region anchor setting</a>.</li>
+     <li>A <a>WebVTT region viewport anchor setting</a>.</li>
+     <li>A <a>WebVTT region scroll setting</a>.</li>
+    </ul>
+
+    <p class="note">The <a>WebVTT region setting list</a> gives configuration options regarding the
+    dimensions, positioning and anchoring of the region. For example, it allows a group of cues
+    within a region to be anchored in the center of the region and the center of the video viewport.
+    In this example, when the font size grows, the region grows uniformly in all directions from the
+    center.</p>
+
+    <p>A <dfn>WebVTT region identifier setting</dfn> consists of the following components, in the
+    order given:</p>
+    <ol>
+     <li><p>The string "<code>id</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009
+     CHARACTER TABULATION character. The string must not contain the substring "<code>--></code>"
+     (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string is called the
+     <dfn>WebVTT region identifier</dfn>.</p></li>
+    </ol>
+
+    <p>A <a>WebVTT region identifier</a> must be unique amongst all the <a title="WebVTT region
+    identifier">WebVTT region identifiers</a> of all <a title="WebVTT region">WebVTT regions</a> of
+    a <a>WebVTT file</a>.</p>
+
+    <p class ="note">The <a>WebVTT region identifier</a> gives a name to the region so it can be
+    referenced by the cues that belong to the region.</p>
+
+    <p>A <dfn>WebVTT region width setting</dfn> consists of the following components, in the order
+    given:</p>
+    <ol>
+     <li><p>The string "<code>width</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>A <a>WebVTT percentage</a>.</p></li>
+    </ol>
+    <p class ="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage
+    of the video width for the region into which cues are rendered and based on which alignment is
+    calculated.</p>
+
+    <p>A <dfn>WebVTT region lines setting</dfn> consists of the following components, in the order
+    given:</p>
+    <ol>
+     <li><p>The string "<code>lines</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>One or more <a>ASCII digits</a>.</p></li>
+    </ol>
+    <p class ="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of
+    lines for the region into which cues are rendered. As such, it defines the height of the roll-up
+    region if it is a scroll region.</p>
+
+    <p>A <dfn>WebVTT region anchor setting</dfn> consists of the following components, in the order
+    given:</p>
+    <ol>
+     <li><p>The string "<code>regionanchor</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>A <a>WebVTT percentage</a>.</p></li>
+     <li><p>A U+002C COMMA character (,).</p></li>
+     <li><p>A <a>WebVTT percentage</a>.</p></li>
+    </ol>
+    <p class ="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages
+    that specify the point within the region box that is fixed in location. The first percentage
+    measures the x-dimension and the second percentage y-dimension from the top left corner of the
+    region box. If no <a>WebVTT region anchor setting</a> is given, the anchor defaults to 0%, 100%
+    (i.e. the bottom left corner).</p>
+
+    <p>A <dfn>WebVTT region viewport anchor setting</dfn> consists of the following components, in
+    the order given:</p>
+    <ol>
+     <li><p>The string "<code>viewportanchor</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>A <a>WebVTT percentage</a>.</p></li>
+     <li><p>A U+002C COMMA character (,).</p></li>
+     <li><p>A <a>WebVTT percentage</a>.</p></li>
+    </ol>
+    <p class ="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two
+    percentages that specify the point within the video viewport that the region anchor point is
+    anchored to. The first percentage measures the x-dimension and the second percentage measures
+    the y-dimension from the top left corner of the video viewport box. If no viewport anchor is
+    given, it defaults to 0%, 100% (i.e. the bottom left corner).</p>
+
+    <p class ="note">For browsers, the region maps to an absolute positioned CSS box relative to the
+    video viewport, i.e. there is a relative positioned box that represents the video viewport
+    relative to which the regions are absolutely positioned. Overflow is hidden.</p>
+
+    <p>A <dfn>WebVTT region scroll setting</dfn> consists of the following components, in the order
+    given:</p>
+    <ol>
+     <li><p>The string "<code>scroll</code>".</p></li>
+     <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+     <li><p>The string "<code>up</code>".</p></li>
+    </ol>
+    <p class ="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into
+    the region are allowed to move out of their initial rendering place and roll up, i.e. move
+    towards the top of the video viewport. If the scroll setting is omitted, cues do not move from
+    their rendered position.</p>
+
+    <p class="note">Cues are added to a region one line at a time below existing cue lines. When an
+    existing rendered cue line is removed, and it was above another already rendered cue line, that
+    cue line moves into its space, thus scrolling in the given direction. If there is not enough
+    space for a new cue line to be added to a region, the top-most cue line is pushed off the
+    visible region (thus slowly becoming invisible as it moves into overflow:hidden). This
+    eventually makes space for the new cue line and allows it to be added.</p>
+
+    <p class="note">When there is no scroll direction, cue lines are added in the empty line closest
+    to the line in the bottom of the region. If no empty line is available, the oldest line is
+    replaced.</p>
+
+   </section><!-- end region definition -->
+
+   <section>
     <h3>WebVTT cue settings</h3>
 
-    <section>
-     <h4>WebVTT region definition</h4>
+    <p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
+    setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
 
-     <p>A <a>WebVTT cue settings list</a> may contain a reference to a <a title="text track
-     region">text track region</a>. To define a region, a <a>WebVTT region metadata header</a> is
-     specified.</p>
+    <ul class="brief">
+     <li>A <a>WebVTT vertical text cue setting</a>.</li>
+     <li>A <a>WebVTT line position cue setting</a>.</li>
+     <li>A <a>WebVTT text position cue setting</a>.</li>
+     <li>A <a>WebVTT size cue setting</a>.</li>
+     <li>A <a>WebVTT alignment cue setting</a>.</li>
+     <li>A <a>WebVTT region cue setting</a>.</li>
+    </ul>
 
-     <p>A <dfn>WebVTT region metadata header</dfn> is a special kind of <a>WebVTT metadata
-     header</a> where both of the following apply:</p>
+    <p class="note">A <a>WebVTT cue settings list</a> gives configuration options regarding the
+    position and alignment of the cue box and the cue text within. For example, it allows a cue box
+    to be aligned to the left or positioned at the top right with the cue text within middle
+    aligned.</p>
 
-     <ul>
-      <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
-      <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.</li>
-     </ul>
+    <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a> that consists of
+    the following components, in the order given:</p>
 
-     <p>A <dfn>WebVTT region</dfn> represents its <a title="WebVTT region setting list">WebVTT
-     region settings</a>.</p>
+    <ol>
+     <li>The string "<code>vertical</code>" as the <a>WebVTT cue setting name</a>.</li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code>rl</code>",
+     "<code>lr</code>".</li>
+    </ol>
 
-     <p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists
-     of zero or more of the following components, in any order, separated from each other by one or
-     more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component
-     must not be included more than once per <a>WebVTT region setting list</a> string.</p>
+    <p class="note">A <a>WebVTT vertical text cue setting</a> configures the cue to use vertical
+    text layout rather than horizontal text layout. Vertical text layout is sometimes used in
+    Japanese, for example. The default is horizontal layout.</p>
 
-     <ul>
-      <li>A <a>WebVTT region identifier setting</a>.</li>
-      <li>A <a>WebVTT region width setting</a>.</li>
-      <li>A <a>WebVTT region lines setting</a>.</li>
-      <li>A <a>WebVTT region anchor setting</a>.</li>
-      <li>A <a>WebVTT region viewport anchor setting</a>.</li>
-      <li>A <a>WebVTT region scroll setting</a>.</li>
-     </ul>
+    <p>A <dfn>WebVTT line position cue setting</dfn> consists of the following components, in the
+    order given:</p>
 
-     <p class="note">The <a>WebVTT region setting list</a> gives configuration options regarding the
-     dimensions, positioning and anchoring of the region. For example, it allows a group of cues
-     within a region to be anchored in the center of the region and the center of the video
-     viewport. In this example, when the font size grows, the region grows uniformly in all
-     directions from the center.</p>
+    <ol>
+     <li><p>The string "<code>line</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li>
+      As the <a>WebVTT cue setting value</a>:
+      <ol>
+       <li>
+        a position value, either:
+        <dl>
+         <dt>To represent a specific position relative to the video frame</dt>
+         <dd>
+          <p>A <a>WebVTT percentage</a>.</p>
+         </dd>
+         <dt>Or to represent a line number</dt>
+         <dd>
+          <ol>
+           <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
+           <li>One or more <a>ASCII digits</a>.</li>
+          </ol>
+         </dd>
+        </dl>
+       </li>
+       <li>
+        An optional alignment value consisting of the following components:
+        <ol>
+         <li>A U+002C COMMA character (,).</li>
+         <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
+         "<code>end</code>"</li>
+        </ol>
+       </li>
+      </ol>
+     </li>
+    </ol>
 
-     <p>A <dfn>WebVTT region identifier setting</dfn> consists of the following components, in the
-     order given:</p>
-     <ol>
-      <li><p>The string "<code>id</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009
-      CHARACTER TABULATION character. The string must not contain the substring "<code>--></code>"
-      (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string is called the
-      <dfn>WebVTT region identifier</dfn>.</p></li>
-     </ol>
+    <p class="note">A <a>WebVTT line position cue setting</a> configures the position of the cue box
+    in the direction opposite to the <a title="text track cue writing direction">writing
+    direction</a>. For horizontal cues, this is the vertical position. The positioning is calculated
+    relative to the <a title="text track cue line start alignment">start</a>, <a title="text track
+    cue line middle alignment">middle</a>, or <a title="text track cue line end alignment">end</a>
+    of the cue box, depending on the <a>text track cue line alignment</a> value - <a title="text
+    track cue line start alignment">start</a> by default. The position can be given either as a
+    percentage of the video dimension or as a line number. Line numbers are based on the size of the
+    first line of the cue. Positive line numbers count from the start of the video frame (the first
+    line is numbered 0), negative line numbers from the end of the frame (the last line is numbered
+    &#x2212;1).</p>
 
-     <p>A <a>WebVTT region identifier</a> must be unique amongst all the <a title="WebVTT region
-     identifier">WebVTT region identifiers</a> of all <a title="WebVTT region">WebVTT regions</a> of
-     a <a>WebVTT file</a>.</p>
+    <p>A <dfn>WebVTT text position cue setting</dfn> consists of the following components, in the
+    order given:</p>
 
-     <p class ="note">The <a>WebVTT region identifier</a> gives a name to the region so it can be
-     referenced by the cues that belong to the region.</p>
+    <ol>
+     <li><p>The string "<code>position</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li>
+      As the <a>WebVTT cue setting value</a>:
+      <ol>
+       <li>a position value consisting of: a <a>WebVTT percentage</a>.</li>
+       <li>
+        an optional alignment value consisting of:
+        <ol>
+         <li>A U+002C COMMA character (,).</li>
+         <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
+         "<code>end</code>"</li>
+        </ol>
+       </li>
+      </ol>
+     </li>
+    </ol>
 
-     <p>A <dfn>WebVTT region width setting</dfn> consists of the following components, in the order
-     given:</p>
-     <ol>
-      <li><p>The string "<code>width</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>A <a>WebVTT percentage</a>.</p></li>
-     </ol>
-     <p class ="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage
-     of the video width for the region into which cues are rendered and based on which alignment is
-     calculated.</p>
+    <p class="note">A <a>WebVTT text position cue setting</a> configures the position of the <a
+    title="text track cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line
+    position cue setting</a>. For horizontal cues, this is the horizontal position. The text
+    position is given as a percentage of the video frame. The positioning is calculated relative to
+    the <a title="text track cue text position start alignment">start</a>, <a title="text track cue
+    text position middle alignment">middle</a>, or <a title="text track cue text position end
+    alignment">end</a> of the cue box, depending on the <a>text track cue computed text position
+    alignment</a> value, which is overridden by the <a>WebVTT text position cue setting</a>
+    alignment value.</p>
 
-     <p>A <dfn>WebVTT region lines setting</dfn> consists of the following components, in the order
-     given:</p>
-     <ol>
-      <li><p>The string "<code>lines</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>One or more <a>ASCII digits</a>.</p></li>
-     </ol>
-     <p class ="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of
-     lines for the region into which cues are rendered. As such, it defines the height of the
-     roll-up region if it is a scroll region.</p>
+    <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
+    given:</p>
 
-     <p>A <dfn>WebVTT region anchor setting</dfn> consists of the following components, in the order
-     given:</p>
-     <ol>
-      <li><p>The string "<code>regionanchor</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>A <a>WebVTT percentage</a>.</p></li>
-      <li><p>A U+002C COMMA character (,).</p></li>
-      <li><p>A <a>WebVTT percentage</a>.</p></li>
-     </ol>
-     <p class ="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages
-     that specify the point within the region box that is fixed in location. The first percentage
-     measures the x-dimension and the second percentage y-dimension from the top left corner of the
-     region box. If no <a>WebVTT region anchor setting</a> is given, the anchor defaults to 0%, 100%
-     (i.e. the bottom left corner).</p>
+    <ol>
+     <li><p>The string "<code>size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li><p>As the <a>WebVTT cue setting value</a>: a <a>WebVTT percentage</a>.</p></li>
+    </ol>
 
-     <p>A <dfn>WebVTT region viewport anchor setting</dfn> consists of the following components, in
-     the order given:</p>
-     <ol>
-      <li><p>The string "<code>viewportanchor</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>A <a>WebVTT percentage</a>.</p></li>
-      <li><p>A U+002C COMMA character (,).</p></li>
-      <li><p>A <a>WebVTT percentage</a>.</p></li>
-     </ol>
-     <p class ="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two
-     percentages that specify the point within the video viewport that the region anchor point is
-     anchored to. The first percentage measures the x-dimension and the second percentage measures
-     the y-dimension from the top left corner of the video viewport box. If no viewport anchor is
-     given, it defaults to 0%, 100% (i.e. the bottom left corner).</p>
+    <p class="note">A <a>WebVTT size cue setting</a> configures the size of the <a title="text track
+    cue box">cue box</a> in the same direction as the <a>WebVTT text position cue setting</a>. For
+    horizontal cues, this is the width of the <a title="text track cue box">cue box</a>. It is given
+    as a percentage of the width of the frame.</p>
 
-     <p class ="note">For browsers, the region maps to an absolute positioned CSS box relative to
-     the video viewport, i.e. there is a relative positioned box that represents the video viewport
-     relative to which the regions are absolutely positioned. Overflow is hidden.</p>
+    <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the following components, in the order
+    given:</p>
 
-     <p>A <dfn>WebVTT region scroll setting</dfn> consists of the following components, in the order
-     given:</p>
-     <ol>
-      <li><p>The string "<code>scroll</code>".</p></li>
-      <li><p>A U+003D EQUALS SIGN character (=).</p></li>
-      <li><p>The string "<code>up</code>".</p></li>
-     </ol>
-     <p class ="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into
-     the region are allowed to move out of their initial rendering place and roll up, i.e. move
-     towards the top of the video viewport. If the scroll setting is omitted, cues do not move from
-     their rendered position.</p>
+    <ol>
+     <li><p>The string "<code>align</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code>start</code>",
+     "<code>middle</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>"</li>
+    </ol>
 
-     <p class="note">Cues are added to a region one line at a time below existing cue lines. When an
-     existing rendered cue line is removed, and it was above another already rendered cue line, that
-     cue line moves into its space, thus scrolling in the given direction. If there is not enough
-     space for a new cue line to be added to a region, the top-most cue line is pushed off the
-     visible region (thus slowly becoming invisible as it moves into overflow:hidden). This
-     eventually makes space for the new cue line and allows it to be added.</p>
+    <p class="note">A <a>WebVTT alignment cue setting</a> configures the alignment of the text
+    within the cue. The keywords are relative to the text direction; for left-to-right English text,
+    "<code>start</code>" means left-aligned.</p>
 
-     <p class="note">When there is no scroll direction, cue lines are added in the empty line
-     closest to the line in the bottom of the region. If no empty line is available, the oldest line
-     is replaced.</p>
+    <p>A <dfn>WebVTT region cue setting</dfn> consists of the following components, in the order
+    given:</p>
 
-    </section>
+    <ol>
+     <li><p>The string "<code>region</code>" as the <a>WebVTT cue setting name</a>.</p></li>
+     <li><p>A U+003A COLON character (:).</p></li>
+     <li><p>As the <a>WebVTT cue setting value</a>: an arbitrary string of one or more characters
+     other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain
+     the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
+     SIGN).</p></li>
+    </ol>
 
-    <section>
-     <h4>WebVTT cue settings</h4>
-
-     <p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
-     setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
-
-     <ul class="brief">
-      <li>A <a>WebVTT vertical text cue setting</a>.</li>
-      <li>A <a>WebVTT line position cue setting</a>.</li>
-      <li>A <a>WebVTT text position cue setting</a>.</li>
-      <li>A <a>WebVTT size cue setting</a>.</li>
-      <li>A <a>WebVTT alignment cue setting</a>.</li>
-      <li>A <a>WebVTT region cue setting</a>.</li>
-     </ul>
-
-     <p class="note">A <a>WebVTT cue settings list</a> gives configuration options regarding the
-     position and alignment of the cue box and the cue text within. For example, it allows a cue box
-     to be aligned to the left or positioned at the top right with the cue text within middle
-     aligned.</p>
-
-     <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a> that consists
-     of the following components, in the order given:</p>
-
-     <ol>
-      <li>The string "<code>vertical</code>" as the <a>WebVTT cue setting name</a>.</li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code>rl</code>",
-      "<code>lr</code>".</li>
-     </ol>
-
-     <p class="note">A <a>WebVTT vertical text cue setting</a> configures the cue to use vertical
-     text layout rather than horizontal text layout. Vertical text layout is sometimes used in
-     Japanese, for example. The default is horizontal layout.</p>
-
-     <p>A <dfn>WebVTT line position cue setting</dfn> consists of the following components, in the
-     order given:</p>
-
-     <ol>
-      <li><p>The string "<code>line</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li>
-       As the <a>WebVTT cue setting value</a>:
-       <ol>
-        <li>
-         a position value, either:
-         <dl>
-          <dt>To represent a specific position relative to the video frame</dt>
-          <dd>
-           <p>A <a>WebVTT percentage</a>.</p>
-          </dd>
-          <dt>Or to represent a line number</dt>
-          <dd>
-           <ol>
-            <li>Optionally a U+002D HYPHEN-MINUS character (-).</li>
-            <li>One or more <a>ASCII digits</a>.</li>
-           </ol>
-          </dd>
-         </dl>
-        </li>
-        <li>
-         An optional alignment value consisting of the following components:
-         <ol>
-          <li>A U+002C COMMA character (,).</li>
-          <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
-          "<code>end</code>"</li>
-         </ol>
-        </li>
-       </ol>
-      </li>
-     </ol>
-
-     <p class="note">A <a>WebVTT line position cue setting</a> configures the position of the cue
-     box in the direction opposite to the <a title="text track cue writing direction">writing
-     direction</a>. For horizontal cues, this is the vertical position. The positioning is
-     calculated relative to the <a title="text track cue line start alignment">start</a>, <a
-     title="text track cue line middle alignment">middle</a>, or <a title="text track cue line end
-     alignment">end</a> of the cue box, depending on the <a>text track cue line alignment</a> value
-     - <a title="text track cue line start alignment">start</a> by default. The position can be
-     given either as a percentage of the video dimension or as a line number. Line numbers are based
-     on the size of the first line of the cue. Positive line numbers count from the start of the
-     video frame (the first line is numbered 0), negative line numbers from the end of the frame
-     (the last line is numbered &#x2212;1).</p>
-
-     <p>A <dfn>WebVTT text position cue setting</dfn> consists of the following components, in the
-     order given:</p>
-
-     <ol>
-      <li><p>The string "<code>position</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li>
-       As the <a>WebVTT cue setting value</a>:
-       <ol>
-        <li>a position value consisting of: a <a>WebVTT percentage</a>.</li>
-        <li>
-         an optional alignment value consisting of:
-         <ol>
-          <li>A U+002C COMMA character (,).</li>
-          <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
-          "<code>end</code>"</li>
-         </ol>
-        </li>
-       </ol>
-      </li>
-     </ol>
-
-     <p class="note">A <a>WebVTT text position cue setting</a> configures the position of the <a
-     title="text track cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line
-     position cue setting</a>. For horizontal cues, this is the horizontal position. The text
-     position is given as a percentage of the video frame. The positioning is calculated relative to
-     the <a title="text track cue text position start alignment">start</a>, <a title="text track cue
-     text position middle alignment">middle</a>, or <a title="text track cue text position end
-     alignment">end</a> of the cue box, depending on the <a>text track cue computed text position
-     alignment</a> value, which is overridden by the <a>WebVTT text position cue setting</a>
-     alignment value.</p>
-
-     <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
-     given:</p>
-
-     <ol>
-      <li><p>The string "<code>size</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li><p>As the <a>WebVTT cue setting value</a>: a <a>WebVTT percentage</a>.</p></li>
-     </ol>
-
-     <p class="note">A <a>WebVTT size cue setting</a> configures the size of the <a title="text
-     track cue box">cue box</a> in the same direction as the <a>WebVTT text position cue
-     setting</a>. For horizontal cues, this is the width of the <a title="text track cue box">cue
-     box</a>. It is given as a percentage of the width of the frame.</p>
-
-     <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the following components, in the order
-     given:</p>
-
-     <ol>
-      <li><p>The string "<code>align</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li>One of the following strings as the <a>WebVTT cue setting value</a>: "<code>start</code>",
-      "<code>middle</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>"</li>
-     </ol>
-
-     <p class="note">A <a>WebVTT alignment cue setting</a> configures the alignment of the text
-     within the cue. The keywords are relative to the text direction; for left-to-right English
-     text, "<code>start</code>" means left-aligned.</p>
-
-     <p>A <dfn>WebVTT region cue setting</dfn> consists of the following components, in the order
-     given:</p>
-
-     <ol>
-      <li><p>The string "<code>region</code>" as the <a>WebVTT cue setting name</a>.</p></li>
-      <li><p>A U+003A COLON character (:).</p></li>
-      <li><p>As the <a>WebVTT cue setting value</a>: an arbitrary string of one or more characters
-      other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain
-      the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
-      GREATER-THAN SIGN).</p></li>
-     </ol>
-
-     <p class ="note">A <a>WebVTT region cue setting</a> configures a cue to become part of a region
-     by referencing the region's identifier unless the cue has a <a title="WebVTT vertical text cue
-     setting">"vertical"</a>, <a title="WebVTT line position cue setting">"line"</a> or <a
-     title="WebVTT size cue setting">"size"</a> cue setting. If a cue is part of a region, its cue
-     settings for <a title="WebVTT text position cue setting">"position"</a> and <a title="WebVTT
-     alignment cue setting">"align"</a> are applied to the line boxes in the cue relative to the
-     region box.</p>
-
-    </section>
+    <p class ="note">A <a>WebVTT region cue setting</a> configures a cue to become part of a region
+    by referencing the region's identifier unless the cue has a <a title="WebVTT vertical text cue
+    setting">"vertical"</a>, <a title="WebVTT line position cue setting">"line"</a> or <a
+    title="WebVTT size cue setting">"size"</a> cue setting. If a cue is part of a region, its cue
+    settings for <a title="WebVTT text position cue setting">"position"</a> and <a title="WebVTT
+    alignment cue setting">"align"</a> are applied to the line boxes in the cue relative to the
+    region box.</p>
 
    </section><!-- end cue settings -->
 
