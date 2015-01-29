@@ -4403,40 +4403,42 @@ The Final Minute</pre>
 
           </li>
 
-          <li><p><i>Step loop</i>: If none of the boxes in <var>boxes</var> would overlap any of the
-          boxes in <var>output</var>, and all of the boxes in <var>output</var> are entirely within
-          the <var>title area</var> box, then jump to the step labeled <i>done positioning</i>
-          below.</p></li>
-
-          <li><p>Let <var>current position score</var> be the percentage of the area of the bounding
-          box of the boxes in <var>boxes</var> that <!--overlaps the boxes in <var>output</var> (if
-          any) or that--> is outside the <var>title area</var> box.</p></li>
-
           <li>
+           <p><i>Step loop</i>: If none of the boxes in <var>boxes</var> would overlap any of the
+           boxes in <var>output</var>, run the following substeps:</p>
 
-           <p>If <var>best position</var> is null (i.e. this is the first run through this loop,
-           <var>switched</var> is still false, the boxes in <var>boxes</var> are at their
-           <var>specified position</var>, and <var>best position score</var> is still null), or if
-           <var>current position score</var> is a lower percentage than that in <var>best position
-           score</var>, then remember the position of all the boxes in <var>boxes</var> as their
-           <var>best position</var>, and set <var>best position score</var> to <var>current position
-           score</var>.</p>
+           <ol>
 
+            <li><p>If all of the boxes in <var>boxes</var> are entirely within the <var>title
+            area</var> box, then jump to the step labeled <i>done positioning</i> below.</p></li>
+
+            <li><p>Otherwise, let <var>current position score</var> be the percentage of the area of
+            the bounding box of the boxes in <var>boxes</var> that is outside the <var>title
+            area</var> box.</p></li>
+
+            <li><p>If <var>best position</var> is null (i.e. this is the first time the boxes in
+            <var>boxes</var> would not overlap any of the boxes in <var>output</var>, but are not
+            entirely within the <var>title area</var> box, and <var>best position score</var> is
+            still null), or if <var>current position score</var> is a lower percentage than that in
+            <var>best position score</var>, then remember the position of all the boxes in
+            <var>boxes</var> as their <var>best position</var>, and set <var>best position
+            score</var> to <var>current position score</var>.</p></li>
+
+           </ol>
           </li>
 
           <li>
 
-           <p><strong>Horizontal</strong>: If <var>step</var> is negative and the top of the first
-           line box in <var>boxes</var> is now above the top of the <var>title area</var>, or if
-           <var>step</var> is positive and the bottom of the first line box in <var>boxes</var> is
-           now below the bottom of the <var>title area</var>, jump to the step labeled <i>switch
-           direction</i>.</p>
+           <p><strong>Horizontal</strong>: If <var>step</var> is negative and all of the boxes in
+           <var>boxes</var> are entirely above the <var>title area</var> box, or if <var>step</var>
+           is positive and all of the boxes in <var>boxes</var> are entirely below the <var>title
+           area</var> box, jump to the step labeled <i>switch direction</i>.</p>
 
-           <p><strong>Vertical</strong>: If <var>step</var> is negative and the left edge of the
-           first line box in <var>boxes</var> is now to the left of the left edge of the <var>title
-           area</var>, or if <var>step</var> is positive and the right edge of the first line box in
-           <var>boxes</var> is now to the right of the right edge of the <var>title area</var>, jump
-           to the step labeled <i>switch direction</i>.</p>
+           <p><strong>Vertical</strong>: If <var>step</var> is negative and all of the boxes in
+           <var>boxes</var> are entirely to the left of the <var>title area</var> box, or if
+           <var>step</var> is positive and all of the boxes in <var>boxes</var> are entirely to the
+           right of the <var>title area</var> box, jump to the step labeled <i>switch
+           direction</i>.</p>
 
           </li>
 
@@ -4454,9 +4456,20 @@ The Final Minute</pre>
 
           <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
 
-          <li><p><i>Switch direction</i>: If <var>switched</var> is true, then move all the boxes in
-          <var>boxes</var> back to their <var>best position</var>, and jump to the step labeled
-          <i>done positioning</i> below.</p></li>
+          <li>
+           <p><i>Switch direction</i>: (All the boxes in <var>boxes</var> are now entirely outside
+           the <var>title area</var> box.) If <var>switched</var> is true, run the following
+           substeps:</p>
+
+           <ol>
+
+            <li><p>If <var>best position</var> is not null, move all the boxes in <var>boxes</var>
+            back to their <var>best position</var>.</p></li>
+
+            <li><p>Jump to the step labeled <i>done positioning</i> below.</p></li>
+
+           </ol>
+          </li>
 
           <li><p>Otherwise, move all the boxes in <var>boxes</var> back to their <var>specified
           position</var> as determined in the earlier step.</p></li>
@@ -4519,14 +4532,13 @@ The Final Minute</pre>
           </li>
 
           <li><p>If none of the boxes in <var>boxes</var> would overlap any of the boxes in
-          <var>output</var>, and all the boxes in <var>output</var> are within the
-          <var>video</var>'s rendering area, then jump to the step labeled <i>done positioning</i>
-          below.</p></li>
+          <var>output</var>, and all the boxes in <var>boxes</var> are within the <var>video</var>'s
+          rendering area, then jump to the step labeled <i>done positioning</i> below.</p></li>
 
           <li><p>If there is a position to which the boxes in <var>boxes</var> can be moved while
           maintaining the relative positions of the boxes in <var>boxes</var> to each other such
           that none of the boxes in <var>boxes</var> would overlap any of the boxes in
-          <var>output</var>, and all the boxes in <var>output</var> would be within the
+          <var>output</var>, and all the boxes in <var>boxes</var> would be within the
           <var>video</var>'s rendering area, then move the boxes in <var>boxes</var> to the closest
           such position to their current position, and then jump to the step labeled <i>done
           positioning</i> below. If there are multiple such positions that are equidistant from
