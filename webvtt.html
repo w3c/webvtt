@@ -4382,13 +4382,6 @@ The Final Minute</pre>
           <li><p>Remember the position of all the boxes in <var>boxes</var> as their <var>specified
           position</var>.</p></li>
 
-          <li><p>Let <var>best position</var> be null. It will hold a position for <var>boxes</var>,
-          much like <var>specified position</var> in the previous step.</p></li>
-
-          <li><p>Let <var>best position score</var> be null.</p></li>
-
-          <li><p>Let <var>switched</var> be false.</p></li>
-
           <li>
 
            <p><strong>Horizontal</strong>: Let <var>title area</var> be a box that covers all of the
@@ -4411,18 +4404,6 @@ The Final Minute</pre>
           <li><p>Let <var>current position score</var> be the percentage of the area of the bounding
           box of the boxes in <var>boxes</var> that <!--overlaps the boxes in <var>output</var> (if
           any) or that--> is outside the <var>title area</var> box.</p></li>
-
-          <li>
-
-           <p>If <var>best position</var> is null (i.e. this is the first run through this loop,
-           <var>switched</var> is still false, the boxes in <var>boxes</var> are at their
-           <var>specified position</var>, and <var>best position score</var> is still null), or if
-           <var>current position score</var> is a lower percentage than that in <var>best position
-           score</var>, then remember the position of all the boxes in <var>boxes</var> as their
-           <var>best position</var>, and set <var>best position score</var> to <var>current position
-           score</var>.</p>
-
-          </li>
 
           <li>
 
@@ -4454,9 +4435,8 @@ The Final Minute</pre>
 
           <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
 
-          <li><p><i>Switch direction</i>: If <var>switched</var> is true, then move all the boxes in
-          <var>boxes</var> back to their <var>best position</var>, and jump to the step labeled
-          <i>done positioning</i> below.</p></li>
+          <li><p><i>Switch direction</i>: If <var>switched</var> is true, then remove all the boxes
+          in <var>boxes</var>, and jump to the step labeled <i>done positioning</i> below.</p></li>
 
           <li><p>Otherwise, move all the boxes in <var>boxes</var> back to their <var>specified
           position</var> as determined in the earlier step.</p></li>
@@ -4543,11 +4523,7 @@ The Final Minute</pre>
 
       </li>
 
-      <li><p><i>Done positioning</i>: If there are any line boxes in the (possibly now repositioned)
-      <var>boxes</var> that do not completely fit inside <var>video</var>'s rendering area, remove
-      those offending line boxes from <var>boxes</var>.</p></li>
-
-      <li><p>Return <var>boxes</var>.</p></li>
+      <li><p><i>Done positioning</i>: Return <var>boxes</var>.</p></li>
 
      </ol>
 
