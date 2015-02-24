@@ -3678,13 +3678,8 @@ The Final Minute</pre>
 
    </section>
 
-  </section>
-
-  <section>
-   <h2>Rendering</h2>
-
    <section>
-    <h3>Cues in isolation</h3>
+    <h3>WebVTT rules for extracting the chapter title</h3>
 
     <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> are as follows:</p>
 
@@ -3699,1231 +3694,1225 @@ The Final Minute</pre>
     </ol>
    </section>
 
+  </section>
+
+  <section>
+   <h2>Rendering</h2>
+
    <section>
-    <h3>Cues with video</h3>
-
-    <section>
-     <h4>Processing model</h4>
-
-     <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a
-     title="text track">text tracks</a> of a <a>media element</a> (specifically, a
-     <a><code>video</code></a> element), or of another playback mechanism, by applying the steps
-     below. All the <a title="text track">text tracks</a> that use these rules for a given <a>media
-     element</a>, or other playback mechanism, are rendered together, to avoid overlapping subtitles
-     from multiple tracks.</p>
-
-     <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the
-     <a>media element</a> or other playback mechanism, which user agents are expected to render in a
-     manner suiting the user.</p>
-
-     <p>The rules are as follows:</p>
-
-     <ol>
-
-      <li><p>If the <a>media element</a> is an <a><code>audio</code></a> element, or is another
-      playback mechanism with no rendering area, abort these steps. There is nothing to
-      render.</p></li>
-
-      <li><p>Let <var>video</var> be the <a>media element</a> or other playback mechanism.</p></li>
-
-      <li><p>Let <var>output</var> be an empty list of absolutely positioned CSS block
-      boxes.</p></li>
-
-      <li><p>If the user agent is <a title="expose a user interface to the user">exposing a user
-      interface</a> for <var>video</var>, add to <var>output</var> one or more completely
-      transparent positioned CSS block boxes that cover the same region as the user
-      interface.</p></li>
-
-      <li><p>If the last time these rules were run, the user agent was not <a title="expose a user
-      interface to the user">exposing a user interface</a> for <var>video</var>, but now it is,
-      optionally let <var>reset</var> be true. Otherwise, let <var>reset</var> be false.</p></li>
-
-      <li><p>Let <var>tracks</var> be the subset of <var>video</var>'s <a>list of text tracks</a>
-      that have as their <a>rules for updating the text track rendering</a> these <a>rules for
-      updating the display of WebVTT text tracks</a>, and whose <a>text track mode</a> is <a
-      title="text track showing">showing</a>.</p></li>
-
-      <li><p>Let <var>cues</var> be an empty list of <a title="text track cue">text track
-      cues</a>.</p></li>
-
-      <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>cues</var> all the
-      <a title="text track cue">cues</a> from <var>track</var>'s <a title="text track list of
-      cues">list of cues</a> that have their <a>text track cue active flag</a> set.</p></li>
-
-      <li><p>Let <var>regions</var> be an empty list of <a title="text track region">text track
-      regions</a>.</p></li>
-
-      <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all
-      the <a title="text track region">regions</a> from <var>track</var>'s <a title="text track list
-      of regions">list of regions</a>.</p></li>
-
-      <li><p>If <var>reset</var> is false, then, for each <a>text track region</a> <var>region</var>
-      in <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
-
-      <li>
-       <p>Apply the following steps for each <var>regionNode</var>:</p>
-
-       <ol>
-        <li>
-         <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as
-         follows:</p>
-
-         <ul>
-          <li><p>Let <var>regionWidth</var> be the <a>text track region width</a>. Let
-          <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).
-          [[!CSSVALUES]]</p></li>
-
-          <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) [[!CSSVALUES]] and
-          <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be
-          '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
-
-          <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region
-          viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>text track
-          region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by
-          <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
-          from '<var>viewportAnchorX</var> vw'.</p></li>
-
-          <li><p>Let <var>viewportAnchorY</var> be the y dimension of the <a>text track region
-          viewport anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a>text track
-          region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by
-          <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
-          from '<var>viewportAnchorY</var> vh'.</p></li>
-         </ul>
-        </li>
-
-        <li>
-         <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following
-         constraints, thus obtaining a CSS box <var>box</var> positioned relative to an initial
-         containing block:</p>
-         <ol>
-          <li><p>No style sheets are associated with <var>regionNode</var>. (The regionNodes are
-          subsequently restyled using style sheets after their boxes are generated, as described
-          below.)</p></li>
-          <li><p>Properties on <var>regionNode</var> have their values set as defined in the next
-          section. (That section uses some of the variables whose values were calculated earlier in
-          this algorithm.)</p></li>
-          <li><p>The viewport (and initial containing block) is video's rendering area.</p></li>
-         </ol>
-        </li>
-
-        <li><p>Add the CSS box <var>box</var> to <var>output</var>.</p></li>
-       </ol>
-      </li>
-
-      <li>
-       <p>If <var>reset</var> is false, then, for each <a>text track cue</a> <var>cue</var> in
-       <var>cues</var>: if <var>cue</var>'s <a>text track cue display state</a> has a set of CSS
-       boxes, then:</p>
-
-       <ul>
-        <li><p>If <var>cue</var>'s <a>text track cue region</a> is not null, add those boxes to that
-        region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
-        <li><p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var> from
-        <var>cues</var>.</p></li>
-       </ul>
-
-      </li>
-
-      <li>
-
-       <p>For each <a>text track cue</a> <var>cue</var> in <var>cues</var> that has not yet had
-       corresponding CSS boxes added to <var>output</var>, in <a>text track cue order</a>, run the
-       following substeps:</p>
-
-       <ol>
-
-        <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying
-        the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue
-        text</a>.</p></li>
-
-        <li>
-         <p>If <var>cue</var>'s <a>text track cue region</a> is null, run the following
-         substeps:</p>
-
-         <ol>
-
-          <li><a>Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from
-          <var>nodes</var>.</li>
-
-          <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
-          <var>boxes</var>.</p></li>
-
-          <li><p>Add the CSS boxes in <var>boxes</var> to <var>output</var>.</p></li>
-
-         </ol>
-        </li>
-
-        <li>
-         <p>Otherwise, run the following substeps:</p>
-         <ol>
-          <li><p>Let <var>region</var> be <var>cue</var>'s <a>text track cue region</a>.</p></li>
-
-          <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>'
-          and <var>region</var> already has one child, set <var>region</var>'s 'transition-property'
-          to 'top' and 'transition-duration' to '0.433s'.</p></li>
-
-          <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm that
-          applies to regions -->
-          <li>
-           <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation
-           of the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order,
-           depth-first traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text
-           Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of
-           the first Unicode paragraph of the cue. [[!BIDI]]</p>
-           <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters,
-           such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR.
-           (This means each line of the cue is reordered as if it was a separate paragraph.)</p>
-          </li>
-
-          <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even
-          (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr',
-          otherwise, let it be 'rtl'.</p></li>
-
-          <li><p>Let <var>offset</var> be the <a>text track cue computed text position</a>
-          multiplied by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e.
-          interpret it as a percentage of the region width).</p></li>
-
-          <li>
-           <p>Adjust <var>offset</var> using the <a>text track cue computed text position
-           alignment</a> as follows:</p>
-           <dl class="switch">
-            <dt>If the <a>text track cue computed text position alignment</a> is <a title="text
-            track cue text position middle alignment">middle alignment</a></dt>
-            <dd><p>Subtract half of <var>region</var>'s <a>text track region width</a> from
-            <var>offset</var>.</p></dd>
-
-            <dt>If the <a>text track cue computed text position alignment</a> is <a title="text
-            track cue text position end alignment">end alignment</a></dt>
-            <dd><p>Subtract <var>region</var>'s <a>text track region width</a> from
-            <var>offset</var>.</p></dd>
-           </dl>
-          </li>
-
-          <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.)
-          [[!CSSVALUES]]</p></li>
-
-          <li>
-           <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same
-           constraints that are used when they are applied to <var>nodes</var> of a <var>cue</var>
-           that is not part of a region.</p>
-
-           <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing
-           block, along with their positions.</p>
-          </li>
-
-          <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these
-          substeps for <var>cue</var>. The cue is ignored.</p></li>
-
-          <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
-          <var>boxes</var>.</p></li>
-
-          <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
-
-          <li><p>If the CSS boxes <var>boxes</var> together have a height less than the height of
-          the <var>region</var> box, let <var>diff</var> be the absolute difference between the two
-          height values. Increase <var>top</var> by <var>diff</var> and re-apply it to
-          <var>regionNode</var>.</p></li>
-         </ol>
-        </li>
-
-       </ol>
-      </li>
-
-      <li><p>Return <var>output</var>.</p></li>
-
-     </ol>
-
-     <p>User agents may allow the user to override the above algorithm's positioning of cues, e.g.
-     by dragging them to another location on the <a><code>video</code></a>, or even off the
-     <a><code>video</code></a> entirely.</p>
-
-     <p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn>
-     to obtain CSS boxes from a <a>list of WebVTT Node Objects</a> <var>nodes</var>, the user agent
-     must run the following algorithm.</p>
-
-     <ol>
-
-      <li>
-
-       <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of
-       the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
-       traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and
-       their descendants, to determine the <i>paragraph embedding level</i> of the first Unicode
-       paragraph of the cue. [[!BIDI]]</p>
-
-       <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters,
-       such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This
-       means each line of the cue is reordered as if it was a separate paragraph.)</p>
-
-      </li>
-
-      <li>
-
-       <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
-       <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise,
-       let it be 'rtl'.</p>
-
-      </li>
-
-      <li><p>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-      writing direction">horizontal</a>, then let <var>writing-mode</var> be 'horizontal-tb'.
-      Otherwise, if the <a>text track cue writing direction</a> is <a title="text track cue vertical
-      growing left writing direction">vertical growing left</a>, then let <var>writing-mode</var> be
-      'vertical-rl'. Otherwise, the <a>text track cue writing direction</a> is <a title="text track
-      cue vertical growing right writing direction">vertical growing right</a>; let
-      <var>writing-mode</var> be 'vertical-lr'.</p></li>
-
-      <li>
-
-       <p>Determine the value of <var>maximum size</var> for <var>cue</var> as per the appropriate
-       rules from the following list:</p>
-
-       <dl class="switch">
-
-        <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-        cue text position start alignment">start</a></dt>
-        <dd>
-         <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>
-         subtracted from 100.</p>
-        </dd>
-
-        <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-        cue text position end alignment">end</a></dt>
-        <dd>
-         <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>.</p>
-        </dd>
-
-        <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-        cue text position middle alignment">middle</a>, and the <a>text track cue computed text
-        position</a> is less than or equal to 50</dt>
-        <dd>
-         <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>
-         multiplied by two.</p>
-        </dd>
-
-        <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-        cue text position middle alignment">middle</a>, and the <a>text track cue computed text
-        position</a> is greater than <!-- or equal to --> 50</dt>
-        <dd>
-         <p>Let <var>maximum size</var> be the result of subtracting <a>text track cue computed text
-         position</a> from 100 and then multiplying the result by two.</p>
-        </dd>
-
-       </dl>
-
-      </li>
-
-      <li><p>If the <a>text track cue size</a> is less than <var>maximum size</var>, then let
-      <var>size</var> be <a>text track cue size</a>. Otherwise, let <var>size</var> be <var>maximum
-      size</var>.</p></li>
-
-      <li><p>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-      writing direction">horizontal</a>, then let <var>width</var> be '<var>size</var>&#x2009;vw'
-      and <var>height</var> be 'auto'. Otherwise, let <var>width</var> be 'auto' and
-      <var>height</var> be '<var>size</var>&#x2009;vh'. (These are CSS values used by the next
-      section to set CSS properties for the rendering; 'vw' and 'vh' are CSS units.)
-      [[!CSSVALUES]]</p></li>
-
-      <li>
-
-       <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var>
-       as per the appropriate rules from the following list:</p>
-
-       <dl class="switch">
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-        writing direction">horizontal</a></dt>
-        <dd>
-         <dl class="switch">
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position start alignment">start alignment</a></dt>
-          <dd><p>Let <var>x-position</var> be the <a>text track cue computed text
-          position</a>.</p></dd>
-
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position middle alignment">middle alignment</a></dt>
-          <dd><p>Let <var>x-position</var> be the <a>text track cue computed text position</a> minus
-          half of <var>size</var>.</p></dd>
-
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position end alignment">end alignment</a></dt>
-          <dd><p>Let <var>x-position</var> be the <a>text track cue computed text position</a> minus
-          <var>size</var>.</p></dd>
-         </dl>
-        </dd>
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
-        growing left writing direction">vertical growing left</a> or <a title="text track cue
-        vertical growing right writing direction">vertical growing right</a></dt>
-        <dd>
-         <dl class="switch">
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position start alignment">start alignment</a></dt>
-          <dd><p>Let <var>y-position</var> be the <a>text track cue computed text
-          position</a>.</p></dd>
-
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position middle alignment">middle alignment</a></dt>
-          <dd><p>Let <var>y-position</var> be the <a>text track cue computed text position</a> minus
-          half of <var>size</var>.</p></dd>
-
-          <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
-          cue text position end alignment">end alignment</a></dt>
-          <dd><p>Let <var>y-position</var> be the <a>text track cue computed text position</a> minus
-          <var>size</var>.</p></dd>
-         </dl>
-        </dd>
-
-       </dl>
-
-      </li>
-
-      <li>
-
-       <p>Determine the value of whichever of <var>x-position</var> or <var>y-position</var> is not
-       yet calculated for <var>cue</var> as per the appropriate rules from the following list:</p>
-
-       <dl class="switch">
-
-        <dt>If the <a>text track cue snap-to-lines flag</a> is not set</dt>
-        <dd>
-         <dl class="switch">
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-          writing direction">horizontal</a></dt>
-          <dd><p>Let <var>y-position</var> be the <a>text track cue computed line
-          position</a>.</p></dd>
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
-          growing left writing direction">vertical growing left</a> or <a title="text track cue
-          vertical growing right writing direction">vertical growing right</a></dt>
-          <dd><p>Let <var>x-position</var> be the <a>text track cue computed line
-          position</a>.</p></dd>
-
-         </dl>
-        </dd>
-
-        <dt>If the <a>text track cue snap-to-lines flag</a> is set</dt>
-        <dd>
-         <dl class="switch">
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-          writing direction">horizontal</a></dt>
-          <dd><p>Let <var>y-position</var> be 0.</p></dd>
-
-          <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
-          growing left writing direction">vertical growing left</a> or <a title="text track cue
-          vertical growing right writing direction">vertical growing right</a></dt>
-          <dd><p>Let <var>x-position</var> be 0.</p></dd>
-
-         </dl>
-        </dd>
-
-       </dl>
-
-       <p class="note">These are not final positions, they are merely temporary positions used to
-       calculate box dimensions below.</p>
-
-      </li>
-
-      <li>
-
-       <p>If the <a>text track cue snap-to-lines flag</a> is set, then run the appropriate steps
-       from the following list:</p>
-
-       <dl class="switch">
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
-        writing direction">horizontal</a></dt>
-        <dd>
-
-         <ol>
-
-          <li><p>Let <var>edge margin</var> be a user-agent-defined horizontal length, expressed as
-          a percentage of the width of the <var>video</var>'s rendering area, which will be used to
-          define a margin at the left and right edges of the video into which this cue will not be
-          placed. In situations with overscan, this margin should be sufficient to place the cue
-          within the title-safe area. In the absence of overscan, this value should be picked for
-          aesthetics (to avoid text being aligned precisely on the left or right edge of the video,
-          which can be ugly).</p></li>
-
-          <li><p>If <var>x-position</var> is less than <var>edge margin</var> and the sum of
-          <var>x-position</var> and <var>size</var> is more than <var>edge margin</var>, then
-          increase <var>x-position</var> by <var>edge margin</var> and decrease <var>size</var> by
-          the same amount.</p></li>
-
-          <li><p>Let <var>right margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
-
-          <li><p>If <var>x-position</var> is less than <var>right margin edge</var>, and the sum of
-          <var>x-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
-          decrease <var>size</var> by <var>edge margin</var>.</p></li>
-
-         </ol>
-
-        </dd>
-
-        <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
-        growing left writing direction">vertical growing left</a> or <a title="text track cue
-        vertical growing right writing direction">vertical growing right</a></dt>
-        <dd>
-
-         <ol>
-
-          <li><p>Let <var>edge margin</var> be a user-agent-defined vertical length, expressed as a
-          percentage of the height of the <var>video</var>'s rendering area, which will be used to
-          define a margin at the top and bottom edges of the video into which this cue will not be
-          placed. In situations with overscan, this margin should be sufficient to place the cue
-          within the title-safe area. In the absence of overscan, this value should be picked for
-          aesthetics (to avoid text being aligned precisely on the top or bottom edge of the video,
-          which can be ugly).</p></li>
-
-          <li><p>If <var>y-position</var> is less than <var>edge margin</var> and the sum of
-          <var>y-position</var> and <var>size</var> is more than <var>edge margin</var>, then
-          increase <var>y-position</var> by <var>edge margin</var> and decrease <var>size</var> by
-          the same amount.</p></li>
-
-          <li><p>Let <var>bottom margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
-
-          <li><p>If <var>y-position</var> is less than <var>bottom margin edge</var>, and the sum of
-          <var>y-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
-          decrease <var>size</var> by <var>edge margin</var>.</p></li>
-
-         </ol>
-
-        </dd>
-
-       </dl>
-
-      </li>
-
-      <li><p>Let <var>left</var> be '<var>x-position</var>&#x2009;vw' and <var>top</var> be
-      '<var>y-position</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
-      properties for the rendering; 'vw' and 'vh' are CSS units.) [[!CSSVALUES]]</p></li>
-
-      <li>
-
-       <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following
-       constraints, thus obtaining a set of CSS boxes positioned relative to an initial containing
-       block: [[!CSS]]</p>
-
-       <ul>
-
-        <li><p>The <i>document tree</i> is the tree of <a title="WebVTT Node Object">WebVTT Node
-        Objects</a> rooted at <var>nodes</var>.</p></li>
-
-        <li><p>For the purposes of processing by the CSS specification, <a title="WebVTT Internal
-        Node Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
-        contents.</p></li>
-
-        <li>For the purposes of processing by the CSS specification, <a title="WebVTT Text
-        Object">WebVTT Text Objects</a> are equivalent to <a><code>Text</code></a> nodes.</li>
-
-        <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently
-        restyled using style sheets after their boxes are generated, as described below.)</li>
-
-        <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose 'display'
-        property has the value 'inline'. This is the <dfn>WebVTT cue background box</dfn>.</li>
-
-        <li>Runs of children of <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not
-        <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous
-        boxes whose 'display' property has the value 'ruby-base'. [[!CSSRUBY]]</li>
-
-        <li>Properties on <a title="WebVTT Node Object">WebVTT Node Objects</a> have their values
-        set as defined in the next section. (That section uses some of the variables whose values
-        were calculated earlier in this algorithm.)</li>
-
-        <li>
-         Text runs must be wrapped according to the CSS
-         line-wrapping rules, with the following additional constraints:
-
-         <ul>
-
-          <li>Regardless of the value of the 'white-space' property, lines must be wrapped at the
-          edge of their containing blocks, even if doing so requires splitting a word where there is
-          no line breaking opportunity. (Thus, normally text wraps as needed, but if there is a
-          particularly long word, it does not overflow as it normally would in CSS, it is instead
-          forcibly wrapped at the box's edge.)</li>
-
-          <li>Regardless of the value of the 'white-space' property, any line breaks inserted by the
-          user agent for the purposes of line wrapping must be placed so as to minimize &Delta;
-          across each run of consecutive lines between preserved newlines in the source. &Delta; for
-          a set of lines is defined as the sum over each line of the absolute of the difference
-          between the line's length and the mean line length of the set.</li>
-
-         </ul>
-
-        </li>
-
-        <li>The viewport (and initial containing block) is <var>video</var>'s rendering area.</li>
-
-       </ul>
-
-       <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing
-       block, along with their positions.</p>
-
-      </li>
-
-      <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps
-      for <var>cue</var>. The cue is ignored.</p></li>
-
-      <li>
-
-       <p>Adjust the positions of <var>boxes</var> according to the appropriate steps from the
-       following list:</p>
-
-       <dl class="switch">
-
-        <dt>If <var>cue</var>'s <a>text track cue snap-to-lines flag</a> is set</dt>
-
-        <dd>
-
-         <p>Many of the steps in this algorithm vary according to the <a>text track cue writing
-         direction</a>. Steps labeled "<strong>Horizontal</strong>" must be followed only when the
-         <a>text track cue writing direction</a> is <a title="text track cue horizontal writing
-         direction">horizontal</a>, steps labeled "<strong>Vertical</strong>" must be followed when
-         the <a>text track cue writing direction</a> is either <a title="text track cue vertical
-         growing left writing direction">vertical growing left</a> or <a title="text track cue
-         vertical growing right writing direction">vertical growing right</a>, steps labeled
-         "<strong>Vertical Growing Left</strong>" must be followed only when the <a>text track cue
-         writing direction</a> is <a title="text track cue vertical growing left writing
-         direction">vertical growing left</a>, and steps labeled "<strong>Vertical Growing
-         Right</strong>" must be followed only when the <a>text track cue writing direction</a> is
-         <a title="text track cue vertical growing right writing direction">vertical growing
-         right</a>.</p>
-
-         <ol>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Let <var>margin</var> be a user-agent-defined vertical
-           length which will be used to define a margin at the top and bottom edges of the video
-           into which cues will not be placed. In situations with overscan, this margin should be
-           sufficient to place all cues within the title-safe area. In the absence of overscan, this
-           value should be picked for aesthetics (to avoid text being aligned precisely on the
-           bottom edge of the video, which can be ugly).</p>
-
-           <p><strong>Vertical</strong>: Let <var>margin</var> be a user-agent-defined horizontal
-           length which will be used to define a margin at the left and right edges of the video
-           into which cues will not be placed. In situations with overscan, this margin should be
-           sufficient to place all cues within the title-safe area. In the absence of overscan, this
-           value should be picked for aesthetics (to avoid text being aligned precisely on the left
-           or right edges of the video, which can be ugly).</p>
-
-          </li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Let <var>full dimension</var> be the height of
-           <var>video</var>'s rendering area.</p>
-
-           <p><strong>Vertical</strong>: Let <var>full dimension</var> be the width of
-           <var>video</var>'s rendering area.</p>
-
-           <p>These dimensions must not be adjusted for overscan. (The algorithm does that
-           separately.)</p>
-
-          </li>
-
-          <li>
-
-           <p>Let <var>max dimension</var> be
-           <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp; <var>margin</var>).</p>
-
-          </li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Let <var>step</var> be the height of the first line box
-           in <var>boxes</var>.</p>
-
-           <p><strong>Vertical</strong>: Let <var>step</var> be the width of the first line box in
-           <var>boxes</var>.</p>
-
-          </li>
-
-          <li><p>If <var>step</var> is zero, then jump to the step labeled <i>done positioning</i>
-          below.</p></li>
-
-          <li><p>Let <var>line position</var> be the <a>text track cue computed line
-          position</a>.</p></li>
-
-          <li><p>Round <var>line position</var> to an integer by adding 0.5 and then flooring
-          it.</p></li>
-
-          <li><p><strong>Vertical Growing Left</strong>: Add one to <var>line position</var> then
-          negate it.</p></li>
-
-          <li><p>Let <var>position</var> be the result of multiplying <var>step</var> and <var>line
-          position</var>.</p></li>
-
-          <li><p><strong>Vertical Growing Left</strong>: Decrease <var>position</var> by the width
-          of the bounding box of the boxes in <var>boxes</var>, then increase <var>position</var> by
-          <var>step</var>.</p></li>
-
-          <li>
-
-           <p>If <var>line position</var> is less than zero then increase <var>position</var> by
-           <var>max dimension</var>, and negate <var>step</var>.</p>
-
-           <p>Otherwise, increase <var>position</var> by <var>margin</var>.</p>
-
-          </li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the
-           distance given by <var>position</var>.</p>
-
-           <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the
-           distance given by <var>position</var>.</p>
-
-          </li>
-
-          <li><p>Remember the position of all the boxes in <var>boxes</var> as their <var>specified
-          position</var>.</p></li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Let <var>title area</var> be a box that covers all of the
-           <var>video</var>'s rendering area except for a height of <var>margin</var> at the top of
-           the rendering area and a height of <var>margin</var> at the bottom of the rendering
-           area.</p>
-
-           <p><strong>Vertical</strong>: Let <var>title area</var> be a box that covers all of the
-           <var>video</var>'s rendering area except for a width of <var>margin</var> at the left of
-           the rendering area and a width of <var>margin</var> at the right of the rendering
-           area.</p>
-
-          </li>
-
-          <li><p><i>Step loop</i>: If none of the boxes in <var>boxes</var> would overlap any of the
-          boxes in <var>output</var>, and all of the boxes in <var>boxes</var> are entirely within
-          the <var>title area</var> box, then jump to the step labeled <i>done positioning</i>
-          below.</p></li>
-
-          <li><p>Let <var>current position score</var> be the percentage of the area of the bounding
-          box of the boxes in <var>boxes</var> that <!--overlaps the boxes in <var>output</var> (if
-          any) or that--> is outside the <var>title area</var> box.</p></li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: If <var>step</var> is negative and the top of the first
-           line box in <var>boxes</var> is now above the top of the <var>title area</var>, or if
-           <var>step</var> is positive and the bottom of the first line box in <var>boxes</var> is
-           now below the bottom of the <var>title area</var>, jump to the step labeled <i>switch
-           direction</i>.</p>
-
-           <p><strong>Vertical</strong>: If <var>step</var> is negative and the left edge of the
-           first line box in <var>boxes</var> is now to the left of the left edge of the <var>title
-           area</var>, or if <var>step</var> is positive and the right edge of the first line box in
-           <var>boxes</var> is now to the right of the right edge of the <var>title area</var>, jump
-           to the step labeled <i>switch direction</i>.</p>
-
-          </li>
-
-          <li>
-
-           <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the
-           distance given by <var>step</var>. (If <var>step</var> is negative, then this will
-           actually result in an upwards movement of the boxes in absolute terms.)</p>
-
-           <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the
-           distance given by <var>step</var>. (If <var>step</var> is negative, then this will
-           actually result in a leftwards movement of the boxes in absolute terms.)</p>
-
-          </li>
-
-          <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
-
-          <li><p><i>Switch direction</i>: If <var>switched</var> is true, then remove all the boxes
-          in <var>boxes</var>, and jump to the step labeled <i>done positioning</i> below.</p></li>
-
-          <li><p>Otherwise, move all the boxes in <var>boxes</var> back to their <var>specified
-          position</var> as determined in the earlier step.</p></li>
-
-          <li><p>Negate <var>step</var>.</p></li>
-
-          <li><p>Set <var>switched</var> to true.</p></li>
-
-          <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
-
-         </ol>
-
-        </dd>
-
-        <dt>If <var>cue</var>'s <a>text track cue snap-to-lines flag</a> is not set</dt>
-        <dd>
-
-         <ol>
-
-          <li><p>Let <var>bounding box</var> be the bounding box of the boxes in
-          <var>boxes</var>.</p></li>
-
-          <li>
-           <p>Run the appropriate steps from the following list:</p>
-
-           <dl class="switch">
-            <dt>If the <a>text track cue writing direction</a> is <a title="text track cue
-            horizontal writing direction">horizontal</a></dt>
-            <dd>
-             <dl class="switch">
-              <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-              position middle alignment">middle alignment</a></dt>
-              <dd><p>Move all the boxes in <var>boxes</var> up by half of the height of
-              <var>bounding box</var>.</p></dd>
-
-              <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-              position end alignment">end alignment</a></dt>
-              <dd><p>Move all the boxes in <var>boxes</var> up by the height of <var>bounding
-              box</var>.</p></dd>
-             </dl>
-            </dd>
-
-            <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
-            growing left writing direction">vertical growing left</a> or <a title="text track cue
-            vertical growing right writing direction">vertical growing right</a></dt>
-            <dd>
-             <dl class="switch">
-              <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-              position middle alignment">middle alignment</a></dt>
-              <dd><p>Move all the boxes in <var>boxes</var> left by half of the width of
-              <var>bounding box</var>.</p></dd>
-
-              <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-              position end alignment">end alignment</a></dt>
-              <dd><p>Move all the boxes in <var>boxes</var> left by the width of <var>bounding
-              box</var>.</p></dd>
-             </dl>
-            </dd>
-           </dl>
-          </li>
-
-          <li><p>If none of the boxes in <var>boxes</var> would overlap any of the boxes in
-          <var>output</var>, and all the boxes in <var>boxes</var> are within the <var>video</var>'s
-          rendering area, then jump to the step labeled <i>done positioning</i> below.</p></li>
-
-          <li><p>If there is a position to which the boxes in <var>boxes</var> can be moved while
-          maintaining the relative positions of the boxes in <var>boxes</var> to each other such
-          that none of the boxes in <var>boxes</var> would overlap any of the boxes in
-          <var>output</var>, and all the boxes in <var>boxes</var> would be within the
-          <var>video</var>'s rendering area, then move the boxes in <var>boxes</var> to the closest
-          such position to their current position, and then jump to the step labeled <i>done
-          positioning</i> below. If there are multiple such positions that are equidistant from
-          their current position, use the highest one amongst them; if there are several at that
-          height, then use the leftmost one amongst them.</p></li>
-
-          <li><p>Otherwise, jump to the step labeled <i>done positioning</i> below. (The boxes will
-          unfortunately overlap.)</p></li>
-
-         </ol>
-
-        </dd>
-
-       </dl>
-
-      </li>
-
-      <li><p><i>Done positioning</i>: Return <var>boxes</var>.</p></li>
-
-     </ol>
-
-    </section>
-
-    <section>
-     <h4>Applying CSS properties to <a title="WebVTT Node Object">WebVTT Node Objects</a></h4>
-
-     <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents
-     must set properties of <a title="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user
-     agent cascade layer as defined in this section. [[!CSS]]</p>
-
-     <p>Initialize the (root) <a>list of WebVTT Node Objects</a> with the following CSS
-     settings:</p>
-     <ul>
-      <li>the 'position' property must be set to 'absolute'</li>
-      <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
-      <li>the 'direction' property must be set to <var>direction</var></li>
-      <li>the 'writing-mode' property must be set to <var>writing-mode</var></li>
-      <li>the 'top' property must be set to <var>top</var></li>
-      <li>the 'left' property must be set to <var>left</var></li>
-      <li>the 'width' property must be set to <var>width</var></li>
-      <li>the 'height' property must be set to <var>height</var></li>
-     </ul>
-
-     <p>The variables <var>direction</var>, <var>writing-mode</var>, <var>top</var>,
-     <var>left</var>, <var>width</var>, and <var>height</var> are the values with those names
-     determined by the <a>rules for updating the display of WebVTT text tracks</a> for the <a>text
-     track cue</a> from whose <a title="text track cue text">text</a> the <a>list of WebVTT Node
-     Objects</a> was constructed.</p>
-
-     <p>The 'text-align' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-     the value in the second cell of the row of the table below whose first cell is the value of the
-     corresponding <a title="text track cue">cue</a>'s <a>text track cue text alignment</a>:</p>
-
-     <table>
-      <thead>
-       <tr>
-        <th><a>Text track cue text alignment</a></th>
-        <th>'text-align' value</th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr>
-        <td><a title="text track cue start alignment">Start alignment</a></td>
-        <td>'start'</td>
-       </tr>
-       <tr>
-        <td><a title="text track cue middle alignment">Middle alignment</a></td>
-        <td>'center'</td>
-       </tr>
-       <tr>
-        <td><a title="text track cue end alignment">End alignment</a></td>
-        <td>'end'</td>
-       </tr>
-       <tr>
-        <td><a title="text track cue left alignment">Left alignment</a></td>
-        <td>'left'</td>
-       </tr>
-       <tr>
-        <td><a title="text track cue right alignment">Right alignment</a></td>
-        <td>'right'</td>
-       </tr>
-      </tbody>
-     </table>
-
-     <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set
-     to '5vh sans-serif'. [[!CSSRUBY]] [[!CSSVALUES]]</p>
-
-     <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-     'rgba(255,255,255,1)'. [[!CSSCOLOR]]</p>
-
-     <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> must be set to
-     'rgba(0,0,0,0.8)'. [[!CSSCOLOR]]</p>
-
-     <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-     'pre-line'. [[!CSS]]</p>
-
-     <p>The 'font-style' property on <a title="WebVTT Italic Object">WebVTT Italic Objects</a> must
-     be set to 'italic'.</p>
-
-     <p>The 'font-weight' property on <a title="WebVTT Bold Object">WebVTT Bold Objects</a> must be
-     set to 'bold'.</p>
-
-     <p>The 'text-decoration' property on <a title="WebVTT Underline Object">WebVTT Underline
-     Objects</a> must be set to 'underline'.</p>
-
-     <p>The 'display' property on <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> must be set
-     to 'ruby'. [[!CSSRUBY]]</p>
-
-     <p>The 'display' property on <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a>
-     must be set to 'ruby-text'. [[!CSSRUBY]]</p>
-
-     <p>Every <a>WebVTT region object</a> is initialized with the following CSS settings:</p>
-     <ul>
-      <li>the 'position' property must be set to 'absolute'</li>
-      <li>the 'writing-mode' property must be set to 'horizontal-tb'</li>
-      <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
-      <li>the 'word-wrap' property must be set to 'break-word'</li>
-      <li>the 'overflow-wrap' property must be set to 'break-word'</li>
-      <li>the 'font' shorthand property must be set to 'calc(5.33vh/1.3) sans-serif'</li>
-      <li>the 'line-height' shorthand property must be set to '5.33vh'</li>
-      <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
-      <li>the 'overflow' property must be set to 'hidden'</li>
-      <li>the 'width' property must be set to <var>width</var></li>
-      <li>the 'min-height' property must be set to '0px'</li>
-      <li>the 'max-height' property must be set to <var>height</var></li>
-      <li>the 'left' property must be set to <var>left</var></li>
-      <li>the 'top' property must be set to <var>top</var></li>
-      <li>the 'display' property must be set to 'inline-flex'</li>
-      <li>the 'flex-flow' property must be set to 'column'</li>
-      <li>the 'justify-content' property must be set to 'flex-end'</li>
-     </ul>
-     <p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are
-     the values with those names determined by the <a>rules for updating the display of WebVTT text
-     tracks</a> for the <a>text track region</a> from which the <a>WebVTT region object</a> was
-     constructed.</p>
-
-     <p>The children of every <a>WebVTT region object</a> are further initialized with these CSS
-     settings:</p>
-     <ul>
-      <li>the 'position' property must be set to 'relative'</li>
-      <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
-      <li>the 'width' property must be set to 'auto'</li>
-      <li>the 'height' property must be set to <var>height</var></li>
-      <li>the 'left' property must be set to <var>left</var></li>
-      <li>the 'text-align' property must be set as described for the root <a>List of WebVTT Node
-      Objects</a> not part of a region</li>
-     </ul>
-
-     <p>All other non-inherited properties must be set to their initial values; inherited properties
-     on the root <a>list of WebVTT Node Objects</a> must inherit their values from the <a>media
-     element</a> for which the <a>text track cue</a> is being rendered, if any. If there is no
-     <a>media element</a> (i.e. if the <a>text track</a> is being rendered for another media
-     playback mechanism), then inherited properties on the root <a>list of WebVTT Node Objects</a>
-     and the <a title="WebVTT region object">WebVTT region objects</a> must take their initial
-     values.</p>
-
-     <p>If there are style sheets that apply to the <a>media element</a> or other playback
-     mechanism, then they must be interpreted as defined in the next section.</p>
-
-    </section>
-
-    <section>
-     <h4>CSS extensions</h4>
-
-     <p>When a user agent is rendering one or more <a title="text track cue">text track cues</a>
-     according to the <a>rules for updating the display of WebVTT text tracks</a>, <a title="WebVTT
-     Node Object">WebVTT Node Objects</a> in the <a>list of WebVTT Node Objects</a> used in the
-     rendering can be matched by certain pseudo-selectors as defined below. These selectors can
-     begin or stop matching individual <a title="WebVTT Node Object">WebVTT Node Objects</a> while a
-     <a title="text track cue">cue</a> is being rendered, even in between applications of the
-     <a>rules for updating the display of WebVTT text tracks</a> (which are only run when the set of
-     active cues changes). User agents that support the pseudo-element described below must
-     dynamically update renderings accordingly. When either 'white-space' or one of the properties
-     corresponding to the 'font' shorthand (including 'line-height') changes value, then the <a>text
-     track cue</a>'s <a>text track cue display state</a> must be emptied and the <a>text track</a>'s
-     <a>rules for updating the text track rendering</a> must be immediately rerun.</p>
-
-     <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
-     section, that element is the <i>matched element</i>. The pseudo-elements defined in the
-     following sections affect the styling of parts of <a title="text track cue">text track cues</a>
-     that are being rendered for the <i>matched element</i>.</p>
-
-     <p class="note">If the <i>matched element</i> is not a <a><code>video</code></a> element, the
-     pseudo-elements defined below won't have any effect according to this specification.</p>
-
-     <p>A CSS user agent that implements the <a title="text track">text tracks</a> model must
-     implement the '::cue' and '::cue(<var>selector</var>)' pseudo-elements, and the <a
-     title="past-pseudo-class">':past'</a> and <a title="future-pseudo-class">':future'</a>
-     pseudo-classes.</p>
-
-     <section>
-      <h5>The '::cue' pseudo-element</h5>
-
-      <p>The '<dfn title="pseudo-cue">::cue</dfn>' pseudo-element (with no argument) matches any
-      <a>list of WebVTT Node Objects</a> constructed for the <i>matched element</i>, with the
-      exception that the properties corresponding to the 'background' shorthand must be applied to
-      the <a>WebVTT cue background box</a> rather than the <a>list of WebVTT Node Objects</a>.</p>
-
-      <p>The following properties apply to the '::cue' pseudo-element with no argument; other
-      properties set on the pseudo-element must be ignored:</p>
-
-      <ul class="brief">
-       <li>'color'</li>
-       <li>'opacity'</li>
-       <li>'visibility'</li>
-       <li>'text-decoration'</li>
-       <li>'text-shadow'</li>
-       <li>the properties corresponding to the 'background' shorthand</li>
-       <li>the properties corresponding to the 'outline' shorthand</li>
-       <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
-       <li>'white-space'</li>
-       <!-- add more... -->
-       <!-- definitely not: display, float, position, top, left, right, bottom, width, height,
-       margin-top, margin-bottom, margin-left, margin-right, clip, clear, content, cursor,
-       direction, max-height, min-height, max-width, min-width, orphans, overflow, page-break-*,
-       text-align, unicode-bidi, widows, z-index -->
+    <h4>Processing model</h4>
+
+    <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a title="text
+    track">text tracks</a> of a <a>media element</a> (specifically, a <a><code>video</code></a>
+    element), or of another playback mechanism, by applying the steps below. All the <a title="text
+    track">text tracks</a> that use these rules for a given <a>media element</a>, or other playback
+    mechanism, are rendered together, to avoid overlapping subtitles from multiple tracks.</p>
+
+    <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the
+    <a>media element</a> or other playback mechanism, which user agents are expected to render in a
+    manner suiting the user.</p>
+
+    <p>The rules are as follows:</p>
+
+    <ol>
+
+     <li><p>If the <a>media element</a> is an <a><code>audio</code></a> element, or is another
+     playback mechanism with no rendering area, abort these steps. There is nothing to
+     render.</p></li>
+
+     <li><p>Let <var>video</var> be the <a>media element</a> or other playback mechanism.</p></li>
+
+     <li><p>Let <var>output</var> be an empty list of absolutely positioned CSS block
+     boxes.</p></li>
+
+     <li><p>If the user agent is <a title="expose a user interface to the user">exposing a user
+     interface</a> for <var>video</var>, add to <var>output</var> one or more completely transparent
+     positioned CSS block boxes that cover the same region as the user interface.</p></li>
+
+     <li><p>If the last time these rules were run, the user agent was not <a title="expose a user
+     interface to the user">exposing a user interface</a> for <var>video</var>, but now it is,
+     optionally let <var>reset</var> be true. Otherwise, let <var>reset</var> be false.</p></li>
+
+     <li><p>Let <var>tracks</var> be the subset of <var>video</var>'s <a>list of text tracks</a>
+     that have as their <a>rules for updating the text track rendering</a> these <a>rules for
+     updating the display of WebVTT text tracks</a>, and whose <a>text track mode</a> is <a
+     title="text track showing">showing</a>.</p></li>
+
+     <li><p>Let <var>cues</var> be an empty list of <a title="text track cue">text track
+     cues</a>.</p></li>
+
+     <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>cues</var> all the
+     <a title="text track cue">cues</a> from <var>track</var>'s <a title="text track list of
+     cues">list of cues</a> that have their <a>text track cue active flag</a> set.</p></li>
+
+     <li><p>Let <var>regions</var> be an empty list of <a title="text track region">text track
+     regions</a>.</p></li>
+
+     <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all
+     the <a title="text track region">regions</a> from <var>track</var>'s <a title="text track list
+     of regions">list of regions</a>.</p></li>
+
+     <li><p>If <var>reset</var> is false, then, for each <a>text track region</a> <var>region</var>
+     in <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
+
+     <li>
+      <p>Apply the following steps for each <var>regionNode</var>:</p>
+
+      <ol>
+       <li>
+        <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as
+        follows:</p>
+
+        <ul>
+         <li><p>Let <var>regionWidth</var> be the <a>text track region width</a>. Let
+         <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).
+         [[!CSSVALUES]]</p></li>
+
+         <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) [[!CSSVALUES]] and
+         <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be
+         '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
+
+         <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region
+         viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>text track
+         region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by
+         <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
+         from '<var>viewportAnchorX</var> vw'.</p></li>
+
+         <li><p>Let <var>viewportAnchorY</var> be the y dimension of the <a>text track region
+         viewport anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a>text track
+         region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by
+         <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
+         from '<var>viewportAnchorY</var> vh'.</p></li>
+        </ul>
+       </li>
+
+       <li>
+        <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following
+        constraints, thus obtaining a CSS box <var>box</var> positioned relative to an initial
+        containing block:</p>
+        <ol>
+         <li><p>No style sheets are associated with <var>regionNode</var>. (The regionNodes are
+         subsequently restyled using style sheets after their boxes are generated, as described
+         below.)</p></li>
+         <li><p>Properties on <var>regionNode</var> have their values set as defined in the next
+         section. (That section uses some of the variables whose values were calculated earlier in
+         this algorithm.)</p></li>
+         <li><p>The viewport (and initial containing block) is video's rendering area.</p></li>
+        </ol>
+       </li>
+
+       <li><p>Add the CSS box <var>box</var> to <var>output</var>.</p></li>
+      </ol>
+     </li>
+
+     <li>
+      <p>If <var>reset</var> is false, then, for each <a>text track cue</a> <var>cue</var> in
+      <var>cues</var>: if <var>cue</var>'s <a>text track cue display state</a> has a set of CSS
+      boxes, then:</p>
+
+      <ul>
+       <li><p>If <var>cue</var>'s <a>text track cue region</a> is not null, add those boxes to that
+       region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
+       <li><p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var> from
+       <var>cues</var>.</p></li>
       </ul>
 
-      <p>The '<dfn title="pseudo-cue-selector">::cue(<var>selector</var>)</dfn>' pseudo-element with
-      an argument must have an argument that consists of a group of selectors. It matches any
-      <a>WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also
-      matches the given group of selectors, with the nodes being treated as follows:</p>
+     </li>
+
+     <li>
+
+      <p>For each <a>text track cue</a> <var>cue</var> in <var>cues</var> that has not yet had
+      corresponding CSS boxes added to <var>output</var>, in <a>text track cue order</a>, run the
+      following substeps:</p>
+
+      <ol>
+
+       <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying
+       the <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue
+       text</a>.</p></li>
+
+       <li>
+        <p>If <var>cue</var>'s <a>text track cue region</a> is null, run the following substeps:</p>
+
+        <ol>
+
+         <li><a>Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from
+         <var>nodes</var>.</li>
+
+         <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
+         <var>boxes</var>.</p></li>
+
+         <li><p>Add the CSS boxes in <var>boxes</var> to <var>output</var>.</p></li>
+
+        </ol>
+       </li>
+
+       <li>
+        <p>Otherwise, run the following substeps:</p>
+        <ol>
+         <li><p>Let <var>region</var> be <var>cue</var>'s <a>text track cue region</a>.</p></li>
+
+         <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>'
+         and <var>region</var> already has one child, set <var>region</var>'s 'transition-property'
+         to 'top' and 'transition-duration' to '0.433s'.</p></li>
+
+         <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm that
+         applies to regions -->
+         <li>
+          <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation
+          of the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order,
+          depth-first traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text
+          Objects</a> and their descendants, to determine the <i>paragraph embedding level</i> of
+          the first Unicode paragraph of the cue. [[!BIDI]]</p>
+          <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters,
+          such as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR.
+          (This means each line of the cue is reordered as if it was a separate paragraph.)</p>
+         </li>
+
+         <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
+         <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise,
+         let it be 'rtl'.</p></li>
+
+         <li><p>Let <var>offset</var> be the <a>text track cue computed text position</a> multiplied
+         by <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it
+         as a percentage of the region width).</p></li>
+
+         <li>
+          <p>Adjust <var>offset</var> using the <a>text track cue computed text position
+          alignment</a> as follows:</p>
+          <dl class="switch">
+           <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+           cue text position middle alignment">middle alignment</a></dt>
+           <dd><p>Subtract half of <var>region</var>'s <a>text track region width</a> from
+           <var>offset</var>.</p></dd>
+
+           <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+           cue text position end alignment">end alignment</a></dt>
+           <dd><p>Subtract <var>region</var>'s <a>text track region width</a> from
+           <var>offset</var>.</p></dd>
+          </dl>
+         </li>
+
+         <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.)
+         [[!CSSVALUES]]</p></li>
+
+         <li>
+          <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints
+          that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not
+          part of a region.</p>
+
+          <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing
+          block, along with their positions.</p>
+         </li>
+
+         <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps
+         for <var>cue</var>. The cue is ignored.</p></li>
+
+         <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
+         <var>boxes</var>.</p></li>
+
+         <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
+
+         <li><p>If the CSS boxes <var>boxes</var> together have a height less than the height of the
+         <var>region</var> box, let <var>diff</var> be the absolute difference between the two
+         height values. Increase <var>top</var> by <var>diff</var> and re-apply it to
+         <var>regionNode</var>.</p></li>
+        </ol>
+       </li>
+
+      </ol>
+     </li>
+
+     <li><p>Return <var>output</var>.</p></li>
+
+    </ol>
+
+    <p>User agents may allow the user to override the above algorithm's positioning of cues, e.g. by
+    dragging them to another location on the <a><code>video</code></a>, or even off the
+    <a><code>video</code></a> entirely.</p>
+
+    <p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn> to
+    obtain CSS boxes from a <a>list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must
+    run the following algorithm.</p>
+
+    <ol>
+
+     <li>
+
+      <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of
+      the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
+      traversal, excluding <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their
+      descendants, to determine the <i>paragraph embedding level</i> of the first Unicode paragraph
+      of the cue. [[!BIDI]]</p>
+
+      <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such
+      as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means
+      each line of the cue is reordered as if it was a separate paragraph.)</p>
+
+     </li>
+
+     <li>
+
+      <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
+      <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise,
+      let it be 'rtl'.</p>
+
+     </li>
+
+     <li><p>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+     writing direction">horizontal</a>, then let <var>writing-mode</var> be 'horizontal-tb'.
+     Otherwise, if the <a>text track cue writing direction</a> is <a title="text track cue vertical
+     growing left writing direction">vertical growing left</a>, then let <var>writing-mode</var> be
+     'vertical-rl'. Otherwise, the <a>text track cue writing direction</a> is <a title="text track
+     cue vertical growing right writing direction">vertical growing right</a>; let
+     <var>writing-mode</var> be 'vertical-lr'.</p></li>
+
+     <li>
+
+      <p>Determine the value of <var>maximum size</var> for <var>cue</var> as per the appropriate
+      rules from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue
+       text position start alignment">start</a></dt>
+       <dd>
+        <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>
+        subtracted from 100.</p>
+       </dd>
+
+       <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue
+       text position end alignment">end</a></dt>
+       <dd>
+        <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>.</p>
+       </dd>
+
+       <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue
+       text position middle alignment">middle</a>, and the <a>text track cue computed text
+       position</a> is less than or equal to 50</dt>
+       <dd>
+        <p>Let <var>maximum size</var> be the <a>text track cue computed text position</a>
+        multiplied by two.</p>
+       </dd>
+
+       <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track cue
+       text position middle alignment">middle</a>, and the <a>text track cue computed text
+       position</a> is greater than <!-- or equal to --> 50</dt>
+       <dd>
+        <p>Let <var>maximum size</var> be the result of subtracting <a>text track cue computed text
+        position</a> from 100 and then multiplying the result by two.</p>
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p>If the <a>text track cue size</a> is less than <var>maximum size</var>, then let
+     <var>size</var> be <a>text track cue size</a>. Otherwise, let <var>size</var> be <var>maximum
+     size</var>.</p></li>
+
+     <li><p>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+     writing direction">horizontal</a>, then let <var>width</var> be '<var>size</var>&#x2009;vw' and
+     <var>height</var> be 'auto'. Otherwise, let <var>width</var> be 'auto' and <var>height</var> be
+     '<var>size</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
+     properties for the rendering; 'vw' and 'vh' are CSS units.) [[!CSSVALUES]]</p></li>
+
+     <li>
+
+      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as
+      per the appropriate rules from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+       writing direction">horizontal</a></dt>
+       <dd>
+        <dl class="switch">
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position start alignment">start alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a>text track cue computed text
+         position</a>.</p></dd>
+
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position middle alignment">middle alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a>text track cue computed text position</a> minus
+         half of <var>size</var>.</p></dd>
+
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position end alignment">end alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a>text track cue computed text position</a> minus
+         <var>size</var>.</p></dd>
+        </dl>
+       </dd>
+
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+       growing left writing direction">vertical growing left</a> or <a title="text track cue
+       vertical growing right writing direction">vertical growing right</a></dt>
+       <dd>
+        <dl class="switch">
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position start alignment">start alignment</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a>text track cue computed text
+         position</a>.</p></dd>
+
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position middle alignment">middle alignment</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a>text track cue computed text position</a> minus
+         half of <var>size</var>.</p></dd>
+
+         <dt>If the <a>text track cue computed text position alignment</a> is <a title="text track
+         cue text position end alignment">end alignment</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a>text track cue computed text position</a> minus
+         <var>size</var>.</p></dd>
+        </dl>
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li>
+
+      <p>Determine the value of whichever of <var>x-position</var> or <var>y-position</var> is not
+      yet calculated for <var>cue</var> as per the appropriate rules from the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <a>text track cue snap-to-lines flag</a> is not set</dt>
+       <dd>
+        <dl class="switch">
+
+         <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+         writing direction">horizontal</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a>text track cue computed line
+         position</a>.</p></dd>
+
+         <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+         growing left writing direction">vertical growing left</a> or <a title="text track cue
+         vertical growing right writing direction">vertical growing right</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a>text track cue computed line
+         position</a>.</p></dd>
+
+        </dl>
+       </dd>
+
+       <dt>If the <a>text track cue snap-to-lines flag</a> is set</dt>
+       <dd>
+        <dl class="switch">
+
+         <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+         writing direction">horizontal</a></dt>
+         <dd><p>Let <var>y-position</var> be 0.</p></dd>
+
+         <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+         growing left writing direction">vertical growing left</a> or <a title="text track cue
+         vertical growing right writing direction">vertical growing right</a></dt>
+         <dd><p>Let <var>x-position</var> be 0.</p></dd>
+
+        </dl>
+       </dd>
+
+      </dl>
+
+      <p class="note">These are not final positions, they are merely temporary positions used to
+      calculate box dimensions below.</p>
+
+     </li>
+
+     <li>
+
+      <p>If the <a>text track cue snap-to-lines flag</a> is set, then run the appropriate steps from
+      the following list:</p>
+
+      <dl class="switch">
+
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+       writing direction">horizontal</a></dt>
+       <dd>
+
+        <ol>
+
+         <li><p>Let <var>edge margin</var> be a user-agent-defined horizontal length, expressed as a
+         percentage of the width of the <var>video</var>'s rendering area, which will be used to
+         define a margin at the left and right edges of the video into which this cue will not be
+         placed. In situations with overscan, this margin should be sufficient to place the cue
+         within the title-safe area. In the absence of overscan, this value should be picked for
+         aesthetics (to avoid text being aligned precisely on the left or right edge of the video,
+         which can be ugly).</p></li>
+
+         <li><p>If <var>x-position</var> is less than <var>edge margin</var> and the sum of
+         <var>x-position</var> and <var>size</var> is more than <var>edge margin</var>, then
+         increase <var>x-position</var> by <var>edge margin</var> and decrease <var>size</var> by
+         the same amount.</p></li>
+
+         <li><p>Let <var>right margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+
+         <li><p>If <var>x-position</var> is less than <var>right margin edge</var>, and the sum of
+         <var>x-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
+         decrease <var>size</var> by <var>edge margin</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+       growing left writing direction">vertical growing left</a> or <a title="text track cue
+       vertical growing right writing direction">vertical growing right</a></dt>
+       <dd>
+
+        <ol>
+
+         <li><p>Let <var>edge margin</var> be a user-agent-defined vertical length, expressed as a
+         percentage of the height of the <var>video</var>'s rendering area, which will be used to
+         define a margin at the top and bottom edges of the video into which this cue will not be
+         placed. In situations with overscan, this margin should be sufficient to place the cue
+         within the title-safe area. In the absence of overscan, this value should be picked for
+         aesthetics (to avoid text being aligned precisely on the top or bottom edge of the video,
+         which can be ugly).</p></li>
+
+         <li><p>If <var>y-position</var> is less than <var>edge margin</var> and the sum of
+         <var>y-position</var> and <var>size</var> is more than <var>edge margin</var>, then
+         increase <var>y-position</var> by <var>edge margin</var> and decrease <var>size</var> by
+         the same amount.</p></li>
+
+         <li><p>Let <var>bottom margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+
+         <li><p>If <var>y-position</var> is less than <var>bottom margin edge</var>, and the sum of
+         <var>y-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
+         decrease <var>size</var> by <var>edge margin</var>.</p></li>
+
+        </ol>
+
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p>Let <var>left</var> be '<var>x-position</var>&#x2009;vw' and <var>top</var> be
+     '<var>y-position</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
+     properties for the rendering; 'vw' and 'vh' are CSS units.) [[!CSSVALUES]]</p></li>
+
+     <li>
+
+      <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following
+      constraints, thus obtaining a set of CSS boxes positioned relative to an initial containing
+      block: [[!CSS]]</p>
 
       <ul>
 
-       <li><p>The <i>document tree</i> against which the selectors are matched is the tree of <a
-       title="WebVTT Node Object">WebVTT Node Objects</a> rooted at the <a>list of WebVTT Node
-       Objects</a> for the cue.</p></li>
+       <li><p>The <i>document tree</i> is the tree of <a title="WebVTT Node Object">WebVTT Node
+       Objects</a> rooted at <var>nodes</var>.</p></li>
 
-       <li><p><a title="WebVTT Internal Node Object">WebVTT Internal Node Objects</a> are elements
-       in the tree.</p></li>
+       <li><p>For the purposes of processing by the CSS specification, <a title="WebVTT Internal
+       Node Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
+       contents.</p></li>
 
-       <li><a title="WebVTT Leaf Node Object">WebVTT Leaf Node Objects</a> cannot be matched.</li>
+       <li>For the purposes of processing by the CSS specification, <a title="WebVTT Text
+       Object">WebVTT Text Objects</a> are equivalent to <a><code>Text</code></a> nodes.</li>
+
+       <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently
+       restyled using style sheets after their boxes are generated, as described below.)</li>
+
+       <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose 'display'
+       property has the value 'inline'. This is the <dfn>WebVTT cue background box</dfn>.</li>
+
+       <li>Runs of children of <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
+       title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous
+       boxes whose 'display' property has the value 'ruby-base'. [[!CSSRUBY]]</li>
+
+       <li>Properties on <a title="WebVTT Node Object">WebVTT Node Objects</a> have their values set
+       as defined in the next section. (That section uses some of the variables whose values were
+       calculated earlier in this algorithm.)</li>
 
        <li>
+        Text runs must be wrapped according to the CSS
+        line-wrapping rules, with the following additional constraints:
 
-        <p>For the purposes of element type selectors, the names of <a title="WebVTT Internal Node
-        Object">WebVTT Internal Node Objects</a> are as given by the following table, where objects
-        having the concrete class given in a cell in the first column have the name given by the
-        second column of the same row:</p>
+        <ul>
 
-        <table>
-         <thead>
-          <tr>
-           <th>Concrete class</th>
-           <th>Name</th>
-          </tr>
-         </thead>
-         <tbody>
-          <tr>
-           <td><a title="WebVTT Class Object">WebVTT Class Objects</a></td>
-           <td><code>c</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Italic Object">WebVTT Italic Objects</a></td>
-           <td><code>i</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Bold Object">WebVTT Bold Objects</a></td>
-           <td><code>b</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Underline Object">WebVTT Underline Objects</a></td>
-           <td><code>u</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Ruby Object">WebVTT Ruby Objects</a></td>
-           <td><code>ruby</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a></td>
-           <td><code>rt</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Voice Object">WebVTT Voice Objects</a></td>
-           <td><code>v</code></td>
-          </tr>
-          <tr>
-           <td><a title="WebVTT Language Object">WebVTT Language Objects</a></td>
-           <td><code>lang</code></td>
-          </tr>
-          <tr>
-           <td>Other elements (specifically, <a title="list of WebVTT Node Objects">lists of WebVTT
-           Node Objects</a>)</td>
-           <td>No explicit name.</td>
-          </tr>
-         </tbody>
-        </table>
+         <li>Regardless of the value of the 'white-space' property, lines must be wrapped at the
+         edge of their containing blocks, even if doing so requires splitting a word where there is
+         no line breaking opportunity. (Thus, normally text wraps as needed, but if there is a
+         particularly long word, it does not overflow as it normally would in CSS, it is instead
+         forcibly wrapped at the box's edge.)</li>
+
+         <li>Regardless of the value of the 'white-space' property, any line breaks inserted by the
+         user agent for the purposes of line wrapping must be placed so as to minimize &Delta;
+         across each run of consecutive lines between preserved newlines in the source. &Delta; for
+         a set of lines is defined as the sum over each line of the absolute of the difference
+         between the line's length and the mean line length of the set.</li>
+
+        </ul>
 
        </li>
 
-       <li><p>For the purposes of element type and universal selectors, <a title="WebVTT Internal
-       Node Object">WebVTT Internal Node Objects</a> are considered as being in the namespace
-       expressed as the empty string.</p></li>
-
-       <li><p>For the purposes of attribute selector matching, <a title="WebVTT Internal Node
-       Object">WebVTT Internal Node Objects</a> have no attributes, except for <a title="WebVTT
-       Voice Object">WebVTT Voice Objects</a>, which have a single attribute named
-       "<code>voice</code>" whose value is the value of the <a>WebVTT Voice Object</a>, and <a
-       title="WebVTT Language Object">WebVTT Language Objects</a>, which have a single attribute
-       named "<code>lang</code>" whose value is the object's <a title="WebVTT Node Object's
-       applicable language">applicable language</a>.</p></li>
-
-       <li><p>For the purposes of class selector matching, <a title="WebVTT Internal Node
-       Object">WebVTT Internal Node Objects</a> have the classes described as the <a>WebVTT Node
-       Object's applicable classes</a>.</p></li> <!-- ok, this isn't especially well-defined, but
-       the Selectors spec doesn't really give one much to go on here. -->
-
-       <li><p>For the purposes of the <code title="selector-lang">:lang()</code> pseudo-class, <a
-       title="WebVTT Internal Node Object">WebVTT Internal Node Objects</a> have the language
-       described as the <a>WebVTT Node Object's applicable language</a>.</p></li>
-
-       <li><p>For the purposes of ID selector matching, <a title="list of WebVTT Node Objects">lists
-       of WebVTT Node Objects</a> have the ID given by the cue's <a>text track cue identifier</a>,
-       if any.</p></li>
+       <li>The viewport (and initial containing block) is <var>video</var>'s rendering area.</li>
 
       </ul>
 
-      <p>The following properties apply to the '::cue()' pseudo-element with an argument:</p>
+      <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block,
+      along with their positions.</p>
 
-      <ul class="brief">
-       <li>'color'</li>
-       <li>'opacity'</li>
-       <li>'visibility'</li>
-       <li>'text-decoration'</li>
-       <li>'text-shadow'</li>
-       <li>the properties corresponding to the 'background' shorthand</li>
-       <li>the properties corresponding to the 'outline' shorthand</li>
-       <li>properties relating to the transition and animation features</li>
-       <!-- add more... -->
-       <!-- but definitely not anything that affects dimensions of boxes, e.g. the 'font'
-       shorthand's properties or 'white-space'; those are listed below instead -->
-      </ul>
+     </li>
 
-      <!--v2 Would be nice to support transitions that are directional, e.g. changing text fill
-      colour or shadow size of the start of a segment when the segment becomes "past", and having
-      the change propagate towards the end of the segment so that it reaches the end of the segment
-      when the next segment becomes "past". -->
+     <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for
+     <var>cue</var>. The cue is ignored.</p></li>
 
-      <p>In addition, the following properties apply to the '::cue()' pseudo-element with an
-      argument when the selector does not contain the <a title="past-pseudo-class">':past'</a> and
-      <a title="future-pseudo-class">':future'</a> pseudo-classes:</p>
+     <li>
 
-      <ul class="brief">
-       <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
-       <li>'white-space'</li>
-       <!-- add more... -->
-       <!-- definitely not: display, float, position, top, left, right, bottom, width, height,
-       margin-top, margin-bottom, margin-left, margin-right, clip, clear, content, cursor,
-       direction, max-height, min-height, max-width, min-width, orphans, overflow, page-break-*,
-       text-align, unicode-bidi, widows, z-index -->
-      </ul>
+      <p>Adjust the positions of <var>boxes</var> according to the appropriate steps from the
+      following list:</p>
 
-      <p>Properties that do not apply must be ignored.</p>
+      <dl class="switch">
 
-      <p>As a special exception, the properties corresponding to the 'background' shorthand, when
-      they would have been applied to the <a>list of WebVTT Node Objects</a>, must instead be
-      applied to the <a>WebVTT cue background box</a>.</p>
+       <dt>If <var>cue</var>'s <a>text track cue snap-to-lines flag</a> is set</dt>
 
-     </section>
+       <dd>
 
-     <section>
-      <h5>The ':past' and ':future' pseudo-classes</h5>
+        <p>Many of the steps in this algorithm vary according to the <a>text track cue writing
+        direction</a>. Steps labeled "<strong>Horizontal</strong>" must be followed only when the
+        <a>text track cue writing direction</a> is <a title="text track cue horizontal writing
+        direction">horizontal</a>, steps labeled "<strong>Vertical</strong>" must be followed when
+        the <a>text track cue writing direction</a> is either <a title="text track cue vertical
+        growing left writing direction">vertical growing left</a> or <a title="text track cue
+        vertical growing right writing direction">vertical growing right</a>, steps labeled
+        "<strong>Vertical Growing Left</strong>" must be followed only when the <a>text track cue
+        writing direction</a> is <a title="text track cue vertical growing left writing
+        direction">vertical growing left</a>, and steps labeled "<strong>Vertical Growing
+        Right</strong>" must be followed only when the <a>text track cue writing direction</a> is <a
+        title="text track cue vertical growing right writing direction">vertical growing
+        right</a>.</p>
 
-      <p>The <a title="past-pseudo-class">':past'</a> and <a
-      title="future-pseudo-class">':future'</a> pseudo-classes sometimes match <a title="WebVTT Node
-      Object">WebVTT Node Objects</a>. [[!SELECTORS]]</p>
+        <ol>
 
-      <p>The <dfn title="past-pseudo-class">':past'</dfn> pseudo-class only matches <a title="WebVTT
-      Node Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+         <li>
 
-      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the past</dfn> if, in a pre-order,
-      depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
-      exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
-      position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after
-      the <a>WebVTT Node Object</a> <var>c</var>.</p>
+          <p><strong>Horizontal</strong>: Let <var>margin</var> be a user-agent-defined vertical
+          length which will be used to define a margin at the top and bottom edges of the video into
+          which cues will not be placed. In situations with overscan, this margin should be
+          sufficient to place all cues within the title-safe area. In the absence of overscan, this
+          value should be picked for aesthetics (to avoid text being aligned precisely on the bottom
+          edge of the video, which can be ugly).</p>
 
-      <p>The <dfn title="future-pseudo-class">':future'</dfn> pseudo-class only matches <a
-      title="WebVTT Node Object">WebVTT Node Objects</a> that are <i>in the future</i>.</p>
+          <p><strong>Vertical</strong>: Let <var>margin</var> be a user-agent-defined horizontal
+          length which will be used to define a margin at the left and right edges of the video into
+          which cues will not be placed. In situations with overscan, this margin should be
+          sufficient to place all cues within the title-safe area. In the absence of overscan, this
+          value should be picked for aesthetics (to avoid text being aligned precisely on the left
+          or right edges of the video, which can be ugly).</p>
 
-      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the future</dfn> if, in a pre-order,
-      depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
-      exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
-      position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before
-      the <a>WebVTT Node Object</a> <var>c</var>.</p>
-     </section>
+         </li>
 
-     <section>
-      <h3>The '::cue-region' pseudo-element</h3>
+         <li>
 
-      <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
-      section, that element is the matched element. The pseudo-element defined below affects the
-      styling of text track regions that are being rendered for the matched element.</p>
+          <p><strong>Horizontal</strong>: Let <var>full dimension</var> be the height of
+          <var>video</var>'s rendering area.</p>
 
-      <p class="note">If the matched element is not a video element, the pseudo-element defined
-      below won't have any effect according to this specification.</p>
+          <p><strong>Vertical</strong>: Let <var>full dimension</var> be the width of
+          <var>video</var>'s rendering area.</p>
 
-      <p>The '<dfn title="pseudo-region">::cue-region</dfn>' pseudo-element (with no argument)
-      matches any list of <a title="WebVTT region object">WebVTT region objects</a> constructed for
-      the <i>matched element</i>.</p>
+          <p>These dimensions must not be adjusted for overscan. (The algorithm does that
+          separately.)</p>
 
-      <p>The <a title="pseudo-cue">same properties that apply to '::cue'</a> apply to the
-      '::cue-region' pseudo-element with no argument; other properties set on the pseudo-element
-      must be ignored.</p>
+         </li>
 
-      <p>When a user agent is rendering one or more text track regions according to the <a>rules for
-      updating the display of WebVTT text tracks</a>, <a title="WebVTT region object">WebVTT region
-      objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
-      support the pseudo-element must dynamically update renderings accordingly. When either
-      'white-space' or one of the properties corresponding to the 'font' shorthand (including
-      'line-height') changes value, then the text track cue display state of all the text track cues
-      in the region must be emptied and the text track's rules for updating the text track rendering
-      must be immediately rerun.</p>
+         <li>
 
-      <p>A CSS user agent that implements the text tracks model must implement the '::cue-region'
-      pseudo-element.</p>
+          <p>Let <var>max dimension</var> be
+          <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp; <var>margin</var>).</p>
 
-     </section>
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var>step</var> be the height of the first line box in
+          <var>boxes</var>.</p>
+
+          <p><strong>Vertical</strong>: Let <var>step</var> be the width of the first line box in
+          <var>boxes</var>.</p>
+
+         </li>
+
+         <li><p>If <var>step</var> is zero, then jump to the step labeled <i>done positioning</i>
+         below.</p></li>
+
+         <li><p>Let <var>line position</var> be the <a>text track cue computed line
+         position</a>.</p></li>
+
+         <li><p>Round <var>line position</var> to an integer by adding 0.5 and then flooring
+         it.</p></li>
+
+         <li><p><strong>Vertical Growing Left</strong>: Add one to <var>line position</var> then
+         negate it.</p></li>
+
+         <li><p>Let <var>position</var> be the result of multiplying <var>step</var> and <var>line
+         position</var>.</p></li>
+
+         <li><p><strong>Vertical Growing Left</strong>: Decrease <var>position</var> by the width of
+         the bounding box of the boxes in <var>boxes</var>, then increase <var>position</var> by
+         <var>step</var>.</p></li>
+
+         <li>
+
+          <p>If <var>line position</var> is less than zero then increase <var>position</var> by
+          <var>max dimension</var>, and negate <var>step</var>.</p>
+
+          <p>Otherwise, increase <var>position</var> by <var>margin</var>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the
+          distance given by <var>position</var>.</p>
+
+          <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the distance
+          given by <var>position</var>.</p>
+
+         </li>
+
+         <li><p>Remember the position of all the boxes in <var>boxes</var> as their <var>specified
+         position</var>.</p></li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Let <var>title area</var> be a box that covers all of the
+          <var>video</var>'s rendering area except for a height of <var>margin</var> at the top of
+          the rendering area and a height of <var>margin</var> at the bottom of the rendering
+          area.</p>
+
+          <p><strong>Vertical</strong>: Let <var>title area</var> be a box that covers all of the
+          <var>video</var>'s rendering area except for a width of <var>margin</var> at the left of
+          the rendering area and a width of <var>margin</var> at the right of the rendering
+          area.</p>
+
+         </li>
+
+         <li><p><i>Step loop</i>: If none of the boxes in <var>boxes</var> would overlap any of the
+         boxes in <var>output</var>, and all of the boxes in <var>boxes</var> are entirely within
+         the <var>title area</var> box, then jump to the step labeled <i>done positioning</i>
+         below.</p></li>
+
+         <li><p>Let <var>current position score</var> be the percentage of the area of the bounding
+         box of the boxes in <var>boxes</var> that <!--overlaps the boxes in <var>output</var> (if
+         any) or that--> is outside the <var>title area</var> box.</p></li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: If <var>step</var> is negative and the top of the first
+          line box in <var>boxes</var> is now above the top of the <var>title area</var>, or if
+          <var>step</var> is positive and the bottom of the first line box in <var>boxes</var> is
+          now below the bottom of the <var>title area</var>, jump to the step labeled <i>switch
+          direction</i>.</p>
+
+          <p><strong>Vertical</strong>: If <var>step</var> is negative and the left edge of the
+          first line box in <var>boxes</var> is now to the left of the left edge of the <var>title
+          area</var>, or if <var>step</var> is positive and the right edge of the first line box in
+          <var>boxes</var> is now to the right of the right edge of the <var>title area</var>, jump
+          to the step labeled <i>switch direction</i>.</p>
+
+         </li>
+
+         <li>
+
+          <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the
+          distance given by <var>step</var>. (If <var>step</var> is negative, then this will
+          actually result in an upwards movement of the boxes in absolute terms.)</p>
+
+          <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the distance
+          given by <var>step</var>. (If <var>step</var> is negative, then this will actually result
+          in a leftwards movement of the boxes in absolute terms.)</p>
+
+         </li>
+
+         <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
+
+         <li><p><i>Switch direction</i>: If <var>switched</var> is true, then remove all the boxes
+         in <var>boxes</var>, and jump to the step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>Otherwise, move all the boxes in <var>boxes</var> back to their <var>specified
+         position</var> as determined in the earlier step.</p></li>
+
+         <li><p>Negate <var>step</var>.</p></li>
+
+         <li><p>Set <var>switched</var> to true.</p></li>
+
+         <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
+
+        </ol>
+
+       </dd>
+
+       <dt>If <var>cue</var>'s <a>text track cue snap-to-lines flag</a> is not set</dt>
+       <dd>
+
+        <ol>
+
+         <li><p>Let <var>bounding box</var> be the bounding box of the boxes in
+         <var>boxes</var>.</p></li>
+
+         <li>
+          <p>Run the appropriate steps from the following list:</p>
+
+          <dl class="switch">
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue horizontal
+           writing direction">horizontal</a></dt>
+           <dd>
+            <dl class="switch">
+             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
+             position middle alignment">middle alignment</a></dt>
+             <dd><p>Move all the boxes in <var>boxes</var> up by half of the height of <var>bounding
+             box</var>.</p></dd>
+
+             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
+             position end alignment">end alignment</a></dt>
+             <dd><p>Move all the boxes in <var>boxes</var> up by the height of <var>bounding
+             box</var>.</p></dd>
+            </dl>
+           </dd>
+
+           <dt>If the <a>text track cue writing direction</a> is <a title="text track cue vertical
+           growing left writing direction">vertical growing left</a> or <a title="text track cue
+           vertical growing right writing direction">vertical growing right</a></dt>
+           <dd>
+            <dl class="switch">
+             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
+             position middle alignment">middle alignment</a></dt>
+             <dd><p>Move all the boxes in <var>boxes</var> left by half of the width of
+             <var>bounding box</var>.</p></dd>
+
+             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
+             position end alignment">end alignment</a></dt>
+             <dd><p>Move all the boxes in <var>boxes</var> left by the width of <var>bounding
+             box</var>.</p></dd>
+            </dl>
+           </dd>
+          </dl>
+         </li>
+
+         <li><p>If none of the boxes in <var>boxes</var> would overlap any of the boxes in
+         <var>output</var>, and all the boxes in <var>boxes</var> are within the <var>video</var>'s
+         rendering area, then jump to the step labeled <i>done positioning</i> below.</p></li>
+
+         <li><p>If there is a position to which the boxes in <var>boxes</var> can be moved while
+         maintaining the relative positions of the boxes in <var>boxes</var> to each other such that
+         none of the boxes in <var>boxes</var> would overlap any of the boxes in <var>output</var>,
+         and all the boxes in <var>boxes</var> would be within the <var>video</var>'s rendering
+         area, then move the boxes in <var>boxes</var> to the closest such position to their current
+         position, and then jump to the step labeled <i>done positioning</i> below. If there are
+         multiple such positions that are equidistant from their current position, use the highest
+         one amongst them; if there are several at that height, then use the leftmost one amongst
+         them.</p></li>
+
+         <li><p>Otherwise, jump to the step labeled <i>done positioning</i> below. (The boxes will
+         unfortunately overlap.)</p></li>
+
+        </ol>
+
+       </dd>
+
+      </dl>
+
+     </li>
+
+     <li><p><i>Done positioning</i>: Return <var>boxes</var>.</p></li>
+
+    </ol>
+
+   </section>
+
+   <section>
+    <h4>Applying CSS properties to <a title="WebVTT Node Object">WebVTT Node Objects</a></h4>
+
+    <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents
+    must set properties of <a title="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user
+    agent cascade layer as defined in this section. [[!CSS]]</p>
+
+    <p>Initialize the (root) <a>list of WebVTT Node Objects</a> with the following CSS settings:</p>
+    <ul>
+     <li>the 'position' property must be set to 'absolute'</li>
+     <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
+     <li>the 'direction' property must be set to <var>direction</var></li>
+     <li>the 'writing-mode' property must be set to <var>writing-mode</var></li>
+     <li>the 'top' property must be set to <var>top</var></li>
+     <li>the 'left' property must be set to <var>left</var></li>
+     <li>the 'width' property must be set to <var>width</var></li>
+     <li>the 'height' property must be set to <var>height</var></li>
+    </ul>
+
+    <p>The variables <var>direction</var>, <var>writing-mode</var>, <var>top</var>, <var>left</var>,
+    <var>width</var>, and <var>height</var> are the values with those names determined by the
+    <a>rules for updating the display of WebVTT text tracks</a> for the <a>text track cue</a> from
+    whose <a title="text track cue text">text</a> the <a>list of WebVTT Node Objects</a> was
+    constructed.</p>
+
+    <p>The 'text-align' property on the (root) <a>list of WebVTT Node Objects</a> must be set to the
+    value in the second cell of the row of the table below whose first cell is the value of the
+    corresponding <a title="text track cue">cue</a>'s <a>text track cue text alignment</a>:</p>
+
+    <table>
+     <thead>
+      <tr>
+       <th><a>Text track cue text alignment</a></th>
+       <th>'text-align' value</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td><a title="text track cue start alignment">Start alignment</a></td>
+       <td>'start'</td>
+      </tr>
+      <tr>
+       <td><a title="text track cue middle alignment">Middle alignment</a></td>
+       <td>'center'</td>
+      </tr>
+      <tr>
+       <td><a title="text track cue end alignment">End alignment</a></td>
+       <td>'end'</td>
+      </tr>
+      <tr>
+       <td><a title="text track cue left alignment">Left alignment</a></td>
+       <td>'left'</td>
+      </tr>
+      <tr>
+       <td><a title="text track cue right alignment">Right alignment</a></td>
+       <td>'right'</td>
+      </tr>
+     </tbody>
+    </table>
+
+    <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set to
+    '5vh sans-serif'. [[!CSSRUBY]] [[!CSSVALUES]]</p>
+
+    <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
+    'rgba(255,255,255,1)'. [[!CSSCOLOR]]</p>
+
+    <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> must be set to
+    'rgba(0,0,0,0.8)'. [[!CSSCOLOR]]</p>
+
+    <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
+    'pre-line'. [[!CSS]]</p>
+
+    <p>The 'font-style' property on <a title="WebVTT Italic Object">WebVTT Italic Objects</a> must
+    be set to 'italic'.</p>
+
+    <p>The 'font-weight' property on <a title="WebVTT Bold Object">WebVTT Bold Objects</a> must be
+    set to 'bold'.</p>
+
+    <p>The 'text-decoration' property on <a title="WebVTT Underline Object">WebVTT Underline
+    Objects</a> must be set to 'underline'.</p>
+
+    <p>The 'display' property on <a title="WebVTT Ruby Object">WebVTT Ruby Objects</a> must be set
+    to 'ruby'. [[!CSSRUBY]]</p>
+
+    <p>The 'display' property on <a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a>
+    must be set to 'ruby-text'. [[!CSSRUBY]]</p>
+
+    <p>Every <a>WebVTT region object</a> is initialized with the following CSS settings:</p>
+    <ul>
+     <li>the 'position' property must be set to 'absolute'</li>
+     <li>the 'writing-mode' property must be set to 'horizontal-tb'</li>
+     <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
+     <li>the 'word-wrap' property must be set to 'break-word'</li>
+     <li>the 'overflow-wrap' property must be set to 'break-word'</li>
+     <li>the 'font' shorthand property must be set to 'calc(5.33vh/1.3) sans-serif'</li>
+     <li>the 'line-height' shorthand property must be set to '5.33vh'</li>
+     <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
+     <li>the 'overflow' property must be set to 'hidden'</li>
+     <li>the 'width' property must be set to <var>width</var></li>
+     <li>the 'min-height' property must be set to '0px'</li>
+     <li>the 'max-height' property must be set to <var>height</var></li>
+     <li>the 'left' property must be set to <var>left</var></li>
+     <li>the 'top' property must be set to <var>top</var></li>
+     <li>the 'display' property must be set to 'inline-flex'</li>
+     <li>the 'flex-flow' property must be set to 'column'</li>
+     <li>the 'justify-content' property must be set to 'flex-end'</li>
+    </ul>
+    <p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are
+    the values with those names determined by the <a>rules for updating the display of WebVTT text
+    tracks</a> for the <a>text track region</a> from which the <a>WebVTT region object</a> was
+    constructed.</p>
+
+    <p>The children of every <a>WebVTT region object</a> are further initialized with these CSS
+    settings:</p>
+    <ul>
+     <li>the 'position' property must be set to 'relative'</li>
+     <li>the 'unicode-bidi' property must be set to 'plaintext'</li>
+     <li>the 'width' property must be set to 'auto'</li>
+     <li>the 'height' property must be set to <var>height</var></li>
+     <li>the 'left' property must be set to <var>left</var></li>
+     <li>the 'text-align' property must be set as described for the root <a>List of WebVTT Node
+     Objects</a> not part of a region</li>
+    </ul>
+
+    <p>All other non-inherited properties must be set to their initial values; inherited properties
+    on the root <a>list of WebVTT Node Objects</a> must inherit their values from the <a>media
+    element</a> for which the <a>text track cue</a> is being rendered, if any. If there is no
+    <a>media element</a> (i.e. if the <a>text track</a> is being rendered for another media playback
+    mechanism), then inherited properties on the root <a>list of WebVTT Node Objects</a> and the <a
+    title="WebVTT region object">WebVTT region objects</a> must take their initial values.</p>
+
+    <p>If there are style sheets that apply to the <a>media element</a> or other playback mechanism,
+    then they must be interpreted as defined in the next section.</p>
+
+   </section>
+
+   <section>
+    <h4>CSS extensions</h4>
+
+    <p>When a user agent is rendering one or more <a title="text track cue">text track cues</a>
+    according to the <a>rules for updating the display of WebVTT text tracks</a>, <a title="WebVTT
+    Node Object">WebVTT Node Objects</a> in the <a>list of WebVTT Node Objects</a> used in the
+    rendering can be matched by certain pseudo-selectors as defined below. These selectors can begin
+    or stop matching individual <a title="WebVTT Node Object">WebVTT Node Objects</a> while a <a
+    title="text track cue">cue</a> is being rendered, even in between applications of the <a>rules
+    for updating the display of WebVTT text tracks</a> (which are only run when the set of active
+    cues changes). User agents that support the pseudo-element described below must dynamically
+    update renderings accordingly. When either 'white-space' or one of the properties corresponding
+    to the 'font' shorthand (including 'line-height') changes value, then the <a>text track
+    cue</a>'s <a>text track cue display state</a> must be emptied and the <a>text track</a>'s
+    <a>rules for updating the text track rendering</a> must be immediately rerun.</p>
+
+    <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
+    section, that element is the <i>matched element</i>. The pseudo-elements defined in the
+    following sections affect the styling of parts of <a title="text track cue">text track cues</a>
+    that are being rendered for the <i>matched element</i>.</p>
+
+    <p class="note">If the <i>matched element</i> is not a <a><code>video</code></a> element, the
+    pseudo-elements defined below won't have any effect according to this specification.</p>
+
+    <p>A CSS user agent that implements the <a title="text track">text tracks</a> model must
+    implement the '::cue' and '::cue(<var>selector</var>)' pseudo-elements, and the <a
+    title="past-pseudo-class">':past'</a> and <a title="future-pseudo-class">':future'</a>
+    pseudo-classes.</p>
+
+    <section>
+     <h5>The '::cue' pseudo-element</h5>
+
+     <p>The '<dfn title="pseudo-cue">::cue</dfn>' pseudo-element (with no argument) matches any
+     <a>list of WebVTT Node Objects</a> constructed for the <i>matched element</i>, with the
+     exception that the properties corresponding to the 'background' shorthand must be applied to
+     the <a>WebVTT cue background box</a> rather than the <a>list of WebVTT Node Objects</a>.</p>
+
+     <p>The following properties apply to the '::cue' pseudo-element with no argument; other
+     properties set on the pseudo-element must be ignored:</p>
+
+     <ul class="brief">
+      <li>'color'</li>
+      <li>'opacity'</li>
+      <li>'visibility'</li>
+      <li>'text-decoration'</li>
+      <li>'text-shadow'</li>
+      <li>the properties corresponding to the 'background' shorthand</li>
+      <li>the properties corresponding to the 'outline' shorthand</li>
+      <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
+      <li>'white-space'</li>
+      <!-- add more... -->
+      <!-- definitely not: display, float, position, top, left, right, bottom, width, height,
+      margin-top, margin-bottom, margin-left, margin-right, clip, clear, content, cursor, direction,
+      max-height, min-height, max-width, min-width, orphans, overflow, page-break-*, text-align,
+      unicode-bidi, widows, z-index -->
+     </ul>
+
+     <p>The '<dfn title="pseudo-cue-selector">::cue(<var>selector</var>)</dfn>' pseudo-element with
+     an argument must have an argument that consists of a group of selectors. It matches any
+     <a>WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also matches
+     the given group of selectors, with the nodes being treated as follows:</p>
+
+     <ul>
+
+      <li><p>The <i>document tree</i> against which the selectors are matched is the tree of <a
+      title="WebVTT Node Object">WebVTT Node Objects</a> rooted at the <a>list of WebVTT Node
+      Objects</a> for the cue.</p></li>
+
+      <li><p><a title="WebVTT Internal Node Object">WebVTT Internal Node Objects</a> are elements in
+      the tree.</p></li>
+
+      <li><a title="WebVTT Leaf Node Object">WebVTT Leaf Node Objects</a> cannot be matched.</li>
+
+      <li>
+
+       <p>For the purposes of element type selectors, the names of <a title="WebVTT Internal Node
+       Object">WebVTT Internal Node Objects</a> are as given by the following table, where objects
+       having the concrete class given in a cell in the first column have the name given by the
+       second column of the same row:</p>
+
+       <table>
+        <thead>
+         <tr>
+          <th>Concrete class</th>
+          <th>Name</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td><a title="WebVTT Class Object">WebVTT Class Objects</a></td>
+          <td><code>c</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Italic Object">WebVTT Italic Objects</a></td>
+          <td><code>i</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Bold Object">WebVTT Bold Objects</a></td>
+          <td><code>b</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Underline Object">WebVTT Underline Objects</a></td>
+          <td><code>u</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Ruby Object">WebVTT Ruby Objects</a></td>
+          <td><code>ruby</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a></td>
+          <td><code>rt</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Voice Object">WebVTT Voice Objects</a></td>
+          <td><code>v</code></td>
+         </tr>
+         <tr>
+          <td><a title="WebVTT Language Object">WebVTT Language Objects</a></td>
+          <td><code>lang</code></td>
+         </tr>
+         <tr>
+          <td>Other elements (specifically, <a title="list of WebVTT Node Objects">lists of WebVTT
+          Node Objects</a>)</td>
+          <td>No explicit name.</td>
+         </tr>
+        </tbody>
+       </table>
+
+      </li>
+
+      <li><p>For the purposes of element type and universal selectors, <a title="WebVTT Internal
+      Node Object">WebVTT Internal Node Objects</a> are considered as being in the namespace
+      expressed as the empty string.</p></li>
+
+      <li><p>For the purposes of attribute selector matching, <a title="WebVTT Internal Node
+      Object">WebVTT Internal Node Objects</a> have no attributes, except for <a title="WebVTT Voice
+      Object">WebVTT Voice Objects</a>, which have a single attribute named "<code>voice</code>"
+      whose value is the value of the <a>WebVTT Voice Object</a>, and <a title="WebVTT Language
+      Object">WebVTT Language Objects</a>, which have a single attribute named "<code>lang</code>"
+      whose value is the object's <a title="WebVTT Node Object's applicable language">applicable
+      language</a>.</p></li>
+
+      <li><p>For the purposes of class selector matching, <a title="WebVTT Internal Node
+      Object">WebVTT Internal Node Objects</a> have the classes described as the <a>WebVTT Node
+      Object's applicable classes</a>.</p></li> <!-- ok, this isn't especially well-defined, but the
+      Selectors spec doesn't really give one much to go on here. -->
+
+      <li><p>For the purposes of the <code title="selector-lang">:lang()</code> pseudo-class, <a
+      title="WebVTT Internal Node Object">WebVTT Internal Node Objects</a> have the language
+      described as the <a>WebVTT Node Object's applicable language</a>.</p></li>
+
+      <li><p>For the purposes of ID selector matching, <a title="list of WebVTT Node Objects">lists
+      of WebVTT Node Objects</a> have the ID given by the cue's <a>text track cue identifier</a>, if
+      any.</p></li>
+
+     </ul>
+
+     <p>The following properties apply to the '::cue()' pseudo-element with an argument:</p>
+
+     <ul class="brief">
+      <li>'color'</li>
+      <li>'opacity'</li>
+      <li>'visibility'</li>
+      <li>'text-decoration'</li>
+      <li>'text-shadow'</li>
+      <li>the properties corresponding to the 'background' shorthand</li>
+      <li>the properties corresponding to the 'outline' shorthand</li>
+      <li>properties relating to the transition and animation features</li>
+      <!-- add more... -->
+      <!-- but definitely not anything that affects dimensions of boxes, e.g. the 'font' shorthand's
+      properties or 'white-space'; those are listed below instead -->
+     </ul>
+
+     <!--v2 Would be nice to support transitions that are directional, e.g. changing text fill
+     colour or shadow size of the start of a segment when the segment becomes "past", and having the
+     change propagate towards the end of the segment so that it reaches the end of the segment when
+     the next segment becomes "past". -->
+
+     <p>In addition, the following properties apply to the '::cue()' pseudo-element with an argument
+     when the selector does not contain the <a title="past-pseudo-class">':past'</a> and <a
+     title="future-pseudo-class">':future'</a> pseudo-classes:</p>
+
+     <ul class="brief">
+      <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
+      <li>'white-space'</li>
+      <!-- add more... -->
+      <!-- definitely not: display, float, position, top, left, right, bottom, width, height,
+      margin-top, margin-bottom, margin-left, margin-right, clip, clear, content, cursor, direction,
+      max-height, min-height, max-width, min-width, orphans, overflow, page-break-*, text-align,
+      unicode-bidi, widows, z-index -->
+     </ul>
+
+     <p>Properties that do not apply must be ignored.</p>
+
+     <p>As a special exception, the properties corresponding to the 'background' shorthand, when
+     they would have been applied to the <a>list of WebVTT Node Objects</a>, must instead be applied
+     to the <a>WebVTT cue background box</a>.</p>
+
+    </section>
+
+    <section>
+     <h5>The ':past' and ':future' pseudo-classes</h5>
+
+     <p>The <a title="past-pseudo-class">':past'</a> and <a
+     title="future-pseudo-class">':future'</a> pseudo-classes sometimes match <a title="WebVTT Node
+     Object">WebVTT Node Objects</a>. [[!SELECTORS]]</p>
+
+     <p>The <dfn title="past-pseudo-class">':past'</dfn> pseudo-class only matches <a title="WebVTT
+     Node Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+
+     <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the past</dfn> if, in a pre-order,
+     depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
+     exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
+     position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
+     <a>WebVTT Node Object</a> <var>c</var>.</p>
+
+     <p>The <dfn title="future-pseudo-class">':future'</dfn> pseudo-class only matches <a
+     title="WebVTT Node Object">WebVTT Node Objects</a> that are <i>in the future</i>.</p>
+
+     <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the future</dfn> if, in a pre-order,
+     depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
+     exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
+     position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before
+     the <a>WebVTT Node Object</a> <var>c</var>.</p>
+    </section>
+
+    <section>
+     <h3>The '::cue-region' pseudo-element</h3>
+
+     <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
+     section, that element is the matched element. The pseudo-element defined below affects the
+     styling of text track regions that are being rendered for the matched element.</p>
+
+     <p class="note">If the matched element is not a video element, the pseudo-element defined below
+     won't have any effect according to this specification.</p>
+
+     <p>The '<dfn title="pseudo-region">::cue-region</dfn>' pseudo-element (with no argument)
+     matches any list of <a title="WebVTT region object">WebVTT region objects</a> constructed for
+     the <i>matched element</i>.</p>
+
+     <p>The <a title="pseudo-cue">same properties that apply to '::cue'</a> apply to the
+     '::cue-region' pseudo-element with no argument; other properties set on the pseudo-element must
+     be ignored.</p>
+
+     <p>When a user agent is rendering one or more text track regions according to the <a>rules for
+     updating the display of WebVTT text tracks</a>, <a title="WebVTT region object">WebVTT region
+     objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
+     support the pseudo-element must dynamically update renderings accordingly. When either
+     'white-space' or one of the properties corresponding to the 'font' shorthand (including
+     'line-height') changes value, then the text track cue display state of all the text track cues
+     in the region must be emptied and the text track's rules for updating the text track rendering
+     must be immediately rerun.</p>
+
+     <p>A CSS user agent that implements the text tracks model must implement the '::cue-region'
+     pseudo-element.</p>
 
     </section>
 
