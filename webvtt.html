@@ -670,8 +670,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li><a
      href="https://html.spec.whatwg.org/#rules-for-updating-the-text-track-rendering"><dfn>Rules for
      updating the text track rendering</dfn></a></li>
-     <li><a href="https://html.spec.whatwg.org/#rules-for-rendering-the-cue-in-isolation"><dfn>Rules
-     for rendering the cue in isolation</dfn></a></li>
+     <li><a
+     href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-rules-for-extracting-the-chapter-title"><dfn>Rules
+     for extracting the chapter title</dfn></a></li>
      <li><a
      href="https://html.spec.whatwg.org/#texttrackcue"><dfn><code>TextTrackCue</code></dfn></a>
      interface</li>
@@ -2279,8 +2280,8 @@ The Final Minute</pre>
      <li><p>Return to the step labeled <i>cue text loop</i>.</p></li>
 
      <li><p><i>Cue text processing</i>: Let the <a>text track cue text</a> of <var>cue</var> be
-     <var>cue text</var>, and let the <a>rules for rendering the cue in isolation</a> be the
-     <a>rules for interpreting WebVTT cue text</a>.</p></li>
+     <var>cue text</var>, and let the <a>rules for extracting the chapter title</a> be the <a>WebVTT
+     rules for extracting the chapter title</a>.</p></li>
 
      <li><p>Add <var>cue</var> to the <a>text track list of cues</a> <var>output</var>.</p></li>
 
@@ -3685,8 +3686,7 @@ The Final Minute</pre>
    <section>
     <h3>Cues in isolation</h3>
 
-    <p>The <dfn>rules for interpreting WebVTT cue text</dfn> (e.g. for use as chapter titles) are as
-    follows:</p>
+    <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> are as follows:</p>
 
     <ol>
 
@@ -5104,8 +5104,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
      <var>endTime</var> argument, interpreted as a time in seconds.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue text</a> be the value of the <var>text</var>
-     argument, and let the <a>rules for rendering the cue in isolation</a> be the <a>rules for
-     interpreting WebVTT cue text</a>.</p></li>
+     argument, and let the <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for
+     extracting the chapter title</a>.</p></li>
 
      <!-- default settings -->
 
