@@ -3686,13 +3686,31 @@ The Final Minute</pre>
 
     <ol>
 
-     <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the
-     <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue
-     text</a>.</p></li>
+     <li><p>Let <var>output</var> be an empty list of CSS block boxes.</p></li>
 
-     <li><p class="todo">...</p></li> <!-- flatten nodes and return a single string somehow -->
+     <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the
+     <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p>
+     </li>
+
+     <li><p><a>Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from
+     <var>nodes</var>.</p></li>
+
+     <li><p>Add the CSS boxes in <var>boxes</var> to <var>output</var>.</p></li>
+
+     <li><p>Return <var>output</var>.</p></li>
 
     </ol>
+
+    <p>The resulting <var>output</var> is a set of CSS boxes that can be used to render <a>WebVTT cue
+    text</a> independently of a video element.</p>
+
+    <p class="note">For chapter cues, the <a>WebVTT cue text parsing rules</a> and <a>apply WebVTT
+    cue settings</a> algorithms will only use a small subset of their steps, because chapter cues
+    don't use cue settings and only a limited set up markup.</p>
+
+    <p class="note">The output for chapter cues could for example be rendered as tooltips over the
+    relevant time segments of a video's transport bar or in a drop-down selection box as part of a
+    video's track selection menu.</p>
    </section>
 
    <section>
