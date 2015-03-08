@@ -698,15 +698,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <section>
     <h3>WebVTT cues</h3>
 
-    <p>WebVTT cues are HTML <a title="text track cue">text track cues</a> that additionally consist
-    of the following: [[!HTML]]</p>
+    <p>A <dfn>WebVTT cue</dfn> is a HTML <a title>text track cue</a> that additionally consist of
+    the following: [[!HTML]]</p>
 
     <dl>
 
      <dt><dfn title="text track cue box">A cue box</dfn></dt>
      <dd>
-      <p>The cue box of a <a>text track cue</a> is a box within which the text of all lines of the
-      cue is to be rendered.</p>
+      <p>The cue box of a <a>WebVTT cue</a> is a box within which the text of all lines of the cue
+      is to be rendered.</p>
 
       <p class="note">The position of the <a title="text track cue box">cue box</a> within the video
       frame's dimensions depends on the value of the <a>text track cue text position</a> and the
@@ -771,16 +771,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       cue, or the special value <dfn title="text track cue automatic line position">auto</dfn>,
       which means the position is to depend on the other showing tracks.</p>
 
-      <p>A <a>text track cue</a> has a <dfn>text track cue computed line position</dfn> whose value
-      is that returned by the following algorithm, which is defined in terms of the other aspects of
+      <p>A <a>WebVTT cue</a> has a <dfn>text track cue computed line position</dfn> whose value is
+      that returned by the following algorithm, which is defined in terms of the other aspects of
       the cue:</p>
 
       <ol>
 
        <li><p>If the <a>text track cue line position</a> is numeric, the <a>text track cue
-       snap-to-lines flag</a> of the <a>text track cue</a> is not set, and the <a>text track cue
-       line position</a> is negative or greater than 100, then return 100 and abort these
-       steps.</p></li>
+       snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set, and the <a>text track cue line
+       position</a> is negative or greater than 100, then return 100 and abort these steps.</p></li>
 
        <li><p>If the <a>text track cue line position</a> is numeric, return the value of the <a>text
        track cue line position</a> and abort these steps. (Either the <a>text track cue
@@ -788,11 +787,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        the value is in the range 0..100 and is thus valid regardless of the value of that
        flag.)</p></li>
 
-       <li><p>If the <a>text track cue snap-to-lines flag</a> of the <a>text track cue</a> is not
-       set, return the value 100 and abort these steps. (The <a>text track cue line position</a> is
-       the special value <a title="text track cue automatic line position">auto</a>.)</p></li>
+       <li><p>If the <a>text track cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set,
+       return the value 100 and abort these steps. (The <a>text track cue line position</a> is the
+       special value <a title="text track cue automatic line position">auto</a>.)</p></li>
 
-       <li><p>Let <var>cue</var> be the <a>text track cue</a>.</p></li>
+       <li><p>Let <var>cue</var> be the <a>WebVTT cue</a>.</p></li>
 
        <li><p>If <var>cue</var> is not in a <a title="text track list of cues">list of cues</a> of a
        <a>text track</a>, or if that <a>text track</a> is not in the <a>list of text tracks</a> of a
@@ -842,8 +841,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>text track cue</a> has a default <a>text track cue line alignment</a> of <a
-      title="text track cue line start alignment">start</a>.</p>
+      <p>A <a>WebVTT cue</a> has a default <a>text track cue line alignment</a> of <a title="text
+      track cue line start alignment">start</a>.</p>
 
      </dd>
 
@@ -862,8 +861,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       to be interpreted as a percentage of the video dimensions, otherwise as a percentage of the
       region dimensions.</p>
 
-      <p>A <a>text track cue</a> has a <dfn>text track cue computed text position</dfn> whose value
-      is that returned by the following algorithm, which is defined in terms of the other aspects of
+      <p>A <a>WebVTT cue</a> has a <dfn>text track cue computed text position</dfn> whose value is
+      that returned by the following algorithm, which is defined in terms of the other aspects of
       the cue:</p>
 
       <ol>
@@ -931,9 +930,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>text track cue</a> has a <dfn>text track cue computed text position alignment</dfn>
-      whose value is that returned by the following algorithm, which is defined in terms of other
-      aspects of the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn>text track cue computed text position alignment</dfn> whose
+      value is that returned by the following algorithm, which is defined in terms of other aspects
+      of the cue:</p>
 
       <ol>
 
@@ -1015,21 +1014,19 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     </dl>
 
-    <p>The associated <a>rules for updating the text track rendering</a> of WebVTT <a title="text
-    track cue">text track cues</a> are the <a>rules for updating the display of WebVTT text
-    tracks</a>.</p>
+    <p>The associated <a>rules for updating the text track rendering</a> of <a title="WebVTT
+    cue">WebVTT cues</a> are the <a>rules for updating the display of WebVTT text tracks</a>.</p>
 
     <div class="impl">
 
-     <p>When a WebVTT <a>text track cue</a> whose <a title="text track cue active flag">active
-     flag</a> is set has its <a title="text track cue writing direction">writing direction</a>, <a
-     title="text track cue snap-to-lines flag">snap-to-lines flag</a>, <a title="text track cue line
-     position">line position</a>, <a title="text track cue text position">text position</a>, <a
-     title="text track cue size">size</a>, <a title="text track cue text alignment">text
-     alignment</a>, <a title="text track cue region">region</a>, or <a title="text track cue
-     text">text</a> change value, then the user agent must empty the <a>text track cue display
-     state</a>, and then immediately run the <a>text track</a>'s <a>rules for updating the display
-     of WebVTT text tracks</a>.</p>
+     <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
+     has its <a title="text track cue writing direction">writing direction</a>, <a title="text track
+     cue snap-to-lines flag">snap-to-lines flag</a>, <a title="text track cue line position">line
+     position</a>, <a title="text track cue text position">text position</a>, <a title="text track
+     cue size">size</a>, <a title="text track cue text alignment">text alignment</a>, <a title="text
+     track cue region">region</a>, or <a title="text track cue text">text</a> change value, then the
+     user agent must empty the <a>text track cue display state</a>, and then immediately run the
+     <a>text track</a>'s <a>rules for updating the display of WebVTT text tracks</a>.</p>
 
     </div>
 
@@ -1039,7 +1036,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <h3>Text track regions</h3>
 
     <p>A <dfn title="text track region">text track region</dfn> represents a subpart of the video
-    viewport and provides a rendering area for <a title="text track cue">text track cues</a>.</p>
+    viewport and provides a rendering area for <a title="WebVTT cue">WebVTT cues</a>.</p>
 
     <p>Each <a title="text track region">text track region</a> consists of:</p>
 
@@ -2033,8 +2030,8 @@ The Final Minute</pre>
     <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a <a>text track list of cues</a>
     <var>output</var>, must decode the byte stream using the <a title="UTF-8 decode">UTF-8
     decode</a> algorithm, and then must parse the resulting string according to the <a>WebVTT parser
-    algorithm</a> below. This results in <a title="text track cue">text track cues</a> being added
-    to <var>output</var>. [[!RFC3629]]</p>
+    algorithm</a> below. This results in <a title="WebVTT cue">WebVTT cues</a> being added to
+    <var>output</var>. [[!RFC3629]]</p>
 
     <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
     asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -2097,8 +2094,8 @@ The Final Minute</pre>
      processed.</p></li>
 
      <li><p>If <var>position</var> is past the end of <var>input</var>, then abort these steps. The
-     file was successfully processed, but it contains no useful data and so no <a title="text track
-     cue">text track cues</a> were added to <var>output</var>.</p></li>
+     file was successfully processed, but it contains no useful data and so no <a title="WebVTT
+     cue">WebVTT cues</a> were added to <var>output</var>.</p></li>
 
      <li><p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character.
      Advance <var>position</var> to the next character in <var>input</var>.</p></li>
@@ -2186,7 +2183,7 @@ The Final Minute</pre>
      that's not a newline, so we have none of that either, meaning we have nothing. -->.)</p></li>
 
      <li>
-      <p><i>Cue creation</i>: Let <var>cue</var> be a new <a>text track cue</a> and initialize it as
+      <p><i>Cue creation</i>: Let <var>cue</var> be a new <a>WebVTT cue</a> and initialize it as
       follows:</p>
 
       <ol>
@@ -2470,8 +2467,8 @@ The Final Minute</pre>
 
     <p>When the algorithm above requires that the user agent <dfn>collect WebVTT cue timings and
     settings</dfn> from a string <var>input</var> using a <a>text track list of regions</a>
-    <var>regions</var> for a <a>text track cue</a> <var>cue</var>, the user agent must run the
-    following algorithm.</p>
+    <var>regions</var> for a <a>WebVTT cue</a> <var>cue</var>, the user agent must run the following
+    algorithm.</p>
 
     <ol>
 
@@ -3802,7 +3799,7 @@ The Final Minute</pre>
      </li>
 
      <li>
-      <p>If <var>reset</var> is false, then, for each <a>text track cue</a> <var>cue</var> in
+      <p>If <var>reset</var> is false, then, for each <a>WebVTT cue</a> <var>cue</var> in
       <var>cues</var>: if <var>cue</var>'s <a>text track cue display state</a> has a set of CSS
       boxes, then:</p>
 
@@ -3817,7 +3814,7 @@ The Final Minute</pre>
 
      <li>
 
-      <p>For each <a>text track cue</a> <var>cue</var> in <var>cues</var> that has not yet had
+      <p>For each <a>WebVTT cue</a> <var>cue</var> in <var>cues</var> that has not yet had
       corresponding CSS boxes added to <var>output</var>, in <a>text track cue order</a>, run the
       following substeps:</p>
 
@@ -4539,8 +4536,8 @@ The Final Minute</pre>
 
     <p>The variables <var>direction</var>, <var>writing-mode</var>, <var>top</var>, <var>left</var>,
     <var>width</var>, and <var>height</var> are the values with those names determined by the
-    <a>rules for updating the display of WebVTT text tracks</a> for the <a>text track cue</a> from
-    whose <a title="text track cue text">text</a> the <a>list of WebVTT Node Objects</a> was
+    <a>rules for updating the display of WebVTT text tracks</a> for the <a>WebVTT cue</a> from whose
+    <a title="text track cue text">text</a> the <a>list of WebVTT Node Objects</a> was
     constructed.</p>
 
     <p>The 'text-align' property on the (root) <a>list of WebVTT Node Objects</a> must be set to the
@@ -4644,8 +4641,8 @@ The Final Minute</pre>
 
     <p>All other non-inherited properties must be set to their initial values; inherited properties
     on the root <a>list of WebVTT Node Objects</a> must inherit their values from the <a>media
-    element</a> for which the <a>text track cue</a> is being rendered, if any. If there is no
-    <a>media element</a> (i.e. if the <a>text track</a> is being rendered for another media playback
+    element</a> for which the <a>WebVTT cue</a> is being rendered, if any. If there is no <a>media
+    element</a> (i.e. if the <a>text track</a> is being rendered for another media playback
     mechanism), then inherited properties on the root <a>list of WebVTT Node Objects</a> and the <a
     title="WebVTT region object">WebVTT region objects</a> must take their initial values.</p>
 
@@ -4657,23 +4654,23 @@ The Final Minute</pre>
    <section>
     <h4>CSS extensions</h4>
 
-    <p>When a user agent is rendering one or more <a title="text track cue">text track cues</a>
-    according to the <a>rules for updating the display of WebVTT text tracks</a>, <a title="WebVTT
-    Node Object">WebVTT Node Objects</a> in the <a>list of WebVTT Node Objects</a> used in the
-    rendering can be matched by certain pseudo-selectors as defined below. These selectors can begin
-    or stop matching individual <a title="WebVTT Node Object">WebVTT Node Objects</a> while a <a
-    title="text track cue">cue</a> is being rendered, even in between applications of the <a>rules
-    for updating the display of WebVTT text tracks</a> (which are only run when the set of active
-    cues changes). User agents that support the pseudo-element described below must dynamically
-    update renderings accordingly. When either 'white-space' or one of the properties corresponding
-    to the 'font' shorthand (including 'line-height') changes value, then the <a>text track
-    cue</a>'s <a>text track cue display state</a> must be emptied and the <a>text track</a>'s
-    <a>rules for updating the text track rendering</a> must be immediately rerun.</p>
+    <p>When a user agent is rendering one or more <a title="WebVTT cue">WebVTT cues</a> according to
+    the <a>rules for updating the display of WebVTT text tracks</a>, <a title="WebVTT Node
+    Object">WebVTT Node Objects</a> in the <a>list of WebVTT Node Objects</a> used in the rendering
+    can be matched by certain pseudo-selectors as defined below. These selectors can begin or stop
+    matching individual <a title="WebVTT Node Object">WebVTT Node Objects</a> while a <a title="text
+    track cue">cue</a> is being rendered, even in between applications of the <a>rules for updating
+    the display of WebVTT text tracks</a> (which are only run when the set of active cues changes).
+    User agents that support the pseudo-element described below must dynamically update renderings
+    accordingly. When either 'white-space' or one of the properties corresponding to the 'font'
+    shorthand (including 'line-height') changes value, then the <a>WebVTT cue</a>'s <a>text track
+    cue display state</a> must be emptied and the <a>text track</a>'s <a>rules for updating the text
+    track rendering</a> must be immediately rerun.</p>
 
     <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
     section, that element is the <i>matched element</i>. The pseudo-elements defined in the
-    following sections affect the styling of parts of <a title="text track cue">text track cues</a>
-    that are being rendered for the <i>matched element</i>.</p>
+    following sections affect the styling of parts of <a title="WebVTT cue">WebVTT cues</a> that are
+    being rendered for the <i>matched element</i>.</p>
 
     <p class="note">If the <i>matched element</i> is not a <a><code>video</code></a> element, the
     pseudo-elements defined below won't have any effect according to this specification.</p>
@@ -4865,7 +4862,7 @@ The Final Minute</pre>
      Node Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
 
      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the past</dfn> if, in a pre-order,
-     depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
+     depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there
      exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
      position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
      <a>WebVTT Node Object</a> <var>c</var>.</p>
@@ -4874,7 +4871,7 @@ The Final Minute</pre>
      title="WebVTT Node Object">WebVTT Node Objects</a> that are <i>in the future</i>.</p>
 
      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the future</dfn> if, in a pre-order,
-     depth-first traversal of the <a>text track cue</a>'s <a>list of WebVTT Node Objects</a>, there
+     depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there
      exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
      position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before
      the <a>WebVTT Node Object</a> <var>c</var>.</p>
@@ -4903,9 +4900,9 @@ The Final Minute</pre>
      objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
      support the pseudo-element must dynamically update renderings accordingly. When either
      'white-space' or one of the properties corresponding to the 'font' shorthand (including
-     'line-height') changes value, then the text track cue display state of all the text track cues
-     in the region must be emptied and the text track's rules for updating the text track rendering
-     must be immediately rerun.</p>
+     'line-height') changes value, then the text track cue display state of all the <a title="WebVTT
+     cue">WebVTT cues</a> in the region must be emptied and the text track's rules for updating the
+     text track rendering must be immediately rerun.</p>
 
      <p>A CSS user agent that implements the text tracks model must implement the '::cue-region'
      pseudo-element.</p>
@@ -5079,8 +5076,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
     <ol>
 
-     <li><p>Create a new <a>text track cue</a>. Let <var>cue</var> be that <a>text track
-     cue</a>.</p></li>
+     <li><p>Create a new <a>WebVTT cue</a>. Let <var>cue</var> be that <a>WebVTT cue</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue start time</a> be the value of the
      <var>startTime</var> argument, interpreted as a time in seconds.</p></li>
@@ -5128,12 +5124,12 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
     <p>The <dfn title="VTTCue-region"><code>region</code></dfn> attribute, on getting, must return
     the <a><code>VTTRegion</code></a> object representing the <a>text track cue region</a> of the
-    <a>text track cue</a> that the <a><code>VTTCue</code></a> object represents, if any; or null
+    <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object represents, if any; or null
     otherwise. On setting, the <a>text track cue region</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-vertical"><code>vertical</code></dfn> attribute, on getting, must
     return the string from the second cell of the row in the table below whose first cell is the
-    <a>text track cue writing direction</a> of the <a>text track cue</a> that the
+    <a>text track cue writing direction</a> of the <a>WebVTT cue</a> that the
     <a><code>VTTCue</code></a> object represents:</p>
 
     <table>
@@ -5166,22 +5162,22 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     the new value.</p>
 
     <p>The <dfn title="VTTCue-snapToLines"><code>snapToLines</code></dfn> attribute, on getting,
-    must return true if the <a>text track cue snap-to-lines flag</a> of the <a>text track cue</a>
-    that the <a><code>VTTCue</code></a> object represents is set; or false otherwise. On setting,
-    the <a>text track cue snap-to-lines flag</a> must be set if the new value is true, and must be
-    unset otherwise.</p>
+    must return true if the <a>text track cue snap-to-lines flag</a> of the <a>WebVTT cue</a> that
+    the <a><code>VTTCue</code></a> object represents is set; or false otherwise. On setting, the
+    <a>text track cue snap-to-lines flag</a> must be set if the new value is true, and must be unset
+    otherwise.</p>
 
     <p>The <dfn title="VTTCue-line"><code>line</code></dfn> attribute, on getting, must return the
-    <a>text track cue line position</a> of the <a>text track cue</a> that the
-    <a><code>VTTCue</code></a> object represents. The special value <a title="text track cue
-    automatic line position">auto</a> must be represented as the string "<code>auto</code>". On
-    setting, the <a>text track cue line position</a> must be set to the new value; if the new value
-    is the string "<code>auto</code>", then it must be interpreted as the special value <a
-    title="text track cue automatic line position">auto</a>.</p>
+    <a>text track cue line position</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a>
+    object represents. The special value <a title="text track cue automatic line position">auto</a>
+    must be represented as the string "<code>auto</code>". On setting, the <a>text track cue line
+    position</a> must be set to the new value; if the new value is the string "<code>auto</code>",
+    then it must be interpreted as the special value <a title="text track cue automatic line
+    position">auto</a>.</p>
 
     <p>The <dfn title="VTTCue-lineAlign"><code>lineAlign</code></dfn> attribute, on getting, must
     return the string from the second cell of the row in the table below whose first cell is the
-    <a>text track cue line alignment</a> of the <a>text track cue</a> that the
+    <a>text track cue line alignment</a> of the <a>WebVTT cue</a> that the
     <a><code>VTTCue</code></a> object represents:</p>
 
     <table>
@@ -5212,7 +5208,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     the new value.</p>
 
     <p>The <dfn title="VTTCue-position"><code>position</code></dfn> attribute, on getting, must
-    return the <a>text track cue text position</a> of the <a>text track cue</a> that the
+    return the <a>text track cue text position</a> of the <a>WebVTT cue</a> that the
     <a><code>VTTCue</code></a> object represents. The special value <a title="text track cue
     automatic text position">auto</a> must be represented as the string "<code>auto</code>". On
     setting, if the new value is negative or greater than 100, then an
@@ -5223,7 +5219,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
     <p>The <dfn title="VTTCue-positionAlign"><code>positionAlign</code></dfn> attribute, on getting,
     must return the string from the second cell of the row in the table below whose first cell is
-    the <a>text track cue text position alignment</a> of the <a>text track cue</a> that the
+    the <a>text track cue text position alignment</a> of the <a>WebVTT cue</a> that the
     <a><code>VTTCue</code></a> object represents:</p>
 
     <table>
@@ -5258,14 +5254,14 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     match for the new value.</p>
 
     <p>The <dfn title="VTTCue-size"><code>size</code></dfn> attribute, on getting, must return the
-    <a>text track cue size</a> of the <a>text track cue</a> that the <a><code>VTTCue</code></a>
-    object represents. On setting, if the new value is negative or greater than 100, then an
+    <a>text track cue size</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object
+    represents. On setting, if the new value is negative or greater than 100, then an
     <a><code>IndexSizeError</code></a> exception must be thrown. Otherwise, the <a>text track cue
     size</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-align"><code>align</code></dfn> attribute, on getting, must return the
     string from the second cell of the row in the table below whose first cell is the <a>text track
-    cue text alignment</a> of the <a>text track cue</a> that the <a><code>VTTCue</code></a> object
+    cue text alignment</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object
     represents:</p>
 
     <table>
@@ -5304,7 +5300,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     the new value.</p>
 
     <p>The <dfn title="VTTCue-text"><code>text</code></dfn> attribute, on getting, must return the
-    raw <a>text track cue text</a> of the <a>text track cue</a> that the <a><code>VTTCue</code></a>
+    raw <a>text track cue text</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a>
     object represents. On setting, the <a>text track cue text</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-getCueAsHTML"><code>getCueAsHTML()</code></dfn> method must convert
