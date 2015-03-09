@@ -10,7 +10,7 @@ INDENT = ' '
 COLUMNS = 100
 
 def hasendtag(name):
-    return name not in ['br', 'meta']
+    return name not in ['br', 'img', 'meta']
 
 def tokenize(source):
     offset = 0
