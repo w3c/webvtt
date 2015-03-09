@@ -812,25 +812,25 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="text track cue line alignment">A line alignment</dfn></dt>
+     <dt><dfn title="WebVTT cue line alignment">A line alignment</dfn></dt>
      <dd>
       <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue line
       position">line position</a>, one of:</p>
 
       <dl>
 
-       <dt><dfn title="text track cue line start alignment">Start alignment</dfn></dt>
+       <dt><dfn title="WebVTT cue line start alignment">Start alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s top side (for <a title="WebVTT cue horizontal
        writing direction">horizontal</a> cues), left side (for <a title="WebVTT cue vertical growing
        right writing direction">vertical growing right</a>), or right side (for <a title="WebVTT cue
        vertical growing left writing direction">vertical growing left</a>) is aligned at the <a
        title="WebVTT cue line position">line position</a>.</dd>
 
-       <dt><dfn title="text track cue line middle alignment">Middle alignment</dfn></dt>
+       <dt><dfn title="WebVTT cue line middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue line
        position">line position</a>.</dd>
 
-       <dt><dfn title="text track cue line end alignment">End alignment</dfn></dt>
+       <dt><dfn title="WebVTT cue line end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s bottom side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues), right side (for <a title="WebVTT cue
        vertical growing right writing direction">vertical growing right</a>), or left side (for <a
@@ -839,8 +839,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>WebVTT cue</a> has a default <a>text track cue line alignment</a> of <a title="text
-      track cue line start alignment">start</a>.</p>
+      <p>A <a>WebVTT cue</a> has a default <a>WebVTT cue line alignment</a> of <a title="WebVTT cue
+      line start alignment">start</a>.</p>
 
      </dd>
 
@@ -1790,13 +1790,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p class="note">A <a>WebVTT line position cue setting</a> configures the position of the cue box
     in the direction opposite to the <a title="WebVTT cue writing direction">writing direction</a>.
     For horizontal cues, this is the vertical position. The positioning is calculated relative to
-    the <a title="text track cue line start alignment">start</a>, <a title="text track cue line
-    middle alignment">middle</a>, or <a title="text track cue line end alignment">end</a> of the cue
-    box, depending on the <a>text track cue line alignment</a> value - <a title="text track cue line
-    start alignment">start</a> by default. The position can be given either as a percentage of the
-    video dimension or as a line number. Line numbers are based on the size of the first line of the
-    cue. Positive line numbers count from the start of the video frame (the first line is numbered
-    0), negative line numbers from the end of the frame (the last line is numbered &#x2212;1).</p>
+    the <a title="WebVTT cue line start alignment">start</a>, <a title="WebVTT cue line middle
+    alignment">middle</a>, or <a title="WebVTT cue line end alignment">end</a> of the cue box,
+    depending on the <a>WebVTT cue line alignment</a> value - <a title="WebVTT cue line start
+    alignment">start</a> by default. The position can be given either as a percentage of the video
+    dimension or as a line number. Line numbers are based on the size of the first line of the cue.
+    Positive line numbers count from the start of the video frame (the first line is numbered 0),
+    negative line numbers from the end of the frame (the last line is numbered &#x2212;1).</p>
 
     <p>A <dfn>WebVTT text position cue setting</dfn> consists of the following components, in the
     order given:</p>
@@ -2199,8 +2199,8 @@ The Final Minute</pre>
        <li><p>Let <var>cue</var>'s <a>WebVTT cue line position</a> be <a title="WebVTT cue automatic
        line position">auto</a>.</p></li>
 
-       <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be <a title="text track cue
-       line start alignment">start alignment</a>.</p></li>
+       <li><p>Let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a title="WebVTT cue line
+       start alignment">start alignment</a>.</p></li>
 
        <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be <a title="text track cue
        automatic text position">auto</a>.</p></li>
@@ -2628,16 +2628,16 @@ The Final Minute</pre>
            let it be true.</p></li>
 
            <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-           "<code>start</code>", then let <var>cue</var>'s <a>text track cue line alignment</a> be
-           <a title="text track cue line start alignment">start alignment</a>.</p></li>
+           "<code>start</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
+           title="WebVTT cue line start alignment">start alignment</a>.</p></li>
 
            <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-           "<code>middle</code>", then let <var>cue</var>'s <a>text track cue line alignment</a> be
-           <a title="text track cue line middle alignment">middle alignment</a>.</p></li>
+           "<code>middle</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
+           title="WebVTT cue line middle alignment">middle alignment</a>.</p></li>
 
            <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-           "<code>end</code>", then let <var>cue</var>'s <a>text track cue line alignment</a> be <a
-           title="text track cue line end alignment">end alignment</a>.</p></li>
+           "<code>end</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
+           title="WebVTT cue line end alignment">end alignment</a>.</p></li>
 
           </ol>
 
@@ -4448,13 +4448,13 @@ The Final Minute</pre>
            direction">horizontal</a></dt>
            <dd>
             <dl class="switch">
-             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-             position middle alignment">middle alignment</a></dt>
+             <dt>If the <a>WebVTT cue line alignment</a> is <a title="text track cue text position
+             middle alignment">middle alignment</a></dt>
              <dd><p>Move all the boxes in <var>boxes</var> up by half of the height of <var>bounding
              box</var>.</p></dd>
 
-             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-             position end alignment">end alignment</a></dt>
+             <dt>If the <a>WebVTT cue line alignment</a> is <a title="text track cue text position
+             end alignment">end alignment</a></dt>
              <dd><p>Move all the boxes in <var>boxes</var> up by the height of <var>bounding
              box</var>.</p></dd>
             </dl>
@@ -4465,13 +4465,13 @@ The Final Minute</pre>
            growing right writing direction">vertical growing right</a></dt>
            <dd>
             <dl class="switch">
-             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-             position middle alignment">middle alignment</a></dt>
+             <dt>If the <a>WebVTT cue line alignment</a> is <a title="text track cue text position
+             middle alignment">middle alignment</a></dt>
              <dd><p>Move all the boxes in <var>boxes</var> left by half of the width of
              <var>bounding box</var>.</p></dd>
 
-             <dt>If the <a>text track cue line alignment</a> is <a title="text track cue text
-             position end alignment">end alignment</a></dt>
+             <dt>If the <a>WebVTT cue line alignment</a> is <a title="text track cue text position
+             end alignment">end alignment</a></dt>
              <dd><p>Move all the boxes in <var>boxes</var> left by the width of <var>bounding
              box</var>.</p></dd>
             </dl>
@@ -4987,13 +4987,13 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
      <dt><var>cue</var> . <a title="VTTCue-lineAlign">lineAlign</a> [ = <var>value</var> ]</dt>
      <dd>
-      <p>Returns a string representing the <a>text track cue line alignment</a>, as follows:</p>
+      <p>Returns a string representing the <a>WebVTT cue line alignment</a>, as follows:</p>
       <dl class="switch">
-       <dt>If it is <a title="text track cue line start alignment">start alignment</a></dt>
+       <dt>If it is <a title="WebVTT cue line start alignment">start alignment</a></dt>
        <dd><p>The string "<code>start</code>".</p></dd>
-       <dt>If it is <a title="text track cue line middle alignment">middle alignment</a></dt>
+       <dt>If it is <a title="WebVTT cue line middle alignment">middle alignment</a></dt>
        <dd><p>The string "<code>middle</code>".</p></dd>
-       <dt>If it is <a title="text track cue line end alignment">end alignment</a></dt>
+       <dt>If it is <a title="WebVTT cue line end alignment">end alignment</a></dt>
        <dd><p>The string "<code>end</code>".</p></dd>
       </dl>
       <p>Can be set.</p>
@@ -5099,8 +5099,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
      <li><p>Let <var>cue</var>'s <a>WebVTT cue line position</a> be <a title="WebVTT cue automatic
      line position">auto</a>.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be <a title="text track cue
-     line start alignment">start alignment</a>.</p></li>
+     <li><p>Let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a title="WebVTT cue line start
+     alignment">start alignment</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue text position</a> be <a title="text track cue
      automatic text position">auto</a>.</p></li>
@@ -5172,35 +5172,35 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
     <p>The <dfn title="VTTCue-lineAlign"><code>lineAlign</code></dfn> attribute, on getting, must
     return the string from the second cell of the row in the table below whose first cell is the
-    <a>text track cue line alignment</a> of the <a>WebVTT cue</a> that the
-    <a><code>VTTCue</code></a> object represents:</p>
+    <a>WebVTT cue line alignment</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a>
+    object represents:</p>
 
     <table>
      <thead>
       <tr>
-       <th><a>Text track cue line alignment</a></th>
+       <th><a>WebVTT cue line alignment</a></th>
        <th><a title="VTTCue-lineAlign"><code>lineAlign</code></a> value</th>
       </tr>
      </thead>
      <tbody>
       <tr>
-       <td><a title="text track cue line start alignment">Start alignment</a></td>
+       <td><a title="WebVTT cue line start alignment">Start alignment</a></td>
        <td>"<code>start</code>"</td>
       </tr>
       <tr>
-       <td><a title="text track cue line middle alignment">Middle alignment</a></td>
+       <td><a title="WebVTT cue line middle alignment">Middle alignment</a></td>
        <td>"<code>middle</code>"</td>
       </tr>
       <tr>
-       <td><a title="text track cue line end alignment">End alignment</a></td>
+       <td><a title="WebVTT cue line end alignment">End alignment</a></td>
        <td>"<code>end</code>"</td>
       </tr>
      </tbody>
     </table>
 
-    <p>On setting, the <a>text track cue line alignment</a> must be set to the value given in the
-    first cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for
-    the new value.</p>
+    <p>On setting, the <a>WebVTT cue line alignment</a> must be set to the value given in the first
+    cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the
+    new value.</p>
 
     <p>The <dfn title="VTTCue-position"><code>position</code></dfn> attribute, on getting, must
     return the <a>text track cue text position</a> of the <a>WebVTT cue</a> that the
