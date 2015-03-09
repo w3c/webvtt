@@ -710,7 +710,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <p class="note">The position of the <a title="WebVTT cue box">cue box</a> within the video
       frame's dimensions depends on the value of the <a>text track cue text position</a> and the
-      <a>text track cue line position</a>.</p>
+      <a>WebVTT cue line position</a>.</p>
 
       <p class="note">Lines are wrapped within the <a title="WebVTT cue box">cue box</a>'s <a
       title="text track cue size">size</a> if lines' lengths make this necessary.</p>
@@ -729,15 +729,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       consecutive lines displayed to the right of each other<!-- used for mongolian -->).</p>
 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
-      cue horizontal writing direction">horizontal</a>, then the <a title="text track cue line
+      cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line
       position">line position</a> percentages are relative to the height of the video, and <a
       title="text track cue text position">text position</a> and <a title="text track cue
       size">size</a> percentages are relative to the width of the video.</p>
 
-      <p>Otherwise, <a title="text track cue line position">line position</a> percentages are
-      relative to the width of the video, and <a title="text track cue text position">text
-      position</a> and <a title="text track cue size">size</a> percentages are relative to the
-      height of the video.</p>
+      <p>Otherwise, <a title="WebVTT cue line position">line position</a> percentages are relative
+      to the width of the video, and <a title="text track cue text position">text position</a> and
+      <a title="text track cue size">size</a> percentages are relative to the height of the
+      video.</p>
 
       <p>The <a title="WebVTT cue writing direction">writing direction</a> defaults to <a
       title="WebVTT cue horizontal writing direction">horizontal</a>.</p>
@@ -747,9 +747,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dt><dfn title="WebVTT cue snap-to-lines flag">A snap-to-lines flag</dfn></dt>
      <dd>
 
-      <p>A boolean indicating whether the <a title="text track cue line position">line's
-      position</a> is a line position (positioned to a multiple of the line dimensions of the first
-      line of the cue), or whether it is a percentage of the dimension of the video.</p>
+      <p>A boolean indicating whether the <a title="WebVTT cue line position">line's position</a> is
+      a line position (positioned to a multiple of the line dimensions of the first line of the
+      cue), or whether it is a percentage of the dimension of the video.</p>
 
       <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is set will be placed within the title-safe
       area on user agents that use overscan. Cues with the flag unset will be positioned as
@@ -760,34 +760,34 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="text track cue line position">A line position</dfn></dt>
+     <dt><dfn title="WebVTT cue line position">A line position</dfn></dt>
      <dd>
       <p>The line position defines positioning of the <a title="WebVTT cue box">cue box</a>.</p>
 
       <p>A line position is either a number giving the position of the lines of the cue, to be
       interpreted as defined by the <a title="WebVTT cue writing direction">writing direction</a>
       and <a title="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> of the cue, or the special
-      value <dfn title="text track cue automatic line position">auto</dfn>, which means the position
-      is to depend on the other showing tracks.</p>
+      value <dfn title="WebVTT cue automatic line position">auto</dfn>, which means the position is
+      to depend on the other showing tracks.</p>
 
-      <p>A <a>WebVTT cue</a> has a <dfn>text track cue computed line position</dfn> whose value is
-      that returned by the following algorithm, which is defined in terms of the other aspects of
-      the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn>WebVTT cue computed line position</dfn> whose value is that
+      returned by the following algorithm, which is defined in terms of the other aspects of the
+      cue:</p>
 
       <ol>
 
-       <li><p>If the <a>text track cue line position</a> is numeric, the <a>WebVTT cue snap-to-lines
-       flag</a> of the <a>WebVTT cue</a> is not set, and the <a>text track cue line position</a> is
+       <li><p>If the <a>WebVTT cue line position</a> is numeric, the <a>WebVTT cue snap-to-lines
+       flag</a> of the <a>WebVTT cue</a> is not set, and the <a>WebVTT cue line position</a> is
        negative or greater than 100, then return 100 and abort these steps.</p></li>
 
-       <li><p>If the <a>text track cue line position</a> is numeric, return the value of the <a>text
-       track cue line position</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines
-       flag</a> is set, so any value, not just those in the range 0..100, is valid, or the value is
-       in the range 0..100 and is thus valid regardless of the value of that flag.)</p></li>
+       <li><p>If the <a>WebVTT cue line position</a> is numeric, return the value of the <a>WebVTT
+       cue line position</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a>
+       is set, so any value, not just those in the range 0..100, is valid, or the value is in the
+       range 0..100 and is thus valid regardless of the value of that flag.)</p></li>
 
        <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set,
-       return the value 100 and abort these steps. (The <a>text track cue line position</a> is the
-       special value <a title="text track cue automatic line position">auto</a>.)</p></li>
+       return the value 100 and abort these steps. (The <a>WebVTT cue line position</a> is the
+       special value <a title="WebVTT cue automatic line position">auto</a>.)</p></li>
 
        <li><p>Let <var>cue</var> be the <a>WebVTT cue</a>.</p></li>
 
@@ -814,7 +814,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <dt><dfn title="text track cue line alignment">A line alignment</dfn></dt>
      <dd>
-      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="text track cue line
+      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue line
       position">line position</a>, one of:</p>
 
       <dl>
@@ -824,18 +824,18 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        writing direction">horizontal</a> cues), left side (for <a title="WebVTT cue vertical growing
        right writing direction">vertical growing right</a>), or right side (for <a title="WebVTT cue
        vertical growing left writing direction">vertical growing left</a>) is aligned at the <a
-       title="text track cue line position">line position</a>.</dd>
+       title="WebVTT cue line position">line position</a>.</dd>
 
        <dt><dfn title="text track cue line middle alignment">Middle alignment</dfn></dt>
-       <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="text track cue
-       line position">line position</a>.</dd>
+       <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue line
+       position">line position</a>.</dd>
 
        <dt><dfn title="text track cue line end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s bottom side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues), right side (for <a title="WebVTT cue
        vertical growing right writing direction">vertical growing right</a>), or left side (for <a
        title="WebVTT cue vertical growing left writing direction">vertical growing left</a>) is
-       aligned at the <a title="text track cue line position">line position</a>.</dd>
+       aligned at the <a title="WebVTT cue line position">line position</a>.</dd>
 
       </dl>
 
@@ -1018,7 +1018,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
-     snap-to-lines flag">snap-to-lines flag</a>, <a title="text track cue line position">line
+     snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line position">line
      position</a>, <a title="text track cue text position">text position</a>, <a title="text track
      cue size">size</a>, <a title="text track cue text alignment">text alignment</a>, <a title="text
      track cue region">region</a>, or <a title="text track cue text">text</a> change value, then the
@@ -2196,8 +2196,8 @@ The Final Minute</pre>
 
        <li><p>Let <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
 
-       <li><p>Let <var>cue</var>'s <a>text track cue line position</a> be <a title="text track cue
-       automatic line position">auto</a>.</p></li>
+       <li><p>Let <var>cue</var>'s <a>WebVTT cue line position</a> be <a title="WebVTT cue automatic
+       line position">auto</a>.</p></li>
 
        <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be <a title="text track cue
        line start alignment">start alignment</a>.</p></li>
@@ -2620,7 +2620,7 @@ The Final Minute</pre>
             </dl>
            </li>
 
-           <li><p>Let <var>cue</var>'s <a>text track cue line position</a> be
+           <li><p>Let <var>cue</var>'s <a>WebVTT cue line position</a> be
            <var>number</var>.</p></li>
 
            <li><p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character
@@ -4075,14 +4075,12 @@ The Final Minute</pre>
 
          <dt>If the <a>WebVTT cue writing direction</a> is <a title="WebVTT cue horizontal writing
          direction">horizontal</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a>text track cue computed line
-         position</a>.</p></dd>
+         <dd><p>Let <var>y-position</var> be the <a>WebVTT cue computed line position</a>.</p></dd>
 
          <dt>If the <a>WebVTT cue writing direction</a> is <a title="WebVTT cue vertical growing
          left writing direction">vertical growing left</a> or <a title="WebVTT cue vertical growing
          right writing direction">vertical growing right</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a>text track cue computed line
-         position</a>.</p></dd>
+         <dd><p>Let <var>x-position</var> be the <a>WebVTT cue computed line position</a>.</p></dd>
 
         </dl>
        </dd>
@@ -4327,7 +4325,7 @@ The Final Minute</pre>
          <li><p>If <var>step</var> is zero, then jump to the step labeled <i>done positioning</i>
          below.</p></li>
 
-         <li><p>Let <var>line position</var> be the <a>text track cue computed line
+         <li><p>Let <var>line position</var> be the <a>WebVTT cue computed line
          position</a>.</p></li>
 
          <li><p>Round <var>line position</var> to an integer by adding 0.5 and then flooring
@@ -4981,8 +4979,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
      <dt><var>cue</var> . <a title="VTTCue-line">line</a> [ = <var>value</var> ]</dt>
      <dd>
-      <p>Returns the <a>text track cue line position</a>. In the case of the value being <a
-      title="text track cue automatic line position">auto</a>, the string "<code>auto</code>" is
+      <p>Returns the <a>WebVTT cue line position</a>. In the case of the value being <a
+      title="WebVTT cue automatic line position">auto</a>, the string "<code>auto</code>" is
       returned.</p>
       <p>Can be set.</p>
      </dd>
@@ -5098,8 +5096,8 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
      <li><p>Let <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue line position</a> be <a title="text track cue
-     automatic line position">auto</a>.</p></li>
+     <li><p>Let <var>cue</var>'s <a>WebVTT cue line position</a> be <a title="WebVTT cue automatic
+     line position">auto</a>.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue line alignment</a> be <a title="text track cue
      line start alignment">start alignment</a>.</p></li>
@@ -5165,11 +5163,11 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     otherwise.</p>
 
     <p>The <dfn title="VTTCue-line"><code>line</code></dfn> attribute, on getting, must return the
-    <a>text track cue line position</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a>
-    object represents. The special value <a title="text track cue automatic line position">auto</a>
-    must be represented as the string "<code>auto</code>". On setting, the <a>text track cue line
+    <a>WebVTT cue line position</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a>
+    object represents. The special value <a title="WebVTT cue automatic line position">auto</a> must
+    be represented as the string "<code>auto</code>". On setting, the <a>WebVTT cue line
     position</a> must be set to the new value; if the new value is the string "<code>auto</code>",
-    then it must be interpreted as the special value <a title="text track cue automatic line
+    then it must be interpreted as the special value <a title="WebVTT cue automatic line
     position">auto</a>.</p>
 
     <p>The <dfn title="VTTCue-lineAlign"><code>lineAlign</code></dfn> attribute, on getting, must
