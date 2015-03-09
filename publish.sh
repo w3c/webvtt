@@ -44,6 +44,10 @@ else
 fi
 echo
 
+echo "# Copy images"
+cp -v *.png html5/webvtt
+echo
+
 echo "# Commit to CVS"
 if [ -z "$FORCE" ]; then
     read -p "Really commit? (y) " CONTINUE
@@ -54,4 +58,5 @@ if [ -z "$FORCE" ]; then
 fi
 COMMIT="$(git rev-parse HEAD)"
 cd html5/webvtt
+cvs add *.png
 cvs commit -m "Sync WebVTT with Git commit $COMMIT"
