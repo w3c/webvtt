@@ -1035,7 +1035,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     <dl>
 
-     <dt><dfn title="text track region identifier">An identifier</dfn></dt>
+     <dt><dfn title="WebVTT region identifier">An identifier</dfn></dt>
      <dd>
       <p>An arbitrary string.</p>
      </dd>
@@ -2125,8 +2125,8 @@ The Final Minute</pre>
 
         <ol>
          <li><i>Region creation</i>: Let <var>region</var> be a new <a>WebVTT region</a>.</li>
-         <li>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be the
-         empty string.</li>
+         <li>Let <var>region</var>'s <a title="WebVTT region identifier">identifier</a> be the empty
+         string.</li>
          <li>Let <var>region</var>'s <a title="text track region width">width</a> be 100.</li>
          <li>Let <var>region</var>'s <a title="text track region lines">lines</a> be 3.</li>
          <li>Let <var>region</var>'s <a title="text track region anchor">anchor point</a> be
@@ -2334,7 +2334,7 @@ The Final Minute</pre>
 
         <dl>
          <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
-         <dd><p>Let <var>region</var>'s <a title="text track region identifier">identifier</a> be
+         <dd><p>Let <var>region</var>'s <a title="WebVTT region identifier">identifier</a> be
          <var>value</var>.</p></dd>
 
          <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
@@ -2544,8 +2544,8 @@ The Final Minute</pre>
          <dd>
           <ol>
            <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be the last <a>WebVTT region</a> in
-           <var>regions</var> whose <a>text track region identifier</a> is <var>value</var>, if any,
-           or null otherwise.</p></li>
+           <var>regions</var> whose <a>WebVTT region identifier</a> is <var>value</var>, if any, or
+           null otherwise.</p></li>
           </ol>
          </dd>
 
@@ -5380,8 +5380,7 @@ interface <dfn>VTTRegion</dfn> {
      region</a>.</p></li>
 
      <!-- default settings -->
-     <li><p>Let <var>region</var>'s <a>text track region identifier</a> be the empty
-     string.</p></li>
+     <li><p>Let <var>region</var>'s <a>WebVTT region identifier</a> be the empty string.</p></li>
 
      <li><p>Let <var>region</var>'s <a>text track region width</a> be 100.</p></li>
 
