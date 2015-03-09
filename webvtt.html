@@ -1067,15 +1067,15 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       viewport.</p>
      </dd>
 
-     <dt><dfn title="text track region scroll">A scroll value</dfn></dt>
+     <dt><dfn title="WebVTT region scroll">A scroll value</dfn></dt>
      <dd>
       <p>One of the following:</p>
       <dl>
-       <dt><dfn title="text track region scroll none">None</dfn></dt>
+       <dt><dfn title="WebVTT region scroll none">None</dfn></dt>
        <dd>Indicates that the cues in the region are not to scroll and instead stay fixed at the
        location they were first painted in.</dd>
 
-       <dt><dfn title="text track region scroll up">Up</dfn></dt>
+       <dt><dfn title="WebVTT region scroll up">Up</dfn></dt>
        <dd>Indicates that the cues in the region will be added at the bottom of the region and push
        any already displayed cues in the region up until all lines of the new cue are visible in the
        region.</dd>
@@ -2133,8 +2133,8 @@ The Final Minute</pre>
          (0,100).</li>
          <li>Let <var>region</var>'s <a title="WebVTT region viewport anchor">viewport anchor
          point</a> be (0,100).</li>
-         <li>Let <var>region</var>'s <a title="text track region scroll">scroll value</a> be <a
-         title="text track region scroll none">NONE</a>.</li>
+         <li>Let <var>region</var>'s <a title="WebVTT region scroll">scroll value</a> be <a
+         title="WebVTT region scroll none">NONE</a>.</li>
          <li><a>Collect WebVTT region settings</a> from <a title="WebVTT metadata header
          value">metadata's value</a> using <var>region</var> for the results.</li>
          <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from
@@ -2410,9 +2410,8 @@ The Final Minute</pre>
          <dd>
           <ol>
            <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-           "<code>up</code>", then let <var>region</var>'s <a title="text track region
-           scroll">scroll value</a> be "<a title="text track region scroll up">scroll
-           up</a>".</p></li>
+           "<code>up</code>", then let <var>region</var>'s <a title="WebVTT region scroll">scroll
+           value</a> be "<a title="WebVTT region scroll up">scroll up</a>".</p></li>
           </ol>
          </dd>
         </dl>
@@ -3834,9 +3833,9 @@ The Final Minute</pre>
         <ol>
          <li><p>Let <var>region</var> be <var>cue</var>'s <a>WebVTT cue region</a>.</p></li>
 
-         <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>'
-         and <var>region</var> already has one child, set <var>region</var>'s 'transition-property'
-         to 'top' and 'transition-duration' to '0.433s'.</p></li>
+         <li><p>If <var>region</var>'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and
+         <var>region</var> already has one child, set <var>region</var>'s 'transition-property' to
+         'top' and 'transition-duration' to '0.433s'.</p></li>
 
          <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm that
          applies to regions -->
@@ -5357,7 +5356,7 @@ interface <dfn>VTTRegion</dfn> {
 
      <dt><var>region</var> . <a title="VTTRegion-scroll">scroll</a></dt>
      <dd>
-      <p>Returns a string representing the <a>text track region scroll</a> as follows:</p>
+      <p>Returns a string representing the <a>WebVTT region scroll</a> as follows:</p>
       <dl class="switch">
        <dt>If it is unset</dt>
        <dd><p>The empty string.</p></dd>
@@ -5394,7 +5393,7 @@ interface <dfn>VTTRegion</dfn> {
      <li><p>Let <var>region</var>'s <a title="WebVTT region viewport anchor">text track region
      viewportAnchorY</a> be 100.</p></li>
 
-     <li><p>Let <var>region</var>'s <a>text track region scroll</a> be the empty string.</p></li>
+     <li><p>Let <var>region</var>'s <a>WebVTT region scroll</a> be the empty string.</p></li>
 
      <li><p>Return the <a><code>VTTRegion</code></a> object representing region.</p></li>
     </ol>
@@ -5435,30 +5434,30 @@ interface <dfn>VTTRegion</dfn> {
 
     <p>The <dfn title="VTTRegion-scroll"><code>scroll</code></dfn> attribute, on getting, must
     return the string from the second cell of the row in the table below whose first cell is the
-    <a>text track region scroll</a> setting of the <a>WebVTT region</a> that the
+    <a>WebVTT region scroll</a> setting of the <a>WebVTT region</a> that the
     <a><code>VTTRegion</code></a> object represents:</p>
     <table>
      <thead>
       <tr>
-       <th><a>Text track region scroll</a></th>
+       <th><a>WebVTT region scroll</a></th>
        <th><a title="VTTRegion-scroll"><code>scroll</code></a> value</th>
       </tr>
      </thead>
      <tbody>
       <tr>
-       <td><a title="text track region scroll none">None</a></td>
+       <td><a title="WebVTT region scroll none">None</a></td>
        <td>"<code></code>" (the empty string)</td>
       </tr>
       <tr>
-       <td><a title="text track region scroll up">Up</a></td>
+       <td><a title="WebVTT region scroll up">Up</a></td>
        <td>"<code>up</code>"</td>
       </tr>
      </tbody>
     </table>
 
-    <p>On setting, the <a>text track region scroll</a> must be set to the value given on the first
-    cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the
-    new value.</p>
+    <p>On setting, the <a>WebVTT region scroll</a> must be set to the value given on the first cell
+    of the row in the table above whose second cell is a <a>case-sensitive</a> match for the new
+    value.</p>
 
    </section><!-- end VTTRegion object -->
 
