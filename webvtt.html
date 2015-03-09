@@ -713,7 +713,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <a>WebVTT cue line position</a>.</p>
 
       <p class="note">Lines are wrapped within the <a title="WebVTT cue box">cue box</a>'s <a
-      title="text track cue size">size</a> if lines' lengths make this necessary.</p>
+      title="WebVTT cue size">size</a> if lines' lengths make this necessary.</p>
 
      </dd>
 
@@ -731,12 +731,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
       cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line
       position">line position</a> percentages are relative to the height of the video, and <a
-      title="WebVTT cue text position">text position</a> and <a title="text track cue size">size</a>
+      title="WebVTT cue text position">text position</a> and <a title="WebVTT cue size">size</a>
       percentages are relative to the width of the video.</p>
 
       <p>Otherwise, <a title="WebVTT cue line position">line position</a> percentages are relative
       to the width of the video, and <a title="WebVTT cue text position">text position</a> and <a
-      title="text track cue size">size</a> percentages are relative to the height of the video.</p>
+      title="WebVTT cue size">size</a> percentages are relative to the height of the video.</p>
 
       <p>The <a title="WebVTT cue writing direction">writing direction</a> defaults to <a
       title="WebVTT cue horizontal writing direction">horizontal</a>.</p>
@@ -891,7 +891,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       space template which can be filled with either left-to-right or right-to-left <i>paragraph
       direction</i> text. If such a <a title="WebVTT cue box">cue box</a> template is created with
       <a title="text track cue start alignment">start</a> or <a title="text track cue end
-      alignment">end</a> aligned text, it is best to also specify a <a title="text track cue
+      alignment">end</a> aligned text, it is best to also specify a <a title="WebVTT cue
       size">size</a> since otherwise the text may flip from one side of the video frame to the
       other.</p>
 
@@ -958,13 +958,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="text track cue size">A size</dfn></dt>
+     <dt><dfn title="WebVTT cue size">A size</dfn></dt>
      <dd>
       <p>A number giving the size of the <a title="WebVTT cue box">cue box</a>, to be interpreted as
       a percentage of the video, as defined by the <a title="WebVTT cue writing direction">writing
       direction</a>.</p>
 
-      <p>By default, the <a>text track cue size</a> is 100%.</p>
+      <p>By default, the <a>WebVTT cue size</a> is 100%.</p>
 
      </dd>
 
@@ -1016,7 +1016,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
      snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line position">line
-     position</a>, <a title="WebVTT cue text position">text position</a>, <a title="text track cue
+     position</a>, <a title="WebVTT cue text position">text position</a>, <a title="WebVTT cue
      size">size</a>, <a title="text track cue text alignment">text alignment</a>, <a title="text
      track cue region">region</a>, or <a title="text track cue text">text</a> change value, then the
      user agent must empty the <a>text track cue display state</a>, and then immediately run the
@@ -2204,7 +2204,7 @@ The Final Minute</pre>
        <li><p>Let <var>cue</var>'s <a>WebVTT cue text position alignment</a> be <a title="WebVTT cue
        text position automatic alignment">auto</a>.</p></li>
 
-       <li><p>Let <var>cue</var>'s <a>text track cue size</a> be 100.</p></li>
+       <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be 100.</p></li>
 
        <li><p>Let <var>cue</var>'s <a>text track cue text alignment</a> be <a title="text track cue
        middle alignment">middle alignment</a>.</p></li>
@@ -2689,7 +2689,7 @@ The Final Minute</pre>
            <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step
            labeled <i>next setting</i>.</p></li>
 
-           <li><p>Let <var>cue</var>'s <a>text track cue size</a> be <var>number</var>.</p></li>
+           <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be <var>number</var>.</p></li>
 
           </ol>
 
@@ -3992,8 +3992,8 @@ The Final Minute</pre>
 
      </li>
 
-     <li><p>If the <a>text track cue size</a> is less than <var>maximum size</var>, then let
-     <var>size</var> be <a>text track cue size</a>. Otherwise, let <var>size</var> be <var>maximum
+     <li><p>If the <a>WebVTT cue size</a> is less than <var>maximum size</var>, then let
+     <var>size</var> be <a>WebVTT cue size</a>. Otherwise, let <var>size</var> be <var>maximum
      size</var>.</p></li>
 
      <li><p>If the <a>WebVTT cue writing direction</a> is <a title="WebVTT cue horizontal writing
@@ -5020,7 +5020,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
      <dt><var>cue</var> . <a title="VTTCue-size">size</a> [ = <var>value</var> ]</dt>
      <dd>
-      <p>Returns the <a>text track cue size</a>.</p>
+      <p>Returns the <a>WebVTT cue size</a>.</p>
       <p>Can be set.</p>
      </dd>
 
@@ -5099,7 +5099,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
      <li><p>Let <var>cue</var>'s <a>WebVTT cue text position alignment</a> be <a title="WebVTT cue
      text position automatic alignment">auto</a>.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue size</a> be 100.</p></li>
+     <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be 100.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>text track cue text alignment</a> be <a title="text track cue
      middle alignment">middle alignment</a>.</p></li>
@@ -5239,9 +5239,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     for the new value.</p>
 
     <p>The <dfn title="VTTCue-size"><code>size</code></dfn> attribute, on getting, must return the
-    <a>text track cue size</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object
+    <a>WebVTT cue size</a> of the <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object
     represents. On setting, if the new value is negative or greater than 100, then an
-    <a><code>IndexSizeError</code></a> exception must be thrown. Otherwise, the <a>text track cue
+    <a><code>IndexSizeError</code></a> exception must be thrown. Otherwise, the <a>WebVTT cue
     size</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-align"><code>align</code></dfn> attribute, on getting, must return the
