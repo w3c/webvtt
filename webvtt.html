@@ -1000,7 +1000,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="text track cue region">A region</dfn></dt>
+     <dt><dfn title="WebVTT cue region">A region</dfn></dt>
      <dd>
       <p>An optional <a>WebVTT region</a> to which a cue belongs.</p>
      </dd>
@@ -1016,8 +1016,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
      snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line position">line
      position</a>, <a title="WebVTT cue text position">text position</a>, <a title="WebVTT cue
-     size">size</a>, <a title="WebVTT cue text alignment">text alignment</a>, <a title="text track
-     cue region">region</a>, or <a title="text track cue text">text</a> change value, then the user
+     size">size</a>, <a title="WebVTT cue text alignment">text alignment</a>, <a title="WebVTT cue
+     region">region</a>, or <a title="text track cue text">text</a> change value, then the user
      agent must empty the <a>text track cue display state</a>, and then immediately run the <a>text
      track</a>'s <a>rules for updating the display of WebVTT text tracks</a>.</p>
 
@@ -2184,7 +2184,7 @@ The Final Minute</pre>
 
        <li><p>Let <var>cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
-       <li><p>Let <var>cue</var>'s <a>text track cue region</a> be null.</p></li>
+       <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be null.</p></li>
 
        <li><p>Let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a title="WebVTT cue
        horizontal writing direction">horizontal</a>.</p></li>
@@ -2543,9 +2543,9 @@ The Final Minute</pre>
 
          <dd>
           <ol>
-           <li><p>Let <var>cue</var>'s <a>text track cue region</a> be the last <a>WebVTT region</a>
-           in <var>regions</var> whose <a>text track region identifier</a> is <var>value</var>, if
-           any, or null otherwise.</p></li>
+           <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be the last <a>WebVTT region</a> in
+           <var>regions</var> whose <a>text track region identifier</a> is <var>value</var>, if any,
+           or null otherwise.</p></li>
           </ol>
          </dd>
 
@@ -3795,7 +3795,7 @@ The Final Minute</pre>
       boxes, then:</p>
 
       <ul>
-       <li><p>If <var>cue</var>'s <a>text track cue region</a> is not null, add those boxes to that
+       <li><p>If <var>cue</var>'s <a>WebVTT cue region</a> is not null, add those boxes to that
        region's <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
        <li><p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var> from
        <var>cues</var>.</p></li>
@@ -3816,7 +3816,7 @@ The Final Minute</pre>
        text</a>.</p></li>
 
        <li>
-        <p>If <var>cue</var>'s <a>text track cue region</a> is null, run the following substeps:</p>
+        <p>If <var>cue</var>'s <a>WebVTT cue region</a> is null, run the following substeps:</p>
 
         <ol>
 
@@ -3834,7 +3834,7 @@ The Final Minute</pre>
        <li>
         <p>Otherwise, run the following substeps:</p>
         <ol>
-         <li><p>Let <var>region</var> be <var>cue</var>'s <a>text track cue region</a>.</p></li>
+         <li><p>Let <var>region</var> be <var>cue</var>'s <a>WebVTT cue region</a>.</p></li>
 
          <li><p>If <var>region</var>'s <a>text track region scroll</a> setting is '<code>up</code>'
          and <var>region</var> already has one child, set <var>region</var>'s 'transition-property'
@@ -5079,7 +5079,7 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
 
      <li><p>Let <var>cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue region</a> be null.</p></li>
+     <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be null.</p></li>
 
      <li><p>Let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a title="WebVTT cue
      horizontal writing direction">horizontal</a>.</p></li>
@@ -5108,9 +5108,9 @@ interface <dfn>VTTCue</dfn> : <a>TextTrackCue</a> {
     </ol>
 
     <p>The <dfn title="VTTCue-region"><code>region</code></dfn> attribute, on getting, must return
-    the <a><code>VTTRegion</code></a> object representing the <a>text track cue region</a> of the
+    the <a><code>VTTRegion</code></a> object representing the <a>WebVTT cue region</a> of the
     <a>WebVTT cue</a> that the <a><code>VTTCue</code></a> object represents, if any; or null
-    otherwise. On setting, the <a>text track cue region</a> must be set to the new value.</p>
+    otherwise. On setting, the <a>WebVTT cue region</a> must be set to the new value.</p>
 
     <p>The <dfn title="VTTCue-vertical"><code>vertical</code></dfn> attribute, on getting, must
     return the string from the second cell of the row in the table below whose first cell is the
