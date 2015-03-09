@@ -1040,7 +1040,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       <p>An arbitrary string.</p>
      </dd>
 
-     <dt><dfn title="text track region width">A width</dfn></dt>
+     <dt><dfn title="WebVTT region width">A width</dfn></dt>
      <dd>
       <p>A number giving the width of the box within which the text of each line of the containing
       cues is to be rendered, to be interpreted as a percentage of the video width. Defaults to
@@ -2127,7 +2127,7 @@ The Final Minute</pre>
          <li><i>Region creation</i>: Let <var>region</var> be a new <a>WebVTT region</a>.</li>
          <li>Let <var>region</var>'s <a title="WebVTT region identifier">identifier</a> be the empty
          string.</li>
-         <li>Let <var>region</var>'s <a title="text track region width">width</a> be 100.</li>
+         <li>Let <var>region</var>'s <a title="WebVTT region width">width</a> be 100.</li>
          <li>Let <var>region</var>'s <a title="text track region lines">lines</a> be 3.</li>
          <li>Let <var>region</var>'s <a title="text track region anchor">anchor point</a> be
          (0,100).</li>
@@ -2340,7 +2340,7 @@ The Final Minute</pre>
          <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
          "<code>width</code>"</p></dt>
          <dd><p>If <a>parse a percentage string</a> from <var>value</var> returns a
-         <var>percentage</var>, let <var>region</var>'s <a>text track region width</a> be
+         <var>percentage</var>, let <var>region</var>'s <a>WebVTT region width</a> be
          <var>percentage</var>.</p></dd>
 
          <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
@@ -3748,9 +3748,8 @@ The Final Minute</pre>
         follows:</p>
 
         <ul>
-         <li><p>Let <var>regionWidth</var> be the <a>text track region width</a>. Let
-         <var>width</var> be '<var>regionWidth</var> vw' ('vw' is a CSS unit).
-         [[!CSSVALUES]]</p></li>
+         <li><p>Let <var>regionWidth</var> be the <a>WebVTT region width</a>. Let <var>width</var>
+         be '<var>regionWidth</var> vw' ('vw' is a CSS unit). [[!CSSVALUES]]</p></li>
 
          <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) [[!CSSVALUES]] and
          <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be
@@ -3858,8 +3857,8 @@ The Final Minute</pre>
          let it be 'rtl'.</p></li>
 
          <li><p>Let <var>offset</var> be the <a>WebVTT cue computed text position</a> multiplied by
-         <var>region</var>'s <a>text track region width</a> and divided by 100 (i.e. interpret it as
-         a percentage of the region width).</p></li>
+         <var>region</var>'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a
+         percentage of the region width).</p></li>
 
          <li>
           <p>Adjust <var>offset</var> using the <a>WebVTT cue computed text position alignment</a>
@@ -3867,12 +3866,12 @@ The Final Minute</pre>
           <dl class="switch">
            <dt>If the <a>WebVTT cue computed text position alignment</a> is <a title="WebVTT cue
            text position middle alignment">middle alignment</a></dt>
-           <dd><p>Subtract half of <var>region</var>'s <a>text track region width</a> from
+           <dd><p>Subtract half of <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
 
            <dt>If the <a>WebVTT cue computed text position alignment</a> is <a title="WebVTT cue
            text position end alignment">end alignment</a></dt>
-           <dd><p>Subtract <var>region</var>'s <a>text track region width</a> from
+           <dd><p>Subtract <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
           </dl>
          </li>
@@ -5322,8 +5321,8 @@ interface <dfn>VTTRegion</dfn> {
 
      <dt><var>region</var> . <a title="VTTRegion-width">width</a></dt>
      <dd>
-      <p>Returns the text track region width as a percentage of the video width. Can be set. Throws
-      an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
+      <p>Returns the WebVTT region width as a percentage of the video width. Can be set. Throws an
+      <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
      </dd>
 
      <dt><var>region</var> . <a title="VTTRegion-lines">lines</a></dt>
@@ -5382,7 +5381,7 @@ interface <dfn>VTTRegion</dfn> {
      <!-- default settings -->
      <li><p>Let <var>region</var>'s <a>WebVTT region identifier</a> be the empty string.</p></li>
 
-     <li><p>Let <var>region</var>'s <a>text track region width</a> be 100.</p></li>
+     <li><p>Let <var>region</var>'s <a>WebVTT region width</a> be 100.</p></li>
 
      <li><p>Let <var>region</var>'s <a>text track region lines</a> be 3.</p></li>
 
@@ -5404,9 +5403,9 @@ interface <dfn>VTTRegion</dfn> {
     </ol>
 
     <p>The <dfn title="VTTRegion-width"><code>width</code></dfn> attribute, on getting, must return
-    the <a>text track region width</a> of the <a>WebVTT region</a> that the
+    the <a>WebVTT region width</a> of the <a>WebVTT region</a> that the
     <a><code>VTTRegion</code></a> object represents, in percent of video width. On setting, the
-    <a>text track region width</a> must be set to the new value, interpreted as a percentage.</p>
+    <a>WebVTT region width</a> must be set to the new value, interpreted as a percentage.</p>
 
     <p>The <dfn title="VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return
     the <a>text track region lines</a> of the <a>WebVTT region</a> that the
