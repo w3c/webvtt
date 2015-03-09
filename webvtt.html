@@ -1047,7 +1047,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       100.</p>
      </dd>
 
-     <dt><dfn title="text track region lines">A lines value</dfn></dt>
+     <dt><dfn title="WebVTT region lines">A lines value</dfn></dt>
      <dd>
       <p>A number giving the number of lines of the box within which the text of each line of the
       containing cues is to be rendered. Defaults to 3.</p>
@@ -2128,7 +2128,7 @@ The Final Minute</pre>
          <li>Let <var>region</var>'s <a title="WebVTT region identifier">identifier</a> be the empty
          string.</li>
          <li>Let <var>region</var>'s <a title="WebVTT region width">width</a> be 100.</li>
-         <li>Let <var>region</var>'s <a title="text track region lines">lines</a> be 3.</li>
+         <li>Let <var>region</var>'s <a title="WebVTT region lines">lines</a> be 3.</li>
          <li>Let <var>region</var>'s <a title="text track region anchor">anchor point</a> be
          (0,100).</li>
          <li>Let <var>region</var>'s <a title="text track region viewport anchor">viewport anchor
@@ -2353,8 +2353,7 @@ The Final Minute</pre>
            <li><p>Interpret <var>value</var> as an integer, and let <var>number</var> be that
            number.</p></li>
 
-           <li><p>Let <var>region</var>'s <a>text track region lines</a> be
-           <var>number</var>.</p></li>
+           <li><p>Let <var>region</var>'s <a>WebVTT region lines</a> be <var>number</var>.</p></li>
           </ol>
          </dd>
 
@@ -3752,7 +3751,7 @@ The Final Minute</pre>
          be '<var>regionWidth</var> vw' ('vw' is a CSS unit). [[!CSSVALUES]]</p></li>
 
          <li><p>Let <var>lineHeight</var> be '5.33vh' ('vh' is a CSS unit) [[!CSSVALUES]] and
-         <var>regionHeight</var> be the <a>text track region lines</a>. Let <var>lines</var> be
+         <var>regionHeight</var> be the <a>WebVTT region lines</a>. Let <var>lines</var> be
          '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
 
          <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region
@@ -5383,7 +5382,7 @@ interface <dfn>VTTRegion</dfn> {
 
      <li><p>Let <var>region</var>'s <a>WebVTT region width</a> be 100.</p></li>
 
-     <li><p>Let <var>region</var>'s <a>text track region lines</a> be 3.</p></li>
+     <li><p>Let <var>region</var>'s <a>WebVTT region lines</a> be 3.</p></li>
 
      <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region
      regionAnchorX</a> be 0.</p></li>
@@ -5408,9 +5407,9 @@ interface <dfn>VTTRegion</dfn> {
     <a>WebVTT region width</a> must be set to the new value, interpreted as a percentage.</p>
 
     <p>The <dfn title="VTTRegion-lines"><code>lines</code></dfn> attribute, on getting, must return
-    the <a>text track region lines</a> of the <a>WebVTT region</a> that the
-    <a><code>VTTRegion</code></a> object represents, as number of lines. On setting, the <a>text
-    track region lines</a> must be set to the new value, interpreted as a number of lines.</p>
+    the <a>WebVTT region lines</a> of the <a>WebVTT region</a> that the
+    <a><code>VTTRegion</code></a> object represents, as number of lines. On setting, the <a>WebVTT
+    region lines</a> must be set to the new value, interpreted as a number of lines.</p>
 
     <p>The <dfn title="VTTRegion-regionAnchorX"><code>regionAnchorX</code></dfn> attribute, on
     getting, must return the <a>text track region anchor</a> X offset of the <a>WebVTT region</a>
