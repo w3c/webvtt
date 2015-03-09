@@ -1053,7 +1053,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       containing cues is to be rendered. Defaults to 3.</p>
      </dd>
 
-     <dt><dfn title="text track region anchor">A region anchor point</dfn></dt>
+     <dt><dfn title="WebVTT region anchor">A region anchor point</dfn></dt>
      <dd>
       <p>Two numbers giving the x and y coordinates within the region which is anchored to the video
       viewport and does not change location even when the region does, e.g. because of font size
@@ -2129,7 +2129,7 @@ The Final Minute</pre>
          string.</li>
          <li>Let <var>region</var>'s <a title="WebVTT region width">width</a> be 100.</li>
          <li>Let <var>region</var>'s <a title="WebVTT region lines">lines</a> be 3.</li>
-         <li>Let <var>region</var>'s <a title="text track region anchor">anchor point</a> be
+         <li>Let <var>region</var>'s <a title="WebVTT region anchor">anchor point</a> be
          (0,100).</li>
          <li>Let <var>region</var>'s <a title="text track region viewport anchor">viewport anchor
          point</a> be (0,100).</li>
@@ -2375,8 +2375,8 @@ The Final Minute</pre>
            percentage string</a> from <var>anchorY</var> don't return a <var>percentage</var>, then
            jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region
-           anchor point</a> be the tuple of the <var>percentage</var> values calculated from
+           <li><p>Let <var>region</var>'s <a title="WebVTT region anchor">WebVTT region anchor
+           point</a> be the tuple of the <var>percentage</var> values calculated from
            <var>anchorX</var> and <var>anchorY</var>.</p></li>
           </ol>
          </dd>
@@ -3755,14 +3755,14 @@ The Final Minute</pre>
          '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
 
          <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>text track region
-         viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>text track
-         region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by
+         viewport anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a>WebVTT region
+         anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by
          <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
          from '<var>viewportAnchorX</var> vw'.</p></li>
 
          <li><p>Let <var>viewportAnchorY</var> be the y dimension of the <a>text track region
-         viewport anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a>text track
-         region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by
+         viewport anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a>WebVTT region
+         anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by
          <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
          from '<var>viewportAnchorY</var> vh'.</p></li>
         </ul>
@@ -5331,16 +5331,14 @@ interface <dfn>VTTRegion</dfn> {
 
      <dt><var>region</var> . <a title="VTTRegion-regionAnchorX">regionAnchorX</a></dt>
      <dd>
-      <p>Returns the text track region anchor X offset as a percentage of the region width. Can be
-      set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range
-      0..100.</p>
+      <p>Returns the WebVTT region anchor X offset as a percentage of the region width. Can be set.
+      Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
      </dd>
 
      <dt><var>region</var> . <a title="VTTRegion-regionAnchorX">regionAnchorX</a></dt>
      <dd>
-      <p>Returns the text track region anchor Y offset as a percentage of the region height. Can be
-      set. Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range
-      0..100.</p>
+      <p>Returns the WebVTT region anchor Y offset as a percentage of the region height. Can be set.
+      Throws an <a><code>IndexSizeError</code></a> if the new value is not in the range 0..100.</p>
      </dd>
 
      <dt><var>region</var> . <a title="VTTRegion-viewportAnchorX">viewportAnchorX</a></dt>
@@ -5384,10 +5382,10 @@ interface <dfn>VTTRegion</dfn> {
 
      <li><p>Let <var>region</var>'s <a>WebVTT region lines</a> be 3.</p></li>
 
-     <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region
+     <li><p>Let <var>region</var>'s <a title="WebVTT region anchor">text track region
      regionAnchorX</a> be 0.</p></li>
 
-     <li><p>Let <var>region</var>'s <a title="text track region anchor">text track region
+     <li><p>Let <var>region</var>'s <a title="WebVTT region anchor">text track region
      regionAnchorY</a> be 100.</p></li>
 
      <li><p>Let <var>region</var>'s <a title="text track region viewport anchor">text track region
@@ -5412,16 +5410,16 @@ interface <dfn>VTTRegion</dfn> {
     region lines</a> must be set to the new value, interpreted as a number of lines.</p>
 
     <p>The <dfn title="VTTRegion-regionAnchorX"><code>regionAnchorX</code></dfn> attribute, on
-    getting, must return the <a>text track region anchor</a> X offset of the <a>WebVTT region</a>
-    that the <a><code>VTTRegion</code></a> object represents, in percent of region width. On
-    setting, the <a>text track region anchor</a> X distance must be set to the new value,
-    interpreted as a percentage.</p>
+    getting, must return the <a>WebVTT region anchor</a> X offset of the <a>WebVTT region</a> that
+    the <a><code>VTTRegion</code></a> object represents, in percent of region width. On setting, the
+    <a>WebVTT region anchor</a> X distance must be set to the new value, interpreted as a
+    percentage.</p>
 
     <p>The <dfn title="VTTRegion-regionAnchorY"><code>regionAnchorY</code></dfn> attribute, on
-    getting, must return the <a>text track region anchor</a> Y offset of the <a>WebVTT region</a>
-    that the <a><code>VTTRegion</code></a> object represents, in percent of region height. On
-    setting, the <a>text track region anchor</a> Y distance must be set to the new value,
-    interpreted as a percentage.</p>
+    getting, must return the <a>WebVTT region anchor</a> Y offset of the <a>WebVTT region</a> that
+    the <a><code>VTTRegion</code></a> object represents, in percent of region height. On setting,
+    the <a>WebVTT region anchor</a> Y distance must be set to the new value, interpreted as a
+    percentage.</p>
 
     <p>The <dfn title="VTTRegion-viewportAnchorX"><code>viewportAnchorX</code></dfn> attribute, on
     getting, must return the <a>text track region viewport anchor</a> X offset of the <a>WebVTT
