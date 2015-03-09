@@ -1139,9 +1139,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>One or more <a title="WebVTT line terminator">WebVTT line terminators</a> to terminate the
      header block and separate the cues from the file header.</li>
 
-     <li>Zero or more <a title="WebVTT cue">WebVTT cues</a> and <a title="WebVTT comment">WebVTT
-     comments</a> separated from each other by one or more <a title="WebVTT line terminator">WebVTT
-     line terminators</a>.</li>
+     <li>Zero or more <a title="WebVTT cue block">WebVTT cue blocks</a> and <a title="WebVTT comment
+     block">WebVTT comment blocks</a> separated from each other by one or more <a title="WebVTT line
+     terminator">WebVTT line terminators</a>.</li>
 
      <li>Zero or more <a title="WebVTT line terminator">WebVTT line terminators</a>.</li>
 
@@ -1171,7 +1171,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
     GREATER-THAN SIGN).</p>
 
-    <p>A <dfn>WebVTT cue</dfn> consists of the following components, in the given order:</p>
+    <p>A <dfn>WebVTT cue block</dfn> consists of the following components, in the given order:</p>
 
     <ol>
      <li>Optionally, a <a>WebVTT cue identifier</a> followed by a <a>WebVTT line
@@ -1186,8 +1186,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>A <a>WebVTT line terminator</a>.</li>
     </ol>
 
-    <p class="note">A <a>WebVTT cue</a> corresponds to one piece of time-aligned text or data in the
-    <a>WebVTT file</a>, for example one subtitle. The <a>cue payload</a> is the text or data
+    <p class="note">A <a>WebVTT cue block</a> corresponds to one piece of time-aligned text or data
+    in the <a>WebVTT file</a>, for example one subtitle. The <a>cue payload</a> is the text or data
     associated with the cue.</p>
 
     <p>A <dfn>WebVTT cue identifier</dfn> is any sequence of one or more characters not containing
@@ -1202,7 +1202,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p class="note">A <a>WebVTT cue identifier</a> can be used to reference a specific cue, for
     example from script or CSS.</p>
 
-    <p>The <dfn>WebVTT cue timings</dfn> part of a <a>WebVTT cue</a> consists of the following
+    <p>The <dfn>WebVTT cue timings</dfn> part of a <a>WebVTT cue block</a> consists of the following
     components, in the given order:</p>
 
     <ol>
@@ -1227,7 +1227,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     </ol>
 
     <p class="note">The <a>WebVTT cue timings</a> give the start and end offsets of the <a>WebVTT
-    cue</a>. Different cues can overlap. Cues are always listed ordered by their start time.</p>
+    cue block</a>. Different cues can overlap. Cues are always listed ordered by their start
+    time.</p>
 
     <p>A <dfn>WebVTT timestamp</dfn> can be either a <a title="complete WebVTT timestamp">WebVTT
     timestamp representing hours, minutes, seconds and thousandths of a second</a> or a <a
@@ -1329,12 +1330,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>A U+0025 PERCENT SIGN character (%).</li>
     </ol>
 
-   </section><!-- end file structure -->
-
-   <section>
-    <h3>WebVTT comments</h3>
-
-    <p>A <dfn>WebVTT comment</dfn> consists of the following components, in the given order:</p>
+    <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given
+    order:</p>
 
     <ol>
      <li>The string "<code>NOTE</code>".</li>
@@ -1358,9 +1355,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>A <a>WebVTT line terminator</a>.</li>
     </ol>
 
-    <p class="note">A <a>WebVTT comment</a> is ignored by the parser.</p>
+    <p class="note">A <a>WebVTT comment block</a> is ignored by the parser.</p>
 
-   </section><!-- end comments -->
+   </section><!-- end file structure -->
 
    <section>
     <h3>Types of WebVTT cue payload</h3>
