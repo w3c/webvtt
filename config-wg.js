@@ -56,6 +56,9 @@ var respecConfig = {
         "CSSRUBY": {
             aliasOf: "css-ruby-1",
         },
+        "CSSSYNTAX": {
+            aliasOf: "css-syntax-3",
+        },
         "CSSVALUES": {
             aliasOf: "css3-values",
         },
