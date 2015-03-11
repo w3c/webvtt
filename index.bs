@@ -19,7 +19,7 @@ Abstract: This specification defines WebVTT, the Web Video Text Tracks format. I
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
 Ignored Terms: unicode-bidi, color, text-combine-upright
-Ignored Vars: seconds-frac, selector, fragment
+Ignored Vars: seconds-frac, selector, fragment, seen cue
 
 </pre>
 
@@ -285,6 +285,88 @@ one line except when a line break is definitely necessary.</p>
  </pre>
 
 </div>
+
+<h3 id=styling>Styling</h3>
+
+<p><i>This section is non-normative.</i></p>
+
+<p>CSS stylesheets that apply to an HTML page that contains a <a spec=html element>video</a> element
+can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'' and
+''::cue-region'' pseudo-elements.</p>
+
+<div class="example">
+
+ <p>In this example, an HTML page has a CSS stylesheet in a <a spec=html element>style</a> element
+ that styles all cues in the video with a gradient background and a text color, as well as changing
+ the text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
+
+ <pre>
+ &lt;!doctype html>
+ &lt;html>
+  &lt;head>
+   &lt;title>Styling WebVTT cues&lt;/title>
+   &lt;style>
+    video::cue {
+      background-image: linear-gradient(to bottom, dimgray, lightgray);
+      color: papayawhip;
+    }
+    video::cue(b) {
+      color: peachpuff;
+    }
+   &lt;/style>
+  &lt;/head>
+  &lt;body>
+   &lt;video controls autoplay src="video.webm">
+    &lt;track default src="track.vtt">
+   &lt;/video>
+  &lt;/body>
+ &lt;/html>
+ </pre>
+
+</div>
+
+<p>CSS stylesheets can also be embedded in WebVTT files themselves.</p>
+
+<p>Style blocks are placed after any headers but before the first cue, and start with the line
+"STYLE". Comment blocks can be interleaved with style blocks.</p>
+
+<p>Blank lines cannot appear in the stylesheet. They can be removed or be filled with a space or a
+CSS comment (e.g. <code>/**/</code>).</p>
+
+<p>The string "<code>--></code>" cannot be used in the stylesheet. If the stylesheet is wrapped in
+"<code>&lt;!--</code>" and "<code>--></code>", then those strings can just be removed. If
+"<code>--></code>" appears inside a CSS string, then it can use CSS escaping e.g.
+"<code>--\></code>".</p>
+
+<div class="example">
+
+ <p>This example shows how cues can be styled with style blocks in WebVTT.</p>
+
+ <pre>
+ WEBVTT
+
+ STYLE
+ ::cue {
+   background-image: linear-gradient(to bottom, dimgray, lightgray);
+   color: papayawhip;
+ }
+ /* Style blocks cannot use blank lines nor "dash dash greater than" */
+
+ NOTE comment blocks can be used between style blocks.
+
+ STYLE
+ ::cue(b) {
+   color: peachpuff;
+ }
+
+ hello
+ 00:00:00.000 --> 00:00:10.000
+ Hello &lt;b>world&lt;/b>.
+
+ NOTE style blocks cannot appear after the first cue.
+ </pre>
+
+ </div>
 
 <h3 id=introduction-other-features>Other features</h3>
 
@@ -1059,6 +1141,12 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>One or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the header
  block and separate the cues from the file header.</li>
 
+ <li>Zero or more <a lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment
+ block">WebVTT comment blocks</a> separated from each other by one or more <a lt="WebVTT line
+ terminator">WebVTT line terminators</a>.</li>
+
+ <li>Zero or more <a lt="WebVTT line terminator">WebVTT line terminators</a>.</li>
+
  <li>Zero or more <a lt="WebVTT cue block">WebVTT cue blocks</a> and <a lt="WebVTT comment
  block">WebVTT comment blocks</a> separated from each other by one or more <a lt="WebVTT line
  terminator">WebVTT line terminators</a>.</li>
@@ -1089,6 +1177,22 @@ consist of any sequence of one or more characters other than U+000A LINE FEED (L
 U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not contain the
 substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
 SIGN).</p>
+
+<p>A <dfn>WebVTT style block</dfn> consists of the following components, in the given order:</p>
+
+<ol>
+ <li>The string "<code>STYLE</code>" (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T,
+ U+0059 LATIN CAPITAL LETTER Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E).</li>
+ <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+ <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
+ U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT
+ line terminator</a>, except that the entire resulting string must not contain the substring
+ "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
+ represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply.
+ [[!CSS21]]</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+</ol>
 
 <p>A <dfn>WebVTT cue block</dfn> consists of the following components, in the given order:</p>
 
@@ -1393,7 +1497,7 @@ given:</p>
 
  </li>
 
- <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
+ <li>A U+003E GREATER-THAN SIGN character (>).</li>
 
 </ol>
 
@@ -1404,7 +1508,7 @@ in the order given:</p>
  <li>A U+003C LESS-THAN SIGN character (&lt;).</li>
  <li>U+002F SOLIDUS character (/).</li>
  <li>The |tag name|.</li>
- <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
+ <li>A U+003E GREATER-THAN SIGN character (>).</li>
 </ol>
 
 <p>A <dfn>WebVTT cue timestamp</dfn> consists of a U+003C LESS-THAN SIGN character (&lt;), followed
@@ -1420,7 +1524,7 @@ U+003C LESS-THAN SIGN characters (&lt;).</p>
 
 <p><dfn>WebVTT cue span start tag annotation text</dfn> consists of one or more characters other
 than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND
-characters (&amp;), and U+003E GREATER-THAN SIGN characters (&gt;).</p>
+characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
 
 
 <h3 id=region-definition>WebVTT region definition</h3>
@@ -1838,10 +1942,12 @@ said to be a <dfn>WebVTT file using cue text</dfn>.</p>
 
 <h3 id=file-parsing algorithm>WebVTT file parsing</h3>
 
-<p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a <a>text track list of cues</a>
-|output|, must decode the byte stream using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and
-then must parse the resulting string according to the <a>WebVTT parser algorithm</a> below. This
-results in <a lt="WebVTT cue">WebVTT cues</a> being added to |output|. [[!RFC3629]]</p>
+<p>A <dfn>WebVTT parser</dfn>, given an input byte stream, a <a>text track list of cues</a>
+|output|, and a collection of <a spec=cssom>CSS style sheets</a> |stylesheets|, must decode the byte
+stream using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and then must parse the resulting
+string according to the <a>WebVTT parser algorithm</a> below. This results in <a>WebVTT cues</a>
+being added to |output|, and <a spec=cssom>CSS style sheets</a> being added to |stylesheets|.
+[[!RFC3629]]</p>
 
 <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
 asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -1880,7 +1986,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  to |input|, then the |position| pointer may, when so instructed by the algorithms, be moved past
  the end of |input|.</p></li>
 
- <li>Let |line| be a string variable.</li>
+ <li>Let |seen cue| be false.</li>
 
  <!-- SIGNATURE CHECK -->
 
@@ -1918,7 +2024,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
  <li>
 
-  <p><i>Cue loop</i>: While |position| doesn't point past the end of |input|:</p>
+  <p><i>Block loop</i>: While |position| doesn't point past the end of |input|:</p>
 
   <ol>
 
@@ -1926,6 +2032,11 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
    <li><p>If |block| is a <a>WebVTT cue</a>, add |block| to the <a>text track list of cues</a>
    |output|.</p></li>
+
+   <li><p>Otherwise, if |block| is a <a spec=cssom>CSS style sheet</a>, add |block| to
+   |stylesheets|.</p></li>
+
+   <!-- handle new block types here -->
 
    <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
    characters.</p></li>
@@ -1944,8 +2055,8 @@ header</i> set, the user agent must run the following steps:</p>
 
 <ol algorithm="collect a WebVTT block">
 
- <li><p>Let |input|, |position| and |regions| be the same variables as those of the same name in the
- algorithm that invoked these steps.</p></li>
+ <li><p>Let |input|, |position|, |seen cue| and |regions| be the same variables as those of the same
+ name in the algorithm that invoked these steps.</p></li>
 
  <li><p>Let |line count| be zero.</p></li>
 
@@ -1960,6 +2071,8 @@ header</i> set, the user agent must run the following steps:</p>
  <li><p>Let |seen arrow| be false.</p></li>
 
  <li><p>Let |cue| be null.</p></li>
+
+ <li><p>Let |stylesheet| be null.</p></li>
 
  <li><p>If <i>in header</i> is set, let |regions| be a <a>text track list of regions</a>.</p></li>
 
@@ -2067,19 +2180,57 @@ header</i> set, the user agent must run the following steps:</p>
 
     <ol>
 
-     <!--
      <li>
 
-      <p>If |line count| is 2, run these substeps:</p>
+      <p>If <i>in header</i> is not set and |line count| is 2, run these substeps:</p>
 
       <ol>
 
-       parse new block types here
+       <li>
+
+        <p>If |seen cue| is false and |buffer| starts with the substring "<code>STYLE</code>"
+        (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T, U+0059 LATIN CAPITAL LETTER
+        Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E), and the remaining
+        characters in |buffer| (if any) are all <a spec=html>space characters</a>, then run these
+        substeps:</p>
+
+        <ol>
+         <li>
+          <p>Let |stylesheet| be the result of <a spec=cssom lt="create a CSS style sheet">creating
+          a CSS style sheet</a>, with the following properties: [[!CSSOM]]</p>
+          <dl>
+           <dt><a spec=cssom for=CSSStyleSheet>location</a></dt>
+           <dd>null</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>parent CSS style sheet</a></dt>
+           <dd>null</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>owner node</a></dt>
+           <dd>null</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>owner CSS rule</a></dt>
+           <dd>null</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>media</a></dt>
+           <dd>The empty string.</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>title</a></dt>
+           <dd>The empty string.</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>alternate flag</a></dt>
+           <dd>Unset.</dd>
+           <dt><a spec=cssom for=CSSStyleSheet>origin-clean flag</a></dt>
+           <dd>Set.</dd>
+          </dl>
+         </li>
+
+         <li><p>Let |buffer| be the empty string.</p></li>
+        </ol>
+
+       </li>
+
+       <!--
+       <li><p>Otherwise, (check for new block types here)</p></li>
+       -->
+
 
       </ol>
 
      </li>
-     -->
 
      <li>
 
@@ -2150,6 +2301,11 @@ header</i> set, the user agent must run the following steps:</p>
 
  <li><p>If |cue| is not null, let the <a>text track cue text</a> of |cue| be |buffer|, and return
  |cue|.</p></li>
+
+ <li><p>Otherwise, if |stylesheet| is not null, then <a spec=css-syntax>Parse a stylesheet</a> from
+ |buffer|. If it returned a list of rules, assign the list as |stylesheet|'s <a spec=cssom
+ for=CSSStyleSheet>CSS rules</a>; otherwise, set |stylesheet|'s <a spec=cssom for=CSSStyleSheet>CSS
+ rules</a> to an empty list. [[!CSSOM]] [[!CSS-SYNTAX-3]] Finally, return |stylesheet|.</p></li>
 
  <!-- return new block types here -->
 
@@ -3863,6 +4019,70 @@ following algorithm.</p>
 
    <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
    rooted at |nodes|.</p></li>
+
+   <li>
+    <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
+    a hypothetical document that contains a single empty element with no explicit name, no
+    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the
+    <a spec=html>media element</a> for the <a spec=html>text tracks</a> that were sourced from the
+    given WebVTT file. The selectors must not match other <a spec=html>text tracks</a> for the same
+    <a spec=html>media element</a>. In this hypothetical document, the element must not match any
+    selector that would match the element itself.</p>
+
+    <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for
+    the ''::cue'', ''::cue()'' and ''::cue-region'' pseudo-elements.</p>
+   </li>
+
+   <li>
+    <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in
+    STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
+    same order as they were added to the collection, and the order of appearance of the collection
+    must be after any style sheets that apply to the associated <a element spec=html>video</a>
+    element's document.</p>
+
+    <div class=example>
+     <p>For example, given the following (invalid) HTML document:</p>
+
+     <pre>
+     &lt;!doctype html>
+     &lt;title>Invalid cascade example&lt;/title>
+     &lt;video controls autoplay src="video.webm">
+      &lt;track default src="track.vtt">
+     &lt;/video>
+     &lt;style>
+      ::cue { color:red }
+     &lt;/style>
+     </pre>
+
+     <p>...and the "track.vtt" file contains:</p>
+
+     <pre>
+     WEBVTT
+
+     STYLE
+     ::cue { color:green }
+
+     00:00:00.000 --> 00:00:25.000
+     Red or green?
+     </pre>
+
+     <p>The ''color:green'' declaration would win, because it is last in the <a
+     spec=css-cascade>cascade</a>, even though the <a element spec=html>style</a> element is after
+     the <a element spec=html>video</a> element in the document order.</p>
+    </div>
+   </li>
+
+   <li>
+
+    <p>For the purpose of resolving URLs in STYLE blocks of a WebVTT file, if the URL's scheme is
+    not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+
+    <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
+    would be a new ability for <a spec=html>media elements</a> and <a spec=html element>track</a>
+    elements to issue network requests as the user watches the video, which could be a privacy
+    issue.</strong></p>
+
+   </li>
 
    <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
    Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
