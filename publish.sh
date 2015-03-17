@@ -58,5 +58,4 @@ if [ -z "$FORCE" ]; then
 fi
 COMMIT="$(git rev-parse HEAD)"
 cd html5/webvtt
-cvs add *.png
 cvs commit -m "Sync WebVTT with Git commit $COMMIT"
