@@ -1821,9 +1821,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     given as a percentage of the video frame. The positioning is calculated relative to the <a
     title="WebVTT cue text position start alignment">start</a>, <a title="WebVTT cue text position
     middle alignment">middle</a>, or <a title="WebVTT cue text position end alignment">end</a> of
-    the cue box, depending on the <a title="cue computed text position alignment">computed text
-    position alignment</a> value, which is overridden by the <a>WebVTT text position cue setting</a>
-    alignment value.</p>
+    the cue box, depending on the cue's <a title="cue computed text position alignment">computed
+    text position alignment</a>, which is overridden by the <a>WebVTT text position cue
+    setting</a>.</p>
 
     <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
     given:</p>
@@ -3854,12 +3854,13 @@ The Final Minute</pre>
          <i>paragraph direction</i> is left-to-right), let <var>direction</var> be 'ltr', otherwise,
          let it be 'rtl'.</p></li>
 
-         <li><p>Let <var>offset</var> be the <a title="cue computed text position">computed text
-         position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided by
-         100 (i.e. interpret it as a percentage of the region width).</p></li>
+         <li><p>Let <var>offset</var> be <var>cue</var>'s <a title="cue computed text
+         position">computed text position</a> multiplied by <var>region</var>'s <a>WebVTT region
+         width</a> and divided by 100 (i.e. interpret it as a percentage of the region
+         width).</p></li>
 
          <li>
-          <p>Adjust <var>offset</var> using the <a title="cue computed text position
+          <p>Adjust <var>offset</var> using <var>cue</var>'s <a title="cue computed text position
           alignment">computed text position alignment</a> as follows:</p>
           <dl class="switch">
            <dt>If the <a title="cue computed text position alignment">computed text position
@@ -4325,8 +4326,8 @@ The Final Minute</pre>
          <li><p>If <var>step</var> is zero, then jump to the step labeled <i>done positioning</i>
          below.</p></li>
 
-         <li><p>Let <var>line position</var> be the <a title="cue computed line position">computed
-         line position</a>.</p></li>
+         <li><p>Let <var>line position</var> be <var>cue</var>'s <a title="cue computed line
+         position">computed line position</a>.</p></li>
 
          <li><p>Round <var>line position</var> to an integer by adding 0.5 and then flooring
          it.</p></li>
