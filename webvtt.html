@@ -3570,6 +3570,10 @@ The Final Minute</pre>
    <section>
     <h3><dfn>WebVTT cue text DOM construction rules</dfn></h3>
 
+    <p class="note">For the purpose of retrieving a <a>WebVTT cue</a>'s content via the
+    <code>getCueAsHTML</code> method of the <code>VTTCue</code> interface, it needs to be parsed to
+    a <code>DocumentFragment</code>. This section describes how.</p>
+
     <p>To convert a <a>list of WebVTT Node Objects</a> to a DOM tree for
     <a><code>Document</code></a> <var>owner</var>, user agents must create a tree of DOM nodes that
     is isomorphous to the tree of <a title="WebVTT Node Object">WebVTT Node Objects</a>, with the
