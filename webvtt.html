@@ -544,11 +544,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    <section>
     <h3>Unicode normalization</h3>
 
-    <p>This specification does not normalize Unicode text as part of its processing
-    requirements.</p>
+    <p>This specification requires that Unicode text must not be normalized.</p>
 
-    <p>For example, a cue with the identifier consisting of the LATIN CAPITAL LETTER A followed by
-    the character U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
+    <p>For example, a cue with the identifier consisting of the characters U+0041 LATIN CAPITAL
+    LETTER A and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
     consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    </section>
 
@@ -4724,9 +4723,9 @@ The Final Minute</pre>
      </ul>
 
      <p>The '<dfn title="pseudo-cue-selector">::cue(<var>selector</var>)</dfn>' pseudo-element with
-     an argument must have an argument that consists of a CSS selector [[!SELECTORS]]. It matches any
-     <a>WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also matches
-     the given CSS selector, with the nodes being treated as follows:</p>
+     an argument must have an argument that consists of a CSS selector [[!SELECTORS]]. It matches
+     any <a>WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also
+     matches the given CSS selector, with the nodes being treated as follows:</p>
 
      <ul>
 
