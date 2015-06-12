@@ -728,14 +728,25 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <dt><dfn title="WebVTT cue writing direction">A writing direction</dfn></dt>
      <dd>
-      <p>A writing direction, either <dfn title="WebVTT cue horizontal writing
-      direction">horizontal</dfn> (a line extends horizontally and is offset vertically, with
-      consecutive lines displayed below each other), <dfn title="WebVTT cue vertical growing left
-      writing direction">vertical growing left</dfn> (a line extends vertically and is offset
-      horizontally, with consecutive lines displayed to the left of each other<!-- used for east
-      asian-->), or <dfn title="WebVTT cue vertical growing right writing direction">vertical
-      growing right</dfn> (a line extends vertically and is offset horizontally, with consecutive
-      lines displayed to the right of each other<!-- used for mongolian -->).</p>
+      <p>A writing direction, either</p>
+      <ul>
+
+       <li><dfn title="WebVTT cue horizontal writing direction">horizontal</dfn> (a line extends
+       horizontally and is offset vertically from the video viewport's top edge, with consecutive
+       lines displayed below each other),</li>
+
+       <li> <dfn title="WebVTT cue vertical growing left writing direction">vertical growing
+       left</dfn> (a line extends
+        vertically and is offset horizontally from the video viewport's right edge, with consecutive
+        lines
+       displayed to the left of each other<!-- used for east asian-->), or</li>
+
+       <li><dfn title="WebVTT cue vertical growing right writing direction">vertical growing
+       right</dfn> (a line extends vertically and is offset horizontally from the video viewport's
+       left edge, with consecutive lines displayed to the right of each other<!-- used for mongolian
+       -->).</li>
+
+      </ul>
 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
       cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line
@@ -755,9 +766,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dt><dfn title="WebVTT cue snap-to-lines flag">A snap-to-lines flag</dfn></dt>
      <dd>
 
-      <p>A boolean indicating whether the <a title="WebVTT cue line offset">line's offset</a> is a
-      line offset (offset by a multiple of the line dimensions of the first line of the cue), or
-      whether it is a percentage of the dimension of the video.</p>
+      <p>A boolean indicating whether the <a title="WebVTT cue line offset">line offset</a> is an
+      integer number of lines (using the line dimensions of the first line of the cue), or whether
+      it is a percentage of the dimension of the video. The flag is set when lines are counted,
+      unset otherwise.</p>
 
       <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is set will be placed within the title-safe
       area on user agents that use overscan. Cues with the flag unset will be offset as requested
@@ -772,11 +784,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dd>
       <p>The line offset defines positioning of the <a title="WebVTT cue box">cue box</a>.</p>
 
-      <p>A line offset is either a number giving the offset of the lines of the cue, to be
-      interpreted as defined by the <a title="WebVTT cue writing direction">writing direction</a>
-      and <a title="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> of the cue, or the special
-      value <dfn title="WebVTT cue automatic line offset">auto</dfn>, which means the offset is to
-      depend on the other showing tracks.</p>
+      <p>A line offset is either a number which positions the cue box within the video viewport as
+      defined by the <a title="WebVTT cue writing direction">writing direction</a> and <a
+      title="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> of the cue, or the special value
+      <dfn title="WebVTT cue automatic line offset">auto</dfn>, which means the offset is to depend
+      on the other showing tracks.</p>
 
       <p>A <a>WebVTT cue</a> has a <dfn title="cue computed line offset">computed line offset</dfn>
       whose value is that returned by the following algorithm, which is defined in terms of the
@@ -854,7 +866,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <dt><dfn title="WebVTT cue text position">A text position</dfn></dt>
      <dd>
-      <p>The text position defines the offset of the <a title="WebVTT cue box">cue box</a> in the
+      <p>The text position defines the indent of the <a title="WebVTT cue box">cue box</a> in the
       direction defined by the <a title="WebVTT cue writing direction">writing direction</a>.</p>
 
       <p>The text position is either a number giving the position of the <a title="WebVTT cue
@@ -1767,16 +1779,17 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      </li>
     </ol>
 
-    <p class="note">A <a>WebVTT line offset cue setting</a> configures the offset of the cue box in
-    the direction opposite to the <a title="WebVTT cue writing direction">writing direction</a>. For
-    horizontal cues, this is the vertical offset. The offset is calculated relative to the <a
-    title="WebVTT cue line start alignment">start</a>, <a title="WebVTT cue line middle
-    alignment">middle</a>, or <a title="WebVTT cue line end alignment">end</a> of the cue box,
-    depending on the <a>WebVTT cue line alignment</a> value - <a title="WebVTT cue line start
-    alignment">start</a> by default. The offset can be given either as a percentage of the video
-    dimension or as a line number. Line numbers are based on the size of the first line of the cue.
-    Positive line numbers count from the start of the video frame (the first line is numbered 0),
-    negative line numbers from the end of the frame (the last line is numbered &#x2212;1).</p>
+    <p class="note">A <a>WebVTT line offset cue setting</a> configures the offset of the cue box
+    from the video viewport's edge in the direction opposite to the <a title="WebVTT cue writing
+    direction">writing direction</a>. For horizontal cues, this is the vertical offset from the top
+    of the video viewport. The offset is for the <a title="WebVTT cue line start
+    alignment">start</a>, <a title="WebVTT cue line middle alignment">middle</a>, or <a
+    title="WebVTT cue line end alignment">end</a> of the cue box, depending on the <a>WebVTT cue
+    line alignment</a> value - <a title="WebVTT cue line start alignment">start</a> by default. The
+    offset can be given either as a percentage of the video dimension or as a line number. Line
+    numbers are based on the size of the first line of the cue. Positive line numbers count from the
+    start of the video frame (the first line is numbered 0), negative line numbers from the end of
+    the frame (the last line is numbered &#x2212;1).</p>
 
     <p>A <dfn>WebVTT text position cue setting</dfn> consists of the following components, in the
     order given:</p>
@@ -1800,11 +1813,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      </li>
     </ol>
 
-    <p class="note">A <a>WebVTT text position cue setting</a> configures the position of the <a
-    title="WebVTT cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line offset cue
-    setting</a>. For horizontal cues, this is the horizontal position. The text position is given as
-    a percentage of the video frame. The positioning is calculated relative to the <a title="WebVTT
-    cue text position start alignment">start</a>, <a title="WebVTT cue text position middle
+    <p class="note">A <a>WebVTT text position cue setting</a> configures the indent position of the
+    <a title="WebVTT cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line offset
+    cue setting</a>. For horizontal cues, this is the horizontal position. The text position is
+    given as a percentage of the video frame. The positioning is for the <a title="WebVTT cue text
+    position start alignment">start</a>, <a title="WebVTT cue text position middle
     alignment">middle</a>, or <a title="WebVTT cue text position end alignment">end</a> of the cue
     box, depending on the cue's <a title="cue computed text position alignment">computed text
     position alignment</a>, which is overridden by the <a>WebVTT text position cue setting</a>.</p>
