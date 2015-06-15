@@ -3688,11 +3688,11 @@ The Final Minute</pre>
   <section>
    <h2>Rendering</h2>
 
-   <p class="note">This section contains an algorithm that describes in some detail how to visually
-   render the content of WebVTT cues in a user agent. It also specifies extra CSS functionality made
-   available to manipulate the visual rendering. The processing model is quite tightly linked to
-   media elements in HTML. When supporting WebVTT in media players that don't support CSS,
-   equivalent visual rendering will need to be implemented.</p>
+   <p class="note">This section describes in some detail how to visually render WebVTT cues in a
+   user agent. It also specifies extra CSS functionality made available to manipulate the visual
+   rendering. The processing model is quite tightly linked to media elements in HTML. When
+   supporting WebVTT in media players that don't support CSS, equivalent visual rendering will need
+   to be implemented.</p>
 
    <section>
     <h4>Processing model</h4>
@@ -3703,10 +3703,10 @@ The Final Minute</pre>
     track">text tracks</a> that use these rules for a given <a>media element</a>, or other playback
     mechanism, are rendered together, to avoid overlapping subtitles from multiple tracks.</p>
 
-    <p class="note">Note that in HTML, audio elements don't have a visual rendering area and
-    therefore, this algorithm will abort for audio elements. When authors do create WebVTT captions
-    or subtitles for audio resources, they need to publish them in a video element for rendering by
-    the user agent.</p>
+    <p class="note">In HTML, audio elements don't have a visual rendering area and therefore, this
+    algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
+    audio resources, they need to publish them in a video element for rendering by the user
+    agent.</p>
 
     <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the
     <a>media element</a> or other playback mechanism, which user agents are expected to render in a
