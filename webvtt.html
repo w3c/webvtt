@@ -478,14 +478,26 @@ I think he went down this lane.
 00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
 What are you waiting for?</pre>
 
-     <p>The cues cover only 35% of the video viewport's width. The first cue has its <a
-     title="WebVTT cue box">cue box</a> left aligned at the 10% mark of the video viewport width and
-     the text is left aligned within that box - probably underneath a speaker on the left of the
-     video image. "start" alignment of the cue box is the default for start aligned text, so does
-     not need to be specified in "position". The second cue has its <a title="WebVTT cue box">cue
-     box</a> right aligned at the 90% mark of the video viewport width. The same effect can be
+     <p>The cues cover only 35% of the video viewport's width - that's the <a title="WebVTT cue
+     box">cue box</a>'s width for all three cues.</p>
+
+     <p>The first cue has its <a title="WebVTT cue box">cue box</a> left aligned at the 10% mark of
+     the video viewport width using "start" within the "position" setting. The cue box is thus
+     positioned between the 10% and the 45% mark of the video viewport's width, probably underneath
+     a speaker on the left of the video image. If the cue was vertical, "start" alignment would be
+     from the top of the video viewport's height and the <a title="WebVTT cue box">cue box</a> would
+     cover 35% of the video viewport's height.</p>
+
+     <p>The text within the first cue's cue box is aligned using the "align" cue setting. For
+     left-to-right rendered text, "start" alignment is the left of that box, for right-to-left
+     rendered text the right of the box. So, independent of the directionality of the text, it will
+     stay underneath that speaker. Note that "start" alignment of the cue box is the default for
+     start aligned text, so does not need to be specified in "position".</p>
+
+     <p>The second cue has its <a title="WebVTT cue box">cue box</a> right aligned at the 90% mark
+     of the video viewport width ("end" aligned text right aligns the box). The same effect can be
      achieved with "position:55%,start", which explicitly positions the cue box. The third cue has
-     middle aligned text within the same type of cue box as the first cue.</p>
+     middle aligned text within the same positioned cue box as the first cue.</p>
     </div>
 
     <div class="example">
