@@ -1002,7 +1002,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-20">20 October 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-22">22 October 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1360,8 +1360,8 @@ Transcrit par Célestes™
 ::cue(.loud) { font-size: 2em }
 </pre>
    </div>
-   <div class="example" id="example-ca8e8425">
-    <a class="self-link" href="#example-ca8e8425"></a> 
+   <div class="example" id="example-40d59fcb">
+    <a class="self-link" href="#example-40d59fcb"></a> 
     <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 <pre>WEBVTT
 
@@ -1374,13 +1374,29 @@ I think he went down this lane.
 00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
 What are you waiting for?
 </pre>
-    <p>The cues cover only 35% of the video viewport’s width. The first cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> left aligned at the 10% mark of the video viewport width and the text is left
- aligned within that box - probably underneath a speaker on the left of the video image. "start"
- alignment of the cue box is the default for start aligned text, so does not need to be specified in
- "position". The second cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> right aligned at the 90% mark
- of the video viewport width. The same effect can be achieved with "position:55%,start", which
- explicitly positions the cue box. The third cue has middle aligned text within the same type of cue
- box as the first cue.</p>
+    <p>Since the cues in these examples are horizontal, the "position" setting refers to a percentage
+ of the width of the video viewpoint. If the text were vertical, the "position" setting would refer
+ to the height of the viewport.</p>
+    <p>The "start" or "end" only refers to the physical side of the box to which the "position" setting
+ applies, in a way which is agnostic regarding the horizontal or vertical direction of the cue. It
+ does not affect or relate to the direction or position of the text itself within the box.</p>
+    <p>The cues cover only 35% of the video viewport’s width - that’s the <a data-link-type="dfn" href="#webvtt-cue-box">cue
+ box</a>’s "size" for all three cues.</p>
+    <p>The first cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> positioned at the 10% mark. The "start"
+ and "end" within the "position" setting indicates which side of the <a data-link-type="dfn" href="#webvtt-cue-box">cue
+ box</a> the position refers to. Since in this case the text is horizontal, "start" refers to the
+ left side of the box, and the cue box is thus positioned between the 10% and the 45% mark of the
+ video viewport’s width, probably underneath a speaker on the left of the video image. If the cue
+ was vertical, "start" positioning would be from the top of the video viewport’s height and the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> would cover 35% of the video viewport’s height.</p>
+    <p>The text within the first cue’s cue box is aligned using the "align" cue setting. For
+ left-to-right rendered text, "start" alignment is the left of that box, for right-to-left rendered
+ text the right of the box. So, independent of the directionality of the text, it will stay
+ underneath that speaker. Note that "start" alignment of the cue box is the default for start
+ aligned text, so does not need to be specified in "position".</p>
+    <p>The second cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> right aligned at the 90% mark of the
+ video viewport width ("end" aligned text right aligns the box). The same effect can be achieved
+ with "position:55%,start", which explicitly positions the cue box. The third cue has middle aligned
+ text within the same positioned cue box as the first cue.</p>
    </div>
    <div class="example" id="example-28ed4f48">
     <a class="self-link" href="#example-28ed4f48"></a> 
@@ -4675,6 +4691,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
  Ralph Giles,
  Loretta Guarino Reid,
  Kyle Huey,
+ Richard Ishida,
  Anne van Kesteren,
  Glenn Maynard,
  Ronny Mennerich,
