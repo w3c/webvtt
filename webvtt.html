@@ -1242,18 +1242,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     cue block</a>. Different cues can overlap. Cues are always listed ordered by their start
     time.</p>
 
-    <p>A <dfn>WebVTT timestamp</dfn> can be either a <a title="complete WebVTT timestamp">WebVTT
-    timestamp representing hours, minutes, seconds and thousandths of a second</a> or a <a
-    title="partial WebVTT timestamp">WebVTT timestamp representing a time in seconds and fractions
-    of a second</a>.</p>
-
-    <p class="note">A <a>WebVTT timestamp</a> is always interpreted relative to the <a>current
-    playback position</a> of the media data that the WebVTT file is to be synchronized with, which
-    always starts at 0.</p>
-
-    <p>A <dfn title="complete WebVTT timestamp">WebVTT timestamp representing hours
-    <var>hours</var>, minutes <var>minutes</var>, seconds <var>seconds</var>, and thousandths of a
-    second <var>seconds-frac</var></dfn>, consists of the following components, in the given
+    <p>A <dfn>WebVTT timestamp</dfn> consists of the following components, in the given
     order:</p>
 
     <ol>
@@ -1287,29 +1276,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
     </ol>
 
-    <p>A <dfn title="partial WebVTT timestamp">WebVTT timestamp representing a time in seconds and
-    fractions of a second</dfn> is a <a>WebVTT timestamp</a> representing hours <var>hours</var>,
-    minutes <var>minutes</var>, seconds <var>seconds</var>, and thousandths of a second
-    <var>seconds-frac</var>, calculated as follows:</p>
-
-    <ol>
-
-     <li><p>Let <var>seconds</var> be the integer part of the time.</p></li>
-
-     <li><p>Let <var>seconds-frac</var> be the fractional component of the time, expressed as the
-     digits of the decimal fraction given to three decimal digits.</p></li>
-
-     <li><p>If <var>seconds</var> is greater than 59, then let <var>minutes</var> be the integer
-     component of <var>seconds</var> divided by sixty, and then let <var>seconds</var> be the
-     remainder of dividing <var>seconds</var> divided by sixty. Otherwise, let <var>minutes</var> be
-     zero.</p></li>
-
-     <li><p>If <var>minutes</var> is greater than 59, then let <var>hours</var> be the integer
-     component of <var>minutes</var> divided by sixty, and then let <var>minutes</var> be the
-     remainder of dividing <var>minutes</var> divided by sixty. Otherwise, let <var>hours</var> be
-     zero.</p></li>
-
-    </ol>
+    <p class="note">A <a>WebVTT timestamp</a> is always interpreted relative to the <a>current
+    playback position</a> of the media data that the WebVTT file is to be synchronized with, which
+    always starts at 0.</p>
 
     <p>A <dfn>WebVTT cue settings list</dfn> consist of a sequence of zero or more <dfn
     title="WebVTT cue setting">WebVTT cue settings</dfn> in any order, separated from each other by
