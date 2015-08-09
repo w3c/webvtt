@@ -3331,7 +3331,7 @@ The Final Minute</pre>
         <p>Jump to the entry that matches the value of <var>c</var>:</p>
 
         <dl>
-         <dt>'x' character</dt>
+         <dt>'x' or 'X' character</dt>
          <dd>
           <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
          </dd>
@@ -3344,8 +3344,8 @@ The Final Minute</pre>
          <dt>U+003B SEMICOLON character (;)</dt>
          <dd>
           <p>Map <var>buffer</var> to a Unicode code point by interpreting <var>buffer</var> either
-          as a hexadecimal number (starting with x) or a decimal number. If a Unicode code point is
-          found, append the retrieved unicode character to <var>result</var>.</p>
+          as a hexadecimal number (starting with 'x' or 'X') or a decimal number. If a Unicode code
+          point is found, append the retrieved unicode character to <var>result</var>.</p>
 
           <p>Set <var>tokenizer state</var> to the <a>WebVTT data state</a>, and jump to the step
           labeled <i>next</i>.</p>
