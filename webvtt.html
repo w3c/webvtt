@@ -465,7 +465,8 @@ Transcribed by Celestials&trade;</pre>
     </div>
 
     <div class="example">
-     <p>This example shows how to position cues at explicit positions in the video viewport.</p>
+     <p>This example shows how to position cue boxes at explicit positions in the video
+     viewport.</p>
 
      <pre>WEBVTT
 
@@ -478,15 +479,26 @@ I think he went down this lane.
 00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
 What are you waiting for?</pre>
 
-     <p>The cues cover only 35% of the video viewport's width - that's the <a title="WebVTT cue
-     box">cue box</a>'s width for all three cues.</p>
+     <p>Since the cues in these examples are horizontal, the "position" setting refers to a
+     percentage of the width of the video viewpoint. If the text were vertical, the "position"
+     setting would refer to the height of the viewport.</p>
 
-     <p>The first cue has its <a title="WebVTT cue box">cue box</a> left aligned at the 10% mark of
-     the video viewport width using "start" within the "position" setting. The cue box is thus
-     positioned between the 10% and the 45% mark of the video viewport's width, probably underneath
-     a speaker on the left of the video image. If the cue was vertical, "start" alignment would be
-     from the top of the video viewport's height and the <a title="WebVTT cue box">cue box</a> would
-     cover 35% of the video viewport's height.</p>
+     <p>The "start" or "end" only refers to the physical side of the box to which the "position"
+     setting applies, in a way which is agnostic regarding the horizontal or vertical direction of
+     the cue. It does not affect or relate to the direction or position of the text itself within
+     the box.</p>
+
+     <p>The cues cover only 35% of the video viewport's width - that's the <a title="WebVTT cue
+     box">cue box</a>'s "size" for all three cues.</p>
+
+     <p>The first cue has its <a title="WebVTT cue box">cue box</a> positioned at the 10% mark. The
+     "start" and "end" within the "position" setting indicates which side of the <a title="WebVTT
+     cue box">cue box</a> the position refers to. Since in this case the text is horizontal, "start"
+     refers to the left side of the box, and the cue box is thus positioned between the 10% and the
+     45% mark of the video viewport's width, probably underneath a speaker on the left of the video
+     image. If the cue was vertical, "start" positioning would be from the top of the video
+     viewport's height and the <a title="WebVTT cue box">cue box</a> would cover 35% of the video
+     viewport's height.</p>
 
      <p>The text within the first cue's cue box is aligned using the "align" cue setting. For
      left-to-right rendered text, "start" alignment is the left of that box, for right-to-left
