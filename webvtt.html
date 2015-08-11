@@ -748,13 +748,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       </ul>
 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
-      cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line">cue
-      line</a> percentages are relative to the height of the video, and <a title="WebVTT cue
-      position">cue position</a> and <a title="WebVTT cue size">size</a> percentages are relative to
-      the width of the video.</p>
+      cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line">line</a>
+      percentages are relative to the height of the video, and <a title="WebVTT cue position">cue
+      position</a> and <a title="WebVTT cue size">size</a> percentages are relative to the width of
+      the video.</p>
 
-      <p>Otherwise, <a title="WebVTT cue line">cue line</a> percentages are relative to the width of
-      the video, and <a title="WebVTT cue position">cue position</a> and <a title="WebVTT cue
+      <p>Otherwise, <a title="WebVTT cue line">line</a> percentages are relative to the width of the
+      video, and <a title="WebVTT cue position">cue position</a> and <a title="WebVTT cue
       size">size</a> percentages are relative to the height of the video.</p>
 
       <p>The <a title="WebVTT cue writing direction">writing direction</a> defaults to <a
@@ -765,8 +765,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dt><dfn title="WebVTT cue snap-to-lines flag">A snap-to-lines flag</dfn></dt>
      <dd>
 
-      <p>A boolean indicating whether the <a title="WebVTT cue line">cue line</a> is an integer
-      number of lines (using the line dimensions of the first line of the cue), or whether it is a
+      <p>A boolean indicating whether the <a title="WebVTT cue line">line</a> is an integer number
+      of lines (using the line dimensions of the first line of the cue), or whether it is a
       percentage of the dimension of the video. The flag is set when lines are counted, unset
       otherwise.</p>
 
@@ -779,21 +779,19 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="WebVTT cue line">A cue line</dfn></dt>
+     <dt><dfn title="WebVTT cue line">A line</dfn></dt>
      <dd>
-      <p>The <a title="WebVTT cue line">cue line</a> defines positioning of the <a title="WebVTT cue
+      <p>The <a title="WebVTT cue line">line</a> defines positioning of the <a title="WebVTT cue
       box">cue box</a>.</p>
 
-      <p>The <a title="WebVTT cue line">cue line</a> offsets the <a title="WebVTT cue box">cue
-      box</a> from the top, the right or left of the video viewport as defined by the <a
-      title="WebVTT cue writing direction">writing direction</a>, the <a title="WebVTT cue
-      snap-to-lines flag">snap-to-lines flag</a>, or the lines occupied by any other showing
-      tracks.</p>
+      <p>The <a title="WebVTT cue line">line</a> offsets the <a title="WebVTT cue box">cue box</a>
+      from the top, the right or left of the video viewport as defined by the <a title="WebVTT cue
+      writing direction">writing direction</a>, the <a title="WebVTT cue snap-to-lines
+      flag">snap-to-lines flag</a>, or the lines occupied by any other showing tracks.</p>
 
-      <p>The <a title="WebVTT cue line">cue line</a> is set either as a number of lines, a
-      percentage of the video viewport height or width, or as the special value <dfn title="WebVTT
-      cue line automatic">auto</dfn>, which means the offset is to depend on the other showing
-      tracks.</p>
+      <p>The <a title="WebVTT cue line">line</a> is set either as a number of lines, a percentage of
+      the video viewport height or width, or as the special value <dfn title="WebVTT cue line
+      automatic">auto</dfn>, which means the offset is to depend on the other showing tracks.</p>
 
       <p>A <a>WebVTT cue</a> has a <dfn title="cue computed line">computed line</dfn> whose value is
       that returned by the following algorithm, which is defined in terms of the other aspects of
@@ -801,19 +799,18 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <ol>
 
-       <li><p>If the <a title="WebVTT cue line">cue line</a> is numeric, the <a>WebVTT cue
-       snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set, and the <a title="WebVTT cue
-       line">cue line</a> is negative or greater than 100, then return 100 and abort these
-       steps.</p></li>
+       <li><p>If the <a title="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
+       flag</a> of the <a>WebVTT cue</a> is not set, and the <a title="WebVTT cue line">line</a> is
+       negative or greater than 100, then return 100 and abort these steps.</p></li>
 
-       <li><p>If the <a title="WebVTT cue line">cue line</a> is numeric, return the value of the
+       <li><p>If the <a title="WebVTT cue line">line</a> is numeric, return the value of the
        <a>WebVTT cue line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines
        flag</a> is set, so any value, not just those in the range 0..100, is valid, or the value is
        in the range 0..100 and is thus valid regardless of the value of that flag.)</p></li>
 
        <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set,
-       return the value 100 and abort these steps. (The <a title="WebVTT cue line">cue line</a> is
-       the special value <a title="WebVTT cue line automatic">auto</a>.)</p></li>
+       return the value 100 and abort these steps. (The <a title="WebVTT cue line">line</a> is the
+       special value <a title="WebVTT cue line automatic">auto</a>.)</p></li>
 
        <li><p>Let <var>cue</var> be the <a>WebVTT cue</a>.</p></li>
 
@@ -840,8 +837,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <dt><dfn title="WebVTT cue line alignment">A line alignment</dfn></dt>
      <dd>
-      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue line">cue
-      line</a>, one of:</p>
+      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue
+      line">line</a>, one of:</p>
 
       <dl>
 
@@ -850,18 +847,18 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        writing direction">horizontal</a> cues), left side (for <a title="WebVTT cue vertical growing
        right writing direction">vertical growing right</a>), or right side (for <a title="WebVTT cue
        vertical growing left writing direction">vertical growing left</a>) is aligned at the <a
-       title="WebVTT cue line">cue line</a>.</dd>
+       title="WebVTT cue line">line</a>.</dd>
 
        <dt><dfn title="WebVTT cue line middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue
-       line">cue line</a>.</dd>
+       line">line</a>.</dd>
 
        <dt><dfn title="WebVTT cue line end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s bottom side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues), right side (for <a title="WebVTT cue
        vertical growing right writing direction">vertical growing right</a>), or left side (for <a
        title="WebVTT cue vertical growing left writing direction">vertical growing left</a>) is
-       aligned at the <a title="WebVTT cue line">cue line</a>.</dd>
+       aligned at the <a title="WebVTT cue line">line</a>.</dd>
 
       </dl>
 
@@ -1043,7 +1040,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
-     snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line">cue line</a>, <a
+     snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line">line</a>, <a
      title="WebVTT cue position">cue position</a>, <a title="WebVTT cue size">size</a>, <a
      title="WebVTT cue text alignment">text alignment</a>, <a title="WebVTT cue region">region</a>,
      or <a title="text track cue text">text</a> change value, then the user agent must empty the
