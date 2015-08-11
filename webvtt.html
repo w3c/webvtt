@@ -749,13 +749,13 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
       cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line">line</a>
-      percentages are relative to the height of the video, and <a title="WebVTT cue position">cue
-      position</a> and <a title="WebVTT cue size">size</a> percentages are relative to the width of
-      the video.</p>
+      percentages are relative to the height of the video, and <a title="WebVTT cue
+      position">position</a> and <a title="WebVTT cue size">size</a> percentages are relative to the
+      width of the video.</p>
 
       <p>Otherwise, <a title="WebVTT cue line">line</a> percentages are relative to the width of the
-      video, and <a title="WebVTT cue position">cue position</a> and <a title="WebVTT cue
-      size">size</a> percentages are relative to the height of the video.</p>
+      video, and <a title="WebVTT cue position">position</a> and <a title="WebVTT cue size">size</a>
+      percentages are relative to the height of the video.</p>
 
       <p>The <a title="WebVTT cue writing direction">writing direction</a> defaults to <a
       title="WebVTT cue horizontal writing direction">horizontal</a>.</p>
@@ -867,14 +867,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="WebVTT cue position">A cue position</dfn></dt>
+     <dt><dfn title="WebVTT cue position">A position</dfn></dt>
      <dd>
-      <p>The <a title="WebVTT cue position">cue position</a> defines the indent of the <a
-      title="WebVTT cue box">cue box</a> in the direction defined by the <a title="WebVTT cue
-      writing direction">writing direction</a>.</p>
+      <p>The <a title="WebVTT cue position">position</a> defines the indent of the <a title="WebVTT
+      cue box">cue box</a> in the direction defined by the <a title="WebVTT cue writing
+      direction">writing direction</a>.</p>
 
-      <p>The <a title="WebVTT cue position">cue position</a> is either a number giving the position
-      of the <a title="WebVTT cue box">cue box</a> as a percentage value or the special value <dfn
+      <p>The <a title="WebVTT cue position">position</a> is either a number giving the position of
+      the <a title="WebVTT cue box">cue box</a> as a percentage value or the special value <dfn
       title="WebVTT cue automatic position">auto</dfn>, which means the position is to depend on the
       <a title="WebVTT cue text alignment">text alignment</a> of the cue.</p>
 
@@ -888,10 +888,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <ol>
 
-       <li><p>If the <a title="WebVTT cue position">cue position</a> is numeric, then return the
-       value of the <a title="WebVTT cue position">cue position</a> and abort these steps.
-       (Otherwise, the <a title="WebVTT cue position">cue position</a> is the special value <a
-       title="WebVTT cue automatic position">auto</a>.)</p></li>
+       <li><p>If the <a title="WebVTT cue position">position</a> is numeric, then return the value
+       of the <a title="WebVTT cue position">position</a> and abort these steps. (Otherwise, the <a
+       title="WebVTT cue position">position</a> is the special value <a title="WebVTT cue automatic
+       position">auto</a>.)</p></li>
 
        <li><p>If the <a title="WebVTT cue text alignment">cue text alignment</a> is <a title="WebVTT
        cue start alignment">start</a> or <a title="WebVTT cue left alignment">left</a>, return 0 and
@@ -926,23 +926,23 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dd>
       <p>An alignment for the <a title="WebVTT cue box">cue box</a> in the dimension of the <a
       title="WebVTT cue writing direction">writing direction</a>, describing what the <a
-      title="WebVTT cue position">cue position</a> is anchored to, one of:</p>
+      title="WebVTT cue position">position</a> is anchored to, one of:</p>
 
       <dl>
 
        <dt><dfn title="WebVTT cue position start alignment">Start alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s left side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues) or top side (otherwise) is aligned at the
-       <a title="WebVTT cue position">cue position</a>.</dd>
+       <a title="WebVTT cue position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue
-       position">cue position</a>.</dd>
+       position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s right side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues) or bottom side (otherwise) is aligned at
-       the <a title="WebVTT cue position">cue position</a>.</dd>
+       the <a title="WebVTT cue position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position automatic alignment">Auto alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s alignment depends on the value of the <a
@@ -974,12 +974,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </ol>
 
-      <p class="note">Since the <a title="WebVTT cue position">cue position</a> always measures from
-      the left of the video (for <a title="WebVTT cue horizontal writing direction">horizontal</a>
-      cues) or the top (otherwise), the <a>WebVTT cue position alignment</a> <a title="WebVTT cue
-      position start alignment">start value</a> varies between left and top for horizontal and
-      vertical cues, but not between left and right even for changing <i>paragraph
-      direction</i>.</p>
+      <p class="note">Since the <a title="WebVTT cue position">position</a> always measures from the
+      left of the video (for <a title="WebVTT cue horizontal writing direction">horizontal</a> cues)
+      or the top (otherwise), the <a>WebVTT cue position alignment</a> <a title="WebVTT cue position
+      start alignment">start value</a> varies between left and top for horizontal and vertical cues,
+      but not between left and right even for changing <i>paragraph direction</i>.</p>
 
      </dd>
 
@@ -1041,11 +1040,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
      snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line">line</a>, <a
-     title="WebVTT cue position">cue position</a>, <a title="WebVTT cue size">size</a>, <a
-     title="WebVTT cue text alignment">text alignment</a>, <a title="WebVTT cue region">region</a>,
-     or <a title="text track cue text">text</a> change value, then the user agent must empty the
-     <a>text track cue display state</a>, and then immediately run the <a>text track</a>'s <a>rules
-     for updating the display of WebVTT text tracks</a>.</p>
+     title="WebVTT cue position">position</a>, <a title="WebVTT cue size">size</a>, <a title="WebVTT
+     cue text alignment">text alignment</a>, <a title="WebVTT cue region">region</a>, or <a
+     title="text track cue text">text</a> change value, then the user agent must empty the <a>text
+     track cue display state</a>, and then immediately run the <a>text track</a>'s <a>rules for
+     updating the display of WebVTT text tracks</a>.</p>
 
     </div>
 
@@ -2654,10 +2653,10 @@ The Final Minute</pre>
 
            <li><p>If <a>parse a percentage string</a> from <var>colpos</var> doesn't fail, let
            <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step
-           labeled <i>next setting</i> (<a title="WebVTT cue position">cue position</a>'s value
-           remains the special value <a title="WebVTT cue automatic position">auto</a>).</p></li>
+           labeled <i>next setting</i> (<a title="WebVTT cue position">position</a>'s value remains
+           the special value <a title="WebVTT cue automatic position">auto</a>).</p></li>
 
-           <li><p>Let <var>cue</var>'s <a title="WebVTT cue position">cue position</a> be
+           <li><p>Let <var>cue</var>'s <a title="WebVTT cue position">position</a> be
            <var>number</var>.</p></li>
 
            <li><p>If <var>colalign</var> is a <a>case-sensitive</a> match for the string
