@@ -950,9 +950,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position alignment">computed cue
-      position alignment</dfn> whose value is that returned by the following algorithm, which is
-      defined in terms of other aspects of the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position alignment">computed position
+      alignment</dfn> whose value is that returned by the following algorithm, which is defined in
+      terms of other aspects of the cue:</p>
 
       <ol>
 
@@ -1824,8 +1824,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     a percentage of the video viewport. The positioning is for the <a title="WebVTT cue position
     start alignment">start</a>, <a title="WebVTT cue position middle alignment">middle</a>, or <a
     title="WebVTT cue position end alignment">end</a> of the cue box, depending on the cue's <a
-    title="cue computed position alignment">computed cue position alignment</a>, which is overridden
-    by the <a>WebVTT position cue setting</a>.</p>
+    title="cue computed position alignment">computed position alignment</a>, which is overridden by
+    the <a>WebVTT position cue setting</a>.</p>
 
     <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
     given:</p>
@@ -3873,15 +3873,15 @@ The Final Minute</pre>
 
          <li>
           <p>Adjust <var>offset</var> using <var>cue</var>'s <a title="cue computed position
-          alignment">computed cue position alignment</a> as follows:</p>
+          alignment">computed position alignment</a> as follows:</p>
           <dl class="switch">
-           <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-           is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
+           <dt>If the <a title="cue computed position alignment">computed position alignment</a> is
+           <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
            <dd><p>Subtract half of <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
 
-           <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-           is <a title="WebVTT cue position end alignment">end alignment</a></dt>
+           <dt>If the <a title="cue computed position alignment">computed position alignment</a> is
+           <a title="WebVTT cue position end alignment">end alignment</a></dt>
            <dd><p>Subtract <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
           </dl>
@@ -3968,30 +3968,30 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position start alignment">start</a></dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position start alignment">start</a></dt>
        <dd>
         <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
         subtracted from 100.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position end alignment">end</a></dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position end alignment">end</a></dt>
        <dd>
         <p>Let <var>maximum size</var> be the <a title="cue computed position">computed
         position</a>.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
        position">computed position</a> is less than or equal to 50</dt>
        <dd>
         <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
         multiplied by two.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
        position">computed position</a> is greater than <!-- or equal to --> 50</dt>
        <dd>
         <p>Let <var>maximum size</var> be the result of subtracting <a title="cue computed
@@ -4023,18 +4023,18 @@ The Final Minute</pre>
        direction">horizontal</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position start alignment">start alignment</a></dt>
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position start alignment">start alignment</a></dt>
          <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position middle alignment">middle alignment</a></dt>
          <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position end alignment">end alignment</a></dt>
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position end alignment">end alignment</a></dt>
          <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus <var>size</var>.</p></dd>
         </dl>
@@ -4045,13 +4045,13 @@ The Final Minute</pre>
        writing direction">vertical growing right</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position start alignment">start alignment</a></dt>
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position start alignment">start alignment</a></dt>
          <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position middle alignment">middle alignment</a></dt>
          <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
