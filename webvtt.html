@@ -882,9 +882,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       be interpreted as a percentage of the video dimensions, otherwise as a percentage of the
       region dimensions.</p>
 
-      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position">computed cue position</dfn>
-      whose value is that returned by the following algorithm, which is defined in terms of the
-      other aspects of the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position">computed position</dfn> whose
+      value is that returned by the following algorithm, which is defined in terms of the other
+      aspects of the cue:</p>
 
       <ol>
 
@@ -3868,8 +3868,8 @@ The Final Minute</pre>
          let it be 'rtl'.</p></li>
 
          <li><p>Let <var>offset</var> be <var>cue</var>'s <a title="cue computed position">computed
-         cue position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided
-         by 100 (i.e. interpret it as a percentage of the region width).</p></li>
+         position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided by
+         100 (i.e. interpret it as a percentage of the region width).</p></li>
 
          <li>
           <p>Adjust <var>offset</var> using <var>cue</var>'s <a title="cue computed position
@@ -3971,31 +3971,31 @@ The Final Minute</pre>
        <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
        <a title="WebVTT cue position start alignment">start</a></dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
-        position</a> subtracted from 100.</p>
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
+        subtracted from 100.</p>
        </dd>
 
        <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
        <a title="WebVTT cue position end alignment">end</a></dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed
         position</a>.</p>
        </dd>
 
        <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
        <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
-       position">computed cue position</a> is less than or equal to 50</dt>
+       position">computed position</a> is less than or equal to 50</dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
-        position</a> multiplied by two.</p>
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
+        multiplied by two.</p>
        </dd>
 
        <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
        <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
-       position">computed cue position</a> is greater than <!-- or equal to --> 50</dt>
+       position">computed position</a> is greater than <!-- or equal to --> 50</dt>
        <dd>
         <p>Let <var>maximum size</var> be the result of subtracting <a title="cue computed
-        position">computed cue position</a> from 100 and then multiplying the result by two.</p>
+        position">computed position</a> from 100 and then multiplying the result by two.</p>
        </dd>
 
       </dl>
@@ -4025,17 +4025,17 @@ The Final Minute</pre>
         <dl class="switch">
          <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
          is <a title="WebVTT cue position start alignment">start alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
          <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
          is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
          <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
          is <a title="WebVTT cue position end alignment">end alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus <var>size</var>.</p></dd>
         </dl>
        </dd>
@@ -4047,17 +4047,17 @@ The Final Minute</pre>
         <dl class="switch">
          <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
          is <a title="WebVTT cue position start alignment">start alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
          <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
          is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
          <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
          title="WebVTT cue position end alignment">end alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a> minus <var>size</var>.</p></dd>
         </dl>
        </dd>
