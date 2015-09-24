@@ -1,7 +1,7 @@
 <pre class='metadata'>
 Title: WebVTT: The Web Video Text Tracks Format
 H1: WebVTT: The Web Video Text Tracks Format
-Shortname: webvtt
+Shortname: webvtt1
 Status: LS
 Group: WHATWG
 Editor: Silvia Pfeiffer, NICTA http://nicta.com.au/, silviapfeiffer1@gmail.com
@@ -11,6 +11,7 @@ Former Editor: Ian Hickson, Google http://www.google.com/, ian@hixie.ch
 !Participate: <a href=https://github.com/whatwg/webvtt>GitHub whatwg/webvtt</a> (<a href=https://github.com/whatwg/webvtt/issues/new>new issue</a>, <a href=https://github.com/whatwg/webvtt/issues>open issues</a>, <a href=https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&component=WebVTT&resolution=--->legacy open bugs</a>)
 !Participate: <a href=https://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a>
 !Commits: <a href=https://github.com/whatwg/webvtt/commits>GitHub whatwg/webvtt/commits</a>
+Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Logo: https://resources.whatwg.org/logo.svg
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [MAUR], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
@@ -62,54 +63,6 @@ urlPrefix: https://encoding.spec.whatwg.org/
     type: dfn
         text: utf-8 decode
 </pre>
-
-  <script class="snapshot">
-    document.addEventListener("DOMContentLoaded", function() {
-      if (window.respecConfig) {
-        // Building with ReSpec. Remove the note from the output of the CG-DRAFT.
-        if (respecConfig.specStatus == "CG-DRAFT") {
-          var elements = document.getElementsByClassName("snapshot");
-          for (var i = elements.length - 1; i >= 0; i--) {
-            elements[i].parentNode.removeChild(elements[i]);
-          }
-        }
-      } else {
-        // Static snapshot. Show the note if it hasn't already been dismissed.
-        var snapshot = document.body.getElementsByClassName("snapshot")[0];
-        var button = snapshot.getElementsByTagName("button")[0];
-        button.addEventListener("click", function() {
-          snapshot.setAttribute("hidden", "");
-          localStorage["webvtt-snapshot-note"] = "hidden";
-        }, false);
-        var hidden = localStorage["webvtt-snapshot-note"] == "hidden";
-        if (!hidden) {
-          snapshot.removeAttribute("hidden");
-        }
-      }
-    }, false);
-  </script>
-
-  <style class="snapshot">
-    .snapshot {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #fbe9e9;
-      border-top: .5em solid #e05252;
-      text-align: center;
-      z-index: 2;
-    }
-    .snapshot a {
-      color: inherit;
-    }
-  </style>
-
-  <div class="snapshot" hidden>
-   <p>This is a Recommendation Track snapshot. For the latest updates, possibly including important
-   bug fixes, please see the <a href="http://dev.w3.org/html5/webvtt/">Draft Community Group
-   Report</a>. <button>Dismiss</button></p>
-  </div>
 
   <section id="sotd">
    <p>Work on this specification is being undertaken both in the <a

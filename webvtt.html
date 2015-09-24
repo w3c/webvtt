@@ -9,21 +9,6 @@
 <style>
  .head .editor { display:block }
 </style>
-<style class="snapshot">
-    .snapshot {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #fbe9e9;
-      border-top: .5em solid #e05252;
-      text-align: center;
-      z-index: 2;
-    }
-    .snapshot a {
-      color: inherit;
-    }
-  </style>
  </head>
  <body class="h-entry status-LS">
   <div class="head">
@@ -32,6 +17,8 @@
    <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Living Standard — Last Updated <time class="dt-updated" datetime="2015-09-24">24 September 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
+     <dt>Test Suite:
+     <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/webvtt">https://github.com/w3c/web-platform-tests/tree/master/webvtt</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="p-org org" href="http://nicta.com.au/">NICTA</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software ASA</a>)
@@ -159,39 +146,6 @@ WebVTT files provide captions or subtitles for video content, and also text vide
   </div>
   <main>
 <script async="" src="https://resources.whatwg.org/file-issue.js"></script>
-<script class="snapshot">
-    document.addEventListener("DOMContentLoaded", function() {
-      if (window.respecConfig) {
-        // Building with ReSpec. Remove the note from the output of the CG-DRAFT.
-        if (respecConfig.specStatus == "CG-DRAFT") {
-          var elements = document.getElementsByClassName("snapshot");
-          for (var i = elements.length - 1; i >= 0; i--) {
-            elements[i].parentNode.removeChild(elements[i]);
-          }
-        }
-      } else {
-        // Static snapshot. Show the note if it hasn’t already been dismissed.
-        var snapshot = document.body.getElementsByClassName("snapshot")[0];
-        var button = snapshot.getElementsByTagName("button")[0];
-        button.addEventListener("click", function() {
-          snapshot.setAttribute("hidden", "");
-          localStorage["webvtt-snapshot-note"] = "hidden";
-        }, false);
-        var hidden = localStorage["webvtt-snapshot-note"] == "hidden";
-        if (!hidden) {
-          snapshot.removeAttribute("hidden");
-        }
-      }
-    }, false);
-  </script>
-   <div class="snapshot" hidden="">
-    <p>
-     This is a Recommendation Track snapshot. For the latest updates, possibly including important
-   bug fixes, please see the <a href="http://dev.w3.org/html5/webvtt/">Draft Community Group
-   Report</a>. 
-     <button>Dismiss</button>
-    </p>
-   </div>
    <section id="sotd">
     <p>Work on this specification is being undertaken both in the <a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> as well
    as in the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>. The latter
@@ -344,20 +298,20 @@ NOTE end of file</pre>
      <h3 class="heading settled" data-level="1.3" id="other-features"><span class="secno">1.3. </span><span class="content">Other features</span><a class="self-link" href="#other-features"></a></h3>
      <p><i>This section is non-normative.</i></p>
      <p>WebVTT also supports some less-often used features.</p>
-     <div class="example" id="example-aff6a944">
-      <a class="self-link" href="#example-aff6a944"></a> 
+     <div class="example" id="example-b9cc45b3">
+      <a class="self-link" href="#example-b9cc45b3"></a> 
       <p>In this example, the cues have an identifier:</p>
 <pre>WEBVTT
 1
 00:00.000 --> 00:02.000
 That’s an, an, that’s an L!
 
-transcript credit
+crédit de transcription
 00:04.000 --> 00:05.000
-Transcribed by Celestials™</pre>
+Transcrit par Célestes™</pre>
       <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
      escape sequences):</p>
-<pre>::cue(#\31) { color: green; }::cue(#transcript\ credit) { color: red; }</pre>
+<pre>::cue(#\31) { color: green; }::cue(#crédit\ de\ transcription) { color: red; }</pre>
      </div>
      <div class="example" id="example-531e8e61">
       <a class="self-link" href="#example-531e8e61"></a> 
