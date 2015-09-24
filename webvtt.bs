@@ -16,7 +16,6 @@ Logo: https://resources.whatwg.org/logo.svg
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [MAUR], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: IndexSizeError, data
 </pre>
 
 <style>
@@ -62,6 +61,22 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
 urlPrefix: https://encoding.spec.whatwg.org/
     type: dfn
         text: utf-8 decode
+urlPrefix: https://heycam.github.io/webidl/
+    type: exception
+        text: IndexSizeError
+</pre>
+
+<pre class=link-defaults>
+spec:dom-ls; type:interface; text:Document
+spec:css-ruby-1; type:value; text:ruby-base
+spec:css-color-4; type:property; text:color
+spec:css-fonts-3; type:property; text:font-style
+spec:css-fonts-3; type:property; text:font-weight
+spec:css-ruby-1; type:value; text:ruby
+spec:css-ruby-1; type:value; text:ruby-text
+spec:css21; type:property; text:min-height
+spec:css21; type:property; text:max-height
+spec:css-flexbox-1; type:value; text:inline-flex
 </pre>
 
   <section id="sotd">
@@ -73,7 +88,7 @@ urlPrefix: https://encoding.spec.whatwg.org/
   </section>
 
   <section>
-   <h2>Introduction</h2>
+   <h2 id=introduction>Introduction</h2>
 
    <p><i>This section is non-normative.</i></p>
 
@@ -125,7 +140,7 @@ urlPrefix: https://encoding.spec.whatwg.org/
 &lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.</pre>
 
    <section>
-    <h3>Cues with multiple lines</h3>
+    <h3 id=introduction-multiple-lines>Cues with multiple lines</h3>
 
     <p><i>This section is non-normative.</i></p>
 
@@ -193,7 +208,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
    </section>
 
    <section>
-    <h3>Comments</h3>
+    <h3 id=introduction-comments>Comments</h3>
 
     <p><i>This section is non-normative.</i></p>
 
@@ -249,7 +264,7 @@ NOTE end of file</pre>
    </section>
 
    <section>
-    <h3>Other features</h3>
+    <h3 id=introduction-other-features>Other features</h3>
 
     <p><i>This section is non-normative.</i></p>
 
@@ -371,10 +386,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-   <h2>Conformance</h2>
+   <h2 id=conformance>Conformance</h2>
 
    <section>
-    <h3>Conformance for authors</h3>
+    <h3 id=conformance-for-authors>Conformance for authors</h3>
 
     <p>The <a href="#syntax">Syntax</a> section of this specification defines what consists a valid
     WebVTT document. Authors need to follow the <a href="#syntax">Syntax</a> specification and are
@@ -388,7 +403,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section>
 
    <section>
-    <h3>Unicode normalization</h3>
+    <h3 id=unicode-normalization>Unicode normalization</h3>
 
     <p>Implementations of this specification must not normalize Unicode text during processing.</p>
 
@@ -398,7 +413,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section>
 
    <section>
-    <h3>Document conformance</h3>
+    <h3 id=document-conformance>Document conformance</h3>
 
     <p>All diagrams, examples, and notes in this specification are non-normative, as are all
     sections explicitly marked non-normative. Everything else in this specification is
@@ -419,8 +434,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     specification are intended to be easy to follow, and not intended to be performant.)</p>
    </section>
 
-   <section id="dependencies">
-    <h3>Dependencies</h3>
+   <section>
+    <h3 id=dependencies>Dependencies</h3>
 
     <p>This specification uses terms defined in the Encoding standard, DOM standard, HTML standard,
     and the Web IDL specification. [[!ENCODING]] [[!DOM]] [[!HTML]] [[!WEBIDL]]</p>
@@ -430,12 +445,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-   <h2>Data model</h2>
+   <h2 id=data-model>Data model</h2>
    <!-- Add some content here about cues and serialisation format in general -->
    <!-- Describe metadata, caption/subtitle, chapter & description cues -->
 
    <section>
-    <h3>WebVTT cues</h3>
+    <h3 id=cues>WebVTT cues</h3>
 
     <p>A <dfn>WebVTT cue</dfn> is a <a>text track cue</a> that additionally consist of the
     following: [[!HTML]]</p>
@@ -781,7 +796,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section>
 
    <section>
-    <h3>WebVTT regions</h3>
+    <h3 id=regions>WebVTT regions</h3>
 
     <p>A <dfn>WebVTT region</dfn> represents a subpart of the video viewport and provides a
     rendering area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
@@ -869,10 +884,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
   </section>
 
   <section>
-   <h2>Syntax</h2>
+   <h2 id=syntax>Syntax</h2>
 
    <section>
-    <h3>WebVTT file structure</h3>
+    <h3 id=file-structure>WebVTT file structure</h3>
 
     <p>A <dfn>WebVTT file</dfn> must consist of a <a>WebVTT file body</a> encoded as UTF-8 and
     labeled with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
@@ -1088,10 +1103,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section><!-- end file structure -->
 
    <section>
-    <h3>Types of WebVTT cue payload</h3>
+    <h3 id=types-of-webvtt-cue-payload>Types of WebVTT cue payload</h3>
 
     <section>
-     <h4>WebVTT metadata text</h4>
+     <h4 id=metadata-text>WebVTT metadata text</h4>
 
      <p><dfn>WebVTT metadata text</dfn> consists of any sequence of zero or more characters other
      than U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, each
@@ -1105,7 +1120,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     </section>
 
     <section>
-     <h4>WebVTT cue text</h4>
+     <h4 id=cue-text>WebVTT cue text</h4>
 
      <p><dfn>WebVTT cue text</dfn> is <a>cue payload</a> that consists of zero or more <a>WebVTT cue
      components</a>, in any order, each optionally separated from the next by a <a>WebVTT line
@@ -1315,7 +1330,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section><!-- end cue payload types -->
 
    <section>
-    <h3>WebVTT region definition</h3>
+    <h3 id=region-definition>WebVTT region definition</h3>
 
     <p>A <a>WebVTT cue settings list</a> may contain a reference to a <a>WebVTT region</a>. To
     define a region, a <a>WebVTT region metadata header</a> is specified.</p>
@@ -1447,7 +1462,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section><!-- end region definition -->
 
    <section>
-    <h3>WebVTT cue settings</h3>
+    <h3 id=cue-settings>WebVTT cue settings</h3>
 
     <p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
     setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
@@ -1610,10 +1625,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
    </section><!-- end cue settings -->
 
    <section>
-    <h3>Properties of cue sequences</h3>
+    <h3 id=properties-of-cue-sequences>Properties of cue sequences</h3>
 
     <section>
-     <h4>WebVTT file using only nested cues</h4>
+     <h4 id=file-using-only-nested-cues>WebVTT file using only nested cues</h4>
 
      <p>A <a>WebVTT file</a> whose cues all follow the following rules is said to be a <dfn>WebVTT
      file using only nested cues</dfn>:</p>
@@ -1698,7 +1713,7 @@ The Final Minute</pre>
    </section><!-- end cue sequence properties -->
 
    <section>
-    <h3>Types of WebVTT files</h3>
+    <h3 id=types-of-webvtt-files>Types of WebVTT files</h3>
 
     <p>The syntax definition of WebVTT files allows authoring of a wide variety of WebVTT files with
     a mix of cues. However, only a small subset of WebVTT file types are typically authored.</p>
@@ -1707,7 +1722,7 @@ The Final Minute</pre>
     checking for validating these types.</p>
 
     <section>
-     <h4>WebVTT file using metadata content</h4>
+     <h4 id=file-using-metadata-content>WebVTT file using metadata content</h4>
 
      <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT metadata
      text</a> is said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
@@ -1715,7 +1730,7 @@ The Final Minute</pre>
     </section>
 
     <section>
-     <h4>WebVTT file using chapter title text</h4>
+     <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
 
      <p><dfn>WebVTT chapter title text</dfn> is <a>WebVTT cue text</a> that makes use only of zero
      or more of the following components, each optionally separated from the next by a <a>WebVTT
@@ -1737,7 +1752,7 @@ The Final Minute</pre>
     </section>
 
     <section>
-     <h4>WebVTT file using cue text</h4>
+     <h4 id=file-using-cue-text>WebVTT file using cue text</h4>
 
      <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT cue text</a>
      is said to be a <dfn>WebVTT file using cue text</dfn>.</p>
@@ -1749,10 +1764,10 @@ The Final Minute</pre>
   </section><!-- end of syntax -->
 
   <section>
-   <h2>Parsing</h2>
+   <h2 id=parsing>Parsing</h2>
 
    <section>
-    <h3>WebVTT file parsing</h3>
+    <h3 id=file-parsing>WebVTT file parsing</h3>
 
     <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a <a>text track list of cues</a>
     <var>output</var>, must decode the byte stream using the <a lt="UTF-8 decode">UTF-8
@@ -2033,7 +2048,7 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h3>WebVTT region settings parsing</h3>
+    <h3 id=region-settings-parsing>WebVTT region settings parsing</h3>
 
     <p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region
     settings</dfn> from a string <var>input</var> for a <a>text track</a>, the user agent must run
@@ -2188,7 +2203,7 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h3>WebVTT cue timings and settings parsing</h3>
+    <h3 id=cue-timings-and-settings-parsing>WebVTT cue timings and settings parsing</h3>
 
     <p>When the algorithm above requires that the user agent <dfn>collect WebVTT cue timings and
     settings</dfn> from a string <var>input</var> using a <a>text track list of regions</a>
@@ -2567,7 +2582,7 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h3><dfn>WebVTT cue text parsing rules</dfn></h3>
+    <h3 id=cue-text-parsing-rules><dfn>WebVTT cue text parsing rules</dfn></h3>
 
     <p>A <dfn>WebVTT Node Object</dfn> is a conceptual construct used to represent components of
     <a>WebVTT cue text</a> so that its processing can be described without reference to the
@@ -3293,7 +3308,8 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h3><dfn>WebVTT cue text DOM construction rules</dfn></h3>
+    <h3 id=dom-construction-rules><dfn>WebVTT cue text DOM construction
+    rules</dfn></h3>
 
     <p class="note">For the purpose of retrieving a <a>WebVTT cue</a>'s content via the
     {{VTTCue/getCueAsHTML()}} method of the {{VTTCue}} interface, it needs to be parsed to
@@ -3357,12 +3373,12 @@ The Final Minute</pre>
       </tr>
       <tr>
        <td><a>WebVTT Text Object</a></td>
-       <td>{{Text}} node whose {{Text/data}} is the value of the <a>WebVTT Text Object</a>.</td>
+       <td>{{Text}} node whose {{CharacterData/data}} is the value of the <a>WebVTT Text Object</a>.</td>
       </tr>
       <tr>
        <td><a>WebVTT Timestamp Object</a></td>
        <td>{{ProcessingInstruction}} node whose {{ProcessingInstruction/target}} is
-       "<code>timestamp</code>" and whose {{ProcessingInstruction/data}} is a <a>WebVTT
+       "<code>timestamp</code>" and whose {{CharacterData/data}} is a <a>WebVTT
        timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional
        components included, with one leading zero if the <var>hours</var> component is less than
        ten, and with no leading zeros otherwise.</td>
@@ -3386,7 +3402,8 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h3>WebVTT rules for extracting the chapter title</h3>
+    <h3 id=rules-for-extracting-the-chapter-title>WebVTT rules for extracting the chapter
+    title</h3>
 
     <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> are as follows:</p>
 
@@ -3406,7 +3423,7 @@ The Final Minute</pre>
   </section>
 
   <section>
-   <h2>Rendering</h2>
+   <h2 id=rendering>Rendering</h2>
 
    <p class="note">This section describes in some detail how to visually render WebVTT cues in a
    user agent. It also specifies extra CSS functionality made available to manipulate the visual
@@ -3415,7 +3432,7 @@ The Final Minute</pre>
    to be implemented.</p>
 
    <section>
-    <h3>Processing model</h3>
+    <h3 id=processing-model>Processing model</h3>
 
     <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a lt="text
     track">text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a>
@@ -4242,7 +4259,8 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h4>Applying CSS properties to <a lt="WebVTT Node Object">WebVTT Node Objects</a></h4>
+    <h4 id=applying-css-properties>Applying CSS properties to <a lt="WebVTT Node Object">WebVTT Node
+    Objects</a></h4>
 
     <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents
     must set properties of <a lt="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user
@@ -4378,7 +4396,7 @@ The Final Minute</pre>
    </section>
 
    <section>
-    <h4>CSS extensions</h4>
+    <h4 id=css-extensions>CSS extensions</h4>
 
     <p>When a user agent is rendering one or more <a lt="WebVTT cue">WebVTT cues</a> according to
     the <a>rules for updating the display of WebVTT text tracks</a>, <a lt="WebVTT Node
@@ -4407,7 +4425,7 @@ The Final Minute</pre>
     pseudo-classes.</p>
 
     <section>
-     <h5>The ''::cue'' pseudo-element</h5>
+     <h5 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h5>
 
      <p>The '<dfn lt="pseudo-cue">::cue</dfn>' pseudo-element (with no argument) matches any
      <a>list of WebVTT Node Objects</a> constructed for the <i>matched element</i>, with the
@@ -4578,7 +4596,7 @@ The Final Minute</pre>
     </section>
 
     <section>
-     <h5>The '':past'' and '':future'' pseudo-classes</h5>
+     <h5 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h5>
 
      <p>The <a lt="past-pseudo-class">':past'</a> and <a
      lt="future-pseudo-class">':future'</a> pseudo-classes sometimes match <a lt="WebVTT Node
@@ -4604,7 +4622,7 @@ The Final Minute</pre>
     </section>
 
     <section>
-     <h3>The ''::cue-region'' pseudo-element</h3>
+     <h3 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h3>
 
      <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this
      section, that element is the matched element. The pseudo-element defined below affects the
@@ -4640,10 +4658,10 @@ The Final Minute</pre>
   </section>
 
   <section>
-   <h2>API</h2>
+   <h2 id=api>API</h2>
 
    <section>
-    <h3>The {{VTTCue}} interface</h3>
+    <h3 id=the-vttcue-interface>The {{VTTCue}} interface</h3>
 
     <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 
@@ -4928,7 +4946,7 @@ interface VTTCue : TextTrackCue {
     cell of the row in the table above whose second cell is a <a>case-sensitive</a> match for the
     new value.</p>
 
-    <p>The <dfn attribute for=VTTCue>>position</dfn> attribute, on getting, must
+    <p>The <dfn attribute for=VTTCue>position</dfn> attribute, on getting, must
     return the <a>WebVTT cue position</a> of the <a>WebVTT cue</a> that the
     {{VTTCue}} object represents. The special value <a lt="WebVTT cue automatic
     position">auto</a> must be represented as the string "<code lt="">auto</code>". On setting, if the new
@@ -5032,7 +5050,7 @@ interface VTTCue : TextTrackCue {
    </section>
 
    <section>
-    <h3>The {{VTTRegion}} interface</h3>
+    <h3 id=the-vttregion-interface>The {{VTTRegion}} interface</h3>
 
     <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
@@ -5203,11 +5221,11 @@ interface VTTRegion {
   </section><!-- API -->
 
   <section>
-   <h2 id="iana">IANA considerations</h2>
+   <h2 id=iana>IANA considerations</h2>
    <!-- http://www.w3.org/2002/06/registering-mediatype.html -->
 
    <section>
-    <h3><dfn><code>text/vtt</code></dfn></h3>
+    <h3 id=iana-text-vtt><dfn><code>text/vtt</code></dfn></h3>
 
     <p>This registration is for community review and will be submitted to the IESG for review,
     approval, and registration with IANA.</p>
@@ -5294,7 +5312,7 @@ interface VTTRegion {
   </section>
 
   <section>
-   <h2 class="no-num">Acknowledgements</h2>
+   <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>
 
    <p>Thanks to the SubRip community, including in particular Zuggy and ai4spam, for their work on
    the SubRip software program whose SRT file format was used as the basis for the WebVTT text track
