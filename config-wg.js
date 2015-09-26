@@ -17,10 +17,14 @@ var respecConfig = {
     editors:  [
         { name: "Silvia Pfeiffer", url: "mailto:silviapfeiffer1@gmail.com",
           company: "NICTA", companyURL: "http://nicta.com.au/" },
-        { name: "Philip J&auml;genstedt", url: "mailto:philipj@opera.com",
+        { name: "Simon Pieters", url: "mailto:simonp@opera.com",
           company: "Opera Software ASA", companyURL: "http://www.opera.com/" },
+        { name: "Philip J&auml;genstedt", url: "mailto:philipj@opera.com",
+          company: "Opera Software ASA", companyURL: "http://www.opera.com/",
+          note: "previous editor"},
         { name: "Ian Hickson", url: "mailto:ian@hixie.ch",
-          company: "Google", companyURL: "http://www.google.com/", note: "previous editor" },
+          company: "Google", companyURL: "http://www.google.com/",
+          note: "previous editor" },
     ],
 
     // name of the WG

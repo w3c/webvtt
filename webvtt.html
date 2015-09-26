@@ -419,15 +419,15 @@ NOTE end of file</pre>
 00:00.000 --> 00:02.000
 That's an, an, that's an L!
 
-transcript credit
+crédit de transcription
 00:04.000 --> 00:05.000
-Transcribed by Celestials&trade;</pre>
+Transcrit par Célestes&trade;</pre>
 
      <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
      escape sequences):</p>
 
      <pre>::cue(#\31) { color: green; }
-::cue(#transcript\ credit) { color: red; }</pre>
+::cue(#crédit\ de\ transcription) { color: red; }</pre>
 
     </div>
 
@@ -748,14 +748,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       </ul>
 
       <p>If the <a title="WebVTT cue writing direction">writing direction</a> is <a title="WebVTT
-      cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line">cue
-      line</a> percentages are relative to the height of the video, and <a title="WebVTT cue
-      position">cue position</a> and <a title="WebVTT cue size">size</a> percentages are relative to
-      the width of the video.</p>
+      cue horizontal writing direction">horizontal</a>, then the <a title="WebVTT cue line">line</a>
+      percentages are relative to the height of the video, and <a title="WebVTT cue
+      position">position</a> and <a title="WebVTT cue size">size</a> percentages are relative to the
+      width of the video.</p>
 
-      <p>Otherwise, <a title="WebVTT cue line">cue line</a> percentages are relative to the width of
-      the video, and <a title="WebVTT cue position">cue position</a> and <a title="WebVTT cue
-      size">size</a> percentages are relative to the height of the video.</p>
+      <p>Otherwise, <a title="WebVTT cue line">line</a> percentages are relative to the width of the
+      video, and <a title="WebVTT cue position">position</a> and <a title="WebVTT cue size">size</a>
+      percentages are relative to the height of the video.</p>
 
       <p>The <a title="WebVTT cue writing direction">writing direction</a> defaults to <a
       title="WebVTT cue horizontal writing direction">horizontal</a>.</p>
@@ -765,8 +765,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <dt><dfn title="WebVTT cue snap-to-lines flag">A snap-to-lines flag</dfn></dt>
      <dd>
 
-      <p>A boolean indicating whether the <a title="WebVTT cue line">cue line</a> is an integer
-      number of lines (using the line dimensions of the first line of the cue), or whether it is a
+      <p>A boolean indicating whether the <a title="WebVTT cue line">line</a> is an integer number
+      of lines (using the line dimensions of the first line of the cue), or whether it is a
       percentage of the dimension of the video. The flag is set when lines are counted, unset
       otherwise.</p>
 
@@ -779,21 +779,19 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="WebVTT cue line">A cue line</dfn></dt>
+     <dt><dfn title="WebVTT cue line">A line</dfn></dt>
      <dd>
-      <p>The <a title="WebVTT cue line">cue line</a> defines positioning of the <a title="WebVTT cue
+      <p>The <a title="WebVTT cue line">line</a> defines positioning of the <a title="WebVTT cue
       box">cue box</a>.</p>
 
-      <p>The <a title="WebVTT cue line">cue line</a> offsets the <a title="WebVTT cue box">cue
-      box</a> from the top, the right or left of the video viewport as defined by the <a
-      title="WebVTT cue writing direction">writing direction</a>, the <a title="WebVTT cue
-      snap-to-lines flag">snap-to-lines flag</a>, or the lines occupied by any other showing
-      tracks.</p>
+      <p>The <a title="WebVTT cue line">line</a> offsets the <a title="WebVTT cue box">cue box</a>
+      from the top, the right or left of the video viewport as defined by the <a title="WebVTT cue
+      writing direction">writing direction</a>, the <a title="WebVTT cue snap-to-lines
+      flag">snap-to-lines flag</a>, or the lines occupied by any other showing tracks.</p>
 
-      <p>The <a title="WebVTT cue line">cue line</a> is set either as a number of lines, a
-      percentage of the video viewport height or width, or as the special value <dfn title="WebVTT
-      cue line automatic">auto</dfn>, which means the offset is to depend on the other showing
-      tracks.</p>
+      <p>The <a title="WebVTT cue line">line</a> is set either as a number of lines, a percentage of
+      the video viewport height or width, or as the special value <dfn title="WebVTT cue line
+      automatic">auto</dfn>, which means the offset is to depend on the other showing tracks.</p>
 
       <p>A <a>WebVTT cue</a> has a <dfn title="cue computed line">computed line</dfn> whose value is
       that returned by the following algorithm, which is defined in terms of the other aspects of
@@ -801,19 +799,18 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <ol>
 
-       <li><p>If the <a title="WebVTT cue line">cue line</a> is numeric, the <a>WebVTT cue
-       snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set, and the <a title="WebVTT cue
-       line">cue line</a> is negative or greater than 100, then return 100 and abort these
-       steps.</p></li>
+       <li><p>If the <a title="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
+       flag</a> of the <a>WebVTT cue</a> is not set, and the <a title="WebVTT cue line">line</a> is
+       negative or greater than 100, then return 100 and abort these steps.</p></li>
 
-       <li><p>If the <a title="WebVTT cue line">cue line</a> is numeric, return the value of the
+       <li><p>If the <a title="WebVTT cue line">line</a> is numeric, return the value of the
        <a>WebVTT cue line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines
        flag</a> is set, so any value, not just those in the range 0..100, is valid, or the value is
        in the range 0..100 and is thus valid regardless of the value of that flag.)</p></li>
 
        <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set,
-       return the value 100 and abort these steps. (The <a title="WebVTT cue line">cue line</a> is
-       the special value <a title="WebVTT cue line automatic">auto</a>.)</p></li>
+       return the value 100 and abort these steps. (The <a title="WebVTT cue line">line</a> is the
+       special value <a title="WebVTT cue line automatic">auto</a>.)</p></li>
 
        <li><p>Let <var>cue</var> be the <a>WebVTT cue</a>.</p></li>
 
@@ -840,8 +837,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <dt><dfn title="WebVTT cue line alignment">A line alignment</dfn></dt>
      <dd>
-      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue line">cue
-      line</a>, one of:</p>
+      <p>An alignment for the <a title="WebVTT cue box">cue box</a>'s <a title="WebVTT cue
+      line">line</a>, one of:</p>
 
       <dl>
 
@@ -850,18 +847,18 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        writing direction">horizontal</a> cues), left side (for <a title="WebVTT cue vertical growing
        right writing direction">vertical growing right</a>), or right side (for <a title="WebVTT cue
        vertical growing left writing direction">vertical growing left</a>) is aligned at the <a
-       title="WebVTT cue line">cue line</a>.</dd>
+       title="WebVTT cue line">line</a>.</dd>
 
        <dt><dfn title="WebVTT cue line middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue
-       line">cue line</a>.</dd>
+       line">line</a>.</dd>
 
        <dt><dfn title="WebVTT cue line end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s bottom side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues), right side (for <a title="WebVTT cue
        vertical growing right writing direction">vertical growing right</a>), or left side (for <a
        title="WebVTT cue vertical growing left writing direction">vertical growing left</a>) is
-       aligned at the <a title="WebVTT cue line">cue line</a>.</dd>
+       aligned at the <a title="WebVTT cue line">line</a>.</dd>
 
       </dl>
 
@@ -870,14 +867,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="WebVTT cue position">A cue position</dfn></dt>
+     <dt><dfn title="WebVTT cue position">A position</dfn></dt>
      <dd>
-      <p>The <a title="WebVTT cue position">cue position</a> defines the indent of the <a
-      title="WebVTT cue box">cue box</a> in the direction defined by the <a title="WebVTT cue
-      writing direction">writing direction</a>.</p>
+      <p>The <a title="WebVTT cue position">position</a> defines the indent of the <a title="WebVTT
+      cue box">cue box</a> in the direction defined by the <a title="WebVTT cue writing
+      direction">writing direction</a>.</p>
 
-      <p>The <a title="WebVTT cue position">cue position</a> is either a number giving the position
-      of the <a title="WebVTT cue box">cue box</a> as a percentage value or the special value <dfn
+      <p>The <a title="WebVTT cue position">position</a> is either a number giving the position of
+      the <a title="WebVTT cue box">cue box</a> as a percentage value or the special value <dfn
       title="WebVTT cue automatic position">auto</dfn>, which means the position is to depend on the
       <a title="WebVTT cue text alignment">text alignment</a> of the cue.</p>
 
@@ -885,16 +882,16 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       be interpreted as a percentage of the video dimensions, otherwise as a percentage of the
       region dimensions.</p>
 
-      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position">computed cue position</dfn>
-      whose value is that returned by the following algorithm, which is defined in terms of the
-      other aspects of the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position">computed position</dfn> whose
+      value is that returned by the following algorithm, which is defined in terms of the other
+      aspects of the cue:</p>
 
       <ol>
 
-       <li><p>If the <a title="WebVTT cue position">cue position</a> is numeric, then return the
-       value of the <a title="WebVTT cue position">cue position</a> and abort these steps.
-       (Otherwise, the <a title="WebVTT cue position">cue position</a> is the special value <a
-       title="WebVTT cue automatic position">auto</a>.)</p></li>
+       <li><p>If the <a title="WebVTT cue position">position</a> is numeric, then return the value
+       of the <a title="WebVTT cue position">position</a> and abort these steps. (Otherwise, the <a
+       title="WebVTT cue position">position</a> is the special value <a title="WebVTT cue automatic
+       position">auto</a>.)</p></li>
 
        <li><p>If the <a title="WebVTT cue text alignment">cue text alignment</a> is <a title="WebVTT
        cue start alignment">start</a> or <a title="WebVTT cue left alignment">left</a>, return 0 and
@@ -925,27 +922,27 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      </dd>
 
-     <dt><dfn title="WebVTT cue position alignment">A cue position alignment</dfn></dt>
+     <dt><dfn title="WebVTT cue position alignment">A position alignment</dfn></dt>
      <dd>
       <p>An alignment for the <a title="WebVTT cue box">cue box</a> in the dimension of the <a
       title="WebVTT cue writing direction">writing direction</a>, describing what the <a
-      title="WebVTT cue position">cue position</a> is anchored to, one of:</p>
+      title="WebVTT cue position">position</a> is anchored to, one of:</p>
 
       <dl>
 
        <dt><dfn title="WebVTT cue position start alignment">Start alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s left side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues) or top side (otherwise) is aligned at the
-       <a title="WebVTT cue position">cue position</a>.</dd>
+       <a title="WebVTT cue position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position middle alignment">Middle alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a> is centered at the <a title="WebVTT cue
-       position">cue position</a>.</dd>
+       position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position end alignment">End alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s right side (for <a title="WebVTT cue
        horizontal writing direction">horizontal</a> cues) or bottom side (otherwise) is aligned at
-       the <a title="WebVTT cue position">cue position</a>.</dd>
+       the <a title="WebVTT cue position">position</a>.</dd>
 
        <dt><dfn title="WebVTT cue position automatic alignment">Auto alignment</dfn></dt>
        <dd>The <a title="WebVTT cue box">cue box</a>'s alignment depends on the value of the <a
@@ -953,9 +950,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </dl>
 
-      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position alignment">computed cue
-      position alignment</dfn> whose value is that returned by the following algorithm, which is
-      defined in terms of other aspects of the cue:</p>
+      <p>A <a>WebVTT cue</a> has a <dfn title="cue computed position alignment">computed position
+      alignment</dfn> whose value is that returned by the following algorithm, which is defined in
+      terms of other aspects of the cue:</p>
 
       <ol>
 
@@ -977,12 +974,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       </ol>
 
-      <p class="note">Since the <a title="WebVTT cue position">cue position</a> always measures from
-      the left of the video (for <a title="WebVTT cue horizontal writing direction">horizontal</a>
-      cues) or the top (otherwise), the <a>WebVTT cue position alignment</a> <a title="WebVTT cue
-      position start alignment">start value</a> varies between left and top for horizontal and
-      vertical cues, but not between left and right even for changing <i>paragraph
-      direction</i>.</p>
+      <p class="note">Since the <a title="WebVTT cue position">position</a> always measures from the
+      left of the video (for <a title="WebVTT cue horizontal writing direction">horizontal</a> cues)
+      or the top (otherwise), the <a>WebVTT cue position alignment</a> <a title="WebVTT cue position
+      start alignment">start value</a> varies between left and top for horizontal and vertical cues,
+      but not between left and right even for changing <i>paragraph direction</i>.</p>
 
      </dd>
 
@@ -1043,12 +1039,12 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <p>When a <a>WebVTT cue</a> whose <a title="text track cue active flag">active flag</a> is set
      has its <a title="WebVTT cue writing direction">writing direction</a>, <a title="WebVTT cue
-     snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line">cue line</a>, <a
-     title="WebVTT cue position">cue position</a>, <a title="WebVTT cue size">size</a>, <a
-     title="WebVTT cue text alignment">text alignment</a>, <a title="WebVTT cue region">region</a>,
-     or <a title="text track cue text">text</a> change value, then the user agent must empty the
-     <a>text track cue display state</a>, and then immediately run the <a>text track</a>'s <a>rules
-     for updating the display of WebVTT text tracks</a>.</p>
+     snap-to-lines flag">snap-to-lines flag</a>, <a title="WebVTT cue line">line</a>, <a
+     title="WebVTT cue position">position</a>, <a title="WebVTT cue size">size</a>, <a title="WebVTT
+     cue text alignment">text alignment</a>, <a title="WebVTT cue region">region</a>, or <a
+     title="text track cue text">text</a> change value, then the user agent must empty the <a>text
+     track cue display state</a>, and then immediately run the <a>text track</a>'s <a>rules for
+     updating the display of WebVTT text tracks</a>.</p>
 
     </div>
 
@@ -1828,8 +1824,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     a percentage of the video viewport. The positioning is for the <a title="WebVTT cue position
     start alignment">start</a>, <a title="WebVTT cue position middle alignment">middle</a>, or <a
     title="WebVTT cue position end alignment">end</a> of the cue box, depending on the cue's <a
-    title="cue computed position alignment">computed cue position alignment</a>, which is overridden
-    by the <a>WebVTT position cue setting</a>.</p>
+    title="cue computed position alignment">computed position alignment</a>, which is overridden by
+    the <a>WebVTT position cue setting</a>.</p>
 
     <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
     given:</p>
@@ -2657,10 +2653,10 @@ The Final Minute</pre>
 
            <li><p>If <a>parse a percentage string</a> from <var>colpos</var> doesn't fail, let
            <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step
-           labeled <i>next setting</i> (<a title="WebVTT cue position">cue position</a>'s value
-           remains the special value <a title="WebVTT cue automatic position">auto</a>).</p></li>
+           labeled <i>next setting</i> (<a title="WebVTT cue position">position</a>'s value remains
+           the special value <a title="WebVTT cue automatic position">auto</a>).</p></li>
 
-           <li><p>Let <var>cue</var>'s <a title="WebVTT cue position">cue position</a> be
+           <li><p>Let <var>cue</var>'s <a title="WebVTT cue position">position</a> be
            <var>number</var>.</p></li>
 
            <li><p>If <var>colalign</var> is a <a>case-sensitive</a> match for the string
@@ -3872,20 +3868,20 @@ The Final Minute</pre>
          let it be 'rtl'.</p></li>
 
          <li><p>Let <var>offset</var> be <var>cue</var>'s <a title="cue computed position">computed
-         cue position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided
-         by 100 (i.e. interpret it as a percentage of the region width).</p></li>
+         position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided by
+         100 (i.e. interpret it as a percentage of the region width).</p></li>
 
          <li>
           <p>Adjust <var>offset</var> using <var>cue</var>'s <a title="cue computed position
-          alignment">computed cue position alignment</a> as follows:</p>
+          alignment">computed position alignment</a> as follows:</p>
           <dl class="switch">
-           <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-           is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
+           <dt>If the <a title="cue computed position alignment">computed position alignment</a> is
+           <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
            <dd><p>Subtract half of <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
 
-           <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-           is <a title="WebVTT cue position end alignment">end alignment</a></dt>
+           <dt>If the <a title="cue computed position alignment">computed position alignment</a> is
+           <a title="WebVTT cue position end alignment">end alignment</a></dt>
            <dd><p>Subtract <var>region</var>'s <a>WebVTT region width</a> from
            <var>offset</var>.</p></dd>
           </dl>
@@ -3972,34 +3968,34 @@ The Final Minute</pre>
 
       <dl class="switch">
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position start alignment">start</a></dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position start alignment">start</a></dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
-        position</a> subtracted from 100.</p>
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
+        subtracted from 100.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position end alignment">end</a></dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position end alignment">end</a></dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed
         position</a>.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
-       position">computed cue position</a> is less than or equal to 50</dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
+       position">computed position</a> is less than or equal to 50</dt>
        <dd>
-        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed cue
-        position</a> multiplied by two.</p>
+        <p>Let <var>maximum size</var> be the <a title="cue computed position">computed position</a>
+        multiplied by two.</p>
        </dd>
 
-       <dt>If the <a title="cue computed position alignment">computed cue position alignment</a> is
-       <a title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
-       position">computed cue position</a> is greater than <!-- or equal to --> 50</dt>
+       <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+       title="WebVTT cue position middle alignment">middle</a>, and the <a title="cue computed
+       position">computed position</a> is greater than <!-- or equal to --> 50</dt>
        <dd>
         <p>Let <var>maximum size</var> be the result of subtracting <a title="cue computed
-        position">computed cue position</a> from 100 and then multiplying the result by two.</p>
+        position">computed position</a> from 100 and then multiplying the result by two.</p>
        </dd>
 
       </dl>
@@ -4027,19 +4023,19 @@ The Final Minute</pre>
        direction">horizontal</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position start alignment">start alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position start alignment">start alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position middle alignment">middle alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position end alignment">end alignment</a></dt>
-         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed cue
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position end alignment">end alignment</a></dt>
+         <dd><p>Let <var>x-position</var> be the <a title="cue computed position">computed
          position</a> minus <var>size</var>.</p></dd>
         </dl>
        </dd>
@@ -4049,19 +4045,19 @@ The Final Minute</pre>
        writing direction">vertical growing right</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position start alignment">start alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position start alignment">start alignment</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a>.</p></dd>
 
-         <dt>If the <a title="cue computed position alignment">computed cue position alignment</a>
-         is <a title="WebVTT cue position middle alignment">middle alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
+         title="WebVTT cue position middle alignment">middle alignment</a></dt>
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a> minus half of <var>size</var>.</p></dd>
 
          <dt>If the <a title="cue computed position alignment">computed position alignment</a> is <a
          title="WebVTT cue position end alignment">end alignment</a></dt>
-         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed cue
+         <dd><p>Let <var>y-position</var> be the <a title="cue computed position">computed
          position</a> minus <var>size</var>.</p></dd>
         </dl>
        </dd>
@@ -5558,8 +5554,8 @@ interface <dfn>VTTRegion</dfn> {
      <dt>Restrictions on usage:</dt>
      <dd>No restrictions apply.</dd>
      <dt>Authors:</dt>
-     <dd>Silvia Pfeiffer &lt;silviapfeiffer1@gmail.com>, Philip J&auml;genstedt
-     &lt;philipj@opera.com>, Ian Hickson &lt;ian@hixie.ch></dd>
+     <dd>Silvia Pfeiffer &lt;silviapfeiffer1@gmail.com>, Simon Pieters &lt;simonp@opera.com>, Philip
+     J&auml;genstedt &lt;philipj@opera.com>, Ian Hickson &lt;ian@hixie.ch></dd>
      <dt>Change controller:</dt>
      <dd>W3C</dd>
     </dl>
@@ -5601,7 +5597,6 @@ interface <dfn>VTTRegion</dfn> {
     Frank Olivier,
     Giuseppe Pascale,
     Addison Phillips;
-    Simon Pieters,
     Caitlin Potter,
     Brian Quass,
     David Singer,
