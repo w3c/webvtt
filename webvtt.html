@@ -634,8 +634,14 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li><a href="https://html.spec.whatwg.org/#collect-a-sequence-of-characters"><dfn>Collect a
      sequence of characters</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#ascii-digits"><dfn>ASCII digits</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#ascii-hex-digits"><dfn>ASCII hex
+     digits</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#alphanumeric-ascii-characters"><dfn>Alphanumeric
      ASCII characters</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#syntax-charref"><dfn>Decimal numeric character
+     reference</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#syntax-charref"><dfn>Hexadecimal numeric character
+     reference</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#space-character"><dfn>Space character</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#skip-whitespace"><dfn>Skip whitespace</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#split-a-string-on-spaces"><dfn>Split a string on
@@ -1409,6 +1415,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
       bidirectional formatting character in the text of the cue.</li>
       <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the
       text of the cue.</li>
+      <li>A <a>WebVTT cue numeric character reference</a>, representing a <a>decimal numeric
+      character reference</a> or a <a>hexadecimal numeric character reference</a>.</li>
 
      </ul>
 
@@ -1531,6 +1539,10 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
         bidirectional formatting character in the text of the cue.</li>
         <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the
         text of the cue.</li>
+        <li>A <a>WebVTT cue numeric character reference</a>, representing a <a>decimal numeric
+        character reference</a> or a <a>hexadecimal numeric character reference</a> in the text of
+        the cue.</li>
+
        </ul>
 
       </li>
@@ -1579,6 +1591,9 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
      <p>A <dfn>WebVTT cue nbsp escape</dfn> is the six character string
      "<code>&amp;nbsp;</code>".</p>
+
+     <p>A <dfn>WebVTT cue numeric character reference</dfn>, is a <a>decimal numeric character
+     reference</a> or a <a>hexadecimal numeric character reference</a>.</p>
 
     </section><!-- end of cue text -->
 
@@ -1999,6 +2014,8 @@ The Final Minute</pre>
       <li><a>WebVTT cue lrm escape</a></li>
       <li><a>WebVTT cue rlm escape</a></li>
       <li><a>WebVTT cue nbsp escape</a></li>
+      <li><a>WebVTT cue numeric character reference</a></li>
+
      </ul>
 
      <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested
@@ -3245,6 +3262,12 @@ The Final Minute</pre>
           and jump to the step labeled <i>next</i>.</p>
          </dd>
 
+         <dt>U+0023 NUMBER SIGN (#)</dt>
+         <dd>
+          <p>Set <var>tokenizer state</var> to the <a>WebVTT numeric character state</a>, and jump
+          to the step labeled <i>next</i>.</p>
+         </dd>
+
          <dt><a>Alphanumeric ASCII characters</a></dt>
          <dd>
           <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
@@ -3282,6 +3305,7 @@ The Final Minute</pre>
          </dd>
 
          <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
+
          <dt>End-of-file marker</dt>
          <dd>
           <p>Append <var>buffer</var> to <var>result</var>, return a string token whose value is
@@ -3298,6 +3322,45 @@ The Final Minute</pre>
         </dl>
 
        </dd>
+
+       <dt><dfn>WebVTT numeric character state</dfn></dt>
+
+       <dd>
+
+        <p>Jump to the entry that matches the value of <var>c</var>:</p>
+
+        <dl>
+         <dt>'x' or 'X' character</dt>
+         <dd>
+          <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
+         </dd>
+
+         <dt><a>ASCII hex digits</a></dt>
+         <dd>
+          <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
+         </dd>
+
+         <dt>U+003B SEMICOLON character (;)</dt>
+         <dd>
+          <p>Map <var>buffer</var> to a Unicode code point by interpreting <var>buffer</var> either
+          as a hexadecimal number (starting with 'x' or 'X') or a decimal number. If a Unicode code
+          point is found, append the retrieved unicode character to <var>result</var>.</p>
+
+          <p>Set <var>tokenizer state</var> to the <a>WebVTT data state</a>, and jump to the step
+          labeled <i>next</i>.</p>
+         </dd>
+
+         <dt>Anything else</dt>
+         <dd>
+          <p>Append a U+0023 NUMBER SIGN character (#) to <var>result</var>, append
+          <var>buffer</var> to <var>result</var>, append <var>c</var> to <var>result</var>, set
+          <var>tokenizer state</var> to the <a>WebVTT data state</a>, and jump to the step labeled
+          <i>next</i>.</p>
+         </dd>
+        </dl>
+
+       </dd>
+
 
        <dt><dfn>WebVTT tag state</dfn></dt>
 
