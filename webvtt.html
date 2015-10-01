@@ -403,6 +403,31 @@ NOTE end of file</pre>
    </section>
 
    <section>
+    <h3>Styling</h3>
+
+    <p><i>This section is non-normative.</i></p>
+
+    <pre>WEBVTT
+
+STYLE
+::cue(#hello) { color:lime }
+/* Style blocks cannot use blank lines nor "dash dash greater than" */
+
+NOTE comment blocks can be used between style blocks.
+Style blocks can have an optional type:text/css setting.
+
+STYLE type:text/css
+@import url(foo.css);
+
+hello
+00:00:00.000 --&gt; 00:00:10.000
+Hello world.
+
+NOTE style blocks cannot appear after the first cue.</pre>
+
+   </section>
+
+   <section>
     <h3>Other features</h3>
 
     <p><i>This section is non-normative.</i></p>
@@ -584,6 +609,37 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li><a href="https://encoding.spec.whatwg.org/#utf-8-decode"><dfn>UTF-8 decode</dfn></a></li>
     </ul>
 
+    <p>The following terms are defined in the CSS Object Model (CSSOM) specification: [[!CSSOM]]</p>
+
+    <ul class="brief">
+     <li><a href="http://dev.w3.org/csswg/cssom/#create-a-css-style-sheet"><dfn>Create a CSS style
+     sheet</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_location"><dfn>CSS style
+     sheet location</dfn></a></li>
+     <li><a
+     href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_parent_css_style_sheet"><dfn>CSS
+     style sheet parent CSS style sheet</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_owner_node"><dfn>CSS style
+     sheet owner node</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_owner_css_rule"><dfn>CSS
+     style sheet owner CSS rule</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_media"><dfn>CSS style sheet
+     media</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_title"><dfn>CSS style sheet
+     title</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_alternate_flag"><dfn>CSS
+     style sheet alternate flag</dfn></a></li>
+     <li><a href="http://dev.w3.org/csswg/cssom/#concept_css_style_sheet_origin_clean_flag"><dfn>CSS
+     style sheet origin-clean flag</dfn></a></li>
+    </ul>
+
+    <p>The following terms are defined in the CSS Syntax: [[!CSSSYNTAX]]</p>
+
+    <ul class="brief">
+     <li><a href="http://dev.w3.org/csswg/css-syntax/#parse-stylesheet"><dfn>Parse a
+     stylesheet</dfn></a></li>
+    </ul>
+
     <p>The following terms are defined in the DOM standard: [[!DOM]]</p>
 
     <ul class="brief">
@@ -631,6 +687,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      object</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#mime-type"><dfn>MIME type</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#case-sensitive"><dfn>Case-sensitive</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#ascii-case-insensitive"><dfn>ASCII
+     case-insensitive</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#collect-a-sequence-of-characters"><dfn>Collect a
      sequence of characters</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#ascii-digits"><dfn>ASCII digits</dfn></a></li>
@@ -642,6 +700,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      spaces</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#html-namespace"><dfn>HTML namespace</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#media-element"><dfn>Media element</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#media-resource"><dfn>Media resource</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#audio"><dfn><code>audio</code></dfn>
      element</a></li>
      <li><a href="https://html.spec.whatwg.org/#video"><dfn><code>video</code></dfn>
@@ -650,6 +709,7 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      position</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#expose-a-user-interface-to-the-user"><dfn>Expose a
      user interface to the user</dfn></a></li>
+     <li><a href="https://html.spec.whatwg.org/#track-url"><dfn>Track URL</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#list-of-text-tracks"><dfn>List of text
      tracks</dfn></a></li>
      <li><a href="https://html.spec.whatwg.org/#text-track"><dfn>Text track</dfn></a></li>
@@ -1168,6 +1228,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
      <li>One or more <a title="WebVTT line terminator">WebVTT line terminators</a> to terminate the
      header block and separate the cues from the file header.</li>
 
+     <li>Zero or more <a title="WebVTT style block">WebVTT style blocks</a> and <a title="WebVTT
+     comment block">WebVTT comment blocks</a> separated from each other by one or more <a
+     title="WebVTT line terminator">WebVTT line terminators</a>.</li>
+
+     <li>Zero or more <a title="WebVTT line terminator">WebVTT line terminators</a>.</li>
      <li>Zero or more <a title="WebVTT cue block">WebVTT cue blocks</a> and <a title="WebVTT comment
      block">WebVTT comment blocks</a> separated from each other by one or more <a title="WebVTT line
      terminator">WebVTT line terminators</a>.</li>
@@ -1199,6 +1264,60 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     and U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not
     contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
     GREATER-THAN SIGN).</p>
+
+    <p>A <dfn>WebVTT style block</dfn> consists of the following components, in the given order:</p>
+
+    <ol>
+     <li>The string "<code>STYLE</code>".</li>
+     <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab)
+     characters, followed by a <a>WebVTT style block settings list</a>.</li>
+     <li>A <a>WebVTT line terminator</a>.</li>
+     <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
+     U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT
+     line terminator</a>, except that the entire resulting string must not contain the substring
+     "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), and
+     must also be a <a>valid CSS stylesheet</a>. [[!CSS]]</li>
+     <li>A <a>WebVTT line terminator</a>.</li>
+    </ol>
+
+    <p>A <dfn>WebVTT style block settings list</dfn> consist of a sequence of zero or more <a
+    title="WebVTT cue setting">WebVTT cue settings</a> in any order, separated from each other by
+    one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each
+    setting consists of the following components, in the order given:</p>
+
+    <ol>
+     <li>A <a>WebVTT style block setting name</a>.</li>
+     <li>
+      Optionally:
+      <ol>
+       <li>A U+003A COLON character (:).</li>
+       <li>A WebVTT style block setting value.</li>
+      </ol>
+     </li>
+    </ol>
+
+    <p>A <dfn>WebVTT style block setting name</dfn> and a <dfn>WebVTT style block setting
+    value</dfn> each consist of any sequence of zero or more characters other than U+000A LINE FEED
+    (LF) characters and U+000D CARRIAGE RETURN (CR) characters except that the entire resulting
+    string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
+    HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
+
+    <p>A <a>WebVTT style block settings list</a> consists of zero or more of the following settings.
+    Each setting must not be included more than once per <a>WebVTT style block</a>.</p>
+
+    <ul>
+     <li>A <a>WebVTT type style block setting</a>.</li>
+    </ul>
+
+    <p>A <dfn>WebVTT type style block setting</dfn> is a <dfn>WebVTT style block setting</dfn> that
+    consists of the following components, in the given order:</p>
+
+    <ol>
+     <li>The string "<code>type</code>" as the <a>WebVTT style block setting name</a>.</li>
+     <li>A U+003A COLON character (:).</li>
+     <li>A string that is an ASCII-case insensitive match for the string "<code>text/css</code>" as
+     the <a>WebVTT style block setting value</a>.</li>
+    </ol>
 
     <p>A <dfn>WebVTT cue block</dfn> consists of the following components, in the given order:</p>
 
@@ -2165,6 +2284,100 @@ The Final Minute</pre>
      <li><p>If <var>line</var> is not the empty string, then jump back to the step labeled
      <i>header</i>.</p></li>
 
+     <li><p><i>Style block loop</i>: <a>Collect a sequence of characters</a> that are U+000A LINE
+     FEED (LF) characters.</p></li>
+
+     <li><p><a>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED (LF)
+     characters. Let <var>line</var> be those characters, if any.</p></li>
+
+     <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>end</i>. (In
+     such a case, <var>position</var> is also forcibly past the end of <var>input</var><!-- since
+     we've just collected newlines, so we have none of those, and we've failed to collect anything
+     that's not a newline, so we have none of that either, meaning we have nothing. -->.)</p></li>
+
+     <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
+     HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already
+     collected line</var> flag and jump to the step labeled <i>cue loop</i>.</p></li>
+
+     <li><p><a>Collect a WebVTT style block settings</a> from <var>line</var>. If that fails, jump
+     to the step labeled <i>bad style block</i>.</p></li>
+
+     <li>
+      <p>Let <var>stylesheet</var> be the result of <a title="create a CSS style sheet">creating a
+      CSS style sheet</a>, with the following properties: [[!CSSOM]]</p>
+      <dl>
+       <dt><a title="CSS style sheet location">location</a></dt>
+       <dd>null</dd>
+       <dt><a title="CSS style sheet parent CSS style sheet">parent CSS style sheet</a></dt>
+       <dd>null</dd>
+       <dt><a title="CSS style sheet owner node">owner node</a></dt>
+       <dd>null</dd>
+       <dt><a title="CSS style sheet owner CSS rule">owner CSS rule</a></dt>
+       <dd>null</dd>
+       <dt><a title="CSS style sheet media">media</a></dt>
+       <dd>The empty string.</dd>
+       <dt><a title="CSS style sheet title">title</a></dt>
+       <dd>The empty string.</dd>
+       <dt><a title="CSS style sheet alternate flag">alternate flag</a></dt>
+       <dd>Unset.</dd>
+       <dt><a title="CSS style sheet origin-clean flag">origin-clean flag</a></dt>
+       <dd>Set.</dd>
+      </dl>
+     </li>
+
+     <li><p>Let <var>style data</var> be the empty string.</p></li>
+
+     <li><p><i>Style block data loop</i>: If <var>position</var> is past the end of
+     <var>input</var>, then jump to the step labeled <i>style block data processing</i>.</p></li>
+
+     <li><p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character,
+     advance <var>position</var> to the next character in <var>input</var>.</p></li>
+
+     <li><p><a>Collect a sequence of characters</a> that are not U+000A LINE FEED (LF) characters.
+     Let <var>line</var> be those characters, if any.</p></li>
+
+     <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>style block
+     data processing</i>.</p></li>
+
+     <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
+     HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already
+     collected line</var> flag and jump to the step labeled <i>style block data
+     processing</i>.</p></li>
+
+     <li><p>If <var>style block data</var> is not empty, append a U+000A LINE FEED (LF) character to
+     <var>style block data</var>.</p></li>
+
+     <li><p>Let <var>style block data</var> be the concatenation of <var>style block data</var> and
+     <var>line</var>.</p></li>
+
+     <li><p>Return to the step labeled <i>style block data loop</i>.</p></li>
+
+     <li><p>Style block data processing: Let <var>stylesheet</var>'s <a>CSS rules</a> be the result
+     of invoking <a>parse a stylesheet</a> of <var>style block data</var>. [[!CSSOM]]
+     [[!CSSSYNTAX]]</p></li>
+
+     <li><p>Jump back to the step labeled <i>style block loop</i>.</p></li>
+
+     <li><p><i>Bad style block</i>: Discard <var>stylesheet</var>.</p></li>
+
+     <li><p><i>Bad style block loop</i>: If <var>position</var> is past the end of <var>input</var>,
+     then jump to the step labeled <i>end</i>.</p></li>
+
+     <li><p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character,
+     advance <var>position</var> to the next character in <var>input</var>.</p></li>
+
+     <li><p><a>Collect a sequence of characters</a> that are not U+000A LINE FEED (LF) characters.
+     Let <var>line</var> be those characters, if any.</p></li>
+
+     <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
+     HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already
+     collected line</var> flag and jump to the step labeled <i>cue loop</i>.</p></li>
+
+     <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>style block
+     loop</i>.</p></li>
+
+     <li><p>Otherwise, jump to the step labeled <i>bad style block loop</i>.</p></li>
+
      <li><p><i>Cue loop</i>: If the <var>already collected line</var> flag is set, then jump to the
      step labeled <var>cue creation</var>.</p></li>
 
@@ -2453,6 +2666,69 @@ The Final Minute</pre>
      <li><p>If <var>percentage</var> is outside the range 0..100, then fail.</p></li>
 
      <li><p>Return <var>percentage</var>.</p></li>
+    </ol>
+
+   </section>
+
+   <section>
+    <h3>WebVTT style block settings parsing</h3>
+
+    <p>To <dfn>collect a WebVTT style block settings</dfn> from a string <var>input</var>, the user
+    agent must run the following algorithm:</p>
+
+    <ol>
+     <li><p>Let <var>input</var> be the string being parsed.</p></li>
+
+     <li><p>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the
+     start of the string.</p></li>
+
+     <li><p><a>Collect a sequence of characters</a> that are not U+0020 SPACE characters or U+0009
+     TABULATION CHARACTER (tab) characters, and let <var>block name</var> be those characters, if
+     any.</p></li>
+
+     <li><p>If <var>block name</var> is not the string "<code>STYLE</code>", abort these steps and
+     return failure.</p></li>
+
+     <li><p>If <var>position</var> is past the end of <var>input</var>, abort these steps.</p></li>
+
+     <li><p><a>Skip whitespace</a>.</p></li>
+
+     <li><p>Let <var>remainder</var> be the trailing substring of <var>input</var> starting at
+     <var>position</var>.</p></li>
+
+     <li><p>Let <var>settings</var> be the result of <a title="split a string on spaces">splitting
+     <var>remainder</var> on spaces</a>.</p></li>
+
+     <li>
+      <p>For each token <var>setting</var> in the list <var>settings</var>, run the following
+      substeps:</p>
+
+      <ol>
+
+       <li><p>If <var>setting</var> does not contain a U+003A COLON character (:), or if the first
+       U+003A COLON character (:) in <var>setting</var> is either the first or last character of
+       <var>setting</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+
+       <li><p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding
+       the first U+003A COLON character (:) in that string.</p></li>
+
+       <li><p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the
+       character immediately after the first U+003A COLON character (:) in that string.</p></li>
+
+       <li>
+        <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
+
+        <dl>
+         <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>type</code>"</p></dt>
+         <dd><p>If <var>value</var> is not an <a>ASCII case-insensitive</a> match for the string
+         "<code>text/css</code>", abort these steps and return failure.</p></dd>
+        </dl>
+       </li>
+      </ol>
+     </li>
+
+     <li><p><i>Next setting</i>: Continue to the next token, if any.</p></li>
+
     </ol>
 
    </section>
@@ -4201,6 +4477,19 @@ The Final Minute</pre>
 
        <li><p>The <i>document tree</i> is the tree of <a title="WebVTT Node Object">WebVTT Node
        Objects</a> rooted at <var>nodes</var>.</p></li>
+
+       <li><p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must
+       apply to a hypothetical document that contains a single empty element with no explicit name,
+       no namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like
+       the <a>media element</a> for the <a title="text track">text tracks</a> that were sourced from
+       the given WebVTT file. The selectors must not match other <a title="text track">text
+       tracks</a> for the same <a>media element</a>.</p></li>
+
+       <li><p>For the purpose of resolving URLs in the style sheet, the style sheet must act as if
+       its base URL is the same as the WebVTT file that contains it. (For out-of-band text tracks,
+       this is the <a>track URL</a>. For in-band text tracks, this is the URL of the containing
+       <a>media resource</a>. Text tracks created with <code>addTextTrack()</code> cannot have style
+       sheets.)</p></li>
 
        <li><p>For the purposes of processing by the CSS specification, <a title="WebVTT Internal
        Node Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same

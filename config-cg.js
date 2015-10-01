@@ -58,12 +58,26 @@ var respecConfig = {
             status: "ED",
             title: "CSS Color Module Level 4",
         },
+        "CSSOM": {
+            authors: ["Simon Pieters", "Glenn Adams"],
+            href: "http://dev.w3.org/csswg/cssom/",
+            publisher: "W3C",
+            status: "ED",
+            title: "CSS Object Model (CSSOM)",
+        },
         "CSSRUBY": {
             authors: ["Elika J. Etemad", "Koji Ishii"],
             href: "http://dev.w3.org/csswg/css-ruby/",
             publisher: "W3C",
             status: "ED",
             title: "CSS Ruby Layout Module Level 1",
+        },
+        "CSSSYNTAX": {
+            authors: ["Tab Atkins Jr.", "Simon Sapin"],
+            href: "http://dev.w3.org/csswg/css-syntax/",
+            publisher: "W3C",
+            status: "ED",
+            title: "CSS Syntax Module Level 3",
         },
         "CSSVALUES": {
             authors: ["Tab Atkins Jr.", "fantasai"],
