@@ -2,27 +2,21 @@
 Title: WebVTT: The Web Video Text Tracks Format
 H1: WebVTT: The Web Video Text Tracks Format
 Shortname: webvtt1
-Status: LS
-Group: WHATWG
+Status: CG-DRAFT
+Group: texttracks
+ED: https://w3c.github.io/webvtt/
+Level: 1
 Editor: Silvia Pfeiffer, NICTA http://nicta.com.au/, silviapfeiffer1@gmail.com
 Editor: Simon Pieters, Opera Software ASA http://www.opera.com/, simonp@opera.com
 Former Editor: Philip Jägenstedt, Opera Software ASA http://www.opera.com/, philipj@opera.com
 Former Editor: Ian Hickson, Google http://www.google.com/, ian@hixie.ch
-!Participate: <a href=https://github.com/whatwg/webvtt>GitHub whatwg/webvtt</a> (<a href=https://github.com/whatwg/webvtt/issues/new>new issue</a>, <a href=https://github.com/whatwg/webvtt/issues>open issues</a>, <a href=https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&component=WebVTT&resolution=--->legacy open bugs</a>)
-!Participate: <a href=https://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a>
-!Commits: <a href=https://github.com/whatwg/webvtt/commits>GitHub whatwg/webvtt/commits</a>
+!Participate: <a href=https://github.com/w3c/webvtt>GitHub w3c/webvtt</a> (<a href=https://github.com/w3c/webvtt/issues/new>new issue</a>, <a href=https://github.com/w3c/webvtt/issues>open issues</a>, <a href=https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&component=WebVTT&resolution=--->legacy open bugs</a>)
+!Commits: <a href=https://github.com/w3c/webvtt/commits>GitHub w3c/webvtt/commits</a>
 Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
-Logo: https://resources.whatwg.org/logo.svg
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [MAUR], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
 </pre>
-
-<style>
- .head .editor { display:block }
-</style>
-
-<script src=https://resources.whatwg.org/file-issue.js async></script>
 
 <pre class='anchors'>
 urlPrefix: https://html.spec.whatwg.org/multipage/
@@ -78,28 +72,6 @@ spec:css21; type:property; text:min-height
 spec:css21; type:property; text:max-height
 spec:css-flexbox-1; type:value; text:inline-flex
 </pre>
-
-  <section>
-   <h2 id=sotd class="no-num no-toc">Status of This Document</h2>
-
-   <p>This specification was published by the <a href="http://www.w3.org/community/texttracks/">Web
-   Media Text Tracks Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards
-   Track. Please note that under the <a
-   href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License
-   Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a
-   href="http://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
-
-   <p>Work on this specification is being undertaken both in the <a
-   href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> as well
-   as in the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>. The latter
-   group works towards a W3C Recommendation for reference purposes with interoperability
-   requirements, while the former is a Draft Community Group Report that continues to evolve.</p>
-
-   <p>If you wish to make comments regarding this document, please send them to <a
-   href="mailto:public-texttracks@w3.org">public-texttracks@w3.org</a> (<a
-   href="mailto:public-texttracks-request@w3.org?subject=subscribe">subscribe</a>, <a
-   href="http://lists.w3.org/Archives/Public/public-texttracks/">archives</a>).</p>
-  </section>
 
   <section>
    <h2 id=introduction>Introduction</h2>
@@ -446,14 +418,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p>Conformance requirements phrased as algorithms or specific steps may be implemented in any
     manner, so long as the end result is equivalent. (In particular, the algorithms defined in this
     specification are intended to be easy to follow, and not intended to be performant.)</p>
-   </section>
-
-   <section>
-    <h3 id=dependencies>Dependencies</h3>
-
-    <p>This specification uses terms defined in the Encoding standard, DOM standard, HTML standard,
-    and the Web IDL specification. [[!ENCODING]] [[!DOM]] [[!HTML]] [[!WEBIDL]]</p>
-
    </section>
 
   </section>
@@ -5360,15 +5324,6 @@ interface VTTRegion {
     Brian Quass,
     David Singer,
     Andreas Tai.
-   </p>
-
-   <p class="copyright">
-    <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy;
-    2011-[YEAR]
-    the Contributors to the WebVTT: The Web Video Text Tracks Format Specification, published by the
-    <a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> under the
-      <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
-      A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.
    </p>
 
   </section>
