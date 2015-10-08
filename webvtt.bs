@@ -4436,14 +4436,13 @@ spec:css-flexbox-1; type:value; text:inline-flex
     pseudo-elements defined below won't have any effect according to this specification.</p>
 
     <p>A CSS user agent that implements the <a lt="text track">text tracks</a> model must
-    implement the ''::cue'' and ''::cue(<var>selector</var>)'' pseudo-elements, and the <a
-    lt="past-pseudo-class">':past'</a> and <a lt="future-pseudo-class">':future'</a>
-    pseudo-classes.</p>
+    implement the ''::cue'' and ''::cue(<var>selector</var>)'' pseudo-elements, and the '':past''
+    and '':future'' pseudo-classes.</p>
 
     <section>
      <h5 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h5>
 
-     <p>The '<dfn lt="pseudo-cue">::cue</dfn>' pseudo-element (with no argument) matches any
+     <p>The <dfn>::cue</dfn> pseudo-element (with no argument) matches any
      <a>list of WebVTT Node Objects</a> constructed for the <i>matched element</i>, with the
      exception that the properties corresponding to the 'background' shorthand must be applied to
      the <a>WebVTT cue background box</a> rather than the <a>list of WebVTT Node Objects</a>.</p>
@@ -4468,10 +4467,10 @@ spec:css-flexbox-1; type:value; text:inline-flex
       unicode-bidi, widows, z-index -->
      </ul>
 
-     <p>The '<dfn lt="pseudo-cue-selector">::cue(<var>selector</var>)</dfn>' pseudo-element with
-     an argument must have an argument that consists of a CSS selector [[!SELECTORS4]]. It matches
-     any <a>WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also
-     matches the given CSS selector, with the nodes being treated as follows:</p>
+     <p>The <dfn>::cue(<var>selector</var>)</dfn> pseudo-element with an argument must have an
+     argument that consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal
+     Node Object</a> constructed for the <i>matched element</i> that also matches the given CSS
+     selector, with the nodes being treated as follows:</p>
 
      <ul>
 
@@ -4590,8 +4589,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
      the next segment becomes "past". -->
 
      <p>In addition, the following properties apply to the ''::cue()'' pseudo-element with an
-     argument when the selector does not contain the <a lt="past-pseudo-class">':past'</a> and <a
-     lt="future-pseudo-class">':future'</a> pseudo-classes:</p>
+     argument when the selector does not contain the '':past'' and '':future'' pseudo-classes:</p>
 
      <ul class="brief">
       <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
@@ -4614,12 +4612,11 @@ spec:css-flexbox-1; type:value; text:inline-flex
     <section>
      <h5 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h5>
 
-     <p>The <a lt="past-pseudo-class">':past'</a> and <a
-     lt="future-pseudo-class">':future'</a> pseudo-classes sometimes match <a lt="WebVTT Node
+     <p>The '':past'' and '':future'' pseudo-classes sometimes match <a lt="WebVTT Node
      Object">WebVTT Node Objects</a>. [[!SELECTORS4]]</p>
 
-     <p>The <dfn lt="past-pseudo-class">':past'</dfn> pseudo-class only matches <a lt="WebVTT
-     Node Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+     <p>The <dfn>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
+     Objects</a> that are <i>in the past</i>.</p>
 
      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the past</dfn> if, in a pre-order,
      depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there
@@ -4627,8 +4624,8 @@ spec:css-flexbox-1; type:value; text:inline-flex
      position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
      <a>WebVTT Node Object</a> <var>c</var>.</p>
 
-     <p>The <dfn lt="future-pseudo-class">':future'</dfn> pseudo-class only matches <a
-     lt="WebVTT Node Object">WebVTT Node Objects</a> that are <i>in the future</i>.</p>
+     <p>The <dfn>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
+     Objects</a> that are <i>in the future</i>.</p>
 
      <p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the future</dfn> if, in a pre-order,
      depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there
@@ -4647,13 +4644,12 @@ spec:css-flexbox-1; type:value; text:inline-flex
      <p class="note">If the matched element is not a video element, the pseudo-element defined below
      won't have any effect according to this specification.</p>
 
-     <p>The '<dfn lt="pseudo-region">::cue-region</dfn>' pseudo-element (with no argument)
-     matches any list of <a lt="WebVTT region object">WebVTT region objects</a> constructed for
-     the <i>matched element</i>.</p>
+     <p>The <dfn>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a
+     lt="WebVTT region object">WebVTT region objects</a> constructed for the <i>matched
+     element</i>.</p>
 
-     <p>The <a selector lt="pseudo-cue">same properties that apply to '::cue'</a> apply to the
-     ''::cue-region'' pseudo-element with no argument; other properties set on the pseudo-element
-     must be ignored.</p>
+     <p>The same properties that apply to ''::cue'' apply to the ''::cue-region'' pseudo-element
+     with no argument; other properties set on the pseudo-element must be ignored.</p>
 
      <p>When a user agent is rendering one or more text track regions according to the <a>rules for
      updating the display of WebVTT text tracks</a>, <a lt="WebVTT region object">WebVTT region
