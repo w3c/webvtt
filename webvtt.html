@@ -988,22 +988,22 @@
 	}
 
 </style>
-  <meta content="Bikeshed 1.0.0" name="generator">
 <style>
-  body {
-    padding-left: 160px;
-    background-image: url('https://www.w3.org/community/src/css/spec/back-cg-draft.png');
-    background-position: top left;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  }
-</style>
+    body {
+      padding-left: 160px;
+      background-image: url('https://www.w3.org/community/src/css/spec/back-cg-draft.png');
+      background-position: top left;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+  </style>
+  <meta content="Bikeshed 1.0.0" name="generator">
  </head>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"></p>
+   <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-05">5 October 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-08">8 October 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1031,11 +1031,12 @@
       A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
    <hr title="Separator for header">
   </div>
+<script async="" src="https://resources.whatwg.org/file-issue.js"></script>
   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
   <div class="p-summary" data-fill-with="abstract">
    <p>This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 
-WebVTT files provide captions or subtitles for video content, and also text video descriptions [MAUR], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.</p>
+WebVTT files provide captions or subtitles for video content, and also text video descriptions <a data-link-type="biblio" href="#biblio-maur">[MAUR]</a>, chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -1152,6 +1153,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ul class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ul>
     <li><a href="#idl-index"><span class="secno"></span> <span class="content">IDL Index</span></a>
    </ul>
@@ -5242,6 +5244,11 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
    <dd>Selectors Level 4 URL: <a href="https://drafts.csswg.org/selectors-4/">https://drafts.csswg.org/selectors-4/</a>
    <dt id="biblio-selectors4"><a class="self-link" href="#biblio-selectors4"></a>[SELECTORS4]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="http://www.w3.org/TR/selectors4/">http://www.w3.org/TR/selectors4/</a>
+  </dl>
+  <h3 class="no-num heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <dl>
+   <dt id="biblio-maur"><a class="self-link" href="#biblio-maur"></a>[MAUR]
+   <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { "auto" };enum <a href="#enumdef-directionsetting">DirectionSetting</a> { "" /* horizontal */, "rl", "lr" };

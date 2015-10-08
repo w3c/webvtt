@@ -40,6 +40,9 @@ check "Make temporary copy of source file"
 mkdir -p "archives/$NEW_DATE/"
 check "Create directory archives/$NEW_DATE/"
 
+cp *.png "archives/$NEW_DATE/"
+check "Copy images to archives/$NEW_DATE/"
+
 replace "s/^Status: .*$/Status: $STATUS/" webvtt.temp.bs
 check "Replace Status metadata"
 
