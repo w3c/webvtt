@@ -3336,7 +3336,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     is isomorphous to the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>, with the
     following mapping of <a lt="WebVTT Node Object">WebVTT Node Objects</a> to DOM nodes:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT Node Object</a></th>
@@ -3345,55 +3345,55 @@ spec:css-flexbox-1; type:value; text:inline-flex
      </thead>
      <tbody>
       <tr>
-       <td><a>List of WebVTT Node Objects</a></td>
-       <td>{{DocumentFragment}} node</td>
+       <td class=long><a>List of WebVTT Node Objects</a></td>
+       <td class=long>{{DocumentFragment}} node</td>
       </tr>
       <tr>
-       <td><a>WebVTT Region Object</a></td>
-       <td>{{DocumentFragment}} node</td>
+       <td class=long><a>WebVTT Region Object</a></td>
+       <td class=long>{{DocumentFragment}} node</td>
       </tr>
       <tr>
-       <td><a>WebVTT Class Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>".</td>
+       <td class=long><a>WebVTT Class Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Italic Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>i</code>".</td>
+       <td class=long><a>WebVTT Italic Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>i</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Bold Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>b</code>".</td>
+       <td class=long><a>WebVTT Bold Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>b</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Underline Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>u</code>".</td>
+       <td class=long><a>WebVTT Underline Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>u</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Ruby Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>ruby</code>".</td>
+       <td class=long><a>WebVTT Ruby Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>ruby</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Ruby Text Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>rt</code>".</td>
+       <td class=long><a>WebVTT Ruby Text Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>rt</code>".</td>
       </tr>
       <tr>
-       <td><a>WebVTT Voice Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a
+       <td class=long><a>WebVTT Voice Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a
        <a element-attr>title</a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
       </tr>
       <tr>
-       <td><a>WebVTT Language Object</a></td>
-       <td>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a
+       <td class=long><a>WebVTT Language Object</a></td>
+       <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a
        <a element-attr>lang</a> attribute set to the <a>WebVTT Language Object</a>'s <a
        lt="WebVTT Node Object's applicable language">applicable language</a>.</td>
       </tr>
       <tr>
-       <td><a>WebVTT Text Object</a></td>
-       <td>{{Text}} node whose {{CharacterData/data}} is the value of the <a>WebVTT Text Object</a>.</td>
+       <td class=long><a>WebVTT Text Object</a></td>
+       <td class=long>{{Text}} node whose {{CharacterData/data}} is the value of the <a>WebVTT Text Object</a>.</td>
       </tr>
       <tr>
-       <td><a>WebVTT Timestamp Object</a></td>
-       <td>{{ProcessingInstruction}} node whose {{ProcessingInstruction/target}} is
+       <td class=long><a>WebVTT Timestamp Object</a></td>
+       <td class=long>{{ProcessingInstruction}} node whose {{ProcessingInstruction/target}} is
        "<code>timestamp</code>" and whose {{CharacterData/data}} is a <a>WebVTT
        timestamp</a> representing the value of the <a>WebVTT Timestamp Object</a>, with all optional
        components included, with one leading zero if the <var>hours</var> component is less than
@@ -4304,7 +4304,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     value in the second cell of the row of the table below whose first cell is the value of the
     corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT cue text alignment</a></th>
@@ -4491,7 +4491,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
        having the concrete class given in a cell in the first column have the name given by the
        second column of the same row:</p>
 
-       <table>
+       <table class="complex data">
         <thead>
          <tr>
           <th>Concrete class</th>
@@ -4703,7 +4703,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     };
     </pre>
 
-    <dl class="domintro">
+    <dl class="note">
 
      <dt><var>cue</var> = new <a constructor lt="VTTCue()">VTTCue</a>(
      <var>startTime</var>, <var>endTime</var>, <var>text</var> )</dt>
@@ -4890,7 +4890,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     <a>WebVTT cue writing direction</a> of the <a>WebVTT cue</a> that the {{VTTCue}}
     object represents:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT cue writing direction</a></th>
@@ -4937,7 +4937,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     <a>WebVTT cue line alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}}
     object represents:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT cue line alignment</a></th>
@@ -4978,7 +4978,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     the <a>WebVTT cue position alignment</a> of the <a>WebVTT cue</a> that the
     {{VTTCue}} object represents:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT cue position alignment</a></th>
@@ -5020,7 +5020,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     text alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object
     represents:</p>
 
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT cue text alignment</a></th>
@@ -5086,7 +5086,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     };
     </pre>
 
-    <dl class="domintro">
+    <dl class="note">
 
      <dt><var>region</var> = new <a constructor lt="VTTRegion()">VTTRegion</a>()</dt>
      <dd>
@@ -5212,7 +5212,7 @@ spec:css-flexbox-1; type:value; text:inline-flex
     return the string from the second cell of the row in the table below whose first cell is the
     <a>WebVTT region scroll</a> setting of the <a>WebVTT region</a> that the
     {{VTTRegion}} object represents:</p>
-    <table>
+    <table class="complex data">
      <thead>
       <tr>
        <th><a>WebVTT region scroll</a></th>
