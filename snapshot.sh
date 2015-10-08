@@ -34,7 +34,7 @@ if [ $# -lt 2 ] ; then
   exit 1
 fi
 
-cp webvtt.bs webvtt.temp.bs
+cp index.bs index.temp.bs
 check "Make temporary copy of source file"
 
 mkdir -p "archives/$NEW_DATE/"
@@ -43,16 +43,16 @@ check "Create directory archives/$NEW_DATE/"
 cp *.png "archives/$NEW_DATE/"
 check "Copy images to archives/$NEW_DATE/"
 
-replace "s/^Status: .*$/Status: $STATUS/" webvtt.temp.bs
+replace "s/^Status: .*$/Status: $STATUS/" index.temp.bs
 check "Replace Status metadata"
 
-replace "1,/^$/s/^$/Date: $NEW_DATE/" webvtt.temp.bs
+replace "1,/^$/s/^$/Date: $NEW_DATE/" index.temp.bs
 check "Add Date metadata"
 
-bikeshed spec webvtt.temp.bs archives/$NEW_DATE/index.html
+bikeshed spec index.temp.bs archives/$NEW_DATE/index.html
 check "Generate with bikeshed"
 
-rm webvtt.temp.bs
+rm index.temp.bs
 check "Remove temporary source file"
 
 echo "*** Done ***"
