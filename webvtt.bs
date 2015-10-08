@@ -97,46 +97,48 @@ spec:css-flexbox-1; type:value; text:inline-flex
    <p>The main use for WebVTT files is captioning or subtitling video content. Here is a sample file
    that captions an interview:</p>
 
-   <pre>WEBVTT
+   <pre>
+   WEBVTT
 
-00:11.000 --> 00:13.000
-&lt;v Roger Bingham>We are in New York City
+   00:11.000 --> 00:13.000
+   &lt;v Roger Bingham>We are in New York City
 
-00:13.000 --> 00:16.000
-&lt;v Roger Bingham>We're actually at the Lucern Hotel, just down the street
+   00:13.000 --> 00:16.000
+   &lt;v Roger Bingham>We're actually at the Lucern Hotel, just down the street
 
-00:16.000 --> 00:18.000
-&lt;v Roger Bingham>from the American Museum of Natural History
+   00:16.000 --> 00:18.000
+   &lt;v Roger Bingham>from the American Museum of Natural History
 
-00:18.000 --> 00:20.000
-&lt;v Roger Bingham>And with me is Neil deGrasse Tyson
+   00:18.000 --> 00:20.000
+   &lt;v Roger Bingham>And with me is Neil deGrasse Tyson
 
-00:20.000 --> 00:22.000
-&lt;v Roger Bingham>Astrophysicist, Director of the Hayden Planetarium
+   00:20.000 --> 00:22.000
+   &lt;v Roger Bingham>Astrophysicist, Director of the Hayden Planetarium
 
-00:22.000 --> 00:24.000
-&lt;v Roger Bingham>at the AMNH.
+   00:22.000 --> 00:24.000
+   &lt;v Roger Bingham>at the AMNH.
 
-00:24.000 --> 00:26.000
-&lt;v Roger Bingham>Thank you for walking down here.
+   00:24.000 --> 00:26.000
+   &lt;v Roger Bingham>Thank you for walking down here.
 
-00:27.000 --> 00:30.000
-&lt;v Roger Bingham>And I want to do a follow-up on the last conversation we did.
+   00:27.000 --> 00:30.000
+   &lt;v Roger Bingham>And I want to do a follow-up on the last conversation we did.
 
-00:30.000 --> 00:31.500 align:end size:50%
-&lt;v Roger Bingham>When we e-mailed&mdash;
+   00:30.000 --> 00:31.500 align:end size:50%
+   &lt;v Roger Bingham>When we e-mailed&mdash;
 
-00:30.500 --> 00:32.500 align:start size:50%
-&lt;v Neil deGrasse Tyson>Didn't we talk about enough in that conversation?
+   00:30.500 --> 00:32.500 align:start size:50%
+   &lt;v Neil deGrasse Tyson>Didn't we talk about enough in that conversation?
 
-00:32.000 --> 00:35.500 align:end size:50%
-&lt;v Roger Bingham>No! No no no no; 'cos 'cos obviously 'cos
+   00:32.000 --> 00:35.500 align:end size:50%
+   &lt;v Roger Bingham>No! No no no no; 'cos 'cos obviously 'cos
 
-00:32.500 --> 00:33.500 align:start size:50%
-&lt;v Neil deGrasse Tyson>&lt;i>Laughs&lt;/i>
+   00:32.500 --> 00:33.500 align:start size:50%
+   &lt;v Neil deGrasse Tyson>&lt;i>Laughs&lt;/i>
 
-00:35.500 --> 00:38.000
-&lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.</pre>
+   00:35.500 --> 00:38.000
+   &lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.
+   </pre>
 
    <section>
     <h3 id=introduction-multiple-lines>Cues with multiple lines</h3>
@@ -151,24 +153,26 @@ spec:css-flexbox-1; type:value; text:inline-flex
 
      <p>These captions on a public service announcement video demonstrate line breaking:</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-00:01.000 --> 00:04.000
-Never drink liquid nitrogen.
+     00:01.000 --> 00:04.000
+     Never drink liquid nitrogen.
 
-00:05.000 --> 00:09.000
-&mdash; It will perforate your stomach.
-&mdash; You could die.
+     00:05.000 --> 00:09.000
+     &mdash; It will perforate your stomach.
+     &mdash; You could die.
 
-00:10.000 --> 00:14.000
-The Organisation for Sample Public Service Announcements accepts no liability for the content of this advertisement, or for the consequences of any actions taken on the basis of the information provided.</pre>
+     00:10.000 --> 00:14.000
+     The Organisation for Sample Public Service Announcements accepts no liability for the content of this advertisement, or for the consequences of any actions taken on the basis of the information provided.</pre>
 
-     <p>The first cue is simple, it will probably just display on one line. The second will take two
-     lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
-     multiple lines. For example, the three cues could look like this:</p>
+          <p>The first cue is simple, it will probably just display on one line. The second will take two
+          lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
+          multiple lines. For example, the three cues could look like this:</p>
 
-     <!-- 50 -->
-     <pre>           Never drink liquid nitrogen.
+          <!-- 50 -->
+          <pre>
+&nbsp;          Never drink liquid nitrogen.
 
         &mdash; It will perforate your stomach.
                 &mdash; You could die.
@@ -183,7 +187,8 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
      following example. Note how the second cue's explicit line break is still honored, however:</p>
 
      <!-- 25 -->
-     <pre>       Never drink
+     <pre>
+&nbsp;     Never drink
     liquid nitrogen.
 
   &mdash; It will perforate
@@ -220,16 +225,18 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
 
      <p>Here, a one-line comment is used to note a possible problem with a cue.</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-00:01.000 --> 00:04.000
-Never drink liquid nitrogen.
+     00:01.000 --> 00:04.000
+     Never drink liquid nitrogen.
 
-NOTE I'm not sure the timing is right on the following cue.
+     NOTE I'm not sure the timing is right on the following cue.
 
-00:05.000 --> 00:09.000
-&mdash; It will perforate your stomach.
-&mdash; You could die.</pre>
+     00:05.000 --> 00:09.000
+     &mdash; It will perforate your stomach.
+     &mdash; You could die.
+     </pre>
 
     </div>
 
@@ -237,27 +244,29 @@ NOTE I'm not sure the timing is right on the following cue.
 
      <p>In this example, the author has written many comments.</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-NOTE
-This file was written by Jill. I hope
-you enjoy reading it. Some things to
-bear in mind:
-- I was lip-reading, so the cues may
-not be 100% accurate
-- I didn't pay too close attention to
-when the cues should start or end.
+     NOTE
+     This file was written by Jill. I hope
+     you enjoy reading it. Some things to
+     bear in mind:
+     - I was lip-reading, so the cues may
+     not be 100% accurate
+     - I didn't pay too close attention to
+     when the cues should start or end.
 
-00:01.000 --> 00:04.000
-Never drink liquid nitrogen.
+     00:01.000 --> 00:04.000
+     Never drink liquid nitrogen.
 
-NOTE check next cue
+     NOTE check next cue
 
-00:05.000 --> 00:09.000
-&mdash; It will perforate your stomach.
-&mdash; You could die.
+     00:05.000 --> 00:09.000
+     &mdash; It will perforate your stomach.
+     &mdash; You could die.
 
-NOTE end of file</pre>
+     NOTE end of file
+     </pre>
 
     </div>
    </section>
@@ -273,21 +282,25 @@ NOTE end of file</pre>
 
      <p>In this example, the cues have an identifier:</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-1
-00:00.000 --> 00:02.000
-That's an, an, that's an L!
+     1
+     00:00.000 --> 00:02.000
+     That's an, an, that's an L!
 
-crédit de transcription
-00:04.000 --> 00:05.000
-Transcrit par Célestes&trade;</pre>
+     crédit de transcription
+     00:04.000 --> 00:05.000
+     Transcrit par Célestes&trade;
+     </pre>
 
      <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
      escape sequences):</p>
 
-     <pre>::cue(#\31) { color: green; }
-::cue(#crédit\ de\ transcription) { color: red; }</pre>
+     <pre>
+     ::cue(#\31) { color: green; }
+     ::cue(#crédit\ de\ transcription) { color: red; }
+     </pre>
 
     </div>
 
@@ -298,45 +311,51 @@ Transcrit par Célestes&trade;</pre>
      cue, there is also some italics text (not associated with a specific speaker). The last cue is
      annotated with just the class "loud".</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-00:00.000 --> 00:02.000
-&lt;v.first.loud Esme>It's a blue apple tree!
+     00:00.000 --> 00:02.000
+     &lt;v.first.loud Esme>It's a blue apple tree!
 
-00:02.000 --> 00:04.000
-&lt;v Mary>No way!
+     00:02.000 --> 00:04.000
+     &lt;v Mary>No way!
 
-00:04.000 --> 00:06.000
-&lt;v Esme>Hee!&lt;/v> &lt;i>laughter&lt;/i>
+     00:04.000 --> 00:06.000
+     &lt;v Esme>Hee!&lt;/v> &lt;i>laughter&lt;/i>
 
-00:06.000 --> 00:08.000
-&lt;v.loud Mary>That's awesome!</pre>
+     00:06.000 --> 00:08.000
+     &lt;v.loud Mary>That's awesome!
+     </pre>
 
      <p>Notice that as a special exception, the voice spans don't have to be closed if they cover
      the entire cue text.</p>
 
      <p>Style sheets can style these spans:</p>
 
-     <pre>::cue(v[voice="Esme"]) { color: blue }
-::cue(v[voice="Mary"]) { color: green }
-::cue(i) { font-style: italic }
-::cue(.loud) { font-size: 2em }</pre>
+     <pre>
+     ::cue(v[voice="Esme"]) { color: blue }
+     ::cue(v[voice="Mary"]) { color: green }
+     ::cue(i) { font-style: italic }
+     ::cue(.loud) { font-size: 2em }
+     </pre>
 
     </div>
 
     <div class="example">
      <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 
-     <pre>WEBVTT
+     <pre>
+     WEBVTT
 
-00:00:00.000 --> 00:00:04.000 position:10%,start align:start size:35%
-Where did he go?
+     00:00:00.000 --> 00:00:04.000 position:10%,start align:start size:35%
+     Where did he go?
 
-00:00:03.000 --> 00:00:06.500 position:90% align:end size:35%
-I think he went down this lane.
+     00:00:03.000 --> 00:00:06.500 position:90% align:end size:35%
+     I think he went down this lane.
 
-00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
-What are you waiting for?</pre>
+     00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
+     What are you waiting for?
+     </pre>
 
      <p>The cues cover only 35% of the video viewport's width. The first cue has its <a
      lt="WebVTT cue box">cue box</a> left aligned at the 10% mark of the video viewport width and
@@ -354,27 +373,29 @@ What are you waiting for?</pre>
      the right half of the video. Fred's first cue disappears at 12.5sec even though it is defined
      until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:</p>
 
-     <pre>WEBVTT
-Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
-Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
+     <pre>
+     WEBVTT
+     Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
+     Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
 
-00:00:00.000 --> 00:00:20.000 region:fred align:left
-&lt;v Fred>Hi, my name is Fred
+     00:00:00.000 --> 00:00:20.000 region:fred align:left
+     &lt;v Fred>Hi, my name is Fred
 
-00:00:02.500 --> 00:00:22.500 region:bill align:right
-&lt;v Bill>Hi, I'm Bill
+     00:00:02.500 --> 00:00:22.500 region:bill align:right
+     &lt;v Bill>Hi, I'm Bill
 
-00:00:05.000 --> 00:00:25.000 region:fred align:left
-&lt;v Fred>Would you like to get a coffee?
+     00:00:05.000 --> 00:00:25.000 region:fred align:left
+     &lt;v Fred>Would you like to get a coffee?
 
-00:00:07.500 --> 00:00:27.500 region:bill align:right
-&lt;v Bill>Sure! I've only had one today.
+     00:00:07.500 --> 00:00:27.500 region:bill align:right
+     &lt;v Bill>Sure! I've only had one today.
 
-00:00:10.000 --> 00:00:30.000 region:fred align:left
-&lt;v Fred>This is my fourth!
+     00:00:10.000 --> 00:00:30.000 region:fred align:left
+     &lt;v Fred>This is my fourth!
 
-00:00:12.500 --> 00:00:32.500 region:fred align:left
-&lt;v Fred>OK, let's go.</pre>
+     00:00:12.500 --> 00:00:32.500 region:fred align:left
+     &lt;v Fred>OK, let's go.
+     </pre>
 
      <p>Note that regions are only defined for horizontal cues.</p>
 
@@ -1638,25 +1659,27 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 
       <p>The following example matches this definition:</p>
 
-      <pre>WEBVTT
+      <pre>
+      WEBVTT
 
-00:00.000 --> 01:24.000
-Introduction
+      00:00.000 --> 01:24.000
+      Introduction
 
-00:00.000 --> 00:44.000
-Topics
+      00:00.000 --> 00:44.000
+      Topics
 
-00:44.000 --> 01:19.000
-Presenters
+      00:44.000 --> 01:19.000
+      Presenters
 
-01:24.000 --> 05:00.000
-Scrolling Effects
+      01:24.000 --> 05:00.000
+      Scrolling Effects
 
-01:35.000 --> 03:00.000
-Achim's Demo
+      01:35.000 --> 03:00.000
+      Achim's Demo
 
-03:00.000 --> 05:00.000
-Timeline Panel</pre>
+      03:00.000 --> 05:00.000
+      Timeline Panel
+      </pre>
 
       <p>Notice how you can express the cues in this WebVTT file as a tree structure:</p>
 
@@ -1685,13 +1708,15 @@ Timeline Panel</pre>
       <p>If the file has cues that can't be expressed in this fashion, then they don't match the
       definition of a <a>WebVTT file using only nested cues</a>. For example:</p>
 
-      <pre>WEBVTT
+      <pre>
+      WEBVTT
 
-00:00.000 --> 01:00.000
-The First Minute
+      00:00.000 --> 01:00.000
+      The First Minute
 
-00:30.000 --> 01:30.000
-The Final Minute</pre>
+      00:30.000 --> 01:30.000
+      The Final Minute
+      </pre>
 
       <p>In this ninety-second example, the two cues partly overlap, with the first ending before
       the second ends and the second starting before the first ends. This therefore is not a
@@ -4656,25 +4681,27 @@ The Final Minute</pre>
 
     <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 
-    <pre class="idl">enum AutoKeyword { "auto" };
-enum DirectionSetting { "" /* horizontal */, "rl", "lr" };
-enum LineAlignSetting { "start", "middle", "end" };
-enum PositionAlignSetting { "start", "middle", "end", "auto" };
-enum AlignSetting { "start", "middle", "end", "left", "right" };
-[Constructor(double startTime, double endTime, DOMString text)]
-interface VTTCue : TextTrackCue {
-  attribute VTTRegion? region;
-  attribute DirectionSetting vertical;
-  attribute boolean snapToLines;
-  attribute (double or AutoKeyword) line;
-  attribute LineAlignSetting lineAlign;
-  attribute (double or AutoKeyword) position;
-  attribute PositionAlignSetting positionAlign;
-  attribute double size;
-  attribute AlignSetting align;
-  attribute DOMString text;
-  DocumentFragment getCueAsHTML();
-};</pre>
+    <pre class="idl">
+    enum AutoKeyword { "auto" };
+    enum DirectionSetting { "" /* horizontal */, "rl", "lr" };
+    enum LineAlignSetting { "start", "middle", "end" };
+    enum PositionAlignSetting { "start", "middle", "end", "auto" };
+    enum AlignSetting { "start", "middle", "end", "left", "right" };
+    [Constructor(double startTime, double endTime, DOMString text)]
+    interface VTTCue : TextTrackCue {
+      attribute VTTRegion? region;
+      attribute DirectionSetting vertical;
+      attribute boolean snapToLines;
+      attribute (double or AutoKeyword) line;
+      attribute LineAlignSetting lineAlign;
+      attribute (double or AutoKeyword) position;
+      attribute PositionAlignSetting positionAlign;
+      attribute double size;
+      attribute AlignSetting align;
+      attribute DOMString text;
+      DocumentFragment getCueAsHTML();
+    };
+    </pre>
 
     <dl class="domintro">
 
@@ -5046,17 +5073,18 @@ interface VTTCue : TextTrackCue {
     <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
     <pre class="idl">
-enum ScrollSetting { "" /* none */, "up" };
-[Constructor]
-interface VTTRegion {
-  attribute double width;
-  attribute long lines;
-  attribute double regionAnchorX;
-  attribute double regionAnchorY;
-  attribute double viewportAnchorX;
-  attribute double viewportAnchorY;
-  attribute ScrollSetting scroll;
-};</pre>
+    enum ScrollSetting { "" /* none */, "up" };
+    [Constructor]
+    interface VTTRegion {
+      attribute double width;
+      attribute long lines;
+      attribute double regionAnchorX;
+      attribute double regionAnchorY;
+      attribute double viewportAnchorX;
+      attribute double viewportAnchorY;
+      attribute ScrollSetting scroll;
+    };
+    </pre>
 
     <dl class="domintro">
 

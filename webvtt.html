@@ -1167,6 +1167,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
     <p>The main use for WebVTT files is captioning or subtitling video content. Here is a sample file
    that captions an interview:</p>
 <pre>WEBVTT
+
 00:11.000 --> 00:13.000
 &lt;v Roger Bingham>We are in New York City
 
@@ -1204,17 +1205,19 @@ the former is a Draft Community Group Report that continues to evolve. </p>
 &lt;v Neil deGrasse Tyson>&lt;i>Laughs&lt;/i>
 
 00:35.500 --> 00:38.000
-&lt;v Roger Bingham>You know I’m so excited my glasses are falling off here.</pre>
+&lt;v Roger Bingham>You know I’m so excited my glasses are falling off here.
+</pre>
     <section>
      <h3 class="heading settled" data-level="1.1" id="introduction-multiple-lines"><span class="secno">1.1. </span><span class="content">Cues with multiple lines</span><a class="self-link" href="#introduction-multiple-lines"></a></h3>
      <p><i>This section is non-normative.</i></p>
      <p>Line breaks in cues are honored. User agents will also insert extra line breaks if necessary
     to fit the cue in the cue’s width. In general, therefore, authors are encouraged to write cues
     all on one line except when a line break is definitely necessary.</p>
-     <div class="example" id="example-dde10b1d">
-      <a class="self-link" href="#example-dde10b1d"></a> 
+     <div class="example" id="example-296d8bca">
+      <a class="self-link" href="#example-296d8bca"></a> 
       <p>These captions on a public service announcement video demonstrate line breaking:</p>
 <pre>WEBVTT
+
 00:01.000 --> 00:04.000
 Never drink liquid nitrogen.
 
@@ -1225,35 +1228,37 @@ Never drink liquid nitrogen.
 00:10.000 --> 00:14.000
 The Organisation for Sample Public Service Announcements accepts no liability for the content of this advertisement, or for the consequences of any actions taken on the basis of the information provided.</pre>
       <p>The first cue is simple, it will probably just display on one line. The second will take two
-     lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
-     multiple lines. For example, the three cues could look like this:</p>
-<pre>           Never drink liquid nitrogen.
-    — It will perforate your stomach.
-            — You could die.
+          lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
+          multiple lines. For example, the three cues could look like this:</p>
+<pre>           Never drink liquid nitrogen.
 
-The Organisation for Sample Public Service
-Announcements accepts no liability for the
-content of this advertisement, or for the
- consequences of any actions taken on the
-    basis of the information provided.</pre>
+        — It will perforate your stomach.
+                — You could die.
+
+    The Organisation for Sample Public Service
+    Announcements accepts no liability for the
+    content of this advertisement, or for the
+     consequences of any actions taken on the
+        basis of the information provided.</pre>
       <p>If the width of the cues is smaller, the first two cues could wrap as well, as in the
      following example. Note how the second cue’s explicit line break is still honored, however:</p>
-<pre>       Never drink  liquid nitrogen.
+<pre>      Never drink
+    liquid nitrogen.
 
-— It will perforate
-    your stomach.
-  — You could die.
+  — It will perforate
+      your stomach.
+    — You could die.
 
-The Organisation for
-Sample Public Service
-Announcements accepts
-no liability for the
-   content of this
-advertisement, or for
- the consequences of
-any actions taken on
-  the basis of the
-information provided.</pre>
+  The Organisation for
+  Sample Public Service
+  Announcements accepts
+  no liability for the
+     content of this
+  advertisement, or for
+   the consequences of
+  any actions taken on
+    the basis of the
+  information provided.</pre>
       <p>Also notice how the wrapping is done so as to keep the line lengths balanced.</p>
      </div>
     </section>
@@ -1263,10 +1268,11 @@ information provided.</pre>
      <p>Comments can be included in WebVTT files.</p>
      <p>Comments are just blocks that are preceded by a blank line, start with the word
     "<code>NOTE</code>" (followed by a space or newline), and end at the first blank line.</p>
-     <div class="example" id="example-fca3ee1c">
-      <a class="self-link" href="#example-fca3ee1c"></a> 
+     <div class="example" id="example-079549ce">
+      <a class="self-link" href="#example-079549ce"></a> 
       <p>Here, a one-line comment is used to note a possible problem with a cue.</p>
 <pre>WEBVTT
+
 00:01.000 --> 00:04.000
 Never drink liquid nitrogen.
 
@@ -1274,12 +1280,14 @@ NOTE I’m not sure the timing is right on the following cue.
 
 00:05.000 --> 00:09.000
 — It will perforate your stomach.
-— You could die.</pre>
+— You could die.
+</pre>
      </div>
-     <div class="example" id="example-cec2b14d">
-      <a class="self-link" href="#example-cec2b14d"></a> 
+     <div class="example" id="example-66d51cdb">
+      <a class="self-link" href="#example-66d51cdb"></a> 
       <p>In this example, the author has written many comments.</p>
 <pre>WEBVTT
+
 NOTE
 This file was written by Jill. I hope
 you enjoy reading it. Some things to
@@ -1298,35 +1306,41 @@ NOTE check next cue
 — It will perforate your stomach.
 — You could die.
 
-NOTE end of file</pre>
+NOTE end of file
+</pre>
      </div>
     </section>
     <section>
      <h3 class="heading settled" data-level="1.3" id="introduction-other-features"><span class="secno">1.3. </span><span class="content">Other features</span><a class="self-link" href="#introduction-other-features"></a></h3>
      <p><i>This section is non-normative.</i></p>
      <p>WebVTT also supports some less-often used features.</p>
-     <div class="example" id="example-b9cc45b3">
-      <a class="self-link" href="#example-b9cc45b3"></a> 
+     <div class="example" id="example-460c7089">
+      <a class="self-link" href="#example-460c7089"></a> 
       <p>In this example, the cues have an identifier:</p>
 <pre>WEBVTT
+
 1
 00:00.000 --> 00:02.000
 That’s an, an, that’s an L!
 
 crédit de transcription
 00:04.000 --> 00:05.000
-Transcrit par Célestes™</pre>
+Transcrit par Célestes™
+</pre>
       <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
      escape sequences):</p>
-<pre>::cue(#\31) { color: green; }::cue(#crédit\ de\ transcription) { color: red; }</pre>
+<pre>::cue(#\31) { color: green; }
+::cue(#crédit\ de\ transcription) { color: red; }
+</pre>
      </div>
-     <div class="example" id="example-531e8e61">
-      <a class="self-link" href="#example-531e8e61"></a> 
+     <div class="example" id="example-395a5e9b">
+      <a class="self-link" href="#example-395a5e9b"></a> 
       <p>In this example, each cue says who is talking using voice spans. In the first cue, the span
      specifying the speaker is also annotated with two classes, "first" and "loud". In the third
      cue, there is also some italics text (not associated with a specific speaker). The last cue is
      annotated with just the class "loud".</p>
 <pre>WEBVTT
+
 00:00.000 --> 00:02.000
 &lt;v.first.loud Esme>It’s a blue apple tree!
 
@@ -1337,18 +1351,22 @@ Transcrit par Célestes™</pre>
 &lt;v Esme>Hee!&lt;/v> &lt;i>laughter&lt;/i>
 
 00:06.000 --> 00:08.000
-&lt;v.loud Mary>That’s awesome!</pre>
+&lt;v.loud Mary>That’s awesome!
+</pre>
       <p>Notice that as a special exception, the voice spans don’t have to be closed if they cover
      the entire cue text.</p>
       <p>Style sheets can style these spans:</p>
-<pre>::cue(v[voice="Esme"]) { color: blue }::cue(v[voice="Mary"]) { color: green }
+<pre>::cue(v[voice="Esme"]) { color: blue }
+::cue(v[voice="Mary"]) { color: green }
 ::cue(i) { font-style: italic }
-::cue(.loud) { font-size: 2em }</pre>
+::cue(.loud) { font-size: 2em }
+</pre>
      </div>
-     <div class="example" id="example-9e54952e">
-      <a class="self-link" href="#example-9e54952e"></a> 
+     <div class="example" id="example-4e880030">
+      <a class="self-link" href="#example-4e880030"></a> 
       <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 <pre>WEBVTT
+
 00:00:00.000 --> 00:00:04.000 position:10%,start align:start size:35%
 Where did he go?
 
@@ -1356,7 +1374,8 @@ Where did he go?
 I think he went down this lane.
 
 00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
-What are you waiting for?</pre>
+What are you waiting for?
+</pre>
       <p>The cues cover only 35% of the video viewport’s width. The first cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> left aligned at the 10% mark of the video viewport width and
      the text is left aligned within that box - probably underneath a speaker on the left of the
      video image. "start" alignment of the cue box is the default for start aligned text, so does
@@ -1365,13 +1384,14 @@ What are you waiting for?</pre>
      achieved with "position:55%,start", which explicitly positions the cue box. The third cue has
      middle aligned text within the same type of cue box as the first cue.</p>
      </div>
-     <div class="example" id="example-d8801e8e">
-      <a class="self-link" href="#example-d8801e8e"></a> 
+     <div class="example" id="example-c53bb98f">
+      <a class="self-link" href="#example-c53bb98f"></a> 
       <p>This example shows two regions containing rollup captions for two different speakers. Fred’s
      cues scroll up in a region in the left half of the video, Bill’s cues scroll up in a region on
      the right half of the video. Fred’s first cue disappears at 12.5sec even though it is defined
      until 20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:</p>
-<pre>WEBVTTRegion: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
+<pre>WEBVTT
+Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
 Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
 
 00:00:00.000 --> 00:00:20.000 region:fred align:left
@@ -1390,7 +1410,8 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
 &lt;v Fred>This is my fourth!
 
 00:00:12.500 --> 00:00:32.500 region:fred align:left
-&lt;v Fred>OK, let’s go.</pre>
+&lt;v Fred>OK, let’s go.
+</pre>
       <p>Note that regions are only defined for horizontal cues.</p>
      </div>
     </section>
@@ -2278,10 +2299,11 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
        <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1 &lt;= x2</var> and <var>y1
       >= y2</var>.
       </ul>
-      <div class="example" id="example-59cb7886">
-       <a class="self-link" href="#example-59cb7886"></a> 
+      <div class="example" id="example-455943e4">
+       <a class="self-link" href="#example-455943e4"></a> 
        <p>The following example matches this definition:</p>
 <pre>WEBVTT
+
 00:00.000 --> 01:24.000
 Introduction
 
@@ -2298,7 +2320,8 @@ Scrolling Effects
 Achim’s Demo
 
 03:00.000 --> 05:00.000
-Timeline Panel</pre>
+Timeline Panel
+</pre>
        <p>Notice how you can express the cues in this WebVTT file as a tree structure:</p>
        <ul>
         <li>
@@ -2321,11 +2344,13 @@ Timeline Panel</pre>
        <p>If the file has cues that can’t be expressed in this fashion, then they don’t match the
       definition of a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues">WebVTT file using only nested cues</a>. For example:</p>
 <pre>WEBVTT
+
 00:00.000 --> 01:00.000
 The First Minute
 
 00:30.000 --> 01:30.000
-The Final Minute</pre>
+The Final Minute
+</pre>
        <p>In this ninety-second example, the two cues partly overlap, with the first ending before
       the second ends and the second starting before the first ends. This therefore is not a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues">WebVTT file using only nested cues</a>.</p>
       </div>
@@ -4321,7 +4346,8 @@ The Final Minute</pre>
     <section>
      <h3 class="heading settled" data-level="7.1" id="the-vttcue-interface"><span class="secno">7.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
      <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
-<pre class="idl">enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword<a class="self-link" href="#enumdef-autokeyword"></a></dfn> { "auto" };enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting<a class="self-link" href="#enumdef-directionsetting"></a></dfn> { "" /* horizontal */, "rl", "lr" };
+<pre class="idl">enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword<a class="self-link" href="#enumdef-autokeyword"></a></dfn> { "auto" };
+enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting<a class="self-link" href="#enumdef-directionsetting"></a></dfn> { "" /* horizontal */, "rl", "lr" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting<a class="self-link" href="#enumdef-linealignsetting"></a></dfn> { "start", "middle", "end" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting<a class="self-link" href="#enumdef-positionalignsetting"></a></dfn> { "start", "middle", "end", "auto" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting<a class="self-link" href="#enumdef-alignsetting"></a></dfn> { "start", "middle", "end", "left", "right" };
@@ -4338,7 +4364,8 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
   attribute <a data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="AlignSetting " href="#dom-vttcue-align">align</a>;
   attribute DOMString <a class="idl-code" data-link-type="attribute" data-type="DOMString " href="#dom-vttcue-text">text</a>;
   <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
-};</pre>
+};
+</pre>
      <dl class="domintro">
       <dt><var>cue</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">VTTCue</a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )
       <dd>
@@ -4622,7 +4649,8 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
   attribute double <a class="idl-code" data-link-type="attribute" data-type="double " href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
   attribute double <a class="idl-code" data-link-type="attribute" data-type="double " href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="idl-code" data-link-type="attribute" data-type="ScrollSetting " href="#dom-vttregion-scroll">scroll</a>;
-};</pre>
+};
+</pre>
      <dl class="domintro">
       <dt><var>region</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">VTTRegion</a>()
       <dd>
@@ -5251,7 +5279,8 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { "auto" };enum <a href="#enumdef-directionsetting">DirectionSetting</a> { "" /* horizontal */, "rl", "lr" };
+<pre class="idl">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { "auto" };
+enum <a href="#enumdef-directionsetting">DirectionSetting</a> { "" /* horizontal */, "rl", "lr" };
 enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { "start", "middle", "end" };
 enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { "start", "middle", "end", "auto" };
 enum <a href="#enumdef-alignsetting">AlignSetting</a> { "start", "middle", "end", "left", "right" };
@@ -5269,6 +5298,7 @@ interface <a href="#vttcue">VTTCue</a> : <a data-link-type="idl-name" href="http
   attribute DOMString <a class="idl-code" data-link-type="attribute" data-type="DOMString " href="#dom-vttcue-text">text</a>;
   <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
 };
+
 enum <a href="#enumdef-scrollsetting">ScrollSetting</a> { "" /* none */, "up" };
 [<a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
 interface <a href="#vttregion">VTTRegion</a> {
@@ -5280,6 +5310,7 @@ interface <a href="#vttregion">VTTRegion</a> {
   attribute double <a class="idl-code" data-link-type="attribute" data-type="double " href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="idl-code" data-link-type="attribute" data-type="ScrollSetting " href="#dom-vttregion-scroll">scroll</a>;
 };
+
 </pre>
  </body>
 </html>
