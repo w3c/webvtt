@@ -2944,7 +2944,7 @@ elements in HTML or the DOM. <a data-link-type="dfn" href="#webvtt-internal-node
 Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles do not occur; the
 parent-child relationships so constructed form a tree structure. <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their <dfn data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable classes" data-noexport="" id="webvtt-node-objects-applicable-classes">applicable classes<a class="self-link" href="#webvtt-node-objects-applicable-classes"></a></dfn>, and a language, known as
 their <dfn data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable language" data-noexport="" id="webvtt-node-objects-applicable-language">applicable language<a class="self-link" href="#webvtt-node-objects-applicable-language"></a></dfn>, which is to be
-interpreted as a BCP 47 language code. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
+interpreted as a BCP 47 language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
    <p>There are several concrete classes of <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node
 Objects</a>:</p>
    <dl>
@@ -3013,7 +3013,7 @@ use the following algorithm. This algorithm returns a <a data-link-type="dfn" hr
     <li>
      <p>Let <var>current</var> be the <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node Object</a> <var>result</var>.</p>
     <li>
-     <p>Let <var>language stack</var> be a stack of language codes, initially empty.</p>
+     <p>Let <var>language stack</var> be a stack of language tags, initially empty.</p>
     <li>
      <p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, return <var>result</var> and abort these steps.</p>
     <li>

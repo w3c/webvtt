@@ -2528,7 +2528,7 @@ parent-child relationships so constructed form a tree structure. <a lt="WebVTT I
 Object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their
 <dfn lt="WebVTT Node Object's applicable classes">applicable classes</dfn>, and a language, known as
 their <dfn lt="WebVTT Node Object's applicable language">applicable language</dfn>, which is to be
-interpreted as a BCP 47 language code. [[!BCP47]]</p>
+interpreted as a BCP 47 language tag. [[!BCP47]]</p>
 
 <p>There are several concrete classes of <a lt="WebVTT Internal Node Object">WebVTT Internal Node
 Objects</a>:</p>
@@ -2630,7 +2630,7 @@ use the following algorithm. This algorithm returns a <a>list of WebVTT Node Obj
 
  <li><p>Let <var>current</var> be the <a>WebVTT Internal Node Object</a> <var>result</var>.</p></li>
 
- <li><p>Let <var>language stack</var> be a stack of language codes, initially empty.</p></li>
+ <li><p>Let <var>language stack</var> be a stack of language tags, initially empty.</p></li>
 
  <li><p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, return
  <var>result</var> and abort these steps.</p></li>
