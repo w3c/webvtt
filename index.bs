@@ -54,6 +54,7 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
         urlPrefix: dom.html
             text: title; url: #attr-title
             text: lang; url: #attr-lang
+            text: class; url: #classes
 urlPrefix: https://encoding.spec.whatwg.org/
     type: dfn
         text: utf-8 decode
@@ -3265,44 +3266,44 @@ Node Objects</a> to DOM nodes:</p>
  <tbody>
   <tr>
    <td class=long><a>List of WebVTT Node Objects</a></td>
-   <td class=long>{{DocumentFragment}} node</td>
+   <td class=long>{{DocumentFragment}} node.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Region Object</a></td>
-   <td class=long>{{DocumentFragment}} node</td>
+   <td class=long>{{DocumentFragment}} node.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Class Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>".</td>
+   <td class=long>HTML <a spec=html element>span</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Italic Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>i</code>".</td>
+   <td class=long>HTML <a spec=html element>i</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Bold Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>b</code>".</td>
+   <td class=long>HTML <a spec=html element>b</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Underline Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>u</code>".</td>
+   <td class=long>HTML <a spec=html element>u</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Ruby Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>ruby</code>".</td>
+   <td class=long>HTML <a spec=html element>ruby</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Ruby Text Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>rt</code>".</td>
+   <td class=long>HTML <a spec=html element>rt</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Voice Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a <a
+   <td class=long>HTML <a spec=html element>span</a> element with a <a spec=html
    element-attr>title</a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Language Object</a></td>
-   <td class=long>{{HTMLElement}} element node with {{Node/localName}} "<code>span</code>", and a <a
+   <td class=long>HTML <a spec=html element>span</a> element with a <a spec=html
    element-attr>lang</a> attribute set to the <a>WebVTT Language Object</a>'s <a lt="WebVTT Node
    Object's applicable language">applicable language</a>.</td>
   </tr>
@@ -3322,11 +3323,12 @@ Node Objects</a> to DOM nodes:</p>
  </tbody>
 </table>
 
-<p>{{HTMLElement}} nodes created as part of the mapping described above must have their
-{{Node/namespaceURI}} set to the <a>HTML namespace</a>, and, if the corresponding <a>WebVTT Internal
-Node Object</a> has any <a lt="WebVTT Node Object's applicable classes">applicable classes</a>, must
-have a <a><code>class</code></a><!--XXX--> attribute set to the string obtained by concatenating all
-those classes, each separated from the next by a single U+0020 SPACE character.</p>
+<p>HTML elements created as part of the mapping described above must have their
+{{Node/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
+in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a
+lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a spec=html
+element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
+separated from the next by a single U+0020 SPACE character.</p>
 
 <p>The {{Node/ownerDocument}} attribute of all nodes in the DOM tree must be set to the given
 document <var>owner</var>.</p>
