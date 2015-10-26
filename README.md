@@ -1,5 +1,9 @@
 WebVTT
 ======
+<img src="http://w3c.github.io/webvtt/logo/196x196.png"
+     srcset="http://w3c.github.io/webvtt/logo/196x196.png 196w,
+             http://w3c.github.io/webvtt/logo/1080x1080.png 1080w"
+     sizes="98px" width="98" height="98" align="right" alt="">
 
 This is the source of the [WebVTT specification](https://w3c.github.io/webvtt/).
 
