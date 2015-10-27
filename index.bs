@@ -13,10 +13,13 @@ Former Editor: Philip Jägenstedt, Opera Software ASA http://www.opera.com/, phi
 Former Editor: Ian Hickson, Google http://www.google.com/, ian@hixie.ch
 !Participate: <a href=https://github.com/w3c/webvtt>GitHub w3c/webvtt</a> (<a href=https://github.com/w3c/webvtt/issues/new>new issue</a>, <a href=https://github.com/w3c/webvtt/issues>open issues</a>, <a href=https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&component=WebVTT&resolution=--->legacy open bugs</a>)
 !Commits: <a href=https://github.com/w3c/webvtt/commits>GitHub w3c/webvtt/commits</a>
+!Commits: <a href=https://twitter.com/webvtt>@webvtt</a>
 Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
+Ignored Terms: unicode-bidi, direction, color
+Ignored Vars: seconds-frac, selector, fragment
 
 </pre>
 
@@ -1609,14 +1612,14 @@ applied to the line boxes in the cue relative to the region box.</p>
 <p>A <a>WebVTT file</a> whose cues all follow the following rules is said to be a <dfn>WebVTT file
 using only nested cues</dfn>:</p>
 
-<p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets <var>(x1,
-y1)</var> and <var>(x2, y2)</var> respectively,</p>
+<p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets
+(<var>x1</var>, <var>y1</var>) and (<var>x2</var>, <var>y2</var>) respectively,</p>
 
 <ul>
- <li>either <var>cue1</var> lies fully within <var>cue2</var>, i.e. <var>x1 >= x2</var> and <var>y1
- &lt;= y2</var></li>
- <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1 &lt;= x2</var> and <var>y1 >=
- y2</var>.</li>
+ <li>either <var>cue1</var> lies fully within <var>cue2</var>, i.e. <var>x1</var> >= <var>x2</var>
+ and <var>y1</var> &lt;= <var>y2</var></li>
+ <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1</var> &lt;= <var>x2</var> and
+ <var>y1</var> >= <var>y2</var>.</li>
 </ul>
 
 <div class="example">
@@ -1824,9 +1827,10 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
    <li><p><i>Metadata header creation</i>: Let <var>metadata</var> be a new <a>WebVTT metadata
    header</a>.</p></li>
 
-   <li><p>Let <a lt="WebVTT metadata header name">metadata's name</a> be the empty string.</p></li>
+   <li><p>Let <var>metadata</var>'s <a lt="WebVTT metadata header name">name</a> be the empty
+   string.</p></li>
 
-   <li><p>Let <a lt="WebVTT metadata header value">metadata's value</a> be the empty
+   <li><p>Let <var>metadata</var>'s <a lt="WebVTT metadata header value">value</a> be the empty
    string.</p></li>
 
    <li><p>If <var>line</var> contains the character ":" (A U+003A COLON), then set <a lt="WebVTT
@@ -1874,7 +1878,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  <i>header</i>.</p></li>
 
  <li><p><i>Cue loop</i>: If the <var>already collected line</var> flag is set, then jump to the step
- labeled <var>cue creation</var>.</p></li>
+ labeled <i>cue creation</i>.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p></li>

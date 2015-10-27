@@ -2,6 +2,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <title>WebVTT: The Web Video Text Tracks Format</title>
+  <link href="logo/64x64.png" rel="icon" type="image/png">
 <style data-fill-with="stylesheet">/* This section copied from the W3C's ED styles. */
 
 	body {
@@ -1002,15 +1003,13 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-24">24 October 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-28">28 October 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://w3c.github.io/webvtt/">https://w3c.github.io/webvtt/</a>
      <dt>Test Suite:
      <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/webvtt">https://github.com/w3c/web-platform-tests/tree/master/webvtt</a>
-     <dt>Issue Tracking:
-     <dd><a href="https://github.com/w3c/webvtt/issues/">GitHub</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software ASA</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:ckennedy@apple.com">Courtney Kennedy</a> (<a class="p-org org" href="http://www.apple.com/">Apple Inc.</a>)
@@ -1025,6 +1024,7 @@
      <dd><span><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (<a href="https://github.com/w3c/webvtt/issues/new">new issue</a>, <a href="https://github.com/w3c/webvtt/issues">open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---">legacy open bugs</a>)</span>
      <dt>Commits:
      <dd><span><a href="https://github.com/w3c/webvtt/commits">GitHub w3c/webvtt/commits</a></span>
+     <dd><span><a href="https://twitter.com/webvtt">@webvtt</a></span>
     </dl>
    </div>
    <div data-fill-with="warning"></div>
@@ -2259,13 +2259,11 @@ applied to the line boxes in the cue relative to the region box.</p>
    <h4 class="heading settled" data-level="4.5.1" id="file-using-only-nested-cues"><span class="secno">4.5.1. </span><span class="content">WebVTT file using only nested cues</span><a class="self-link" href="#file-using-only-nested-cues"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> whose cues all follow the following rules is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-only-nested-cues">WebVTT file
 using only nested cues<a class="self-link" href="#webvtt-file-using-only-nested-cues"></a></dfn>:</p>
-   <p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets <var>(x1,
-y1)</var> and <var>(x2, y2)</var> respectively,</p>
+   <p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets
+(<var>x1</var>, <var>y1</var>) and (<var>x2</var>, <var>y2</var>) respectively,</p>
    <ul>
-    <li>either <var>cue1</var> lies fully within <var>cue2</var>, i.e. <var>x1 >= x2</var> and <var>y1
- &lt;= y2</var>
-    <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1 &lt;= x2</var> and <var>y1 >=
- y2</var>.
+    <li>either <var>cue1</var> lies fully within <var>cue2</var>, i.e. <var>x1</var> >= <var>x2</var> and <var>y1</var> &lt;= <var>y2</var>
+    <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1</var> &lt;= <var>x2</var> and <var>y1</var> >= <var>y2</var>.
    </ul>
    <div class="example" id="example-0689f1d2">
     <a class="self-link" href="#example-0689f1d2"></a> 
@@ -2413,9 +2411,10 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
        <p><i>Metadata header creation</i>: Let <var>metadata</var> be a new <a data-link-type="dfn" href="#webvtt-metadata-header">WebVTT metadata
    header</a>.</p>
       <li>
-       <p>Let <a data-link-type="dfn" href="#webvtt-metadata-header-name">metadata’s name</a> be the empty string.</p>
+       <p>Let <var>metadata</var>’s <a data-link-type="dfn" href="#webvtt-metadata-header-name">name</a> be the empty
+   string.</p>
       <li>
-       <p>Let <a data-link-type="dfn" href="#webvtt-metadata-header-value">metadata’s value</a> be the empty
+       <p>Let <var>metadata</var>’s <a data-link-type="dfn" href="#webvtt-metadata-header-value">value</a> be the empty
    string.</p>
       <li>
        <p>If <var>line</var> contains the character ":" (A U+003A COLON), then set <a data-link-type="dfn" href="#webvtt-metadata-header-name">metadata’s name</a> to the substring of <var>line</var> before the first
@@ -2451,7 +2450,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
      <p>If <var>line</var> is not the empty string, then jump back to the step labeled <i>header</i>.</p>
     <li>
      <p><i>Cue loop</i>: If the <var>already collected line</var> flag is set, then jump to the step
- labeled <var>cue creation</var>.</p>
+ labeled <i>cue creation</i>.</p>
     <li>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p>
@@ -3958,9 +3957,9 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
    <p>Initialize the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> with the following CSS settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-direction">direction</a> property must be set to <var>direction</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-writing-mode">writing-mode</a> property must be set to <var>writing-mode</var>
+    <li>the <a class="property" data-link-type="propdesc">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
+    <li>the <a class="property" data-link-type="propdesc">direction</a> property must be set to <var>direction</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://svgwg.org/svg2-draft/text.html#WritingModeProperty">writing-mode</a> property must be set to <var>writing-mode</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> property must be set to <var>top</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
@@ -3995,7 +3994,7 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
    </table>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> must be set to
 '5vh sans-serif'. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a> <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> must be set to
+   <p>The <a class="property" data-link-type="propdesc">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> must be set to
 'rgba(255,255,255,1)'. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box">WebVTT cue background box</a> must be set to
 'rgba(0,0,0,0.8)'. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
@@ -4010,12 +4009,12 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
    <p>Every <a data-link-type="dfn" href="#webvtt-region-object">WebVTT region object</a> is initialized with the following CSS settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-writing-mode">writing-mode</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-writing-mode-horizontal-tb">horizontal-tb</a>
+    <li>the <a class="property" data-link-type="propdesc" href="https://svgwg.org/svg2-draft/text.html#WritingModeProperty">writing-mode</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-writing-mode-horizontal-tb">horizontal-tb</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property must be set to 'rgba(0,0,0,0.8)'
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to 'calc(5.33vh/1.3) sans-serif'
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a> shorthand property must be set to '5.33vh'
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to 'rgba(255,255,255,1)'
+    <li>the <a class="property" data-link-type="propdesc">color</a> property must be set to 'rgba(255,255,255,1)'
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-3/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-3/#valdef-overflow-hidden">hidden</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
@@ -4034,7 +4033,7 @@ constructed.</p>
 settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-relative">relative</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
+    <li>the <a class="property" data-link-type="propdesc">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <span class="css">auto</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
@@ -4069,8 +4068,8 @@ corresponding to the <a class="property" data-link-type="propdesc" href="https:/
    <p>The following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue">::cue</a> pseudo-element with no argument; other properties
 set on the pseudo-element must be ignored:</p>
    <ul class="brief">
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a>
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-opacity">opacity</a>
+    <li><a class="property" data-link-type="propdesc">color</a>
+    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-3/#opacity">opacity</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
@@ -4151,8 +4150,8 @@ being treated as follows:</p>
    </ul>
    <p>The following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue-selector">::cue()</a> pseudo-element with an argument:</p>
    <ul class="brief">
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a>
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-opacity">opacity</a>
+    <li><a class="property" data-link-type="propdesc">color</a>
+    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-3/#opacity">opacity</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
@@ -4912,10 +4911,9 @@ using only nested cues</a><span>, in §4.5.1</span>
      <li><a href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a>
     </ul>
    <li>
-    <a data-link-type="biblio" href="#biblio-css-color-4">[css-color-4]</a> defines the following terms:
+    <a data-link-type="biblio" href="#biblio-css-color-3">[css-color-3]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a>
-     <li><a href="https://drafts.csswg.org/css-color-4/#propdef-opacity">opacity</a>
+     <li><a href="https://drafts.csswg.org/css-color-3/#opacity">opacity</a>
     </ul>
    <li>
     <a data-link-type="biblio" href="#biblio-css-display-3">[css-display-3]</a> defines the following terms:
@@ -4992,11 +4990,8 @@ using only nested cues</a><span>, in §4.5.1</span>
    <li>
     <a data-link-type="biblio" href="#biblio-css-writing-modes-3">[css-writing-modes-3]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-writing-modes-3/#propdef-direction">direction</a>
      <li><a href="https://drafts.csswg.org/css-writing-modes-3/#valdef-writing-mode-horizontal-tb">horizontal-tb</a>
      <li><a href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
-     <li><a href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a>
-     <li><a href="https://drafts.csswg.org/css-writing-modes-3/#propdef-writing-mode">writing-mode</a>
     </ul>
    <li>
     <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a> defines the following terms:
@@ -5042,6 +5037,11 @@ using only nested cues</a><span>, in §4.5.1</span>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-u-element">u</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a>
     </ul>
+   <li>
+    <a data-link-type="biblio" href="#biblio-svg2">[SVG2]</a> defines the following terms:
+    <ul>
+     <li><a href="https://svgwg.org/svg2-draft/text.html#WritingModeProperty">writing-mode</a>
+    </ul>
   </ul>
   <h2 class="no-num heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
@@ -5054,14 +5054,16 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dd>Bert Bos; et al. <a href="http://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="http://www.w3.org/TR/CSS2">http://www.w3.org/TR/CSS2</a>
    <dt id="biblio-html"><a class="self-link" href="#biblio-html"></a>[HTML]
    <dd>Ian Hickson. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-svg2"><a class="self-link" href="#biblio-svg2"></a>[SVG2]
+   <dd>Nikos Andronikos; et al. <a href="https://svgwg.org/svg2-draft/">Scalable Vector Graphics (SVG) 2</a>. 15 September 2015. WD. URL: <a href="https://svgwg.org/svg2-draft/">https://svgwg.org/svg2-draft/</a>
    <dt id="biblio-css-align-3"><a class="self-link" href="#biblio-css-align-3"></a>[CSS-ALIGN-3]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-align/">CSS Box Alignment Module Level 3</a>. 18 December 2014. WD. URL: <a href="http://dev.w3.org/csswg/css-align/">http://dev.w3.org/csswg/css-align/</a>
    <dt id="biblio-css-backgrounds-3"><a class="self-link" href="#biblio-css-backgrounds-3"></a>[CSS-BACKGROUNDS-3]
    <dd>CSS Backgrounds and Borders Module Level 3 URL: <a href="https://drafts.csswg.org/css-backgrounds-3/">https://drafts.csswg.org/css-backgrounds-3/</a>
-   <dt id="biblio-css-color-4"><a class="self-link" href="#biblio-css-color-4"></a>[CSS-COLOR-4]
-   <dd>CSS Color Module Level 4 URL: <a href="https://drafts.csswg.org/css-color-4/">https://drafts.csswg.org/css-color-4/</a>
+   <dt id="biblio-css-color-3"><a class="self-link" href="#biblio-css-color-3"></a>[CSS-COLOR-3]
+   <dd>CSS Color Module Level 3 URL: <a href="https://drafts.csswg.org/css-color-3/">https://drafts.csswg.org/css-color-3/</a>
    <dt id="biblio-css-display-3"><a class="self-link" href="#biblio-css-display-3"></a>[CSS-DISPLAY-3]
-   <dd>Tab Atkins Jr.; Elika Etemad. <a href="http://dev.w3.org/csswg/css-display/">CSS Display Module Level 3</a>. 21 July 2015. WD. URL: <a href="http://dev.w3.org/csswg/css-display/">http://dev.w3.org/csswg/css-display/</a>
+   <dd>Tab Atkins Jr.; Elika Etemad. <a href="http://dev.w3.org/csswg/css-display/">CSS Display Module Level 3</a>. 15 October 2015. WD. URL: <a href="http://dev.w3.org/csswg/css-display/">http://dev.w3.org/csswg/css-display/</a>
    <dt id="biblio-css-flexbox-1"><a class="self-link" href="#biblio-css-flexbox-1"></a>[CSS-FLEXBOX-1]
    <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="http://dev.w3.org/csswg/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. 14 May 2015. LCWD. URL: <a href="http://dev.w3.org/csswg/css-flexbox/">http://dev.w3.org/csswg/css-flexbox/</a>
    <dt id="biblio-css-fonts-3"><a class="self-link" href="#biblio-css-fonts-3"></a>[CSS-FONTS-3]
