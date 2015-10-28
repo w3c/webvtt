@@ -3196,7 +3196,7 @@ value).</p>
 </ol>
 
 
-<h3 id=dom-construction-rules algorithm><dfn>WebVTT cue text DOM construction rules</dfn></h3>
+<h3 id=dom-construction-rules><dfn>WebVTT cue text DOM construction rules</dfn></h3>
 
 <p class="note">For the purpose of retrieving a <a>WebVTT cue</a>'s content via the
 {{VTTCue/getCueAsHTML()}} method of the {{VTTCue}} interface, it needs to be parsed to a
@@ -3291,7 +3291,8 @@ defined above must be left at their initial values.</p>
 <h3 id=rules-for-extracting-the-chapter-title algorithm>WebVTT rules for extracting the chapter
 title</h3>
 
-<p>The <dfn>WebVTT rules for extracting the chapter title</dfn> are as follows:</p>
+<p>The <dfn>WebVTT rules for extracting the chapter title</dfn> for a <a>WebVTT cue</a> |cue| are as
+follows:</p>
 
 <ol>
 
@@ -4418,7 +4419,7 @@ Node Objects</a>. [[!SELECTORS4]]</p>
 <p>The <dfn>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node Objects</a>
 that are <i>in the past</i>.</p>
 
-<p algorithm="WebVTT Node Object">A <a>WebVTT Node Object</a> |c| is <dfn>in the past</dfn> if, in a
+<p algorithm="in the past">A <a>WebVTT Node Object</a> |c| is <dfn>in the past</dfn> if, in a
 pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
 there exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
 position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
@@ -4427,8 +4428,8 @@ position</a> of the <a>media element</a> that is the <i>matched element</i>, ent
 <p>The <dfn>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
 
-<p algorithm="WebVTT Node Object">A <a>WebVTT Node Object</a> |c| is <dfn>in the future</dfn> if, in
-a pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
+<p algorithm="in the future">A <a>WebVTT Node Object</a> |c| is <dfn>in the future</dfn> if, in a
+pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
 there exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
 position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before the
 <a>WebVTT Node Object</a> |c|.</p>
