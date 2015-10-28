@@ -505,10 +505,9 @@ specification are intended to be easy to follow, and not intended to be performa
    horizontally and is offset vertically from the video viewport's top edge, with consecutive lines
    displayed below each other),</li>
 
-   <li> <dfn lt="WebVTT cue vertical growing left writing direction">vertical growing left</dfn> (a
-   line extends vertically and is offset horizontally from the video viewport's
-   right edge, with consecutive lines displayed to the left of each other<!-- used for east
-   asian-->), or</li>
+   <li><dfn lt="WebVTT cue vertical growing left writing direction">vertical growing left</dfn> (a
+   line extends vertically and is offset horizontally from the video viewport's right edge, with
+   consecutive lines displayed to the left of each other<!-- used for east asian-->), or</li>
 
    <li><dfn lt="WebVTT cue vertical growing right writing direction">vertical growing right</dfn> (a
    line extends vertically and is offset horizontally from the video viewport's left edge, with
@@ -564,7 +563,7 @@ specification are intended to be easy to follow, and not intended to be performa
   returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
 
-  <ol>
+  <ol algorithm="computed line">
 
    <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
    flag</a> of the <a>WebVTT cue</a> is not set, and the <a lt="WebVTT cue line">line</a> is
@@ -579,24 +578,24 @@ specification are intended to be easy to follow, and not intended to be performa
    the value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value
    <a lt="WebVTT cue line automatic">auto</a>.)</p></li>
 
-   <li><p>Let <var>cue</var> be the <a>WebVTT cue</a>.</p></li>
+   <li><p>Let |cue| be the <a>WebVTT cue</a>.</p></li>
 
-   <li><p>If <var>cue</var> is not in a <a lt="text track list of cues">list of cues</a> of a
-   <a>text track</a>, or if that <a>text track</a> is not in the <a>list of text tracks</a> of a
-   <a>media element</a>, return &#x2212;1 and abort these steps.</p></li>
+   <li><p>If |cue| is not in a <a lt="text track list of cues">list of cues</a> of a <a>text
+   track</a>, or if that <a>text track</a> is not in the <a>list of text tracks</a> of a <a>media
+   element</a>, return &#x2212;1 and abort these steps.</p></li>
 
-   <li><p>Let <var>track</var> be the <a>text track</a> whose <a lt="text track list of cues">list
-   of cues</a> the <var>cue</var> is in.</p></li>
+   <li><p>Let |track| be the <a>text track</a> whose <a lt="text track list of cues">list of
+   cues</a> the |cue| is in.</p></li>
 
-   <li><p>Let <var>n</var> be the number of <a lt="text track">text tracks</a> whose <a>text track
-   mode</a> is <a lt="text track showing">showing</a> and that are in the <a>media element</a>'s
-   <a>list of text tracks</a> before <var>track</var>.</p></li>
+   <li><p>Let |n| be the number of <a lt="text track">text tracks</a> whose <a>text track mode</a>
+   is <a lt="text track showing">showing</a> and that are in the <a>media element</a>'s <a>list of
+   text tracks</a> before |track|.</p></li>
 
-   <li><p>Increment <var>n</var> by one.</p></li>
+   <li><p>Increment |n| by one.</p></li>
 
-   <li><p>Negate <var>n</var>.</p></li>
+   <li><p>Negate |n|.</p></li>
 
-   <li><p>Return <var>n</var>.</p></li>
+   <li><p>Return |n|.</p></li>
 
   </ol>
 
@@ -653,7 +652,7 @@ specification are intended to be easy to follow, and not intended to be performa
   is that returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
 
-  <ol>
+  <ol algorithm="computed position">
 
    <li><p>If the <a lt="WebVTT cue position">position</a> is numeric, then return the value of the
    <a lt="WebVTT cue position">position</a> and abort these steps. (Otherwise, the <a lt="WebVTT cue
@@ -720,7 +719,7 @@ specification are intended to be easy to follow, and not intended to be performa
   alignment</dfn> whose value is that returned by the following algorithm, which is defined in terms
   of other aspects of the cue:</p>
 
-  <ol>
+  <ol algorithm="computed position alignment">
 
    <li><p>If the <a>WebVTT cue position alignment</a> is not <a lt="WebVTT cue position automatic
    alignment">auto</a>, then return the value of the <a>WebVTT cue position alignment</a> and abort
@@ -1015,11 +1014,11 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
 <ol>
 
  <li>
-  Optionally (required if <var>hours</var> is non-zero):
+  Optionally (required if |hours| is non-zero):
 
   <ol>
 
-   <li>Two or more <a spec=html>ASCII digits</a>, representing the <var>hours</var> as a base ten
+   <li>Two or more <a spec=html>ASCII digits</a>, representing the |hours| as a base ten
    integer.</li>
 
    <li>A U+003A COLON character (:)</li>
@@ -1028,18 +1027,18 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
 
  </li>
 
- <li>Two <a>ASCII digits</a>, representing the <var>minutes</var> as a base ten integer in the range
- 0&nbsp;&le;&nbsp;<var>minutes</var>&nbsp;&le;&nbsp;59.</li>
+ <li>Two <a>ASCII digits</a>, representing the |minutes| as a base ten integer in the range
+ 0&nbsp;&le;&nbsp;|minutes|&nbsp;&le;&nbsp;59.</li>
 
  <li>A U+003A COLON character (:)</li>
 
- <li>Two <a>ASCII digits</a>, representing the <var>seconds</var> as a base ten integer in the range
- 0&nbsp;&le;&nbsp;<var>seconds</var>&nbsp;&le;&nbsp;59.</li>
+ <li>Two <a>ASCII digits</a>, representing the |seconds| as a base ten integer in the range
+ 0&nbsp;&le;&nbsp;|seconds|&nbsp;&le;&nbsp;59.</li>
 
  <li>A U+002E FULL STOP character (.).</li>
 
- <li>Three <a>ASCII digits</a>, representing the thousandths of a second <var>seconds-frac</var> as
- a base ten integer.</li>
+ <li>Three <a>ASCII digits</a>, representing the thousandths of a second |seconds-frac| as a base
+ ten integer.</li>
 
 </ol>
 
@@ -1222,7 +1221,7 @@ given:</p>
  <li>A <a>WebVTT cue span end tag</a> "<code>lang</code>".</li>
 </ol>
 
-<p>A <dfn>WebVTT cue span start tag</dfn> has a <var>tag name</var> and either <!--allows,-->
+<p>A <dfn>WebVTT cue span start tag</dfn> has a |tag name| and either <!--allows,-->
 requires<!--,--> or disallows an annotation, and consists of the following components, in the order
 given:</p>
 
@@ -1230,7 +1229,7 @@ given:</p>
 
  <li>A U+003C LESS-THAN SIGN character (&lt;).</li>
 
- <li>The <var>tag name</var>.</li>
+ <li>The |tag name|.</li>
 
  <li>
   Zero or more occurrences of the following sequence:
@@ -1278,13 +1277,13 @@ given:</p>
 
 </ol>
 
-<p>A <dfn>WebVTT cue span end tag</dfn> has a <var>tag name</var> and consists of the following
-components, in the order given:</p>
+<p>A <dfn>WebVTT cue span end tag</dfn> has a |tag name| and consists of the following components,
+in the order given:</p>
 
 <ol>
  <li>A U+003C LESS-THAN SIGN character (&lt;).</li>
  <li>U+002F SOLIDUS character (/).</li>
- <li>The <var>tag name</var>.</li>
+ <li>The |tag name|.</li>
  <li>A U+003E GREATER-THAN SIGN character (&gt;).</li>
 </ol>
 
@@ -1362,7 +1361,7 @@ given:</p>
 identifier setting">WebVTT region identifier settings</a> of all <a lt="WebVTT region">WebVTT
 regions</a> of a <a>WebVTT file</a>.</p>
 
-<p class ="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
+<p class="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
 
 <p>A <dfn>WebVTT region width setting</dfn> consists of the following components, in the order
@@ -1372,8 +1371,8 @@ given:</p>
  <li><p>A U+003D EQUALS SIGN character (=).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
-<p class ="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage of
-the video width for the region into which cues are rendered and based on which alignment is
+<p class="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage of the
+video width for the region into which cues are rendered and based on which alignment is
 calculated.</p>
 
 <p>A <dfn>WebVTT region lines setting</dfn> consists of the following components, in the order
@@ -1383,7 +1382,7 @@ given:</p>
  <li><p>A U+003D EQUALS SIGN character (=).</p></li>
  <li><p>One or more <a>ASCII digits</a>.</p></li>
 </ol>
-<p class ="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of lines
+<p class="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of lines
 for the region into which cues are rendered. As such, it defines the height of the roll-up region if
 it is a scroll region.</p>
 
@@ -1396,7 +1395,7 @@ given:</p>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
-<p class ="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages that
+<p class="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages that
 specify the point within the region box that is fixed in location. The first percentage measures the
 x-dimension and the second percentage y-dimension from the top left corner of the region box. If no
 <a>WebVTT region anchor setting</a> is given, the anchor defaults to 0%, 100% (i.e. the bottom left
@@ -1411,13 +1410,13 @@ order given:</p>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
-<p class ="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two
-percentages that specify the point within the video viewport that the region anchor point is
-anchored to. The first percentage measures the x-dimension and the second percentage measures the
-y-dimension from the top left corner of the video viewport box. If no viewport anchor is given, it
-defaults to 0%, 100% (i.e. the bottom left corner).</p>
+<p class="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two percentages
+that specify the point within the video viewport that the region anchor point is anchored to. The
+first percentage measures the x-dimension and the second percentage measures the y-dimension from
+the top left corner of the video viewport box. If no viewport anchor is given, it defaults to 0%,
+100% (i.e. the bottom left corner).</p>
 
-<p class ="note">For browsers, the region maps to an absolute positioned CSS box relative to the
+<p class="note">For browsers, the region maps to an absolute positioned CSS box relative to the
 video viewport, i.e. there is a relative positioned box that represents the video viewport relative
 to which the regions are absolutely positioned. Overflow is hidden.</p>
 
@@ -1428,7 +1427,7 @@ given:</p>
  <li><p>A U+003D EQUALS SIGN character (=).</p></li>
  <li><p>The string "<code>up</code>".</p></li>
 </ol>
-<p class ="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into the
+<p class="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into the
 region are allowed to move out of their initial rendering place and roll up, i.e. move towards the
 top of the video viewport. If the scroll setting is omitted, cues do not move from their rendered
 position.</p>
@@ -1596,7 +1595,7 @@ given:</p>
  SIGN).</p></li>
 </ol>
 
-<p class ="note">A <a>WebVTT region cue setting</a> configures a cue to become part of a region by
+<p class="note">A <a>WebVTT region cue setting</a> configures a cue to become part of a region by
 referencing the region's identifier unless the cue has a <a lt="WebVTT vertical text cue
 setting">"vertical"</a>, <a lt="WebVTT line cue setting">"line"</a> or <a lt="WebVTT size cue
 setting">"size"</a> cue setting. If a cue is part of a region, its cue settings for <a lt="WebVTT
@@ -1612,14 +1611,12 @@ applied to the line boxes in the cue relative to the region box.</p>
 <p>A <a>WebVTT file</a> whose cues all follow the following rules is said to be a <dfn>WebVTT file
 using only nested cues</dfn>:</p>
 
-<p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets
-(<var>x1</var>, <var>y1</var>) and (<var>x2</var>, <var>y2</var>) respectively,</p>
+<p>given any two cues |cue1| and |cue2| with start and end time offsets (|x1|, |y1|) and (|x2|,
+|y2|) respectively,</p>
 
 <ul>
- <li>either <var>cue1</var> lies fully within <var>cue2</var>, i.e. <var>x1</var> >= <var>x2</var>
- and <var>y1</var> &lt;= <var>y2</var></li>
- <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1</var> &lt;= <var>x2</var> and
- <var>y1</var> >= <var>y2</var>.</li>
+ <li>either |cue1| lies fully within |cue2|, i.e. |x1| >= |x2| and |y1| &lt;= |y2|</li>
+ <li>or |cue1| fully contains |cue2|, i.e. |x1| &lt;= |x2| and |y1| >= |y2|.</li>
 </ul>
 
 <div class="example">
@@ -1736,13 +1733,12 @@ said to be a <dfn>WebVTT file using cue text</dfn>.</p>
 <h2 id=parsing>Parsing</h2>
 
 
-<h3 id=file-parsing>WebVTT file parsing</h3>
+<h3 id=file-parsing algorithm>WebVTT file parsing</h3>
 
 <p>A <dfn>WebVTT parser</dfn>, given an input byte stream and a <a>text track list of cues</a>
-<var>output</var>, must decode the byte stream using the <a lt="UTF-8 decode">UTF-8 decode</a>
-algorithm, and then must parse the resulting string according to the <a>WebVTT parser algorithm</a>
-below. This results in <a lt="WebVTT cue">WebVTT cues</a> being added to <var>output</var>.
-[[!RFC3629]]</p>
+|output|, must decode the byte stream using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and
+then must parse the resulting string according to the <a>WebVTT parser algorithm</a> below. This
+results in <a lt="WebVTT cue">WebVTT cues</a> being added to |output|. [[!RFC3629]]</p>
 
 <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
 asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -1756,8 +1752,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 <ol>
 
  <li>
-  <p>Let <var>input</var> be the string being parsed, after conversion to Unicode, and with the
-  following transformations applied:</p>
+  <p>Let |input| be the string being parsed, after conversion to Unicode, and with the following
+  transformations applied:</p>
 
   <ul>
 
@@ -1773,90 +1769,85 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
  </li>
 
- <li><p>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start
- of the string. In an <a>incremental WebVTT parser</a>, when this algorithm (or further algorithms
- that it uses) moves the <var>position</var> pointer, the user agent must wait until appropriate
- further characters from the byte stream have been added to <var>input</var> before moving the
- pointer, so that the algorithm never reads past the end of the <var>input</var> string. Once the
- byte stream has ended, and all characters have been added to <var>input</var>, then the
- <var>position</var> pointer may, when so instructed by the algorithms, be moved past the end of
- <var>input</var>.</p></li>
+ <li><p>Let |position| be a pointer into |input|, initially pointing at the start of the string. In
+ an <a>incremental WebVTT parser</a>, when this algorithm (or further algorithms that it uses) moves
+ the |position| pointer, the user agent must wait until appropriate further characters from the byte
+ stream have been added to |input| before moving the pointer, so that the algorithm never reads past
+ the end of the |input| string. Once the byte stream has ended, and all characters have been added
+ to |input|, then the |position| pointer may, when so instructed by the algorithms, be moved past
+ the end of |input|.</p></li>
 
- <li>Let <var>line</var> be a string variable. Unset the <var>already collected line</var>
- flag.</li>
+ <li>Let |line| be a string variable. Unset the |already collected line| flag.</li>
 
  <!-- SIGNATURE CHECK -->
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
+ (LF) characters. Let |line| be those characters, if any.</p></li>
 
- <li><p>If <var>line</var> is less than six characters long, then abort these steps. The file does
- not start with the correct <a>WebVTT file</a> signature and was therefore not successfully
- processed.</p></li>
-
- <li><p>If <var>line</var> is exactly six characters long but does not exactly equal
- "<code>WEBVTT</code>", then abort these steps. The file does not start with the correct <a>WebVTT
- file</a> signature and was therefore not successfully processed.</p></li>
-
- <li><p>If <var>line</var> is more than six characters long but the first six characters do not
- exactly equal "<code>WEBVTT</code>", or the seventh character is neither a U+0020 SPACE character
- nor a U+0009 CHARACTER TABULATION (tab) character, then abort these steps. The file does not start
+ <li><p>If |line| is less than six characters long, then abort these steps. The file does not start
  with the correct <a>WebVTT file</a> signature and was therefore not successfully
  processed.</p></li>
 
- <li><p>If <var>position</var> is past the end of <var>input</var>, then abort these steps. The file
- was successfully processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT
- cues</a> were added to <var>output</var>.</p></li>
+ <li><p>If |line| is exactly six characters long but does not exactly equal "<code>WEBVTT</code>",
+ then abort these steps. The file does not start with the correct <a>WebVTT file</a> signature and
+ was therefore not successfully processed.</p></li>
 
- <li><p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character. Advance
- <var>position</var> to the next character in <var>input</var>.</p></li>
+ <li><p>If |line| is more than six characters long but the first six characters do not exactly equal
+ "<code>WEBVTT</code>", or the seventh character is neither a U+0020 SPACE character nor a U+0009
+ CHARACTER TABULATION (tab) character, then abort these steps. The file does not start with the
+ correct <a>WebVTT file</a> signature and was therefore not successfully processed.</p></li>
+
+ <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
+ processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
+ to |output|.</p></li>
+
+ <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
+ |position| to the next character in |input|.</p></li>
 
  <li><p><i>Header</i>: <a spec=html>Collect a sequence of characters</a> that are <em>not</em>
- U+000A LINE FEED (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
+ U+000A LINE FEED (LF) characters. Let |line| be those characters, if any.</p></li>
 
  <!-- METADATA HEADER PARSING -->
 
- <li><p>Let <var>regions</var> be a <a>text track list of regions</a>.</p></li>
+ <li><p>Let |regions| be a <a>text track list of regions</a>.</p></li>
 
  <li>
-  <i>Metadata header loop</i>: If <var>line</var> is not the empty string, run the following
+  <i>Metadata header loop</i>: If |line| is not the empty string, run the following
   substeps:
 
   <ol>
 
-   <li><p><i>Metadata header creation</i>: Let <var>metadata</var> be a new <a>WebVTT metadata
+   <li><p><i>Metadata header creation</i>: Let |metadata| be a new <a>WebVTT metadata
    header</a>.</p></li>
 
-   <li><p>Let <var>metadata</var>'s <a lt="WebVTT metadata header name">name</a> be the empty
+   <li><p>Let |metadata|'s <a lt="WebVTT metadata header name">name</a> be the empty
    string.</p></li>
 
-   <li><p>Let <var>metadata</var>'s <a lt="WebVTT metadata header value">value</a> be the empty
+   <li><p>Let |metadata|'s <a lt="WebVTT metadata header value">value</a> be the empty
    string.</p></li>
 
-   <li><p>If <var>line</var> contains the character ":" (A U+003A COLON), then set <a lt="WebVTT
-   metadata header name">metadata's name</a> to the substring of <var>line</var> before the first
-   ":" character and <a lt="WebVTT metadata header value">metadata's value</a> to the substring
-   after this character.</p></li>
+   <li><p>If |line| contains the character ":" (A U+003A COLON), then set <a lt="WebVTT metadata
+   header name">metadata's name</a> to the substring of |line| before the first ":" character and <a
+   lt="WebVTT metadata header value">metadata's value</a> to the substring after this
+   character.</p></li>
 
    <li>
     <p>If <a lt="WebVTT metadata header name">metadata's name</a> equals "Region":</p>
 
     <ol>
-     <li><i>Region creation</i>: Let <var>region</var> be a new <a>WebVTT region</a>.</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region identifier">identifier</a> be the empty
-     string.</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region width">width</a> be 100.</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region lines">lines</a> be 3.</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
+     <li><i>Region creation</i>: Let |region| be a new <a>WebVTT region</a>.</li>
+     <li>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty string.</li>
+     <li>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</li>
+     <li>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</li>
+     <li>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
+     <li>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
      (0,100).</li>
-     <li>Let <var>region</var>'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT
-     region scroll none">NONE</a>.</li>
+     <li>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region scroll
+     none">NONE</a>.</li>
      <li><a>Collect WebVTT region settings</a> from <a lt="WebVTT metadata header value">metadata's
-     value</a> using <var>region</var> for the results.</li>
-     <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from
-     <var>region</var>.</li>
-     <li>Append <var>region</var> to the <a>text track list of regions</a> <var>regions</var>.</li>
+     value</a> using |region| for the results.</li>
+     <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from |region|.</li>
+     <li>Append |region| to the <a>text track list of regions</a> |regions|.</li>
     </ol>
    </li>
   </ol>
@@ -1864,145 +1855,139 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
  <!-- FIXME: right now ignores all WebVTT metadata headers that don't specify regions. -->
 
- <li><p>If <var>position</var> is past the end of <var>input</var>, then jump to the step labeled
- <i>end</i>.</p></li>
+ <li><p>If |position| is past the end of |input|, then jump to the step labeled <i>end</i>.</p></li>
 
- <li><p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character. Advance
- <var>position</var> to the next character in <var>input</var>.</p></li>
+ <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
+ |position| to the next character in |input|.</p></li>
 
- <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected
- line</var> flag and jump to the step labeled <i>cue loop</i>.</p></li>
+ <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+ U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
+ to the step labeled <i>cue loop</i>.</p></li>
 
- <li><p>If <var>line</var> is not the empty string, then jump back to the step labeled
+ <li><p>If |line| is not the empty string, then jump back to the step labeled
  <i>header</i>.</p></li>
 
- <li><p><i>Cue loop</i>: If the <var>already collected line</var> flag is set, then jump to the step
- labeled <i>cue creation</i>.</p></li>
+ <li><p><i>Cue loop</i>: If the |already collected line| flag is set, then jump to the step labeled
+ <i>cue creation</i>.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
+ (LF) characters. Let |line| be those characters, if any.</p></li>
 
- <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>end</i>. (In such a
- case, <var>position</var> is also forcibly past the end of <var>input</var><!-- since we've just
- collected newlines, so we have none of those, and we've failed to collect anything that's not a
- newline, so we have none of that either, meaning we have nothing. -->.)</p></li>
+ <li><p>If |line| is the empty string, then jump to the step labeled <i>end</i>. (In such a case,
+ |position| is also forcibly past the end of |input|<!-- since we've just collected newlines, so we
+ have none of those, and we've failed to collect anything that's not a newline, so we have none of
+ that either, meaning we have nothing. -->.)</p></li>
 
  <li>
-  <p><i>Cue creation</i>: Let <var>cue</var> be a new <a>WebVTT cue</a> and initialize it as
-  follows:</p>
+  <p><i>Cue creation</i>: Let |cue| be a new <a>WebVTT cue</a> and initialize it as follows:</p>
 
   <ol>
-   <li><p>Let <var>cue</var>'s <a>text track cue identifier</a> be the empty string.</p></li>
+   <li><p>Let |cue|'s <a>text track cue identifier</a> be the empty string.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
+   <li><p>Let |cue|'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be null.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue region</a> be null.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal
-   writing direction">horizontal</a>.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal writing
+   direction">horizontal</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line
-   automatic">auto</a>.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line automatic">auto</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
+   <li><p>Let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
    alignment">start alignment</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
+   <li><p>Let |cue|'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
    position">auto</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position
-   automatic alignment">auto</a>.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position automatic
+   alignment">auto</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be 100.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue size</a> be 100.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle
-   alignment">middle alignment</a>.</p></li>
+   <li><p>Let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle alignment">middle
+   alignment</a>.</p></li>
 
-   <li><p>Let <var>cue</var>'s <a>text track cue text</a> be the empty string.</p></li>
+   <li><p>Let |cue|'s <a>text track cue text</a> be the empty string.</p></li>
   </ol>
 
  </li>
 
- <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then jump to the step labeled
- <i>timings</i> below.</p></li>
+ <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+ U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then jump to the step labeled <i>timings</i>
+ below.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>text track cue identifier</a> be <var>line</var>.</p></li>
+ <li><p>Let |cue|'s <a>text track cue identifier</a> be |line|.</p></li>
 
- <li><p>If <var>position</var> is past the end of <var>input</var>, then discard <var>cue</var> and
- jump to the step labeled <i>end</i>.</p></li>
+ <li><p>If |position| is past the end of |input|, then discard |cue| and jump to the step labeled
+ <i>end</i>.</p></li>
 
- <li><p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character,
- advance <var>position</var> to the next character in <var>input</var>.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
-
- <li><p>If <var>line</var> is the empty string, then discard <var>cue</var> and jump to the step
- labeled <i>cue loop</i>.</p></li>
-
- <li><p><i>Timings</i>: Unset the <var>already collected line</var> flag.</p></li>
-
- <li><p><a>Collect WebVTT cue timings and settings</a> from <var>line</var> using <var>regions</var>
- for <var>cue</var>. If that fails, jump to the step labeled <i>bad cue</i>.</p></li>
-
- <li><p>Let <var>cue text</var> be the empty string.</p></li>
-
- <li><p><i>Cue text loop</i>: If <var>position</var> is past the end of <var>input</var>, then jump
- to the step labeled <i>cue text processing</i>.</p></li>
-
- <li><p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character,
- advance <var>position</var> to the next character in <var>input</var>.</p></li>
+ <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
+ |position| to the next character in |input|.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
+ (LF) characters. Let |line| be those characters, if any.</p></li>
 
- <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>cue text
+ <li><p>If |line| is the empty string, then discard |cue| and jump to the step labeled <i>cue
+ loop</i>.</p></li>
+
+ <li><p><i>Timings</i>: Unset the |already collected line| flag.</p></li>
+
+ <li><p><a>Collect WebVTT cue timings and settings</a> from |line| using |regions| for |cue|. If
+ that fails, jump to the step labeled <i>bad cue</i>.</p></li>
+
+ <li><p>Let |cue text| be the empty string.</p></li>
+
+ <li><p><i>Cue text loop</i>: If |position| is past the end of |input|, then jump to the step
+ labeled <i>cue text processing</i>.</p></li>
+
+ <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
+ |position| to the next character in |input|.</p></li>
+
+ <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+ (LF) characters. Let |line| be those characters, if any.</p></li>
+
+ <li><p>If |line| is the empty string, then jump to the step labeled <i>cue text
  processing</i>.</p></li>
 
- <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected
- line</var> flag and jump to the step labeled <i>cue text processing</i>.</p></li>
+ <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+ U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
+ to the step labeled <i>cue text processing</i>.</p></li>
 
- <li><p>If <var>cue text</var> is not empty, append a U+000A LINE FEED (LF) character to <var>cue
- text</var>.</p></li>
+ <li><p>If |cue text| is not empty, append a U+000A LINE FEED (LF) character to |cue text|.</p></li>
 
- <li><p>Let <var>cue text</var> be the concatenation of <var>cue text</var> and
- <var>line</var>.</p></li>
+ <li><p>Let |cue text| be the concatenation of |cue text| and |line|.</p></li>
 
  <li><p>Return to the step labeled <i>cue text loop</i>.</p></li>
 
- <li><p><i>Cue text processing</i>: Let the <a>text track cue text</a> of <var>cue</var> be <var>cue
- text</var>, and let the <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for
- extracting the chapter title</a>.</p></li>
+ <li><p><i>Cue text processing</i>: Let the <a>text track cue text</a> of |cue| be |cue text|, and
+ let the <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for extracting the
+ chapter title</a>.</p></li>
 
- <li><p>Add <var>cue</var> to the <a>text track list of cues</a> <var>output</var>.</p></li>
+ <li><p>Add |cue| to the <a>text track list of cues</a> |output|.</p></li>
 
  <li><p>Jump to the step labeled <i>cue loop</i>.</p></li>
 
- <li><p><i>Bad cue</i>: Discard <var>cue</var>.</p></li>
+ <li><p><i>Bad cue</i>: Discard |cue|.</p></li>
 
- <li><p><i>Bad cue loop</i>: If <var>position</var> is past the end of <var>input</var>, then jump
- to the step labeled <i>end</i>.</p></li>
+ <li><p><i>Bad cue loop</i>: If |position| is past the end of |input|, then jump to the step labeled
+ <i>end</i>.</p></li>
 
- <li><p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character,
- advance <var>position</var> to the next character in <var>input</var>.</p></li>
+ <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
+ |position| to the next character in |input|.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p></li>
+ (LF) characters. Let |line| be those characters, if any.</p></li>
 
- <li><p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected
- line</var> flag and jump to the step labeled <i>cue loop</i>.</p></li>
+ <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+ U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
+ to the step labeled <i>cue loop</i>.</p></li>
 
- <li><p>If <var>line</var> is the empty string, then jump to the step labeled <i>cue
- loop</i>.</p></li>
+ <li><p>If |line| is the empty string, then jump to the step labeled <i>cue loop</i>.</p></li>
 
  <li><p>Otherwise, jump to the step labeled <i>bad cue loop</i>.</p></li>
 
@@ -2012,11 +1997,11 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 </ol>
 
 
-<h3 id=region-settings-parsing>WebVTT region settings parsing</h3>
+<h3 id=region-settings-parsing algorithm>WebVTT region settings parsing</h3>
 
 <p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region
-settings</dfn> from a string <var>input</var> for a <a>text track</a>, the user agent must run the
-following algorithm.</p>
+settings</dfn> from a string |input| for a <a>text track</a>, the user agent must run the following
+algorithm.</p>
 
 <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a>
 that is used as a root node for <a lt="List of WebVTT node objects">lists of WebVTT node
@@ -2024,104 +2009,95 @@ objects</a>. This algorithm returns a list of <a lt="WebVTT region object">WebVT
 Objects</a>.</p>
 
 <ol>
- <li><p>Let <var>settings</var> be the result of <a lt="split a string on spaces">splitting
- <var>input</var> on spaces</a>.</p></li>
+ <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
+ spaces</a>.</p></li>
 
  <li>
-  For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:
+  For each token |setting| in the list |settings|, run the following substeps:
 
   <ol>
-   <li><p>If <var>setting</var> does not contain a U+003D EQUALS SIGN character (=), or if the first
-   U+003D EQUALS SIGN character (=) in <var>setting</var> is either the first or last character of
-   <var>setting</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+   <li><p>If |setting| does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D
+   EQUALS SIGN character (=) in |setting| is either the first or last character of |setting|, then
+   jump to the step labeled <i>next setting</i>.</p></li>
 
-   <li><p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding the
-   first U+003D EQUALS SIGN character (=) in that string.</p></li>
+   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003D
+   EQUALS SIGN character (=) in that string.</p></li>
 
-   <li><p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the
-   character immediately after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
+   <li><p>Let |value| be the trailing substring of |setting| starting from the character immediately
+   after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
 
    <li>
-    <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
+    <p>Run the appropriate substeps that apply for the value of |name|, as follows:</p>
 
     <dl>
-     <dt><p>If <var>name</var> is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
-     <dd><p>Let <var>region</var>'s <a lt="WebVTT region identifier">identifier</a> be
-     <var>value</var>.</p></dd>
+     <dt><p>If |name| is a <a>case-sensitive</a> match for "<code>id</code>"</p></dt>
+     <dd><p>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be |value|.</p></dd>
 
-     <dt><p>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
-     "<code>width</code>"</p></dt>
-     <dd><p>If <a>parse a percentage string</a> from <var>value</var> returns a
-     <var>percentage</var>, let <var>region</var>'s <a>WebVTT region width</a> be
-     <var>percentage</var>.</p></dd>
+     <dt><p>Otherwise if |name| is a <a>case-sensitive</a> match for "<code>width</code>"</p></dt>
+     <dd><p>If <a>parse a percentage string</a> from |value| returns a |percentage|, let |region|'s
+     <a>WebVTT region width</a> be |percentage|.</p></dd>
 
-     <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for "<code>lines</code>"</dt>
+     <dt>Otherwise if |name| is a <a>case-sensitive</a> match for "<code>lines</code>"</dt>
      <dd>
       <ol>
-       <li><p>If <var>value</var> contains any characters other than <a>ASCII digits</a>, then jump
-       to the step labeled <i>next setting</i>.</p></li>
+       <li><p>If |value| contains any characters other than <a>ASCII digits</a>, then jump to the
+       step labeled <i>next setting</i>.</p></li>
 
-       <li><p>Interpret <var>value</var> as an integer, and let <var>number</var> be that
-       number.</p></li>
+       <li><p>Interpret |value| as an integer, and let |number| be that number.</p></li>
 
-       <li><p>Let <var>region</var>'s <a>WebVTT region lines</a> be <var>number</var>.</p></li>
+       <li><p>Let |region|'s <a>WebVTT region lines</a> be |number|.</p></li>
       </ol>
      </dd>
 
-     <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
-     "<code>regionanchor</code>"</dt>
+     <dt>Otherwise if |name| is a <a>case-sensitive</a> match for "<code>regionanchor</code>"</dt>
      <dd>
       <ol>
-       <li><p>If <var>value</var> does not contain a U+002C COMMA character (,), then jump to the
-       step labeled <i>next setting</i>.</p></li>
+       <li><p>If |value| does not contain a U+002C COMMA character (,), then jump to the step
+       labeled <i>next setting</i>.</p></li>
 
-       <li><p>Let <var>anchorX</var> be the leading substring of <var>value</var> up to and
-       excluding the first U+002C COMMA character (,) in that string.</p></li>
+       <li><p>Let |anchorX| be the leading substring of |value| up to and excluding the first U+002C
+       COMMA character (,) in that string.</p></li>
 
-       <li><p>Let <var>anchorY</var> be the trailing substring of <var>value</var> starting from the
-       character immediately after the first U+002C COMMA character (,) in that string.</p></li>
+       <li><p>Let |anchorY| be the trailing substring of |value| starting from the character
+       immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>If <a>parse a percentage string</a> from <var>anchorX</var> or <a>parse a percentage
-       string</a> from <var>anchorY</var> don't return a <var>percentage</var>, then jump to the
-       step labeled <i>next setting</i>.</p></li>
+       <li><p>If <a>parse a percentage string</a> from |anchorX| or <a>parse a percentage string</a>
+       from |anchorY| don't return a |percentage|, then jump to the step labeled <i>next
+       setting</i>.</p></li>
 
-       <li><p>Let <var>region</var>'s <a lt="WebVTT region anchor">WebVTT region anchor point</a> be
-       the tuple of the <var>percentage</var> values calculated from <var>anchorX</var> and
-       <var>anchorY</var>.</p></li>
+       <li><p>Let |region|'s <a lt="WebVTT region anchor">WebVTT region anchor point</a> be the
+       tuple of the |percentage| values calculated from |anchorX| and |anchorY|.</p></li>
       </ol>
      </dd>
 
-     <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
-     "<code>viewportanchor</code>"</dt>
+     <dt>Otherwise if |name| is a <a>case-sensitive</a> match for "<code>viewportanchor</code>"</dt>
      <dd>
       <ol>
-       <li><p>If <var>value</var> does not contain a U+002C COMMA character (,), then jump to the
-       step labeled <i>next setting</i>.</p></li>
+       <li><p>If |value| does not contain a U+002C COMMA character (,), then jump to the step
+       labeled <i>next setting</i>.</p></li>
 
-       <li><p>Let <var>viewportanchorX</var> be the leading substring of <var>value</var> up to and
-       excluding the first U+002C COMMA character (,) in that string.</p></li>
+       <li><p>Let |viewportanchorX| be the leading substring of |value| up to and excluding the
+       first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Let <var>viewportanchorY</var> be the trailing substring of <var>value</var> starting
-       from the character immediately after the first U+002C COMMA character (,) in that
-       string.</p></li>
+       <li><p>Let |viewportanchorY| be the trailing substring of |value| starting from the character
+       immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>If <a>parse a percentage string</a> from <var>viewportanchorX</var> or <a>parse a
-       percentage string</a> from <var>viewportanchorY</var> don't return a <var>percentage</var>,
-       then jump to the step labeled <i>next setting</i>.</p></li>
+       <li><p>If <a>parse a percentage string</a> from |viewportanchorX| or <a>parse a percentage
+       string</a> from |viewportanchorY| don't return a |percentage|, then jump to the step labeled
+       <i>next setting</i>.</p></li>
 
-       <li><p>Let <var>region</var>'s <a lt="WebVTT region viewport anchor">WebVTT region anchor
-       point</a> be the tuple of the <var>percentage</var> values calculated from
-       <var>viewportanchorX</var> and <var>viewportanchorY</var>.</p></li>
+       <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">WebVTT region anchor point</a> be
+       the tuple of the |percentage| values calculated from |viewportanchorX| and
+       |viewportanchorY|.</p></li>
       </ol>
      </dd>
 
-     <dt>Otherwise if <var>name</var> is a <a>case-sensitive</a> match for
-     "<code>scroll</code>"</dt>
+     <dt>Otherwise if |name| is a <a>case-sensitive</a> match for "<code>scroll</code>"</dt>
      <dd>
       <ol>
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string "<code>up</code>",
-       then let <var>region</var>'s <a lt="WebVTT region scroll">scroll value</a> be "<a lt="WebVTT
-       region scroll up">scroll up</a>".</p></li>
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>up</code>", then let
+       |region|'s <a lt="WebVTT region scroll">scroll value</a> be "<a lt="WebVTT region scroll
+       up">scroll up</a>".</p></li>
       </ol>
      </dd>
     </dl>
@@ -2137,49 +2113,48 @@ number in the range 0..100, or nothing. If at any point the algorithm says that 
 means that it is aborted at that point and returns nothing.</p>
 
 <ol>
- <li><p>Let <var>input</var> be the string being parsed.</p></li>
+ <li><p>Let |input| be the string being parsed.</p></li>
 
- <li><p>If <var>input</var> contains any characters other than U+0025 PERCENT SIGN characters (%),
- U+002E DOT characters (.) and <a>ASCII digits</a>, then fail.</p></li>
+ <li><p>If |input| contains any characters other than U+0025 PERCENT SIGN characters (%), U+002E DOT
+ characters (.) and <a>ASCII digits</a>, then fail.</p></li>
 
- <li><p>If <var>input</var> does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
+ <li><p>If |input| does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
  fail.</p></li>
 
- <li><p>If <var>input</var> contains more than one U+002E DOT character (.), then fail.</p></li>
+ <li><p>If |input| contains more than one U+002E DOT character (.), then fail.</p></li>
 
- <li><p>If any character in <var>input</var> other than the last character is a U+0025 PERCENT SIGN
- character (%), then fail.</p></li>
+ <li><p>If any character in |input| other than the last character is a U+0025 PERCENT SIGN character
+ (%), then fail.</p></li>
 
- <li><p>If the last character in <var>input</var> is not a U+0025 PERCENT SIGN character (%), then
+ <li><p>If the last character in |input| is not a U+0025 PERCENT SIGN character (%), then
  fail.</p></li>
 
- <li><p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that
- number be the <var>percentage</var>.</p></li>
+ <li><p>Ignoring the trailing percent sign, interpret |input| as a real number. Let that number be
+ the |percentage|.</p></li>
 
- <li><p>If <var>percentage</var> is outside the range 0..100, then fail.</p></li>
+ <li><p>If |percentage| is outside the range 0..100, then fail.</p></li>
 
- <li><p>Return <var>percentage</var>.</p></li>
+ <li><p>Return |percentage|.</p></li>
 </ol>
 
 
-<h3 id=cue-timings-and-settings-parsing>WebVTT cue timings and settings parsing</h3>
+<h3 id=cue-timings-and-settings-parsing algorithm>WebVTT cue timings and settings parsing</h3>
 
 <p>When the algorithm above requires that the user agent <dfn>collect WebVTT cue timings and
-settings</dfn> from a string <var>input</var> using a <a>text track list of regions</a>
-<var>regions</var> for a <a>WebVTT cue</a> <var>cue</var>, the user agent must run the following
-algorithm.</p>
+settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
+<a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
 
 <ol>
 
- <li><p>Let <var>input</var> be the string being parsed.</p></li>
+ <li><p>Let |input| be the string being parsed.</p></li>
 
- <li><p>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start
- of the string.</p></li>
+ <li><p>Let |position| be a pointer into |input|, initially pointing at the start of the
+ string.</p></li>
 
  <li><p><a>Skip whitespace</a>.</p></li>
 
  <li><p><a>Collect a WebVTT timestamp</a>. If that algorithm fails, then abort these steps and
- return failure. Otherwise, let <var>cue</var>'s <a>text track cue start time</a> be the collected
+ return failure. Otherwise, let |cue|'s <a>text track cue start time</a> be the collected
  time.</p></li>
 
  <li><p><a>Skip whitespace</a>.</p></li>
@@ -2187,239 +2162,227 @@ algorithm.</p>
  <!-- we can't be beyond the end of the string until we've seen the arrow, since we know the arrow
  is in the string and nothing we've done so far would move us past the first "-". -->
 
- <li><p>If <!--<var>position</var> is beyond the end of <var>input</var> or if--> the character at
- <var>position</var> is not a U+002D HYPHEN-MINUS character (-) then abort these steps and return
- failure. Otherwise, move <var>position</var> forwards one character.</p></li>
+ <li><p>If <!--|position| is beyond the end of |input| or if--> the character at |position| is not a
+ U+002D HYPHEN-MINUS character (-) then abort these steps and return failure. Otherwise, move
+ |position| forwards one character.</p></li>
 
- <li><p>If <!--<var>position</var> is beyond the end of <var>input</var> or if--> the character at
- <var>position</var> is not a U+002D HYPHEN-MINUS character (-) then abort these steps and return
- failure. Otherwise, move <var>position</var> forwards one character.</p></li>
+ <li><p>If <!--|position| is beyond the end of |input| or if--> the character at |position| is not a
+ U+002D HYPHEN-MINUS character (-) then abort these steps and return failure. Otherwise, move
+ |position| forwards one character.</p></li>
 
- <li><p>If <!--<var>position</var> is beyond the end of <var>input</var> or if--> the character at
- <var>position</var> is not a U+003E GREATER-THAN SIGN character (>) then abort these steps and
- return failure. Otherwise, move <var>position</var> forwards one character.</p></li>
+ <li><p>If <!--|position| is beyond the end of |input| or if--> the character at |position| is not a
+ U+003E GREATER-THAN SIGN character (>) then abort these steps and return failure. Otherwise, move
+ |position| forwards one character.</p></li>
 
  <li><p><a>Skip whitespace</a>.</p></li>
 
  <li><p><a>Collect a WebVTT timestamp</a>. If that algorithm fails, then abort these steps and
- return failure. Otherwise, let <var>cue</var>'s <a>text track cue end time</a> be the collected
+ return failure. Otherwise, let |cue|'s <a>text track cue end time</a> be the collected
  time.</p></li>
 
- <li><p>Let <var>remainder</var> be the trailing substring of <var>input</var> starting at
- <var>position</var>.</p></li>
+ <li><p>Let |remainder| be the trailing substring of |input| starting at |position|.</p></li>
 
- <li><p><a>Parse the WebVTT cue settings</a> from <var>remainder</var> using <var>regions</var> for
- <var>cue</var>.</p></li>
+ <li><p><a>Parse the WebVTT cue settings</a> from |remainder| using |regions| for |cue|.</p></li>
 
 </ol>
 
-<p>When the user agent is to <dfn>parse the WebVTT cue settings</dfn> from a string <var>input</var>
-using a <a>text track list of regions</a> <var>regions</var> for a <a>text track cue</a>
-<var>cue</var>, the user agent must run the following steps:</p>
+<p>When the user agent is to <dfn>parse the WebVTT cue settings</dfn> from a string |input| using a
+<a>text track list of regions</a> |regions| for a <a>text track cue</a> |cue|, the user agent must
+run the following steps:</p>
 
 <ol>
 
- <li><p>Let <var>settings</var> be the result of <a lt="split a string on spaces">splitting
- <var>input</var> on spaces</a>.</p></li>
+ <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
+ spaces</a>.</p></li>
 
  <li>
 
-  <p>For each token <var>setting</var> in the list <var>settings</var>, run the following
-  substeps:</p>
+  <p>For each token |setting| in the list |settings|, run the following substeps:</p>
 
   <ol>
 
-   <li><p>If <var>setting</var> does not contain a U+003A COLON character (:), or if the first
-   U+003A COLON character (:) in <var>setting</var> is either the first or last character of
-   <var>setting</var>, then jump to the step labeled <i>next setting</i>.</p></li>
+   <li><p>If |setting| does not contain a U+003A COLON character (:), or if the first U+003A COLON
+   character (:) in |setting| is either the first or last character of |setting|, then jump to the
+   step labeled <i>next setting</i>.</p></li>
 
-   <li><p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding the
-   first U+003A COLON character (:) in that string.</p></li>
+   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003A
+   COLON character (:) in that string.</p></li>
 
-   <li><p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the
-   character immediately after the first U+003A COLON character (:) in that string.</p></li>
+   <li><p>Let |value| be the trailing substring of |setting| starting from the character immediately
+   after the first U+003A COLON character (:) in that string.</p></li>
 
    <li>
 
-    <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
+    <p>Run the appropriate substeps that apply for the value of |name|, as follows:</p>
 
     <dl>
 
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>region</code>"</dt>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>region</code>"</dt>
 
      <dd>
       <ol>
-       <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be the last <a>WebVTT region</a> in
-       <var>regions</var> whose <a>WebVTT region identifier</a> is <var>value</var>, if any, or null
-       otherwise.</p></li>
+       <li><p>Let |cue|'s <a>WebVTT cue region</a> be the last <a>WebVTT region</a> in |regions|
+       whose <a>WebVTT region identifier</a> is |value|, if any, or null otherwise.</p></li>
       </ol>
      </dd>
 
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>vertical</code>"</dt>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>vertical</code>"</dt>
 
      <dd>
 
       <ol>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string "<code>rl</code>",
-       then let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue vertical
-       growing left writing direction">vertical growing left</a>.</p></li>
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>rl</code>", then let
+       |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue vertical growing left
+       writing direction">vertical growing left</a>.</p></li>
 
-       <li><p>Otherwise, if <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>lr</code>", then let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a
-       lt="WebVTT cue vertical growing right writing direction">vertical growing right</a>.</p></li>
+       <li><p>Otherwise, if |value| is a <a>case-sensitive</a> match for the string
+       "<code>lr</code>", then let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue
+       vertical growing right writing direction">vertical growing right</a>.</p></li>
 
       </ol>
 
      </dd>
 
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>line</code>"</dt>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>line</code>"</dt>
 
      <dd>
 
       <ol>
 
-       <li><p>If <var>value</var> contains a U+002C COMMA character (,), then let <var>linepos</var>
-       be the leading substring of <var>value</var> up to and excluding the first U+002C COMMA
-       character (,) in that string and let <var>linealign</var> be the trailing substring of
-       <var>value</var> starting from the character immediately after the first U+002C COMMA
-       character (,) in that string.</p></li>
+       <li><p>If |value| contains a U+002C COMMA character (,), then let |linepos| be the leading
+       substring of |value| up to and excluding the first U+002C COMMA character (,) in that string
+       and let |linealign| be the trailing substring of |value| starting from the character
+       immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Otherwise let <var>linepos</var> be the full <var>value</var> string and
-       <var>linealign</var> be the empty string.</p></li>
+       <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be the empty
+       string.</p></li>
 
-       <li><p>If <var>linepos</var> does not contain at least one <a lt="ASCII digits">ASCII
-       digit</a>, then jump to the step labeled <i>next setting</i>.</p></li>
+       <li><p>If |linepos| does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
+       jump to the step labeled <i>next setting</i>.</p></li>
 
        <li>
         <dl>
-         <dt><p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character
-         (%)</p></dt>
+         <dt><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%)</p></dt>
 
-         <dd><p>If <a>parse a percentage string</a> from <var>linepos</var> doesn't fail, let
-         <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step labeled
-         <i>next setting</i>.</p></dd>
+         <dd><p>If <a>parse a percentage string</a> from |linepos| doesn't fail, let |number| be the
+         returned |percentage|, otherwise jump to the step labeled <i>next setting</i>.</p></dd>
 
          <dt><p>Otherwise</p></dt>
 
          <dd>
           <ol>
-           <li><p>If <var>linepos</var> contains any characters other than U+002D HYPHEN-MINUS
-           characters (-) and <a>ASCII digits</a>, then jump to the step labeled <i>next
-           setting</i>.</p></li>
+           <li><p>If |linepos| contains any characters other than U+002D HYPHEN-MINUS characters (-)
+           and <a>ASCII digits</a>, then jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>If any character in <var>linepos</var> other than the first character is a U+002D
+           <li><p>If any character in |linepos| other than the first character is a U+002D
            HYPHEN-MINUS character (-), then jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>Interpret <var>linepos</var> as a (potentially signed) integer, and let
-           <var>number</var> be that number.</p></li>
+           <li><p>Interpret |linepos| as a (potentially signed) integer, and let |number| be that
+           number.</p></li>
           </ol>
          </dd>
         </dl>
        </li>
 
-       <li><p>Let <var>cue</var>'s <a>WebVTT cue line</a> be <var>number</var>.</p></li>
+       <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
 
-       <li><p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character (%),
-       then let <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be
-       true.</p></li>
+       <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
+       |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
 
-       <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-       "<code>start</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
-       lt="WebVTT cue line start alignment">start alignment</a>.</p></li>
+       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
+       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
+       alignment">start alignment</a>.</p></li>
 
-       <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-       "<code>middle</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
-       lt="WebVTT cue line middle alignment">middle alignment</a>.</p></li>
+       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>middle</code>",
+       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line middle
+       alignment">middle alignment</a>.</p></li>
 
-       <li><p>If <var>linealign</var> is a <a>case-sensitive</a> match for the string
-       "<code>end</code>", then let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a
-       lt="WebVTT cue line end alignment">end alignment</a>.</p></li>
-
-      </ol>
-
-     </dd>
-
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>position</code>"</dt>
-
-     <dd>
-
-      <ol>
-
-       <li><p>If <var>value</var> contains a U+002C COMMA character (,), then let <var>colpos</var>
-       be the leading substring of <var>value</var> up to and excluding the first U+002C COMMA
-       character (,) in that string and let <var>colalign</var> be the trailing substring of
-       <var>value</var> starting from the character immediately after the first U+002C COMMA
-       character (,) in that string.</p></li>
-
-       <li><p>Otherwise let <var>colpos</var> be the full <var>value</var> string and
-       <var>colalign</var> be the empty string.</p></li>
-
-       <li><p>If <a>parse a percentage string</a> from <var>colpos</var> doesn't fail, let
-       <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step labeled
-       <i>next setting</i> (<a lt="WebVTT cue position">position</a>'s value remains the special
-       value <a lt="WebVTT cue automatic position">auto</a>).</p></li>
-
-       <li><p>Let <var>cue</var>'s <a lt="WebVTT cue position">position</a> be
-       <var>number</var>.</p></li>
-
-       <li><p>If <var>colalign</var> is a <a>case-sensitive</a> match for the string
-       "<code>start</code>", then let <var>cue</var>'s <a>WebVTT cue position alignment</a> be <a
-       lt="WebVTT cue position start alignment">start alignment</a>.</p></li>
-
-       <li><p>If <var>colalign</var> is a <a>case-sensitive</a> match for the string
-       "<code>middle</code>", then let <var>cue</var>'s <a>WebVTT cue position alignment</a> be <a
-       lt="WebVTT cue position middle alignment">middle alignment</a>.</p></li>
-
-       <li><p>If <var>colalign</var> is a <a>case-sensitive</a> match for the string
-       "<code>end</code>", then let <var>cue</var>'s <a>WebVTT cue position alignment</a> be <a
-       lt="WebVTT cue position end alignment">end alignment</a>.</p></li>
+       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>end</code>",
+       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line end
+       alignment">end alignment</a>.</p></li>
 
       </ol>
 
      </dd>
 
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>size</code>"</dt>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>position</code>"</dt>
 
      <dd>
 
       <ol>
 
-       <li><p>If <a>parse a percentage string</a> from <var>value</var> doesn't fail, let
-       <var>number</var> be the returned <var>percentage</var>, otherwise jump to the step labeled
-       <i>next setting</i>.</p></li>
+       <li><p>If |value| contains a U+002C COMMA character (,), then let |colpos| be the leading
+       substring of |value| up to and excluding the first U+002C COMMA character (,) in that string
+       and let |colalign| be the trailing substring of |value| starting from the character
+       immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be <var>number</var>.</p></li>
+       <li><p>Otherwise let |colpos| be the full |value| string and |colalign| be the empty
+       string.</p></li>
+
+       <li><p>If <a>parse a percentage string</a> from |colpos| doesn't fail, let |number| be the
+       returned |percentage|, otherwise jump to the step labeled <i>next setting</i> (<a lt="WebVTT
+       cue position">position</a>'s value remains the special value <a lt="WebVTT cue automatic
+       position">auto</a>).</p></li>
+
+       <li><p>Let |cue|'s <a lt="WebVTT cue position">position</a> be |number|.</p></li>
+
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
+       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position start
+       alignment">start alignment</a>.</p></li>
+
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>middle</code>",
+       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position middle
+       alignment">middle alignment</a>.</p></li>
+
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>end</code>", then
+       let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position end
+       alignment">end alignment</a>.</p></li>
 
       </ol>
 
      </dd>
 
-     <dt>If <var>name</var> is a <a>case-sensitive</a> match for "<code>align</code>"</dt>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>size</code>"</dt>
 
      <dd>
 
       <ol>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>start</code>", then let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a
-       lt="WebVTT cue start alignment">start alignment</a>.</p></li>
+       <li><p>If <a>parse a percentage string</a> from |value| doesn't fail, let |number| be the
+       returned |percentage|, otherwise jump to the step labeled <i>next setting</i>.</p></li>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>middle</code>", then let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a
-       lt="WebVTT cue middle alignment">middle alignment</a>.</p></li>
+       <li><p>Let |cue|'s <a>WebVTT cue size</a> be |number|.</p></li>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>end</code>", then let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a
-       lt="WebVTT cue end alignment">end alignment</a>.</p></li>
+      </ol>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>left</code>", then let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a
-       lt="WebVTT cue left alignment">left alignment</a>.</p></li>
+     </dd>
 
-       <li><p>If <var>value</var> is a <a>case-sensitive</a> match for the string
-       "<code>right</code>", then let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a
-       lt="WebVTT cue right alignment">right alignment</a>.</p></li>
+     <dt>If |name| is a <a>case-sensitive</a> match for "<code>align</code>"</dt>
+
+     <dd>
+
+      <ol>
+
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>start</code>", then
+       let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue start alignment">start
+       alignment</a>.</p></li>
+
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>middle</code>", then
+       let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle alignment">middle
+       alignment</a>.</p></li>
+
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>end</code>", then
+       let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue end alignment">end
+       alignment</a>.</p></li>
+
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>left</code>", then
+       let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue left alignment">left
+       alignment</a>.</p></li>
+
+       <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>right</code>", then
+       let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue right alignment">right
+       alignment</a>.</p></li>
 
       </ol>
 
@@ -2443,101 +2406,93 @@ user agent must run the following steps:</p>
 
 <ol>
 
- <li><p>Let <var>input</var> and <var>position</var> be the same variables as those of the same name
- in the algorithm that invoked these steps.</p></li>
+ <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
+ that invoked these steps.</p></li>
 
- <li><p>Let <var>most significant units</var> be <i>minutes</i>.</p></li>
+ <li><p>Let |most significant units| be <i>minutes</i>.</p></li>
 
- <li><p>If <var>position</var> is past the end of <var>input</var>, return an error and abort these
+ <li><p>If |position| is past the end of |input|, return an error and abort these steps.</p></li>
+
+ <li><p>If the character indicated by |position| is not an <a spec=html>ASCII digit</a>, then return
+ an error and abort these steps.</p></li>
+
+ <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+ and let |string| be the collected substring.</p></li>
+
+ <li><p>Interpret |string| as a base-ten integer. Let |value<sub>1</sub>| be that integer.</p></li>
+
+ <li><p>If |string| is not exactly two characters in length, or if |value<sub>1</sub>| is greater
+ than 59, let |most significant units| be <i>hours</i>.</p></li>
+
+ <li><p>If |position| is beyond the end of |input| or if the character at |position| is not a U+003A
+ COLON character (:), then return an error and abort these steps. Otherwise, move |position|
+ forwards one character.</p></li>
+
+ <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+ and let |string| be the collected substring.</p></li>
+
+ <li><p>If |string| is not exactly two characters in length, return an error and abort these
  steps.</p></li>
 
- <li><p>If the character indicated by <var>position</var> is not an <a spec=html>ASCII digit</a>,
- then return an error and abort these steps.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p></li>
-
- <li><p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>1</sub></var> be that
- integer.</p></li>
-
- <li><p>If <var>string</var> is not exactly two characters in length, or if
- <var>value<sub>1</sub></var> is greater than 59, let <var>most significant units</var> be
- <i>hours</i>.</p></li>
-
- <li><p>If <var>position</var> is beyond the end of <var>input</var> or if the character at
- <var>position</var> is not a U+003A COLON character (:), then return an error and abort these
- steps. Otherwise, move <var>position</var> forwards one character.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p></li>
-
- <li><p>If <var>string</var> is not exactly two characters in length, return an error and abort
- these steps.</p></li>
-
- <li><p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>2</sub></var> be that
- integer.</p></li>
+ <li><p>Interpret |string| as a base-ten integer. Let |value<sub>2</sub>| be that integer.</p></li>
 
  <li>
 
-  <p>If <var>most significant units</var> is <i>hours</i>, or if <var>position</var> is not beyond
-  the end of <var>input</var> and the character at <var>position</var> is a U+003A COLON character
-  (:), run these substeps:</p>
+  <p>If |most significant units| is <i>hours</i>, or if |position| is not beyond the end of |input|
+  and the character at |position| is a U+003A COLON character (:), run these substeps:</p>
 
   <ol>
 
-   <li><p>If <var>position</var> is beyond the end of <var>input</var> or if the character at
-   <var>position</var> is not a U+003A COLON character (:), then return an error and abort these
-   steps. Otherwise, move <var>position</var> forwards one character.</p></li>
+   <li><p>If |position| is beyond the end of |input| or if the character at |position| is not a
+   U+003A COLON character (:), then return an error and abort these steps. Otherwise, move
+   |position| forwards one character.</p></li>
 
    <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
-   and let <var>string</var> be the collected substring.</p></li>
+   and let |string| be the collected substring.</p></li>
 
-   <li><p>If <var>string</var> is not exactly two characters in length, return an error and abort
-   these steps.</p></li>
+   <li><p>If |string| is not exactly two characters in length, return an error and abort these
+   steps.</p></li>
 
-   <li><p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>3</sub></var> be
-   that integer.</p></li>
+   <li><p>Interpret |string| as a base-ten integer. Let |value<sub>3</sub>| be that
+   integer.</p></li>
 
   </ol>
 
-  <p>Otherwise (if <var>most significant units</var> is not <i>hours</i>, and either
-  <var>position</var> is beyond the end of <var>input</var>, or the character at <var>position</var>
-  is not a U+003A COLON character (:)), let <var>value<sub>3</sub></var> have the value of
-  <var>value<sub>2</sub></var>, then <var>value<sub>2</sub></var> have the value of
-  <var>value<sub>1</sub></var>, then let <var>value<sub>1</sub></var> equal zero.</p>
+  <p>Otherwise (if |most significant units| is not <i>hours</i>, and either |position| is beyond the
+  end of |input|, or the character at |position| is not a U+003A COLON character (:)), let
+  |value<sub>3</sub>| have the value of |value<sub>2</sub>|, then |value<sub>2</sub>| have the value
+  of |value<sub>1</sub>|, then let |value<sub>1</sub>| equal zero.</p>
 
  </li>
 
- <li><p>If <var>position</var> is beyond the end of <var>input</var> or if the character at
- <var>position</var> is not a U+002E FULL STOP character (.), then return an error and abort these
- steps. Otherwise, move <var>position</var> forwards one character.</p></li>
+ <li><p>If |position| is beyond the end of |input| or if the character at |position| is not a U+002E
+ FULL STOP character (.), then return an error and abort these steps. Otherwise, move |position|
+ forwards one character.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p></li>
+ and let |string| be the collected substring.</p></li>
 
- <li><p>If <var>string</var> is not exactly three characters in length, return an error and abort
- these steps.</p></li>
+ <li><p>If |string| is not exactly three characters in length, return an error and abort these
+ steps.</p></li>
 
- <li><p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>4</sub></var> be that
- integer.</p></li>
+ <li><p>Interpret |string| as a base-ten integer. Let |value<sub>4</sub>| be that integer.</p></li>
 
- <li><p>If <var>value<sub>2</sub></var> is greater than 59 or if <var>value<sub>3</sub></var> is
- greater than 59, return an error and abort these steps.</p></li>
+ <li><p>If |value<sub>2</sub>| is greater than 59 or if |value<sub>3</sub>| is greater than 59,
+ return an error and abort these steps.</p></li>
 
- <!-- no need to check if <var>value<sub>4</sub></var> is greater than 999, since we know it had
- exactly three characters in the range 0-9, so we know it's a number in the range 0-999 -->
+ <!-- no need to check if |value<sub>4</sub>| is greater than 999, since we know it had exactly
+ three characters in the range 0-9, so we know it's a number in the range 0-999 -->
 
- <li><p>Let <var>result</var> be <var>value<sub>1</sub></var>&times;60&times;60 +
- <var>value<sub>2</sub></var>&times;60 + <var>value<sub>3</sub></var> +
- <var>value<sub>4</sub></var>&#x2215;1000. <!-- &#x00f7; is the division sign if people prefer that
- to the slash --></p></li>
+ <li><p>Let |result| be |value<sub>1</sub>|&times;60&times;60 + |value<sub>2</sub>|&times;60 +
+ |value<sub>3</sub>| + |value<sub>4</sub>|&#x2215;1000. <!-- &#x00f7; is the division sign if people
+ prefer that to the slash --></p></li>
 
- <li><p>Return <var>result</var>.</p></li>
+ <li><p>Return |result|.</p></li>
 
 </ol>
 
 
-<h3 id=cue-text-parsing-rules><dfn>WebVTT cue text parsing rules</dfn></h3>
+<h3 id=cue-text-parsing-rules algorithm><dfn>WebVTT cue text parsing rules</dfn></h3>
 
 <p>A <dfn>WebVTT Node Object</dfn> is a conceptual construct used to represent components of
 <a>WebVTT cue text</a> so that its processing can be described without reference to the underlying
@@ -2644,53 +2599,51 @@ Objects</a>:</p>
 
 </dl>
 
-<p>To parse a string <var>input</var> supposedly containing <a>WebVTT cue text</a>, user agents must
-use the following algorithm. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
+<p>To parse a string |input| supposedly containing <a>WebVTT cue text</a>, user agents must use the
+following algorithm. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
 <ol>
 
- <li><p>Let <var>input</var> be the string being parsed.</p></li>
+ <li><p>Let |input| be the string being parsed.</p></li>
 
- <li><p>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start
- of the string.</p></li>
+ <li><p>Let |position| be a pointer into |input|, initially pointing at the start of the
+ string.</p></li>
 
- <li><p>Let <var>result</var> be a <a>list of WebVTT Node Objects</a>, initially empty.</p></li>
+ <li><p>Let |result| be a <a>list of WebVTT Node Objects</a>, initially empty.</p></li>
 
- <li><p>Let <var>current</var> be the <a>WebVTT Internal Node Object</a> <var>result</var>.</p></li>
+ <li><p>Let |current| be the <a>WebVTT Internal Node Object</a> |result|.</p></li>
 
- <li><p>Let <var>language stack</var> be a stack of language tags, initially empty.</p></li>
+ <li><p>Let |language stack| be a stack of language tags, initially empty.</p></li>
 
- <li><p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, return
- <var>result</var> and abort these steps.</p></li>
+ <li><p><i>Loop</i>: If |position| is past the end of |input|, return |result| and abort these
+ steps.</p></li>
 
- <li><p>Let <var>token</var> be the result of invoking the <a>WebVTT cue text
- tokenizer</a>.</p></li>
+ <li><p>Let |token| be the result of invoking the <a>WebVTT cue text tokenizer</a>.</p></li>
 
  <li>
 
-  <p>Run the appropriate steps given the type of <var>token</var>:</p>
+  <p>Run the appropriate steps given the type of |token|:</p>
 
   <dl>
 
-   <dt>If <var>token</var> is a string</dt>
+   <dt>If |token| is a string</dt>
    <dd>
 
     <ol>
 
      <li><p>Create a <a>WebVTT Text Object</a> whose value is the value of the string token
-     <var>token</var>.</p></li>
+     |token|.</p></li>
 
-     <li><p>Append the newly created <a>WebVTT Text Object</a> to <var>current</var>.</p></li>
+     <li><p>Append the newly created <a>WebVTT Text Object</a> to |current|.</p></li>
 
     </ol>
 
    </dd>
 
-   <dt>If <var>token</var> is a start tag</dt>
+   <dt>If |token| is a start tag</dt>
    <dd>
 
-    <p>How the start tag token <var>token</var> is processed depends on its tag name, as
-    follows:</p>
+    <p>How the start tag token |token| is processed depends on its tag name, as follows:</p>
 
     <dl>
 
@@ -2722,8 +2675,8 @@ use the following algorithm. This algorithm returns a <a>list of WebVTT Node Obj
 
      <dt>If the tag name is "<code>rt</code>"</dt>
      <dd>
-      <p>If <var>current</var> is a <a>WebVTT Ruby Object</a>, then <a lt="attach a WebVTT Internal
-      Node Object">attach</a> a <a>WebVTT Ruby Text Object</a>.</p>
+      <p>If |current| is a <a>WebVTT Ruby Object</a>, then <a lt="attach a WebVTT Internal Node
+      Object">attach</a> a <a>WebVTT Ruby Text Object</a>.</p>
      </dd>
 
      <dt>If the tag name is "<code>v</code>"</dt>
@@ -2736,8 +2689,8 @@ use the following algorithm. This algorithm returns a <a>list of WebVTT Node Obj
      <dt>If the tag name is "<code>lang</code>"</dt>
      <dd>
       <p>Push the value of the token's annotation string, or the empty string if there is no
-      annotation string, onto the <var>language stack</var>; then <a lt="attach a WebVTT Internal
-      Node Object">attach</a> a <a>WebVTT Language Object</a>.</p>
+      annotation string, onto the |language stack|; then <a lt="attach a WebVTT Internal Node
+      Object">attach</a> a <a>WebVTT Language Object</a>.</p>
      </dd>
 
      <dt>Otherwise</dt>
@@ -2760,78 +2713,76 @@ use the following algorithm. This algorithm returns a <a>list of WebVTT Node Obj
      string.</p></li>
 
      <li><p>Set the new object's <a lt="WebVTT Node Object's applicable language">applicable
-     language</a> to the top entry on the <var>language stack</var>, if the stack is not
-     empty.</p></li>
+     language</a> to the top entry on the |language stack|, if the stack is not empty.</p></li>
 
-     <li><p>Append the newly created node object to <var>current</var>.</p></li>
+     <li><p>Append the newly created node object to |current|.</p></li>
 
-     <li><p>Let <var>current</var> be the newly created node object.</p></li>
+     <li><p>Let |current| be the newly created node object.</p></li>
 
     </ol>
 
    </dd>
 
-   <dt>If <var>token</var> is an end tag</dt>
+   <dt>If |token| is an end tag</dt>
    <dd>
 
-    <p>If any of the following conditions is true, then let <var>current</var> be the parent node of
-    <var>current</var>.</p>
+    <p>If any of the following conditions is true, then let |current| be the parent node of
+    |current|.</p>
 
     <ul class="brief">
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>c</code>" and
-     <var>current</var> is a <a>WebVTT Class Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>c</code>" and |current| is a <a>WebVTT
+     Class Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>i</code>" and
-     <var>current</var> is a <a>WebVTT Italic Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>i</code>" and |current| is a <a>WebVTT
+     Italic Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>b</code>" and
-     <var>current</var> is a <a>WebVTT Bold Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>b</code>" and |current| is a <a>WebVTT
+     Bold Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>u</code>" and
-     <var>current</var> is a <a>WebVTT Underline Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>u</code>" and |current| is a <a>WebVTT
+     Underline Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>ruby</code>" and
-     <var>current</var> is a <a>WebVTT Ruby Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>ruby</code>" and |current| is a
+     <a>WebVTT Ruby Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>rt</code>" and
-     <var>current</var> is a <a>WebVTT Ruby Text Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>rt</code>" and |current| is a <a>WebVTT
+     Ruby Text Object</a>.</li>
 
-     <li>The tag name of the end tag token <var>token</var> is "<code>v</code>" and
-     <var>current</var> is a <a>WebVTT Voice Object</a>.</li>
+     <li>The tag name of the end tag token |token| is "<code>v</code>" and |current| is a <a>WebVTT
+     Voice Object</a>.</li>
 
     </ul>
 
-    <p>Otherwise, if the tag name of the end tag token <var>token</var> is "<code>lang</code>" and
-    <var>current</var> is a <a>WebVTT Language Object</a>, then let <var>current</var> be the parent
-    node of <var>current</var>, and pop the top value from the <var>language stack</var>.</p>
+    <p>Otherwise, if the tag name of the end tag token |token| is "<code>lang</code>" and |current|
+    is a <a>WebVTT Language Object</a>, then let |current| be the parent node of |current|, and pop
+    the top value from the |language stack|.</p>
 
-    <p>Otherwise, if the tag name of the end tag token <var>token</var> is "<code>ruby</code>" and
-    <var>current</var> is a <a>WebVTT Ruby Text Object</a>, then let <var>current</var> be the
-    parent node of the parent node of <var>current</var>.</p>
+    <p>Otherwise, if the tag name of the end tag token |token| is "<code>ruby</code>" and |current|
+    is a <a>WebVTT Ruby Text Object</a>, then let |current| be the parent node of the parent node of
+    |current|.</p>
 
     <p>Otherwise, ignore the token.</p>
 
    </dd>
 
-   <dt>If <var>token</var> is a timestamp tag</dt>
+   <dt>If |token| is a timestamp tag</dt>
    <dd>
 
     <ol>
 
-     <li><p>Let <var>input</var> be the tag value.</p></li>
+     <li><p>Let |input| be the tag value.</p></li>
 
-     <li><p>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the
-     start of the string.</p></li>
+     <li><p>Let |position| be a pointer into |input|, initially pointing at the start of the
+     string.</p></li>
 
      <li><p><a>Collect a WebVTT timestamp</a>.</p></li>
 
      <li>
 
-      <p>If that algorithm does not fail, and if <var>position</var> now points at the end of
-      <var>input</var> (i.e. there are no trailing characters after the timestamp), then create a
-      <a>WebVTT Timestamp Object</a> whose value is the collected time, then append it to
-      <var>current</var>.</p>
+      <p>If that algorithm does not fail, and if |position| now points at the end of |input| (i.e.
+      there are no trailing characters after the timestamp), then create a <a>WebVTT Timestamp
+      Object</a> whose value is the collected time, then append it to |current|.</p>
 
       <p>Otherwise, ignore the token.</p>
 
@@ -2856,22 +2807,21 @@ value).</p>
 
 <ol>
 
- <li><p>Let <var>input</var> and <var>position</var> be the same variables as those of the same name
- in the algorithm that invoked these steps.</p></li>
+ <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
+ that invoked these steps.</p></li>
 
- <li><p>Let <var>tokenizer state</var> be <a>WebVTT data state</a>.</p></li>
+ <li><p>Let |tokenizer state| be <a>WebVTT data state</a>.</p></li>
 
- <li><p>Let <var>result</var> be the empty string.</p></li>
+ <li><p>Let |result| be the empty string.</p></li>
 
- <li><p>Let <var>buffer</var> be the empty string.</p></li>
+ <li><p>Let |buffer| be the empty string.</p></li>
 
- <li><p>Let <var>classes</var> be an empty list.</p></li>
+ <li><p>Let |classes| be an empty list.</p></li>
 
  <li>
 
-  <p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, let <var>c</var> be an
-  end-of-file marker. Otherwise, let <var>c</var> be the character in <var>input</var> pointed to by
-  <var>position</var>.</p>
+  <p><i>Loop</i>: If |position| is past the end of |input|, let |c| be an end-of-file marker.
+  Otherwise, let |c| be the character in |input| pointed to by |position|.</p>
 
   <p class="note">An end-of-file marker is not a Unicode character, it is used to end the
   tokenizer.</p>
@@ -2880,7 +2830,7 @@ value).</p>
 
  <li>
 
-  <p>Jump to the state given by <var>tokenizer state</var>:</p>
+  <p>Jump to the state given by |tokenizer state|:</p>
 
   <dl>
 
@@ -2888,32 +2838,31 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
      <dt>U+0026 AMPERSAND (&amp;)</dt>
      <dd>
-      <p>Set <var>buffer</var> to <var>c</var>, set <var>tokenizer state</var> to the <a>WebVTT
-      escape state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Set |buffer| to |c|, set |tokenizer state| to the <a>WebVTT escape state</a>, and jump to
+      the step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
      <dd>
-      <p>If <var>result</var> is the empty string, then set <var>tokenizer state</var> to the
-      <a>WebVTT tag state</a> and jump to the step labeled <i>next</i>.</p>
-      <p>Otherwise, return a string token whose value is <var>result</var> and abort these
-      steps.</p>
+      <p>If |result| is the empty string, then set |tokenizer state| to the <a>WebVTT tag state</a>
+      and jump to the step labeled <i>next</i>.</p>
+      <p>Otherwise, return a string token whose value is |result| and abort these steps.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Return a string token whose value is <var>result</var> and abort these steps.</p>
+      <p>Return a string token whose value is |result| and abort these steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |result| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -2924,64 +2873,62 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
      <dt>U+0026 AMPERSAND (&amp;)</dt>
      <dd>
-      <p>Append <var>buffer</var> to <var>result</var>, set <var>buffer</var> to <var>c</var>, and
-      jump to the step labeled <i>next</i>.</p>
+      <p>Append |buffer| to |result|, set |buffer| to |c|, and jump to the step labeled
+      <i>next</i>.</p>
      </dd>
 
      <dt><a>Alphanumeric ASCII characters</a></dt>
      <dd>
-      <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |buffer| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003B SEMICOLON character (;)</dt>
      <dd>
 
-      <p>First, examine the value of <var>buffer</var>:</p>
+      <p>First, examine the value of |buffer|:</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;amp</code>", then append a U+0026 AMPERSAND
-      character (&amp;) to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;amp</code>", then append a U+0026 AMPERSAND character
+      (&amp;) to |result|.</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;lt</code>", then append a U+003C LESS-THAN
-      SIGN character (&lt;) to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;lt</code>", then append a U+003C LESS-THAN SIGN
+      character (&lt;) to |result|.</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;gt</code>", then append a U+003E
-      GREATER-THAN SIGN character (&gt;) to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;gt</code>", then append a U+003E GREATER-THAN SIGN
+      character (&gt;) to |result|.</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;lrm</code>", then append a U+200E
-      LEFT-TO-RIGHT MARK character to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;lrm</code>", then append a U+200E LEFT-TO-RIGHT MARK
+      character to |result|.</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;rlm</code>", then append a U+200F
-      RIGHT-TO-LEFT MARK character to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;rlm</code>", then append a U+200F RIGHT-TO-LEFT MARK
+      character to |result|.</p>
 
-      <p>If <var>buffer</var> is the string "<code>&amp;nbsp</code>", then append a U+00A0 NO-BREAK
-      SPACE character to <var>result</var>.</p>
+      <p>If |buffer| is the string "<code>&amp;nbsp</code>", then append a U+00A0 NO-BREAK SPACE
+      character to |result|.</p>
 
-      <p>Otherwise, append <var>buffer</var> followed by a U+003B SEMICOLON character (;) to
-      <var>result</var>.</p>
+      <p>Otherwise, append |buffer| followed by a U+003B SEMICOLON character (;) to |result|.</p>
 
-      <p>Then, in any case, set <var>tokenizer state</var> to the <a>WebVTT data state</a>, and jump
-      to the step labeled <i>next</i>.</p>
+      <p>Then, in any case, set |tokenizer state| to the <a>WebVTT data state</a>, and jump to the
+      step labeled <i>next</i>.</p>
 
      </dd>
 
      <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Append <var>buffer</var> to <var>result</var>, return a string token whose value is
-      <var>result</var>, and abort these steps.</p>
+      <p>Append |buffer| to |result|, return a string token whose value is |result|, and abort these
+      steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>buffer</var> to <var>result</var>, append <var>c</var> to <var>result</var>,
-      set <var>tokenizer state</var> to the <a>WebVTT data state</a>, and jump to the step labeled
-      <i>next</i>.</p>
+      <p>Append |buffer| to |result|, append |c| to |result|, set |tokenizer state| to the <a>WebVTT
+      data state</a>, and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -2992,7 +2939,7 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
@@ -3002,33 +2949,33 @@ value).</p>
      <dt>U+0020 SPACE character</dt>
      <dd>
       <!-- assert: >result< is the empty string -->
-      <p>Set <var>tokenizer state</var> to the <a>WebVTT start tag annotation state</a>, and jump to
-      the step labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>WebVTT start tag annotation state</a>, and jump to the step
+      labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+002E FULL STOP character (.)</dt>
      <dd>
       <!-- assert: >result< is the empty string -->
-      <p>Set <var>tokenizer state</var> to the <a>WebVTT start tag class state</a>, and jump to the
-      step labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>WebVTT start tag class state</a>, and jump to the step
+      labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+002F SOLIDUS character (/)</dt>
      <dd>
-      <p>Set <var>tokenizer state</var> to the <a>WebVTT end tag state</a>, and jump to the step
-      labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>WebVTT end tag state</a>, and jump to the step labeled
+      <i>next</i>.</p>
      </dd>
 
      <dt><a>ASCII digits</a></dt>
      <dd>
-      <p>Set <var>result</var> to <var>c</var>, set <var>tokenizer state</var> to the <a>WebVTT
-      timestamp tag state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Set |result| to |c|, set |tokenizer state| to the <a>WebVTT timestamp tag state</a>, and
+      jump to the step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
@@ -3039,8 +2986,8 @@ value).</p>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Set <var>result</var> to <var>c</var>, set <var>tokenizer state</var> to the <a>WebVTT
-      start tag state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Set |result| to |c|, set |tokenizer state| to the <a>WebVTT start tag state</a>, and jump
+      to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3051,7 +2998,7 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
@@ -3059,37 +3006,37 @@ value).</p>
      <dt>U+000C FORM FEED (FF) character</dt>
      <dt>U+0020 SPACE character</dt>
      <dd>
-      <p>Set <var>tokenizer state</var> to the <a>WebVTT start tag annotation state</a>, and jump to
-      the step labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>WebVTT start tag annotation state</a>, and jump to the step
+      labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+000A LINE FEED (LF) character</dt>
      <dd>
-      <p>Set <var>buffer</var> to <var>c</var>, set <var>tokenizer state</var> to the <a>WebVTT
-      start tag annotation state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Set |buffer| to |c|, set |tokenizer state| to the <a>WebVTT start tag annotation state</a>,
+      and jump to the step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+002E FULL STOP character (.)</dt>
      <dd>
-      <p>Set <var>tokenizer state</var> to the <a>WebVTT start tag class state</a>, and jump to the
-      step labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>WebVTT start tag class state</a>, and jump to the step
+      labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Return a start tag whose tag name is <var>result</var>, with no classes and no annotation,
-      and abort these steps.</p>
+      <p>Return a start tag whose tag name is |result|, with no classes and no annotation, and abort
+      these steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |result| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3100,7 +3047,7 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
@@ -3108,40 +3055,40 @@ value).</p>
      <dt>U+000C FORM FEED (FF) character</dt>
      <dt>U+0020 SPACE character</dt>
      <dd>
-      <p>Append to <var>classes</var> an entry whose value is <var>buffer</var>, set
-      <var>buffer</var> to the empty string, set <var>tokenizer state</var> to the <a>WebVTT start
-      tag annotation state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Append to |classes| an entry whose value is |buffer|, set |buffer| to the empty string, set
+      |tokenizer state| to the <a>WebVTT start tag annotation state</a>, and jump to the step
+      labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+000A LINE FEED (LF) character</dt>
      <dd>
-      <p>Append to <var>classes</var> an entry whose value is <var>buffer</var>, set
-      <var>buffer</var> to <var>c</var>, set <var>tokenizer state</var> to the <a>WebVTT start tag
-      annotation state</a>, and jump to the step labeled <i>next</i>.</p>
+      <p>Append to |classes| an entry whose value is |buffer|, set |buffer| to |c|, set |tokenizer
+      state| to the <a>WebVTT start tag annotation state</a>, and jump to the step labeled
+      <i>next</i>.</p>
      </dd>
 
      <dt>U+002E FULL STOP character (.)</dt>
      <dd>
-      <p>Append to <var>classes</var> an entry whose value is <var>buffer</var>, set
-      <var>buffer</var> to the empty string, and jump to the step labeled <i>next</i>.</p>
+      <p>Append to |classes| an entry whose value is |buffer|, set |buffer| to the empty string, and
+      jump to the step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Append to <var>classes</var> an entry whose value is <var>buffer</var>, then return a start
-      tag whose tag name is <var>result</var>, with the classes given in <var>classes</var> but no
-      annotation, and abort these steps.</p>
+      <p>Append to |classes| an entry whose value is |buffer|, then return a start tag whose tag
+      name is |result|, with the classes given in |classes| but no annotation, and abort these
+      steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |buffer| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3152,28 +3099,28 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Remove any leading or trailing <a lt="space character">space characters</a> from
-      <var>buffer</var>, and replace any sequence of one or more consecutive <a lt="space
-      character">space characters</a> in <var>buffer</var> with a single U+0020 SPACE character;
-      then, return a start tag whose tag name is <var>result</var>, with the classes given in
-      <var>classes</var>, and with <var>buffer</var> as the annotation, and abort these steps.</p>
+      <p>Remove any leading or trailing <a lt="space character">space characters</a> from |buffer|,
+      and replace any sequence of one or more consecutive <a lt="space character">space
+      characters</a> in |buffer| with a single U+0020 SPACE character; then, return a start tag
+      whose tag name is |result|, with the classes given in |classes|, and with |buffer| as the
+      annotation, and abort these steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |buffer| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3184,7 +3131,7 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
@@ -3192,18 +3139,18 @@ value).</p>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Return an end tag whose tag name is <var>result</var> and abort these steps.</p>
+      <p>Return an end tag whose tag name is |result| and abort these steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |result| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3214,24 +3161,24 @@ value).</p>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of <var>c</var>:</p>
+    <p>Jump to the entry that matches the value of |c|:</p>
 
     <dl>
 
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
-      <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the
-      next "end-of-file marker" entry below.</p>
+      <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
+      marker" entry below.</p>
      </dd>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Return a timestamp tag whose tag name is <var>result</var> and abort these steps.</p>
+      <p>Return a timestamp tag whose tag name is |result| and abort these steps.</p>
      </dd>
 
      <dt>Anything else</dt>
      <dd>
-      <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
+      <p>Append |c| to |result| and jump to the step labeled <i>next</i>.</p>
      </dd>
 
     </dl>
@@ -3242,21 +3189,21 @@ value).</p>
 
  </li>
 
- <li><p><i>Next</i>: Advance <var>position</var> to the next character in <var>input</var>.</p></li>
+ <li><p><i>Next</i>: Advance |position| to the next character in |input|.</p></li>
 
  <li><p>Jump to the step labeled <i>loop</i>.</p></li>
 
 </ol>
 
 
-<h3 id=dom-construction-rules><dfn>WebVTT cue text DOM construction rules</dfn></h3>
+<h3 id=dom-construction-rules algorithm><dfn>WebVTT cue text DOM construction rules</dfn></h3>
 
 <p class="note">For the purpose of retrieving a <a>WebVTT cue</a>'s content via the
 {{VTTCue/getCueAsHTML()}} method of the {{VTTCue}} interface, it needs to be parsed to a
 {{DocumentFragment}}. This section describes how.</p>
 
-<p>To convert a <a>list of WebVTT Node Objects</a> to a DOM tree for {{Document}} <var>owner</var>,
-user agents must create a tree of DOM nodes that is isomorphous to the tree of <a lt="WebVTT Node
+<p>To convert a <a>list of WebVTT Node Objects</a> to a DOM tree for {{Document}} |owner|, user
+agents must create a tree of DOM nodes that is isomorphous to the tree of <a lt="WebVTT Node
 Object">WebVTT Node Objects</a>, with the following mapping of <a lt="WebVTT Node Object">WebVTT
 Node Objects</a> to DOM nodes:</p>
 
@@ -3321,8 +3268,8 @@ Node Objects</a> to DOM nodes:</p>
    <td class=long>{{ProcessingInstruction}} node whose {{ProcessingInstruction/target}} is
    "<code>timestamp</code>" and whose {{CharacterData/data}} is a <a>WebVTT timestamp</a>
    representing the value of the <a>WebVTT Timestamp Object</a>, with all optional components
-   included, with one leading zero if the <var>hours</var> component is less than ten, and with no
-   leading zeros otherwise.</td>
+   included, with one leading zero if the |hours| component is less than ten, and with no leading
+   zeros otherwise.</td>
   </tr>
  </tbody>
 </table>
@@ -3335,24 +3282,25 @@ element-attr>class</a> attribute set to the string obtained by concatenating all
 separated from the next by a single U+0020 SPACE character.</p>
 
 <p>The {{Node/ownerDocument}} attribute of all nodes in the DOM tree must be set to the given
-document <var>owner</var>.</p>
+document |owner|.</p>
 
 <p>All characteristics of the DOM nodes that are not described above or dependent on characteristics
 defined above must be left at their initial values.</p>
 
 
-<h3 id=rules-for-extracting-the-chapter-title>WebVTT rules for extracting the chapter title</h3>
+<h3 id=rules-for-extracting-the-chapter-title algorithm>WebVTT rules for extracting the chapter
+title</h3>
 
 <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> are as follows:</p>
 
 <ol>
 
- <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the
- <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
+ <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue
+ text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
 
- <li><p>Return the concatenation of the values of each <a>WebVTT Text Object</a> in
- <var>nodes</var>, in a pre-order, depth-first traversal, excluding <a lt="WebVTT Ruby Text
- Object">WebVTT Ruby Text Objects</a> and their descendants.</p></li>
+ <li><p>Return the concatenation of the values of each <a>WebVTT Text Object</a> in |nodes|, in a
+ pre-order, depth-first traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text
+ Objects</a> and their descendants.</p></li>
 
 </ol>
 
@@ -3365,7 +3313,7 @@ The processing model is quite tightly linked to media elements in HTML. When sup
 media players that don't support CSS, equivalent visual rendering will need to be implemented.</p>
 
 
-<h3 id=processing-model>Processing model</h3>
+<h3 id=processing-model algorithm>Processing model</h3>
 
 <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a lt="text
 track">text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a> element), or
@@ -3388,125 +3336,113 @@ manner suiting the user.</p>
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
 
- <li><p>Let <var>video</var> be the <a>media element</a> or other playback mechanism.</p></li>
+ <li><p>Let |video| be the <a>media element</a> or other playback mechanism.</p></li>
 
- <li><p>Let <var>output</var> be an empty list of absolutely positioned CSS block boxes.</p></li>
+ <li><p>Let |output| be an empty list of absolutely positioned CSS block boxes.</p></li>
 
  <li><p>If the user agent is <a lt="expose a user interface to the user">exposing a user
- interface</a> for <var>video</var>, add to <var>output</var> one or more completely transparent
- positioned CSS block boxes that cover the same region as the user interface.</p></li>
+ interface</a> for |video|, add to |output| one or more completely transparent positioned CSS block
+ boxes that cover the same region as the user interface.</p></li>
 
  <li><p>If the last time these rules were run, the user agent was not <a lt="expose a user interface
- to the user">exposing a user interface</a> for <var>video</var>, but now it is, optionally let
- <var>reset</var> be true. Otherwise, let <var>reset</var> be false.</p></li>
+ to the user">exposing a user interface</a> for |video|, but now it is, optionally let |reset| be
+ true. Otherwise, let |reset| be false.</p></li>
 
- <li><p>Let <var>tracks</var> be the subset of <var>video</var>'s <a>list of text tracks</a> that
- have as their <a>rules for updating the text track rendering</a> these <a>rules for updating the
- display of WebVTT text tracks</a>, and whose <a>text track mode</a> is <a lt="text track
+ <li><p>Let |tracks| be the subset of |video|'s <a>list of text tracks</a> that have as their
+ <a>rules for updating the text track rendering</a> these <a>rules for updating the display of
+ WebVTT text tracks</a>, and whose <a>text track mode</a> is <a lt="text track
  showing">showing</a>.</p></li>
 
- <li><p>Let <var>cues</var> be an empty list of <a lt="text track cue">text track cues</a>.</p></li>
+ <li><p>Let |cues| be an empty list of <a lt="text track cue">text track cues</a>.</p></li>
 
- <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>cues</var> all the <a
- lt="text track cue">cues</a> from <var>track</var>'s <a lt="text track list of cues">list of
- cues</a> that have their <a>text track cue active flag</a> set.</p></li>
+ <li><p>For each track |track| in |tracks|, append to |cues| all the <a lt="text track cue">cues</a>
+ from |track|'s <a lt="text track list of cues">list of cues</a> that have their <a>text track cue
+ active flag</a> set.</p></li>
 
- <li><p>Let <var>regions</var> be an empty list of <a lt="WebVTT region">WebVTT
- regions</a>.</p></li>
+ <li><p>Let |regions| be an empty list of <a lt="WebVTT region">WebVTT regions</a>.</p></li>
 
- <li><p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the
- <a lt="WebVTT region">regions</a> from <var>track</var>'s <a lt="text track list of regions">list
- of regions</a>.</p></li>
+ <li><p>For each track |track| in |tracks|, append to |regions| all the <a lt="WebVTT
+ region">regions</a> from |track|'s <a lt="text track list of regions">list of regions</a>.</p></li>
 
- <li><p>If <var>reset</var> is false, then, for each <a>WebVTT region</a> <var>region</var> in
- <var>regions</var> let <var>regionNode</var> be a <a>WebVTT region object</a>.</p></li>
+ <li><p>If |reset| is false, then, for each <a>WebVTT region</a> |region| in |regions| let
+ |regionNode| be a <a>WebVTT region object</a>.</p></li>
 
  <li>
-  <p>Apply the following steps for each <var>regionNode</var>:</p>
+  <p>Apply the following steps for each |regionNode|:</p>
 
   <ol>
    <li>
-    <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as
-    follows:</p>
+    <p>Prepare some variables for the application of CSS properties to |regionNode| as follows:</p>
 
     <ul>
-     <li><p>Let <var>regionWidth</var> be the <a>WebVTT region width</a>. Let <var>width</var> be
-     '<var>regionWidth</var> vw' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
+     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be '|regionWidth| vw'
+     (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
-     <li><p>Let <var>lineHeight</var> be '5.33vh' (''vh'' is a CSS unit) [[!CSS-VALUES]] and
-     <var>regionHeight</var> be the <a>WebVTT region lines</a>. Let <var>lines</var> be
-     '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p></li>
+     <li><p>Let |lineHeight| be '5.33vh' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
+     be the <a>WebVTT region lines</a>. Let |lines| be '|lineHeight| multiplied by
+     |regionHeight|.</p></li>
 
-     <li><p>Let <var>viewportAnchorX</var> be the x dimension of the <a>WebVTT region anchor</a> and
-     <var>regionAnchorX</var> be the x dimension of the <a>WebVTT region anchor</a>. Let
-     <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by
-     100.0. Let <var>left</var> be <var>leftOffset</var> subtracted from '<var>viewportAnchorX</var>
-     vw'.</p></li>
+     <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
+     |regionAnchorX| be the x dimension of the <a>WebVTT region anchor</a>. Let |leftOffset| be
+     |regionAnchorX| multiplied by |width| divided by 100.0. Let |left| be |leftOffset| subtracted
+     from '|viewportAnchorX| vw'.</p></li>
 
-     <li><p>Let <var>viewportAnchorY</var> be the y dimension of the <a>WebVTT region anchor</a> and
-     <var>regionAnchorY</var> be the y dimension of the <a>WebVTT region anchor</a>. Let
-     <var>topOffset</var> be <var>regionAnchorY</var> multiplied by <var>lines</var> divided by
-     100.0. Let <var>top</var> be <var>topOffset</var> subtracted from '<var>viewportAnchorY</var>
-     vh'.</p></li>
+     <li><p>Let |viewportAnchorY| be the y dimension of the <a>WebVTT region anchor</a> and
+     |regionAnchorY| be the y dimension of the <a>WebVTT region anchor</a>. Let |topOffset| be
+     |regionAnchorY| multiplied by |lines| divided by 100.0. Let |top| be |topOffset| subtracted
+     from '|viewportAnchorY| vh'.</p></li>
     </ul>
    </li>
 
    <li>
-    <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following
-    constraints, thus obtaining a CSS box <var>box</var> positioned relative to an initial
-    containing block:</p>
+    <p>Apply the terms of the CSS specifications to |regionNode| within the following constraints,
+    thus obtaining a CSS box |box| positioned relative to an initial containing block:</p>
     <ol>
-     <li><p>No style sheets are associated with <var>regionNode</var>. (The regionNodes are
-     subsequently restyled using style sheets after their boxes are generated, as described
-     below.)</p></li>
-     <li><p>Properties on <var>regionNode</var> have their values set as defined in the next
-     section. (That section uses some of the variables whose values were calculated earlier in this
+     <li><p>No style sheets are associated with |regionNode|. (The regionNodes are subsequently
+     restyled using style sheets after their boxes are generated, as described below.)</p></li>
+     <li><p>Properties on |regionNode| have their values set as defined in the next section. (That
+     section uses some of the variables whose values were calculated earlier in this
      algorithm.)</p></li>
      <li><p>The viewport (and initial containing block) is video's rendering area.</p></li>
     </ol>
    </li>
 
-   <li><p>Add the CSS box <var>box</var> to <var>output</var>.</p></li>
+   <li><p>Add the CSS box |box| to |output|.</p></li>
   </ol>
  </li>
 
  <li>
-  <p>If <var>reset</var> is false, then, for each <a>WebVTT cue</a> <var>cue</var> in
-  <var>cues</var>: if <var>cue</var>'s <a>text track cue display state</a> has a set of CSS boxes,
-  then:</p>
+  <p>If |reset| is false, then, for each <a>WebVTT cue</a> |cue| in |cues|: if |cue|'s <a>text track
+  cue display state</a> has a set of CSS boxes, then:</p>
 
   <ul>
-   <li><p>If <var>cue</var>'s <a>WebVTT cue region</a> is not null, add those boxes to that region's
-   <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p></li>
-   <li><p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var> from
-   <var>cues</var>.</p></li>
+   <li><p>If |cue|'s <a>WebVTT cue region</a> is not null, add those boxes to that region's |box|
+   and remove |cue| from |cues|.</p></li>
+   <li><p>Otherwise, add those boxes to |output| and remove |cue| from |cues|.</p></li>
   </ul>
 
  </li>
 
  <li>
 
-  <p>For each <a>WebVTT cue</a> <var>cue</var> in <var>cues</var> that has not yet had corresponding
-  CSS boxes added to <var>output</var>, in <a>text track cue order</a>, run the following
-  substeps:</p>
+  <p>For each <a>WebVTT cue</a> |cue| in |cues| that has not yet had corresponding CSS boxes added
+  to |output|, in <a>text track cue order</a>, run the following substeps:</p>
 
   <ol>
 
-   <li><p>Let <var>nodes</var> be the <a>list of WebVTT Node Objects</a> obtained by applying the
-   <a>WebVTT cue text parsing rules</a> to the <var>cue</var>'s <a>text track cue text</a>.</p></li>
+   <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT
+   cue text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
 
    <li>
-    <p>If <var>cue</var>'s <a>WebVTT cue region</a> is null, run the following substeps:</p>
+    <p>If |cue|'s <a>WebVTT cue region</a> is null, run the following substeps:</p>
 
     <ol>
 
-     <li><a>Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from
-     <var>nodes</var>.</li>
+     <li><a>Apply WebVTT cue settings</a> to obtain CSS boxes |boxes| from |nodes|.</li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
-     <var>boxes</var>.</p></li>
+     <li><p>Let |cue|'s <a>text track cue display state</a> have the CSS boxes in |boxes|.</p></li>
 
-     <li><p>Add the CSS boxes in <var>boxes</var> to <var>output</var>.</p></li>
+     <li><p>Add the CSS boxes in |boxes| to |output|.</p></li>
 
     </ol>
    </li>
@@ -3514,17 +3450,17 @@ manner suiting the user.</p>
    <li>
     <p>Otherwise, run the following substeps:</p>
     <ol>
-     <li><p>Let <var>region</var> be <var>cue</var>'s <a>WebVTT cue region</a>.</p></li>
+     <li><p>Let |region| be |cue|'s <a>WebVTT cue region</a>.</p></li>
 
-     <li><p>If <var>region</var>'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and
-     <var>region</var> already has one child, set <var>region</var>'s 'transition-property' to 'top'
-     and 'transition-duration' to '0.433s'.</p></li>
+     <li><p>If |region|'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and |region|
+     already has one child, set |region|'s 'transition-property' to 'top' and 'transition-duration'
+     to '0.433s'.</p></li>
 
      <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm that
      applies to regions -->
      <li>
       <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of
-      the values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
+      the values of each <a>WebVTT Text Object</a> in |nodes|, in a pre-order, depth-first
       traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their
       descendants, to determine the <i>paragraph embedding level</i> of the first Unicode paragraph
       of the cue. [[!BIDI]]</p>
@@ -3534,60 +3470,54 @@ manner suiting the user.</p>
      </li>
 
      <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
-     <i>paragraph direction</i> is left-to-right), let <var>direction</var> be "ltr", otherwise, let
-     it be "rtl".</p></li>
+     <i>paragraph direction</i> is left-to-right), let |direction| be "ltr", otherwise, let it be
+     "rtl".</p></li>
 
-     <li><p>Let <var>offset</var> be <var>cue</var>'s <a lt="cue computed position">computed
-     position</a> multiplied by <var>region</var>'s <a>WebVTT region width</a> and divided by 100
-     (i.e. interpret it as a percentage of the region width).</p></li>
+     <li><p>Let |offset| be |cue|'s <a lt="cue computed position">computed position</a> multiplied
+     by |region|'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
+     of the region width).</p></li>
 
      <li>
-      <p>Adjust <var>offset</var> using <var>cue</var>'s <a lt="cue computed position
-      alignment">computed position alignment</a> as follows:</p>
+      <p>Adjust |offset| using |cue|'s <a lt="cue computed position alignment">computed position
+      alignment</a> as follows:</p>
       <dl class="switch">
        <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
        lt="WebVTT cue position middle alignment">middle alignment</a></dt>
-       <dd><p>Subtract half of <var>region</var>'s <a>WebVTT region width</a> from
-       <var>offset</var>.</p></dd>
+       <dd><p>Subtract half of |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
 
        <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
        lt="WebVTT cue position end alignment">end alignment</a></dt>
-       <dd><p>Subtract <var>region</var>'s <a>WebVTT region width</a> from
-       <var>offset</var>.</p></dd>
+       <dd><p>Subtract |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
       </dl>
      </li>
 
-     <li><p>Let <var>left</var> be '<var>offset</var>&#x2009;%'. ('%' is a CSS unit.)
-     [[!CSS-VALUES]]</p></li>
+     <li><p>Let |left| be '|offset|&#x2009;%'. ('%' is a CSS unit.) [[!CSS-VALUES]]</p></li>
 
      <li>
-      <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints
-      that are used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part
-      of a region.</p>
+      <p>Apply the terms of the CSS specifications to |nodes| with the same constraints that are
+      used when they are applied to |nodes| of a |cue| that is not part of a region.</p>
 
-      <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block,
-      along with their positions.</p>
+      <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along
+      with their positions.</p>
      </li>
 
-     <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for
-     <var>cue</var>. The cue is ignored.</p></li>
+     <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|.
+     The cue is ignored.</p></li>
 
-     <li><p>Let <var>cue</var>'s <a>text track cue display state</a> have the CSS boxes in
-     <var>boxes</var>.</p></li>
+     <li><p>Let |cue|'s <a>text track cue display state</a> have the CSS boxes in |boxes|.</p></li>
 
-     <li><p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p></li>
+     <li><p>Add the CSS boxes in |boxes| to |region|.</p></li>
 
-     <li><p>If the CSS boxes <var>boxes</var> together have a height less than the height of the
-     <var>region</var> box, let <var>diff</var> be the absolute difference between the two height
-     values. Increase <var>top</var> by <var>diff</var> and re-apply it to
-     <var>regionNode</var>.</p></li>
+     <li><p>If the CSS boxes |boxes| together have a height less than the height of the |region|
+     box, let |diff| be the absolute difference between the two height values. Increase |top| by
+     |diff| and re-apply it to |regionNode|.</p></li>
     </ol>
    </li>
 
   </ol>
  </li>
 
- <li><p>Return <var>output</var>.</p></li>
+ <li><p>Return |output|.</p></li>
 
 </ol>
 
@@ -3596,18 +3526,18 @@ dragging them to another location on the <a element>video</a>, or even off the <
 entirely.</p>
 
 <p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn> to
-obtain CSS boxes from a <a>list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run
-the following algorithm.</p>
+obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
+following algorithm.</p>
 
 <ol>
 
  <li>
 
   <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the
-  values of each <a>WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
-  traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their
-  descendants, to determine the <i>paragraph embedding level</i> of the first Unicode paragraph of
-  the cue. [[!BIDI]]</p>
+  values of each <a>WebVTT Text Object</a> in |nodes|, in a pre-order, depth-first traversal,
+  excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their descendants, to
+  determine the <i>paragraph embedding level</i> of the first Unicode paragraph of the cue.
+  [[!BIDI]]</p>
 
   <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such as
   U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each
@@ -3618,71 +3548,71 @@ the following algorithm.</p>
  <li>
 
   <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
-  <i>paragraph direction</i> is left-to-right), let <var>direction</var> be "ltr", otherwise, let it
-  be "rtl".</p>
+  <i>paragraph direction</i> is left-to-right), let |direction| be "ltr", otherwise, let it be
+  "rtl".</p>
 
  </li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
- direction">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the
- <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue vertical growing left writing
- direction">vertical growing left</a>, then let <var>writing-mode</var> be "vertical-rl". Otherwise,
- the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue vertical growing right writing
- direction">vertical growing right</a>; let <var>writing-mode</var> be "vertical-lr".</p></li>
+ direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
+ cue writing direction</a> is <a lt="WebVTT cue vertical growing left writing direction">vertical
+ growing left</a>, then let |writing-mode| be "vertical-rl". Otherwise, the <a>WebVTT cue writing
+ direction</a> is <a lt="WebVTT cue vertical growing right writing direction">vertical growing
+ right</a>; let |writing-mode| be "vertical-lr".</p></li>
 
  <li>
 
-  <p>Determine the value of <var>maximum size</var> for <var>cue</var> as per the appropriate rules
-  from the following list:</p>
+  <p>Determine the value of |maximum size| for |cue| as per the appropriate rules from the following
+  list:</p>
 
   <dl class="switch">
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
    lt="WebVTT cue position start alignment">start</a></dt>
    <dd>
-    <p>Let <var>maximum size</var> be the <a lt="cue computed position">computed position</a>
-    subtracted from 100.</p>
+    <p>Let |maximum size| be the <a lt="cue computed position">computed position</a> subtracted from
+    100.</p>
    </dd>
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
    lt="WebVTT cue position end alignment">end</a></dt>
    <dd>
-    <p>Let <var>maximum size</var> be the <a lt="cue computed position">computed position</a>.</p>
+    <p>Let |maximum size| be the <a lt="cue computed position">computed position</a>.</p>
    </dd>
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
    lt="WebVTT cue position middle alignment">middle</a>, and the <a lt="cue computed
    position">computed position</a> is less than or equal to 50</dt>
    <dd>
-    <p>Let <var>maximum size</var> be the <a lt="cue computed position">computed position</a>
-    multiplied by two.</p>
+    <p>Let |maximum size| be the <a lt="cue computed position">computed position</a> multiplied by
+    two.</p>
    </dd>
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
    lt="WebVTT cue position middle alignment">middle</a>, and the <a lt="cue computed
    position">computed position</a> is greater than <!-- or equal to --> 50</dt>
    <dd>
-    <p>Let <var>maximum size</var> be the result of subtracting <a lt="cue computed
-    position">computed position</a> from 100 and then multiplying the result by two.</p>
+    <p>Let |maximum size| be the result of subtracting <a lt="cue computed position">computed
+    position</a> from 100 and then multiplying the result by two.</p>
    </dd>
 
   </dl>
 
  </li>
 
- <li><p>If the <a>WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var>
- be <a>WebVTT cue size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p></li>
+ <li><p>If the <a>WebVTT cue size</a> is less than |maximum size|, then let |size| be <a>WebVTT cue
+ size</a>. Otherwise, let |size| be |maximum size|.</p></li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
- direction">horizontal</a>, then let <var>width</var> be '<var>size</var>&#x2009;vw' and
- <var>height</var> be ''height/auto''. Otherwise, let <var>width</var> be ''width/auto'' and
- <var>height</var> be '<var>size</var>&#x2009;vh'. (These are CSS values used by the next section to
- set CSS properties for the rendering; ''vw'' and ''vh'' are CSS units.) [[!CSS-VALUES]]</p></li>
+ direction">horizontal</a>, then let |width| be '|size|&#x2009;vw' and |height| be ''height/auto''.
+ Otherwise, let |width| be ''width/auto'' and |height| be '|size|&#x2009;vh'. (These are CSS values
+ used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS units.)
+ [[!CSS-VALUES]]</p></li>
 
  <li>
 
-  <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per
-  the appropriate rules from the following list:</p>
+  <p>Determine the value of |x-position| or |y-position| for |cue| as per the appropriate rules from
+  the following list:</p>
 
   <dl class="switch">
 
@@ -3692,18 +3622,17 @@ the following algorithm.</p>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position start alignment">start alignment</a></dt>
-     <dd><p>Let <var>x-position</var> be the <a lt="cue computed position">computed
-     position</a>.</p></dd>
+     <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position middle alignment">middle alignment</a></dt>
-     <dd><p>Let <var>x-position</var> be the <a lt="cue computed position">computed position</a>
-     minus half of <var>size</var>.</p></dd>
+     <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a> minus half
+     of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position end alignment">end alignment</a></dt>
-     <dd><p>Let <var>x-position</var> be the <a lt="cue computed position">computed position</a>
-     minus <var>size</var>.</p></dd>
+     <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a> minus
+     |size|.</p></dd>
     </dl>
    </dd>
 
@@ -3714,18 +3643,17 @@ the following algorithm.</p>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position start alignment">start alignment</a></dt>
-     <dd><p>Let <var>y-position</var> be the <a lt="cue computed position">computed
-     position</a>.</p></dd>
+     <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position middle alignment">middle alignment</a></dt>
-     <dd><p>Let <var>y-position</var> be the <a lt="cue computed position">computed position</a>
-     minus half of <var>size</var>.</p></dd>
+     <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a> minus half
+     of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
      lt="WebVTT cue position end alignment">end alignment</a></dt>
-     <dd><p>Let <var>y-position</var> be the <a lt="cue computed position">computed position</a>
-     minus <var>size</var>.</p></dd>
+     <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a> minus
+     |size|.</p></dd>
     </dl>
    </dd>
 
@@ -3735,8 +3663,8 @@ the following algorithm.</p>
 
  <li>
 
-  <p>Determine the value of whichever of <var>x-position</var> or <var>y-position</var> is not yet
-  calculated for <var>cue</var> as per the appropriate rules from the following list:</p>
+  <p>Determine the value of whichever of |x-position| or |y-position| is not yet calculated for
+  |cue| as per the appropriate rules from the following list:</p>
 
   <dl class="switch">
 
@@ -3746,12 +3674,12 @@ the following algorithm.</p>
 
      <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
      direction">horizontal</a></dt>
-     <dd><p>Let <var>y-position</var> be the <a lt="cue computed line">computed line</a>.</p></dd>
+     <dd><p>Let |y-position| be the <a lt="cue computed line">computed line</a>.</p></dd>
 
      <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue vertical growing left
      writing direction">vertical growing left</a> or <a lt="WebVTT cue vertical growing right
      writing direction">vertical growing right</a></dt>
-     <dd><p>Let <var>x-position</var> be the <a lt="cue computed line">computed line</a>.</p></dd>
+     <dd><p>Let |x-position| be the <a lt="cue computed line">computed line</a>.</p></dd>
 
     </dl>
    </dd>
@@ -3762,12 +3690,12 @@ the following algorithm.</p>
 
      <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
      direction">horizontal</a></dt>
-     <dd><p>Let <var>y-position</var> be 0.</p></dd>
+     <dd><p>Let |y-position| be 0.</p></dd>
 
      <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue vertical growing left
      writing direction">vertical growing left</a> or <a lt="WebVTT cue vertical growing right
      writing direction">vertical growing right</a></dt>
-     <dd><p>Let <var>x-position</var> be 0.</p></dd>
+     <dd><p>Let |x-position| be 0.</p></dd>
 
     </dl>
    </dd>
@@ -3792,24 +3720,21 @@ the following algorithm.</p>
 
     <ol>
 
-     <li><p>Let <var>edge margin</var> be a user-agent-defined horizontal length, expressed as a
-     percentage of the width of the <var>video</var>'s rendering area, which will be used to define
-     a margin at the left and right edges of the video into which this cue will not be placed. In
-     situations with overscan, this margin should be sufficient to place the cue within the
-     title-safe area. In the absence of overscan, this value should be picked for aesthetics (to
-     avoid text being aligned precisely on the left or right edge of the video, which can be
-     ugly).</p></li>
+     <li><p>Let |edge margin| be a user-agent-defined horizontal length, expressed as a percentage
+     of the width of the |video|'s rendering area, which will be used to define a margin at the left
+     and right edges of the video into which this cue will not be placed. In situations with
+     overscan, this margin should be sufficient to place the cue within the title-safe area. In the
+     absence of overscan, this value should be picked for aesthetics (to avoid text being aligned
+     precisely on the left or right edge of the video, which can be ugly).</p></li>
 
-     <li><p>If <var>x-position</var> is less than <var>edge margin</var> and the sum of
-     <var>x-position</var> and <var>size</var> is more than <var>edge margin</var>, then increase
-     <var>x-position</var> by <var>edge margin</var> and decrease <var>size</var> by the same
-     amount.</p></li>
+     <li><p>If |x-position| is less than |edge margin| and the sum of |x-position| and |size| is
+     more than |edge margin|, then increase |x-position| by |edge margin| and decrease |size| by the
+     same amount.</p></li>
 
-     <li><p>Let <var>right margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+     <li><p>Let |right margin edge| be 100 minus |edge margin|.</p></li>
 
-     <li><p>If <var>x-position</var> is less than <var>right margin edge</var>, and the sum of
-     <var>x-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
-     decrease <var>size</var> by <var>edge margin</var>.</p></li>
+     <li><p>If |x-position| is less than |right margin edge|, and the sum of |x-position| and |size|
+     is more than |right margin edge|, then decrease |size| by |edge margin|.</p></li>
 
     </ol>
 
@@ -3822,24 +3747,21 @@ the following algorithm.</p>
 
     <ol>
 
-     <li><p>Let <var>edge margin</var> be a user-agent-defined vertical length, expressed as a
-     percentage of the height of the <var>video</var>'s rendering area, which will be used to define
-     a margin at the top and bottom edges of the video into which this cue will not be placed. In
-     situations with overscan, this margin should be sufficient to place the cue within the
-     title-safe area. In the absence of overscan, this value should be picked for aesthetics (to
-     avoid text being aligned precisely on the top or bottom edge of the video, which can be
-     ugly).</p></li>
+     <li><p>Let |edge margin| be a user-agent-defined vertical length, expressed as a percentage of
+     the height of the |video|'s rendering area, which will be used to define a margin at the top
+     and bottom edges of the video into which this cue will not be placed. In situations with
+     overscan, this margin should be sufficient to place the cue within the title-safe area. In the
+     absence of overscan, this value should be picked for aesthetics (to avoid text being aligned
+     precisely on the top or bottom edge of the video, which can be ugly).</p></li>
 
-     <li><p>If <var>y-position</var> is less than <var>edge margin</var> and the sum of
-     <var>y-position</var> and <var>size</var> is more than <var>edge margin</var>, then increase
-     <var>y-position</var> by <var>edge margin</var> and decrease <var>size</var> by the same
-     amount.</p></li>
+     <li><p>If |y-position| is less than |edge margin| and the sum of |y-position| and |size| is
+     more than |edge margin|, then increase |y-position| by |edge margin| and decrease |size| by the
+     same amount.</p></li>
 
-     <li><p>Let <var>bottom margin edge</var> be 100 minus <var>edge margin</var>.</p></li>
+     <li><p>Let |bottom margin edge| be 100 minus |edge margin|.</p></li>
 
-     <li><p>If <var>y-position</var> is less than <var>bottom margin edge</var>, and the sum of
-     <var>y-position</var> and <var>size</var> is more than <var>right margin edge</var>, then
-     decrease <var>size</var> by <var>edge margin</var>.</p></li>
+     <li><p>If |y-position| is less than |bottom margin edge|, and the sum of |y-position| and
+     |size| is more than |right margin edge|, then decrease |size| by |edge margin|.</p></li>
 
     </ol>
 
@@ -3849,20 +3771,19 @@ the following algorithm.</p>
 
  </li>
 
- <li><p>Let <var>left</var> be '<var>x-position</var>&#x2009;vw' and <var>top</var> be
- '<var>y-position</var>&#x2009;vh'. (These are CSS values used by the next section to set CSS
- properties for the rendering; ''vw'' and ''vh'' are CSS units.) [[!CSS-VALUES]]</p></li>
+ <li><p>Let |left| be '|x-position|&#x2009;vw' and |top| be '|y-position|&#x2009;vh'. (These are CSS
+ values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS
+ units.) [[!CSS-VALUES]]</p></li>
 
  <li>
 
-  <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints,
-  thus obtaining a set of CSS boxes positioned relative to an initial containing block:
-  [[!CSS21]]</p>
+  <p>Apply the terms of the CSS specifications to |nodes| within the following constraints, thus
+  obtaining a set of CSS boxes positioned relative to an initial containing block: [[!CSS21]]</p>
 
   <ul>
 
    <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
-   rooted at <var>nodes</var>.</p></li>
+   rooted at |nodes|.</p></li>
 
    <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
    Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
@@ -3871,11 +3792,11 @@ the following algorithm.</p>
    <li>For the purposes of processing by the CSS specification, <a lt="WebVTT Text Object">WebVTT
    Text Objects</a> are equivalent to {{Text}} nodes.</li>
 
-   <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently restyled
-   using style sheets after their boxes are generated, as described below.)</li>
+   <li>No style sheets are associated with |nodes|. (The nodes are subsequently restyled using style
+   sheets after their boxes are generated, as described below.)</li>
 
-   <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose 'display'
-   property has the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
+   <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
+   the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
 
    <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
    lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
@@ -3907,26 +3828,25 @@ the following algorithm.</p>
 
    </li>
 
-   <li>The viewport (and initial containing block) is <var>video</var>'s rendering area.</li>
+   <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
 
   </ul>
 
-  <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block,
-  along with their positions.</p>
+  <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
+  their positions.</p>
 
  </li>
 
- <li><p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for
- <var>cue</var>. The cue is ignored.</p></li>
+ <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|. The
+ cue is ignored.</p></li>
 
  <li>
 
-  <p>Adjust the positions of <var>boxes</var> according to the appropriate steps from the following
-  list:</p>
+  <p>Adjust the positions of |boxes| according to the appropriate steps from the following list:</p>
 
   <dl class="switch">
 
-   <dt>If <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> is set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is set</dt>
 
    <dd>
 
@@ -3946,17 +3866,17 @@ the following algorithm.</p>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Let <var>margin</var> be a user-agent-defined vertical length
-      which will be used to define a margin at the top and bottom edges of the video into which cues
-      will not be placed. In situations with overscan, this margin should be sufficient to place all
-      cues within the title-safe area. In the absence of overscan, this value should be picked for
+      <p><strong>Horizontal</strong>: Let |margin| be a user-agent-defined vertical length which
+      will be used to define a margin at the top and bottom edges of the video into which cues will
+      not be placed. In situations with overscan, this margin should be sufficient to place all cues
+      within the title-safe area. In the absence of overscan, this value should be picked for
       aesthetics (to avoid text being aligned precisely on the bottom edge of the video, which can
       be ugly).</p>
 
-      <p><strong>Vertical</strong>: Let <var>margin</var> be a user-agent-defined horizontal length
-      which will be used to define a margin at the left and right edges of the video into which cues
-      will not be placed. In situations with overscan, this margin should be sufficient to place all
-      cues within the title-safe area. In the absence of overscan, this value should be picked for
+      <p><strong>Vertical</strong>: Let |margin| be a user-agent-defined horizontal length which
+      will be used to define a margin at the left and right edges of the video into which cues will
+      not be placed. In situations with overscan, this margin should be sufficient to place all cues
+      within the title-safe area. In the absence of overscan, this value should be picked for
       aesthetics (to avoid text being aligned precisely on the left or right edges of the video,
       which can be ugly).</p>
 
@@ -3964,11 +3884,11 @@ the following algorithm.</p>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Let <var>full dimension</var> be the height of
-      <var>video</var>'s rendering area.</p>
+      <p><strong>Horizontal</strong>: Let |full dimension| be the height of |video|'s rendering
+      area.</p>
 
-      <p><strong>Vertical</strong>: Let <var>full dimension</var> be the width of <var>video</var>'s
-      rendering area.</p>
+      <p><strong>Vertical</strong>: Let |full dimension| be the width of |video|'s rendering
+      area.</p>
 
       <p>These dimensions must not be adjusted for overscan. (The algorithm does that
       separately.)</p>
@@ -3977,121 +3897,111 @@ the following algorithm.</p>
 
      <li>
 
-      <p>Let <var>max dimension</var> be
-      <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp; <var>margin</var>).</p>
+      <p>Let |max dimension| be |full&nbsp;dimension|&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;
+      |margin|).</p>
 
      </li>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Let <var>step</var> be the height of the first line box in
-      <var>boxes</var>.</p>
+      <p><strong>Horizontal</strong>: Let |step| be the height of the first line box in |boxes|.</p>
 
-      <p><strong>Vertical</strong>: Let <var>step</var> be the width of the first line box in
-      <var>boxes</var>.</p>
+      <p><strong>Vertical</strong>: Let |step| be the width of the first line box in |boxes|.</p>
 
      </li>
 
-     <li><p>If <var>step</var> is zero, then jump to the step labeled <i>done positioning</i>
-     below.</p></li>
+     <li><p>If |step| is zero, then jump to the step labeled <i>done positioning</i> below.</p></li>
 
-     <li><p>Let <var>line</var> be <var>cue</var>'s <a lt="cue computed line">computed
-     line</a>.</p></li>
+     <li><p>Let |line| be |cue|'s <a lt="cue computed line">computed line</a>.</p></li>
 
-     <li><p>Round <var>line</var> to an integer by adding 0.5 and then flooring it.</p></li>
+     <li><p>Round |line| to an integer by adding 0.5 and then flooring it.</p></li>
 
-     <li><p><strong>Vertical Growing Left</strong>: Add one to <var>line</var> then negate
-     it.</p></li>
+     <li><p><strong>Vertical Growing Left</strong>: Add one to |line| then negate it.</p></li>
 
-     <li><p>Let <var>position</var> be the result of multiplying <var>step</var> and <var>line
-     offset</var>.</p></li>
+     <li><p>Let |position| be the result of multiplying |step| and |line offset|.</p></li>
 
-     <li><p><strong>Vertical Growing Left</strong>: Decrease <var>position</var> by the width of the
-     bounding box of the boxes in <var>boxes</var>, then increase <var>position</var> by
-     <var>step</var>.</p></li>
+     <li><p><strong>Vertical Growing Left</strong>: Decrease |position| by the width of the bounding
+     box of the boxes in |boxes|, then increase |position| by |step|.</p></li>
 
      <li>
 
-      <p>If <var>line</var> is less than zero then increase <var>position</var> by <var>max
-      dimension</var>, and negate <var>step</var>.</p>
+      <p>If |line| is less than zero then increase |position| by |max dimension|, and negate
+      |step|.</p>
 
-      <p>Otherwise, increase <var>position</var> by <var>margin</var>.</p>
+      <p>Otherwise, increase |position| by |margin|.</p>
 
      </li>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the distance
-      given by <var>position</var>.</p>
+      <p><strong>Horizontal</strong>: Move all the boxes in |boxes| down by the distance given by
+      |position|.</p>
 
-      <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the distance
-      given by <var>position</var>.</p>
-
-     </li>
-
-     <li><p>Remember the position of all the boxes in <var>boxes</var> as their <var>specified
-     position</var>.</p></li>
-
-     <li>
-
-      <p><strong>Horizontal</strong>: Let <var>title area</var> be a box that covers all of the
-      <var>video</var>'s rendering area except for a height of <var>margin</var> at the top of the
-      rendering area and a height of <var>margin</var> at the bottom of the rendering area.</p>
-
-      <p><strong>Vertical</strong>: Let <var>title area</var> be a box that covers all of the
-      <var>video</var>'s rendering area except for a width of <var>margin</var> at the left of the
-      rendering area and a width of <var>margin</var> at the right of the rendering area.</p>
+      <p><strong>Vertical</strong>: Move all the boxes in |boxes| right by the distance given by
+      |position|.</p>
 
      </li>
 
-     <li><p><i>Step loop</i>: If none of the boxes in <var>boxes</var> would overlap any of the
-     boxes in <var>output</var>, and all of the boxes in <var>boxes</var> are entirely within the
-     <var>title area</var> box, then jump to the step labeled <i>done positioning</i>
-     below.</p></li>
-
-     <li><p>Let <var>current position score</var> be the percentage of the area of the bounding box
-     of the boxes in <var>boxes</var> that <!--overlaps the boxes in <var>output</var> (if any) or
-     that--> is outside the <var>title area</var> box.</p></li>
+     <li><p>Remember the position of all the boxes in |boxes| as their |specified
+     position|.</p></li>
 
      <li>
 
-      <p><strong>Horizontal</strong>: If <var>step</var> is negative and the top of the first line
-      box in <var>boxes</var> is now above the top of the <var>title area</var>, or if
-      <var>step</var> is positive and the bottom of the first line box in <var>boxes</var> is now
-      below the bottom of the <var>title area</var>, jump to the step labeled <i>switch
-      direction</i>.</p>
+      <p><strong>Horizontal</strong>: Let |title area| be a box that covers all of the |video|'s
+      rendering area except for a height of |margin| at the top of the rendering area and a height
+      of |margin| at the bottom of the rendering area.</p>
 
-      <p><strong>Vertical</strong>: If <var>step</var> is negative and the left edge of the first
-      line box in <var>boxes</var> is now to the left of the left edge of the <var>title area</var>,
-      or if <var>step</var> is positive and the right edge of the first line box in <var>boxes</var>
-      is now to the right of the right edge of the <var>title area</var>, jump to the step labeled
-      <i>switch direction</i>.</p>
+      <p><strong>Vertical</strong>: Let |title area| be a box that covers all of the |video|'s
+      rendering area except for a width of |margin| at the left of the rendering area and a width of
+      |margin| at the right of the rendering area.</p>
+
+     </li>
+
+     <li><p><i>Step loop</i>: If none of the boxes in |boxes| would overlap any of the boxes in
+     |output|, and all of the boxes in |boxes| are entirely within the |title area| box, then jump
+     to the step labeled <i>done positioning</i> below.</p></li>
+
+     <li><p>Let |current position score| be the percentage of the area of the bounding box of the
+     boxes in |boxes| that <!--overlaps the boxes in |output| (if any) or that--> is outside the
+     |title area| box.</p></li>
+
+     <li>
+
+      <p><strong>Horizontal</strong>: If |step| is negative and the top of the first line box in
+      |boxes| is now above the top of the |title area|, or if |step| is positive and the bottom of
+      the first line box in |boxes| is now below the bottom of the |title area|, jump to the step
+      labeled <i>switch direction</i>.</p>
+
+      <p><strong>Vertical</strong>: If |step| is negative and the left edge of the first line box in
+      |boxes| is now to the left of the left edge of the |title area|, or if |step| is positive and
+      the right edge of the first line box in |boxes| is now to the right of the right edge of the
+      |title area|, jump to the step labeled <i>switch direction</i>.</p>
 
      </li>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Move all the boxes in <var>boxes</var> down by the distance
-      given by <var>step</var>. (If <var>step</var> is negative, then this will actually result in
-      an upwards movement of the boxes in absolute terms.)</p>
+      <p><strong>Horizontal</strong>: Move all the boxes in |boxes| down by the distance given by
+      |step|. (If |step| is negative, then this will actually result in an upwards movement of the
+      boxes in absolute terms.)</p>
 
-      <p><strong>Vertical</strong>: Move all the boxes in <var>boxes</var> right by the distance
-      given by <var>step</var>. (If <var>step</var> is negative, then this will actually result in a
-      leftwards movement of the boxes in absolute terms.)</p>
+      <p><strong>Vertical</strong>: Move all the boxes in |boxes| right by the distance given by
+      |step|. (If |step| is negative, then this will actually result in a leftwards movement of the
+      boxes in absolute terms.)</p>
 
      </li>
 
      <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
 
-     <li><p><i>Switch direction</i>: If <var>switched</var> is true, then remove all the boxes in
-     <var>boxes</var>, and jump to the step labeled <i>done positioning</i> below.</p></li>
+     <li><p><i>Switch direction</i>: If |switched| is true, then remove all the boxes in |boxes|,
+     and jump to the step labeled <i>done positioning</i> below.</p></li>
 
-     <li><p>Otherwise, move all the boxes in <var>boxes</var> back to their <var>specified
-     position</var> as determined in the earlier step.</p></li>
+     <li><p>Otherwise, move all the boxes in |boxes| back to their |specified position| as
+     determined in the earlier step.</p></li>
 
-     <li><p>Negate <var>step</var>.</p></li>
+     <li><p>Negate |step|.</p></li>
 
-     <li><p>Set <var>switched</var> to true.</p></li>
+     <li><p>Set |switched| to true.</p></li>
 
      <li><p>Jump back to the step labeled <i>step loop</i>.</p></li>
 
@@ -4099,13 +4009,12 @@ the following algorithm.</p>
 
    </dd>
 
-   <dt>If <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
    <dd>
 
     <ol>
 
-     <li><p>Let <var>bounding box</var> be the bounding box of the boxes in
-     <var>boxes</var>.</p></li>
+     <li><p>Let |bounding box| be the bounding box of the boxes in |boxes|.</p></li>
 
      <li>
       <p>Run the appropriate steps from the following list:</p>
@@ -4117,13 +4026,11 @@ the following algorithm.</p>
         <dl class="switch">
          <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position middle
          alignment">middle alignment</a></dt>
-         <dd><p>Move all the boxes in <var>boxes</var> up by half of the height of <var>bounding
-         box</var>.</p></dd>
+         <dd><p>Move all the boxes in |boxes| up by half of the height of |bounding box|.</p></dd>
 
          <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
          alignment">end alignment</a></dt>
-         <dd><p>Move all the boxes in <var>boxes</var> up by the height of <var>bounding
-         box</var>.</p></dd>
+         <dd><p>Move all the boxes in |boxes| up by the height of |bounding box|.</p></dd>
         </dl>
        </dd>
 
@@ -4134,30 +4041,28 @@ the following algorithm.</p>
         <dl class="switch">
          <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position middle
          alignment">middle alignment</a></dt>
-         <dd><p>Move all the boxes in <var>boxes</var> left by half of the width of <var>bounding
-         box</var>.</p></dd>
+         <dd><p>Move all the boxes in |boxes| left by half of the width of |bounding box|.</p></dd>
 
          <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
          alignment">end alignment</a></dt>
-         <dd><p>Move all the boxes in <var>boxes</var> left by the width of <var>bounding
-         box</var>.</p></dd>
+         <dd><p>Move all the boxes in |boxes| left by the width of |bounding box|.</p></dd>
         </dl>
        </dd>
       </dl>
      </li>
 
-     <li><p>If none of the boxes in <var>boxes</var> would overlap any of the boxes in
-     <var>output</var>, and all the boxes in <var>boxes</var> are within the <var>video</var>'s
-     rendering area, then jump to the step labeled <i>done positioning</i> below.</p></li>
+     <li><p>If none of the boxes in |boxes| would overlap any of the boxes in |output|, and all the
+     boxes in |boxes| are within the |video|'s rendering area, then jump to the step labeled <i>done
+     positioning</i> below.</p></li>
 
-     <li><p>If there is a position to which the boxes in <var>boxes</var> can be moved while
-     maintaining the relative positions of the boxes in <var>boxes</var> to each other such that
-     none of the boxes in <var>boxes</var> would overlap any of the boxes in <var>output</var>, and
-     all the boxes in <var>boxes</var> would be within the <var>video</var>'s rendering area, then
-     move the boxes in <var>boxes</var> to the closest such position to their current position, and
-     then jump to the step labeled <i>done positioning</i> below. If there are multiple such
-     positions that are equidistant from their current position, use the highest one amongst them;
-     if there are several at that height, then use the leftmost one amongst them.</p></li>
+     <li><p>If there is a position to which the boxes in |boxes| can be moved while maintaining the
+     relative positions of the boxes in |boxes| to each other such that none of the boxes in |boxes|
+     would overlap any of the boxes in |output|, and all the boxes in |boxes| would be within the
+     |video|'s rendering area, then move the boxes in |boxes| to the closest such position to their
+     current position, and then jump to the step labeled <i>done positioning</i> below. If there are
+     multiple such positions that are equidistant from their current position, use the highest one
+     amongst them; if there are several at that height, then use the leftmost one amongst
+     them.</p></li>
 
      <li><p>Otherwise, jump to the step labeled <i>done positioning</i> below. (The boxes will
      unfortunately overlap.)</p></li>
@@ -4170,13 +4075,13 @@ the following algorithm.</p>
 
  </li>
 
- <li><p><i>Done positioning</i>: Return <var>boxes</var>.</p></li>
+ <li><p><i>Done positioning</i>: Return |boxes|.</p></li>
 
 </ol>
 
 
-<h4 id=applying-css-properties>Applying CSS properties to <a lt="WebVTT Node Object">WebVTT Node
-Objects</a></h4>
+<h4 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
+Object">WebVTT Node Objects</a></h4>
 
 <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a lt="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user agent cascade
@@ -4187,18 +4092,18 @@ layer as defined in this section. [[!CSS21]]</p>
 <ul>
  <li>the 'position' property must be set to ''position/absolute''</li>
  <li>the 'unicode-bidi' property must be set to ''unicode-bidi/plaintext''</li>
- <li>the 'direction' property must be set to <var>direction</var></li>
- <li>the 'writing-mode' property must be set to <var>writing-mode</var></li>
- <li>the 'top' property must be set to <var>top</var></li>
- <li>the 'left' property must be set to <var>left</var></li>
- <li>the 'width' property must be set to <var>width</var></li>
- <li>the 'height' property must be set to <var>height</var></li>
+ <li>the 'direction' property must be set to |direction|</li>
+ <li>the 'writing-mode' property must be set to |writing-mode|</li>
+ <li>the 'top' property must be set to |top|</li>
+ <li>the 'left' property must be set to |left|</li>
+ <li>the 'width' property must be set to |width|</li>
+ <li>the 'height' property must be set to |height|</li>
 </ul>
 
-<p>The variables <var>direction</var>, <var>writing-mode</var>, <var>top</var>, <var>left</var>,
-<var>width</var>, and <var>height</var> are the values with those names determined by the <a>rules
-for updating the display of WebVTT text tracks</a> for the <a>WebVTT cue</a> from whose <a lt="text
-track cue text">text</a> the <a>list of WebVTT Node Objects</a> was constructed.</p>
+<p>The variables |direction|, |writing-mode|, |top|, |left|, |width|, and |height| are the values
+with those names determined by the <a>rules for updating the display of WebVTT text tracks</a> for
+the <a>WebVTT cue</a> from whose <a lt="text track cue text">text</a> the <a>list of WebVTT Node
+Objects</a> was constructed.</p>
 
 <p>The 'text-align' property on the (root) <a>list of WebVTT Node Objects</a> must be set to the
 value in the second cell of the row of the table below whose first cell is the value of the
@@ -4273,20 +4178,19 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
  <li>the 'line-height' shorthand property must be set to '5.33vh'</li>
  <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
  <li>the 'overflow' property must be set to ''overflow/hidden''</li>
- <li>the 'width' property must be set to <var>width</var></li>
+ <li>the 'width' property must be set to |width|</li>
  <li>the 'min-height' property must be set to ''0px''</li>
- <li>the 'max-height' property must be set to <var>height</var></li>
- <li>the 'left' property must be set to <var>left</var></li>
- <li>the 'top' property must be set to <var>top</var></li>
+ <li>the 'max-height' property must be set to |height|</li>
+ <li>the 'left' property must be set to |left|</li>
+ <li>the 'top' property must be set to |top|</li>
  <li>the 'display' property must be set to ''display/inline-flex''</li>
  <li>the 'flex-flow' property must be set to ''flex-flow/column''</li>
  <li>the 'justify-content' property must be set to ''justify-content/flex-end''</li>
 </ul>
 
-<p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are the
-values with those names determined by the <a>rules for updating the display of WebVTT text
-tracks</a> for the <a>WebVTT region</a> from which the <a>WebVTT region object</a> was
-constructed.</p>
+<p>The variables |width|, |height|, |top|, and |left| are the values with those names determined by
+the <a>rules for updating the display of WebVTT text tracks</a> for the <a>WebVTT region</a> from
+which the <a>WebVTT region object</a> was constructed.</p>
 
 <p>The children of every <a>WebVTT region object</a> are further initialized with these CSS
 settings:</p>
@@ -4294,8 +4198,8 @@ settings:</p>
  <li>the 'position' property must be set to ''position/relative''</li>
  <li>the 'unicode-bidi' property must be set to ''unicode-bidi/plaintext''</li>
  <li>the 'width' property must be set to ''width/auto''</li>
- <li>the 'height' property must be set to <var>height</var></li>
- <li>the 'left' property must be set to <var>left</var></li>
+ <li>the 'height' property must be set to |height|</li>
+ <li>the 'left' property must be set to |left|</li>
  <li>the 'text-align' property must be set as described for the root <a>List of WebVTT Node
  Objects</a> not part of a region</li>
 </ul>
@@ -4335,7 +4239,7 @@ affect the styling of parts of <a lt="WebVTT cue">WebVTT cues</a> that are being
 pseudo-elements defined below won't have any effect according to this specification.</p>
 
 <p>A CSS user agent that implements the <a lt="text track">text tracks</a> model must implement the
-''::cue'' and ''::cue(<var>selector</var>)'' pseudo-elements, and the '':past'' and '':future''
+''::cue'' and ''::cue(|selector|)'' pseudo-elements, and the '':past'' and '':future''
 pseudo-classes.</p>
 
 
@@ -4366,8 +4270,8 @@ set on the pseudo-element must be ignored:</p>
  widows, z-index -->
 </ul>
 
-<p>The <dfn>::cue(<var>selector</var>)</dfn> pseudo-element with an argument must have an argument
-that consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal Node Object</a>
+<p>The <dfn>::cue(|selector|)</dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal Node Object</a>
 constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
 being treated as follows:</p>
 
@@ -4514,20 +4418,20 @@ Node Objects</a>. [[!SELECTORS4]]</p>
 <p>The <dfn>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node Objects</a>
 that are <i>in the past</i>.</p>
 
-<p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the past</dfn> if, in a pre-order,
-depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there exists a
-<a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback position</a> of the
-<a>media element</a> that is the <i>matched element</i>, entirely after the <a>WebVTT Node
-Object</a> <var>c</var>.</p>
+<p algorithm="WebVTT Node Object">A <a>WebVTT Node Object</a> |c| is <dfn>in the past</dfn> if, in a
+pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
+there exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
+position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
+<a>WebVTT Node Object</a> |c|.</p>
 
 <p>The <dfn>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
 
-<p>A <a>WebVTT Node Object</a> <var>c</var> is <dfn>in the future</dfn> if, in a pre-order,
-depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>, there exists a
-<a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback position</a> of
-the <a>media element</a> that is the <i>matched element</i>, entirely before the <a>WebVTT Node
-Object</a> <var>c</var>.</p>
+<p algorithm="WebVTT Node Object">A <a>WebVTT Node Object</a> |c| is <dfn>in the future</dfn> if, in
+a pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
+there exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
+position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before the
+<a>WebVTT Node Object</a> |c|.</p>
 
 
 <h5 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h5>
@@ -4561,7 +4465,7 @@ pseudo-element.</p>
 <h2 id=api>API</h2>
 
 
-<h3 id=the-vttcue-interface>The {{VTTCue}} interface</h3>
+<h3 id=the-vttcue-interface algorithm>The {{VTTCue}} interface</h3>
 
 <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 
@@ -4589,22 +4493,21 @@ interface VTTCue : TextTrackCue {
 
 <dl class="note">
 
- <dt><var>cue</var> = new <a constructor lt="VTTCue()">VTTCue</a>( <var>startTime</var>,
- <var>endTime</var>, <var>text</var> )</dt>
+ <dt>|cue| = new <a constructor lt="VTTCue()">VTTCue</a>( |startTime|, |endTime|, |text| )</dt>
  <dd>
   <p>Returns a new {{VTTCue}} object, for use with the {{TextTrack/addCue()}} method.</p>
-  <p>The <var>startTime</var> argument sets the <a>text track cue start time</a>.</p>
-  <p>The <var>endTime</var> argument sets the <a>text track cue end time</a>.</p>
-  <p>The <var>text</var> argument sets the <a>text track cue text</a>.</p>
+  <p>The |startTime| argument sets the <a>text track cue start time</a>.</p>
+  <p>The |endTime| argument sets the <a>text track cue end time</a>.</p>
+  <p>The |text| argument sets the <a>text track cue text</a>.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/region}}</dt>
+ <dt>|cue| . {{VTTCue/region}}</dt>
  <dd>
   <p>Returns the {{VTTRegion}} object to which this cue belongs, if any, or null otherwise.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/vertical}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/vertical}} [ = |value| ]</dt>
  <dd>
   <p>Returns a string representing the <a>WebVTT cue writing direction</a>, as follows:</p>
   <dl class="switch">
@@ -4620,20 +4523,20 @@ interface VTTCue : TextTrackCue {
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/snapToLines}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/snapToLines}} [ = |value| ]</dt>
  <dd>
   <p>Returns true if the <a>WebVTT cue snap-to-lines flag</a> is set, false otherwise.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/line}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/line}} [ = |value| ]</dt>
  <dd>
   <p>Returns the <a>WebVTT cue line</a>. In the case of the value being <a lt="WebVTT cue line
   automatic">auto</a>, the string "<code>auto</code>" is returned.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/lineAlign}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/lineAlign}} [ = |value| ]</dt>
  <dd>
   <p>Returns a string representing the <a>WebVTT cue line alignment</a>, as follows:</p>
   <dl class="switch">
@@ -4647,14 +4550,14 @@ interface VTTCue : TextTrackCue {
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/position}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/position}} [ = |value| ]</dt>
  <dd>
   <p>Returns the <a>WebVTT cue position</a>. In the case of the value being <a lt="WebVTT cue
   automatic position">auto</a>, the string "<code>auto</code>" is returned.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/positionAlign}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/positionAlign}} [ = |value| ]</dt>
  <dd>
   <p>Returns a string representing the <a>WebVTT cue position alignment</a>, as follows:</p>
   <dl class="switch">
@@ -4670,13 +4573,13 @@ interface VTTCue : TextTrackCue {
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/size}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/size}} [ = |value| ]</dt>
  <dd>
   <p>Returns the <a>WebVTT cue size</a>.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/align}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/align}} [ = |value| ]</dt>
  <dd>
   <p>Returns a string representing the <a>WebVTT cue text alignment</a>, as follows:</p>
   <dl class="switch">
@@ -4694,13 +4597,13 @@ interface VTTCue : TextTrackCue {
   <p>Can be set.</p>
  </dd>
 
- <dt><var>cue</var> . {{VTTCue/text}} [ = <var>value</var> ]</dt>
+ <dt>|cue| . {{VTTCue/text}} [ = |value| ]</dt>
  <dd>
   <p>Returns the <a>text track cue text</a> in raw unparsed form.</p>
   <p>Can be set.</p>
  </dd>
 
- <dt><var>fragment</var> = <var>cue</var> . <a method lt="getCueAsHTML()">getCueAsHTML</a>()</dt>
+ <dt>|fragment| = |cue| . <a method lt="getCueAsHTML()">getCueAsHTML</a>()</dt>
  <dd>
   <p>Returns the <a>text track cue text</a> as a {{DocumentFragment}} of <a spec=html>HTML
   elements</a> and other DOM nodes.</p>
@@ -4708,54 +4611,53 @@ interface VTTCue : TextTrackCue {
 
 </dl>
 
-<p>The <dfn constructor for=VTTCue lt="VTTCue()">VTTCue(<var>startTime</var>, <var>endTime</var>,
-<var>text</var>)</dfn> constructor, when invoked, must run the following steps:</p>
+<p>The <dfn constructor for=VTTCue lt="VTTCue()">VTTCue(|startTime|, |endTime|, |text|)</dfn>
+constructor, when invoked, must run the following steps:</p>
 
 <ol>
 
- <li><p>Create a new <a>WebVTT cue</a>. Let <var>cue</var> be that <a>WebVTT cue</a>.</p></li>
+ <li><p>Create a new <a>WebVTT cue</a>. Let |cue| be that <a>WebVTT cue</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>text track cue start time</a> be the value of the
- <var>startTime</var> argument, interpreted as a time in seconds.</p></li>
+ <li><p>Let |cue|'s <a>text track cue start time</a> be the value of the |startTime| argument,
+ interpreted as a time in seconds.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>text track cue end time</a> be the value of the <var>endTime</var>
- argument, interpreted as a time in seconds.</p></li>
+ <li><p>Let |cue|'s <a>text track cue end time</a> be the value of the |endTime| argument,
+ interpreted as a time in seconds.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>text track cue text</a> be the value of the <var>text</var>
- argument, and let the <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for
- extracting the chapter title</a>.</p></li>
+ <li><p>Let |cue|'s <a>text track cue text</a> be the value of the |text| argument, and let the
+ <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for extracting the chapter
+ title</a>.</p></li>
 
  <!-- default settings -->
 
- <li><p>Let <var>cue</var>'s <a>text track cue identifier</a> be the empty string.</p></li>
+ <li><p>Let |cue|'s <a>text track cue identifier</a> be the empty string.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
+ <li><p>Let |cue|'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue region</a> be null.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue region</a> be null.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal
- writing direction">horizontal</a>.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal writing
+ direction">horizontal</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line
- automatic">auto</a>.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line automatic">auto</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
+ <li><p>Let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
  alignment">start alignment</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
+ <li><p>Let |cue|'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
  position">auto</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position
- automatic alignment">auto</a>.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position automatic
+ alignment">auto</a>.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue size</a> be 100.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue size</a> be 100.</p></li>
 
- <li><p>Let <var>cue</var>'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle
- alignment">middle alignment</a>.</p></li>
+ <li><p>Let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle alignment">middle
+ alignment</a>.</p></li>
 
- <li><p>Return the {{VTTCue}} object representing <var>cue</var>.</p></li>
+ <li><p>Return the {{VTTCue}} object representing |cue|.</p></li>
 
 </ol>
 
@@ -4936,7 +4838,7 @@ the result of applying the <a>WebVTT cue text parsing rules</a> to the <a>text t
 text</a>.</p>
 
 
-<h3 id=the-vttregion-interface>The {{VTTRegion}} interface</h3>
+<h3 id=the-vttregion-interface algorithm>The {{VTTRegion}} interface</h3>
 
 <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 
@@ -4956,47 +4858,47 @@ interface VTTRegion {
 
 <dl class="note">
 
- <dt><var>region</var> = new <a constructor lt="VTTRegion()">VTTRegion</a>()</dt>
+ <dt>|region| = new <a constructor lt="VTTRegion()">VTTRegion</a>()</dt>
  <dd>
   <p>Returns a new {{VTTRegion}} object.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/width}}</dt>
+ <dt>|region| . {{VTTRegion/width}}</dt>
  <dd>
   <p>Returns the WebVTT region width as a percentage of the video width. Can be set. Throws an
   {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/lines}}</dt>
+ <dt>|region| . {{VTTRegion/lines}}</dt>
  <dd>
   <p>Returns the text track region height as a number of lines. Can be set.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/regionAnchorX}}</dt>
+ <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
  <dd>
   <p>Returns the WebVTT region anchor X offset as a percentage of the region width. Can be set.
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/regionAnchorX}}</dt>
+ <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
  <dd>
   <p>Returns the WebVTT region anchor Y offset as a percentage of the region height. Can be set.
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/viewportAnchorX}}</dt>
+ <dt>|region| . {{VTTRegion/viewportAnchorX}}</dt>
  <dd>
   <p>Returns the WebVTT region viewport anchor X offset as a percentage of the video width. Can be
   set. Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/viewportAnchorY}}</dt>
+ <dt>|region| . {{VTTRegion/viewportAnchorY}}</dt>
  <dd>
   <p>Returns the WebVTT region viewport anchor Y offset as a percentage of the video height. Can be
   set. Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt><var>region</var> . {{VTTRegion/scroll}}</dt>
+ <dt>|region| . {{VTTRegion/scroll}}</dt>
  <dd>
   <p>Returns a string representing the <a>WebVTT region scroll</a> as follows:</p>
   <dl class="switch">
@@ -5013,31 +4915,30 @@ interface VTTRegion {
 following steps:</p>
 
 <ol>
- <li><p>Create a new <a>WebVTT region</a>. Let <var>region</var> be that <a>WebVTT
- region</a>.</p></li>
+ <li><p>Create a new <a>WebVTT region</a>. Let |region| be that <a>WebVTT region</a>.</p></li>
 
  <!-- default settings -->
- <li><p>Let <var>region</var>'s <a>WebVTT region identifier</a> be the empty string.</p></li>
+ <li><p>Let |region|'s <a>WebVTT region identifier</a> be the empty string.</p></li>
 
- <li><p>Let <var>region</var>'s <a>WebVTT region width</a> be 100.</p></li>
+ <li><p>Let |region|'s <a>WebVTT region width</a> be 100.</p></li>
 
- <li><p>Let <var>region</var>'s <a>WebVTT region lines</a> be 3.</p></li>
+ <li><p>Let |region|'s <a>WebVTT region lines</a> be 3.</p></li>
 
- <li><p>Let <var>region</var>'s <a lt="WebVTT region anchor">text track region regionAnchorX</a> be
+ <li><p>Let |region|'s <a lt="WebVTT region anchor">text track region regionAnchorX</a> be
  0.</p></li>
 
- <li><p>Let <var>region</var>'s <a lt="WebVTT region anchor">text track region regionAnchorY</a> be
+ <li><p>Let |region|'s <a lt="WebVTT region anchor">text track region regionAnchorY</a> be
  100.</p></li>
 
- <li><p>Let <var>region</var>'s <a lt="WebVTT region viewport anchor">text track region
- viewportAnchorX</a> be 0.</p></li>
+ <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">text track region viewportAnchorX</a>
+ be 0.</p></li>
 
- <li><p>Let <var>region</var>'s <a lt="WebVTT region viewport anchor">text track region
- viewportAnchorY</a> be 100.</p></li>
+ <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">text track region viewportAnchorY</a>
+ be 100.</p></li>
 
- <li><p>Let <var>region</var>'s <a>WebVTT region scroll</a> be the empty string.</p></li>
+ <li><p>Let |region|'s <a>WebVTT region scroll</a> be the empty string.</p></li>
 
- <li><p>Return the {{VTTRegion}} object representing <var>region</var>.</p></li>
+ <li><p>Return the {{VTTRegion}} object representing |region|.</p></li>
 </ol>
 
 <p>The <dfn attribute for=VTTRegion>width</dfn> attribute, on getting, must return the <a>WebVTT
