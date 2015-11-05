@@ -1003,7 +1003,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-10-28">28 October 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-05">5 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -3429,7 +3429,8 @@ defined above must be left at their initial values.</p>
    <h3 class="heading settled" data-algorithm="WebVTT rules for extracting the chapter
 title" data-level="5.6" id="rules-for-extracting-the-chapter-title"><span class="secno">5.6. </span><span class="content">WebVTT rules for extracting the chapter
 title</span><a class="self-link" href="#rules-for-extracting-the-chapter-title"></a></h3>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter title<a class="self-link" href="#webvtt-rules-for-extracting-the-chapter-title"></a></dfn> are as follows:</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter title<a class="self-link" href="#webvtt-rules-for-extracting-the-chapter-title"></a></dfn> for a <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> <var>cue</var> are as
+follows:</p>
    <ol>
     <li>
      <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT cue
@@ -4169,8 +4170,8 @@ there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object">WebVTT Ti
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Object</a> <var>c</var>.</p>
    <p>The <dfn class="css" data-dfn-type="selector" data-export="" id="selectordef-future">:future<a class="self-link" href="#selectordef-future"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
-   <p data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in
-a pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a>,
+   <p data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
+pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Object</a> <var>c</var>.</p>
    <h5 class="heading settled" data-level="6.1.2.3" id="the-cue-region-pseudo-element"><span class="secno">6.1.2.3. </span><span class="content">The <a class="css" data-link-type="maybe" href="#selectordef-cue-region">::cue-region</a> pseudo-element</span><a class="self-link" href="#the-cue-region-pseudo-element"></a></h5>
