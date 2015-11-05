@@ -1452,8 +1452,8 @@ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Mont
 ::cue(.loud) { font-size: 2em }
 </pre>
    </div>
-   <div class="example" id="example-7d208061">
-    <a class="self-link" href="#example-7d208061"></a> 
+   <div class="example" id="example-21e4a505">
+    <a class="self-link" href="#example-21e4a505"></a> 
     <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 <pre>WEBVTT
 
@@ -1463,7 +1463,7 @@ Where did he go?
 00:00:03.000 --> 00:00:06.500 position:90% align:right size:35%
 I think he went down this lane.
 
-00:00:04.000 --> 00:00:06.500 position:45%,end align:middle size:35%
+00:00:04.000 --> 00:00:06.500 position:45%,end align:center size:35%
 What are you waiting for?
 </pre>
     <p>Since the cues in these examples are horizontal, the "position" setting refers to a percentage
@@ -1487,7 +1487,7 @@ What are you waiting for?
  aligned text, so does not need to be specified in "position".</p>
     <p>The second cue has its <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> right aligned at the 90% mark of the
  video viewport width ("end" aligned text right aligns the box). The same effect can be achieved
- with "position:55%,start", which explicitly positions the cue box. The third cue has middle aligned
+ with "position:55%,start", which explicitly positions the cue box. The third cue has center aligned
  text within the same positioned cue box as the first cue.</p>
    </div>
    <div class="example" id="example-28ed4f48">
@@ -1671,7 +1671,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
      <dl>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue line start alignment" data-noexport="" id="webvtt-cue-line-start-alignment">Start alignment<a class="self-link" href="#webvtt-cue-line-start-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>’s top side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues), left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction">vertical growing right</a>), or right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line">line</a>.
-      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue line middle alignment" data-noexport="" id="webvtt-cue-line-middle-alignment">Middle alignment<a class="self-link" href="#webvtt-cue-line-middle-alignment"></a></dfn>
+      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue line center alignment" data-noexport="" id="webvtt-cue-line-center-alignment">Center alignment<a class="self-link" href="#webvtt-cue-line-center-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> is centered at the <a data-link-type="dfn" href="#webvtt-cue-line">line</a>.
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue line end alignment" data-noexport="" id="webvtt-cue-line-end-alignment">End alignment<a class="self-link" href="#webvtt-cue-line-end-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>’s bottom side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues), right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction">vertical growing right</a>), or left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line">line</a>.
@@ -1701,9 +1701,9 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end</a> or <a data-link-type="dfn" href="#webvtt-cue-right-alignment">right</a>, return 100 and abort these
    steps.</p>
       <li>
-       <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle</a>, return 50 and abort these steps.</p>
+       <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center</a>, return 50 and abort these steps.</p>
      </ol>
-     <p class="note" role="note">Since the default value of the <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle</a>, if there is no <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> setting for a cue, the <a data-link-type="dfn" href="#webvtt-cue-position">WebVTT cue position</a> defaults to 50%.</p>
+     <p class="note" role="note">Since the default value of the <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center</a>, if there is no <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> setting for a cue, the <a data-link-type="dfn" href="#webvtt-cue-position">WebVTT cue position</a> defaults to 50%.</p>
      <p class="note" role="note">Even for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues with
   right-to-left cue text, the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> is positioned from the left edge of
   the video viewport. This allows defining a rendering space template which can be filled with
@@ -1715,7 +1715,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
      <dl>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position start alignment" data-noexport="" id="webvtt-cue-position-start-alignment">Start alignment<a class="self-link" href="#webvtt-cue-position-start-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>’s left side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues) or top side (otherwise) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-position">position</a>.
-      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position middle alignment" data-noexport="" id="webvtt-cue-position-middle-alignment">Middle alignment<a class="self-link" href="#webvtt-cue-position-middle-alignment"></a></dfn>
+      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position center alignment" data-noexport="" id="webvtt-cue-position-center-alignment">Center alignment<a class="self-link" href="#webvtt-cue-position-center-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> is centered at the <a data-link-type="dfn" href="#webvtt-cue-position">position</a>.
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position end alignment" data-noexport="" id="webvtt-cue-position-end-alignment">End alignment<a class="self-link" href="#webvtt-cue-position-end-alignment"></a></dfn>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>’s right side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues) or bottom side (otherwise) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-position">position</a>.
@@ -1734,8 +1734,8 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end</a> or <a data-link-type="dfn" href="#webvtt-cue-right-alignment">right</a>, return <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end</a> and abort these steps.</p>
       <li>
-       <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle</a>,
-   return <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle</a> and abort these steps.</p>
+       <p>If the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center</a>,
+   return <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center</a> and abort these steps.</p>
      </ol>
      <p class="note" role="note">Since the <a data-link-type="dfn" href="#webvtt-cue-position">position</a> always measures from the left
   of the video (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues) or the top
@@ -1755,7 +1755,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue start alignment" data-noexport="" id="webvtt-cue-start-alignment">Start alignment<a class="self-link" href="#webvtt-cue-start-alignment"></a></dfn>
       <dd>The text of each line is individually aligned towards the start side of the box,
    where the start side for that line is determined by using the CSS rules for <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a> value of the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property. <a data-link-type="biblio" href="#biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]</a>
-      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue middle alignment" data-noexport="" id="webvtt-cue-middle-alignment">Middle alignment<a class="self-link" href="#webvtt-cue-middle-alignment"></a></dfn>
+      <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue center alignment" data-noexport="" id="webvtt-cue-center-alignment">Center alignment<a class="self-link" href="#webvtt-cue-center-alignment"></a></dfn>
       <dd>The text is aligned centered between the box’s start and end sides.
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue end alignment" data-noexport="" id="webvtt-cue-end-alignment">End alignment<a class="self-link" href="#webvtt-cue-end-alignment"></a></dfn>
       <dd>The text of each line is individually aligned towards the start side of the box,
@@ -1765,7 +1765,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue right alignment" data-noexport="" id="webvtt-cue-right-alignment">Right alignment<a class="self-link" href="#webvtt-cue-right-alignment"></a></dfn>
       <dd>The text is aligned to the box’s right side.
      </dl>
-     <p>By default, the value of the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle aligned</a>.</p>
+     <p>By default, the value of the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center aligned</a>.</p>
      <p class="note" role="note">The base direction of each line in a cue (which is used by the Unicode Bidirectional
   Algorithm to determine the order in which to display the characters in the line) is determined by
   looking up the first strong directional character in each line, using the CSS <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a> algorithm. In the occasional cases where the first strong character on
@@ -1808,7 +1808,7 @@ What was his name again?
    (Those characters can be escaped as "<code>&amp;#x2068;</code>" and "<code>&amp;#x2069;</code>",
    respectively.)</p>
      </div>
-     <p class="note" role="note">The default text alignment is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
+     <p class="note" role="note">The default text alignment is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center
   alignment</a> regardless of the base direction of the cue text. To make the text alignment of each
   line match the base direction of the line (e.g. left for English, right for Hebrew), use <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a>, or <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end
   alignment</a> for the opposite alignment.</p>
@@ -2321,7 +2321,7 @@ setting must not be included more than once per <a data-link-type="dfn" href="#w
    </ul>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-cue-settings-list">WebVTT cue settings list</a> gives configuration options regarding the position
 and alignment of the cue box and the cue text within. For example, it allows a cue box to be aligned
-to the left or positioned at the top right with the cue text within middle aligned.</p>
+to the left or positioned at the top right with the cue text within center aligned.</p>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting<a class="self-link" href="#webvtt-vertical-text-cue-setting"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-cue-setting">WebVTT cue setting</a> that consists of the
 following components, in the order given:</p>
    <ol>
@@ -2361,7 +2361,7 @@ given:</p>
         An optional alignment value consisting of the following components: 
        <ol>
         <li>A U+002C COMMA character (,).
-        <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
+        <li>One of the following strings: "<code>start</code>", "<code>center</code>",
      "<code>end</code>"
        </ol>
      </ol>
@@ -2369,7 +2369,7 @@ given:</p>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-line-cue-setting">WebVTT line cue setting</a> configures the offset of the cue box from the video
 viewport’s edge in the direction opposite to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing
 direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport.
-The offset is for the <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start</a>, <a data-link-type="dfn" href="#webvtt-cue-line-middle-alignment">middle</a>, or <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment">end</a> of the cue box,
+The offset is for the <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start</a>, <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment">center</a>, or <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment">end</a> of the cue box,
 depending on the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> value - <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start</a> by default. The offset can be given either as a percentage of the video
 dimension or as a line number. Line numbers are based on the size of the first line of the cue.
 Positive line numbers count from the start of the video viewport (the first line is numbered 0),
@@ -2389,14 +2389,14 @@ given:</p>
         an optional alignment value consisting of: 
        <ol>
         <li>A U+002C COMMA character (,).
-        <li>One of the following strings: "<code>start</code>", "<code>middle</code>",
+        <li>One of the following strings: "<code>start</code>", "<code>center</code>",
      "<code>end</code>"
        </ol>
      </ol>
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-position-cue-setting">WebVTT position cue setting</a> configures the indent position of the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> in the direction orthogonal to the <a data-link-type="dfn" href="#webvtt-line-cue-setting">WebVTT line cue setting</a>.
 For horizontal cues, this is the horizontal position. The cue position is given as a percentage of
-the video viewport. The positioning is for the <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start</a>, <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle</a>, or <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end</a> of the cue box, depending on the cue’s <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a>, which is overridden by the <a data-link-type="dfn" href="#webvtt-position-cue-setting">WebVTT position cue
+the video viewport. The positioning is for the <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start</a>, <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center</a>, or <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end</a> of the cue box, depending on the cue’s <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a>, which is overridden by the <a data-link-type="dfn" href="#webvtt-position-cue-setting">WebVTT position cue
 setting</a>.</p>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-size-cue-setting">WebVTT size cue setting<a class="self-link" href="#webvtt-size-cue-setting"></a></dfn> consists of the following components, in the order
 given:</p>
@@ -2419,7 +2419,7 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>One of the following strings as the <a data-link-type="dfn" href="#webvtt-cue-setting-value">WebVTT cue setting value</a>: "<code>start</code>",
- "<code>middle</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>"
+ "<code>center</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>"
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a> configures the alignment of the text within
 the cue. The "<code>start</code>" and "<code>end</code>" keywords are relative to the cue text’s
@@ -2683,7 +2683,7 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size">WebVTT cue size</a> be 100.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle alignment</a>.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center alignment</a>.</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
            </ol>
@@ -3009,8 +3009,8 @@ run the following steps:</p>
            <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>start</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start alignment</a>.</p>
           <li>
-           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>middle</code>",
-       then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-middle-alignment">middle alignment</a>.</p>
+           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
+       then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment">center alignment</a>.</p>
           <li>
            <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>end</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment">end alignment</a>.</p>
@@ -3035,8 +3035,8 @@ run the following steps:</p>
            <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>start</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start alignment</a>.</p>
           <li>
-           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>middle</code>",
-       then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>.</p>
+           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
+       then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>.</p>
           <li>
            <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>end</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end alignment</a>.</p>
@@ -3058,8 +3058,8 @@ run the following steps:</p>
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start
        alignment</a>.</p>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>middle</code>", then
-       let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>", then
+       let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center
        alignment</a>.</p>
           <li>
            <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>end</code>", then
@@ -3758,7 +3758,7 @@ manner suiting the user.</p>
          <p>Adjust <var>offset</var> using <var>cue</var>’s <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position
       alignment</a> as follows:</p>
          <dl class="switch">
-          <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+          <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
           <dd>
            <p>Subtract half of <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width">WebVTT region width</a> from <var>offset</var>.</p>
           <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end alignment</a>
@@ -3809,11 +3809,11 @@ following algorithm.</p>
       <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end</a>
       <dd>
        <p>Let <var>maximum size</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a>.</p>
-      <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle</a>, and the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> is less than or equal to 50
+      <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center</a>, and the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> is less than or equal to 50
       <dd>
        <p>Let <var>maximum size</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> multiplied by
     two.</p>
-      <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle</a>, and the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> is greater than  50
+      <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center</a>, and the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> is greater than  50
       <dd>
        <p>Let <var>maximum size</var> be the result of subtracting <a data-link-type="dfn" href="#cue-computed-position">computed
     position</a> from 100 and then multiplying the result by two.</p>
@@ -3835,7 +3835,7 @@ following algorithm.</p>
         <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start alignment</a>
         <dd>
          <p>Let <var>x-position</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a>.</p>
-        <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+        <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
         <dd>
          <p>Let <var>x-position</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> minus half
      of <var>size</var>.</p>
@@ -3849,7 +3849,7 @@ following algorithm.</p>
         <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start alignment</a>
         <dd>
          <p>Let <var>y-position</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a>.</p>
-        <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+        <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
         <dd>
          <p>Let <var>y-position</var> be the <a data-link-type="dfn" href="#cue-computed-position">computed position</a> minus half
      of <var>size</var>.</p>
@@ -4107,7 +4107,7 @@ Red or green?
           <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a>
           <dd>
            <dl class="switch">
-            <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+            <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
             <dd>
              <p>Move all the boxes in <var>boxes</var> up by half of the height of <var>bounding box</var>.</p>
             <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end alignment</a>
@@ -4117,7 +4117,7 @@ Red or green?
           <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction">vertical growing right</a>
           <dd>
            <dl class="switch">
-            <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+            <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
             <dd>
              <p>Move all the boxes in <var>boxes</var> left by half of the width of <var>bounding box</var>.</p>
             <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end alignment</a>
@@ -4176,7 +4176,7 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
       <td><a data-link-type="dfn" href="#webvtt-cue-start-alignment">Start alignment</a>
       <td><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-text-align-start">start</a>
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-cue-middle-alignment">Middle alignment</a>
+      <td><a data-link-type="dfn" href="#webvtt-cue-center-alignment">Center alignment</a>
       <td><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-text-align-center">center</a>
      <tr>
       <td><a data-link-type="dfn" href="#webvtt-cue-end-alignment">End alignment</a>
@@ -4404,9 +4404,9 @@ immediately rerun.</p>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 <pre class="idl">enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword<a class="self-link" href="#enumdef-autokeyword"></a></dfn> { "auto" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting<a class="self-link" href="#enumdef-directionsetting"></a></dfn> { "" /* horizontal */, "rl", "lr" };
-enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting<a class="self-link" href="#enumdef-linealignsetting"></a></dfn> { "start", "middle", "end" };
-enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting<a class="self-link" href="#enumdef-positionalignsetting"></a></dfn> { "start", "middle", "end", "auto" };
-enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting<a class="self-link" href="#enumdef-alignsetting"></a></dfn> { "start", "middle", "end", "left", "right" };
+enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting<a class="self-link" href="#enumdef-linealignsetting"></a></dfn> { "start", "center", "end" };
+enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting<a class="self-link" href="#enumdef-positionalignsetting"></a></dfn> { "start", "center", "end", "auto" };
+enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting<a class="self-link" href="#enumdef-alignsetting"></a></dfn> { "start", "center", "end", "left", "right" };
 [<dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue">Constructor<a class="self-link" href="#dom-vttcue-vttcue"></a></dfn>(double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, DOMString <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
 interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue<a class="self-link" href="#vttcue"></a></dfn> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   attribute <a data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion? " href="#dom-vttcue-region">region</a>;
@@ -4465,9 +4465,9 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start alignment</a>
       <dd>
        <p>The string "<code>start</code>".</p>
-      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-line-middle-alignment">middle alignment</a>
+      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment">center alignment</a>
       <dd>
-       <p>The string "<code>middle</code>".</p>
+       <p>The string "<code>center</code>".</p>
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment">end alignment</a>
       <dd>
        <p>The string "<code>end</code>".</p>
@@ -4484,9 +4484,9 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start alignment</a>
       <dd>
        <p>The string "<code>start</code>".</p>
-      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">middle alignment</a>
+      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">center alignment</a>
       <dd>
-       <p>The string "<code>middle</code>".</p>
+       <p>The string "<code>center</code>".</p>
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">end alignment</a>
       <dd>
        <p>The string "<code>end</code>".</p>
@@ -4506,9 +4506,9 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a>
       <dd>
        <p>The string "<code>start</code>".</p>
-      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle alignment</a>
+      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center alignment</a>
       <dd>
-       <p>The string "<code>middle</code>".</p>
+       <p>The string "<code>center</code>".</p>
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end alignment</a>
       <dd>
        <p>The string "<code>end</code>".</p>
@@ -4563,7 +4563,7 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size">WebVTT cue size</a> be 100.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center
  alignment</a>.</p>
     <li>
      <p>Return the <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> object representing <var>cue</var>.</p>
@@ -4613,8 +4613,8 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> t
       <td><a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">Start alignment</a>
       <td>"<code data-lt="">start</code>"
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-cue-line-middle-alignment">Middle alignment</a>
-      <td>"<code data-lt="">middle</code>"
+      <td><a data-link-type="dfn" href="#webvtt-cue-line-center-alignment">Center alignment</a>
+      <td>"<code data-lt="">center</code>"
      <tr>
       <td><a data-link-type="dfn" href="#webvtt-cue-line-end-alignment">End alignment</a>
       <td>"<code data-lt="">end</code>"
@@ -4639,8 +4639,8 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> t
       <td><a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">Start alignment</a>
       <td>"<code data-lt="">start</code>"
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-cue-position-middle-alignment">Middle alignment</a>
-      <td>"<code data-lt="">middle</code>"
+      <td><a data-link-type="dfn" href="#webvtt-cue-position-center-alignment">Center alignment</a>
+      <td>"<code data-lt="">center</code>"
      <tr>
       <td><a data-link-type="dfn" href="#webvtt-cue-position-end-alignment">End alignment</a>
       <td>"<code data-lt="">end</code>"
@@ -4667,8 +4667,8 @@ second cell of the row in the table below whose first cell is the <a data-link-t
       <td><a data-link-type="dfn" href="#webvtt-cue-start-alignment">Start alignment</a>
       <td>"<code data-lt="">start</code>"
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-cue-middle-alignment">Middle alignment</a>
-      <td>"<code data-lt="">middle</code>"
+      <td><a data-link-type="dfn" href="#webvtt-cue-center-alignment">Center alignment</a>
+      <td>"<code data-lt="">center</code>"
      <tr>
       <td><a data-link-type="dfn" href="#webvtt-cue-end-alignment">End alignment</a>
       <td>"<code data-lt="">end</code>"
@@ -4971,8 +4971,8 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-vttcue">VTTCue()</a><span>, in §7.1</span>
    <li><a href="#vttcue">VTTCue</a><span>, in §7.1</span>
    <li><a href="#dom-vttcue-vttcue">VTTCue(startTime, endTime, text)</a><span>, in §7.1</span>
-   <li><a href="#vttregion">VTTRegion</a><span>, in §7.2</span>
    <li><a href="#dom-vttregion-vttregion">VTTRegion()</a><span>, in §7.2</span>
+   <li><a href="#vttregion">VTTRegion</a><span>, in §7.2</span>
    <li><a href="#webvtt">WebVTT</a><span>, in §1</span>
    <li><a href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a><span>, in §4.4</span>
    <li><a href="#webvtt-bold-object">WebVTT Bold Object</a><span>, in §5.4</span>
@@ -4986,6 +4986,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-block">WebVTT cue block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-bold-span">WebVTT cue bold span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-box">WebVTT cue box</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-center-alignment">WebVTT cue center alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-class-span">WebVTT cue class span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-components">WebVTT cue components</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-end-alignment">WebVTT cue end alignment</a><span>, in §3.1</span>
@@ -4999,15 +5000,14 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-automatic">WebVTT cue line
   automatic</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-line-center-alignment">WebVTT cue line center alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-end-alignment">WebVTT cue line end alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-line-middle-alignment">WebVTT cue line middle alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-start-alignment">WebVTT cue line start alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-middle-alignment">WebVTT cue middle alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position">WebVTT cue position</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-automatic-alignment">WebVTT cue position automatic alignment</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-position-center-alignment">WebVTT cue position center alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-end-alignment">WebVTT cue position end alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-position-middle-alignment">WebVTT cue position middle alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-start-alignment">WebVTT cue position start alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-region">WebVTT cue region</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-right-alignment">WebVTT cue right alignment</a><span>, in §3.1</span>
@@ -5356,9 +5356,9 @@ using only nested cues</a><span>, in §4.5.1</span>
   <h2 class="no-num heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { "auto" };
 enum <a href="#enumdef-directionsetting">DirectionSetting</a> { "" /* horizontal */, "rl", "lr" };
-enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { "start", "middle", "end" };
-enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { "start", "middle", "end", "auto" };
-enum <a href="#enumdef-alignsetting">AlignSetting</a> { "start", "middle", "end", "left", "right" };
+enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { "start", "center", "end" };
+enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { "start", "center", "end", "auto" };
+enum <a href="#enumdef-alignsetting">AlignSetting</a> { "start", "center", "end", "left", "right" };
 [<a href="#dom-vttcue-vttcue">Constructor</a>(double <a href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, double <a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, DOMString <a href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
 interface <a href="#vttcue">VTTCue</a> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   attribute <a data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion? " href="#dom-vttcue-region">region</a>;
