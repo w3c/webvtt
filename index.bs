@@ -18,7 +18,7 @@ Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: unicode-bidi, direction, color
+Ignored Terms: unicode-bidi, direction, color, text-combine-upright
 Ignored Vars: seconds-frac, selector, fragment
 
 </pre>
@@ -4257,6 +4257,7 @@ set on the pseudo-element must be ignored:</p>
  <li>the properties corresponding to the 'outline' shorthand</li>
  <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
  <li>'white-space'</li>
+ <li>'text-combine-upright'</li>
  <!-- add more... -->
  <!-- definitely not: display, float, position, top, left, right, bottom, width, height, margin-top,
  margin-bottom, margin-left, margin-right, clip, clear, content, cursor, direction, max-height,
@@ -4390,6 +4391,7 @@ when the selector does not contain the '':past'' and '':future'' pseudo-classes:
 <ul class="brief">
  <li>the properties corresponding to the 'font' shorthand, including 'line-height'</li>
  <li>'white-space'</li>
+ <li>'text-combine-upright'</li>
  <!-- add more... -->
  <!-- definitely not: display, float, position, top, left, right, bottom, width, height, margin-top,
  margin-bottom, margin-left, margin-right, clip, clear, content, cursor, direction, max-height,
@@ -5103,6 +5105,7 @@ originally specified. [[!HTML]]</p>
  Kyle Huey,
  Richard Ishida,
  Anne van Kesteren,
+ Dae Kim,
  Glenn Maynard,
  Ronny Mennerich,
  Ms2ger,
