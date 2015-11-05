@@ -2662,19 +2662,7 @@ means that it is aborted at that point and returns nothing.</p>
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
     <li>
-     <p>If <var>input</var> contains any characters other than U+0025 PERCENT SIGN characters (%), U+002E DOT
- characters (.) and <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, then fail.</p>
-    <li>
-     <p>If <var>input</var> does not contain at least one <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digit</a>, then
- fail.</p>
-    <li>
-     <p>If <var>input</var> contains more than one U+002E DOT character (.), then fail.</p>
-    <li>
-     <p>If any character in <var>input</var> other than the last character is a U+0025 PERCENT SIGN character
- (%), then fail.</p>
-    <li>
-     <p>If the last character in <var>input</var> is not a U+0025 PERCENT SIGN character (%), then
- fail.</p>
+     <p>If <var>input</var> does not match the syntax for a <a data-link-type="dfn" href="#webvtt-percentage">WebVTT percentage</a>, then fail.</p>
     <li>
      <p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be
  the <var>percentage</var>.</p>
@@ -2888,10 +2876,11 @@ user agent must run the following steps:</p>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>,
  and let <var>string</var> be the collected substring.</p>
     <li>
-     <p>Interpret <var>string</var> as a base-ten integer. Let |value<sub>1</sub>| be that integer.</p>
+     <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>1</sub></var> be that
+ integer.</p>
     <li>
-     <p>If <var>string</var> is not exactly two characters in length, or if |value<sub>1</sub>| is greater
- than 59, let <var>most significant units</var> be <i>hours</i>.</p>
+     <p>If <var>string</var> is not exactly two characters in length, or if <var>value<sub>1</sub></var> is
+ greater than 59, let <var>most significant units</var> be <i>hours</i>.</p>
     <li>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+003A
  COLON character (:), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
@@ -2902,7 +2891,8 @@ user agent must run the following steps:</p>
      <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
  steps.</p>
     <li>
-     <p>Interpret <var>string</var> as a base-ten integer. Let |value<sub>2</sub>| be that integer.</p>
+     <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>2</sub></var> be that
+ integer.</p>
     <li>
      <p>If <var>most significant units</var> is <i>hours</i>, or if <var>position</var> is not beyond the end of <var>input</var> and the character at <var>position</var> is a U+003A COLON character (:), run these substeps:</p>
      <ol>
@@ -2916,13 +2906,11 @@ user agent must run the following steps:</p>
        <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
    steps.</p>
       <li>
-       <p>Interpret <var>string</var> as a base-ten integer. Let |value<sub>3</sub>| be that
+       <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>3</sub></var> be that
    integer.</p>
      </ol>
      <p>Otherwise (if <var>most significant units</var> is not <i>hours</i>, and either <var>position</var> is beyond the
-  end of <var>input</var>, or the character at <var>position</var> is not a U+003A COLON character (:)), let
-  |value<sub>3</sub>| have the value of |value<sub>2</sub>|, then |value<sub>2</sub>| have the value
-  of |value<sub>1</sub>|, then let |value<sub>1</sub>| equal zero.</p>
+  end of <var>input</var>, or the character at <var>position</var> is not a U+003A COLON character (:)), let <var>value<sub>3</sub></var> have the value of <var>value<sub>2</sub></var>, then <var>value<sub>2</sub></var> have the value of <var>value<sub>1</sub></var>, then let <var>value<sub>1</sub></var> equal zero.</p>
     <li>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+002E
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
@@ -2933,13 +2921,13 @@ user agent must run the following steps:</p>
      <p>If <var>string</var> is not exactly three characters in length, return an error and abort these
  steps.</p>
     <li>
-     <p>Interpret <var>string</var> as a base-ten integer. Let |value<sub>4</sub>| be that integer.</p>
+     <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>4</sub></var> be that
+ integer.</p>
     <li>
-     <p>If |value<sub>2</sub>| is greater than 59 or if |value<sub>3</sub>| is greater than 59,
- return an error and abort these steps.</p>
+     <p>If <var>value<sub>2</sub></var> is greater than 59 or if <var>value<sub>3</sub></var> is
+ greater than 59, return an error and abort these steps.</p>
     <li>
-     <p>Let <var>result</var> be |value<sub>1</sub>|×60×60 + |value<sub>2</sub>|×60 +
- |value<sub>3</sub>| + |value<sub>4</sub>|∕1000. </p>
+     <p>Let <var>result</var> be <var>value<sub>1</sub></var>×60×60 + <var>value<sub>2</sub></var>×60 + <var>value<sub>3</sub></var> + <var>value<sub>4</sub></var>∕1000. </p>
     <li>
      <p>Return <var>result</var>.</p>
    </ol>

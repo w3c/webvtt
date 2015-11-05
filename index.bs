@@ -2115,19 +2115,7 @@ means that it is aborted at that point and returns nothing.</p>
 <ol>
  <li><p>Let |input| be the string being parsed.</p></li>
 
- <li><p>If |input| contains any characters other than U+0025 PERCENT SIGN characters (%), U+002E DOT
- characters (.) and <a>ASCII digits</a>, then fail.</p></li>
-
- <li><p>If |input| does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
- fail.</p></li>
-
- <li><p>If |input| contains more than one U+002E DOT character (.), then fail.</p></li>
-
- <li><p>If any character in |input| other than the last character is a U+0025 PERCENT SIGN character
- (%), then fail.</p></li>
-
- <li><p>If the last character in |input| is not a U+0025 PERCENT SIGN character (%), then
- fail.</p></li>
+ <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
 
  <li><p>Ignoring the trailing percent sign, interpret |input| as a real number. Let that number be
  the |percentage|.</p></li>
