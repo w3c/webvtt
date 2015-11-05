@@ -18,7 +18,7 @@ Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: unicode-bidi, direction, color, text-combine-upright
+Ignored Terms: unicode-bidi, color, text-combine-upright
 Ignored Vars: seconds-frac, selector, fragment
 
 </pre>
@@ -677,13 +677,12 @@ specification are intended to be easy to follow, and not intended to be performa
   setting for a cue, the <a>WebVTT cue position</a> defaults to 50%.</p>
 
   <p class="note">Even for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues with
-  right-to-left <i>paragraph direction</i> text, the <a lt="WebVTT cue box">cue box</a> is
-  positioned from the left edge of the video viewport. This allows defining a rendering space
-  template which can be filled with either left-to-right or right-to-left <i>paragraph direction</i>
-  text. If such a <a lt="WebVTT cue box">cue box</a> template is created with <a lt="WebVTT cue
-  start alignment">start</a> or <a lt="WebVTT cue end alignment">end</a> aligned text, it is best to
-  also specify a <a lt="WebVTT cue size">size</a> since otherwise the text may flip from one side of
-  the video viewport to the other.</p>
+  right-to-left cue text, the <a lt="WebVTT cue box">cue box</a> is positioned from the left edge of
+  the video viewport. This allows defining a rendering space template which can be filled with
+  either left-to-right or right-to-left cue text, or both. If such a <a lt="WebVTT cue box">cue
+  box</a> template is created with <a lt="WebVTT cue start alignment">start</a> or <a lt="WebVTT cue
+  end alignment">end</a> aligned text, it is best to also specify a <a lt="WebVTT cue size">size</a>
+  since otherwise the text can flip from one side of the video viewport to the other.</p>
 
  </dd>
 
@@ -742,7 +741,7 @@ specification are intended to be easy to follow, and not intended to be performa
   of the video (for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues) or the top
   (otherwise), the <a>WebVTT cue position alignment</a> <a lt="WebVTT cue position start
   alignment">start value</a> varies between left and top for horizontal and vertical cues, but not
-  between left and right even for changing <i>paragraph direction</i>.</p>
+  between left and right for left-to-right and right-to-left cue text.</p>
 
  </dd>
 
@@ -760,21 +759,22 @@ specification are intended to be easy to follow, and not intended to be performa
  <dd>
 
   <p>An alignment for all lines of text within the <a lt="WebVTT cue box">cue box</a>, in the
-  dimension of the <a lt="WebVTT cue writing direction">writing direction</a> and the <i>paragraph
-  direction</i> [[!BIDI]], one of:</p>
+  dimension of the <a lt="WebVTT cue writing direction">writing direction</a>, one of:</p>
 
   <dl>
 
    <dt><dfn lt="WebVTT cue start alignment">Start alignment</dfn></dt>
-   <dd>The text is aligned towards the <i>paragraph direction</i> start side of the <a lt="WebVTT
-   cue box">cue box</a>.</dd>
+   <dd>The text of each line is individually aligned towards the start side of the box,
+   where the start side for that line is determined by using the CSS rules for
+   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue middle alignment">Middle alignment</dfn></dt>
    <dd>The text is aligned centered between the box's start and end sides.</dd>
 
    <dt><dfn lt="WebVTT cue end alignment">End alignment</dfn></dt>
-   <dd>The text is aligned towards the <i>paragraph direction</i> end side of the <a lt="WebVTT cue
-   box">cue box</a>.</dd>
+   <dd>The text of each line is individually aligned towards the start side of the box,
+   where the start side for that line is determined by using the CSS rules for
+   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue left alignment">Left alignment</dfn></dt>
    <dd>The text is aligned to the box's left side.</dd>
@@ -3451,23 +3451,6 @@ manner suiting the user.</p>
      already has one child, set |region|'s 'transition-property' to 'top' and 'transition-duration'
      to '0.433s'.</p></li>
 
-     <!-- The following steps are the subpart of the "apply WebVTT cue settings" algorithm that
-     applies to regions -->
-     <li>
-      <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of
-      the values of each <a>WebVTT Text Object</a> in |nodes|, in a pre-order, depth-first
-      traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their
-      descendants, to determine the <i>paragraph embedding level</i> of the first Unicode paragraph
-      of the cue. [[!BIDI]]</p>
-      <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such
-      as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means
-      each line of the cue is reordered as if it was a separate paragraph.)</p>
-     </li>
-
-     <li><p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
-     <i>paragraph direction</i> is left-to-right), let |direction| be "ltr", otherwise, let it be
-     "rtl".</p></li>
-
      <li><p>Let |offset| be |cue|'s <a lt="cue computed position">computed position</a> multiplied
      by |region|'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
      of the region width).</p></li>
@@ -3525,28 +3508,6 @@ obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user age
 following algorithm.</p>
 
 <ol>
-
- <li>
-
-  <p>Apply the Unicode Bidirectional Algorithm's Paragraph Level steps to the concatenation of the
-  values of each <a>WebVTT Text Object</a> in |nodes|, in a pre-order, depth-first traversal,
-  excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> and their descendants, to
-  determine the <i>paragraph embedding level</i> of the first Unicode paragraph of the cue.
-  [[!BIDI]]</p>
-
-  <p class="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such as
-  U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each
-  line of the cue is reordered as if it was a separate paragraph.)</p>
-
- </li>
-
- <li>
-
-  <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the
-  <i>paragraph direction</i> is left-to-right), let |direction| be "ltr", otherwise, let it be
-  "rtl".</p>
-
- </li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
  direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
@@ -4087,7 +4048,6 @@ layer as defined in this section. [[!CSS21]]</p>
 <ul>
  <li>the 'position' property must be set to ''position/absolute''</li>
  <li>the 'unicode-bidi' property must be set to ''unicode-bidi/plaintext''</li>
- <li>the 'direction' property must be set to |direction|</li>
  <li>the 'writing-mode' property must be set to |writing-mode|</li>
  <li>the 'top' property must be set to |top|</li>
  <li>the 'left' property must be set to |left|</li>
@@ -4095,9 +4055,9 @@ layer as defined in this section. [[!CSS21]]</p>
  <li>the 'height' property must be set to |height|</li>
 </ul>
 
-<p>The variables |direction|, |writing-mode|, |top|, |left|, |width|, and |height| are the values
-with those names determined by the <a>rules for updating the display of WebVTT text tracks</a> for
-the <a>WebVTT cue</a> from whose <a lt="text track cue text">text</a> the <a>list of WebVTT Node
+<p>The variables |writing-mode|, |top|, |left|, |width|, and |height| are the values with those
+names determined by the <a>rules for updating the display of WebVTT text tracks</a> for the
+<a>WebVTT cue</a> from whose <a lt="text track cue text">text</a> the <a>list of WebVTT Node
 Objects</a> was constructed.</p>
 
 <p>The 'text-align' property on the (root) <a>list of WebVTT Node Objects</a> must be set to the

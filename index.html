@@ -1003,7 +1003,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-09">9 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-11">11 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1582,11 +1582,10 @@ specification are intended to be easy to follow, and not intended to be performa
      </ol>
      <p class="note" role="note">Since the default value of the <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle</a>, if there is no <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> setting for a cue, the <a data-link-type="dfn" href="#webvtt-cue-position">WebVTT cue position</a> defaults to 50%.</p>
      <p class="note" role="note">Even for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues with
-  right-to-left <i>paragraph direction</i> text, the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> is
-  positioned from the left edge of the video viewport. This allows defining a rendering space
-  template which can be filled with either left-to-right or right-to-left <i>paragraph direction</i> text. If such a <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> template is created with <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start</a> or <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end</a> aligned text, it is best to
-  also specify a <a data-link-type="dfn" href="#webvtt-cue-size">size</a> since otherwise the text may flip from one side of
-  the video viewport to the other.</p>
+  right-to-left cue text, the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> is positioned from the left edge of
+  the video viewport. This allows defining a rendering space template which can be filled with
+  either left-to-right or right-to-left cue text, or both. If such a <a data-link-type="dfn" href="#webvtt-cue-box">cue
+  box</a> template is created with <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start</a> or <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end</a> aligned text, it is best to also specify a <a data-link-type="dfn" href="#webvtt-cue-size">size</a> since otherwise the text can flip from one side of the video viewport to the other.</p>
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position alignment" data-noexport="" id="webvtt-cue-position-alignment">A position alignment<a class="self-link" href="#webvtt-cue-position-alignment"></a></dfn>
     <dd>
      <p>An alignment for the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> in the dimension of the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing direction</a>, describing what the <a data-link-type="dfn" href="#webvtt-cue-position">position</a> is anchored to, one of:</p>
@@ -1618,7 +1617,7 @@ specification are intended to be easy to follow, and not intended to be performa
      <p class="note" role="note">Since the <a data-link-type="dfn" href="#webvtt-cue-position">position</a> always measures from the left
   of the video (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues) or the top
   (otherwise), the <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> <a data-link-type="dfn" href="#webvtt-cue-position-start-alignment">start value</a> varies between left and top for horizontal and vertical cues, but not
-  between left and right even for changing <i>paragraph direction</i>.</p>
+  between left and right for left-to-right and right-to-left cue text.</p>
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue size" data-noexport="" id="webvtt-cue-size">A size<a class="self-link" href="#webvtt-cue-size"></a></dfn>
     <dd>
      <p>A number giving the size of the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>, to be interpreted as a
@@ -1628,15 +1627,16 @@ specification are intended to be easy to follow, and not intended to be performa
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue text alignment" data-noexport="" id="webvtt-cue-text-alignment">A text alignment<a class="self-link" href="#webvtt-cue-text-alignment"></a></dfn>
     <dd>
      <p>An alignment for all lines of text within the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>, in the
-  dimension of the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing direction</a> and the <i>paragraph
-  direction</i> <a data-link-type="biblio" href="#biblio-bidi">[BIDI]</a>, one of:</p>
+  dimension of the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing direction</a>, one of:</p>
      <dl>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue start alignment" data-noexport="" id="webvtt-cue-start-alignment">Start alignment<a class="self-link" href="#webvtt-cue-start-alignment"></a></dfn>
-      <dd>The text is aligned towards the <i>paragraph direction</i> start side of the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>.
+      <dd>The text of each line is individually aligned towards the start side of the box,
+   where the start side for that line is determined by using the CSS rules for <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a> value of the <a class="property" data-link-type="propdesc">unicode-bidi</a> property. <a data-link-type="biblio" href="#biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]</a>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue middle alignment" data-noexport="" id="webvtt-cue-middle-alignment">Middle alignment<a class="self-link" href="#webvtt-cue-middle-alignment"></a></dfn>
       <dd>The text is aligned centered between the box’s start and end sides.
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue end alignment" data-noexport="" id="webvtt-cue-end-alignment">End alignment<a class="self-link" href="#webvtt-cue-end-alignment"></a></dfn>
-      <dd>The text is aligned towards the <i>paragraph direction</i> end side of the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>.
+      <dd>The text of each line is individually aligned towards the start side of the box,
+   where the start side for that line is determined by using the CSS rules for <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a> value of the <a class="property" data-link-type="propdesc">unicode-bidi</a> property. <a data-link-type="biblio" href="#biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]</a>
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue left alignment" data-noexport="" id="webvtt-cue-left-alignment">Left alignment<a class="self-link" href="#webvtt-cue-left-alignment"></a></dfn>
       <dd>The text is aligned to the box’s left side.
       <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue right alignment" data-noexport="" id="webvtt-cue-right-alignment">Right alignment<a class="self-link" href="#webvtt-cue-right-alignment"></a></dfn>
@@ -3543,18 +3543,6 @@ manner suiting the user.</p>
         <li>
          <p>If <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-scroll">WebVTT region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>'s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to '0.433s'.</p>
         <li>
-         <p>Apply the Unicode Bidirectional Algorithm’s Paragraph Level steps to the concatenation of
-      the values of each <a data-link-type="dfn" href="#webvtt-text-object">WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first
-      traversal, excluding <a data-link-type="dfn" href="#webvtt-ruby-text-object">WebVTT Ruby Text Objects</a> and their
-      descendants, to determine the <i>paragraph embedding level</i> of the first Unicode paragraph
-      of the cue. <a data-link-type="biblio" href="#biblio-bidi">[BIDI]</a></p>
-         <p class="note" role="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such
-      as U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means
-      each line of the cue is reordered as if it was a separate paragraph.)</p>
-        <li>
-         <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be "ltr", otherwise, let it be
-     "rtl".</p>
-        <li>
          <p>Let <var>offset</var> be <var>cue</var>'s <a data-link-type="dfn" href="#cue-computed-position">computed position</a> multiplied
      by <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-width">WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
      of the region width).</p>
@@ -3596,17 +3584,6 @@ dragging them to another location on the <a data-link-type="element" href="https
 obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the
 following algorithm.</p>
    <ol>
-    <li>
-     <p>Apply the Unicode Bidirectional Algorithm’s Paragraph Level steps to the concatenation of the
-  values of each <a data-link-type="dfn" href="#webvtt-text-object">WebVTT Text Object</a> in <var>nodes</var>, in a pre-order, depth-first traversal,
-  excluding <a data-link-type="dfn" href="#webvtt-ruby-text-object">WebVTT Ruby Text Objects</a> and their descendants, to
-  determine the <i>paragraph embedding level</i> of the first Unicode paragraph of the cue. <a data-link-type="biblio" href="#biblio-bidi">[BIDI]</a></p>
-     <p class="note" role="note">Within a cue, paragraph boundaries are only denoted by Type B characters, such as
-  U+000A LINE FEED (LF), U+0085 NEXT LINE (NEL), and U+2029 PARAGRAPH SEPARATOR. (This means each
-  line of the cue is reordered as if it was a separate paragraph.)</p>
-    <li>
-     <p>If the <i>paragraph embedding level</i> determined in the previous step is even (the <i>paragraph direction</i> is left-to-right), let <var>direction</var> be "ltr", otherwise, let it be
-  "rtl".</p>
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT
  cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical
@@ -3939,16 +3916,14 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
     <li>the <a class="property" data-link-type="propdesc">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
-    <li>the <a class="property" data-link-type="propdesc">direction</a> property must be set to <var>direction</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://svgwg.org/svg2-draft/text.html#WritingModeProperty">writing-mode</a> property must be set to <var>writing-mode</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> property must be set to <var>top</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
    </ul>
-   <p>The variables <var>direction</var>, <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values
-with those names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for
-the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
+   <p>The variables <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values with those
+names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
 Objects</a> was constructed.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-text-align">text-align</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> must be set to the
 value in the second cell of the row of the table below whose first cell is the value of the
@@ -5033,8 +5008,6 @@ using only nested cues</a><span>, in §4.5.1</span>
   <dl>
    <dt id="biblio-bcp47"><a class="self-link" href="#biblio-bcp47"></a>[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
-   <dt id="biblio-bidi"><a class="self-link" href="#biblio-bidi"></a>[BIDI]
-   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/">Unicode Bidirectional Algorithm</a>. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/">http://www.unicode.org/reports/tr9/</a>
    <dt id="biblio-css21"><a class="self-link" href="#biblio-css21"></a>[CSS21]
    <dd>Bert Bos; et al. <a href="http://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="http://www.w3.org/TR/CSS2">http://www.w3.org/TR/CSS2</a>
    <dt id="biblio-html"><a class="self-link" href="#biblio-html"></a>[HTML]
