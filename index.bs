@@ -2419,10 +2419,11 @@ user agent must run the following steps:</p>
  <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
  and let |string| be the collected substring.</p></li>
 
- <li><p>Interpret |string| as a base-ten integer. Let |value<sub>1</sub>| be that integer.</p></li>
+ <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>1</sub></var> be that
+ integer.</p></li>
 
- <li><p>If |string| is not exactly two characters in length, or if |value<sub>1</sub>| is greater
- than 59, let |most significant units| be <i>hours</i>.</p></li>
+ <li><p>If |string| is not exactly two characters in length, or if <var>value<sub>1</sub></var> is
+ greater than 59, let |most significant units| be <i>hours</i>.</p></li>
 
  <li><p>If |position| is beyond the end of |input| or if the character at |position| is not a U+003A
  COLON character (:), then return an error and abort these steps. Otherwise, move |position|
@@ -2434,7 +2435,8 @@ user agent must run the following steps:</p>
  <li><p>If |string| is not exactly two characters in length, return an error and abort these
  steps.</p></li>
 
- <li><p>Interpret |string| as a base-ten integer. Let |value<sub>2</sub>| be that integer.</p></li>
+ <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>2</sub></var> be that
+ integer.</p></li>
 
  <li>
 
@@ -2453,15 +2455,16 @@ user agent must run the following steps:</p>
    <li><p>If |string| is not exactly two characters in length, return an error and abort these
    steps.</p></li>
 
-   <li><p>Interpret |string| as a base-ten integer. Let |value<sub>3</sub>| be that
+   <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>3</sub></var> be that
    integer.</p></li>
 
   </ol>
 
   <p>Otherwise (if |most significant units| is not <i>hours</i>, and either |position| is beyond the
   end of |input|, or the character at |position| is not a U+003A COLON character (:)), let
-  |value<sub>3</sub>| have the value of |value<sub>2</sub>|, then |value<sub>2</sub>| have the value
-  of |value<sub>1</sub>|, then let |value<sub>1</sub>| equal zero.</p>
+  <var>value<sub>3</sub></var> have the value of <var>value<sub>2</sub></var>, then
+  <var>value<sub>2</sub></var> have the value of <var>value<sub>1</sub></var>, then let
+  <var>value<sub>1</sub></var> equal zero.</p>
 
  </li>
 
@@ -2475,17 +2478,19 @@ user agent must run the following steps:</p>
  <li><p>If |string| is not exactly three characters in length, return an error and abort these
  steps.</p></li>
 
- <li><p>Interpret |string| as a base-ten integer. Let |value<sub>4</sub>| be that integer.</p></li>
+ <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>4</sub></var> be that
+ integer.</p></li>
 
- <li><p>If |value<sub>2</sub>| is greater than 59 or if |value<sub>3</sub>| is greater than 59,
- return an error and abort these steps.</p></li>
+ <li><p>If <var>value<sub>2</sub></var> is greater than 59 or if <var>value<sub>3</sub></var> is
+ greater than 59, return an error and abort these steps.</p></li>
 
- <!-- no need to check if |value<sub>4</sub>| is greater than 999, since we know it had exactly
- three characters in the range 0-9, so we know it's a number in the range 0-999 -->
+ <!-- no need to check if <var>value<sub>4</sub></var> is greater than 999, since we know it had
+ exactly three characters in the range 0-9, so we know it's a number in the range 0-999 -->
 
- <li><p>Let |result| be |value<sub>1</sub>|&times;60&times;60 + |value<sub>2</sub>|&times;60 +
- |value<sub>3</sub>| + |value<sub>4</sub>|&#x2215;1000. <!-- &#x00f7; is the division sign if people
- prefer that to the slash --></p></li>
+ <li><p>Let |result| be <var>value<sub>1</sub></var>&times;60&times;60 +
+ <var>value<sub>2</sub></var>&times;60 + <var>value<sub>3</sub></var> +
+ <var>value<sub>4</sub></var>&#x2215;1000. <!-- &#x00f7; is the division sign if people prefer that
+ to the slash --></p></li>
 
  <li><p>Return |result|.</p></li>
 
