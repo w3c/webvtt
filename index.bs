@@ -1887,7 +1887,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  to |input|, then the |position| pointer may, when so instructed by the algorithms, be moved past
  the end of |input|.</p></li>
 
- <li>Let |line| be a string variable. Unset the |already collected line| flag.</li>
+ <li>Let |line| be a string variable.</li>
 
  <!-- SIGNATURE CHECK -->
 
@@ -1915,195 +1915,254 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
  |position| to the next character in |input|.</p></li>
 
- <li><p><i>Header</i>: <a spec=html>Collect a sequence of characters</a> that are <em>not</em>
- U+000A LINE FEED (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <!-- METADATA HEADER PARSING -->
-
- <li><p>Let |regions| be a <a>text track list of regions</a>.</p></li>
-
- <li>
-  <i>Metadata header loop</i>: If |line| is not the empty string, run the following
-  substeps:
-
-  <ol>
-
-   <li><p><i>Metadata header creation</i>: Let |metadata| be a new <a>WebVTT metadata
-   header</a>.</p></li>
-
-   <li><p>Let |metadata|'s <a lt="WebVTT metadata header name">name</a> be the empty
-   string.</p></li>
-
-   <li><p>Let |metadata|'s <a lt="WebVTT metadata header value">value</a> be the empty
-   string.</p></li>
-
-   <li><p>If |line| contains the character ":" (A U+003A COLON), then set <a lt="WebVTT metadata
-   header name">metadata's name</a> to the substring of |line| before the first ":" character and <a
-   lt="WebVTT metadata header value">metadata's value</a> to the substring after this
-   character.</p></li>
-
-   <li>
-    <p>If <a lt="WebVTT metadata header name">metadata's name</a> equals "Region":</p>
-
-    <ol>
-     <li><i>Region creation</i>: Let |region| be a new <a>WebVTT region</a>.</li>
-     <li>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty string.</li>
-     <li>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</li>
-     <li>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</li>
-     <li>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
-     <li>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
-     (0,100).</li>
-     <li>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region scroll
-     none">NONE</a>.</li>
-     <li><a>Collect WebVTT region settings</a> from <a lt="WebVTT metadata header value">metadata's
-     value</a> using |region| for the results.</li>
-     <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from |region|.</li>
-     <li>Append |region| to the <a>text track list of regions</a> |regions|.</li>
-    </ol>
-   </li>
-  </ol>
- </li>
-
- <!-- FIXME: right now ignores all WebVTT metadata headers that don't specify regions. -->
-
- <li><p>If |position| is past the end of |input|, then jump to the step labeled <i>end</i>.</p></li>
-
- <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
+ <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
+ character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set, and let |regions|
+ be the result. Otherwise, let |regions| be an empty <a>text track list of regions</a> and advance
  |position| to the next character in |input|.</p></li>
-
- <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
- to the step labeled <i>cue loop</i>.</p></li>
-
- <li><p>If |line| is not the empty string, then jump back to the step labeled
- <i>header</i>.</p></li>
-
- <li><p><i>Cue loop</i>: If the |already collected line| flag is set, then jump to the step labeled
- <i>cue creation</i>.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <li><p>If |line| is the empty string, then jump to the step labeled <i>end</i>. (In such a case,
- |position| is also forcibly past the end of |input|<!-- since we've just collected newlines, so we
- have none of those, and we've failed to collect anything that's not a newline, so we have none of
- that either, meaning we have nothing. -->.)</p></li>
-
  <li>
-  <p><i>Cue creation</i>: Let |cue| be a new <a>WebVTT cue</a> and initialize it as follows:</p>
+
+  <p><i>Cue loop</i>: While |position| doesn't point past the end of |input|:</p>
 
   <ol>
-   <li><p>Let |cue|'s <a>text track cue identifier</a> be the empty string.</p></li>
 
-   <li><p>Let |cue|'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
+   <li><p><a>Collect a WebVTT block</a>, and let |block| be the returned value.</p></li>
 
-   <li><p>Let |cue|'s <a>WebVTT cue region</a> be null.</p></li>
+   <li><p>If |block| is a <a>WebVTT cue</a>, add |block| to the <a>text track list of cues</a>
+   |output|.</p></li>
 
-   <li><p>Let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal writing
-   direction">horizontal</a>.</p></li>
+   <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
+   characters.</p></li>
 
-   <li><p>Let |cue|'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line automatic">auto</a>.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
-   alignment">start alignment</a>.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
-   position">auto</a>.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position automatic
-   alignment">auto</a>.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue size</a> be 100.</p></li>
-
-   <li><p>Let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle alignment">middle
-   alignment</a>.</p></li>
-
-   <li><p>Let |cue|'s <a>text track cue text</a> be the empty string.</p></li>
   </ol>
 
  </li>
 
- <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then jump to the step labeled <i>timings</i>
- below.</p></li>
-
- <li><p>Let |cue|'s <a>text track cue identifier</a> be |line|.</p></li>
-
- <li><p>If |position| is past the end of |input|, then discard |cue| and jump to the step labeled
- <i>end</i>.</p></li>
-
- <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
- |position| to the next character in |input|.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <li><p>If |line| is the empty string, then discard |cue| and jump to the step labeled <i>cue
- loop</i>.</p></li>
-
- <li><p><i>Timings</i>: Unset the |already collected line| flag.</p></li>
-
- <li><p><a>Collect WebVTT cue timings and settings</a> from |line| using |regions| for |cue|. If
- that fails, jump to the step labeled <i>bad cue</i>.</p></li>
-
- <li><p>Let |cue text| be the empty string.</p></li>
-
- <li><p><i>Cue text loop</i>: If |position| is past the end of |input|, then jump to the step
- labeled <i>cue text processing</i>.</p></li>
-
- <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
- |position| to the next character in |input|.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <li><p>If |line| is the empty string, then jump to the step labeled <i>cue text
- processing</i>.</p></li>
-
- <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
- to the step labeled <i>cue text processing</i>.</p></li>
-
- <li><p>If |cue text| is not empty, append a U+000A LINE FEED (LF) character to |cue text|.</p></li>
-
- <li><p>Let |cue text| be the concatenation of |cue text| and |line|.</p></li>
-
- <li><p>Return to the step labeled <i>cue text loop</i>.</p></li>
-
- <li><p><i>Cue text processing</i>: Let the <a>text track cue text</a> of |cue| be |cue text|, and
- let the <a>rules for extracting the chapter title</a> be the <a>WebVTT rules for extracting the
- chapter title</a>.</p></li>
-
- <li><p>Add |cue| to the <a>text track list of cues</a> |output|.</p></li>
-
- <li><p>Jump to the step labeled <i>cue loop</i>.</p></li>
-
- <li><p><i>Bad cue</i>: Discard |cue|.</p></li>
-
- <li><p><i>Bad cue loop</i>: If |position| is past the end of |input|, then jump to the step labeled
- <i>end</i>.</p></li>
-
- <li><p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, advance
- |position| to the next character in |input|.</p></li>
-
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <li><p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the |already collected line| flag and jump
- to the step labeled <i>cue loop</i>.</p></li>
-
- <li><p>If |line| is the empty string, then jump to the step labeled <i>cue loop</i>.</p></li>
-
- <li><p>Otherwise, jump to the step labeled <i>bad cue loop</i>.</p></li>
-
  <li><p><i>End</i>: The file has ended. Abort these steps. The <a>WebVTT parser</a> has finished.
  The file was successfully processed.</p></li>
+
+</ol>
+
+<p>When the algorithm above says to <dfn>collect a WebVTT block</dfn>, optionally with a flag <i>in
+header</i> set, the user agent must run the following steps:</p>
+
+<ol algorithm="collect a WebVTT block">
+
+ <li><p>Let |input|, |position| and |regions| be the same variables as those of the same name in the
+ algorithm that invoked these steps.</p></li>
+
+ <li><p>Let |line count| be zero.</p></li>
+
+ <li><p>Let |previous position| be |position|.</p></li>
+
+ <li><p>Let |line| be the empty string.</p></li>
+
+ <li><p>Let |buffer| be the empty string.</p></li>
+
+ <li><p>Let |seen EOF| be false.</p></li>
+
+ <li><p>Let |seen arrow| be false.</p></li>
+
+ <li><p>Let |cue| be null.</p></li>
+
+ <li><p>If <i>in header</i> is set, let |regions| be a <a>text track list of regions</a>.</p></li>
+
+ <li>
+
+  <p><i>Loop</i>: Run these substeps in a loop:</p>
+
+  <ol>
+
+   <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+   (LF) characters. Let |line| be those characters, if any.</p></li>
+
+   <li><p>Increment |line count| by 1.</p></li>
+
+   <li><p>If |position| is past the end of |input|, let |seen EOF| be true. Otherwise, the character
+   indicated by |position| is a U+000A LINE FEED (LF) character; advance |position| to the next
+   character in |input|.</p></li>
+
+   <li>
+
+    <p>If |line| contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+    U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then run these substeps:</p>
+
+    <ol>
+
+     <li>
+
+      <p>If <i>in header</i> is not set and at least one of the following conditions are true:</p>
+
+      <ul>
+
+       <li><p>|line count| is 1</p></li>
+
+       <li><p>|line count| is 2 and |seen arrow| is false</p></li>
+
+      </ul>
+
+      <p>...then run these substeps:</p>
+
+      <ol>
+
+       <li><p>Let |seen arrow| be true.</p></li>
+
+       <li><p>Let |previous position| be |position|.</p></li>
+
+       <li>
+
+        <p><i>Cue creation</i>: Let |cue| be a new <a>WebVTT cue</a> and initialize it as
+        follows:</p>
+
+        <ol>
+
+         <li><p>Let |cue|'s <a>text track cue identifier</a> be the empty string.</p></li>
+
+         <li><p>Let |cue|'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue region</a> be null.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue horizontal
+         writing direction">horizontal</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue snap-to-lines flag</a> be true.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue line</a> be <a lt="WebVTT cue line
+         automatic">auto</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
+         alignment">start alignment</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue position</a> be <a lt="WebVTT cue automatic
+         position">auto</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position
+         automatic alignment">auto</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue size</a> be 100.</p></li>
+
+         <li><p>Let |cue|'s <a>WebVTT cue text alignment</a> be <a lt="WebVTT cue middle
+         alignment">middle alignment</a>.</p></li>
+
+         <li><p>Let |cue|'s <a>text track cue text</a> be the empty string.</p></li>
+
+        </ol>
+
+       </li>
+
+       <li><p><a>Collect WebVTT cue timings and settings</a> from |line| using |regions| for |cue|.
+       If that fails, let |cue| be null. Otherwise, let |buffer| be the empty string.</p></li>
+
+      </ol>
+
+      <p>Otherwise, let |position| be |previous position| and break out of <i>loop</i>.</p>
+
+     </li>
+
+    </ol>
+
+   </li>
+
+   <li><p>Otherwise, if |line| is the empty string, break out of <i>loop</i>.</p></li>
+
+   <li>
+
+    <p>Otherwise, run these substeps:</p>
+
+    <ol>
+
+     <!--
+     <li>
+
+      <p>If |line count| is 2, run these substeps:</p>
+
+      <ol>
+
+       parse new block types here
+
+      </ol>
+
+     </li>
+     -->
+
+     <li>
+
+      <p>If <i>in header</i> is set, run these substeps:</p>
+
+      <ol>
+
+       <li>
+
+        <p>If |line| starts with the substring "<code>Region:</code>" (U+0052 LATIN CAPITAL LETTER R
+        character, U+0065 LATIN SMALL LETTER E character, U+0067 LATIN SMALL LETTER G character,
+        U+0069 LATIN SMALL LETTER I character, U+006F LATIN SMALL LETTER O character, U+006E LATIN
+        SMALL LETTER N character, U+003A COLON character (:)), run these substeps:</p>
+
+        <ol>
+
+         <li><p><i>Region creation</i>: Let |region| be a new <a>WebVTT region</a>.</p></li>
+
+         <li>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty
+         string.</li>
+
+         <li>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</li>
+
+         <li>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</li>
+
+         <li>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
+
+         <li>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
+         (0,100).</li>
+
+         <li>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
+         scroll none">NONE</a>.</li>
+
+         <li><p>Let |region value| be the substring of |line| after the first U+003A COLON character
+         (:).</p></li>
+
+         <li><a>Collect WebVTT region settings</a> from |region value| using |region| for the
+         results.</li>
+
+         <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from |region|.</li>
+
+         <li>Append |region| to the <a>text track list of regions</a> |regions|.</li>
+
+        </ol>
+
+       </li>
+
+      </ol>
+
+     </li>
+
+     <li><p>If |buffer| is not the empty string, append a U+000A LINE FEED (LF) character to
+     |buffer|.</p></li>
+
+     <li><p>Append |line| to |buffer|.</p></li>
+
+     <li><p>Let |previous position| be |position|.</p></li>
+
+    </ol>
+
+   </li>
+
+   <li><p>If |seen EOF| is true, break out of <i>loop</i>.</p></li>
+
+  </ol>
+
+ </li>
+
+ <li><p>If |cue| is not null, let the <a>text track cue text</a> of |cue| be |buffer|, and return
+ |cue|.</p></li>
+
+ <!-- return new block types here -->
+
+ <li><p>Otherwise, if <i>in header</i> is set, return |regions|.</p></li>
+
+ <li><p>Otherwise, return null.</p></li>
 
 </ol>
 
@@ -5155,5 +5214,6 @@ originally specified. [[!HTML]]</p>
  Caitlin Potter,
  Brian Quass,
  David Singer,
+ Fredrik Söderquist,
  Andreas Tai.
 </p>

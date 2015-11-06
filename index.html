@@ -1012,7 +1012,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-16">16 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-17">17 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2463,7 +2463,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  the end of the <var>input</var> string. Once the byte stream has ended, and all characters have been added
  to <var>input</var>, then the <var>position</var> pointer may, when so instructed by the algorithms, be moved past
  the end of <var>input</var>.</p>
-    <li>Let <var>line</var> be a string variable. Unset the <var>already collected line</var> flag.
+    <li>Let <var>line</var> be a string variable.
     <li>
      <p>If <var>input</var> is less than six characters long, then abort these steps. The file does not start
  with the correct <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> signature and was therefore not successfully
@@ -2488,162 +2488,162 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
     <li>
      <p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character. Advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
-     <p><i>Header</i>: <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>Let <var>regions</var> be a <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a>.</p>
-    <li>
-      <i>Metadata header loop</i>: If <var>line</var> is not the empty string, run the following
-  substeps: 
-     <ol>
-      <li>
-       <p><i>Metadata header creation</i>: Let <var>metadata</var> be a new <a data-link-type="dfn" href="#webvtt-metadata-header">WebVTT metadata
-   header</a>.</p>
-      <li>
-       <p>Let <var>metadata</var>'s <a data-link-type="dfn" href="#webvtt-metadata-header-name">name</a> be the empty
-   string.</p>
-      <li>
-       <p>Let <var>metadata</var>'s <a data-link-type="dfn" href="#webvtt-metadata-header-value">value</a> be the empty
-   string.</p>
-      <li>
-       <p>If <var>line</var> contains the character ":" (A U+003A COLON), then set <a data-link-type="dfn" href="#webvtt-metadata-header-name">metadata’s name</a> to the substring of <var>line</var> before the first ":" character and <a data-link-type="dfn" href="#webvtt-metadata-header-value">metadata’s value</a> to the substring after this
-   character.</p>
-      <li>
-       <p>If <a data-link-type="dfn" href="#webvtt-metadata-header-name">metadata’s name</a> equals "Region":</p>
-       <ol>
-        <li><i>Region creation</i>: Let <var>region</var> be a new <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>.
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-identifier">identifier</a> be the empty string.
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-width">width</a> be 100.
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-lines">lines</a> be 3.
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-anchor">anchor point</a> be (0,100).
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor">viewport anchor point</a> be
-     (0,100).
-        <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-scroll">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none">NONE</a>.
-        <li><a data-link-type="dfn" href="#collect-webvtt-region-settings">Collect WebVTT region settings</a> from <a data-link-type="dfn" href="#webvtt-metadata-header-value">metadata’s
-     value</a> using <var>region</var> for the results.
-        <li><i>Region processing</i>: Construct a <a data-link-type="dfn" href="#webvtt-region-object">WebVTT Region Object</a> from <var>region</var>.
-        <li>Append <var>region</var> to the <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a> <var>regions</var>.
-       </ol>
-     </ol>
-    <li>
-     <p>If <var>position</var> is past the end of <var>input</var>, then jump to the step labeled <i>end</i>.</p>
-    <li>
-     <p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character. Advance <var>position</var> to the next character in <var>input</var>.</p>
-    <li>
-     <p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected line</var> flag and jump
- to the step labeled <i>cue loop</i>.</p>
-    <li>
-     <p>If <var>line</var> is not the empty string, then jump back to the step labeled <i>header</i>.</p>
-    <li>
-     <p><i>Cue loop</i>: If the <var>already collected line</var> flag is set, then jump to the step labeled <i>cue creation</i>.</p>
+     <p><i>Header</i>: If the character indicated by <var>position</var> is not a U+000A LINE FEED (LF)
+ character, then <a data-link-type="dfn" href="#collect-a-webvtt-block">collect a WebVTT block</a> with the <i>in header</i> flag set, and let <var>regions</var> be the result. Otherwise, let <var>regions</var> be an empty <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a> and advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>If <var>line</var> is the empty string, then jump to the step labeled <i>end</i>. (In such a case, <var>position</var> is also forcibly past the end of <var>input</var>.)</p>
-    <li>
-     <p><i>Cue creation</i>: Let <var>cue</var> be a new <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> and initialize it as follows:</p>
+     <p><i>Cue loop</i>: While <var>position</var> doesn’t point past the end of <var>input</var>:</p>
      <ol>
       <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be the empty string.</p>
+       <p><a data-link-type="dfn" href="#collect-a-webvtt-block">Collect a WebVTT block</a>, and let <var>block</var> be the returned value.</p>
       <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
+       <p>If <var>block</var> is a <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>, add <var>block</var> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>.</p>
       <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-region">WebVTT cue region</a> be null.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag">WebVTT cue snap-to-lines flag</a> be true.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-line">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic">auto</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start alignment</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-position">WebVTT cue position</a> be <a data-link-type="dfn" href="#webvtt-cue-automatic-position">auto</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-automatic-alignment">auto</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-size">WebVTT cue size</a> be 100.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
-   alignment</a>.</p>
-      <li>
-       <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
+       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
+   characters.</p>
      </ol>
-    <li>
-     <p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then jump to the step labeled <i>timings</i> below.</p>
-    <li>
-     <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be <var>line</var>.</p>
-    <li>
-     <p>If <var>position</var> is past the end of <var>input</var>, then discard <var>cue</var> and jump to the step labeled <i>end</i>.</p>
-    <li>
-     <p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character, advance <var>position</var> to the next character in <var>input</var>.</p>
-    <li>
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>If <var>line</var> is the empty string, then discard <var>cue</var> and jump to the step labeled <i>cue
- loop</i>.</p>
-    <li>
-     <p><i>Timings</i>: Unset the <var>already collected line</var> flag.</p>
-    <li>
-     <p><a data-link-type="dfn" href="#collect-webvtt-cue-timings-and-settings">Collect WebVTT cue timings and settings</a> from <var>line</var> using <var>regions</var> for <var>cue</var>. If
- that fails, jump to the step labeled <i>bad cue</i>.</p>
-    <li>
-     <p>Let <var>cue text</var> be the empty string.</p>
-    <li>
-     <p><i>Cue text loop</i>: If <var>position</var> is past the end of <var>input</var>, then jump to the step
- labeled <i>cue text processing</i>.</p>
-    <li>
-     <p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character, advance <var>position</var> to the next character in <var>input</var>.</p>
-    <li>
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>If <var>line</var> is the empty string, then jump to the step labeled <i>cue text
- processing</i>.</p>
-    <li>
-     <p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected line</var> flag and jump
- to the step labeled <i>cue text processing</i>.</p>
-    <li>
-     <p>If <var>cue text</var> is not empty, append a U+000A LINE FEED (LF) character to <var>cue text</var>.</p>
-    <li>
-     <p>Let <var>cue text</var> be the concatenation of <var>cue text</var> and <var>line</var>.</p>
-    <li>
-     <p>Return to the step labeled <i>cue text loop</i>.</p>
-    <li>
-     <p><i>Cue text processing</i>: Let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> of <var>cue</var> be <var>cue text</var>, and
- let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-extracting-the-chapter-title">rules for extracting the chapter title</a> be the <a data-link-type="dfn" href="#webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the
- chapter title</a>.</p>
-    <li>
-     <p>Add <var>cue</var> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>.</p>
-    <li>
-     <p>Jump to the step labeled <i>cue loop</i>.</p>
-    <li>
-     <p><i>Bad cue</i>: Discard <var>cue</var>.</p>
-    <li>
-     <p><i>Bad cue loop</i>: If <var>position</var> is past the end of <var>input</var>, then jump to the step labeled <i>end</i>.</p>
-    <li>
-     <p>If the character indicated by <var>position</var> is a U+000A LINE FEED (LF) character, advance <var>position</var> to the next character in <var>input</var>.</p>
-    <li>
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
- U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then set the <var>already collected line</var> flag and jump
- to the step labeled <i>cue loop</i>.</p>
-    <li>
-     <p>If <var>line</var> is the empty string, then jump to the step labeled <i>cue loop</i>.</p>
-    <li>
-     <p>Otherwise, jump to the step labeled <i>bad cue loop</i>.</p>
     <li>
      <p><i>End</i>: The file has ended. Abort these steps. The <a data-link-type="dfn" href="#webvtt-parser">WebVTT parser</a> has finished.
  The file was successfully processed.</p>
+   </ol>
+   <p>When the algorithm above says to <dfn data-dfn-type="dfn" data-noexport="" id="collect-a-webvtt-block">collect a WebVTT block<a class="self-link" href="#collect-a-webvtt-block"></a></dfn>, optionally with a flag <i>in
+header</i> set, the user agent must run the following steps:</p>
+   <ol data-algorithm="collect a WebVTT block">
+    <li>
+     <p>Let <var>input</var>, <var>position</var> and <var>regions</var> be the same variables as those of the same name in the
+ algorithm that invoked these steps.</p>
+    <li>
+     <p>Let <var>line count</var> be zero.</p>
+    <li>
+     <p>Let <var>previous position</var> be <var>position</var>.</p>
+    <li>
+     <p>Let <var>line</var> be the empty string.</p>
+    <li>
+     <p>Let <var>buffer</var> be the empty string.</p>
+    <li>
+     <p>Let <var>seen EOF</var> be false.</p>
+    <li>
+     <p>Let <var>seen arrow</var> be false.</p>
+    <li>
+     <p>Let <var>cue</var> be null.</p>
+    <li>
+     <p>If <i>in header</i> is set, let <var>regions</var> be a <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a>.</p>
+    <li>
+     <p><i>Loop</i>: Run these substeps in a loop:</p>
+     <ol>
+      <li>
+       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+   (LF) characters. Let <var>line</var> be those characters, if any.</p>
+      <li>
+       <p>Increment <var>line count</var> by 1.</p>
+      <li>
+       <p>If <var>position</var> is past the end of <var>input</var>, let <var>seen EOF</var> be true. Otherwise, the character
+   indicated by <var>position</var> is a U+000A LINE FEED (LF) character; advance <var>position</var> to the next
+   character in <var>input</var>.</p>
+      <li>
+       <p>If <var>line</var> contains the three-character substring "<code>--></code>" (U+002D HYPHEN-MINUS,
+    U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN), then run these substeps:</p>
+       <ol>
+        <li>
+         <p>If <i>in header</i> is not set and at least one of the following conditions are true:</p>
+         <ul>
+          <li>
+           <p><var>line count</var> is 1</p>
+          <li>
+           <p><var>line count</var> is 2 and <var>seen arrow</var> is false</p>
+         </ul>
+         <p>...then run these substeps:</p>
+         <ol>
+          <li>
+           <p>Let <var>seen arrow</var> be true.</p>
+          <li>
+           <p>Let <var>previous position</var> be <var>position</var>.</p>
+          <li>
+           <p><i>Cue creation</i>: Let <var>cue</var> be a new <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> and initialize it as
+        follows:</p>
+           <ol>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be the empty string.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-region">WebVTT cue region</a> be null.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag">WebVTT cue snap-to-lines flag</a> be true.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-line">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic">auto</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start alignment</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-position">WebVTT cue position</a> be <a data-link-type="dfn" href="#webvtt-cue-automatic-position">auto</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-automatic-alignment">auto</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-size">WebVTT cue size</a> be 100.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle alignment</a>.</p>
+            <li>
+             <p>Let <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
+           </ol>
+          <li>
+           <p><a data-link-type="dfn" href="#collect-webvtt-cue-timings-and-settings">Collect WebVTT cue timings and settings</a> from <var>line</var> using <var>regions</var> for <var>cue</var>.
+       If that fails, let <var>cue</var> be null. Otherwise, let <var>buffer</var> be the empty string.</p>
+         </ol>
+         <p>Otherwise, let <var>position</var> be <var>previous position</var> and break out of <i>loop</i>.</p>
+       </ol>
+      <li>
+       <p>Otherwise, if <var>line</var> is the empty string, break out of <i>loop</i>.</p>
+      <li>
+       <p>Otherwise, run these substeps:</p>
+       <ol>
+        <li>
+         <p>If <i>in header</i> is set, run these substeps:</p>
+         <ol>
+          <li>
+           <p>If <var>line</var> starts with the substring "<code>Region:</code>" (U+0052 LATIN CAPITAL LETTER R
+        character, U+0065 LATIN SMALL LETTER E character, U+0067 LATIN SMALL LETTER G character,
+        U+0069 LATIN SMALL LETTER I character, U+006F LATIN SMALL LETTER O character, U+006E LATIN
+        SMALL LETTER N character, U+003A COLON character (:)), run these substeps:</p>
+           <ol>
+            <li>
+             <p><i>Region creation</i>: Let <var>region</var> be a new <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>.</p>
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-identifier">identifier</a> be the empty
+         string.
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-width">width</a> be 100.
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-lines">lines</a> be 3.
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-anchor">anchor point</a> be (0,100).
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor">viewport anchor point</a> be
+         (0,100).
+            <li>Let <var>region</var>'s <a data-link-type="dfn" href="#webvtt-region-scroll">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none">NONE</a>.
+            <li>
+             <p>Let <var>region value</var> be the substring of <var>line</var> after the first U+003A COLON character
+         (:).</p>
+            <li><a data-link-type="dfn" href="#collect-webvtt-region-settings">Collect WebVTT region settings</a> from <var>region value</var> using <var>region</var> for the
+         results.
+            <li><i>Region processing</i>: Construct a <a data-link-type="dfn" href="#webvtt-region-object">WebVTT Region Object</a> from <var>region</var>.
+            <li>Append <var>region</var> to the <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a> <var>regions</var>.
+           </ol>
+         </ol>
+        <li>
+         <p>If <var>buffer</var> is not the empty string, append a U+000A LINE FEED (LF) character to <var>buffer</var>.</p>
+        <li>
+         <p>Append <var>line</var> to <var>buffer</var>.</p>
+        <li>
+         <p>Let <var>previous position</var> be <var>position</var>.</p>
+       </ol>
+      <li>
+       <p>If <var>seen EOF</var> is true, break out of <i>loop</i>.</p>
+     </ol>
+    <li>
+     <p>If <var>cue</var> is not null, let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> of <var>cue</var> be <var>buffer</var>, and return <var>cue</var>.</p>
+    <li>
+     <p>Otherwise, if <i>in header</i> is set, return <var>regions</var>.</p>
+    <li>
+     <p>Otherwise, return null.</p>
    </ol>
    <h3 class="heading settled" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
    <p>When the <a data-link-type="dfn" href="#webvtt-parser">WebVTT parser</a> requires that the user agent <dfn data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
@@ -4723,6 +4723,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
  Caitlin Potter,
  Brian Quass,
  David Singer,
+ Fredrik Söderquist,
  Andreas Tai. </p>
   </main>
   <h2 class="no-num heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
@@ -4733,6 +4734,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#apply-webvtt-cue-settings">apply WebVTT cue settings</a><span>, in §6.1</span>
    <li><a href="#attach-a-webvtt-internal-node-object">attach a WebVTT Internal Node Object</a><span>, in §5.4</span>
    <li><a href="#enumdef-autokeyword">AutoKeyword</a><span>, in §7.1</span>
+   <li><a href="#collect-a-webvtt-block">collect a WebVTT block</a><span>, in §5.1</span>
    <li><a href="#collect-a-webvtt-timestamp">collect a WebVTT timestamp</a><span>, in §5.3</span>
    <li><a href="#collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
 settings</a><span>, in §5.3</span>
