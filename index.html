@@ -1003,7 +1003,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-06">6 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-09">9 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2382,21 +2382,22 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  the end of <var>input</var>.</p>
     <li>Let <var>line</var> be a string variable. Unset the <var>already collected line</var> flag.
     <li>
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let <var>line</var> be those characters, if any.</p>
-    <li>
-     <p>If <var>line</var> is less than six characters long, then abort these steps. The file does not start
+     <p>If <var>input</var> is less than six characters long, then abort these steps. The file does not start
  with the correct <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> signature and was therefore not successfully
  processed.</p>
     <li>
-     <p>If <var>line</var> is exactly six characters long but does not exactly equal "<code>WEBVTT</code>",
+     <p>If <var>input</var> is exactly six characters long but does not exactly equal "<code>WEBVTT</code>",
  then abort these steps. The file does not start with the correct <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> signature and
  was therefore not successfully processed.</p>
     <li>
-     <p>If <var>line</var> is more than six characters long but the first six characters do not exactly equal
- "<code>WEBVTT</code>", or the seventh character is neither a U+0020 SPACE character nor a U+0009
- CHARACTER TABULATION (tab) character, then abort these steps. The file does not start with the
- correct <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> signature and was therefore not successfully processed.</p>
+     <p>If <var>input</var> is more than six characters long but the first six characters do not exactly
+ equal "<code>WEBVTT</code>", or the seventh character is not a U+0020 SPACE character, a U+0009
+ CHARACTER TABULATION (tab) character, or a U+000A LINE FEED (LF) character, then abort these steps.
+ The file does not start with the correct <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> signature and was therefore not
+ successfully processed.</p>
+    <li>
+     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+ (LF) characters.</p>
     <li>
      <p>If <var>position</var> is past the end of <var>input</var>, then abort these steps. The file was successfully
  processed, but it contains no useful data and so no <a data-link-type="dfn" href="#webvtt-cue">WebVTT cues</a> were added

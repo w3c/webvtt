@@ -1781,21 +1781,22 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
  <!-- SIGNATURE CHECK -->
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters. Let |line| be those characters, if any.</p></li>
-
- <li><p>If |line| is less than six characters long, then abort these steps. The file does not start
+ <li><p>If |input| is less than six characters long, then abort these steps. The file does not start
  with the correct <a>WebVTT file</a> signature and was therefore not successfully
  processed.</p></li>
 
- <li><p>If |line| is exactly six characters long but does not exactly equal "<code>WEBVTT</code>",
+ <li><p>If |input| is exactly six characters long but does not exactly equal "<code>WEBVTT</code>",
  then abort these steps. The file does not start with the correct <a>WebVTT file</a> signature and
  was therefore not successfully processed.</p></li>
 
- <li><p>If |line| is more than six characters long but the first six characters do not exactly equal
- "<code>WEBVTT</code>", or the seventh character is neither a U+0020 SPACE character nor a U+0009
- CHARACTER TABULATION (tab) character, then abort these steps. The file does not start with the
- correct <a>WebVTT file</a> signature and was therefore not successfully processed.</p></li>
+ <li><p>If |input| is more than six characters long but the first six characters do not exactly
+ equal "<code>WEBVTT</code>", or the seventh character is not a U+0020 SPACE character, a U+0009
+ CHARACTER TABULATION (tab) character, or a U+000A LINE FEED (LF) character, then abort these steps.
+ The file does not start with the correct <a>WebVTT file</a> signature and was therefore not
+ successfully processed.</p></li>
+
+ <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+ (LF) characters.</p></li>
 
  <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
  processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
