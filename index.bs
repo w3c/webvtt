@@ -91,6 +91,16 @@ spec:css-flexbox-1; type:value; text:inline-flex
 }
 </pre>
 
+<style>
+ samp {
+   font-family: inherit;
+   background-color: black; /* fallback if rgba() is not supported */
+   background-color: rgba(0, 0, 0, 0.7);
+   outline: 0.18em solid rgba(0, 0, 0, 0.7);
+   color: white;
+ }
+</style>
+
 <h2 id=introduction>Introduction</h2>
 
 <p><i>This section is non-normative.</i></p>
@@ -176,16 +186,16 @@ one line except when a line break is definitely necessary.</p>
 
  <!-- 50 -->
  <pre>
- &nbsp;          Never drink liquid nitrogen.
+ &nbsp;          <samp>Never drink liquid nitrogen.</samp>
 
-         &mdash; It will perforate your stomach.
-                 &mdash; You could die.
+         <samp>&mdash; It will perforate your stomach.</samp>
+                 <samp>&mdash; You could die.</samp>
 
-     The Organisation for Sample Public Service
-     Announcements accepts no liability for the
-     content of this advertisement, or for the
-      consequences of any actions taken on the
-         basis of the information provided.
+     <samp>The Organisation for Sample Public Service</samp>
+     <samp>Announcements accepts no liability for the</samp>
+     <samp>content of this advertisement, or for the</samp>
+      <samp>consequences of any actions taken on the</samp>
+         <samp>basis of the information provided.</samp>
  </pre>
 
  <p>If the width of the cues is smaller, the first two cues could wrap as well, as in the following
@@ -193,23 +203,23 @@ one line except when a line break is definitely necessary.</p>
 
  <!-- 25 -->
  <pre>
- &nbsp;     Never drink
-     liquid nitrogen.
+ &nbsp;     <samp>Never drink</samp>
+     <samp>liquid nitrogen.</samp>
 
-   &mdash; It will perforate
-       your stomach.
-     &mdash; You could die.
+   <samp>&mdash; It will perforate</samp>
+       <samp>your stomach.</samp>
+     <samp>&mdash; You could die.</samp>
 
-   The Organisation for
-   Sample Public Service
-   Announcements accepts
-   no liability for the
-      content of this
-   advertisement, or for
-    the consequences of
-   any actions taken on
-     the basis of the
-   information provided.
+   <samp>The Organisation for</samp>
+   <samp>Sample Public Service</samp>
+   <samp>Announcements accepts</samp>
+   <samp>no liability for the</samp>
+      <samp>content of this</samp>
+   <samp>advertisement, or for</samp>
+    <samp>the consequences of</samp>
+   <samp>any actions taken on</samp>
+     <samp>the basis of the</samp>
+   <samp>information provided.</samp>
  </pre>
 
  <p>Also notice how the wrapping is done so as to keep the line lengths balanced.</p>
@@ -558,6 +568,11 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   <p>The <a lt="WebVTT cue writing direction">writing direction</a> defaults to <a lt="WebVTT cue
   horizontal writing direction">horizontal</a>.</p>
 
+  <p class=note>The <a lt="WebVTT cue vertical growing left writing direction">vertical growing
+  left</a> writing direction could be used for vertical Chinese, Japanese, and Korean, and the <a
+  lt="WebVTT cue vertical growing right writing direction">vertical growing right</a> writing
+  direction could be used for vertical Mongolian.</p>
+
  </dd>
 
  <dt><dfn lt="WebVTT cue snap-to-lines flag">A snap-to-lines flag</dfn></dt>
@@ -661,6 +676,10 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   <p>A <a>WebVTT cue</a> has a default <a>WebVTT cue line alignment</a> of <a lt="WebVTT cue line
   start alignment">start</a>.</p>
+
+  <p class=note>The <a lt="WebVTT cue line alignment">line alignment</a> is separate from the <a
+  lt="WebVTT cue text alignment">text alignment</a> &mdash; right-to-left vs. left-to-right cue text
+  does not affect the <a lt="WebVTT cue line alignment">line alignment</a>.</p>
 
  </dd>
 
@@ -817,6 +836,91 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   <p>By default, the value of the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue middle
   alignment">middle aligned</a>.</p>
+
+  <p class=note>The base direction of each line in a cue (which is used by the Unicode Bidirectional
+  Algorithm to determine the order in which to display the characters in the line) is determined by
+  looking up the first strong directional character in each line, using the CSS
+  ''unicode-bidi/plaintext'' algorithm. In the occasional cases where the first strong character on
+  a line would produce the wrong base direction for that line, the author can use an U+200E
+  LEFT-TO-RIGHT MARK or U+200F RIGHT-TO-LEFT MARK character at the start of the line to correct it.
+  [[BIDI]]</p>
+
+  <div class=example>
+   <p>In this example, the second cue will have a right-to-left base direction, rendering as
+   "<samp><bdo dir=ltr>.I think ,&#x064A;&#x0644;&#x0627;&#x0639;</bdo></samp>". (Note that the text
+   below shows all characters left-to-right; a text editor would not necessarily have the same
+   rendering.)</p>
+
+   <pre>
+   WEBVTT
+
+   00:00:07.000 --> 00:00:09.000
+   What was his name again?
+
+   00:00:09.000 --> 00:00:11.000
+   <bdo dir=ltr>&#x0639;&#x0627;&#x0644;&#x064A;, I think.</bdo>
+   </pre>
+
+   <p>To change that line to left-to-right base direction, start the line with an U+200E
+   LEFT-TO-RIGHT MARK character (it can be escaped as "<code>&amp;lrm;</code>").</p>
+  </div>
+
+  <p class=note>Where the base direction of some embedded text within a line needs to be different
+  from the surrounding text on that line, this can be achieved by using the paired Unicode bidi
+  formatting code characters.</p>
+
+  <div class=example>
+   <p>In this example, assuming no bidi formatting code characters are used, the cue text is
+   rendered as "<samp><bdo dir=ltr>I've read the book 3 &#x5D3;&#x5E0;&#x5DC;&#x5D9;&#x5D5;&#x5E0;
+   times!</bdo></samp>" (i.e. the "3" is on the wrong side of the book title) because of the effect
+   of the Unicode Bidirection Algorithm. (Again, the text below shows all characters
+   left-to-right.)</p>
+
+   <pre>
+   WEBVTT
+
+   00:00:04.000 --> 00:00:08.000
+   <bdo dir=ltr>I've read the book &#x5E0;&#x5D5;&#x5D9;&#x5DC;&#x5E0;&#x5D3; 3 times!</bdo>
+   </pre>
+
+   <p>If a U+2068 FIRST STRONG ISOLATE (FSI) character was placed before the book title and a U+2069
+   POP DIRECTIONAL ISOLATE (PDI) character after it, the rendering would be the intended "<samp><bdo
+   dir=ltr>I've read the book &#x5D3;&#x5E0;&#x5DC;&#x5D9;&#x5D5;&#x5E0; 3 times!</bdo></samp>".
+   There are no character escapes for these characters in WebVTT, so they need to be included as
+   literal characters.</p>
+  </div>
+
+  <p class=note>The default text alignment is <a lt="WebVTT cue middle alignment">middle
+  alignment</a> regardless of the base direction of the cue text. To make the text alignment of each
+  line match the base direction of the line (e.g. left for English, right for Hebrew), use <a
+  lt="WebVTT cue start alignment">start alignment</a>, or <a lt="WebVTT cue end alignment">end
+  alignment</a> for the opposite alignment.</p>
+
+  <div class=example>
+   <p>In this example, <a lt="WebVTT cue start alignment">start alignment</a> is used. The first
+   line is left-aligned because the base direction is left-to-right, and the second line is
+   right-aligned because the base direction is right-to-left.</p>
+
+   <pre>
+   WEBVTT
+
+   00:00:00.000 --> 00:00:05.000 align:start
+   Hello!
+   <bdo dir=ltr>&#x5E9;&#x5DC;&#x5D5;&#x5DD;!</bdo>
+   </pre>
+
+   <p>This would render as follows:</p>
+
+   <!-- 50 -->
+   <pre>
+   <samp>Hello!</samp>
+                                               <samp><bdo dir=ltr>!&#x5DD;&#x5D5;&#x5DC;&#x5E9;</bdo></samp>
+   </pre>
+  </div>
+
+  <p class=note>The <a lt="WebVTT cue left alignment">left alignment</a> and <a lt="WebVTT cue right
+  alignment">right alignment</a> can be used to left-align or right-align the cue text regardless of
+  its lines' base direction.</p>
 
  </dd>
 
@@ -1611,8 +1715,8 @@ given:</p>
 </ol>
 
 <p class="note">A <a>WebVTT alignment cue setting</a> configures the alignment of the text within
-the cue. The keywords are relative to the text direction; for left-to-right English text,
-"<code>start</code>" means left-aligned.</p>
+the cue. The keywords are relative to the cue text's lines' base direction; for left-to-right
+English text, "<code>start</code>" means left-aligned.</p>
 
 <p>A <dfn>WebVTT region cue setting</dfn> consists of the following components, in the order
 given:</p>

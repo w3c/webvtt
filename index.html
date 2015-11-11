@@ -998,12 +998,21 @@
     }
   </style>
   <meta content="Bikeshed 1.0.0" name="generator">
+<style>
+ samp {
+   font-family: inherit;
+   background-color: black; /* fallback if rgba() is not supported */
+   background-color: rgba(0, 0, 0, 0.7);
+   outline: 0.18em solid rgba(0, 0, 0, 0.7);
+   color: white;
+ }
+</style>
  </head>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-13">13 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-16">16 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1212,8 +1221,8 @@ that captions an interview:</p>
    <p>Line breaks in cues are honored. User agents will also insert extra line breaks if necessary to
 fit the cue in the cue’s width. In general, therefore, authors are encouraged to write cues all on
 one line except when a line break is definitely necessary.</p>
-   <div class="example" id="example-181e34c7">
-    <a class="self-link" href="#example-181e34c7"></a> 
+   <div class="example" id="example-72029dca">
+    <a class="self-link" href="#example-72029dca"></a> 
     <p>These captions on a public service announcement video demonstrate line breaking:</p>
 <pre>WEBVTT
 
@@ -1230,36 +1239,36 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
     <p>The first cue is simple, it will probably just display on one line. The second will take two
  lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
  multiple lines. For example, the three cues could look like this:</p>
-<pre>           Never drink liquid nitrogen.
+<pre>           <samp>Never drink liquid nitrogen.</samp>
 
-        — It will perforate your stomach.
-                — You could die.
+        <samp>— It will perforate your stomach.</samp>
+                <samp>— You could die.</samp>
 
-    The Organisation for Sample Public Service
-    Announcements accepts no liability for the
-    content of this advertisement, or for the
-     consequences of any actions taken on the
-        basis of the information provided.
+    <samp>The Organisation for Sample Public Service</samp>
+    <samp>Announcements accepts no liability for the</samp>
+    <samp>content of this advertisement, or for the</samp>
+     <samp>consequences of any actions taken on the</samp>
+        <samp>basis of the information provided.</samp>
 </pre>
     <p>If the width of the cues is smaller, the first two cues could wrap as well, as in the following
  example. Note how the second cue’s explicit line break is still honored, however:</p>
-<pre>      Never drink
-    liquid nitrogen.
+<pre>      <samp>Never drink</samp>
+    <samp>liquid nitrogen.</samp>
 
-  — It will perforate
-      your stomach.
-    — You could die.
+  <samp>— It will perforate</samp>
+      <samp>your stomach.</samp>
+    <samp>— You could die.</samp>
 
-  The Organisation for
-  Sample Public Service
-  Announcements accepts
-  no liability for the
-     content of this
-  advertisement, or for
-   the consequences of
-  any actions taken on
-    the basis of the
-  information provided.
+  <samp>The Organisation for</samp>
+  <samp>Sample Public Service</samp>
+  <samp>Announcements accepts</samp>
+  <samp>no liability for the</samp>
+     <samp>content of this</samp>
+  <samp>advertisement, or for</samp>
+   <samp>the consequences of</samp>
+  <samp>any actions taken on</samp>
+    <samp>the basis of the</samp>
+  <samp>information provided.</samp>
 </pre>
     <p>Also notice how the wrapping is done so as to keep the line lengths balanced.</p>
    </div>
@@ -1514,6 +1523,9 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   and <a data-link-type="dfn" href="#webvtt-cue-position">position</a> and <a data-link-type="dfn" href="#webvtt-cue-size">size</a> percentages are
   relative to the height of the video.</p>
      <p>The <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing direction</a> defaults to <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a>.</p>
+     <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical growing
+  left</a> writing direction could be used for vertical Chinese, Japanese, and Korean, and the <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction">vertical growing right</a> writing
+  direction could be used for vertical Mongolian.</p>
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue snap-to-lines flag" data-noexport="" id="webvtt-cue-snap-to-lines-flag">A snap-to-lines flag<a class="self-link" href="#webvtt-cue-snap-to-lines-flag"></a></dfn>
     <dd>
      <p>A boolean indicating whether the <a data-link-type="dfn" href="#webvtt-cue-line">line</a> is an integer number of lines
@@ -1582,6 +1594,8 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
       <dd>The <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a>’s bottom side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction">horizontal</a> cues), right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction">vertical growing right</a>), or left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line">line</a>.
      </dl>
      <p>A <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> has a default <a data-link-type="dfn" href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a> of <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment">start</a>.</p>
+     <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-cue-line-alignment">line alignment</a> is separate from the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">text alignment</a> — right-to-left vs. left-to-right cue text
+  does not affect the <a data-link-type="dfn" href="#webvtt-cue-line-alignment">line alignment</a>.</p>
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue position" data-noexport="" id="webvtt-cue-position">A position<a class="self-link" href="#webvtt-cue-position"></a></dfn>
     <dd>
      <p>The <a data-link-type="dfn" href="#webvtt-cue-position">position</a> defines the indent of the <a data-link-type="dfn" href="#webvtt-cue-box">cue box</a> in the direction defined by the <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing
@@ -1669,6 +1683,70 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
       <dd>The text is aligned to the box’s right side.
      </dl>
      <p>By default, the value of the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle aligned</a>.</p>
+     <p class="note" role="note">The base direction of each line in a cue (which is used by the Unicode Bidirectional
+  Algorithm to determine the order in which to display the characters in the line) is determined by
+  looking up the first strong directional character in each line, using the CSS <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a> algorithm. In the occasional cases where the first strong character on
+  a line would produce the wrong base direction for that line, the author can use an U+200E
+  LEFT-TO-RIGHT MARK or U+200F RIGHT-TO-LEFT MARK character at the start of the line to correct it. <a data-link-type="biblio" href="#biblio-bidi">[BIDI]</a></p>
+     <div class="example" id="example-4a66a3ef">
+      <a class="self-link" href="#example-4a66a3ef"></a> 
+      <p>In this example, the second cue will have a right-to-left base direction, rendering as
+   "<samp><bdo dir="ltr">.I think ,يلاع</bdo></samp>". (Note that the text
+   below shows all characters left-to-right; a text editor would not necessarily have the same
+   rendering.)</p>
+<pre>WEBVTT
+
+00:00:07.000 --> 00:00:09.000
+What was his name again?
+
+00:00:09.000 --> 00:00:11.000
+<bdo dir="ltr">عالي, I think.</bdo>
+</pre>
+      <p>To change that line to left-to-right base direction, start the line with an U+200E
+   LEFT-TO-RIGHT MARK character (it can be escaped as "<code>&amp;lrm;</code>").</p>
+     </div>
+     <p class="note" role="note">Where the base direction of some embedded text within a line needs to be different
+  from the surrounding text on that line, this can be achieved by using the paired Unicode bidi
+  formatting code characters.</p>
+     <div class="example" id="example-05580000">
+      <a class="self-link" href="#example-05580000"></a> 
+      <p>In this example, assuming no bidi formatting code characters are used, the cue text is
+   rendered as "<samp><bdo dir="ltr">I’ve read the book 3 דנליונ
+   times!</bdo></samp>" (i.e. the "3" is on the wrong side of the book title) because of the effect
+   of the Unicode Bidirection Algorithm. (Again, the text below shows all characters
+   left-to-right.)</p>
+<pre>WEBVTT
+
+00:00:04.000 --> 00:00:08.000
+<bdo dir="ltr">I’ve read the book נוילנד 3 times!</bdo>
+</pre>
+      <p>If a U+2068 FIRST STRONG ISOLATE (FSI) character was placed before the book title and a U+2069
+   POP DIRECTIONAL ISOLATE (PDI) character after it, the rendering would be the intended "<samp><bdo dir="ltr">I’ve read the book דנליונ 3 times!</bdo></samp>".
+   There are no character escapes for these characters in WebVTT, so they need to be included as
+   literal characters.</p>
+     </div>
+     <p class="note" role="note">The default text alignment is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
+  alignment</a> regardless of the base direction of the cue text. To make the text alignment of each
+  line match the base direction of the line (e.g. left for English, right for Hebrew), use <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a>, or <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end
+  alignment</a> for the opposite alignment.</p>
+     <div class="example" id="example-0a88a31f">
+      <a class="self-link" href="#example-0a88a31f"></a> 
+      <p>In this example, <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a> is used. The first
+   line is left-aligned because the base direction is left-to-right, and the second line is
+   right-aligned because the base direction is right-to-left.</p>
+<pre>WEBVTT
+
+00:00:00.000 --> 00:00:05.000 align:start
+Hello!
+<bdo dir="ltr">שלום!</bdo>
+</pre>
+      <p>This would render as follows:</p>
+<pre><samp>Hello!</samp>
+                                            <samp><bdo dir="ltr">!םולש</bdo></samp>
+</pre>
+     </div>
+     <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-cue-left-alignment">left alignment</a> and <a data-link-type="dfn" href="#webvtt-cue-right-alignment">right alignment</a> can be used to left-align or right-align the cue text regardless of
+  its lines' base direction.</p>
     <dt><dfn data-dfn-type="dfn" data-lt="WebVTT cue region" data-noexport="" id="webvtt-cue-region">A region<a class="self-link" href="#webvtt-cue-region"></a></dfn>
     <dd>
      <p>An optional <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a> to which a cue belongs.</p>
@@ -2266,8 +2344,8 @@ given:</p>
  "<code>middle</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>"
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a> configures the alignment of the text within
-the cue. The keywords are relative to the text direction; for left-to-right English text,
-"<code>start</code>" means left-aligned.</p>
+the cue. The keywords are relative to the cue text’s lines' base direction; for left-to-right
+English text, "<code>start</code>" means left-aligned.</p>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-region-cue-setting">WebVTT region cue setting<a class="self-link" href="#webvtt-region-cue-setting"></a></dfn> consists of the following components, in the order
 given:</p>
    <ol>
@@ -5087,6 +5165,8 @@ using only nested cues</a><span>, in §4.5.1</span>
   </dl>
   <h3 class="no-num heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
+   <dt id="biblio-bidi"><a class="self-link" href="#biblio-bidi"></a>[BIDI]
+   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/">Unicode Bidirectional Algorithm</a>. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/">http://www.unicode.org/reports/tr9/</a>
    <dt id="biblio-maur"><a class="self-link" href="#biblio-maur"></a>[MAUR]
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
