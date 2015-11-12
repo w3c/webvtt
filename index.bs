@@ -53,6 +53,8 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: text track cue end time
             text: expose a user interface to the user
             text: text track cue order
+        urlPrefix: syntax.html
+            text: syntax-charref
     type: element-attr
         urlPrefix: dom.html
             text: title; url: #attr-title
@@ -1276,15 +1278,8 @@ terminator</a>.</p>
 
  <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
 
- <li>A <a>WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the cue.</li>
- <li>A <a>WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the cue.</li>
- <li>A <a>WebVTT cue gt escape</a>, representing a "&gt;" character in the text of the cue.</li>
- <li>A <a>WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional
- formatting character in the text of the cue.</li>
- <li>A <a>WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional
- formatting character in the text of the cue.</li>
- <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text of
- the cue.</li>
+ <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two Unicode
+ code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
 
 </ul>
 
@@ -1392,18 +1387,8 @@ given:</p>
   <ul>
    <li><a>WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.</li>
-   <li>A <a>WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the
-   annotation.</li>
-   <li>A <a>WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the
-   annotation.</li>
-   <li>A <a>WebVTT cue gt escape</a>, representing a "&gt;" character in the text of the
-   annotation.</li>
-   <li>A <a>WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode
-   bidirectional formatting character in the text of the cue.</li>
-   <li>A <a>WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode
-   bidirectional formatting character in the text of the cue.</li>
-   <li>A <a>WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text
-   of the cue.</li>
+   <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two
+   Unicode code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
   </ul>
 
  </li>
@@ -1436,18 +1421,6 @@ U+003C LESS-THAN SIGN characters (&lt;).</p>
 <p><dfn>WebVTT cue span start tag annotation text</dfn> consists of one or more characters other
 than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (&gt;).</p>
-
-<p>A <dfn>WebVTT cue amp escape</dfn> is the five character string "<code>&amp;amp;</code>".</p>
-
-<p>A <dfn>WebVTT cue lt escape</dfn> is the four character string "<code>&amp;lt;</code>".</p>
-
-<p>A <dfn>WebVTT cue gt escape</dfn> is the four character string "<code>&amp;gt;</code>".</p>
-
-<p>A <dfn>WebVTT cue lrm escape</dfn> is the five character string "<code>&amp;lrm;</code>".</p>
-
-<p>A <dfn>WebVTT cue rlm escape</dfn> is the five character string "<code>&amp;rlm;</code>".</p>
-
-<p>A <dfn>WebVTT cue nbsp escape</dfn> is the six character string "<code>&amp;nbsp;</code>".</p>
 
 
 <h3 id=region-definition>WebVTT region definition</h3>
@@ -1847,12 +1820,7 @@ terminator</a>:</p>
 
 <ul>
  <li><a>WebVTT cue text span</a></li>
- <li><a>WebVTT cue amp escape</a></li>
- <li><a>WebVTT cue lt escape</a></li>
- <li><a>WebVTT cue gt escape</a></li>
- <li><a>WebVTT cue lrm escape</a></li>
- <li><a>WebVTT cue rlm escape</a></li>
- <li><a>WebVTT cue nbsp escape</a></li>
+ <li><a spec=html lt=syntax-charref>HTML character reference</a> [[!HTML]]</li>
 </ul>
 
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
@@ -2948,8 +2916,6 @@ value).</p>
 
  <li><p>Let |result| be the empty string.</p></li>
 
- <li><p>Let |buffer| be the empty string.</p></li>
-
  <li><p>Let |classes| be an empty list.</p></li>
 
  <li>
@@ -2978,7 +2944,7 @@ value).</p>
 
      <dt>U+0026 AMPERSAND (&amp;)</dt>
      <dd>
-      <p>Set |buffer| to |c|, set |tokenizer state| to the <a>WebVTT escape state</a>, and jump to
+      <p>Set |tokenizer state| to the <a>HTML character reference state</a>, and jump to
       the step labeled <i>next</i>.</p>
      </dd>
 
@@ -3003,69 +2969,25 @@ value).</p>
 
    </dd>
 
-   <dt><dfn>WebVTT escape state</dfn></dt>
+   <dt><dfn>HTML character reference state</dfn></dt>
 
    <dd>
 
-    <p>Jump to the entry that matches the value of |c|:</p>
+    <p>Attempt to <a spec=html lt="consume a character reference">consume an HTML character
+    reference</a>, with no <a spec=html>additional allowed character</a>. [[!HTML]]</p>
 
-    <dl>
+    <p>When the HTML specification says to consume a character, in this context, it means to advance
+    |position| to the next character in |input|. When it says to unconsume a character, it means to
+    move |position| back to the previous character in |input|. "EOF" is equivalent to the
+    end-of-file marker in this specification. Finally, this context is <em>not</em> "as part of an
+    attribute" (when it comes to handling a missing semicolon).</p>
 
-     <dt>U+0026 AMPERSAND (&amp;)</dt>
-     <dd>
-      <p>Append |buffer| to |result|, set |buffer| to |c|, and jump to the step labeled
-      <i>next</i>.</p>
-     </dd>
+    <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |result|.</p>
 
-     <dt><a>Alphanumeric ASCII characters</a></dt>
-     <dd>
-      <p>Append |c| to |buffer| and jump to the step labeled <i>next</i>.</p>
-     </dd>
+    <p>Otherwise, append the data of the character tokens that were returned to |result|.</p>
 
-     <dt>U+003B SEMICOLON character (;)</dt>
-     <dd>
-
-      <p>First, examine the value of |buffer|:</p>
-
-      <p>If |buffer| is the string "<code>&amp;amp</code>", then append a U+0026 AMPERSAND character
-      (&amp;) to |result|.</p>
-
-      <p>If |buffer| is the string "<code>&amp;lt</code>", then append a U+003C LESS-THAN SIGN
-      character (&lt;) to |result|.</p>
-
-      <p>If |buffer| is the string "<code>&amp;gt</code>", then append a U+003E GREATER-THAN SIGN
-      character (&gt;) to |result|.</p>
-
-      <p>If |buffer| is the string "<code>&amp;lrm</code>", then append a U+200E LEFT-TO-RIGHT MARK
-      character to |result|.</p>
-
-      <p>If |buffer| is the string "<code>&amp;rlm</code>", then append a U+200F RIGHT-TO-LEFT MARK
-      character to |result|.</p>
-
-      <p>If |buffer| is the string "<code>&amp;nbsp</code>", then append a U+00A0 NO-BREAK SPACE
-      character to |result|.</p>
-
-      <p>Otherwise, append |buffer| followed by a U+003B SEMICOLON character (;) to |result|.</p>
-
-      <p>Then, in any case, set |tokenizer state| to the <a>WebVTT data state</a>, and jump to the
-      step labeled <i>next</i>.</p>
-
-     </dd>
-
-     <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
-     <dt>End-of-file marker</dt>
-     <dd>
-      <p>Append |buffer| to |result|, return a string token whose value is |result|, and abort these
-      steps.</p>
-     </dd>
-
-     <dt>Anything else</dt>
-     <dd>
-      <p>Append |buffer| to |result|, append |c| to |result|, set |tokenizer state| to the <a>WebVTT
-      data state</a>, and jump to the step labeled <i>next</i>.</p>
-     </dd>
-
-    </dl>
+    <p>Then, in any case, set |tokenizer state| to the <a>WebVTT data state</a>, and jump to the
+    step labeled <i>next</i>.</p>
 
    </dd>
 

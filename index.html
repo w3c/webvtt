@@ -1977,15 +1977,8 @@ terminator</a>.</p>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-language-span">WebVTT cue language span</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-timestamp">WebVTT cue timestamp</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-text-span">WebVTT cue text span</a>, representing the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-amp-escape">WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-lt-escape">WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-gt-escape">WebVTT cue gt escape</a>, representing a ">" character in the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-lrm-escape">WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode bidirectional
- formatting character in the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-rlm-escape">WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode bidirectional
- formatting character in the text of the cue.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-nbsp-escape">WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text of
- the cue.
+    <li>An <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a>, representing one or two Unicode
+ code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
    </ul>
    <p><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text<a class="self-link" href="#webvtt-cue-internal-text"></a></dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminator</a>,
 followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminator</a>.</p>
@@ -2061,18 +2054,8 @@ given:</p>
      <ul>
       <li><a data-link-type="dfn" href="#webvtt-cue-span-start-tag-annotation-text">WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-amp-escape">WebVTT cue amp escape</a>, representing a "&amp;" character in the text of the
-   annotation.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-lt-escape">WebVTT cue lt escape</a>, representing a "&lt;" character in the text of the
-   annotation.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-gt-escape">WebVTT cue gt escape</a>, representing a ">" character in the text of the
-   annotation.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-lrm-escape">WebVTT cue lrm escape</a>, representing a U+200E LEFT-TO-RIGHT MARK Unicode
-   bidirectional formatting character in the text of the cue.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-rlm-escape">WebVTT cue rlm escape</a>, representing a U+200F RIGHT-TO-LEFT MARK Unicode
-   bidirectional formatting character in the text of the cue.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-nbsp-escape">WebVTT cue nbsp escape</a>, representing a U+00A0 NO-BREAK SPACE character in the text
-   of the cue.
+      <li>An <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a>, representing one or two
+   Unicode code points, as defined in HTML, in the text of the annotation. <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
      </ul>
     <li>A U+003E GREATER-THAN SIGN character (>).
    </ol>
@@ -2095,12 +2078,6 @@ U+003C LESS-THAN SIGN characters (&lt;).</p>
    <p><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag-annotation-text">WebVTT cue span start tag annotation text<a class="self-link" href="#webvtt-cue-span-start-tag-annotation-text"></a></dfn> consists of one or more characters other
 than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-amp-escape">WebVTT cue amp escape<a class="self-link" href="#webvtt-cue-amp-escape"></a></dfn> is the five character string "<code>&amp;amp;</code>".</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-lt-escape">WebVTT cue lt escape<a class="self-link" href="#webvtt-cue-lt-escape"></a></dfn> is the four character string "<code>&amp;lt;</code>".</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-gt-escape">WebVTT cue gt escape<a class="self-link" href="#webvtt-cue-gt-escape"></a></dfn> is the four character string "<code>&amp;gt;</code>".</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-lrm-escape">WebVTT cue lrm escape<a class="self-link" href="#webvtt-cue-lrm-escape"></a></dfn> is the five character string "<code>&amp;lrm;</code>".</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-rlm-escape">WebVTT cue rlm escape<a class="self-link" href="#webvtt-cue-rlm-escape"></a></dfn> is the five character string "<code>&amp;rlm;</code>".</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-nbsp-escape">WebVTT cue nbsp escape<a class="self-link" href="#webvtt-cue-nbsp-escape"></a></dfn> is the six character string "<code>&amp;nbsp;</code>".</p>
    <h3 class="heading settled" data-level="4.3" id="region-definition"><span class="secno">4.3. </span><span class="content">WebVTT region definition</span><a class="self-link" href="#region-definition"></a></h3>
    <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list">WebVTT cue settings list</a> may contain a reference to a <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>. To define a
 region, a <a data-link-type="dfn" href="#webvtt-region-metadata-header">WebVTT region metadata header</a> is specified.</p>
@@ -2440,12 +2417,7 @@ more of the following components, each optionally separated from the next by a <
 terminator</a>:</p>
    <ul>
     <li><a data-link-type="dfn" href="#webvtt-cue-text-span">WebVTT cue text span</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-amp-escape">WebVTT cue amp escape</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-lt-escape">WebVTT cue lt escape</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-gt-escape">WebVTT cue gt escape</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-lrm-escape">WebVTT cue lrm escape</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-rlm-escape">WebVTT cue rlm escape</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-nbsp-escape">WebVTT cue nbsp escape</a>
+    <li><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a> <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
    </ul>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-chapter-title-text">WebVTT file using chapter title text<a class="self-link" href="#webvtt-file-using-chapter-title-text"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues">WebVTT file using only nested cues</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-chapter-title-text">WebVTT chapter title text</a>.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
@@ -3245,8 +3217,6 @@ value).</p>
     <li>
      <p>Let <var>result</var> be the empty string.</p>
     <li>
-     <p>Let <var>buffer</var> be the empty string.</p>
-    <li>
      <p>Let <var>classes</var> be an empty list.</p>
     <li>
      <p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, let <var>c</var> be an end-of-file marker.
@@ -3262,7 +3232,7 @@ value).</p>
        <dl>
         <dt>U+0026 AMPERSAND (&amp;)
         <dd>
-         <p>Set <var>buffer</var> to <var>c</var>, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-escape-state">WebVTT escape state</a>, and jump to
+         <p>Set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#html-character-reference-state">HTML character reference state</a>, and jump to
       the step labeled <i>next</i>.</p>
         <dt>U+003C LESS-THAN SIGN (&lt;)
         <dd>
@@ -3275,44 +3245,18 @@ value).</p>
         <dd>
          <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
        </dl>
-      <dt><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-escape-state">WebVTT escape state<a class="self-link" href="#webvtt-escape-state"></a></dfn>
+      <dt><dfn data-dfn-type="dfn" data-noexport="" id="html-character-reference-state">HTML character reference state<a class="self-link" href="#html-character-reference-state"></a></dfn>
       <dd>
-       <p>Jump to the entry that matches the value of <var>c</var>:</p>
-       <dl>
-        <dt>U+0026 AMPERSAND (&amp;)
-        <dd>
-         <p>Append <var>buffer</var> to <var>result</var>, set <var>buffer</var> to <var>c</var>, and jump to the step labeled <i>next</i>.</p>
-        <dt><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#alphanumeric-ascii-characters">Alphanumeric ASCII characters</a>
-        <dd>
-         <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
-        <dt>U+003B SEMICOLON character (;)
-        <dd>
-         <p>First, examine the value of <var>buffer</var>:</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;amp</code>", then append a U+0026 AMPERSAND character
-      (&amp;) to <var>result</var>.</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;lt</code>", then append a U+003C LESS-THAN SIGN
-      character (&lt;) to <var>result</var>.</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;gt</code>", then append a U+003E GREATER-THAN SIGN
-      character (>) to <var>result</var>.</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;lrm</code>", then append a U+200E LEFT-TO-RIGHT MARK
-      character to <var>result</var>.</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;rlm</code>", then append a U+200F RIGHT-TO-LEFT MARK
-      character to <var>result</var>.</p>
-         <p>If <var>buffer</var> is the string "<code>&amp;nbsp</code>", then append a U+00A0 NO-BREAK SPACE
-      character to <var>result</var>.</p>
-         <p>Otherwise, append <var>buffer</var> followed by a U+003B SEMICOLON character (;) to <var>result</var>.</p>
-         <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-data-state">WebVTT data state</a>, and jump to the
-      step labeled <i>next</i>.</p>
-        <dt>U+003C LESS-THAN SIGN (&lt;)
-        <dt>End-of-file marker
-        <dd>
-         <p>Append <var>buffer</var> to <var>result</var>, return a string token whose value is <var>result</var>, and abort these
-      steps.</p>
-        <dt>Anything else
-        <dd>
-         <p>Append <var>buffer</var> to <var>result</var>, append <var>c</var> to <var>result</var>, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-data-state">WebVTT
-      data state</a>, and jump to the step labeled <i>next</i>.</p>
-       </dl>
+       <p>Attempt to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference">consume an HTML character
+    reference</a>, with no <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character">additional allowed character</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
+       <p>When the HTML specification says to consume a character, in this context, it means to advance <var>position</var> to the next character in <var>input</var>. When it says to unconsume a character, it means to
+    move <var>position</var> back to the previous character in <var>input</var>. "EOF" is equivalent to the
+    end-of-file marker in this specification. Finally, this context is <em>not</em> "as part of an
+    attribute" (when it comes to handling a missing semicolon).</p>
+       <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>result</var>.</p>
+       <p>Otherwise, append the data of the character tokens that were returned to <var>result</var>.</p>
+       <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-data-state">WebVTT data state</a>, and jump to the
+    step labeled <i>next</i>.</p>
       <dt><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-tag-state">WebVTT tag state<a class="self-link" href="#webvtt-tag-state"></a></dfn>
       <dd>
        <p>Jump to the entry that matches the value of <var>c</var>:</p>
@@ -4794,6 +4738,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a><span>, in §7.1</span>
    <li><a href="#selectordef-future">:future</a><span>, in §6.1.2.2</span>
    <li><a href="#dom-vttcue-getcueashtml">getCueAsHTML()</a><span>, in §7.1</span>
+   <li><a href="#html-character-reference-state">HTML character reference state</a><span>, in §5.4</span>
    <li><a href="#incremental-webvtt-parser">incremental WebVTT parser</a><span>, in §5.1</span>
    <li><a href="#in-the-future">in the future</a><span>, in §6.1.2.2</span>
    <li><a href="#in-the-past">in the past</a><span>, in §6.1.2.2</span>
@@ -4840,7 +4785,6 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-class-object">WebVTT Class Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-comment-block">WebVTT comment block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue">WebVTT cue</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-amp-escape">WebVTT cue amp escape</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-automatic-position">WebVTT cue
   automatic position</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-background-box">WebVTT cue background box</a><span>, in §6.1</span>
@@ -4850,7 +4794,6 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-class-span">WebVTT cue class span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-components">WebVTT cue components</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-end-alignment">WebVTT cue end alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-gt-escape">WebVTT cue gt escape</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-horizontal-writing-direction">WebVTT cue horizontal writing direction</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-identifier">WebVTT cue identifier</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-internal-text">WebVTT cue internal text</a><span>, in §4.2.2</span>
@@ -4864,10 +4807,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-line-end-alignment">WebVTT cue line end alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-middle-alignment">WebVTT cue line middle alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-start-alignment">WebVTT cue line start alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-lrm-escape">WebVTT cue lrm escape</a><span>, in §4.2.2</span>
-   <li><a href="#webvtt-cue-lt-escape">WebVTT cue lt escape</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-middle-alignment">WebVTT cue middle alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-nbsp-escape">WebVTT cue nbsp escape</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-position">WebVTT cue position</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-alignment">WebVTT cue position alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-position-automatic-alignment">WebVTT cue position automatic alignment</a><span>, in §3.1</span>
@@ -4876,7 +4816,6 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-position-start-alignment">WebVTT cue position start alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-region">WebVTT cue region</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-right-alignment">WebVTT cue right alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-rlm-escape">WebVTT cue rlm escape</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-ruby-span">WebVTT cue ruby span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-ruby-text-span">WebVTT cue ruby text span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-setting">WebVTT cue
@@ -4905,7 +4844,6 @@ setting</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-writing-direction">WebVTT cue writing direction</a><span>, in §3.1</span>
    <li><a href="#webvtt-data-state">WebVTT data state</a><span>, in §5.4</span>
    <li><a href="#webvtt-end-tag-state">WebVTT end tag state</a><span>, in §5.4</span>
-   <li><a href="#webvtt-escape-state">WebVTT escape state</a><span>, in §5.4</span>
    <li><a href="#webvtt-file">WebVTT file</a><span>, in §4.1</span>
    <li><a href="#webvtt-file-body">WebVTT file body</a><span>, in §4.1</span>
    <li><a href="#webvtt-file-using-chapter-title-text">WebVTT file using chapter title text</a><span>, in §4.6.2</span>
@@ -5091,9 +5029,11 @@ using only nested cues</a><span>, in §4.5.1</span>
     <ul>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#dom-texttrack-addcue">addCue(cue)</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character">additional allowed character</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#audio">audio</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-b-element">b</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of characters</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference">consume a character reference</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">html elements</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-i-element">i</a>
