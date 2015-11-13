@@ -1465,14 +1465,21 @@ still useful to render the cues to the user.</p>
    <p>User agents fall into several (possibly overlapping) categories with different conformance
 requirements.</p>
    <dl>
-    <dt>User agents that support scripting
+    <dt>User agents
     <dd>
      <p>All processing requirements in this specification apply. The user agent must also be
  conforming implementations of the IDL fragments in this specification, as described in the Web IDL
  specification. <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a></p>
     <dt>User agents with no scripting support
     <dd>
-     <p>All processing requirements in this specification apply, except those in <a href="#api">§7 API</a>.</p>
+     <p>User agents with no scripting support must comply to the same conformance criteria as user
+ agents, except that they are exempt from the requirements in <a href="#api">§7 API</a>.</p>
+    <dt>User agents with no CSS support
+    <dd>
+     <p>User agents with no CSS support must comply to the same conformance criteria as user agents,
+ except that they are exempt from the requirements in <a href="#css-extensions">§6.1.2 CSS extensions</a>. In particular, such user
+ agents must act as if they supported CSS for the purpose of the rendering requirements in this
+ specification.</p>
     <dt>Conformance checkers
     <dd>
      <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> conforms to the applicable
