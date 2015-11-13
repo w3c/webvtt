@@ -1003,7 +1003,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-11">11 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-13">13 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1071,9 +1071,8 @@ the former is a Draft Community Group Report that continues to evolve. </p>
     <li>
      <a href="#conformance"><span class="secno">2</span> <span class="content">Conformance</span></a>
      <ul class="toc">
-      <li><a href="#conformance-for-authors"><span class="secno">2.1</span> <span class="content">Conformance for authors</span></a>
+      <li><a href="#conformance-classes"><span class="secno">2.1</span> <span class="content">Conformance classes</span></a>
       <li><a href="#unicode-normalization"><span class="secno">2.2</span> <span class="content">Unicode normalization</span></a>
-      <li><a href="#document-conformance"><span class="secno">2.3</span> <span class="content">Document conformance</span></a>
      </ul>
     <li>
      <a href="#data-model"><span class="secno">3</span> <span class="content">Data model</span></a>
@@ -1430,20 +1429,6 @@ Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% 
     <p>Note that regions are only defined for horizontal cues.</p>
    </div>
    <h2 class="heading settled" data-level="2" id="conformance"><span class="secno">2. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
-   <h3 class="heading settled" data-level="2.1" id="conformance-for-authors"><span class="secno">2.1. </span><span class="content">Conformance for authors</span><a class="self-link" href="#conformance-for-authors"></a></h3>
-   <p>The <a href="#syntax">Syntax</a> section of this specification defines what consists a valid
-WebVTT document. Authors need to follow the <a href="#syntax">Syntax</a> specification and are
-encouraged to use a validator.</p>
-   <p>The <a href="#parsing">Parsing</a> section of this specification defines in some detail the
-required processing for valid and also for invalid documents. It is a little more tolerant to author
-errors than the syntax allows, so as to reject less documents and provide for extensibility.
-However, authors must not take advantage of it. Only documents that follow the <a href="#syntax">Syntax</a> specification are valid.</p>
-   <h3 class="heading settled" data-level="2.2" id="unicode-normalization"><span class="secno">2.2. </span><span class="content">Unicode normalization</span><a class="self-link" href="#unicode-normalization"></a></h3>
-   <p>Implementations of this specification must not normalize Unicode text during processing.</p>
-   <p>For example, a cue with the identifier consisting of the characters U+0041 LATIN CAPITAL LETTER A
-and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID consisting of the
-character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
-   <h3 class="heading settled" data-level="2.3" id="document-conformance"><span class="secno">2.3. </span><span class="content">Document conformance</span><a class="self-link" href="#document-conformance"></a></h3>
    <p>All diagrams, examples, and notes in this specification are non-normative, as are all sections
 explicitly marked non-normative. Everything else in this specification is normative.</p>
    <p>The key words "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", and "OPTIONAL" in the normative
@@ -1457,6 +1442,47 @@ key word ("must", "should", "may", etc) used in introducing the algorithm.</p>
    <p>Conformance requirements phrased as algorithms or specific steps may be implemented in any
 manner, so long as the end result is equivalent. (In particular, the algorithms defined in this
 specification are intended to be easy to follow, and not intended to be performant.)</p>
+   <h3 class="heading settled" data-level="2.1" id="conformance-classes"><span class="secno">2.1. </span><span class="content">Conformance classes</span><a class="self-link" href="#conformance-classes"></a></h3>
+   <p>This specification describes the conformance criteria for user agents (relevant to implementors)
+and <a data-link-type="dfn" href="#webvtt-file">WebVTT files</a> (relevant to authors and authoring tool implementors).</p>
+   <p class="note" role="note"><a href="#syntax">§4 Syntax</a> defines what consists of a valid <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a>. Authors need to
+follow the requirements therein, and are encouraged to use a conformance checker. <a href="#parsing">§5 Parsing</a> defines how user agents are to interpret a file labelled as <a data-link-type="dfn" href="#text-vtt">text/vtt</a>, for both valid and
+invalid <a data-link-type="dfn" href="#webvtt-file">WebVTT files</a>. The parsing rules are more tolerant to author errors than the syntax
+allows, in order to provide for extensibility and to still render cues that have some syntax
+errors.</p>
+   <p class="example" id="example-a403a5ba"><a class="self-link" href="#example-a403a5ba"></a>For example, the parser will create two cues even if the blank line between them is
+skipped. This is clearly a mistake, so a conformance checker will flag it as an error, but it is
+still useful to render the cues to the user.</p>
+   <p>User agents fall into several (possibly overlapping) categories with different conformance
+requirements.</p>
+   <dl>
+    <dt>User agents that support scripting
+    <dd>
+     <p>All processing requirements in this specification apply. The user agent must also be
+ conforming implementations of the IDL fragments in this specification, as described in the Web IDL
+ specification. <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a></p>
+    <dt>User agents with no scripting support
+    <dd>
+     <p>All processing requirements in this specification apply, except those in <a href="#api">§7 API</a>.</p>
+    <dt>Conformance checkers
+    <dd>
+     <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> conforms to the applicable
+ conformance criteria described in this specification. The term "validator" is equivalent to
+ conformance checker for the purpose of this specification.</p>
+    <dt>Authoring tools
+    <dd>
+     <p>Authoring tools must generate conforming <a data-link-type="dfn" href="#webvtt-file">WebVTT files</a>. Tools that convert other formats
+  to <a data-link-type="dfn" href="#webvtt">WebVTT</a> are also considered to be authoring tools.</p>
+     <p>When an authoring tool is used to edit a non-conforming <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a>, it may preserve the
+  conformance errors in sections of the file that were not edited during the editing session (i.e.
+  an editing tool is allowed to round-trip erroneous content). However, an authoring tool must not
+  claim that the output is conformant if errors have been so preserved.</p>
+   </dl>
+   <h3 class="heading settled" data-level="2.2" id="unicode-normalization"><span class="secno">2.2. </span><span class="content">Unicode normalization</span><a class="self-link" href="#unicode-normalization"></a></h3>
+   <p>Implementations of this specification must not normalize Unicode text during processing.</p>
+   <p class="example" id="example-11b9d845"><a class="self-link" href="#example-11b9d845"></a>For example, a cue with the identifier consisting of the characters U+0041 LATIN
+CAPITAL LETTER A and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
+consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <h2 class="heading settled" data-level="3" id="data-model"><span class="secno">3. </span><span class="content">Data model</span><a class="self-link" href="#data-model"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="cues"><span class="secno">3.1. </span><span class="content">WebVTT cues</span><a class="self-link" href="#cues"></a></h3>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue<a class="self-link" href="#webvtt-cue"></a></dfn> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> that additionally consist of the following: <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
@@ -2326,7 +2352,7 @@ The Final Minute
    <h3 class="heading settled" data-level="4.6" id="types-of-webvtt-files"><span class="secno">4.6. </span><span class="content">Types of WebVTT files</span><a class="self-link" href="#types-of-webvtt-files"></a></h3>
    <p>The syntax definition of WebVTT files allows authoring of a wide variety of WebVTT files with a
 mix of cues. However, only a small subset of WebVTT file types are typically authored.</p>
-   <p>Conformance checkers, when validating <a data-link-type="dfn" href="#webvtt">WebVTT</a> files, may offer to restrict syntax checking
+   <p>Conformance checkers, when validating <a data-link-type="dfn" href="#webvtt-file">WebVTT files</a>, may offer to restrict syntax checking
 for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.1" id="file-using-metadata-content"><span class="secno">4.6.1. </span><span class="content">WebVTT file using metadata content</span><a class="self-link" href="#file-using-metadata-content"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-metadata-text">WebVTT metadata text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-metadata-content">WebVTT file using metadata content<a class="self-link" href="#webvtt-file-using-metadata-content"></a></dfn>.</p>
@@ -5014,6 +5040,8 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dd>Ian Hickson. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-svg2"><a class="self-link" href="#biblio-svg2"></a>[SVG2]
    <dd>Nikos Andronikos; et al. <a href="https://svgwg.org/svg2-draft/">Scalable Vector Graphics (SVG) 2</a>. 15 September 2015. WD. URL: <a href="https://svgwg.org/svg2-draft/">https://svgwg.org/svg2-draft/</a>
+   <dt id="biblio-webidl"><a class="self-link" href="#biblio-webidl"></a>[WebIDL]
+   <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 4 August 2015. WD. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-css-align-3"><a class="self-link" href="#biblio-css-align-3"></a>[CSS-ALIGN-3]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-align/">CSS Box Alignment Module Level 3</a>. 18 December 2014. WD. URL: <a href="http://dev.w3.org/csswg/css-align/">http://dev.w3.org/csswg/css-align/</a>
    <dt id="biblio-css-backgrounds-3"><a class="self-link" href="#biblio-css-backgrounds-3"></a>[CSS-BACKGROUNDS-3]

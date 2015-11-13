@@ -428,30 +428,6 @@ one line except when a line break is definitely necessary.</p>
 
 <h2 id=conformance>Conformance</h2>
 
-<h3 id=conformance-for-authors>Conformance for authors</h3>
-
-<p>The <a href="#syntax">Syntax</a> section of this specification defines what consists a valid
-WebVTT document. Authors need to follow the <a href="#syntax">Syntax</a> specification and are
-encouraged to use a validator.</p>
-
-<p>The <a href="#parsing">Parsing</a> section of this specification defines in some detail the
-required processing for valid and also for invalid documents. It is a little more tolerant to author
-errors than the syntax allows, so as to reject less documents and provide for extensibility.
-However, authors must not take advantage of it. Only documents that follow the <a
-href="#syntax">Syntax</a> specification are valid.</p>
-
-
-<h3 id=unicode-normalization>Unicode normalization</h3>
-
-<p>Implementations of this specification must not normalize Unicode text during processing.</p>
-
-<p>For example, a cue with the identifier consisting of the characters U+0041 LATIN CAPITAL LETTER A
-and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID consisting of the
-character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
-
-
-<h3 id=document-conformance>Document conformance</h3>
-
 <p>All diagrams, examples, and notes in this specification are non-normative, as are all sections
 explicitly marked non-normative. Everything else in this specification is normative.</p>
 
@@ -468,6 +444,61 @@ key word ("must", "should", "may", etc) used in introducing the algorithm.</p>
 <p>Conformance requirements phrased as algorithms or specific steps may be implemented in any
 manner, so long as the end result is equivalent. (In particular, the algorithms defined in this
 specification are intended to be easy to follow, and not intended to be performant.)</p>
+
+
+<h3 id=conformance-classes>Conformance classes</h3>
+
+<p>This specification describes the conformance criteria for user agents (relevant to implementors)
+and <a>WebVTT files</a> (relevant to authors and authoring tool implementors).</p>
+
+<p class=note>[[#syntax]] defines what consists of a valid <a>WebVTT file</a>. Authors need to
+follow the requirements therein, and are encouraged to use a conformance checker. [[#parsing]]
+defines how user agents are to interpret a file labelled as <a>text/vtt</a>, for both valid and
+invalid <a>WebVTT files</a>. The parsing rules are more tolerant to author errors than the syntax
+allows, in order to provide for extensibility and to still render cues that have some syntax
+errors.</p>
+
+<p class=example>For example, the parser will create two cues even if the blank line between them is
+skipped. This is clearly a mistake, so a conformance checker will flag it as an error, but it is
+still useful to render the cues to the user.</p>
+
+<p>User agents fall into several (possibly overlapping) categories with different conformance
+requirements.</p>
+
+<dl>
+ <dt>User agents that support scripting</dt>
+ <dd><p>All processing requirements in this specification apply. The user agent must also be
+ conforming implementations of the IDL fragments in this specification, as described in the Web IDL
+ specification. [[!WEBIDL]]</p></dd>
+
+ <dt>User agents with no scripting support</dt>
+ <dd><p>All processing requirements in this specification apply, except those in [[#api]].</p></dd>
+
+ <dt>Conformance checkers</dt>
+ <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
+ conformance criteria described in this specification. The term "validator" is equivalent to
+ conformance checker for the purpose of this specification.</p></dd>
+
+ <dt>Authoring tools</dt>
+ <dd>
+  <p>Authoring tools must generate conforming <a>WebVTT files</a>. Tools that convert other formats
+  to <a>WebVTT</a> are also considered to be authoring tools.</p>
+
+  <p>When an authoring tool is used to edit a non-conforming <a>WebVTT file</a>, it may preserve the
+  conformance errors in sections of the file that were not edited during the editing session (i.e.
+  an editing tool is allowed to round-trip erroneous content). However, an authoring tool must not
+  claim that the output is conformant if errors have been so preserved.</p>
+ </dd>
+</dl>
+
+
+<h3 id=unicode-normalization>Unicode normalization</h3>
+
+<p>Implementations of this specification must not normalize Unicode text during processing.</p>
+
+<p class=example>For example, a cue with the identifier consisting of the characters U+0041 LATIN
+CAPITAL LETTER A and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
+consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
 
 <h2 id=data-model>Data model</h2>
@@ -1694,7 +1725,7 @@ using only nested cues</dfn>:</p>
 <p>The syntax definition of WebVTT files allows authoring of a wide variety of WebVTT files with a
 mix of cues. However, only a small subset of WebVTT file types are typically authored.</p>
 
-<p>Conformance checkers, when validating <a>WebVTT</a> files, may offer to restrict syntax checking
+<p>Conformance checkers, when validating <a>WebVTT files</a>, may offer to restrict syntax checking
 for validating these types.</p>
 
 
