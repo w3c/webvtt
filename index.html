@@ -1120,7 +1120,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
       <li><a href="#file-parsing"><span class="secno">5.1</span> <span class="content">WebVTT file parsing</span></a>
       <li><a href="#region-settings-parsing"><span class="secno">5.2</span> <span class="content">WebVTT region settings parsing</span></a>
       <li><a href="#cue-timings-and-settings-parsing"><span class="secno">5.3</span> <span class="content">WebVTT cue timings and settings parsing</span></a>
-      <li><a href="#cue-text-parsing-rules"><span class="secno">5.4</span> <span class="content"><span>WebVTT cue text parsing rules</span></span></a>
+      <li><a href="#cue-text-parsing-rules"><span class="secno">5.4</span> <span class="content">WebVTT cue text parsing rules</span></a>
       <li><a href="#dom-construction-rules"><span class="secno">5.5</span> <span class="content"><span>WebVTT cue text DOM construction rules</span></span></a>
       <li><a href="#rules-for-extracting-the-chapter-title"><span class="secno">5.6</span> <span class="content">WebVTT rules for extracting the chapter
 title</span></a>
@@ -3036,7 +3036,7 @@ user agent must run the following steps:</p>
     <li>
      <p>Return <var>result</var>.</p>
    </ol>
-   <h3 class="heading settled" data-algorithm="WebVTT cue text parsing rules" data-level="5.4" id="cue-text-parsing-rules"><span class="secno">5.4. </span><span class="content"><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules<a class="self-link" href="#webvtt-cue-text-parsing-rules"></a></dfn></span><a class="self-link" href="#cue-text-parsing-rules"></a></h3>
+   <h3 class="heading settled" data-algorithm="WebVTT cue text parsing rules" data-level="5.4" id="cue-text-parsing-rules"><span class="secno">5.4. </span><span class="content">WebVTT cue text parsing rules</span><a class="self-link" href="#cue-text-parsing-rules"></a></h3>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-node-object">WebVTT Node Object<a class="self-link" href="#webvtt-node-object"></a></dfn> is a conceptual construct used to represent components of <a data-link-type="dfn" href="#webvtt-cue-text">WebVTT cue text</a> so that its processing can be described without reference to the underlying
 syntax.</p>
    <p>There are two broad classes of <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Objects</a>: <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node Objects</a> and <a data-link-type="dfn" href="#webvtt-leaf-node-object">WebVTT
@@ -3103,8 +3103,8 @@ Objects</a>:</p>
      <p>A timestamp. A <a data-link-type="dfn" href="#webvtt-timestamp-object">WebVTT Timestamp Object</a> has a value, in seconds and fractions of a
   second, which is the time represented by the timestamp.</p>
    </dl>
-   <p>To parse a string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-cue-text">WebVTT cue text</a>, user agents must use the
-following algorithm. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a>.</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules<a class="self-link" href="#webvtt-cue-text-parsing-rules"></a></dfn> consist of the following algorithm. The input is a
+string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-cue-text">WebVTT cue text</a>, and optionally a fallback language <var>language</var>. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a>.</p>
    <ol>
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
@@ -3117,6 +3117,9 @@ following algorithm. This algorithm returns a <a data-link-type="dfn" href="#lis
      <p>Let <var>current</var> be the <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node Object</a> <var>result</var>.</p>
     <li>
      <p>Let <var>language stack</var> be a stack of language tags, initially empty.</p>
+    <li>
+     <p>If <var>language</var> is set, set <var>result</var>'s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language">applicable language</a> to <var>language</var>, and push <var>language</var> onto the <var>language
+ stack</var>.</p>
     <li>
      <p><i>Loop</i>: If <var>position</var> is past the end of <var>input</var>, return <var>result</var> and abort these
  steps.</p>
@@ -3543,7 +3546,7 @@ media players that don’t support CSS, equivalent visual rendering will need to
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks<a class="self-link" href="#rules-for-updating-the-display-of-webvtt-text-tracks"></a></dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element), or
 of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text
 tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>, or other playback mechanism, are
-rendered together, to avoid overlapping subtitles from multiple tracks.</p>
+rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling this algorithm.</p>
    <p class="note" role="note">In HTML, audio elements don’t have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
 audio resources, they need to publish them in a video element for rendering by the user agent.</p>
@@ -3629,7 +3632,7 @@ manner suiting the user.</p>
      <ol>
       <li>
        <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT
-   cue text parsing rules</a> to the <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+   cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
       <li>
        <p>If <var>cue</var>'s <a data-link-type="dfn" href="#webvtt-cue-region">WebVTT cue region</a> is null, run the following substeps:</p>
        <ol>
@@ -4551,6 +4554,7 @@ track cue text</a> must be set to the new value.</p>
 text</a> to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules">WebVTT cue text DOM construction rules</a> to
 the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
 text</a>.</p>
+   <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled" data-algorithm="The VTTRegion interface" data-level="7.2" id="the-vttregion-interface"><span class="secno">7.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 <pre class="idl">enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting">ScrollSetting<a class="self-link" href="#enumdef-scrollsetting"></a></dfn> { "" /* none */, "up" };

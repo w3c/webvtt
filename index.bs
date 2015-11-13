@@ -2621,7 +2621,7 @@ user agent must run the following steps:</p>
 </ol>
 
 
-<h3 id=cue-text-parsing-rules algorithm><dfn>WebVTT cue text parsing rules</dfn></h3>
+<h3 id=cue-text-parsing-rules algorithm>WebVTT cue text parsing rules</h3>
 
 <p>A <dfn>WebVTT Node Object</dfn> is a conceptual construct used to represent components of
 <a>WebVTT cue text</a> so that its processing can be described without reference to the underlying
@@ -2728,8 +2728,9 @@ Objects</a>:</p>
 
 </dl>
 
-<p>To parse a string |input| supposedly containing <a>WebVTT cue text</a>, user agents must use the
-following algorithm. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
+<p>The <dfn>WebVTT cue text parsing rules</dfn> consist of the following algorithm. The input is a
+string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fallback language
+|language|. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
 <ol>
 
@@ -2743,6 +2744,10 @@ following algorithm. This algorithm returns a <a>list of WebVTT Node Objects</a>
  <li><p>Let |current| be the <a>WebVTT Internal Node Object</a> |result|.</p></li>
 
  <li><p>Let |language stack| be a stack of language tags, initially empty.</p></li>
+
+ <li><p>If |language| is set, set |result|'s <a lt="WebVTT Node Object's applicable
+ language">applicable language</a> to |language|, and push |language| onto the |language
+ stack|.</p></li>
 
  <li><p><i>Loop</i>: If |position| is past the end of |input|, return |result| and abort these
  steps.</p></li>
@@ -3449,7 +3454,8 @@ media players that don't support CSS, equivalent visual rendering will need to b
 track">text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a> element), or
 of another playback mechanism, by applying the steps below. All the <a lt="text track">text
 tracks</a> that use these rules for a given <a>media element</a>, or other playback mechanism, are
-rendered together, to avoid overlapping subtitles from multiple tracks.</p>
+rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language
+|language| may be set when calling this algorithm.</p>
 
 <p class="note">In HTML, audio elements don't have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
@@ -3561,7 +3567,8 @@ manner suiting the user.</p>
   <ol>
 
    <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT
-   cue text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
+   cue text parsing rules</a>, with the fallback language |language| if provided, to the |cue|'s
+   <a>text track cue text</a>.</p></li>
 
    <li>
     <p>If |cue|'s <a>WebVTT cue region</a> is null, run the following substeps:</p>
@@ -4927,6 +4934,9 @@ text</a> to a {{DocumentFragment}} for the <a spec=html>responsible document</a>
 spec=html>entry settings object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to
 the result of applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue
 text</a>.</p>
+
+<p class=note>A fallback language is not provided for {{VTTCue/getCueAsHTML()}} since a
+{{DocumentFragment}} cannot expose language information.</p>
 
 
 <h3 id=the-vttregion-interface algorithm>The {{VTTRegion}} interface</h3>
