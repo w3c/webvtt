@@ -2128,6 +2128,9 @@ given:</p>
     <li><a data-link-type="dfn" href="#webvtt-cue-internal-text">WebVTT cue internal text</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag">WebVTT cue span end tag</a> "<code>lang</code>".
    </ol>
+   <p class="note" role="note">The requirement above regarding valid BCP 47 language tag is an authoring requirement,
+so a conformance checker will do validity checking of the language tag, but other user agents will
+not.</p>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag">WebVTT cue span start tag<a class="self-link" href="#webvtt-cue-span-start-tag"></a></dfn> has a <var>tag name</var> and either 
 requires or disallows an annotation, and consists of the following components, in the order
 given:</p>
@@ -3160,6 +3163,7 @@ Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles
 parent-child relationships so constructed form a tree structure. <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their <dfn data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable classes" data-noexport="" id="webvtt-node-objects-applicable-classes">applicable classes<a class="self-link" href="#webvtt-node-objects-applicable-classes"></a></dfn>, and a language, known as
 their <dfn data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable language" data-noexport="" id="webvtt-node-objects-applicable-language">applicable language<a class="self-link" href="#webvtt-node-objects-applicable-language"></a></dfn>, which is to be
 interpreted as a BCP 47 language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
+   <p class="note" role="note">User agents will add a language tag as the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language">applicable language</a> even if it is not a valid or not even well-formed language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
    <p>There are several concrete classes of <a data-link-type="dfn" href="#webvtt-internal-node-object">WebVTT Internal Node
 Objects</a>:</p>
    <dl>

@@ -1472,6 +1472,10 @@ given:</p>
  <li>A <a>WebVTT cue span end tag</a> "<code>lang</code>".</li>
 </ol>
 
+<p class=note>The requirement above regarding valid BCP 47 language tag is an authoring requirement,
+so a conformance checker will do validity checking of the language tag, but other user agents will
+not.</p>
+
 <p>A <dfn>WebVTT cue span start tag</dfn> has a |tag name| and either <!--allows,-->
 requires<!--,--> or disallows an annotation, and consists of the following components, in the order
 given:</p>
@@ -2841,6 +2845,10 @@ Object">WebVTT Internal Node Objects</a> also have an ordered list of class name
 <dfn lt="WebVTT Node Object's applicable classes">applicable classes</dfn>, and a language, known as
 their <dfn lt="WebVTT Node Object's applicable language">applicable language</dfn>, which is to be
 interpreted as a BCP 47 language tag. [[!BCP47]]</p>
+
+<p class=note>User agents will add a language tag as the <a lt="WebVTT Node Object's applicable
+language">applicable language</a> even if it is not a valid or not even well-formed language tag.
+[[!BCP47]]</p>
 
 <p>There are several concrete classes of <a lt="WebVTT Internal Node Object">WebVTT Internal Node
 Objects</a>:</p>
