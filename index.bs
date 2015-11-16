@@ -895,8 +895,8 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <p>If a U+2068 FIRST STRONG ISOLATE (FSI) character was placed before the book title and a U+2069
    POP DIRECTIONAL ISOLATE (PDI) character after it, the rendering would be the intended "<samp><bdo
    dir=ltr>I've read the book &#x5D3;&#x5E0;&#x5DC;&#x5D9;&#x5D5;&#x5E0; 3 times!</bdo></samp>".
-   There are no character escapes for these characters in WebVTT, so they need to be included as
-   literal characters.</p>
+   (Those characters can be escaped as "<code>&amp;#x2068;</code>" and "<code>&amp;#x2069;</code>",
+   respectively.)</p>
   </div>
 
   <p class=note>The default text alignment is <a lt="WebVTT cue middle alignment">middle

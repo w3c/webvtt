@@ -1715,8 +1715,8 @@ What was his name again?
      <p class="note" role="note">Where the base direction of some embedded text within a line needs to be different
   from the surrounding text on that line, this can be achieved by using the paired Unicode bidi
   formatting code characters.</p>
-     <div class="example" id="example-05580000">
-      <a class="self-link" href="#example-05580000"></a> 
+     <div class="example" id="example-89bafe37">
+      <a class="self-link" href="#example-89bafe37"></a> 
       <p>In this example, assuming no bidi formatting code characters are used, the cue text is
    rendered as "<samp><bdo dir="ltr">I’ve read the book 3 דנליונ
    times!</bdo></samp>" (i.e. the "3" is on the wrong side of the book title) because of the effect
@@ -1729,8 +1729,8 @@ What was his name again?
 </pre>
       <p>If a U+2068 FIRST STRONG ISOLATE (FSI) character was placed before the book title and a U+2069
    POP DIRECTIONAL ISOLATE (PDI) character after it, the rendering would be the intended "<samp><bdo dir="ltr">I’ve read the book דנליונ 3 times!</bdo></samp>".
-   There are no character escapes for these characters in WebVTT, so they need to be included as
-   literal characters.</p>
+   (Those characters can be escaped as "<code>&amp;#x2068;</code>" and "<code>&amp;#x2069;</code>",
+   respectively.)</p>
      </div>
      <p class="note" role="note">The default text alignment is <a data-link-type="dfn" href="#webvtt-cue-middle-alignment">middle
   alignment</a> regardless of the base direction of the cue text. To make the text alignment of each
