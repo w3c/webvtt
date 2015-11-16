@@ -3359,8 +3359,8 @@ value).</p>
        <dl>
         <dt>U+0026 AMPERSAND (&amp;)
         <dd>
-         <p>Set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#html-character-reference-state">HTML character reference state</a>, and jump to
-      the step labeled <i>next</i>.</p>
+         <p>Set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#html-character-reference-in-data-state">HTML character reference in data state</a>, and jump to the
+      step labeled <i>next</i>.</p>
         <dt>U+003C LESS-THAN SIGN (&lt;)
         <dd>
          <p>If <var>result</var> is the empty string, then set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-tag-state">WebVTT tag state</a> and jump to the step labeled <i>next</i>.</p>
@@ -3372,14 +3372,10 @@ value).</p>
         <dd>
          <p>Append <var>c</var> to <var>result</var> and jump to the step labeled <i>next</i>.</p>
        </dl>
-      <dt><dfn data-dfn-type="dfn" data-noexport="" id="html-character-reference-state">HTML character reference state<a class="self-link" href="#html-character-reference-state"></a></dfn>
+      <dt><dfn data-dfn-type="dfn" data-noexport="" id="html-character-reference-in-data-state">HTML character reference in data state<a class="self-link" href="#html-character-reference-in-data-state"></a></dfn>
       <dd>
-       <p>Attempt to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference">consume an HTML character
-    reference</a>, with no <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character">additional allowed character</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
-       <p>When the HTML specification says to consume a character, in this context, it means to advance <var>position</var> to the next character in <var>input</var>. When it says to unconsume a character, it means to
-    move <var>position</var> back to the previous character in <var>input</var>. "EOF" is equivalent to the
-    end-of-file marker in this specification. Finally, this context is <em>not</em> "as part of an
-    attribute" (when it comes to handling a missing semicolon).</p>
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference">consume an HTML character reference</a>, with no <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character">additional
+    allowed character</a>.</p>
        <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>result</var>.</p>
        <p>Otherwise, append the data of the character tokens that were returned to <var>result</var>.</p>
        <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-data-state">WebVTT data state</a>, and jump to the
@@ -3484,6 +3480,10 @@ value).</p>
       <dd>
        <p>Jump to the entry that matches the value of <var>c</var>:</p>
        <dl>
+        <dt>U+0026 AMPERSAND (&amp;)
+        <dd>
+         <p>Set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#html-character-reference-in-annotation-state">HTML character reference in annotation state</a>, and jump
+      to the step labeled <i>next</i>.</p>
         <dt>U+003E GREATER-THAN SIGN character (>)
         <dd>
          <p>Advance <var>position</var> to the next character in <var>input</var>, then jump to the next "end-of-file
@@ -3499,6 +3499,14 @@ value).</p>
         <dd>
          <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
        </dl>
+      <dt><dfn data-dfn-type="dfn" data-noexport="" id="html-character-reference-in-annotation-state">HTML character reference in annotation state<a class="self-link" href="#html-character-reference-in-annotation-state"></a></dfn>
+      <dd>
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference">consume an HTML character reference</a>, with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character">additional
+    allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
+       <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>buffer</var>.</p>
+       <p>Otherwise, append the data of the character tokens that were returned to <var>buffer</var>.</p>
+       <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-start-tag-annotation-state">WebVTT start tag annotation state</a>, and
+    jump to the step labeled <i>next</i>.</p>
       <dt><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-end-tag-state">WebVTT end tag state<a class="self-link" href="#webvtt-end-tag-state"></a></dfn>
       <dd>
        <p>Jump to the entry that matches the value of <var>c</var>:</p>
@@ -3535,6 +3543,11 @@ value).</p>
     <li>
      <p>Jump to the step labeled <i>loop</i>.</p>
    </ol>
+   <p>When the algorithm above says to attempt to <dfn data-dfn-type="dfn" data-noexport="" id="consume-an-html-character-reference">consume an HTML character reference<a class="self-link" href="#consume-an-html-character-reference"></a></dfn>, it
+means to attempt to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference">consume a character reference</a> as defined in HTML. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
+   <p>When the HTML specification says to consume a character, in this context, it means to advance <var>position</var> to the next character in <var>input</var>. When it says to unconsume a character, it means to move <var>position</var> back to the previous character in <var>input</var>. "EOF" is equivalent to the end-of-file marker
+in this specification. Finally, this context is <em>not</em> "as part of an attribute" (when it
+comes to handling a missing semicolon).</p>
    <h3 class="heading settled" data-level="5.5" id="dom-construction-rules"><span class="secno">5.5. </span><span class="content"><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-dom-construction-rules">WebVTT cue text DOM construction rules<a class="self-link" href="#webvtt-cue-text-dom-construction-rules"></a></dfn></span><a class="self-link" href="#dom-construction-rules"></a></h3>
    <p class="note" role="note">For the purpose of retrieving a <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>’s content via the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml">getCueAsHTML()</a></code> method of the <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> interface, it needs to be parsed to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code>. This section describes how.</p>
    <p>To convert a <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> to a DOM tree for <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document">Document</a></code> <var>owner</var>, user
@@ -4902,6 +4915,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
 settings</a><span>, in §5.3</span>
    <li><a href="#collect-webvtt-region-settings">collect WebVTT region
 settings</a><span>, in §5.2</span>
+   <li><a href="#consume-an-html-character-reference">consume an HTML character reference</a><span>, in §5.4</span>
    <li><a href="#selectordef-cue">::cue</a><span>, in §6.1.2.1</span>
    <li><a href="#cue-computed-line">cue computed line</a><span>, in §3.1</span>
    <li><a href="#cue-computed-position">cue computed position</a><span>, in §3.1</span>
@@ -4913,7 +4927,8 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a><span>, in §7.1</span>
    <li><a href="#selectordef-future">:future</a><span>, in §6.1.2.2</span>
    <li><a href="#dom-vttcue-getcueashtml">getCueAsHTML()</a><span>, in §7.1</span>
-   <li><a href="#html-character-reference-state">HTML character reference state</a><span>, in §5.4</span>
+   <li><a href="#html-character-reference-in-annotation-state">HTML character reference in annotation state</a><span>, in §5.4</span>
+   <li><a href="#html-character-reference-in-data-state">HTML character reference in data state</a><span>, in §5.4</span>
    <li><a href="#incremental-webvtt-parser">incremental WebVTT parser</a><span>, in §5.1</span>
    <li><a href="#in-the-future">in the future</a><span>, in §6.1.2.2</span>
    <li><a href="#in-the-past">in the past</a><span>, in §6.1.2.2</span>

@@ -3159,8 +3159,8 @@ value).</p>
 
      <dt>U+0026 AMPERSAND (&amp;)</dt>
      <dd>
-      <p>Set |tokenizer state| to the <a>HTML character reference state</a>, and jump to
-      the step labeled <i>next</i>.</p>
+      <p>Set |tokenizer state| to the <a>HTML character reference in data state</a>, and jump to the
+      step labeled <i>next</i>.</p>
      </dd>
 
      <dt>U+003C LESS-THAN SIGN (&lt;)</dt>
@@ -3184,18 +3184,12 @@ value).</p>
 
    </dd>
 
-   <dt><dfn>HTML character reference state</dfn></dt>
+   <dt><dfn>HTML character reference in data state</dfn></dt>
 
    <dd>
 
-    <p>Attempt to <a spec=html lt="consume a character reference">consume an HTML character
-    reference</a>, with no <a spec=html>additional allowed character</a>. [[!HTML]]</p>
-
-    <p>When the HTML specification says to consume a character, in this context, it means to advance
-    |position| to the next character in |input|. When it says to unconsume a character, it means to
-    move |position| back to the previous character in |input|. "EOF" is equivalent to the
-    end-of-file marker in this specification. Finally, this context is <em>not</em> "as part of an
-    attribute" (when it comes to handling a missing semicolon).</p>
+    <p>Attempt to <a>consume an HTML character reference</a>, with no <a spec=html>additional
+    allowed character</a>.</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |result|.</p>
 
@@ -3374,6 +3368,12 @@ value).</p>
 
     <dl>
 
+     <dt>U+0026 AMPERSAND (&amp;)</dt>
+     <dd>
+      <p>Set |tokenizer state| to the <a>HTML character reference in annotation state</a>, and jump
+      to the step labeled <i>next</i>.</p>
+     </dd>
+
      <dt>U+003E GREATER-THAN SIGN character (>)</dt>
      <dd>
       <p>Advance |position| to the next character in |input|, then jump to the next "end-of-file
@@ -3395,6 +3395,22 @@ value).</p>
      </dd>
 
     </dl>
+
+   </dd>
+
+   <dt><dfn>HTML character reference in annotation state</dfn></dt>
+
+   <dd>
+
+    <p>Attempt to <a>consume an HTML character reference</a>, with the <a spec=html>additional
+    allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
+
+    <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |buffer|.</p>
+
+    <p>Otherwise, append the data of the character tokens that were returned to |buffer|.</p>
+
+    <p>Then, in any case, set |tokenizer state| to the <a>WebVTT start tag annotation state</a>, and
+    jump to the step labeled <i>next</i>.</p>
 
    </dd>
 
@@ -3465,6 +3481,15 @@ value).</p>
  <li><p>Jump to the step labeled <i>loop</i>.</p></li>
 
 </ol>
+
+<p>When the algorithm above says to attempt to <dfn>consume an HTML character reference</dfn>, it
+means to attempt to <a spec=html>consume a character reference</a> as defined in HTML. [[!HTML]]</p>
+
+<p>When the HTML specification says to consume a character, in this context, it means to advance
+|position| to the next character in |input|. When it says to unconsume a character, it means to move
+|position| back to the previous character in |input|. "EOF" is equivalent to the end-of-file marker
+in this specification. Finally, this context is <em>not</em> "as part of an attribute" (when it
+comes to handling a missing semicolon).</p>
 
 
 <h3 id=dom-construction-rules><dfn>WebVTT cue text DOM construction rules</dfn></h3>
