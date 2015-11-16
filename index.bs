@@ -402,6 +402,23 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 <div class="example">
 
+ <p>This example shows how classes can be used on elements, which can be helpful for localization or
+ maintainability of styling, and also how to indicate a language change in the cue text.</p>
+
+ <pre>
+ WEBVTT
+
+ 04:02.500 --> 04:05.000
+ J'ai commencé le basket à l'âge de 13, 14 ans
+
+ 04:05.001 --> 04:07.800
+ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Montpellier
+ </pre>
+
+</div>
+
+<div class="example">
+
  <p>In this example, each cue says who is talking using voice spans. In the first cue, the span
  specifying the speaker is also annotated with two classes, "first" and "loud". In the third cue,
  there is also some italics text (not associated with a specific speaker). The last cue is annotated
