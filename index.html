@@ -1012,7 +1012,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-17">17 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-18">18 November 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1465,21 +1465,14 @@ still useful to render the cues to the user.</p>
    <p>User agents fall into several (possibly overlapping) categories with different conformance
 requirements.</p>
    <dl>
-    <dt>User agents
+    <dt>User agents that support scripting
     <dd>
      <p>All processing requirements in this specification apply. The user agent must also be
  conforming implementations of the IDL fragments in this specification, as described in the Web IDL
  specification. <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a></p>
     <dt>User agents with no scripting support
     <dd>
-     <p>User agents with no scripting support must comply to the same conformance criteria as user
- agents, except that they are exempt from the requirements in <a href="#api">§7 API</a>.</p>
-    <dt>User agents with no CSS support
-    <dd>
-     <p>User agents with no CSS support must comply to the same conformance criteria as user agents,
- except that they are exempt from the requirements in <a href="#css-extensions">§6.1.2 CSS extensions</a>. In particular, such user
- agents must act as if they supported CSS for the purpose of the rendering requirements in this
- specification.</p>
+     <p>All processing requirements in this specification apply, except those in <a href="#api">§7 API</a>.</p>
     <dt>Conformance checkers
     <dd>
      <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a> conforms to the applicable
