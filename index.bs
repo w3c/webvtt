@@ -461,13 +461,13 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <pre>
  WEBVTT
 
- 00:00:00.000 --> 00:00:04.000 position:10%,start align:left size:35%
+ 00:00:00.000 --> 00:00:04.000 position:10%,line-left align:left size:35%
  Where did he go?
 
  00:00:03.000 --> 00:00:06.500 position:90% align:right size:35%
  I think he went down this lane.
 
- 00:00:04.000 --> 00:00:06.500 position:45%,end align:center size:35%
+ 00:00:04.000 --> 00:00:06.500 position:45%,line-right align:center size:35%
  What are you waiting for?
  </pre>
 
@@ -475,31 +475,34 @@ CSS comment (e.g. <code>/**/</code>).</p>
  of the width of the video viewpoint. If the text were vertical, the "position" setting would refer
  to the height of the viewport.</p>
 
- <p>The "start" or "end" only refers to the physical side of the box to which the "position" setting
- applies, in a way which is agnostic regarding the horizontal or vertical direction of the cue. It
- does not affect or relate to the direction or position of the text itself within the box.</p>
+ <p>The "line-left" or "line-right" only refers to the physical side of the box to which the
+ "position" setting applies, in a way which is agnostic regarding the horizontal or vertical
+ direction of the cue. It does not affect or relate to the direction or position of the text itself
+ within the box.</p>
 
  <p>The cues cover only 35% of the video viewport's width - that's the <a lt="WebVTT cue box">cue
  box</a>'s "size" for all three cues.</p>
 
- <p>The first cue has its <a lt="WebVTT cue box">cue box</a> positioned at the 10% mark. The "start"
- and "end" within the "position" setting indicates which side of the <a lt="WebVTT cue box">cue
- box</a> the position refers to. Since in this case the text is horizontal, "start" refers to the
- left side of the box, and the cue box is thus positioned between the 10% and the 45% mark of the
- video viewport's width, probably underneath a speaker on the left of the video image. If the cue
- was vertical, "start" positioning would be from the top of the video viewport's height and the <a
- lt="WebVTT cue box">cue box</a> would cover 35% of the video viewport's height.</p>
+ <p>The first cue has its <a lt="WebVTT cue box">cue box</a> positioned at the 10% mark. The
+ "line-left" and "line-right" within the "position" setting indicates which side of the <a
+ lt="WebVTT cue box">cue box</a> the position refers to. Since in this case the text is horizontal,
+ "line-left" refers to the left side of the box, and the cue box is thus positioned between the 10%
+ and the 45% mark of the video viewport's width, probably underneath a speaker on the left of the
+ video image. If the cue was vertical, "line-left" positioning would be from the top of the video
+ viewport's height and the <a lt="WebVTT cue box">cue box</a> would cover 35% of the video
+ viewport's height.</p>
 
  <p>The text within the first cue's cue box is aligned using the "align" cue setting. For
  left-to-right rendered text, "start" alignment is the left of that box, for right-to-left rendered
  text the right of the box. So, independent of the directionality of the text, it will stay
- underneath that speaker. Note that "start" alignment of the cue box is the default for start
- aligned text, so does not need to be specified in "position".</p>
+ underneath that speaker. Note that "center" position alignment of the cue box is the default for
+ start aligned text, in order to avoid having the box move when the base direction of the text
+ changes (from left-to-right to right-to-left or vice versa) as a result of translation.</p>
 
  <p>The second cue has its <a lt="WebVTT cue box">cue box</a> right aligned at the 90% mark of the
- video viewport width ("end" aligned text right aligns the box). The same effect can be achieved
- with "position:55%,start", which explicitly positions the cue box. The third cue has center aligned
- text within the same positioned cue box as the first cue.</p>
+ video viewport width ("right" aligned text right aligns the box). The same effect can be achieved
+ with "position:55%,line-left", which explicitly positions the cue box. The third cue has center
+ aligned text within the same positioned cue box as the first cue.</p>
 
 </div>
 
@@ -825,16 +828,13 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    position">position</a> is the special value <a lt="WebVTT cue automatic
    position">auto</a>.)</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue start
-   alignment">start</a> or <a lt="WebVTT cue left alignment">left</a>, return 0 and abort these
-   steps.</p></li>
+   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue left
+   alignment">left</a>, return 0 and abort these steps.</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue end
-   alignment">end</a> or <a lt="WebVTT cue right alignment">right</a>, return 100 and abort these
-   steps.</p></li>
+   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue right
+   alignment">right</a>, return 100 and abort these steps.</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue
-   center alignment">center</a>, return 50 and abort these steps.</p></li>
+   <li><p>Otherwise, return 50 and abort these steps.</p></li>
 
   </ol>
 
@@ -845,10 +845,24 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   <p class="note">Even for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues with
   right-to-left cue text, the <a lt="WebVTT cue box">cue box</a> is positioned from the left edge of
   the video viewport. This allows defining a rendering space template which can be filled with
-  either left-to-right or right-to-left cue text, or both. If such a <a lt="WebVTT cue box">cue
-  box</a> template is created with <a lt="WebVTT cue start alignment">start</a> or <a lt="WebVTT cue
-  end alignment">end</a> aligned text, it is best to also specify a <a lt="WebVTT cue size">size</a>
-  since otherwise the text can flip from one side of the video viewport to the other.</p>
+  either left-to-right or right-to-left cue text, or both.</p>
+
+  <p>For <a>WebVTT cues</a> that have a <a lt="WebVTT cue size">size</a> other than 100%, and a <a
+  lt="WebVTT cue text alignment">text alignment</a> of <a lt="WebVTT cue start alignment">start</a>
+  or <a lt="WebVTT cue end alignment">end</a>, authors must not use the default <a lt="WebVTT cue
+  automatic position">auto</a> <a lt="WebVTT cue position">position</a>.</p>
+
+  <p class="note">When the <a lt="WebVTT cue text alignment">text alignment</a> is <a lt="WebVTT cue
+  start alignment">start</a> or <a lt="WebVTT cue end alignment">end</a>, the <a lt="WebVTT cue
+  automatic position">auto</a> <a lt="WebVTT cue position">position</a> is 50%. This is different
+  from <a lt="WebVTT cue left alignment">left</a> and <a lt="WebVTT cue right alignment">right</a>
+  aligned text, where the <a lt="WebVTT cue automatic position">auto</a> <a lt="WebVTT cue
+  position">position</a> is 0% and 100%, respectively. The above requirement is present because it
+  can be surprising that automatic positioning doesn't work for <a lt="WebVTT cue start
+  alignment">start</a> or <a lt="WebVTT cue end alignment">end</a> aligned text. Since <a lt="WebVTT
+  cue text">cue text</a> can consist of text with left-to-right base direction, or right-to-left
+  base direction, or both (on different lines), such automatic positioning would have unexpected
+  results.</p>
 
  </dd>
 
@@ -860,7 +874,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   <dl>
 
-   <dt><dfn lt="WebVTT cue position start alignment">Start alignment</dfn></dt>
+   <dt><dfn lt="WebVTT cue position line-left alignment">Line-left alignment</dfn></dt>
    <dd>The <a lt="WebVTT cue box">cue box</a>'s left side (for <a lt="WebVTT cue horizontal writing
    direction">horizontal</a> cues) or top side (otherwise) is aligned at the <a lt="WebVTT cue
    position">position</a>.</dd>
@@ -869,7 +883,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <dd>The <a lt="WebVTT cue box">cue box</a> is centered at the <a lt="WebVTT cue
    position">position</a>.</dd>
 
-   <dt><dfn lt="WebVTT cue position end alignment">End alignment</dfn></dt>
+   <dt><dfn lt="WebVTT cue position line-right alignment">Line-right alignment</dfn></dt>
    <dd>The <a lt="WebVTT cue box">cue box</a>'s right side (for <a lt="WebVTT cue horizontal writing
    direction">horizontal</a> cues) or bottom side (otherwise) is aligned at the <a lt="WebVTT cue
    position">position</a>.</dd>
@@ -890,24 +904,22 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    alignment">auto</a>, then return the value of the <a>WebVTT cue position alignment</a> and abort
    these steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue start alignment">start</a> or
-   <a lt="WebVTT cue left alignment">left</a>, return <a lt="WebVTT cue position start
-   alignment">start</a> and abort these steps.</p></li>
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue left alignment">left</a>,
+   return <a lt="WebVTT cue position line-left alignment">line-left</a> and abort these
+   steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue end alignment">end</a> or <a
-   lt="WebVTT cue right alignment">right</a>, return <a lt="WebVTT cue position end
-   alignment">end</a> and abort these steps.</p></li>
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue right alignment">right</a>,
+   return <a lt="WebVTT cue position line-right alignment">line-right</a> and abort these
+   steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue center alignment">center</a>,
-   return <a lt="WebVTT cue position center alignment">center</a> and abort these steps.</p></li>
+   <li><p>Otherwise, return <a lt="WebVTT cue center alignment">center</a>.</p></li>
 
   </ol>
 
   <p class="note">Since the <a lt="WebVTT cue position">position</a> always measures from the left
   of the video (for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues) or the top
-  (otherwise), the <a>WebVTT cue position alignment</a> <a lt="WebVTT cue position start
-  alignment">start value</a> varies between left and top for horizontal and vertical cues, but not
-  between left and right for left-to-right and right-to-left cue text.</p>
+  (otherwise), the <a>WebVTT cue position alignment</a> <a lt="WebVTT cue position line-left
+  alignment">line-left</a> value varies between left and top for horizontal and vertical cues.</p>
 
  </dd>
 
@@ -943,10 +955,12 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue left alignment">Left alignment</dfn></dt>
-   <dd>The text is aligned to the box's left side.</dd>
+   <dd>The text is aligned to the box's left side (for <a lt="WebVTT cue horizontal writing
+   direction">horizontal</a> cues) or top side (otherwise).</dd>
 
    <dt><dfn lt="WebVTT cue right alignment">Right alignment</dfn></dt>
-   <dd>The text is aligned to the box's right side.</dd>
+   <dd>The text is aligned to the box's right side (for <a lt="WebVTT cue horizontal writing
+   direction">horizontal</a> cues) or bottom side (otherwise).</dd>
 
   </dl>
 
@@ -1792,8 +1806,8 @@ given:</p>
     an optional alignment value consisting of:
     <ol>
      <li>A U+002C COMMA character (,).</li>
-     <li>One of the following strings: "<code>start</code>", "<code>center</code>",
-     "<code>end</code>"</li>
+     <li>One of the following strings: "<code>line-left</code>", "<code>center</code>",
+     "<code>line-right</code>"</li>
     </ol>
    </li>
   </ol>
@@ -1803,11 +1817,11 @@ given:</p>
 <p class="note">A <a>WebVTT position cue setting</a> configures the indent position of the <a
 lt="WebVTT cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line cue setting</a>.
 For horizontal cues, this is the horizontal position. The cue position is given as a percentage of
-the video viewport. The positioning is for the <a lt="WebVTT cue position start
-alignment">start</a>, <a lt="WebVTT cue position center alignment">center</a>, or <a lt="WebVTT cue
-position end alignment">end</a> of the cue box, depending on the cue's <a lt="cue computed position
-alignment">computed position alignment</a>, which is overridden by the <a>WebVTT position cue
-setting</a>.</p>
+the video viewport. The positioning is for the <a lt="WebVTT cue position line-left
+alignment">line-left</a>, <a lt="WebVTT cue position center alignment">center</a>, or <a lt="WebVTT
+cue position line-right alignment">line-right</a> of the cue box, depending on the cue's <a lt="cue
+computed position alignment">computed position alignment</a>, which is overridden by the <a>WebVTT
+position cue setting</a>.</p>
 
 <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -2663,17 +2677,17 @@ run the following steps:</p>
 
        <li><p>Let |cue|'s <a lt="WebVTT cue position">position</a> be |number|.</p></li>
 
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
-       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position start
-       alignment">start alignment</a>.</p></li>
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>line-left</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
+       lt="WebVTT cue position line-left alignment">line-left alignment</a>.</p></li>
 
        <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>center</code>",
        then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position center
        alignment">center alignment</a>.</p></li>
 
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>end</code>", then
-       let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position end
-       alignment">end alignment</a>.</p></li>
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>line-right</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
+       lt="WebVTT cue position line-right alignment">line-right alignment</a>.</p></li>
 
       </ol>
 
@@ -3801,7 +3815,7 @@ manner suiting the user.</p>
        <dd><p>Subtract half of |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
 
        <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-       lt="WebVTT cue position end alignment">end alignment</a></dt>
+       lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
        <dd><p>Subtract |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
       </dl>
      </li>
@@ -3861,14 +3875,14 @@ following algorithm.</p>
   <dl class="switch">
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-   lt="WebVTT cue position start alignment">start</a></dt>
+   lt="WebVTT cue position line-left alignment">line-left</a></dt>
    <dd>
     <p>Let |maximum size| be the <a lt="cue computed position">computed position</a> subtracted from
     100.</p>
    </dd>
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-   lt="WebVTT cue position end alignment">end</a></dt>
+   lt="WebVTT cue position line-right alignment">line-right</a></dt>
    <dd>
     <p>Let |maximum size| be the <a lt="cue computed position">computed position</a>.</p>
    </dd>
@@ -3914,7 +3928,7 @@ following algorithm.</p>
    <dd>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position start alignment">start alignment</a></dt>
+     lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
      <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
@@ -3923,7 +3937,7 @@ following algorithm.</p>
      of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position end alignment">end alignment</a></dt>
+     lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
      <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a> minus
      |size|.</p></dd>
     </dl>
@@ -3935,7 +3949,7 @@ following algorithm.</p>
    <dd>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position start alignment">start alignment</a></dt>
+     lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
      <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
@@ -3944,7 +3958,7 @@ following algorithm.</p>
      of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position end alignment">end alignment</a></dt>
+     lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
      <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a> minus
      |size|.</p></dd>
     </dl>
@@ -4361,11 +4375,11 @@ following algorithm.</p>
        direction">horizontal</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position center
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line center
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by half of the height of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end
          alignment">end alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by the height of |bounding box|.</p></dd>
         </dl>
@@ -4376,11 +4390,11 @@ following algorithm.</p>
        writing direction">vertical growing right</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position center
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line center
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by half of the width of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end
          alignment">end alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by the width of |bounding box|.</p></dd>
         </dl>
@@ -4906,12 +4920,12 @@ interface VTTCue : TextTrackCue {
  <dd>
   <p>Returns a string representing the <a>WebVTT cue position alignment</a>, as follows:</p>
   <dl class="switch">
-   <dt>If it is <a lt="WebVTT cue position start alignment">start alignment</a></dt>
-   <dd><p>The string "<code>start</code>".</p></dd>
+   <dt>If it is <a lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
+   <dd><p>The string "<code>line-left</code>".</p></dd>
    <dt>If it is <a lt="WebVTT cue position center alignment">center alignment</a></dt>
    <dd><p>The string "<code>center</code>".</p></dd>
-   <dt>If it is <a lt="WebVTT cue position end alignment">end alignment</a></dt>
-   <dd><p>The string "<code>end</code>".</p></dd>
+   <dt>If it is <a lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
+   <dd><p>The string "<code>line-right</code>".</p></dd>
    <dt>If it is <a lt="WebVTT cue position automatic alignment">automatic alignment</a></dt>
    <dd><p>The string "<code>auto</code>".</p></dd>
   </dl>
@@ -5106,16 +5120,16 @@ alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  </thead>
  <tbody>
   <tr>
-   <td><a lt="WebVTT cue position start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td><a lt="WebVTT cue position line-left alignment">Line-left alignment</a></td>
+   <td>"<code lt="">line-left</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position center alignment">Center alignment</a></td>
    <td>"<code lt="">center</code>"</td>
   </tr>
   <tr>
-   <td><a lt="WebVTT cue position end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td><a lt="WebVTT cue position line-right alignment">Line-right alignment</a></td>
+   <td>"<code lt="">line-right</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position automatic alignment">Automatic alignment</a></td>
