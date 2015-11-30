@@ -4130,21 +4130,7 @@ following algorithm.</p>
    defined in the next section. (That section uses some of the variables whose values were
    calculated earlier in this algorithm.)</li>
 
-   <li>
-    Text runs must be wrapped according to the CSS
-    line-wrapping rules, with the following additional constraints:
-
-    <ul>
-
-     <li>Regardless of the value of the 'white-space' property, lines must be wrapped at the edge of
-     their containing blocks, even if doing so requires splitting a word where there is no line
-     breaking opportunity. (Thus, normally text wraps as needed, but if there is a particularly long
-     word, it does not overflow as it normally would in CSS, it is instead forcibly wrapped at the
-     box's edge.)</li>
-
-    </ul>
-
-   </li>
+   <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
 
    <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
 
@@ -4415,7 +4401,8 @@ layer as defined in this section. [[!CSS21]]</p>
  <li>the 'left' property must be set to |left|</li>
  <li>the 'width' property must be set to |width|</li>
  <li>the 'height' property must be set to |height|</li>
- <li>The 'text-wrap' property must be set to ''text-wrap/balance'' [[!CSS-TEXT-4]]</li>
+ <li>the 'overflow-wrap' property must be set to ''overflow-wrap/break-word''</li>
+ <li>the 'text-wrap' property must be set to ''text-wrap/balance'' [[!CSS-TEXT-4]]</li>
 </ul>
 
 <p>The variables |writing-mode|, |top|, |left|, |width|, and |height| are the values with those

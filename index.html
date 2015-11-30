@@ -3976,16 +3976,7 @@ Red or green?
       <li>Properties on <a data-link-type="dfn" href="#webvtt-node-object">WebVTT Node Objects</a> have their values set as
    defined in the next section. (That section uses some of the variables whose values were
    calculated earlier in this algorithm.)
-      <li>
-        Text runs must be wrapped according to the CSS
-    line-wrapping rules, with the following additional constraints: 
-       <ul>
-        <li>Regardless of the value of the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property, lines must be wrapped at the edge of
-     their containing blocks, even if doing so requires splitting a word where there is no line
-     breaking opportunity. (Thus, normally text wraps as needed, but if there is a particularly long
-     word, it does not overflow as it normally would in CSS, it is instead forcibly wrapped at the
-     box’s edge.)
-       </ul>
+      <li>Text runs must be wrapped according to the CSS line-wrapping rules.
       <li>The viewport (and initial containing block) is <var>video</var>’s rendering area.
      </ul>
      <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with
@@ -4149,7 +4140,8 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
-    <li>The <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
+    <li>the <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
    </ul>
    <p>The variables <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values with those
 names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
