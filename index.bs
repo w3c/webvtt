@@ -18,7 +18,7 @@ Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: unicode-bidi, color, text-combine-upright
+Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap
 Ignored Vars: seconds-frac, selector, fragment, seen cue
 
 </pre>
@@ -4142,12 +4142,6 @@ following algorithm.</p>
      word, it does not overflow as it normally would in CSS, it is instead forcibly wrapped at the
      box's edge.)</li>
 
-     <li>Regardless of the value of the 'white-space' property, any line breaks inserted by the user
-     agent for the purposes of line wrapping must be placed so as to minimize &Delta; across each
-     run of consecutive lines between preserved newlines in the source. &Delta; for a set of lines
-     is defined as the sum over each line of the absolute of the difference between the line's
-     length and the mean line length of the set.</li>
-
     </ul>
 
    </li>
@@ -4421,6 +4415,7 @@ layer as defined in this section. [[!CSS21]]</p>
  <li>the 'left' property must be set to |left|</li>
  <li>the 'width' property must be set to |width|</li>
  <li>the 'height' property must be set to |height|</li>
+ <li>The 'text-wrap' property must be set to ''text-wrap/balance'' [[!CSS-TEXT-4]]</li>
 </ul>
 
 <p>The variables |writing-mode|, |top|, |left|, |width|, and |height| are the values with those

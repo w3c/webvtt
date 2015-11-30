@@ -1019,7 +1019,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-11-30">30 November 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-12-01">1 December 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -3985,11 +3985,6 @@ Red or green?
      breaking opportunity. (Thus, normally text wraps as needed, but if there is a particularly long
      word, it does not overflow as it normally would in CSS, it is instead forcibly wrapped at the
      box’s edge.)
-        <li>Regardless of the value of the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property, any line breaks inserted by the user
-     agent for the purposes of line wrapping must be placed so as to minimize Δ across each
-     run of consecutive lines between preserved newlines in the source. Δ for a set of lines
-     is defined as the sum over each line of the absolute of the difference between the line’s
-     length and the mean line length of the set.
        </ul>
       <li>The viewport (and initial containing block) is <var>video</var>’s rendering area.
      </ul>
@@ -4154,6 +4149,7 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
+    <li>The <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
    </ul>
    <p>The variables <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values with those
 names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
@@ -5312,6 +5308,8 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dd>Tab Atkins Jr.; Simon Sapin. <a href="http://dev.w3.org/csswg/css-syntax/">CSS Syntax Module Level 3</a>. 20 February 2014. CR. URL: <a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>
    <dt id="biblio-css-text-3"><a class="self-link" href="#biblio-css-text-3"></a>[CSS-TEXT-3]
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-text-3/">CSS Text Module Level 3</a>. 10 October 2013. LCWD. URL: <a href="http://dev.w3.org/csswg/css-text-3/">http://dev.w3.org/csswg/css-text-3/</a>
+   <dt id="biblio-css-text-4"><a class="self-link" href="#biblio-css-text-4"></a>[CSS-TEXT-4]
+   <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="http://dev.w3.org/csswg/css-text-4/">CSS Text Module Level 4</a>. 22 September 2015. WD. URL: <a href="http://dev.w3.org/csswg/css-text-4/">http://dev.w3.org/csswg/css-text-4/</a>
    <dt id="biblio-css-text-decor-3"><a class="self-link" href="#biblio-css-text-decor-3"></a>[CSS-TEXT-DECOR-3]
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. 1 August 2013. CR. URL: <a href="http://dev.w3.org/csswg/css-text-decor-3/">http://dev.w3.org/csswg/css-text-decor-3/</a>
    <dt id="biblio-css-transitions-1"><a class="self-link" href="#biblio-css-transitions-1"></a>[CSS-TRANSITIONS-1]
