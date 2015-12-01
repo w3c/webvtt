@@ -511,8 +511,22 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
- Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
- Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
+
+ REGION
+ id:fred
+ width:40%
+ lines:3
+ regionanchor:0%,100%
+ viewportanchor:10%,90%
+ scroll:up
+
+ REGION
+ id:bill
+ width:40%
+ lines:3
+ regionanchor:100%,100%
+ viewportanchor:90%,90%
+ scroll:up
 
  00:00:00.000 --> 00:00:20.000 region:fred align:left
  &lt;v Fred>Hi, my name is Fred
@@ -1196,6 +1210,19 @@ U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string m
 substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
 SIGN).</p>
 
+<p>A <dfn>WebVTT region definition block</dfn> consists of the following components, in the given
+order:</p>
+
+<ol>
+ <li>The string "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E,
+ U+0047 LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+ LATIN CAPITAL LETTER N).</li>
+ <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+ <li>A <a>WebVTT region settings list</a>.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+</ol>
+
 <p>A <dfn>WebVTT style block</dfn> consists of the following components, in the given order:</p>
 
 <ol>
@@ -1549,23 +1576,16 @@ than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
 
 
-<h3 id=region-definition>WebVTT region definition</h3>
+<h3 id=region-settings>WebVTT region settings</h3>
 
-<p>A <a>WebVTT cue settings list</a> may contain a reference to a <a>WebVTT region</a>. To define a
-region, a <a>WebVTT region metadata header</a> is specified.</p>
+<p>A <a>WebVTT cue settings list</a> can contain a reference to a <a>WebVTT region</a>. To define a
+region, a <a>WebVTT region definition block</a> is specified.</p>
 
-<p>A <dfn>WebVTT region metadata header</dfn> is a special kind of <a>WebVTT metadata header</a>
-where both of the following apply:</p>
-
-<ul>
- <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
- <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.</li>
-</ul>
-
-<p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of
-zero or more of the following components, in any order, separated from each other by one or more
-U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be
-included more than once per <a>WebVTT region setting list</a> string.</p>
+<p>The <dfn>WebVTT region settings list</dfn> consists of zero or more of the following components,
+in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
+TABULATION (tab) characters, or <a>WebVTT line terminators</a>, except that the string must not
+contain two consecutive <a>WebVTT line terminators</a>. Each component must not be included more
+than once per <a>WebVTT region settings list</a> string.</p>
 
 <ul>
  <li>A <a>WebVTT region identifier setting</a>.</li>
@@ -1576,7 +1596,7 @@ included more than once per <a>WebVTT region setting list</a> string.</p>
  <li>A <a>WebVTT region scroll setting</a>.</li>
 </ul>
 
-<p class="note">The <a>WebVTT region setting list</a> gives configuration options regarding the
+<p class="note">The <a>WebVTT region settings list</a> gives configuration options regarding the
 dimensions, positioning and anchoring of the region. For example, it allows a group of cues within a
 region to be anchored in the center of the region and the center of the video viewport. In this
 example, when the font size grows, the region grows uniformly in all directions from the center.</p>
@@ -1585,10 +1605,10 @@ example, when the font size grows, the region grows uniformly in all directions 
 given:</p>
 <ol>
  <li><p>The string "<code>id</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
- <li><p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
- TABULATION character. The string must not contain the substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
+ <li><p>An arbitrary string of one or more characters other than <a spec=html>space characters</a>.
+ The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
+ HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
 </ol>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
@@ -1602,7 +1622,7 @@ referenced by the cues that belong to the region.</p>
 given:</p>
 <ol>
  <li><p>The string "<code>width</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
 <p class="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage of the
@@ -1613,7 +1633,7 @@ calculated.</p>
 given:</p>
 <ol>
  <li><p>The string "<code>lines</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>One or more <a>ASCII digits</a>.</p></li>
 </ol>
 <p class="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of lines
@@ -1624,7 +1644,7 @@ it is a scroll region.</p>
 given:</p>
 <ol>
  <li><p>The string "<code>regionanchor</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
@@ -1639,7 +1659,7 @@ corner).</p>
 order given:</p>
 <ol>
  <li><p>The string "<code>viewportanchor</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
@@ -1658,7 +1678,7 @@ to which the regions are absolutely positioned. Overflow is hidden.</p>
 given:</p>
 <ol>
  <li><p>The string "<code>scroll</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>The string "<code>up</code>".</p></li>
 </ol>
 <p class="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into the
@@ -2037,12 +2057,13 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  |position| to the next character in |input|.</p></li>
 
  <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
- character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set, and let |regions|
- be the result. Otherwise, let |regions| be an empty <a>text track list of regions</a> and advance
- |position| to the next character in |input|.</p></li>
+ character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
+ advance |position| to the next character in |input|.</p></li>
 
  <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p></li>
+
+ <li><p>Let |regions| be an empty <a>text track list of regions</a>.</p></li>
 
  <li>
 
@@ -2057,6 +2078,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
    <li><p>Otherwise, if |block| is a <a spec=cssom>CSS style sheet</a>, add |block| to
    |stylesheets|.</p></li>
+
+   <li><p>Otherwise, if |block| is a <a>WebVTT region object</a>, add |block| to |regions|.</p></li>
 
    <!-- handle new block types here -->
 
@@ -2096,7 +2119,7 @@ header</i> set, the user agent must run the following steps:</p>
 
  <li><p>Let |stylesheet| be null.</p></li>
 
- <li><p>If <i>in header</i> is set, let |regions| be a <a>text track list of regions</a>.</p></li>
+ <li><p>Let |region| be null.</p></li>
 
  <li>
 
@@ -2245,60 +2268,42 @@ header</i> set, the user agent must run the following steps:</p>
 
        </li>
 
-       <!--
-       <li><p>Otherwise, (check for new block types here)</p></li>
-       -->
-
-
-      </ol>
-
-     </li>
-
-     <li>
-
-      <p>If <i>in header</i> is set, run these substeps:</p>
-
-      <ol>
-
        <li>
 
-        <p>If |line| starts with the substring "<code>Region:</code>" (U+0052 LATIN CAPITAL LETTER R
-        character, U+0065 LATIN SMALL LETTER E character, U+0067 LATIN SMALL LETTER G character,
-        U+0069 LATIN SMALL LETTER I character, U+006F LATIN SMALL LETTER O character, U+006E LATIN
-        SMALL LETTER N character, U+003A COLON character (:)), run these substeps:</p>
+        <p>Otherwise, if |seen cue| is false and |buffer| starts with the substring
+        "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
+        LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a
+        spec=html>space characters</a>, then run these substeps:</p>
 
         <ol>
 
          <li><p><i>Region creation</i>: Let |region| be a new <a>WebVTT region</a>.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty
-         string.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty
+         string.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
+         <li><p>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
-         (0,100).</li>
+         <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
+         (0,100).</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
-         scroll none">NONE</a>.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
+         scroll none">NONE</a>.</p></li>
 
-         <li><p>Let |region value| be the substring of |line| after the first U+003A COLON character
-         (:).</p></li>
-
-         <li><a>Collect WebVTT region settings</a> from |region value| using |region| for the
-         results.</li>
-
-         <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from |region|.</li>
-
-         <li>Append |region| to the <a>text track list of regions</a> |regions|.</li>
+         <li><p>Let |buffer| be the empty string.</p></li>
 
         </ol>
 
        </li>
+
+       <!--
+       <li><p>Otherwise, (check for new block types here)</p></li>
+       -->
 
       </ol>
 
@@ -2329,9 +2334,11 @@ header</i> set, the user agent must run the following steps:</p>
  for=CSSStyleSheet>CSS rules</a>; otherwise, set |stylesheet|'s <a spec=cssom for=CSSStyleSheet>CSS
  rules</a> to an empty list. [[!CSSOM]] [[!CSS-SYNTAX-3]] Finally, return |stylesheet|.</p></li>
 
- <!-- return new block types here -->
+ <li><p>Otherwise, if |region| is not null, then <a>collect WebVTT region settings</a> from |buffer|
+ using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
+ it.</li>
 
- <li><p>Otherwise, if <i>in header</i> is set, return |regions|.</p></li>
+ <!-- return new block types here -->
 
  <li><p>Otherwise, return null.</p></li>
 
@@ -2357,15 +2364,15 @@ Objects</a>.</p>
   For each token |setting| in the list |settings|, run the following substeps:
 
   <ol>
-   <li><p>If |setting| does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D
-   EQUALS SIGN character (=) in |setting| is either the first or last character of |setting|, then
+   <li><p>If |setting| does not contain a U+003A COLON character (:), or if the first U+003A COLON
+   character (:) in |setting| is either the first or last character of |setting|, then
    jump to the step labeled <i>next setting</i>.</p></li>
 
-   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003D
-   EQUALS SIGN character (=) in that string.</p></li>
+   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003A
+   COLON character (:) in that string.</p></li>
 
    <li><p>Let |value| be the trailing substring of |setting| starting from the character immediately
-   after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
+   after the first U+003A COLON character (:) in that string.</p></li>
 
    <li>
     <p>Run the appropriate substeps that apply for the value of |name|, as follows:</p>

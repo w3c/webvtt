@@ -1102,7 +1102,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
         <li><a href="#metadata-text"><span class="secno">4.2.1</span> <span class="content">WebVTT metadata text</span></a>
         <li><a href="#cue-text"><span class="secno">4.2.2</span> <span class="content">WebVTT cue text</span></a>
        </ul>
-      <li><a href="#region-definition"><span class="secno">4.3</span> <span class="content">WebVTT region definition</span></a>
+      <li><a href="#region-settings"><span class="secno">4.3</span> <span class="content">WebVTT region settings</span></a>
       <li><a href="#cue-settings"><span class="secno">4.4</span> <span class="content">WebVTT cue settings</span></a>
       <li>
        <a href="#properties-of-cue-sequences"><span class="secno">4.5</span> <span class="content">Properties of cue sequences</span></a>
@@ -1489,15 +1489,29 @@ What are you waiting for?
  with "position:55%,start", which explicitly positions the cue box. The third cue has center aligned
  text within the same positioned cue box as the first cue.</p>
    </div>
-   <div class="example" id="example-28ed4f48">
-    <a class="self-link" href="#example-28ed4f48"></a> 
+   <div class="example" id="example-cd0199a2">
+    <a class="self-link" href="#example-cd0199a2"></a> 
     <p>This example shows two regions containing rollup captions for two different speakers. Fred’s
  cues scroll up in a region in the left half of the video, Bill’s cues scroll up in a region on the
  right half of the video. Fred’s first cue disappears at 12.5sec even though it is defined until
  20sec because its region is limited to 3 lines and at 12.5sec a fourth cue appears:</p>
 <pre>WEBVTT
-Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
-Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
+
+REGION
+id:fred
+width:40%
+lines:3
+regionanchor:0%,100%
+viewportanchor:10%,90%
+scroll:up
+
+REGION
+id:bill
+width:40%
+lines:3
+regionanchor:100%,100%
+viewportanchor:90%,90%
+scroll:up
 
 00:00:00.000 --> 00:00:20.000 region:fred align:left
 &lt;v Fred>Hi, my name is Fred
@@ -1936,6 +1950,17 @@ consist of any sequence of one or more characters other than U+000A LINE FEED (L
 U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not contain the
 substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
 SIGN).</p>
+   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-region-definition-block">WebVTT region definition block<a class="self-link" href="#webvtt-region-definition-block"></a></dfn> consists of the following components, in the given
+order:</p>
+   <ol>
+    <li>The string "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E,
+ U+0047 LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+ LATIN CAPITAL LETTER N).
+    <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-region-settings-list">WebVTT region settings list</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminator</a>.
+   </ol>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-style-block">WebVTT style block<a class="self-link" href="#webvtt-style-block"></a></dfn> consists of the following components, in the given order:</p>
    <ol>
     <li>The string "<code>STYLE</code>" (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T,
@@ -2178,18 +2203,14 @@ U+003C LESS-THAN SIGN characters (&lt;).</p>
    <p><dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag-annotation-text">WebVTT cue span start tag annotation text<a class="self-link" href="#webvtt-cue-span-start-tag-annotation-text"></a></dfn> consists of one or more characters other
 than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
-   <h3 class="heading settled" data-level="4.3" id="region-definition"><span class="secno">4.3. </span><span class="content">WebVTT region definition</span><a class="self-link" href="#region-definition"></a></h3>
-   <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list">WebVTT cue settings list</a> may contain a reference to a <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>. To define a
-region, a <a data-link-type="dfn" href="#webvtt-region-metadata-header">WebVTT region metadata header</a> is specified.</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-region-metadata-header">WebVTT region metadata header<a class="self-link" href="#webvtt-region-metadata-header"></a></dfn> is a special kind of <a data-link-type="dfn" href="#webvtt-metadata-header">WebVTT metadata header</a> where both of the following apply:</p>
-   <ul>
-    <li>The <a data-link-type="dfn" href="#webvtt-metadata-header-name">WebVTT metadata header name</a> is the string "<code>Region</code>".
-    <li>The <a data-link-type="dfn" href="#webvtt-metadata-header-value">WebVTT metadata header value</a> is a <a data-link-type="dfn" href="#webvtt-region-setting-list">WebVTT region setting list</a>.
-   </ul>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-region-setting-list">WebVTT region setting list<a class="self-link" href="#webvtt-region-setting-list"></a></dfn> of a <a data-link-type="dfn" href="#webvtt-region-metadata-header">WebVTT region metadata header</a> consists of
-zero or more of the following components, in any order, separated from each other by one or more
-U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be
-included more than once per <a data-link-type="dfn" href="#webvtt-region-setting-list">WebVTT region setting list</a> string.</p>
+   <h3 class="heading settled" data-level="4.3" id="region-settings"><span class="secno">4.3. </span><span class="content">WebVTT region settings</span><a class="self-link" href="#region-settings"></a></h3>
+   <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list">WebVTT cue settings list</a> can contain a reference to a <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>. To define a
+region, a <a data-link-type="dfn" href="#webvtt-region-definition-block">WebVTT region definition block</a> is specified.</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-region-settings-list">WebVTT region settings list<a class="self-link" href="#webvtt-region-settings-list"></a></dfn> consists of zero or more of the following components,
+in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
+TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminators</a>, except that the string must not
+contain two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminators</a>. Each component must not be included more
+than once per <a data-link-type="dfn" href="#webvtt-region-settings-list">WebVTT region settings list</a> string.</p>
    <ul>
     <li>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting">WebVTT region identifier setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-region-width-setting">WebVTT region width setting</a>.
@@ -2198,7 +2219,7 @@ included more than once per <a data-link-type="dfn" href="#webvtt-region-setting
     <li>A <a data-link-type="dfn" href="#webvtt-region-viewport-anchor-setting">WebVTT region viewport anchor setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-region-scroll-setting">WebVTT region scroll setting</a>.
    </ul>
-   <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-setting-list">WebVTT region setting list</a> gives configuration options regarding the
+   <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-settings-list">WebVTT region settings list</a> gives configuration options regarding the
 dimensions, positioning and anchoring of the region. For example, it allows a group of cues within a
 region to be anchored in the center of the region and the center of the video viewport. In this
 example, when the font size grows, the region grows uniformly in all directions from the center.</p>
@@ -2208,11 +2229,11 @@ given:</p>
     <li>
      <p>The string "<code>id</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
-     <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
- TABULATION character. The string must not contain the substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
+     <p>An arbitrary string of one or more characters other than <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#space-character">space characters</a>.
+ The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
+ HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
    </ol>
    <p>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting">WebVTT region identifier setting</a> must be unique amongst all the <a data-link-type="dfn" href="#webvtt-region-identifier-setting">WebVTT region identifier settings</a> of all <a data-link-type="dfn" href="#webvtt-region">WebVTT
 regions</a> of a <a data-link-type="dfn" href="#webvtt-file">WebVTT file</a>.</p>
@@ -2224,7 +2245,7 @@ given:</p>
     <li>
      <p>The string "<code>width</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
      <p>A <a data-link-type="dfn" href="#webvtt-percentage">WebVTT percentage</a>.</p>
    </ol>
@@ -2237,7 +2258,7 @@ given:</p>
     <li>
      <p>The string "<code>lines</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
      <p>One or more <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>.</p>
    </ol>
@@ -2250,7 +2271,7 @@ given:</p>
     <li>
      <p>The string "<code>regionanchor</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
      <p>A <a data-link-type="dfn" href="#webvtt-percentage">WebVTT percentage</a>.</p>
     <li>
@@ -2268,7 +2289,7 @@ order given:</p>
     <li>
      <p>The string "<code>viewportanchor</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
      <p>A <a data-link-type="dfn" href="#webvtt-percentage">WebVTT percentage</a>.</p>
     <li>
@@ -2290,7 +2311,7 @@ given:</p>
     <li>
      <p>The string "<code>scroll</code>".</p>
     <li>
-     <p>A U+003D EQUALS SIGN character (=).</p>
+     <p>A U+003A COLON character (:).</p>
     <li>
      <p>The string "<code>up</code>".</p>
    </ol>
@@ -2582,10 +2603,13 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
      <p>The character indicated by <var>position</var> is a U+000A LINE FEED (LF) character. Advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
      <p><i>Header</i>: If the character indicated by <var>position</var> is not a U+000A LINE FEED (LF)
- character, then <a data-link-type="dfn" href="#collect-a-webvtt-block">collect a WebVTT block</a> with the <i>in header</i> flag set, and let <var>regions</var> be the result. Otherwise, let <var>regions</var> be an empty <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a> and advance <var>position</var> to the next character in <var>input</var>.</p>
+ character, then <a data-link-type="dfn" href="#collect-a-webvtt-block">collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
+ advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
  characters.</p>
+    <li>
+     <p>Let <var>regions</var> be an empty <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a>.</p>
     <li>
      <p><i>Block loop</i>: While <var>position</var> doesn’t point past the end of <var>input</var>:</p>
      <ol>
@@ -2595,6 +2619,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
        <p>If <var>block</var> is a <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>, add <var>block</var> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>.</p>
       <li>
        <p>Otherwise, if <var>block</var> is a <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheet</a>, add <var>block</var> to <var>stylesheets</var>.</p>
+      <li>
+       <p>Otherwise, if <var>block</var> is a <a data-link-type="dfn" href="#webvtt-region-object">WebVTT region object</a>, add <var>block</var> to <var>regions</var>.</p>
       <li>
        <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
    characters.</p>
@@ -2626,7 +2652,7 @@ header</i> set, the user agent must run the following steps:</p>
     <li>
      <p>Let <var>stylesheet</var> be null.</p>
     <li>
-     <p>If <i>in header</i> is set, let <var>regions</var> be a <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a>.</p>
+     <p>Let <var>region</var> be null.</p>
     <li>
      <p><i>Loop</i>: Run these substeps in a loop:</p>
      <ol>
@@ -2731,33 +2757,30 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p>Let <var>buffer</var> be the empty string.</p>
            </ol>
-         </ol>
-        <li>
-         <p>If <i>in header</i> is set, run these substeps:</p>
-         <ol>
           <li>
-           <p>If <var>line</var> starts with the substring "<code>Region:</code>" (U+0052 LATIN CAPITAL LETTER R
-        character, U+0065 LATIN SMALL LETTER E character, U+0067 LATIN SMALL LETTER G character,
-        U+0069 LATIN SMALL LETTER I character, U+006F LATIN SMALL LETTER O character, U+006E LATIN
-        SMALL LETTER N character, U+003A COLON character (:)), run these substeps:</p>
+           <p>Otherwise, if <var>seen cue</var> is false and <var>buffer</var> starts with the substring
+        "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
+        LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+        LATIN CAPITAL LETTER N), and the remaining characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#space-character">space characters</a>, then run these substeps:</p>
            <ol>
             <li>
              <p><i>Region creation</i>: Let <var>region</var> be a new <a data-link-type="dfn" href="#webvtt-region">WebVTT region</a>.</p>
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier">identifier</a> be the empty
-         string.
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width">width</a> be 100.
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-lines">lines</a> be 3.
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-anchor">anchor point</a> be (0,100).
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor">viewport anchor point</a> be
-         (0,100).
-            <li>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none">NONE</a>.
             <li>
-             <p>Let <var>region value</var> be the substring of <var>line</var> after the first U+003A COLON character
-         (:).</p>
-            <li><a data-link-type="dfn" href="#collect-webvtt-region-settings">Collect WebVTT region settings</a> from <var>region value</var> using <var>region</var> for the
-         results.
-            <li><i>Region processing</i>: Construct a <a data-link-type="dfn" href="#webvtt-region-object">WebVTT Region Object</a> from <var>region</var>.
-            <li>Append <var>region</var> to the <a data-link-type="dfn" href="#text-track-list-of-regions">text track list of regions</a> <var>regions</var>.
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier">identifier</a> be the empty
+         string.</p>
+            <li>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width">width</a> be 100.</p>
+            <li>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-lines">lines</a> be 3.</p>
+            <li>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-anchor">anchor point</a> be (0,100).</p>
+            <li>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor">viewport anchor point</a> be
+         (0,100).</p>
+            <li>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none">NONE</a>.</p>
+            <li>
+             <p>Let <var>buffer</var> be the empty string.</p>
            </ol>
          </ol>
         <li>
@@ -2776,7 +2799,8 @@ header</i> set, the user agent must run the following steps:</p>
      <p>Otherwise, if <var>stylesheet</var> is not null, then <a data-link-type="dfn" href="https://drafts.csswg.org/css-syntax-3/#parse-a-stylesheet">Parse a stylesheet</a> from <var>buffer</var>. If it returned a list of rules, assign the list as <var>stylesheet</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-css-rules">CSS rules</a>; otherwise, set <var>stylesheet</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-css-rules">CSS
  rules</a> to an empty list. <a data-link-type="biblio" href="#biblio-cssom">[CSSOM]</a> <a data-link-type="biblio" href="#biblio-css-syntax-3">[CSS-SYNTAX-3]</a> Finally, return <var>stylesheet</var>.</p>
     <li>
-     <p>Otherwise, if <i>in header</i> is set, return <var>regions</var>.</p>
+     <p>Otherwise, if <var>region</var> is not null, then <a data-link-type="dfn" href="#collect-webvtt-region-settings">collect WebVTT region settings</a> from <var>buffer</var> using <var>region</var> for the results. Construct a <a data-link-type="dfn" href="#webvtt-region-object">WebVTT Region Object</a> from <var>region</var>, and return
+ it.</p>
     <li>
      <p>Otherwise, return null.</p>
    </ol>
@@ -2795,15 +2819,15 @@ Objects</a>.</p>
       For each token <var>setting</var> in the list <var>settings</var>, run the following substeps: 
      <ol>
       <li>
-       <p>If <var>setting</var> does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D
-   EQUALS SIGN character (=) in <var>setting</var> is either the first or last character of <var>setting</var>, then
+       <p>If <var>setting</var> does not contain a U+003A COLON character (:), or if the first U+003A COLON
+   character (:) in <var>setting</var> is either the first or last character of <var>setting</var>, then
    jump to the step labeled <i>next setting</i>.</p>
       <li>
-       <p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding the first U+003D
-   EQUALS SIGN character (=) in that string.</p>
+       <p>Let <var>name</var> be the leading substring of <var>setting</var> up to and excluding the first U+003A
+   COLON character (:) in that string.</p>
       <li>
        <p>Let <var>value</var> be the trailing substring of <var>setting</var> starting from the character immediately
-   after the first U+003D EQUALS SIGN character (=) in that string.</p>
+   after the first U+003A COLON character (:) in that string.</p>
       <li>
        <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
        <dl>
@@ -5067,17 +5091,17 @@ using only nested cues</a><span>, in §4.5.1</span>
    <li><a href="#webvtt-region-anchor">WebVTT region anchor</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-anchor-setting">WebVTT region anchor setting</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-cue-setting">WebVTT region cue setting</a><span>, in §4.4</span>
+   <li><a href="#webvtt-region-definition-block">WebVTT region definition block</a><span>, in §4.1</span>
    <li><a href="#webvtt-region-identifier">WebVTT region identifier</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-identifier-setting">WebVTT region identifier setting</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-lines">WebVTT region lines</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-lines-setting">WebVTT region lines setting</a><span>, in §4.3</span>
-   <li><a href="#webvtt-region-metadata-header">WebVTT region metadata header</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-object">WebVTT region object</a><span>, in §5.2</span>
    <li><a href="#webvtt-region-scroll">WebVTT region scroll</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-scroll-none">WebVTT region scroll none</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-scroll-setting">WebVTT region scroll setting</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-scroll-up">WebVTT region scroll up</a><span>, in §3.2</span>
-   <li><a href="#webvtt-region-setting-list">WebVTT region setting list</a><span>, in §4.3</span>
+   <li><a href="#webvtt-region-settings-list">WebVTT region settings list</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-viewport-anchor">WebVTT region viewport anchor</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-viewport-anchor-setting">WebVTT region viewport anchor setting</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-width">WebVTT region width</a><span>, in §3.2</span>
