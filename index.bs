@@ -394,7 +394,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
  escape sequences):</p>
 
  <pre>
- ::cue(#\31) { color: green; }
+ ::cue(#\31) { color: lime; }
  ::cue(#crédit\ de\ transcription) { color: red; }
  </pre>
 
@@ -446,8 +446,8 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <p>Style sheets can style these spans:</p>
 
  <pre>
- ::cue(v[voice="Esme"]) { color: blue }
- ::cue(v[voice="Mary"]) { color: green }
+ ::cue(v[voice="Esme"]) { color: cyan }
+ ::cue(v[voice="Mary"]) { color: lime }
  ::cue(i) { font-style: italic }
  ::cue(.loud) { font-size: 2em }
  </pre>
@@ -4110,13 +4110,13 @@ following algorithm.</p>
      WEBVTT
 
      STYLE
-     ::cue { color:green }
+     ::cue { color:lime }
 
      00:00:00.000 --> 00:00:25.000
      Red or green?
      </pre>
 
-     <p>The ''color:green'' declaration would win, because it is last in the <a
+     <p>The ''color:lime'' declaration would win, because it is last in the <a
      spec=css-cascade>cascade</a>, even though the <a element spec=html>style</a> element is after
      the <a element spec=html>video</a> element in the document order.</p>
     </div>

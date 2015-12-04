@@ -1391,8 +1391,8 @@ NOTE style blocks cannot appear after the first cue.
    <h3 class="heading settled" data-level="1.4" id="introduction-other-features"><span class="secno">1.4. </span><span class="content">Other features</span><a class="self-link" href="#introduction-other-features"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>WebVTT also supports some less-often used features.</p>
-   <div class="example" id="example-0fc223e4">
-    <a class="self-link" href="#example-0fc223e4"></a> 
+   <div class="example" id="example-5046f22f">
+    <a class="self-link" href="#example-5046f22f"></a> 
     <p>In this example, the cues have an identifier:</p>
 <pre>WEBVTT
 
@@ -1406,7 +1406,7 @@ Transcrit par Célestes™
 </pre>
     <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
  escape sequences):</p>
-<pre>::cue(#\31) { color: green; }
+<pre>::cue(#\31) { color: lime; }
 ::cue(#crédit\ de\ transcription) { color: red; }
 </pre>
    </div>
@@ -1423,8 +1423,8 @@ J’ai commencé le basket à l'âge de 13, 14 ans
 Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Montpellier
 </pre>
    </div>
-   <div class="example" id="example-3811f4ce">
-    <a class="self-link" href="#example-3811f4ce"></a> 
+   <div class="example" id="example-954e004d">
+    <a class="self-link" href="#example-954e004d"></a> 
     <p>In this example, each cue says who is talking using voice spans. In the first cue, the span
  specifying the speaker is also annotated with two classes, "first" and "loud". In the third cue,
  there is also some italics text (not associated with a specific speaker). The last cue is annotated
@@ -1446,8 +1446,8 @@ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Mont
     <p>Notice that as a special exception, the voice spans don’t have to be closed if they cover the
  entire cue text.</p>
     <p>Style sheets can style these spans:</p>
-<pre>::cue(v[voice="Esme"]) { color: blue }
-::cue(v[voice="Mary"]) { color: green }
+<pre>::cue(v[voice="Esme"]) { color: cyan }
+::cue(v[voice="Mary"]) { color: lime }
 ::cue(i) { font-style: italic }
 ::cue(.loud) { font-size: 2em }
 </pre>
@@ -3950,8 +3950,8 @@ following algorithm.</p>
     STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
     same order as they were added to the collection, and the order of appearance of the collection
     must be after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element’s document.</p>
-       <div class="example" id="example-d245d223">
-        <a class="self-link" href="#example-d245d223"></a> 
+       <div class="example" id="example-4f8c2eb0">
+        <a class="self-link" href="#example-4f8c2eb0"></a> 
         <p>For example, given the following (invalid) HTML document:</p>
 <pre>&lt;!doctype html>
 &lt;title>Invalid cascade example&lt;/title>
@@ -3966,12 +3966,12 @@ following algorithm.</p>
 <pre>WEBVTT
 
 STYLE
-::cue { color:green }
+::cue { color:lime }
 
 00:00:00.000 --> 00:00:25.000
 Red or green?
 </pre>
-        <p>The <span class="css">color:green</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element is after
+        <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element is after
      the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element in the document order.</p>
        </div>
       <li>
