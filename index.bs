@@ -4474,10 +4474,10 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 '5vh sans-serif'. [[!CSS3-RUBY]] [[!CSS-VALUES]]</p>
 
 <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-'rgba(255,255,255,1)'. [[!CSS3-COLOR]]</p>
+''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> must be set to
-'rgba(0,0,0,0.8)'. [[!CSS3-COLOR]]</p>
+''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''white-space/pre-line''. [[!CSS21]]</p>
@@ -4502,10 +4502,10 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
 <ul>
  <li>the 'position' property must be set to ''position/absolute''</li>
  <li>the 'writing-mode' property must be set to ''writing-mode/horizontal-tb''</li>
- <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
+ <li>the 'background' shorthand property must be set to ''rgba(0,0,0,0.8)''</li>
  <li>the 'overflow-wrap' property must be set to ''overflow-wrap/break-word''</li>
  <li>the 'font' shorthand property must be set to '5vh sans-serif'</li>
- <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
+ <li>the 'color' property must be set to ''rgba(255,255,255,1)''</li>
  <li>the 'overflow' property must be set to ''overflow/hidden''</li>
  <li>the 'width' property must be set to |width|</li>
  <li>the 'min-height' property must be set to ''0px''</li>
@@ -4532,6 +4532,60 @@ settings:</p>
  <li>the 'text-align' property must be set as described for the root <a>List of WebVTT Node
  Objects</a> not part of a region</li>
 </ul>
+
+<p>The 'color' property on <a>WebVTT Internal Node Objects</a> that have one or more <a lt="WebVTT
+Node Object's applicable classes">applicable classes</a> matching those in the table below, must be
+set, as <a spec=html>presentational hints</a>, to the value in the second cell of the row of the
+table below whose first cell is the value of the corresponding <a lt="WebVTT Node Object's
+applicable classes">applicable class</a>:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="WebVTT Node Object's applicable classes">applicable class</a></th>
+   <th>'color' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>green</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>The color for the class <code>green</code> is <em>not</em> the same as the CSS named
+color ''green''.</p>
+
+<p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the above table, the order
+of appearance is the same as the table itself.</p>
+
+<div class=example>
+ <p>For example, if a <a>WebVTT Internal Node Object</a> has the <a lt="WebVTT Node Object's
+ applicable classes">applicable classes</a> <code>yellow</code> <em>and</em> <code>magenta</code>,
+ assuming no other stylesheets apply, the <a spec=css-cascade>computed value</a> of the 'color'
+ property would be ''rgba(255,0,255,1)'' (magenta).</p>
+</div>
 
 <p>All other non-inherited properties must be set to their initial values; inherited properties on
 the root <a>list of WebVTT Node Objects</a> must inherit their values from the <a>media element</a>
