@@ -1,3 +1,4 @@
+
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -362,16 +363,6 @@
 		color: inherit;
 		text-decoration: none;
 		border-bottom: 1px solid silver;
-	}
-	@supports (text-decoration-color: silver) {
-		a:link, a:visited {
-			border-bottom: none;
-			text-decoration: underline;
-			text-decoration-color: silver;
-		}
-		a:visited {
-			text-decoration-style: dotted;
-		}
 	}
 
 	a.logo:link, a.logo:visited { /* backout above styling for W3C logo */
@@ -852,12 +843,6 @@
 	ul.toc, ul.toc ul, ul.toc li { padding: 0; line-height: 1.3; }
 	ul.toc a { text-decoration: none; border-bottom-style: none; }
 	ul.toc a:hover, ul.toc a:focus  { border-bottom-style: solid; }
-	@supports (text-decoration-style: solid) {
-		ul.toc a:hover, ul.toc a:focus  {
-			border-bottom-style: none;
-			text-decoration-style: solid;
-		}
-	}
 	/*
 	ul.toc li li li, ul.toc li li li ul {margin-left: 0; display: inline}
 	ul.toc li li li ul, ul.toc li li li ul li {margin-left: 0; display: inline}
@@ -908,7 +893,7 @@
 
 	/* Index Lists: Layout */
 	ul.indexlist       { margin-left: 0; columns: 15em; -webkit-columns: 15em; text-indent: 1em hanging; }
-	ul.indexlist li    { margin-left: 0; list-style: none; break-inside: avoid; word-break: break-word; }
+	ul.indexlist li    { margin-left: 0; list-style: none; break-inside: avoid; }
 	ul.indexlist li li { margin-left: 1em }
 	ul.indexlist dl    { margin-top: 0; }
 	ul.indexlist dt    { margin: .2em 0 .2em 20px;}
@@ -1044,13 +1029,13 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">W3C Working Draft <time class="dt-updated" datetime="2015-12-10">10 December 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">W3C Working Draft <time class="dt-updated" datetime="2015-12-08">08 December 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
-     <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-webvtt-1-20151210/">http://www.w3.org/TR/2015/WD-webvtt-1-20151210/</a>
+     <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-webvtt1-20151208/">http://www.w3.org/TR/2015/WD-webvtt1-20151208/</a>
      <dt>Latest version:
-     <dd><a href="http://www.w3.org/TR/webvtt-1/">http://www.w3.org/TR/webvtt-1/</a>
+     <dd><a href="http://www.w3.org/TR/webvtt1/">http://www.w3.org/TR/webvtt1/</a>
      <dt>Editor's Draft:
      <dd><a href="https://w3c.github.io/webvtt/">https://w3c.github.io/webvtt/</a>
      <dt>Previous Versions:
@@ -1058,7 +1043,7 @@
      <dt>Test Suite:
      <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/webvtt">https://github.com/w3c/web-platform-tests/tree/master/webvtt</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software ASA</a>)
+     <dd class="editor p-author h-card vcard" data-editor-id="40332"><a class="p-name fn u-email email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software ASA</a>)
      <dt class="editor">Former Editors:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:ckennedy@apple.com">Courtney Kennedy</a> (<a class="p-org org" href="http://www.apple.com/">Apple Inc.</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="p-org org" href="http://nicta.com.au/">NICTA</a>)
@@ -1103,16 +1088,15 @@ the start of your email’s subject. All comments are welcome. </p>
   document as other than work in progress. </p>
    <p> This document was produced by a group operating under
 	the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>.
-	W3C maintains a <a href="http://www.w3.org/2004/01/pp-impl/49309/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
+	W3C maintains a <a href="http://www.w3.org/2004/01/pp-impl/34314/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
 	that page also includes instructions for disclosing a patent.
 	An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
-   <p>This document is governed by the <a href="http://www.w3.org/2014/Process-20140801/" id="w3c_process_revision">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>. </p>
-   <p></p>
+            <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
   </div>
   <div class="snapshot" hidden="">
    <p>
     This is a Recommendation Track snapshot. For the latest updates, possibly including important
- bug fixes, please see the <a href="https://w3c.github.io/webvtt/">Draft Community Group Report</a>. 
+ bug fixes, please see the <a href="https://w3c.github.io/webvtt/">Draft Community Group Report</a>.
     <button>Dismiss</button>
    </p>
   </div>
@@ -1273,7 +1257,7 @@ that captions an interview:</p>
 fit the cue in the cue’s width. In general, therefore, authors are encouraged to write cues all on
 one line except when a line break is definitely necessary.</p>
    <div class="example" id="example-72029dca">
-    <a class="self-link" href="#example-72029dca"></a> 
+    <a class="self-link" href="#example-72029dca"></a>
     <p>These captions on a public service announcement video demonstrate line breaking:</p>
 <pre>WEBVTT
 
@@ -1290,7 +1274,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
     <p>The first cue is simple, it will probably just display on one line. The second will take two
  lines, one for each speaker. The third will wrap to fit the width of the video, possibly taking
  multiple lines. For example, the three cues could look like this:</p>
-<pre>           <samp>Never drink liquid nitrogen.</samp>
+<pre>           <samp>Never drink liquid nitrogen.</samp>
 
         <samp>— It will perforate your stomach.</samp>
                 <samp>— You could die.</samp>
@@ -1303,7 +1287,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
 </pre>
     <p>If the width of the cues is smaller, the first two cues could wrap as well, as in the following
  example. Note how the second cue’s explicit line break is still honored, however:</p>
-<pre>      <samp>Never drink</samp>
+<pre>      <samp>Never drink</samp>
     <samp>liquid nitrogen.</samp>
 
   <samp>— It will perforate</samp>
@@ -1329,7 +1313,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
    <p>Comments are just blocks that are preceded by a blank line, start with the word
 "<code>NOTE</code>" (followed by a space or newline), and end at the first blank line.</p>
    <div class="example" id="example-44941b0b">
-    <a class="self-link" href="#example-44941b0b"></a> 
+    <a class="self-link" href="#example-44941b0b"></a>
     <p>Here, a one-line comment is used to note a possible problem with a cue.</p>
 <pre>WEBVTT
 
@@ -1344,7 +1328,7 @@ NOTE I’m not sure the timing is right on the following cue.
 </pre>
    </div>
    <div class="example" id="example-03a9f3ad">
-    <a class="self-link" href="#example-03a9f3ad"></a> 
+    <a class="self-link" href="#example-03a9f3ad"></a>
     <p>In this example, the author has written many comments.</p>
 <pre>WEBVTT
 
@@ -1374,7 +1358,7 @@ NOTE end of file
    <p>CSS stylesheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element
 can target WebVTT cues and regions in the video using the <a class="css" data-link-type="maybe" href="#selectordef-cue">::cue</a>, <a class="css" data-link-type="maybe" href="#selectordef-cue-selector">::cue()</a> and <a class="css" data-link-type="maybe" href="#selectordef-cue-region">::cue-region</a> pseudo-elements.</p>
    <div class="example" id="example-81aa0582">
-    <a class="self-link" href="#example-81aa0582"></a> 
+    <a class="self-link" href="#example-81aa0582"></a>
     <p>In this example, an HTML page has a CSS stylesheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element
  that styles all cues in the video with a gradient background and a text color, as well as changing
  the text color for all <a data-link-type="dfn" href="#webvtt-bold-object">WebVTT Bold Objects</a> in cues in the video.</p>
@@ -1410,7 +1394,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 "<code>--></code>" appears inside a CSS string, then it can use CSS escaping e.g.
 "<code>--\></code>".</p>
    <div class="example" id="example-3f42c0aa">
-    <a class="self-link" href="#example-3f42c0aa"></a> 
+    <a class="self-link" href="#example-3f42c0aa"></a>
     <p>This example shows how cues can be styled with style blocks in WebVTT.</p>
 <pre>WEBVTT
 
@@ -1439,7 +1423,7 @@ NOTE style blocks cannot appear after the first cue.
    <p><i>This section is non-normative.</i></p>
    <p>WebVTT also supports some less-often used features.</p>
    <div class="example" id="example-5046f22f">
-    <a class="self-link" href="#example-5046f22f"></a> 
+    <a class="self-link" href="#example-5046f22f"></a>
     <p>In this example, the cues have an identifier:</p>
 <pre>WEBVTT
 
@@ -1458,7 +1442,7 @@ Transcrit par Célestes™
 </pre>
    </div>
    <div class="example" id="example-3fb8f9dd">
-    <a class="self-link" href="#example-3fb8f9dd"></a> 
+    <a class="self-link" href="#example-3fb8f9dd"></a>
     <p>This example shows how classes can be used on elements, which can be helpful for localization or
  maintainability of styling, and also how to indicate a language change in the cue text.</p>
 <pre>WEBVTT
@@ -1471,7 +1455,7 @@ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Mont
 </pre>
    </div>
    <div class="example" id="example-954e004d">
-    <a class="self-link" href="#example-954e004d"></a> 
+    <a class="self-link" href="#example-954e004d"></a>
     <p>In this example, each cue says who is talking using voice spans. In the first cue, the span
  specifying the speaker is also annotated with two classes, "first" and "loud". In the third cue,
  there is also some italics text (not associated with a specific speaker). The last cue is annotated
@@ -1500,7 +1484,7 @@ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Mont
 </pre>
    </div>
    <div class="example" id="example-21e4a505">
-    <a class="self-link" href="#example-21e4a505"></a> 
+    <a class="self-link" href="#example-21e4a505"></a>
     <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 <pre>WEBVTT
 
@@ -1538,7 +1522,7 @@ What are you waiting for?
  text within the same positioned cue box as the first cue.</p>
    </div>
    <div class="example" id="example-28ed4f48">
-    <a class="self-link" href="#example-28ed4f48"></a> 
+    <a class="self-link" href="#example-28ed4f48"></a>
     <p>This example shows two regions containing rollup captions for two different speakers. Fred’s
  cues scroll up in a region in the left half of the video, Bill’s cues scroll up in a region on the
  right half of the video. Fred’s first cue disappears at 12.5sec even though it is defined until
@@ -1819,7 +1803,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   a line would produce the wrong base direction for that line, the author can use an U+200E
   LEFT-TO-RIGHT MARK or U+200F RIGHT-TO-LEFT MARK character at the start of the line to correct it. <a data-link-type="biblio" href="#biblio-bidi">[BIDI]</a></p>
      <div class="example" id="example-4a66a3ef">
-      <a class="self-link" href="#example-4a66a3ef"></a> 
+      <a class="self-link" href="#example-4a66a3ef"></a>
       <p>In this example, the second cue will have a right-to-left base direction, rendering as
    "<samp><bdo dir="ltr">.I think ,يلاع</bdo></samp>". (Note that the text
    below shows all characters left-to-right; a text editor would not necessarily have the same
@@ -1839,7 +1823,7 @@ What was his name again?
   from the surrounding text on that line, this can be achieved by using the paired Unicode bidi
   formatting code characters.</p>
      <div class="example" id="example-89bafe37">
-      <a class="self-link" href="#example-89bafe37"></a> 
+      <a class="self-link" href="#example-89bafe37"></a>
       <p>In this example, assuming no bidi formatting code characters are used, the cue text is
    rendered as "<samp><bdo dir="ltr">I’ve read the book 3 דנליונ
    times!</bdo></samp>" (i.e. the "3" is on the wrong side of the book title) because of the effect
@@ -1860,7 +1844,7 @@ What was his name again?
   line match the base direction of the line (e.g. left for English, right for Hebrew), use <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a>, or <a data-link-type="dfn" href="#webvtt-cue-end-alignment">end
   alignment</a> for the opposite alignment.</p>
      <div class="example" id="example-0a88a31f">
-      <a class="self-link" href="#example-0a88a31f"></a> 
+      <a class="self-link" href="#example-0a88a31f"></a>
       <p>In this example, <a data-link-type="dfn" href="#webvtt-cue-start-alignment">start alignment</a> is used. The first
    line is left-aligned because the base direction is left-to-right, and the second line is
    right-aligned because the base direction is right-to-left.</p>
@@ -1885,7 +1869,7 @@ Hello!
 cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a>.</p>
    <div class="impl">
     <p>When a <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-active-flag">active flag</a> is set has its <a data-link-type="dfn" href="#webvtt-cue-writing-direction">writing direction</a>, <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag">snap-to-lines flag</a>, <a data-link-type="dfn" href="#webvtt-cue-line">line</a>, <a data-link-type="dfn" href="#webvtt-cue-position">position</a>, <a data-link-type="dfn" href="#webvtt-cue-size">size</a>, <a data-link-type="dfn" href="#webvtt-cue-text-alignment">text
- alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-region">region</a>, or <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> change
+ alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-region">region</a>, or <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text</a> change
  value, then the user agent must empty the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a>, and then immediately
  run the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a>.</p>
    </div>
@@ -2036,17 +2020,17 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-timestamp">WebVTT timestamp<a class="self-link" href="#webvtt-timestamp"></a></dfn> consists of the following components, in the given order:</p>
    <ol>
     <li>
-      Optionally (required if <var>hours</var> is non-zero): 
+      Optionally (required if <var>hours</var> is non-zero):
      <ol>
       <li>Two or more <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>hours</var> as a base ten
    integer.
       <li>A U+003A COLON character (:)
      </ol>
     <li>Two <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>minutes</var> as a base ten integer in the range
- 0 ≤ <var>minutes</var> ≤ 59.
+ 0 ≤ <var>minutes</var> ≤ 59.
     <li>A U+003A COLON character (:)
     <li>Two <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>seconds</var> as a base ten integer in the range
- 0 ≤ <var>seconds</var> ≤ 59.
+ 0 ≤ <var>seconds</var> ≤ 59.
     <li>A U+002E FULL STOP character (.).
     <li>Three <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, representing the thousandths of a second <var>seconds-frac</var> as a base
  ten integer.
@@ -2071,7 +2055,7 @@ SIGN).</p>
    <ol>
     <li>One or more <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>.
     <li>
-      Optionally: 
+      Optionally:
      <ol>
       <li>A U+002E DOT character (.).
       <li>One or more <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>.
@@ -2083,10 +2067,10 @@ SIGN).</p>
    <ol>
     <li>The string "<code>NOTE</code>".
     <li>
-      Optionally, the following components, in the given order: 
+      Optionally, the following components, in the given order:
      <ol>
       <li>
-        Either: 
+        Either:
        <ul>
         <li>A U+0020 SPACE character or U+0009 CHARACTER TABULATION (tab) character.
         <li>A <a data-link-type="dfn" href="#webvtt-line-terminator">WebVTT line terminator</a>.
@@ -2139,7 +2123,7 @@ underlined text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag">W
    <ol>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag">WebVTT cue span start tag</a> "<code>ruby</code>" that disallows an annotation.
     <li>
-      One or more occurrences of the following group of components, in the order given: 
+      One or more occurrences of the following group of components, in the order given:
      <ol>
       <li><a data-link-type="dfn" href="#webvtt-cue-internal-text">WebVTT cue internal text</a>, representing the ruby base.
       <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag">WebVTT cue span start tag</a> "<code>rt</code>" that disallows an annotation.
@@ -2178,14 +2162,14 @@ given:</p>
    <p class="note" role="note">The requirement above regarding valid BCP 47 language tag is an authoring requirement,
 so a conformance checker will do validity checking of the language tag, but other user agents will
 not.</p>
-   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag">WebVTT cue span start tag<a class="self-link" href="#webvtt-cue-span-start-tag"></a></dfn> has a <var>tag name</var> and either 
+   <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag">WebVTT cue span start tag<a class="self-link" href="#webvtt-cue-span-start-tag"></a></dfn> has a <var>tag name</var> and either
 requires or disallows an annotation, and consists of the following components, in the order
 given:</p>
    <ol>
     <li>A U+003C LESS-THAN SIGN character (&lt;).
     <li>The <var>tag name</var>.
     <li>
-      Zero or more occurrences of the following sequence: 
+      Zero or more occurrences of the following sequence:
      <ol>
       <li>U+002E FULL STOP character (.)
       <li>One or more characters other than U+0009 CHARACTER TABULATION (tab) characters, U+000A LINE
@@ -2389,10 +2373,10 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>
-      As the <a data-link-type="dfn" href="#webvtt-cue-setting-value">WebVTT cue setting value</a>: 
+      As the <a data-link-type="dfn" href="#webvtt-cue-setting-value">WebVTT cue setting value</a>:
      <ol>
       <li>
-        an offset value, either: 
+        an offset value, either:
        <dl>
         <dt>To represent a specific offset relative to the video viewport
         <dd>
@@ -2405,7 +2389,7 @@ given:</p>
          </ol>
        </dl>
       <li>
-        An optional alignment value consisting of the following components: 
+        An optional alignment value consisting of the following components:
        <ol>
         <li>A U+002C COMMA character (,).
         <li>One of the following strings: "<code>start</code>", "<code>center</code>",
@@ -2429,11 +2413,11 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>
-      As the <a data-link-type="dfn" href="#webvtt-cue-setting-value">WebVTT cue setting value</a>: 
+      As the <a data-link-type="dfn" href="#webvtt-cue-setting-value">WebVTT cue setting value</a>:
      <ol>
       <li>a position value consisting of: a <a data-link-type="dfn" href="#webvtt-percentage">WebVTT percentage</a>.
       <li>
-        an optional alignment value consisting of: 
+        an optional alignment value consisting of:
        <ol>
         <li>A U+002C COMMA character (,).
         <li>One of the following strings: "<code>start</code>", "<code>center</code>",
@@ -2497,7 +2481,7 @@ using only nested cues<a class="self-link" href="#webvtt-file-using-only-nested-
     <li>or <var>cue1</var> fully contains <var>cue2</var>, i.e. <var>x1</var> &lt;= <var>x2</var> and <var>y1</var> >= <var>y2</var>.
    </ul>
    <div class="example" id="example-0689f1d2">
-    <a class="self-link" href="#example-0689f1d2"></a> 
+    <a class="self-link" href="#example-0689f1d2"></a>
     <p>The following example matches this definition:</p>
 <pre>WEBVTT
 
@@ -2522,16 +2506,16 @@ Timeline Panel
     <p>Notice how you can express the cues in this WebVTT file as a tree structure:</p>
     <ul>
      <li>
-       WebVTT file 
+       WebVTT file
       <ul>
        <li>
-         Introduction 
+         Introduction
         <ul>
          <li>Topics
          <li>Presenters
         </ul>
        <li>
-         Scrolling Effects 
+         Scrolling Effects
         <ul>
          <li>Achim’s Demo
          <li>Timeline Panel
@@ -2732,7 +2716,7 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment">center alignment</a>.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a> be the empty string.</p>
            </ol>
           <li>
            <p><a data-link-type="dfn" href="#collect-webvtt-cue-timings-and-settings">Collect WebVTT cue timings and settings</a> from <var>line</var> using <var>regions</var> for <var>cue</var>.
@@ -2819,7 +2803,7 @@ header</i> set, the user agent must run the following steps:</p>
        <p>If <var>seen EOF</var> is true, break out of <i>loop</i>.</p>
      </ol>
     <li>
-     <p>If <var>cue</var> is not null, let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> of <var>cue</var> be <var>buffer</var>, and return <var>cue</var>.</p>
+     <p>If <var>cue</var> is not null, let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a> of <var>cue</var> be <var>buffer</var>, and return <var>cue</var>.</p>
     <li>
      <p>Otherwise, if <var>stylesheet</var> is not null, then <a data-link-type="dfn" href="http://www.w3.org/TR/css-syntax-3/#parse-a-stylesheet0">Parse a stylesheet</a> from <var>buffer</var>. If it returned a list of rules, assign the list as <var>stylesheet</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-css-rules">CSS rules</a>; otherwise, set <var>stylesheet</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-css-rules">CSS
  rules</a> to an empty list. <a data-link-type="biblio" href="#biblio-cssom">[CSSOM]</a> <a data-link-type="biblio" href="#biblio-css-syntax-3">[CSS-SYNTAX-3]</a> Finally, return <var>stylesheet</var>.</p>
@@ -2840,7 +2824,7 @@ Objects</a>.</p>
      <p>Let <var>settings</var> be the result of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#split-a-string-on-spaces">splitting <var>input</var> on
  spaces</a>.</p>
     <li>
-      For each token <var>setting</var> in the list <var>settings</var>, run the following substeps: 
+      For each token <var>setting</var> in the list <var>settings</var>, run the following substeps:
      <ol>
       <li>
        <p>If <var>setting</var> does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D
@@ -3679,7 +3663,7 @@ follows:</p>
    <ol>
     <li>
      <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT cue
- text parsing rules</a> to the <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+ text parsing rules</a> to the <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a>.</p>
     <li>
      <p>Return the concatenation of the values of each <a data-link-type="dfn" href="#webvtt-text-object">WebVTT Text Object</a> in <var>nodes</var>, in a
  pre-order, depth-first traversal, excluding <a data-link-type="dfn" href="#webvtt-ruby-text-object">WebVTT Ruby Text
@@ -3780,7 +3764,7 @@ manner suiting the user.</p>
      <ol>
       <li>
        <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT
-   cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+   cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a>.</p>
       <li>
        <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region">WebVTT cue region</a> is null, run the following substeps:</p>
        <ol>
@@ -3998,7 +3982,7 @@ following algorithm.</p>
     same order as they were added to the collection, and the order of appearance of the collection
     must be after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element’s document.</p>
        <div class="example" id="example-4f8c2eb0">
-        <a class="self-link" href="#example-4f8c2eb0"></a> 
+        <a class="self-link" href="#example-4f8c2eb0"></a>
         <p>For example, given the following (invalid) HTML document:</p>
 <pre>&lt;!doctype html>
 &lt;title>Invalid cascade example&lt;/title>
@@ -4079,7 +4063,7 @@ Red or green?
          <p>These dimensions must not be adjusted for overscan. (The algorithm does that
       separately.)</p>
         <li>
-         <p>Let <var>max dimension</var> be <var>full dimension</var> - (2 ×  <var>margin</var>).</p>
+         <p>Let <var>max dimension</var> be <var>full dimension</var> - (2 ×  <var>margin</var>).</p>
         <li>
          <p><strong>Horizontal</strong>: Let <var>step</var> be the height of the first line box in <var>boxes</var>.</p>
          <p><strong>Vertical</strong>: Let <var>step</var> be the width of the first line box in <var>boxes</var>.</p>
@@ -4208,7 +4192,7 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
     <li>the <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
    </ul>
    <p>The variables <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values with those
-names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
+names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node
 Objects</a> was constructed.</p>
    <p>The <a class="property" data-link-type="propdesc" href="http://www.w3.org/TR/css-text-3/#text-align">text-align</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects">list of WebVTT Node Objects</a> must be set to the
 value in the second cell of the row of the table below whose first cell is the value of the
@@ -4475,7 +4459,7 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
      <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#dom-texttrack-addcue">addCue()</a></code> method.</p>
      <p>The <var>startTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-start-time">text track cue start time</a>.</p>
      <p>The <var>endTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-end-time">text track cue end time</a>.</p>
-     <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+     <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a>.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-region">region</a></code>
     <dd>
      <p>Returns the <code class="idl"><a data-link-type="idl" href="#vttregion">VTTRegion</a></code> object to which this cue belongs, if any, or null otherwise.</p>
@@ -4569,11 +4553,11 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-text">text</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> in raw unparsed form.</p>
+     <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a> in raw unparsed form.</p>
      <p>Can be set.</p>
     <dt><var>fragment</var> = <var>cue</var> . <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>()
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
+     <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
   elements</a> and other DOM nodes.</p>
    </dl>
    <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" id="dom-vttcue-vttcue">VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)<a class="self-link" href="#dom-vttcue-vttcue"></a></dfn> constructor, when invoked, must run the following steps:</p>
@@ -4587,7 +4571,7 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-end-time">text track cue end time</a> be the value of the <var>endTime</var> argument,
  interpreted as a time in seconds.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> be the value of the <var>text</var> argument, and let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-extracting-the-chapter-title">rules for extracting the chapter title</a> be the <a data-link-type="dfn" href="#webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue text</a> be the value of the <var>text</var> argument, and let the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-rules-for-extracting-the-chapter-title">rules for extracting the chapter title</a> be the <a data-link-type="dfn" href="#webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter
  title</a>.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be the empty string.</p>
@@ -4729,12 +4713,12 @@ second cell of the row in the table below whose first cell is the <a data-link-t
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-text-alignment">WebVTT cue text alignment</a> must be set to the value given in the first cell
 of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text">text<a class="self-link" href="#dom-vttcue-text"></a></dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track
-cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text
+   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text">text<a class="self-link" href="#dom-vttcue-text"></a></dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track
+cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text
 track cue text</a> must be set to the new value.</p>
-   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml">getCueAsHTML()<a class="self-link" href="#dom-vttcue-getcueashtml"></a></dfn> method must convert the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
+   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml">getCueAsHTML()<a class="self-link" href="#dom-vttcue-getcueashtml"></a></dfn> method must convert the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue
 text</a> to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules">WebVTT cue text DOM construction rules</a> to
-the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
+the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">text track cue
 text</a>.</p>
    <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled" data-algorithm="The VTTRegion interface" data-level="7.2" id="the-vttregion-interface"><span class="secno">7.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
@@ -4877,9 +4861,9 @@ and registration with IANA.</p>
      <p>Rules for processing both conforming and non-conforming content are defined in this
   specification.</p>
     <dt>Published specification:
-    <dd> This document is the relevant specification. 
+    <dd> This document is the relevant specification.
     <dt>Applications that use this media type:
-    <dd> Web browsers and other video players. 
+    <dd> Web browsers and other video players.
     <dt>Additional information:
     <dd>
      <dl>
@@ -4888,16 +4872,16 @@ and registration with IANA.</p>
        <p>WebVTT files all begin with one of the following byte sequences (where "EOF" means the end of
     the file):</p>
        <ul class="brief">
-        <li> EF BB BF 57 45 42 56 54 54 0A 
-        <li> EF BB BF 57 45 42 56 54 54 0D 
-        <li> EF BB BF 57 45 42 56 54 54 20 
-        <li> EF BB BF 57 45 42 56 54 54 09 
-        <li> EF BB BF 57 45 42 56 54 54 EOF 
-        <li> 57 45 42 56 54 54 0A 
-        <li> 57 45 42 56 54 54 0D 
-        <li> 57 45 42 56 54 54 20 
-        <li> 57 45 42 56 54 54 09 
-        <li> 57 45 42 56 54 54 EOF 
+        <li> EF BB BF 57 45 42 56 54 54 0A
+        <li> EF BB BF 57 45 42 56 54 54 0D
+        <li> EF BB BF 57 45 42 56 54 54 20
+        <li> EF BB BF 57 45 42 56 54 54 09
+        <li> EF BB BF 57 45 42 56 54 54 EOF
+        <li> 57 45 42 56 54 54 0A
+        <li> 57 45 42 56 54 54 0D
+        <li> 57 45 42 56 54 54 20
+        <li> 57 45 42 56 54 54 09
+        <li> 57 45 42 56 54 54 EOF
        </ul>
        <p class="note" role="note">(An optional UTF-8 BOM, the ASCII string "<code data-lt="">WEBVTT</code>", and
     finally a space, tab, line break, or the end of the file.)</p>
@@ -5270,7 +5254,7 @@ using only nested cues</a><span>, in §4.5.1</span>
      <li><a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-width">width</a>
     </ul>
    <li>
-    <a data-link-type="biblio" href="#biblio-cssom-1">[cssom]</a> defines the following terms:
+    <a data-link-type="biblio" href="#biblio-cssom">[cssom]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-alternate-flag">alternate flag</a>
      <li><a href="http://www.w3.org/TR/cssom/#create-a-css-style-sheet">create a css style sheet</a>
