@@ -1,7 +1,7 @@
 <pre class='metadata'>
 Title: WebVTT: The Web Video Text Tracks Format
 H1: WebVTT: The Web Video Text Tracks Format
-Shortname: webvtt1
+Shortname: webvtt
 Status: CG-DRAFT
 Group: texttracks
 ED: https://w3c.github.io/webvtt/
@@ -20,6 +20,8 @@ Abstract: WebVTT files provide captions or subtitles for video content, and also
 Boilerplate: omit conformance, omit feedback-header
 Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap
 Ignored Vars: seconds-frac, selector, fragment, seen cue
+
+
 
 </pre>
 
@@ -4830,7 +4832,7 @@ interface VTTCue : TextTrackCue {
 
 <dl class="note">
 
- <dt>|cue| = new <a constructor lt="VTTCue()">VTTCue</a>( |startTime|, |endTime|, |text| )</dt>
+ <dt>|cue| = new <a constructor lt="VTTCue(startTime, endTime, text)">VTTCue</a>( |startTime|, |endTime|, |text| )</dt>
  <dd>
   <p>Returns a new {{VTTCue}} object, for use with the {{TextTrack/addCue()}} method.</p>
   <p>The |startTime| argument sets the <a>text track cue start time</a>.</p>
@@ -4948,7 +4950,7 @@ interface VTTCue : TextTrackCue {
 
 </dl>
 
-<p>The <dfn constructor for=VTTCue lt="VTTCue()">VTTCue(|startTime|, |endTime|, |text|)</dfn>
+<p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|, |endTime|, |text|)</dfn>
 constructor, when invoked, must run the following steps:</p>
 
 <ol>

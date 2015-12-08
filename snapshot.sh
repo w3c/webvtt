@@ -3,9 +3,10 @@
 
 STATUS=$1
 NEW_DATE=$2
+PREV_URL=$(echo $3 | sed -e 's#/#\\/#g')
 
-USAGE="\n\nUsage: $0 <status> <date>\n\
-For example: $0 WD 2015-10-31"
+USAGE="\n\nUsage: $0 <status> <date> <prevurl>\n\
+For example: $0 WD 2015-10-31 http://www.w3.org/TR/2014/WD-webvtt1-20141113/"
 
 case $(uname) in
   *Darwin*)
@@ -49,7 +50,13 @@ check "Replace Status metadata"
 replace "1,/^$/s/^$/Date: $NEW_DATE/" index.temp.bs
 check "Add Date metadata"
 
-bikeshed spec index.temp.bs archives/$NEW_DATE/index.html
+replace "1,/^$/s/^$/Previous Version: $PREV_URL/" index.temp.bs
+check "Add Previous Version metadata"
+
+replace "1,/^$/s/^$/TR: http:\/\/www.w3.org\/TR\/webvtt-1\//" index.temp.bs
+check "Add TR metadata"
+
+bikeshed spec index.temp.bs archives/$NEW_DATE/Overview.html
 check "Generate with bikeshed"
 
 rm index.temp.bs

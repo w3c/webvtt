@@ -1019,7 +1019,7 @@
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-12-04">4 December 2015</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2015-12-08">8 December 2015</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4407,7 +4407,7 @@ enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-direc
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting<a class="self-link" href="#enumdef-linealignsetting"></a></dfn> { "start", "center", "end" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting<a class="self-link" href="#enumdef-positionalignsetting"></a></dfn> { "start", "center", "end", "auto" };
 enum <dfn class="idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting<a class="self-link" href="#enumdef-alignsetting"></a></dfn> { "start", "center", "end", "left", "right" };
-[<dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue">Constructor<a class="self-link" href="#dom-vttcue-vttcue"></a></dfn>(double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, DOMString <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
+[<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, DOMString <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
 interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue<a class="self-link" href="#vttcue"></a></dfn> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   attribute <a data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion? " href="#dom-vttcue-region">region</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="idl-code" data-link-type="attribute" data-type="DirectionSetting " href="#dom-vttcue-vertical">vertical</a>;
@@ -4529,7 +4529,7 @@ interface <dfn class="idl-code" data-dfn-type="interface" data-export="" id="vtt
      <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
   elements</a> and other DOM nodes.</p>
    </dl>
-   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue()" id="dom-vttcue-vttcue">VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)<a class="self-link" href="#dom-vttcue-vttcue"></a></dfn> constructor, when invoked, must run the following steps:</p>
+   <p>The <dfn class="idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" id="dom-vttcue-vttcue">VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)<a class="self-link" href="#dom-vttcue-vttcue"></a></dfn> constructor, when invoked, must run the following steps:</p>
    <ol>
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>. Let <var>cue</var> be that <a data-link-type="dfn" href="#webvtt-cue">WebVTT cue</a>.</p>
@@ -4968,7 +4968,6 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-vertical">vertical</a><span>, in §7.1</span>
    <li><a href="#dom-vttregion-viewportanchorx">viewportAnchorX</a><span>, in §7.2</span>
    <li><a href="#dom-vttregion-viewportanchory">viewportAnchorY</a><span>, in §7.2</span>
-   <li><a href="#dom-vttcue-vttcue">VTTCue()</a><span>, in §7.1</span>
    <li><a href="#vttcue">VTTCue</a><span>, in §7.1</span>
    <li><a href="#dom-vttcue-vttcue">VTTCue(startTime, endTime, text)</a><span>, in §7.1</span>
    <li><a href="#dom-vttregion-vttregion">VTTRegion()</a><span>, in §7.2</span>
@@ -5359,7 +5358,7 @@ enum <a href="#enumdef-directionsetting">DirectionSetting</a> { "" /* horizontal
 enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { "start", "center", "end" };
 enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { "start", "center", "end", "auto" };
 enum <a href="#enumdef-alignsetting">AlignSetting</a> { "start", "center", "end", "left", "right" };
-[<a href="#dom-vttcue-vttcue">Constructor</a>(double <a href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, double <a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, DOMString <a href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
+[<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(double <a href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, double <a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, DOMString <a href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
 interface <a href="#vttcue">VTTCue</a> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   attribute <a data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion? " href="#dom-vttcue-region">region</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="idl-code" data-link-type="attribute" data-type="DirectionSetting " href="#dom-vttcue-vertical">vertical</a>;
