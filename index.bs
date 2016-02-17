@@ -17,7 +17,7 @@ Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap
+Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap, lang, class, title
 Ignored Vars: seconds-frac, selector, fragment, seen cue
 
 
@@ -55,7 +55,7 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: expose a user interface to the user
             text: text track cue order
         urlPrefix: syntax.html
-            text: syntax-charref
+            text: character references; url: #syntax-charref
     type: element-attr
         urlPrefix: dom.html
             text: title; url: #attr-title
@@ -1427,8 +1427,8 @@ terminator</a>.</p>
 
  <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
 
- <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two Unicode
- code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
+ <li>An <a spec=html lt="character references">HTML character reference</a>, representing one or two
+ Unicode code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
 
 </ul>
 
@@ -1540,8 +1540,8 @@ given:</p>
   <ul>
    <li><a>WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.</li>
-   <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two
-   Unicode code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
+   <li>An <a spec=html lt="character references">HTML character reference</a>, representing one or
+   two Unicode code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
   </ul>
 
  </li>
@@ -1966,7 +1966,7 @@ terminator</a>:</p>
 
 <ul>
  <li><a>WebVTT cue text span</a></li>
- <li><a spec=html lt=syntax-charref>HTML character reference</a> [[!HTML]]</li>
+ <li><a spec=html lt="character references">HTML character reference</a> [[!HTML]]</li>
 </ul>
 
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
