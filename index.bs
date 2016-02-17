@@ -625,9 +625,11 @@ requirements.</p>
 
 <p>Implementations of this specification must not normalize Unicode text during processing.</p>
 
-<p class=example>For example, a cue with the identifier consisting of the characters U+0041 LATIN
-CAPITAL LETTER A and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
-consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
+<p class=example>For example, a cue with an identifier consisting of the characters U+0041 LATIN
+CAPITAL LETTER A followed by U+030A COMBINING RING ABOVE (a decomposed character sequence), or the
+character U+212B ANGSTROM SIGN (a compatibility character), will not match a selector targeting a
+cue with an ID consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE (a
+precomposed character).</p>
 
 
 <h2 id=data-model>Data model</h2>
