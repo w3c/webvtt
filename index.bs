@@ -952,8 +952,8 @@ precomposed character).</p>
    <dd>The text is aligned centered between the box's start and end sides.</dd>
 
    <dt><dfn lt="WebVTT cue end alignment">End alignment</dfn></dt>
-   <dd>The text of each line is individually aligned towards the start side of the box,
-   where the start side for that line is determined by using the CSS rules for
+   <dd>The text of each line is individually aligned towards the end side of the box,
+   where the end side for that line is determined by using the CSS rules for
    ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue left alignment">Left alignment</dfn></dt>
@@ -5041,15 +5041,15 @@ direction</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT cue horizontal writing direction">Horizontal</a></td>
-   <td>"<code lt=""></code>" (the empty string)</td>
+   <td>"<code></code>" (the empty string)</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue vertical growing left writing direction">Vertical growing left</a></td>
-   <td>"<code lt="">rl</code>"</td>
+   <td>"<code>rl</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue vertical growing right writing direction">Vertical growing right</a></td>
-   <td>"<code lt="">lr</code>"</td>
+   <td>"<code>lr</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5067,7 +5067,7 @@ new value is true, and must be unset otherwise.</p>
 line</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
 lt="WebVTT cue line automatic">auto</a> must be represented as the string "<code>auto</code>". On
 setting, the <a>WebVTT cue line</a> must be set to the new value; if the new value is the string
-"<code lt="">auto</code>", then it must be interpreted as the special value <a lt="WebVTT cue line
+"<code>auto</code>", then it must be interpreted as the special value <a lt="WebVTT cue line
 automatic">auto</a>.</p>
 
 <p>The <dfn attribute for=VTTCue>lineAlign</dfn> attribute, on getting, must return the string from
@@ -5084,15 +5084,15 @@ alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT cue line start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td>"<code>start</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue line center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue line end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td>"<code>end</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5103,10 +5103,10 @@ value.</p>
 
 <p>The <dfn attribute for=VTTCue>position</dfn> attribute, on getting, must return the <a>WebVTT cue
 position</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
-lt="WebVTT cue automatic position">auto</a> must be represented as the string "<code
-lt="">auto</code>". On setting, if the new value is negative or greater than 100, then an
+lt="WebVTT cue automatic position">auto</a> must be represented as the string "<code>auto</code>".
+On setting, if the new value is negative or greater than 100, then an
 {{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT cue position</a> must be set
-to the new value; if the new value is the string "<code lt="">auto</code>", then it must be
+to the new value; if the new value is the string "<code>auto</code>", then it must be
 interpreted as the special value <a lt="WebVTT cue automatic position">auto</a>.</p>
 
 <p>The <dfn attribute for=VTTCue>positionAlign</dfn> attribute, on getting, must return the string
@@ -5123,19 +5123,19 @@ alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT cue position line-left alignment">Line-left alignment</a></td>
-   <td>"<code lt="">line-left</code>"</td>
+   <td>"<code>line-left</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position line-right alignment">Line-right alignment</a></td>
-   <td>"<code lt="">line-right</code>"</td>
+   <td>"<code>line-right</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position automatic alignment">Automatic alignment</a></td>
-   <td>"<code lt="">auto</code>"</td>
+   <td>"<code>auto</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5163,23 +5163,23 @@ of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p>
  <tbody>
   <tr>
    <td><a lt="WebVTT cue start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td>"<code>start</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td>"<code>end</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue left alignment">Left alignment</a></td>
-   <td>"<code lt="">left</code>"</td>
+   <td>"<code>left</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue right alignment">Right alignment</a></td>
-   <td>"<code lt="">right</code>"</td>
+   <td>"<code>right</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5269,7 +5269,7 @@ interface VTTRegion {
    <dt>If it is unset</dt>
    <dd><p>The empty string.</p></dd>
    <dt>If it is up</dt>
-   <dd><p>The string "<code lt="">up</code>".</p></dd>
+   <dd><p>The string "<code>up</code>".</p></dd>
   </dl>
   <p>Can be set.</p>
  </dd>
@@ -5348,11 +5348,11 @@ setting of the <a>WebVTT region</a> that the {{VTTRegion}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT region scroll none">None</a></td>
-   <td>"<code lt=""></code>" (the empty string)</td>
+   <td>"<code></code>" (the empty string)</td>
   </tr>
   <tr>
    <td><a lt="WebVTT region scroll up">Up</a></td>
-   <td>"<code lt="">up</code>"</td>
+   <td>"<code>up</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5423,11 +5423,11 @@ and registration with IANA.</p>
      <li> 57 45 42 56 54 54 09 </li>
      <li> 57 45 42 56 54 54 EOF </li>
     </ul>
-    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code lt="">WEBVTT</code>", and
+    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code>WEBVTT</code>", and
     finally a space, tab, line break, or the end of the file.)</p>
    </dd>
    <dt>File extension(s):</dt>
-   <dd>"<code lt="">vtt</code>"</dd>
+   <dd>"<code>vtt</code>"</dd>
    <dt>Macintosh file type code(s):</dt>
    <dd>No specific Macintosh file type codes are recommended for this type.</dd>
   </dl>
