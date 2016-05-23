@@ -1357,7 +1357,7 @@ Possible extra rowspan handling
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-05-18">18 May 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-05-23">23 May 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4062,9 +4062,9 @@ manner suiting the user.</p>
        <ul>
         <li>
          <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be '<var>regionWidth</var> vw'
-     (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+     (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
-         <p>Let <var>lineHeight</var> be '5.33vh' (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
+         <p>Let <var>lineHeight</var> be '5.33vh' (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
         <li>
          <p>Let <var>viewportAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-3">WebVTT region anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-4">WebVTT region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
      from '<var>viewportAnchorX</var> vw'.</p>
@@ -4195,7 +4195,7 @@ following algorithm.</p>
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-13">horizontal</a>, then let <var>width</var> be '<var>size</var> vw' and <var>height</var> be <span class="css">auto</span>.
  Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be '<var>size</var> vh'. (These are CSS values
- used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+ used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
   the following list:</p>
@@ -4300,7 +4300,7 @@ following algorithm.</p>
      </dl>
     <li>
      <p>Let <var>left</var> be '<var>x-position</var> vw' and <var>top</var> be '<var>y-position</var> vh'. (These are CSS
- values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#valdef-length-vh">vh</a> are CSS
+ values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS
  units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints, thus
@@ -4776,7 +4776,7 @@ immediately rerun.</p>
 <pre class="idl def">enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword</dfn> { <dfn class="idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto">"auto"<a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
 enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting</dfn> { <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting">""<a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl">"rl"<a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr">"lr"<a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
 enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start">"start"<a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center">"center"<a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end">"end"<a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
-enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-positionalignsetting-start">"start"<a class="self-link" href="#dom-positionalignsetting-start"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center">"center"<a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-positionalignsetting-end">"end"<a class="self-link" href="#dom-positionalignsetting-end"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto">"auto"<a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
+enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left">"line-left"<a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center">"center"<a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right">"line-right"<a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto">"auto"<a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
 enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start">"start"<a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center">"center"<a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end">"end"<a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left">"left"<a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right">"right"<a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
 [<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, DOMString <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
 interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue</dfn> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
@@ -5341,14 +5341,12 @@ settings</a><span>, in §5.2</span>
     "end"
     <ul>
      <li><a href="#dom-linealignsetting-end">enum-value for LineAlignSetting</a><span>, in §7.1</span>
-     <li><a href="#dom-positionalignsetting-end">enum-value for PositionAlignSetting</a><span>, in §7.1</span>
      <li><a href="#dom-alignsetting-end">enum-value for AlignSetting</a><span>, in §7.1</span>
     </ul>
    <li>
     end
     <ul>
      <li><a href="#dom-linealignsetting-end">enum-value for LineAlignSetting</a><span>, in §7.1</span>
-     <li><a href="#dom-positionalignsetting-end">enum-value for PositionAlignSetting</a><span>, in §7.1</span>
      <li><a href="#dom-alignsetting-end">enum-value for AlignSetting</a><span>, in §7.1</span>
     </ul>
    <li><a href="#selectordef-future">:future</a><span>, in §6.1.2.2</span>
@@ -5363,6 +5361,10 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-line">line</a><span>, in §7.1</span>
    <li><a href="#dom-vttcue-linealign">lineAlign</a><span>, in §7.1</span>
    <li><a href="#enumdef-linealignsetting">LineAlignSetting</a><span>, in §7.1</span>
+   <li><a href="#dom-positionalignsetting-line-left">"line-left"</a><span>, in §7.1</span>
+   <li><a href="#dom-positionalignsetting-line-left">line-left</a><span>, in §7.1</span>
+   <li><a href="#dom-positionalignsetting-line-right">"line-right"</a><span>, in §7.1</span>
+   <li><a href="#dom-positionalignsetting-line-right">line-right</a><span>, in §7.1</span>
    <li><a href="#dom-vttregion-lines">lines</a><span>, in §7.2</span>
    <li><a href="#list-of-webvtt-node-objects">List of WebVTT Node Objects</a><span>, in §5.4</span>
    <li><a href="#dom-directionsetting-lr">"lr"</a><span>, in §7.1</span>
@@ -5376,8 +5378,8 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-region">region</a><span>, in §7.1</span>
    <li><a href="#dom-vttregion-regionanchorx">regionAnchorX</a><span>, in §7.2</span>
    <li><a href="#dom-vttregion-regionanchory">regionAnchorY</a><span>, in §7.2</span>
-   <li><a href="#dom-alignsetting-right">right</a><span>, in §7.1</span>
    <li><a href="#dom-alignsetting-right">"right"</a><span>, in §7.1</span>
+   <li><a href="#dom-alignsetting-right">right</a><span>, in §7.1</span>
    <li><a href="#dom-directionsetting-rl">rl</a><span>, in §7.1</span>
    <li><a href="#dom-directionsetting-rl">"rl"</a><span>, in §7.1</span>
    <li><a href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a><span>, in §6.1</span>
@@ -5389,14 +5391,12 @@ settings</a><span>, in §5.2</span>
     "start"
     <ul>
      <li><a href="#dom-linealignsetting-start">enum-value for LineAlignSetting</a><span>, in §7.1</span>
-     <li><a href="#dom-positionalignsetting-start">enum-value for PositionAlignSetting</a><span>, in §7.1</span>
      <li><a href="#dom-alignsetting-start">enum-value for AlignSetting</a><span>, in §7.1</span>
     </ul>
    <li>
     start
     <ul>
      <li><a href="#dom-linealignsetting-start">enum-value for LineAlignSetting</a><span>, in §7.1</span>
-     <li><a href="#dom-positionalignsetting-start">enum-value for PositionAlignSetting</a><span>, in §7.1</span>
      <li><a href="#dom-alignsetting-start">enum-value for AlignSetting</a><span>, in §7.1</span>
     </ul>
    <li><a href="#dom-vttcue-text">text</a><span>, in §7.1</span>
@@ -5644,8 +5644,8 @@ using only nested cues</a><span>, in §4.5.1</span>
    <li>
     <a data-link-type="biblio">[CSS-VALUES]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-values-3/#valdef-length-vh">vh</a>
-     <li><a href="https://drafts.csswg.org/css-values-3/#valdef-length-vw">vw</a>
+     <li><a href="https://drafts.csswg.org/css-values-3/#vh">vh</a>
+     <li><a href="https://drafts.csswg.org/css-values-3/#vw">vw</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS-WRITING-MODES-3]</a> defines the following terms:
@@ -5736,7 +5736,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-bcp47">[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-align/">CSS Box Alignment Module Level 3</a>. 18 December 2014. WD. URL: <a href="http://dev.w3.org/csswg/css-align/">http://dev.w3.org/csswg/css-align/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. 19 May 2016. WD. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
    <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
    <dd>CSS Backgrounds and Borders Module Level 3 URL: <a href="https://drafts.csswg.org/css-backgrounds-3/">https://drafts.csswg.org/css-backgrounds-3/</a>
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
@@ -5752,7 +5752,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-css-overflow-4">[CSS-OVERFLOW-4]
    <dd>CSS Overflow Module Level 4 URL: <a href="https://drafts.csswg.org/css-overflow-4/">https://drafts.csswg.org/css-overflow-4/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
-   <dd>CSS Positioned Layout Module Level 3 URL: <a href="https://drafts.csswg.org/css-position-3/">https://drafts.csswg.org/css-position-3/</a>
+   <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. 17 May 2016. WD. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
    <dd>Tab Atkins Jr.; Simon Sapin. <a href="http://dev.w3.org/csswg/css-syntax/">CSS Syntax Module Level 3</a>. 20 February 2014. CR. URL: <a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]
@@ -5803,7 +5803,7 @@ using only nested cues</a><span>, in §4.5.1</span>
 <pre class="idl def">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { <a href="#dom-autokeyword-auto">"auto"</a> };
 enum <a href="#enumdef-directionsetting">DirectionSetting</a> { <a href="#dom-directionsetting">""</a> /* horizontal */, <a href="#dom-directionsetting-rl">"rl"</a>, <a href="#dom-directionsetting-lr">"lr"</a> };
 enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { <a href="#dom-linealignsetting-start">"start"</a>, <a href="#dom-linealignsetting-center">"center"</a>, <a href="#dom-linealignsetting-end">"end"</a> };
-enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { <a href="#dom-positionalignsetting-start">"start"</a>, <a href="#dom-positionalignsetting-center">"center"</a>, <a href="#dom-positionalignsetting-end">"end"</a>, <a href="#dom-positionalignsetting-auto">"auto"</a> };
+enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { <a href="#dom-positionalignsetting-line-left">"line-left"</a>, <a href="#dom-positionalignsetting-center">"center"</a>, <a href="#dom-positionalignsetting-line-right">"line-right"</a>, <a href="#dom-positionalignsetting-auto">"auto"</a> };
 enum <a href="#enumdef-alignsetting">AlignSetting</a> { <a href="#dom-alignsetting-start">"start"</a>, <a href="#dom-alignsetting-center">"center"</a>, <a href="#dom-alignsetting-end">"end"</a>, <a href="#dom-alignsetting-left">"left"</a>, <a href="#dom-alignsetting-right">"right"</a> };
 [<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(double <a href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, double <a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, DOMString <a href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
 interface <a href="#vttcue">VTTCue</a> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
