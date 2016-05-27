@@ -70,7 +70,7 @@ urlPrefix: https://heycam.github.io/webidl/
 </pre>
 
 <pre class=link-defaults>
-spec:dom-ls; type:interface; text:Document
+spec:dom; type:interface; text:Document
 spec:css-ruby-1; type:value; text:ruby-base
 spec:css-color-4; type:property; text:color
 spec:css-fonts-3; type:property; text:font-style
@@ -701,10 +701,10 @@ precomposed character).</p>
 
   <p>A boolean indicating whether the <a lt="WebVTT cue line">line</a> is an integer number of lines
   (using the line dimensions of the first line of the cue), or whether it is a percentage of the
-  dimension of the video. The flag is set when lines are counted, unset otherwise.</p>
+  dimension of the video. The flag is set to true when lines are counted, and false otherwise.</p>
 
-  <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is set will be placed within the title-safe
-  area on user agents that use overscan. Cues with the flag unset will be offset as requested
+  <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is true will be placed within the title-safe
+  area on user agents that use overscan. Cues where the flag is false will be offset as requested
   (modulo overlap avoidance if multiple cues are in the same place).</p>
 
   <p>By default, the <a lt="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> is set to
@@ -733,15 +733,15 @@ precomposed character).</p>
   <ol algorithm="computed line">
 
    <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
-   flag</a> of the <a>WebVTT cue</a> is not set, and the <a lt="WebVTT cue line">line</a> is
+   flag</a> of the <a>WebVTT cue</a> is false, and the <a lt="WebVTT cue line">line</a> is
    negative or greater than 100, then return 100 and abort these steps.</p></li>
 
    <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, return the value of the <a>WebVTT cue
-   line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a> is set, so any
+   line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a> is true, so any
    value, not just those in the range 0..100, is valid, or the value is in the range 0..100 and is
    thus valid regardless of the value of that flag.)</p></li>
 
-   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set, return
+   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is false, return
    the value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value
    <a lt="WebVTT cue line automatic">auto</a>.)</p></li>
 
@@ -765,6 +765,11 @@ precomposed character).</p>
    <li><p>Return |n|.</p></li>
 
   </ol>
+
+  <p class="note">Although the <a>WebVTT parser</a> will not set the <a lt="WebVTT cue
+  line">line</a> to a number outside the range 0..100 and also set the <a>WebVTT cue snap-to-lines
+  flag</a> to false, this can happen when using the DOM API's {{VTTCue/snapToLines}} and
+  {{VTTCue/line}} attributes.</p>
 
  </dd>
 
@@ -3977,7 +3982,7 @@ following algorithm.</p>
 
   <dl class="switch">
 
-   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
+   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is false</dt>
    <dd>
     <dl class="switch">
 
@@ -3993,7 +3998,7 @@ following algorithm.</p>
     </dl>
    </dd>
 
-   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is set</dt>
+   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is true</dt>
    <dd>
     <dl class="switch">
 
@@ -4018,7 +4023,7 @@ following algorithm.</p>
 
  <li>
 
-  <p>If the <a>WebVTT cue snap-to-lines flag</a> is set, then run the appropriate steps from the
+  <p>If the <a>WebVTT cue snap-to-lines flag</a> is true, then run the appropriate steps from the
   following list:</p>
 
   <dl class="switch">
@@ -4199,7 +4204,7 @@ following algorithm.</p>
 
   <dl class="switch">
 
-   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is true</dt>
 
    <dd>
 
@@ -4250,8 +4255,8 @@ following algorithm.</p>
 
      <li>
 
-      <p>Let |max dimension| be <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;
-      |margin|).</p>
+      <p>Let |max dimension| be
+      <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;|margin|).</p>
 
      </li>
 
@@ -4362,7 +4367,7 @@ following algorithm.</p>
 
    </dd>
 
-   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is false</dt>
    <dd>
 
     <ol>
@@ -4886,7 +4891,7 @@ interface VTTCue : TextTrackCue {
 
  <dt>|cue| . {{VTTCue/snapToLines}} [ = |value| ]</dt>
  <dd>
-  <p>Returns true if the <a>WebVTT cue snap-to-lines flag</a> is set, false otherwise.</p>
+  <p>Returns true if the <a>WebVTT cue snap-to-lines flag</a> is true, false otherwise.</p>
   <p>Can be set.</p>
  </dd>
 
@@ -5060,8 +5065,8 @@ value.</p>
 
 <p>The <dfn attribute for=VTTCue>snapToLines</dfn> attribute, on getting, must return true if the
 <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents
-is set; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set if the
-new value is true, and must be unset otherwise.</p>
+is true; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set to
+the new value.</p>
 
 <p>The <dfn attribute for=VTTCue>line</dfn> attribute, on getting, must return the <a>WebVTT cue
 line</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
@@ -5069,6 +5074,10 @@ lt="WebVTT cue line automatic">auto</a> must be represented as the string "<code
 setting, the <a>WebVTT cue line</a> must be set to the new value; if the new value is the string
 "<code>auto</code>", then it must be interpreted as the special value <a lt="WebVTT cue line
 automatic">auto</a>.</p>
+
+<p class="note">In order to be able to set the {{VTTCue/snapToLines}} and {{VTTCue/line}} attributes
+in any order, the API does not reject setting {{VTTCue/snapToLines}} to false when {{VTTCue/line}}
+has a value outside the range 0..100, or vice versa.
 
 <p>The <dfn attribute for=VTTCue>lineAlign</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT cue line

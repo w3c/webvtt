@@ -1357,7 +1357,7 @@ Possible extra rowspan handling
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-05-23">23 May 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-05-27">27 May 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1969,9 +1969,9 @@ precomposed character).</p>
     <dd>
      <p>A boolean indicating whether the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-4">line</a> is an integer number of lines
   (using the line dimensions of the first line of the cue), or whether it is a percentage of the
-  dimension of the video. The flag is set when lines are counted, unset otherwise.</p>
-     <p>Cues whose <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-1">WebVTT cue snap-to-lines flag</a> is set will be placed within the title-safe
-  area on user agents that use overscan. Cues with the flag unset will be offset as requested
+  dimension of the video. The flag is set to true when lines are counted, and false otherwise.</p>
+     <p>Cues whose <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-1">WebVTT cue snap-to-lines flag</a> is true will be placed within the title-safe
+  area on user agents that use overscan. Cues where the flag is false will be offset as requested
   (modulo overlap avoidance if multiple cues are in the same place).</p>
      <p>By default, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-2">snap-to-lines flag</a> is set to
   true.</p>
@@ -1991,15 +1991,15 @@ precomposed character).</p>
      <ol data-algorithm="computed line">
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-8">line</a> is numeric, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-4">WebVTT cue snap-to-lines
-   flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-3">WebVTT cue</a> is not set, and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-9">line</a> is
+   flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-3">WebVTT cue</a> is false, and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-9">line</a> is
    negative or greater than 100, then return 100 and abort these steps.</p>
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-10">line</a> is numeric, return the value of the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-11">WebVTT cue
-   line</a> and abort these steps. (Either the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-5">WebVTT cue snap-to-lines flag</a> is set, so any
+   line</a> and abort these steps. (Either the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-5">WebVTT cue snap-to-lines flag</a> is true, so any
    value, not just those in the range 0..100, is valid, or the value is in the range 0..100 and is
    thus valid regardless of the value of that flag.)</p>
       <li>
-       <p>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-6">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-4">WebVTT cue</a> is not set, return
+       <p>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-6">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-4">WebVTT cue</a> is false, return
    the value 100 and abort these steps. (The <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-12">line</a> is the special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-1">auto</a>.)</p>
       <li>
        <p>Let <var>cue</var> be the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-5">WebVTT cue</a>.</p>
@@ -2020,17 +2020,19 @@ precomposed character).</p>
       <li>
        <p>Return <var>n</var>.</p>
      </ol>
+     <p class="note" role="note">Although the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-1">WebVTT parser</a> will not set the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-13">line</a> to a number outside the range 0..100 and also set the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-7">WebVTT cue snap-to-lines
+  flag</a> to false, this can happen when using the DOM API’s <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-1">snapToLines</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-1">line</a></code> attributes.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line alignment" data-noexport="" id="webvtt-cue-line-alignment">A line alignment</dfn>
     <dd>
-     <p>An alignment for the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-10">cue box</a>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-13">line</a>, one
+     <p>An alignment for the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-10">cue box</a>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-14">line</a>, one
   of:</p>
      <dl>
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line start alignment" data-noexport="" id="webvtt-cue-line-start-alignment">Start alignment</dfn>
-      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-11">cue box</a>’s top side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-3">horizontal</a> cues), left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-2">vertical growing right</a>), or right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-2">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-14">line</a>.
+      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-11">cue box</a>’s top side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-3">horizontal</a> cues), left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-2">vertical growing right</a>), or right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-2">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-15">line</a>.
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line center alignment" data-noexport="" id="webvtt-cue-line-center-alignment">Center alignment</dfn>
-      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-12">cue box</a> is centered at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-15">line</a>.
+      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-12">cue box</a> is centered at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-16">line</a>.
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line end alignment" data-noexport="" id="webvtt-cue-line-end-alignment">End alignment</dfn>
-      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-13">cue box</a>’s bottom side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-4">horizontal</a> cues), right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-3">vertical growing right</a>), or left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-3">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-16">line</a>.
+      <dd>The <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-13">cue box</a>’s bottom side (for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-4">horizontal</a> cues), right side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-3">vertical growing right</a>), or left side (for <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-3">vertical growing left</a>) is aligned at the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-17">line</a>.
      </dl>
      <p>A <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-6">WebVTT cue</a> has a default <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-1">WebVTT cue line alignment</a> of <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-1">start</a>.</p>
      <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-2">line alignment</a> is separate from the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-1">text alignment</a> — right-to-left vs. left-to-right cue text
@@ -2198,7 +2200,7 @@ Hello!
    <p>The associated <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-10">WebVTT
 cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-1">rules for updating the display of WebVTT text tracks</a>.</p>
    <div class="impl">
-    <p>When a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-11">WebVTT cue</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-active-flag">active flag</a> is set has its <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-8">writing direction</a>, <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-7">snap-to-lines flag</a>, <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-17">line</a>, <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-18">position</a>, <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-6">size</a>, <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-12">text
+    <p>When a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-11">WebVTT cue</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-active-flag">active flag</a> is set has its <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-8">writing direction</a>, <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-8">snap-to-lines flag</a>, <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-18">line</a>, <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-18">position</a>, <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-6">size</a>, <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-12">text
  alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-1">region</a>, or <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text</a> change
  value, then the user agent must empty the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a>, and then immediately
  run the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-2">rules for updating the display of WebVTT text tracks</a>.</p>
@@ -2897,10 +2899,10 @@ said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-cue
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser">WebVTT parser</dfn>, given an input byte stream, a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>, and a collection of <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheets</a> <var>stylesheets</var>, must decode the byte
 stream using the <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#utf-8-decode">UTF-8 decode</a> algorithm, and then must parse the resulting
 string according to the <a data-link-type="dfn" href="#webvtt-parser-algorithm" id="ref-for-webvtt-parser-algorithm-1">WebVTT parser algorithm</a> below. This results in <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-14">WebVTT cues</a> being added to <var>output</var>, and <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheets</a> being added to <var>stylesheets</var>. <a data-link-type="biblio" href="#biblio-rfc3629">[RFC3629]</a></p>
-   <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-1">WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
+   <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-2">WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
 asynchronously, with the input byte stream being updated incrementally as the resource is
 downloaded; this is called an <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="incremental-webvtt-parser">incremental WebVTT parser</dfn>.</p>
-   <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-2">WebVTT parser</a> verifies a file signature before parsing the provided byte stream. If the
+   <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-3">WebVTT parser</a> verifies a file signature before parsing the provided byte stream. If the
 stream lacks this WebVTT file signature, then the parser aborts.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser-algorithm">WebVTT parser algorithm</dfn> is as follows:</p>
    <ol>
@@ -2974,7 +2976,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
    characters.</p>
      </ol>
     <li>
-     <p><i>End</i>: The file has ended. Abort these steps. The <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-3">WebVTT parser</a> has finished.
+     <p><i>End</i>: The file has ended. Abort these steps. The <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-4">WebVTT parser</a> has finished.
  The file was successfully processed.</p>
    </ol>
    <p>When the algorithm above says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-a-webvtt-block">collect a WebVTT block</dfn>, optionally with a flag <i>in
@@ -3044,9 +3046,9 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-10">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-11">horizontal</a>.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-8">WebVTT cue snap-to-lines flag</a> be true.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-9">WebVTT cue snap-to-lines flag</a> be true.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-18">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-2">auto</a>.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-19">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-2">auto</a>.</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-5">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-4">start alignment</a>.</p>
             <li>
@@ -3153,7 +3155,7 @@ header</i> set, the user agent must run the following steps:</p>
      <p>Otherwise, return null.</p>
    </ol>
    <h3 class="heading settled" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
-   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-4">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
+   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
 settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>, the user agent must run the following
 algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-8">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-1">lists of WebVTT node
@@ -3373,9 +3375,9 @@ run the following steps:</p>
              </ol>
            </dl>
           <li>
-           <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-19">WebVTT cue line</a> be <var>number</var>.</p>
+           <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-20">WebVTT cue line</a> be <var>number</var>.</p>
           <li>
-           <p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character (%), then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-9">WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p>
+           <p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character (%), then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-10">WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p>
           <li>
            <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>start</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-6">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-5">start alignment</a>.</p>
@@ -3938,7 +3940,7 @@ in this specification. Finally, this context is <em>not</em> "as part of an attr
 comes to handling a missing semicolon).</p>
    <h3 class="heading settled" data-level="5.5" id="dom-construction-rules"><span class="secno">5.5. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-dom-construction-rules">WebVTT cue text DOM construction rules</dfn></span><a class="self-link" href="#dom-construction-rules"></a></h3>
    <p class="note" role="note">For the purpose of retrieving a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-19">WebVTT cue</a>’s content via the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-1">getCueAsHTML()</a></code> method of the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-1">VTTCue</a></code> interface, it needs to be parsed to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code>. This section describes how.</p>
-   <p>To convert a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-4">list of WebVTT Node Objects</a> to a DOM tree for <code class="idl"><a data-link-type="idl">Document</a></code> <var>owner</var>, user
+   <p>To convert a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-4">list of WebVTT Node Objects</a> to a DOM tree for <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document">Document</a></code> <var>owner</var>, user
 agents must create a tree of DOM nodes that is isomorphous to the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-6">WebVTT Node Objects</a>, with the following mapping of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-7">WebVTT
 Node Objects</a> to DOM nodes:</p>
    <table class="complex data">
@@ -4232,7 +4234,7 @@ following algorithm.</p>
     <li>
      <p>Determine the value of whichever of <var>x-position</var> or <var>y-position</var> is not yet calculated for <var>cue</var> as per the appropriate rules from the following list:</p>
      <dl class="switch">
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-10">WebVTT cue snap-to-lines flag</a> is not set
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-11">WebVTT cue snap-to-lines flag</a> is false
       <dd>
        <dl class="switch">
         <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-19">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-15">horizontal</a>
@@ -4242,7 +4244,7 @@ following algorithm.</p>
         <dd>
          <p>Let <var>x-position</var> be the <a data-link-type="dfn" href="#cue-computed-line" id="ref-for-cue-computed-line-2">computed line</a>.</p>
        </dl>
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-11">WebVTT cue snap-to-lines flag</a> is set
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-12">WebVTT cue snap-to-lines flag</a> is true
       <dd>
        <dl class="switch">
         <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-21">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>
@@ -4256,7 +4258,7 @@ following algorithm.</p>
      <p class="note" role="note">These are not final positions, they are merely temporary positions used to
   calculate box dimensions below.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-12">WebVTT cue snap-to-lines flag</a> is set, then run the appropriate steps from the
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-13">WebVTT cue snap-to-lines flag</a> is true, then run the appropriate steps from the
   following list:</p>
      <dl class="switch">
       <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-23">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-17">horizontal</a>
@@ -4375,7 +4377,7 @@ Red or green?
     <li>
      <p>Adjust the positions of <var>boxes</var> according to the appropriate steps from the following list:</p>
      <dl class="switch">
-      <dt>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-13">WebVTT cue snap-to-lines flag</a> is set
+      <dt>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-14">WebVTT cue snap-to-lines flag</a> is true
       <dd>
        <p>Many of the steps in this algorithm vary according to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-25">WebVTT cue writing
     direction</a>. Steps labeled "<strong>Horizontal</strong>" must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-26">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-18">horizontal</a>, steps labeled "<strong>Vertical</strong>" must be followed when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-27">WebVTT cue writing direction</a> is either <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-10">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-10">vertical growing right</a>, steps labeled "<strong>Vertical Growing Left</strong>"
@@ -4403,7 +4405,7 @@ Red or green?
          <p>These dimensions must not be adjusted for overscan. (The algorithm does that
       separately.)</p>
         <li>
-         <p>Let <var>max dimension</var> be <var>full dimension</var> - (2 ×  <var>margin</var>).</p>
+         <p>Let <var>max dimension</var> be <var>full dimension</var> - (2 × <var>margin</var>).</p>
         <li>
          <p><strong>Horizontal</strong>: Let <var>step</var> be the height of the first line box in <var>boxes</var>.</p>
          <p><strong>Vertical</strong>: Let <var>step</var> be the width of the first line box in <var>boxes</var>.</p>
@@ -4467,7 +4469,7 @@ Red or green?
         <li>
          <p>Jump back to the step labeled <i>step loop</i>.</p>
        </ol>
-      <dt>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-14">WebVTT cue snap-to-lines flag</a> is not set
+      <dt>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-15">WebVTT cue snap-to-lines flag</a> is false
       <dd>
        <ol>
         <li>
@@ -4782,8 +4784,8 @@ enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="e
 interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue</dfn> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   attribute <a data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
-  attribute boolean <a class="idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-1">snapToLines</a>;
-  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-1">line</a>;
+  attribute boolean <a class="idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
+  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-2">line</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-linealignsetting" id="ref-for-enumdef-linealignsetting-1">LineAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-1">lineAlign</a>;
   attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-2">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-position" id="ref-for-dom-vttcue-position-1">position</a>;
   attribute <a data-link-type="idl-name" href="#enumdef-positionalignsetting" id="ref-for-enumdef-positionalignsetting-1">PositionAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign" id="ref-for-dom-vttcue-positionalign-1">positionAlign</a>;
@@ -4821,13 +4823,13 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
        <p>The string "<code>lr</code>".</p>
      </dl>
      <p>Can be set.</p>
-    <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a></code> [ = <var>value</var> ]
+    <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-3">snapToLines</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-15">WebVTT cue snap-to-lines flag</a> is set, false otherwise.</p>
+     <p>Returns true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-16">WebVTT cue snap-to-lines flag</a> is true, false otherwise.</p>
      <p>Can be set.</p>
-    <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-2">line</a></code> [ = <var>value</var> ]
+    <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-3">line</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-20">WebVTT cue line</a>. In the case of the value being <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-3">auto</a>, the string "<code>auto</code>" is returned.</p>
+     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-21">WebVTT cue line</a>. In the case of the value being <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-3">auto</a>, the string "<code>auto</code>" is returned.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-2">lineAlign</a></code> [ = <var>value</var> ]
     <dd>
@@ -4922,9 +4924,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-33">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-21">horizontal</a>.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-16">WebVTT cue snap-to-lines flag</a> be true.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-17">WebVTT cue snap-to-lines flag</a> be true.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-21">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-4">auto</a>.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-4">auto</a>.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-14">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-7">start alignment</a>.</p>
     <li>
@@ -4964,13 +4966,15 @@ direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-36">WebVTT cue writing direction</a> must be set to the value given in the first
 cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines">snapToLines</dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-17">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-35">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
-is set; or false otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> must be set if the
-new value is true, and must be unset otherwise.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line">line</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines">snapToLines</dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-35">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
+is true; or false otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-19">WebVTT cue snap-to-lines flag</a> must be set to
+the new value.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line">line</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-23">WebVTT cue
 line</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-36">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-8">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-5">auto</a> must be represented as the string "<code>auto</code>". On
-setting, the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-23">WebVTT cue line</a> must be set to the new value; if the new value is the string
+setting, the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-24">WebVTT cue line</a> must be set to the new value; if the new value is the string
 "<code>auto</code>", then it must be interpreted as the special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-6">auto</a>.</p>
+   <p class="note" role="note">In order to be able to set the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-4">snapToLines</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-4">line</a></code> attributes
+in any order, the API does not reject setting <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-5">snapToLines</a></code> to false when <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-5">line</a></code> has a value outside the range 0..100, or vice versa. </p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-linealign">lineAlign</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-15">WebVTT cue line
 alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-37">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-9">VTTCue</a></code> object represents:</p>
@@ -5685,6 +5689,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <li>
     <a data-link-type="biblio">[WHATWG-DOM]</a> defines the following terms:
     <ul>
+     <li><a href="https://dom.spec.whatwg.org/#document">Document</a>
      <li><a href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a>
      <li><a href="https://dom.spec.whatwg.org/#processinginstruction">ProcessingInstruction</a>
      <li><a href="https://dom.spec.whatwg.org/#text">Text</a>
@@ -5907,20 +5912,20 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-snap-to-lines-flag">
    <b><a href="#webvtt-cue-snap-to-lines-flag">#webvtt-cue-snap-to-lines-flag</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-2">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-3">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-4">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-5">(5)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-6">(6)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-7">(7)</a>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-8">5.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-9">5.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-10">6.1. Processing model</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-11">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-12">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-13">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-14">(5)</a>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-15">7.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-16">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-17">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-18">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-2">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-3">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-4">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-5">(5)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-6">(6)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-7">(7)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-8">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-9">5.1. WebVTT file parsing</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-10">5.3. WebVTT cue timings and settings parsing</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-11">6.1. Processing model</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-12">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-13">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-14">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-15">(5)</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-16">7.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-17">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-18">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-19">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-line">
    <b><a href="#webvtt-cue-line">#webvtt-cue-line</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-line-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-line-2">(2)</a> <a href="#ref-for-webvtt-cue-line-3">(3)</a> <a href="#ref-for-webvtt-cue-line-4">(4)</a> <a href="#ref-for-webvtt-cue-line-5">(5)</a> <a href="#ref-for-webvtt-cue-line-6">(6)</a> <a href="#ref-for-webvtt-cue-line-7">(7)</a> <a href="#ref-for-webvtt-cue-line-8">(8)</a> <a href="#ref-for-webvtt-cue-line-9">(9)</a> <a href="#ref-for-webvtt-cue-line-10">(10)</a> <a href="#ref-for-webvtt-cue-line-11">(11)</a> <a href="#ref-for-webvtt-cue-line-12">(12)</a> <a href="#ref-for-webvtt-cue-line-13">(13)</a> <a href="#ref-for-webvtt-cue-line-14">(14)</a> <a href="#ref-for-webvtt-cue-line-15">(15)</a> <a href="#ref-for-webvtt-cue-line-16">(16)</a> <a href="#ref-for-webvtt-cue-line-17">(17)</a>
-    <li><a href="#ref-for-webvtt-cue-line-18">5.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-19">5.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-20">7.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-21">(2)</a> <a href="#ref-for-webvtt-cue-line-22">(3)</a> <a href="#ref-for-webvtt-cue-line-23">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-line-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-line-2">(2)</a> <a href="#ref-for-webvtt-cue-line-3">(3)</a> <a href="#ref-for-webvtt-cue-line-4">(4)</a> <a href="#ref-for-webvtt-cue-line-5">(5)</a> <a href="#ref-for-webvtt-cue-line-6">(6)</a> <a href="#ref-for-webvtt-cue-line-7">(7)</a> <a href="#ref-for-webvtt-cue-line-8">(8)</a> <a href="#ref-for-webvtt-cue-line-9">(9)</a> <a href="#ref-for-webvtt-cue-line-10">(10)</a> <a href="#ref-for-webvtt-cue-line-11">(11)</a> <a href="#ref-for-webvtt-cue-line-12">(12)</a> <a href="#ref-for-webvtt-cue-line-13">(13)</a> <a href="#ref-for-webvtt-cue-line-14">(14)</a> <a href="#ref-for-webvtt-cue-line-15">(15)</a> <a href="#ref-for-webvtt-cue-line-16">(16)</a> <a href="#ref-for-webvtt-cue-line-17">(17)</a> <a href="#ref-for-webvtt-cue-line-18">(18)</a>
+    <li><a href="#ref-for-webvtt-cue-line-19">5.1. WebVTT file parsing</a>
+    <li><a href="#ref-for-webvtt-cue-line-20">5.3. WebVTT cue timings and settings parsing</a>
+    <li><a href="#ref-for-webvtt-cue-line-21">7.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-22">(2)</a> <a href="#ref-for-webvtt-cue-line-23">(3)</a> <a href="#ref-for-webvtt-cue-line-24">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-line-automatic">
@@ -6569,8 +6574,9 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-parser">
    <b><a href="#webvtt-parser">#webvtt-parser</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-parser-1">5.1. WebVTT file parsing</a> <a href="#ref-for-webvtt-parser-2">(2)</a> <a href="#ref-for-webvtt-parser-3">(3)</a>
-    <li><a href="#ref-for-webvtt-parser-4">5.2. WebVTT region settings parsing</a>
+    <li><a href="#ref-for-webvtt-parser-1">3.1. WebVTT cues</a>
+    <li><a href="#ref-for-webvtt-parser-2">5.1. WebVTT file parsing</a> <a href="#ref-for-webvtt-parser-3">(2)</a> <a href="#ref-for-webvtt-parser-4">(3)</a>
+    <li><a href="#ref-for-webvtt-parser-5">5.2. WebVTT region settings parsing</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="incremental-webvtt-parser">
@@ -7001,13 +7007,15 @@ title</a>
   <aside class="dfn-panel" data-for="dom-vttcue-snaptolines">
    <b><a href="#dom-vttcue-snaptolines">#dom-vttcue-snaptolines</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-vttcue-snaptolines-1">7.1. The VTTCue interface</a> <a href="#ref-for-dom-vttcue-snaptolines-2">(2)</a>
+    <li><a href="#ref-for-dom-vttcue-snaptolines-1">3.1. WebVTT cues</a>
+    <li><a href="#ref-for-dom-vttcue-snaptolines-2">7.1. The VTTCue interface</a> <a href="#ref-for-dom-vttcue-snaptolines-3">(2)</a> <a href="#ref-for-dom-vttcue-snaptolines-4">(3)</a> <a href="#ref-for-dom-vttcue-snaptolines-5">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttcue-line">
    <b><a href="#dom-vttcue-line">#dom-vttcue-line</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-vttcue-line-1">7.1. The VTTCue interface</a> <a href="#ref-for-dom-vttcue-line-2">(2)</a>
+    <li><a href="#ref-for-dom-vttcue-line-1">3.1. WebVTT cues</a>
+    <li><a href="#ref-for-dom-vttcue-line-2">7.1. The VTTCue interface</a> <a href="#ref-for-dom-vttcue-line-3">(2)</a> <a href="#ref-for-dom-vttcue-line-4">(3)</a> <a href="#ref-for-dom-vttcue-line-5">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttcue-linealign">
