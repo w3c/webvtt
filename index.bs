@@ -2314,7 +2314,7 @@ header</i> set, the user agent must run the following steps:</p>
          (0,100).</p></li>
 
          <li><p>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
-         scroll none">NONE</a>.</p></li>
+         scroll none">none</a>.</p></li>
 
          <li><p>Let |buffer| be the empty string.</p></li>
 
@@ -2465,8 +2465,8 @@ Objects</a>.</p>
      <dd>
       <ol>
        <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>up</code>", then let
-       |region|'s <a lt="WebVTT region scroll">scroll value</a> be "<a lt="WebVTT region scroll
-       up">scroll up</a>".</p></li>
+       |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region scroll
+       up">up</a>.</p></li>
       </ol>
      </dd>
     </dl>
@@ -3727,22 +3727,22 @@ manner suiting the user.</p>
     <p>Prepare some variables for the application of CSS properties to |regionNode| as follows:</p>
 
     <ul>
-     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be '|regionWidth| vw'
+     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be ''|regionWidth| vw''
      (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
-     <li><p>Let |lineHeight| be '5.33vh' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
-     be the <a>WebVTT region lines</a>. Let |lines| be '|lineHeight| multiplied by
+     <li><p>Let |lineHeight| be ''5.33vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
+     be the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
      |regionHeight|.</p></li>
 
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorX| be the x dimension of the <a>WebVTT region anchor</a>. Let |leftOffset| be
      |regionAnchorX| multiplied by |width| divided by 100.0. Let |left| be |leftOffset| subtracted
-     from '|viewportAnchorX| vw'.</p></li>
+     from ''|viewportAnchorX| vw''.</p></li>
 
      <li><p>Let |viewportAnchorY| be the y dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorY| be the y dimension of the <a>WebVTT region anchor</a>. Let |topOffset| be
      |regionAnchorY| multiplied by |lines| divided by 100.0. Let |top| be |topOffset| subtracted
-     from '|viewportAnchorY| vh'.</p></li>
+     from ''|viewportAnchorY| vh''.</p></li>
     </ul>
    </li>
 
@@ -3806,8 +3806,8 @@ manner suiting the user.</p>
      <li><p>Let |region| be |cue|'s <a>WebVTT cue region</a>.</p></li>
 
      <li><p>If |region|'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and |region|
-     already has one child, set |region|'s 'transition-property' to 'top' and 'transition-duration'
-     to '0.433s'.</p></li>
+     already has one child, set |region|'s 'transition-property' to ''transition-property/top'' and
+     'transition-duration' to ''0.433s''.</p></li>
 
      <li><p>Let |offset| be |cue|'s <a lt="cue computed position">computed position</a> multiplied
      by |region|'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
@@ -4496,13 +4496,13 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 </table>
 
 <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-'5vh sans-serif'. [[!CSS3-RUBY]] [[!CSS-VALUES]]</p>
+''5vh sans-serif''. [[!CSS3-RUBY]] [[!CSS-VALUES]]</p>
 
 <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-'rgba(255,255,255,1)'. [[!CSS3-COLOR]]</p>
+''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> and on <a>WebVTT Ruby
-Text Objects</a> must be set to 'rgba(0,0,0,0.8)'. [[!CSS3-COLOR]]</p>
+Text Objects</a> must be set to ''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''white-space/pre-line''. [[!CSS21]]</p>
@@ -4527,10 +4527,10 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
 <ul>
  <li>the 'position' property must be set to ''position/absolute''</li>
  <li>the 'writing-mode' property must be set to ''writing-mode/horizontal-tb''</li>
- <li>the 'background' shorthand property must be set to 'rgba(0,0,0,0.8)'</li>
+ <li>the 'background' shorthand property must be set to ''rgba(0,0,0,0.8)''</li>
  <li>the 'overflow-wrap' property must be set to ''overflow-wrap/break-word''</li>
- <li>the 'font' shorthand property must be set to '5vh sans-serif'</li>
- <li>the 'color' property must be set to 'rgba(255,255,255,1)'</li>
+ <li>the 'font' shorthand property must be set to ''5vh sans-serif''</li>
+ <li>the 'color' property must be set to ''rgba(255,255,255,1)''</li>
  <li>the 'overflow' property must be set to ''overflow/hidden''</li>
  <li>the 'width' property must be set to |width|</li>
  <li>the 'min-height' property must be set to ''0px''</li>

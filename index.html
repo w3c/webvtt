@@ -3128,7 +3128,7 @@ header</i> set, the user agent must run the following steps:</p>
              <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-1">viewport anchor point</a> be
          (0,100).</p>
             <li>
-             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-1">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none" id="ref-for-webvtt-region-scroll-none-1">NONE</a>.</p>
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-1">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-none" id="ref-for-webvtt-region-scroll-none-1">none</a>.</p>
             <li>
              <p>Let <var>buffer</var> be the empty string.</p>
            </ol>
@@ -3242,7 +3242,7 @@ Objects</a>.</p>
         <dd>
          <ol>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>up</code>", then let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-2">scroll value</a> be "<a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-1">scroll up</a>".</p>
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>up</code>", then let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-2">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-1">up</a>.</p>
          </ol>
        </dl>
       <li><i>Next setting</i>: Continue to the next setting, if any.
@@ -4063,16 +4063,15 @@ manner suiting the user.</p>
        <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as follows:</p>
        <ul>
         <li>
-         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be '<var>regionWidth</var> vw'
-     (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
-         <p>Let <var>lineHeight</var> be '5.33vh' (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be '<var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
+         <p>Let <var>lineHeight</var> be <span class="css">5.33vh</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
         <li>
          <p>Let <var>viewportAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-3">WebVTT region anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-4">WebVTT region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
-     from '<var>viewportAnchorX</var> vw'.</p>
+     from <span class="css"><var>viewportAnchorX</var> vw</span>.</p>
         <li>
          <p>Let <var>viewportAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-5">WebVTT region anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-6">WebVTT region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
-     from '<var>viewportAnchorY</var> vh'.</p>
+     from <span class="css"><var>viewportAnchorY</var> vh</span>.</p>
        </ul>
       <li>
        <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following constraints,
@@ -4122,7 +4121,7 @@ manner suiting the user.</p>
         <li>
          <p>Let <var>region</var> be <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-6">WebVTT cue region</a>.</p>
         <li>
-         <p>If <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-3">WebVTT region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>’s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to '0.433s'.</p>
+         <p>If <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-3">WebVTT region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>’s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <span class="css">top</span> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to <span class="css">0.433s</span>.</p>
         <li>
          <p>Let <var>offset</var> be <var>cue</var>’s <a data-link-type="dfn" href="#cue-computed-position" id="ref-for-cue-computed-position-1">computed position</a> multiplied
      by <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-4">WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
@@ -4558,12 +4557,10 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
       <td><a data-link-type="dfn" href="#webvtt-cue-right-alignment" id="ref-for-webvtt-cue-right-alignment-6">Right alignment</a>
       <td><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-text-align-right">right</a>
    </table>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-12">list of WebVTT Node Objects</a> must be set to
-'5vh sans-serif'. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a> <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-13">list of WebVTT Node Objects</a> must be set to
-'rgba(255,255,255,1)'. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-12">list of WebVTT Node Objects</a> must be set to <span class="css">5vh sans-serif</span>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a> <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-13">list of WebVTT Node Objects</a> must be set to <span class="css">rgba(255,255,255,1)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box-1">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-7">WebVTT Ruby
-Text Objects</a> must be set to 'rgba(0,0,0,0.8)'. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
+Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a> property on <a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object-4">WebVTT Italic Objects</a> must be set
 to <span class="css">italic</span>.</p>
@@ -4576,10 +4573,10 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-writing-mode">writing-mode</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-writing-mode-horizontal-tb">horizontal-tb</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property must be set to 'rgba(0,0,0,0.8)'
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property must be set to <span class="css">rgba(0,0,0,0.8)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to '5vh sans-serif'
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to 'rgba(255,255,255,1)'
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to <span class="css">5vh sans-serif</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-4/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-4/#valdef-overflow-hidden">hidden</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
