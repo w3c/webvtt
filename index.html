@@ -4063,15 +4063,15 @@ manner suiting the user.</p>
        <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as follows:</p>
        <ul>
         <li>
-         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
          <p>Let <var>lineHeight</var> be <span class="css">5.33vh</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
         <li>
          <p>Let <var>viewportAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-3">WebVTT region anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-4">WebVTT region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
-     from <span class="css"><var>viewportAnchorX</var> vw</span>.</p>
+     from <span class="css"><var>viewportAnchorX</var> vw</span>.</p>
         <li>
          <p>Let <var>viewportAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-5">WebVTT region anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-6">WebVTT region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
-     from <span class="css"><var>viewportAnchorY</var> vh</span>.</p>
+     from <span class="css"><var>viewportAnchorY</var> vh</span>.</p>
        </ul>
       <li>
        <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following constraints,
@@ -4121,7 +4121,7 @@ manner suiting the user.</p>
         <li>
          <p>Let <var>region</var> be <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-6">WebVTT cue region</a>.</p>
         <li>
-         <p>If <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-3">WebVTT region scroll</a> setting is '<code>up</code>' and <var>region</var> already has one child, set <var>region</var>’s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <span class="css">top</span> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to <span class="css">0.433s</span>.</p>
+         <p>If <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-3">WebVTT region scroll</a> setting is <a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-2">up</a> and <var>region</var> already has one child, set <var>region</var>’s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <span class="css">top</span> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to <span class="css">0.433s</span>.</p>
         <li>
          <p>Let <var>offset</var> be <var>cue</var>’s <a data-link-type="dfn" href="#cue-computed-position" id="ref-for-cue-computed-position-1">computed position</a> multiplied
      by <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-4">WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
@@ -4138,7 +4138,7 @@ manner suiting the user.</p>
            <p>Subtract <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-6">WebVTT region width</a> from <var>offset</var>.</p>
          </dl>
         <li>
-         <p>Let <var>left</var> be '<var>offset</var> %'. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+         <p>Let <var>left</var> be <span class="css"><var>offset</var> %</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
          <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are
       used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region.</p>
@@ -4194,9 +4194,8 @@ following algorithm.</p>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-9">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-13">horizontal</a>, then let <var>width</var> be '<var>size</var> vw' and <var>height</var> be <span class="css">auto</span>.
- Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be '<var>size</var> vh'. (These are CSS values
- used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-13">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
+ (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
   the following list:</p>
@@ -4300,9 +4299,9 @@ following algorithm.</p>
        </ol>
      </dl>
     <li>
-     <p>Let <var>left</var> be '<var>x-position</var> vw' and <var>top</var> be '<var>y-position</var> vh'. (These are CSS
- values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS
- units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+     <p>Let <var>left</var> be <span class="css"><var>x-position</var> vw</span> and <var>top</var> be <span class="css"><var>y-position</var> vh</span>. (These are
+ CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are
+ CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints, thus
   obtaining a set of CSS boxes positioned relative to an initial containing block: <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
@@ -5168,7 +5167,7 @@ the second cell of the row in the table below whose first cell is the <a data-li
       <td><a data-link-type="dfn" href="#webvtt-region-scroll-none" id="ref-for-webvtt-region-scroll-none-2">None</a>
       <td>"<code></code>" (the empty string)
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-2">Up</a>
+      <td><a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-3">Up</a>
       <td>"<code>up</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-8">WebVTT region scroll</a> must be set to the value given on the first cell of
@@ -6206,7 +6205,8 @@ title</a>
    <b><a href="#webvtt-region-scroll-up">#webvtt-region-scroll-up</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-region-scroll-up-1">5.2. WebVTT region settings parsing</a>
-    <li><a href="#ref-for-webvtt-region-scroll-up-2">7.2. The VTTRegion interface</a>
+    <li><a href="#ref-for-webvtt-region-scroll-up-2">6.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-region-scroll-up-3">7.2. The VTTRegion interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="text-track-list-of-regions">

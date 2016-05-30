@@ -3727,8 +3727,8 @@ manner suiting the user.</p>
     <p>Prepare some variables for the application of CSS properties to |regionNode| as follows:</p>
 
     <ul>
-     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be ''|regionWidth| vw''
-     (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
+     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be
+     ''|regionWidth|&#x2009;vw'' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
      <li><p>Let |lineHeight| be ''5.33vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
      be the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
@@ -3737,12 +3737,12 @@ manner suiting the user.</p>
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorX| be the x dimension of the <a>WebVTT region anchor</a>. Let |leftOffset| be
      |regionAnchorX| multiplied by |width| divided by 100.0. Let |left| be |leftOffset| subtracted
-     from ''|viewportAnchorX| vw''.</p></li>
+     from ''|viewportAnchorX|&#x2009;vw''.</p></li>
 
      <li><p>Let |viewportAnchorY| be the y dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorY| be the y dimension of the <a>WebVTT region anchor</a>. Let |topOffset| be
      |regionAnchorY| multiplied by |lines| divided by 100.0. Let |top| be |topOffset| subtracted
-     from ''|viewportAnchorY| vh''.</p></li>
+     from ''|viewportAnchorY|&#x2009;vh''.</p></li>
     </ul>
    </li>
 
@@ -3805,9 +3805,9 @@ manner suiting the user.</p>
     <ol>
      <li><p>Let |region| be |cue|'s <a>WebVTT cue region</a>.</p></li>
 
-     <li><p>If |region|'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and |region|
-     already has one child, set |region|'s 'transition-property' to ''transition-property/top'' and
-     'transition-duration' to ''0.433s''.</p></li>
+     <li><p>If |region|'s <a>WebVTT region scroll</a> setting is <a lt="WebVTT region scroll
+     up">up</a> and |region| already has one child, set |region|'s 'transition-property' to
+     ''transition-property/top'' and 'transition-duration' to ''0.433s''.</p></li>
 
      <li><p>Let |offset| be |cue|'s <a lt="cue computed position">computed position</a> multiplied
      by |region|'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
@@ -3827,7 +3827,7 @@ manner suiting the user.</p>
       </dl>
      </li>
 
-     <li><p>Let |left| be '|offset|&#x2009;%'. [[!CSS-VALUES]]</p></li>
+     <li><p>Let |left| be ''|offset|&#x2009;%''. [[!CSS-VALUES]]</p></li>
 
      <li>
       <p>Apply the terms of the CSS specifications to |nodes| with the same constraints that are
@@ -3918,10 +3918,10 @@ following algorithm.</p>
  size</a>. Otherwise, let |size| be |maximum size|.</p></li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
- direction">horizontal</a>, then let |width| be '|size|&#x2009;vw' and |height| be ''height/auto''.
- Otherwise, let |width| be ''width/auto'' and |height| be '|size|&#x2009;vh'. (These are CSS values
- used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS units.)
- [[!CSS-VALUES]]</p></li>
+ direction">horizontal</a>, then let |width| be ''|size|&#x2009;vw'' and |height| be
+ ''height/auto''. Otherwise, let |width| be ''width/auto'' and |height| be ''|size|&#x2009;vh''.
+ (These are CSS values used by the next section to set CSS properties for the rendering; ''vw'' and
+ ''vh'' are CSS units.) [[!CSS-VALUES]]</p></li>
 
  <li>
 
@@ -4085,9 +4085,9 @@ following algorithm.</p>
 
  </li>
 
- <li><p>Let |left| be '|x-position|&#x2009;vw' and |top| be '|y-position|&#x2009;vh'. (These are CSS
- values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS
- units.) [[!CSS-VALUES]]</p></li>
+ <li><p>Let |left| be ''|x-position|&#x2009;vw'' and |top| be ''|y-position|&#x2009;vh''. (These are
+ CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
+ CSS units.) [[!CSS-VALUES]]</p></li>
 
  <li>
 
