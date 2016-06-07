@@ -686,8 +686,8 @@ precomposed character).</p>
   and <a lt="WebVTT cue position">position</a> and <a lt="WebVTT cue size">size</a> percentages are
   relative to the height of the video.</p>
 
-  <p>The <a lt="WebVTT cue writing direction">writing direction</a> defaults to <a lt="WebVTT cue
-  horizontal writing direction">horizontal</a>.</p>
+  <p>By default, the <a lt="WebVTT cue writing direction">writing direction</a> is set to to <a
+  lt="WebVTT cue horizontal writing direction">horizontal</a>.</p>
 
   <p class=note>The <a lt="WebVTT cue vertical growing left writing direction">vertical growing
   left</a> writing direction could be used for vertical Chinese, Japanese, and Korean, and the <a
@@ -726,15 +726,27 @@ precomposed character).</p>
   video viewport height or width, or as the special value <dfn lt="WebVTT cue line
   automatic">auto</dfn>, which means the offset is to depend on the other showing tracks.</p>
 
+  <p>By default, the <a lt="WebVTT cue line">line</a> is set to <a lt="WebVTT cue line
+  automatic">auto</a>.</p>
+
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed line">computed line</dfn> whose value is that
   returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
 
   <ol algorithm="computed line">
 
-   <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
-   flag</a> of the <a>WebVTT cue</a> is false, and the <a lt="WebVTT cue line">line</a> is
-   negative or greater than 100, then return 100 and abort these steps.</p></li>
+   <li>
+
+    <p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines flag</a>
+    of the <a>WebVTT cue</a> is false, and the <a lt="WebVTT cue line">line</a> is negative or
+    greater than 100, then return 100 and abort these steps.</p>
+
+    <p class="note">Although the <a>WebVTT parser</a> will not set the <a lt="WebVTT cue
+    line">line</a> to a number outside the range 0..100 and also set the <a>WebVTT cue snap-to-lines
+    flag</a> to false, this can happen when using the DOM API's {{VTTCue/snapToLines}} and
+    {{VTTCue/line}} attributes.</p>
+
+   </li>
 
    <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, return the value of the <a>WebVTT cue
    line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a> is true, so any
@@ -766,10 +778,11 @@ precomposed character).</p>
 
   </ol>
 
-  <p class="note">Although the <a>WebVTT parser</a> will not set the <a lt="WebVTT cue
-  line">line</a> to a number outside the range 0..100 and also set the <a>WebVTT cue snap-to-lines
-  flag</a> to false, this can happen when using the DOM API's {{VTTCue/snapToLines}} and
-  {{VTTCue/line}} attributes.</p>
+  <p class="example">For example, if two <a>text tracks</a> are <a lt="text track
+  showing">showing</a> at the same time in one <a>media element</a>, and each <a>text track</a>
+  currently has an active <a>WebVTT cue</a> whose <a lt="WebVTT cue line">line</a> are both <a
+  lt="WebVTT cue line automatic">auto</a>, then the first <a>text track</a>'s cue's <a lt="cue
+  computed line">computed line</a> will be &#x2212;1 and the second will be &#x2212;2.</p>
 
  </dd>
 
@@ -800,8 +813,8 @@ precomposed character).</p>
 
   </dl>
 
-  <p>A <a>WebVTT cue</a> has a default <a>WebVTT cue line alignment</a> of <a lt="WebVTT cue line
-  start alignment">start</a>.</p>
+  <p>By default, the <a lt="WebVTT cue line alignment">line alignment</a> is set to <a lt="WebVTT
+  cue line start alignment">start</a>.</p>
 
   <p class=note>The <a lt="WebVTT cue line alignment">line alignment</a> is separate from the <a
   lt="WebVTT cue text alignment">text alignment</a> &mdash; right-to-left vs. left-to-right cue text
@@ -823,6 +836,9 @@ precomposed character).</p>
   <p>If the cue is not within a <a lt="WebVTT region">region</a>, the percentage value is to be
   interpreted as a percentage of the video dimensions, otherwise as a percentage of the region
   dimensions.</p>
+
+  <p>By default, the <a lt="WebVTT cue position">position</a> is set to <a lt="WebVTT cue automatic
+  position">auto</a>.</p>
 
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed position">computed position</dfn> whose value
   is that returned by the following algorithm, which is defined in terms of the other aspects of the
@@ -901,6 +917,9 @@ precomposed character).</p>
 
   </dl>
 
+  <p>By default, the <a lt="WebVTT cue position alignment">position alignment</a> is set to <a
+  lt="WebVTT cue position automatic alignment">auto</a>.</p>
+
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed position alignment">computed position
   alignment</dfn> whose value is that returned by the following algorithm, which is defined in terms
   of other aspects of the cue:</p>
@@ -936,7 +955,7 @@ precomposed character).</p>
   percentage of the video, as defined by the <a lt="WebVTT cue writing direction">writing
   direction</a>.</p>
 
-  <p>By default, the <a>WebVTT cue size</a> is 100%.</p>
+  <p>By default, the <a>WebVTT cue size</a> is set to 100%.</p>
 
  </dd>
 
@@ -971,8 +990,8 @@ precomposed character).</p>
 
   </dl>
 
-  <p>By default, the value of the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue center
-  alignment">center aligned</a>.</p>
+  <p>By default, the <a lt="WebVTT cue text alignment">text alignment</a> is set to <a lt="WebVTT
+  cue center alignment">center</a>.</p>
 
   <p class=note>The base direction of each line in a cue (which is used by the Unicode Bidirectional
   Algorithm to determine the order in which to display the characters in the line) is determined by
@@ -1064,6 +1083,8 @@ precomposed character).</p>
  <dt><dfn lt="WebVTT cue region">A region</dfn></dt>
  <dd>
   <p>An optional <a>WebVTT region</a> to which a cue belongs.</p>
+
+  <p>By default, the <a lt="WebVTT region">region</a> is set to null.</p>
  </dd>
 
 </dl>
