@@ -1207,13 +1207,8 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  followed by any number of characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN
  (CR) characters.</li> <!-- allows for Emacs line -->
 
- <li>Exactly one <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
+ <li>Two or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.</li>
-
- <li>Zero or more <a lt="WebVTT metadata header">WebVTT metadata headers</a>.</li>
-
- <li>One or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the header
- block and separate the cues from the file header.</li>
 
  <li>Zero or more <a lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment
  block">WebVTT comment blocks</a> separated from each other by one or more <a lt="WebVTT line
@@ -1236,21 +1231,6 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>A single U+000A LINE FEED (LF) character.</li>
  <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
 </ul>
-
-<p>A <dfn>WebVTT metadata header</dfn> consists of the following components, in the given order:</p>
-
-<ol>
- <li>A <a>WebVTT metadata header name</a>.</li>
- <li>A U+003A COLON (colon) character.</li>
- <li>A <a>WebVTT metadata header value</a>.</li>
- <li>A <a>WebVTT line terminator</a>.</li>
-</ol>
-
-<p>A <dfn>WebVTT metadata header name</dfn> and a <dfn>WebVTT metadata header value</dfn> each
-consist of any sequence of one or more characters other than U+000A LINE FEED (LF) characters and
-U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not contain the
-substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
-SIGN).</p>
 
 <p>A <dfn>WebVTT region definition block</dfn> consists of the following components, in the given
 order:</p>
