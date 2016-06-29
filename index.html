@@ -1357,7 +1357,7 @@ Possible extra rowspan handling
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-06-07">7 June 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-06-21">21 June 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2276,15 +2276,12 @@ with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/in
     <li>Optionally, either a U+0020 SPACE character or a U+0009 CHARACTER TABULATION (tab) character
  followed by any number of characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN
  (CR) characters.
-    <li>Exactly one <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-1">WebVTT line terminators</a> to terminate the line
+    <li>Two or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-1">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-metadata-header" id="ref-for-webvtt-metadata-header-1">WebVTT metadata headers</a>.
-    <li>One or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line terminators</a> to terminate the header
- block and separate the cues from the file header.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-3">WebVTT line terminators</a>.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-4">WebVTT line terminators</a>.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-cue-block" id="ref-for-webvtt-cue-block-1">WebVTT cue blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-2">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-5">WebVTT line terminators</a>.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-6">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-3">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-cue-block" id="ref-for-webvtt-cue-block-1">WebVTT cue blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-2">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-4">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-5">WebVTT line terminators</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-line-terminator">WebVTT line terminator</dfn> consists of one of the following:</p>
    <ul class="brief">
@@ -2292,18 +2289,6 @@ with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/in
     <li>A single U+000A LINE FEED (LF) character.
     <li>A single U+000D CARRIAGE RETURN (CR) character.
    </ul>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-metadata-header">WebVTT metadata header</dfn> consists of the following components, in the given order:</p>
-   <ol>
-    <li>A <a data-link-type="dfn" href="#webvtt-metadata-header-name" id="ref-for-webvtt-metadata-header-name-1">WebVTT metadata header name</a>.
-    <li>A U+003A COLON (colon) character.
-    <li>A <a data-link-type="dfn" href="#webvtt-metadata-header-value" id="ref-for-webvtt-metadata-header-value-1">WebVTT metadata header value</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-7">WebVTT line terminator</a>.
-   </ol>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-metadata-header-name">WebVTT metadata header name</dfn> and a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-metadata-header-value">WebVTT metadata header value</dfn> each
-consist of any sequence of one or more characters other than U+000A LINE FEED (LF) characters and
-U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not contain the
-substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
-SIGN).</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-definition-block">WebVTT region definition block</dfn> consists of the following components, in the given
 order:</p>
    <ol>
@@ -2311,33 +2296,33 @@ order:</p>
  U+0047 LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
  LATIN CAPITAL LETTER N).
     <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-8">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-6">WebVTT line terminator</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-region-settings-list" id="ref-for-webvtt-region-settings-list-1">WebVTT region settings list</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-9">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-7">WebVTT line terminator</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-style-block">WebVTT style block</dfn> consists of the following components, in the given order:</p>
    <ol>
     <li>The string "<code>STYLE</code>" (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T,
  U+0059 LATIN CAPITAL LETTER Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E).
     <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-10">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-8">WebVTT line terminator</a>.
     <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
- U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-11">WebVTT
+ U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-9">WebVTT
  line terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
  represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a>
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-12">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-10">WebVTT line terminator</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-block">WebVTT cue block</dfn> consists of the following components, in the given order:</p>
    <ol>
-    <li>Optionally, a <a data-link-type="dfn" href="#webvtt-cue-identifier" id="ref-for-webvtt-cue-identifier-1">WebVTT cue identifier</a> followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-13">WebVTT line terminator</a>.
+    <li>Optionally, a <a data-link-type="dfn" href="#webvtt-cue-identifier" id="ref-for-webvtt-cue-identifier-1">WebVTT cue identifier</a> followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-11">WebVTT line terminator</a>.
     <li><a data-link-type="dfn" href="#webvtt-cue-timings" id="ref-for-webvtt-cue-timings-1">WebVTT cue timings</a>.
     <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters
  followed by a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-1">WebVTT cue settings list</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-14">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-12">WebVTT line terminator</a>.
     <li>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="cue-payload">cue payload</dfn>: either <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-2">WebVTT cue text</a>, <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text-1">WebVTT chapter title text</a>, or <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-1">WebVTT metadata text</a>, but it must not contain the substring "<code>--></code>" (U+002D
  HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-15">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-13">WebVTT line terminator</a>.
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-cue-block" id="ref-for-webvtt-cue-block-2">WebVTT cue block</a> corresponds to one piece of time-aligned text or data in
 the <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-7">WebVTT file</a>, for example one subtitle. The <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-1">cue payload</a> is the text or data
@@ -2420,27 +2405,27 @@ SIGN).</p>
         Either: 
        <ul>
         <li>A U+0020 SPACE character or U+0009 CHARACTER TABULATION (tab) character.
-        <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-16">WebVTT line terminator</a>.
+        <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-14">WebVTT line terminator</a>.
        </ul>
       <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
-   U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-17">WebVTT
+   U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-15">WebVTT
    line terminator</a>, except that the entire resulting string must not contain the substring
    "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
      </ol>
-    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-18">WebVTT line terminator</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-16">WebVTT line terminator</a>.
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-3">WebVTT comment block</a> is ignored by the parser.</p>
    <h3 class="heading settled" data-level="4.2" id="types-of-webvtt-cue-payload"><span class="secno">4.2. </span><span class="content">Types of WebVTT cue payload</span><a class="self-link" href="#types-of-webvtt-cue-payload"></a></h3>
    <h4 class="heading settled" data-level="4.2.1" id="metadata-text"><span class="secno">4.2.1. </span><span class="content">WebVTT metadata text</span><a class="self-link" href="#metadata-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-metadata-text">WebVTT metadata text</dfn> consists of any sequence of zero or more characters other than
 U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, each optionally
-separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-19">WebVTT line terminator</a>. (In other words, any text that does not
-have two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line terminators</a> and does not start
-or end with a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-21">WebVTT line terminator</a>.)</p>
+separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-17">WebVTT line terminator</a>. (In other words, any text that does not
+have two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-18">WebVTT line terminators</a> and does not start
+or end with a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-19">WebVTT line terminator</a>.)</p>
    <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (using the <code>metadata</code> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a>).</p>
    <h4 class="heading settled" data-level="4.2.2" id="cue-text"><span class="secno">4.2.2. </span><span class="content">WebVTT cue text</span><a class="self-link" href="#cue-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text">WebVTT cue text</dfn> is <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-2">cue payload</a> that consists of zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-1">WebVTT cue
-components</a>, in any order, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line
+components</a>, in any order, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line
 terminator</a>.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-components">WebVTT cue components</dfn> are:</p>
    <ul>
@@ -2456,8 +2441,8 @@ terminator</a>.</p>
     <li>An <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a>, representing one or two
  Unicode code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
    </ul>
-   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text</dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-23">WebVTT line terminator</a>,
-followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-24">WebVTT line terminator</a>.</p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text</dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-21">WebVTT line terminator</a>,
+followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-class-span">WebVTT cue class span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-1">WebVTT cue span start tag</a> "<code>c</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-1">WebVTT cue internal text</a> representing cue
 text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-1">WebVTT cue span end tag</a> "<code>c</code>".</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-italics-span">WebVTT cue italics span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-2">WebVTT cue span start tag</a> "<code>i</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-2">WebVTT cue internal text</a> representing the
@@ -2480,9 +2465,9 @@ underlined text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" i
    group of components in the <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-2">WebVTT cue ruby span</a>, then this last end tag string may be
    omitted.
      </ol>
-    <li>If the last end tag string was not omitted: Optionally, a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-25">WebVTT line terminator</a>.
+    <li>If the last end tag string was not omitted: Optionally, a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-23">WebVTT line terminator</a>.
     <li>If the last end tag string was not omitted: Zero or more U+0020 SPACE characters or U+0009
- CHARACTER TABULATION (tab) characters, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-26">WebVTT line
+ CHARACTER TABULATION (tab) characters, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-24">WebVTT line
  terminator</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-6">WebVTT cue span end tag</a> "<code>ruby</code>".
    </ol>
@@ -2562,8 +2547,8 @@ characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
 region, a <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-1">WebVTT region definition block</a> is specified.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-settings-list">WebVTT region settings list</dfn> consists of zero or more of the following components,
 in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
-TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-27">WebVTT line terminators</a>, except that the string must not
-contain two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-28">WebVTT line terminators</a>. Each component must not be included more
+TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-25">WebVTT line terminators</a>, except that the string must not
+contain two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-26">WebVTT line terminators</a>. Each component must not be included more
 than once per <a data-link-type="dfn" href="#webvtt-region-settings-list" id="ref-for-webvtt-region-settings-list-2">WebVTT region settings list</a> string.</p>
    <ul>
     <li>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-1">WebVTT region identifier setting</a>.
@@ -2888,7 +2873,7 @@ for validating these types.</p>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-12">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-3">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-3">WebVTT metadata text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-metadata-content">WebVTT file using metadata content<a class="self-link" href="#webvtt-file-using-metadata-content"></a></dfn>.</p>
    <h4 class="heading settled" data-level="4.6.2" id="file-using-chapter-title-text"><span class="secno">4.6.2. </span><span class="content">WebVTT file using chapter title text</span><a class="self-link" href="#file-using-chapter-title-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-chapter-title-text">WebVTT chapter title text</dfn> is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-4">WebVTT cue text</a> that makes use only of zero or
-more of the following components, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-29">WebVTT line
+more of the following components, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-27">WebVTT line
 terminator</a>:</p>
    <ul>
     <li><a data-link-type="dfn" href="#webvtt-cue-text-span" id="ref-for-webvtt-cue-text-span-2">WebVTT cue text span</a>
@@ -5491,9 +5476,6 @@ using only nested cues</a><span>, in §4.5.1</span>
    <li><a href="#webvtt-leaf-node-object">WebVTT Leaf Node Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-line-cue-setting">WebVTT line cue setting</a><span>, in §4.4</span>
    <li><a href="#webvtt-line-terminator">WebVTT line terminator</a><span>, in §4.1</span>
-   <li><a href="#webvtt-metadata-header">WebVTT metadata header</a><span>, in §4.1</span>
-   <li><a href="#webvtt-metadata-header-name">WebVTT metadata header name</a><span>, in §4.1</span>
-   <li><a href="#webvtt-metadata-header-value">WebVTT metadata header value</a><span>, in §4.1</span>
    <li><a href="#webvtt-metadata-text">WebVTT metadata text</a><span>, in §4.2.1</span>
    <li><a href="#webvtt-node-object">WebVTT Node Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-node-objects-applicable-classes">WebVTT Node Object’s applicable classes</a><span>, in §5.4</span>
@@ -6244,29 +6226,11 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-line-terminator">
    <b><a href="#webvtt-line-terminator">#webvtt-line-terminator</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-line-terminator-1">4.1. WebVTT file structure</a> <a href="#ref-for-webvtt-line-terminator-2">(2)</a> <a href="#ref-for-webvtt-line-terminator-3">(3)</a> <a href="#ref-for-webvtt-line-terminator-4">(4)</a> <a href="#ref-for-webvtt-line-terminator-5">(5)</a> <a href="#ref-for-webvtt-line-terminator-6">(6)</a> <a href="#ref-for-webvtt-line-terminator-7">(7)</a> <a href="#ref-for-webvtt-line-terminator-8">(8)</a> <a href="#ref-for-webvtt-line-terminator-9">(9)</a> <a href="#ref-for-webvtt-line-terminator-10">(10)</a> <a href="#ref-for-webvtt-line-terminator-11">(11)</a> <a href="#ref-for-webvtt-line-terminator-12">(12)</a> <a href="#ref-for-webvtt-line-terminator-13">(13)</a> <a href="#ref-for-webvtt-line-terminator-14">(14)</a> <a href="#ref-for-webvtt-line-terminator-15">(15)</a> <a href="#ref-for-webvtt-line-terminator-16">(16)</a> <a href="#ref-for-webvtt-line-terminator-17">(17)</a> <a href="#ref-for-webvtt-line-terminator-18">(18)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-19">4.2.1. WebVTT metadata text</a> <a href="#ref-for-webvtt-line-terminator-20">(2)</a> <a href="#ref-for-webvtt-line-terminator-21">(3)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-22">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-line-terminator-23">(2)</a> <a href="#ref-for-webvtt-line-terminator-24">(3)</a> <a href="#ref-for-webvtt-line-terminator-25">(4)</a> <a href="#ref-for-webvtt-line-terminator-26">(5)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-27">4.3. WebVTT region settings</a> <a href="#ref-for-webvtt-line-terminator-28">(2)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-29">4.6.2. WebVTT file using chapter title text</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="webvtt-metadata-header">
-   <b><a href="#webvtt-metadata-header">#webvtt-metadata-header</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-webvtt-metadata-header-1">4.1. WebVTT file structure</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="webvtt-metadata-header-name">
-   <b><a href="#webvtt-metadata-header-name">#webvtt-metadata-header-name</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-webvtt-metadata-header-name-1">4.1. WebVTT file structure</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="webvtt-metadata-header-value">
-   <b><a href="#webvtt-metadata-header-value">#webvtt-metadata-header-value</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-webvtt-metadata-header-value-1">4.1. WebVTT file structure</a>
+    <li><a href="#ref-for-webvtt-line-terminator-1">4.1. WebVTT file structure</a> <a href="#ref-for-webvtt-line-terminator-2">(2)</a> <a href="#ref-for-webvtt-line-terminator-3">(3)</a> <a href="#ref-for-webvtt-line-terminator-4">(4)</a> <a href="#ref-for-webvtt-line-terminator-5">(5)</a> <a href="#ref-for-webvtt-line-terminator-6">(6)</a> <a href="#ref-for-webvtt-line-terminator-7">(7)</a> <a href="#ref-for-webvtt-line-terminator-8">(8)</a> <a href="#ref-for-webvtt-line-terminator-9">(9)</a> <a href="#ref-for-webvtt-line-terminator-10">(10)</a> <a href="#ref-for-webvtt-line-terminator-11">(11)</a> <a href="#ref-for-webvtt-line-terminator-12">(12)</a> <a href="#ref-for-webvtt-line-terminator-13">(13)</a> <a href="#ref-for-webvtt-line-terminator-14">(14)</a> <a href="#ref-for-webvtt-line-terminator-15">(15)</a> <a href="#ref-for-webvtt-line-terminator-16">(16)</a>
+    <li><a href="#ref-for-webvtt-line-terminator-17">4.2.1. WebVTT metadata text</a> <a href="#ref-for-webvtt-line-terminator-18">(2)</a> <a href="#ref-for-webvtt-line-terminator-19">(3)</a>
+    <li><a href="#ref-for-webvtt-line-terminator-20">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-line-terminator-21">(2)</a> <a href="#ref-for-webvtt-line-terminator-22">(3)</a> <a href="#ref-for-webvtt-line-terminator-23">(4)</a> <a href="#ref-for-webvtt-line-terminator-24">(5)</a>
+    <li><a href="#ref-for-webvtt-line-terminator-25">4.3. WebVTT region settings</a> <a href="#ref-for-webvtt-line-terminator-26">(2)</a>
+    <li><a href="#ref-for-webvtt-line-terminator-27">4.6.2. WebVTT file using chapter title text</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region-definition-block">
