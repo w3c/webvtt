@@ -2630,14 +2630,22 @@ run the following steps:</p>
 
          <dd>
           <ol>
-           <li><p>If |linepos| contains any characters other than U+002D HYPHEN-MINUS characters (-)
-           and <a>ASCII digits</a>, then jump to the step labeled <i>next setting</i>.</p></li>
+           <li><p>If |linepos| contains any characters other than U+002D HYPHEN-MINUS characters
+           (-), <a>ASCII digits</a>, and U+002E DOT character (.), then jump to the step labeled
+           <i>next setting</i>.</p></li>
 
            <li><p>If any character in |linepos| other than the first character is a U+002D
            HYPHEN-MINUS character (-), then jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>Interpret |linepos| as a (potentially signed) integer, and let |number| be that
-           number.</p></li>
+           <li><p>If there are more than one U+002E DOT characters (.), then jump to the step
+           labeled <i>next setting</i>.</p></li>
+
+           <li><p>If there is a U+002E DOT character (.) and the character before or the character
+           after is not an <a>ASCII digit</a>, or if the U+002E DOT character (.) is the first or
+           the last character, then jump to the step labeled <i>next setting</i>.</p></li>
+
+           <li><p>Interpret |linepos| as a (potentially signed) real number, and let |number| be
+           that number.</p></li>
           </ol>
          </dd>
         </dl>
