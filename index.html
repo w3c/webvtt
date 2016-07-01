@@ -409,15 +409,18 @@
 	}
 
 	/* Style for algorithms */
-	ol.algorithm ol:not(.algorithm) {
+	ol.algorithm ol:not(.algorithm),
+	.algorithm > ol ol:not(.algorithm) {
 	 border-left: 0.5em solid #DEF;
 	}
 
 	/* Style for switch/case <dl>s */
-	dl.switch > dd > ol.only {
+	dl.switch > dd > ol.only,
+	dl.switch > dd > .only > ol {
 	 margin-left: 0;
 	}
-	dl.switch > dd > ol.algorithm {
+	dl.switch > dd > ol.algorithm,
+	dl.switch > dd > .algorithm > ol {
 	 margin-left: -2em;
 	}
 	dl.switch {
@@ -963,10 +966,9 @@ Possible extra rowspan handling
 	/* ToC not indented until third level, but font style & margins show hierarchy */
 	.toc > li             { font-weight: bold;   }
 	.toc > li li          { font-weight: normal; }
-	.toc > li li li       { font-style:  italic; }
-	.toc > li li li li    { font-style:  normal; }
-	.toc > li li li li li { font-style:  italic;
-	                        font-size:   85%;    }
+	.toc > li li li       { font-size:   95%;    }
+	.toc > li li li li    { font-size:   90%;    }
+	.toc > li li li li li { font-size:   85%;    }
 
 	.toc > li             { margin: 1.5rem 0;    }
 	.toc > li li          { margin: 0.3rem 0;    }
@@ -1179,72 +1181,6 @@ Possible extra rowspan handling
             [data-md] > :last-child {
                 margin-bottom: 0;
             }</style>
-<style>/* style-counters */
-
-            body {
-                counter-reset: example figure issue;
-            }
-            .issue {
-                counter-increment: issue;
-            }
-            .issue:not(.no-marker)::before {
-                content: "Issue " counter(issue);
-            }
-
-            .example {
-                counter-increment: example;
-            }
-            .example:not(.no-marker)::before {
-                content: "Example " counter(example);
-            }
-            .invalid.example:not(.no-marker)::before,
-            .illegal.example:not(.no-marker)::before {
-                content: "Invalid Example" counter(example);
-            }
-
-            figure {
-                counter-increment: figure;
-            }
-            figcaption:not(.no-marker)::before {
-                content: "Figure " counter(figure);
-            }</style>
-<style>/* style-dfn-panel */
-
-        .dfn-panel {
-            position: absolute;
-            z-index: 35;
-            height: auto;
-            width: -webkit-fit-content;
-            width: fit-content;
-            max-width: 300px;
-            max-height: 500px;
-            overflow: auto;
-            padding: 0.5em 0.75em;
-            font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-            background: #DDDDDD;
-            color: black;
-            border: outset 0.2em;
-        }
-        .dfn-panel:not(.on) { display: none; }
-        .dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-        .dfn-panel > b { display: block; }
-        .dfn-panel a { color: black; }
-        .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-        .dfn-panel > b + b { margin-top: 0.25em; }
-        .dfn-panel ul { padding: 0; }
-        .dfn-panel li { list-style: inside; }
-        .dfn-panel.activated {
-            display: inline-block;
-            position: fixed;
-            left: .5em;
-            bottom: 2em;
-            margin: 0 auto;
-            max-width: calc(100vw - 1.5em - .4em - .5em);
-            max-height: 30vh;
-        }
-
-        .dfn-paneled { cursor: pointer; }
-        </style>
 <style>/* style-selflinks */
 
             .heading, .issue, .note, .example, li, dt {
@@ -1291,6 +1227,35 @@ Possible extra rowspan handling
             a.self-link::before            { content: "¶"; }
             .heading > a.self-link::before { content: "§"; }
             dfn > a.self-link::before      { content: "#"; }</style>
+<style>/* style-counters */
+
+            body {
+                counter-reset: example figure issue;
+            }
+            .issue {
+                counter-increment: issue;
+            }
+            .issue:not(.no-marker)::before {
+                content: "Issue " counter(issue);
+            }
+
+            .example {
+                counter-increment: example;
+            }
+            .example:not(.no-marker)::before {
+                content: "Example " counter(example);
+            }
+            .invalid.example:not(.no-marker)::before,
+            .illegal.example:not(.no-marker)::before {
+                content: "Invalid Example" counter(example);
+            }
+
+            figcaption {
+                counter-increment: figure;
+            }
+            figcaption:not(.no-marker)::before {
+                content: "Figure " counter(figure);
+            }</style>
 <style>/* style-autolinks */
 
             .css.css, .property.property, .descriptor.descriptor {
@@ -1353,11 +1318,106 @@ Possible extra rowspan handling
             [data-link-type=biblio] {
                 white-space: pre;
             }</style>
+<style>/* style-dfn-panel */
+
+        .dfn-panel {
+            position: absolute;
+            z-index: 35;
+            height: auto;
+            width: -webkit-fit-content;
+            width: fit-content;
+            max-width: 300px;
+            max-height: 500px;
+            overflow: auto;
+            padding: 0.5em 0.75em;
+            font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+            background: #DDDDDD;
+            color: black;
+            border: outset 0.2em;
+        }
+        .dfn-panel:not(.on) { display: none; }
+        .dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+        .dfn-panel > b { display: block; }
+        .dfn-panel a { color: black; }
+        .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+        .dfn-panel > b + b { margin-top: 0.25em; }
+        .dfn-panel ul { padding: 0; }
+        .dfn-panel li { list-style: inside; }
+        .dfn-panel.activated {
+            display: inline-block;
+            position: fixed;
+            left: .5em;
+            bottom: 2em;
+            margin: 0 auto;
+            max-width: calc(100vw - 1.5em - .4em - .5em);
+            max-height: 30vh;
+        }
+
+        .dfn-paneled { cursor: pointer; }
+        </style>
+<style>/* style-syntax-highlighting */
+pre.idl.highlight { color: #708090; }
+        .highlight:not(.idl) { background: hsl(24, 20%, 95%); }
+        code.highlight { padding: .1em; border-radius: .3em; }
+        pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+        .highlight .c { color: #708090 } /* Comment */
+        .highlight .k { color: #990055 } /* Keyword */
+        .highlight .l { color: #000000 } /* Literal */
+        .highlight .n { color: #0077aa } /* Name */
+        .highlight .o { color: #999999 } /* Operator */
+        .highlight .p { color: #999999 } /* Punctuation */
+        .highlight .cm { color: #708090 } /* Comment.Multiline */
+        .highlight .cp { color: #708090 } /* Comment.Preproc */
+        .highlight .c1 { color: #708090 } /* Comment.Single */
+        .highlight .cs { color: #708090 } /* Comment.Special */
+        .highlight .kc { color: #990055 } /* Keyword.Constant */
+        .highlight .kd { color: #990055 } /* Keyword.Declaration */
+        .highlight .kn { color: #990055 } /* Keyword.Namespace */
+        .highlight .kp { color: #990055 } /* Keyword.Pseudo */
+        .highlight .kr { color: #990055 } /* Keyword.Reserved */
+        .highlight .kt { color: #990055 } /* Keyword.Type */
+        .highlight .ld { color: #000000 } /* Literal.Date */
+        .highlight .m { color: #000000 } /* Literal.Number */
+        .highlight .s { color: #a67f59 } /* Literal.String */
+        .highlight .na { color: #0077aa } /* Name.Attribute */
+        .highlight .nc { color: #0077aa } /* Name.Class */
+        .highlight .no { color: #0077aa } /* Name.Constant */
+        .highlight .nd { color: #0077aa } /* Name.Decorator */
+        .highlight .ni { color: #0077aa } /* Name.Entity */
+        .highlight .ne { color: #0077aa } /* Name.Exception */
+        .highlight .nf { color: #0077aa } /* Name.Function */
+        .highlight .nl { color: #0077aa } /* Name.Label */
+        .highlight .nn { color: #0077aa } /* Name.Namespace */
+        .highlight .py { color: #0077aa } /* Name.Property */
+        .highlight .nt { color: #669900 } /* Name.Tag */
+        .highlight .nv { color: #222222 } /* Name.Variable */
+        .highlight .ow { color: #999999 } /* Operator.Word */
+        .highlight .mb { color: #000000 } /* Literal.Number.Bin */
+        .highlight .mf { color: #000000 } /* Literal.Number.Float */
+        .highlight .mh { color: #000000 } /* Literal.Number.Hex */
+        .highlight .mi { color: #000000 } /* Literal.Number.Integer */
+        .highlight .mo { color: #000000 } /* Literal.Number.Oct */
+        .highlight .sb { color: #a67f59 } /* Literal.String.Backtick */
+        .highlight .sc { color: #a67f59 } /* Literal.String.Char */
+        .highlight .sd { color: #a67f59 } /* Literal.String.Doc */
+        .highlight .s2 { color: #a67f59 } /* Literal.String.Double */
+        .highlight .se { color: #a67f59 } /* Literal.String.Escape */
+        .highlight .sh { color: #a67f59 } /* Literal.String.Heredoc */
+        .highlight .si { color: #a67f59 } /* Literal.String.Interpol */
+        .highlight .sx { color: #a67f59 } /* Literal.String.Other */
+        .highlight .sr { color: #a67f59 } /* Literal.String.Regex */
+        .highlight .s1 { color: #a67f59 } /* Literal.String.Single */
+        .highlight .ss { color: #a67f59 } /* Literal.String.Symbol */
+        .highlight .vc { color: #0077aa } /* Name.Variable.Class */
+        .highlight .vg { color: #0077aa } /* Name.Variable.Global */
+        .highlight .vi { color: #0077aa } /* Name.Variable.Instance */
+        .highlight .il { color: #000000 } /* Literal.Number.Integer.Long */
+        </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-06-21">21 June 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-06-29">29 June 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2801,7 +2861,7 @@ referencing the region’s identifier unless the cue has a <a data-link-type="df
 applied to the line boxes in the cue relative to the region box.</p>
    <h3 class="heading settled" data-level="4.5" id="properties-of-cue-sequences"><span class="secno">4.5. </span><span class="content">Properties of cue sequences</span><a class="self-link" href="#properties-of-cue-sequences"></a></h3>
    <h4 class="heading settled" data-level="4.5.1" id="file-using-only-nested-cues"><span class="secno">4.5.1. </span><span class="content">WebVTT file using only nested cues</span><a class="self-link" href="#file-using-only-nested-cues"></a></h4>
-   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-10">WebVTT file</a> whose cues all follow the following rules is said to be a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-only-nested-cues">WebVTT file
+   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-10">WebVTT file</a> whose cues all follow the following rules is said to be a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT file using only nested cues" data-noexport="" id="webvtt-file-using-only-nested-cues">WebVTT file
 using only nested cues</dfn>:</p>
    <p>given any two cues <var>cue1</var> and <var>cue2</var> with start and end time offsets (<var>x1</var>, <var>y1</var>) and (<var>x2</var>, <var>y2</var>) respectively,</p>
    <ul>
@@ -3144,7 +3204,7 @@ header</i> set, the user agent must run the following steps:</p>
      <p>Otherwise, return null.</p>
    </ol>
    <h3 class="heading settled" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
-   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
+   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT region settings" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
 settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>, the user agent must run the following
 algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-9">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-1">lists of WebVTT node
@@ -3254,7 +3314,7 @@ means that it is aborted at that point and returns nothing.</p>
      <p>Return <var>percentage</var>.</p>
    </ol>
    <h3 class="heading settled" data-algorithm="WebVTT cue timings and settings parsing" data-level="5.3" id="cue-timings-and-settings-parsing"><span class="secno">5.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
-   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
+   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT cue timings and settings" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
 settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-2">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-18">WebVTT cue</a> <var>cue</var>, the user agent must run the following algorithm.</p>
    <ol>
     <li>
@@ -3353,14 +3413,21 @@ run the following steps:</p>
             <dd>
              <ol>
               <li>
-               <p>If <var>linepos</var> contains any characters other than U+002D HYPHEN-MINUS characters (-)
-           and <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, then jump to the step labeled <i>next setting</i>.</p>
+               <p>If <var>linepos</var> contains any characters other than U+002D HYPHEN-MINUS characters
+           (-), <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digits</a>, and U+002E DOT character (.), then jump to the step labeled <i>next setting</i>.</p>
               <li>
                <p>If any character in <var>linepos</var> other than the first character is a U+002D
            HYPHEN-MINUS character (-), then jump to the step labeled <i>next setting</i>.</p>
               <li>
-               <p>Interpret <var>linepos</var> as a (potentially signed) integer, and let <var>number</var> be that
-           number.</p>
+               <p>If there are more than one U+002E DOT characters (.), then jump to the step
+           labeled <i>next setting</i>.</p>
+              <li>
+               <p>If there is a U+002E DOT character (.) and the character before or the character
+           after is not an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digit</a>, or if the U+002E DOT character (.) is the first or
+           the last character, then jump to the step labeled <i>next setting</i>.</p>
+              <li>
+               <p>Interpret <var>linepos</var> as a (potentially signed) real number, and let <var>number</var> be
+           that number.</p>
              </ol>
            </dl>
           <li>
@@ -4757,24 +4824,24 @@ immediately rerun.</p>
    <h2 class="heading settled" data-level="7" id="api"><span class="secno">7. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-algorithm="The VTTCue interface" data-level="7.1" id="the-vttcue-interface"><span class="secno">7.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
-<pre class="idl def">enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword</dfn> { <dfn class="idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto">"auto"<a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
-enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting</dfn> { <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting">""<a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl">"rl"<a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr">"lr"<a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
-enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start">"start"<a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center">"center"<a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end">"end"<a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
-enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left">"line-left"<a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center">"center"<a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right">"line-right"<a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto">"auto"<a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
-enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting</dfn> { <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start">"start"<a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center">"center"<a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end">"end"<a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left">"left"<a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right">"right"<a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
-[<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, double <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, DOMString <dfn class="idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
-interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue</dfn> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
-  attribute <a data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
-  attribute boolean <a class="idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
-  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-2">line</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-linealignsetting" id="ref-for-enumdef-linealignsetting-1">LineAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-1">lineAlign</a>;
-  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-2">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-position" id="ref-for-dom-vttcue-position-1">position</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-positionalignsetting" id="ref-for-enumdef-positionalignsetting-1">PositionAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign" id="ref-for-dom-vttcue-positionalign-1">positionAlign</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size" id="ref-for-dom-vttcue-size-1">size</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-alignsetting" id="ref-for-enumdef-alignsetting-1">AlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align" id="ref-for-dom-vttcue-align-1">align</a>;
-  attribute DOMString <a class="idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text" id="ref-for-dom-vttcue-text-1">text</a>;
-  <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-2">getCueAsHTML</a>();
+<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword</dfn> { <dfn class="s idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto">"auto"<a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting</dfn> { <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting">""<a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl">"rl"<a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr">"lr"<a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start">"start"<a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center">"center"<a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end">"end"<a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left">"line-left"<a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center">"center"<a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right">"line-right"<a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto">"auto"<a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start">"start"<a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center">"center"<a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end">"end"<a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left">"left"<a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right">"right"<a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<span class="kt">double</span> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <span class="kt">double</span> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <span class="kt">DOMString</span> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
+<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue</dfn> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
+  <span class="kt">attribute</span> <span class="kt">boolean</span> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
+  <span class="kt">attribute</span> (<span class="kt">double</span> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <a class="nv idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-2">line</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting" id="ref-for-enumdef-linealignsetting-1">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-1">lineAlign</a>;
+  <span class="kt">attribute</span> (<span class="kt">double</span> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-2">AutoKeyword</a>) <a class="nv idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-position" id="ref-for-dom-vttcue-position-1">position</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting" id="ref-for-enumdef-positionalignsetting-1">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign" id="ref-for-dom-vttcue-positionalign-1">positionAlign</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size" id="ref-for-dom-vttcue-size-1">size</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting" id="ref-for-enumdef-alignsetting-1">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align" id="ref-for-dom-vttcue-align-1">align</a>;
+  <span class="kt">attribute</span> <span class="kt">DOMString</span> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text" id="ref-for-dom-vttcue-text-1">text</a>;
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-2">getCueAsHTML</a>();
 };
 </pre>
    <dl class="note" role="note">
@@ -5050,16 +5117,16 @@ text</a>.</p>
    <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled" data-algorithm="The VTTRegion interface" data-level="7.2" id="the-vttregion-interface"><span class="secno">7.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
-<pre class="idl def">enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting">ScrollSetting</dfn> { <dfn class="idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting">""<a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up">"up"<a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
-[<a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-1">Constructor</a>]
-interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion">VTTRegion</dfn> {
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
-  attribute long <a class="idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-1">regionAnchorY</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx" id="ref-for-dom-vttregion-viewportanchorx-1">viewportAnchorX</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory" id="ref-for-dom-vttregion-viewportanchory-1">viewportAnchorY</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-scrollsetting" id="ref-for-enumdef-scrollsetting-1">ScrollSetting</a> <a class="idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll" id="ref-for-dom-vttregion-scroll-1">scroll</a>;
+<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting">ScrollSetting</dfn> { <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting">""<a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up">"up"<a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-1">Constructor</a>]
+<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion">VTTRegion</dfn> {
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
+  <span class="kt">attribute</span> <span class="kt">long</span> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-1">regionAnchorY</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx" id="ref-for-dom-vttregion-viewportanchorx-1">viewportAnchorX</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory" id="ref-for-dom-vttregion-viewportanchory-1">viewportAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting" id="ref-for-enumdef-scrollsetting-1">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll" id="ref-for-dom-vttregion-scroll-1">scroll</a>;
 };
 </pre>
    <dl class="note" role="note">
@@ -5310,10 +5377,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     </ul>
    <li><a href="#collect-a-webvtt-block">collect a WebVTT block</a><span>, in §5.1</span>
    <li><a href="#collect-a-webvtt-timestamp">collect a WebVTT timestamp</a><span>, in §5.3</span>
-   <li><a href="#collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
-settings</a><span>, in §5.3</span>
-   <li><a href="#collect-webvtt-region-settings">collect WebVTT region
-settings</a><span>, in §5.2</span>
+   <li><a href="#collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and settings</a><span>, in §5.3</span>
+   <li><a href="#collect-webvtt-region-settings">collect WebVTT region settings</a><span>, in §5.2</span>
    <li><a href="#consume-an-html-character-reference">consume an HTML character reference</a><span>, in §5.4</span>
    <li><a href="#selectordef-cue">::cue</a><span>, in §6.1.2.1</span>
    <li><a href="#cue-computed-line">cue computed line</a><span>, in §3.1</span>
@@ -5364,8 +5429,8 @@ settings</a><span>, in §5.2</span>
    <li><a href="#dom-vttcue-region">region</a><span>, in §7.1</span>
    <li><a href="#dom-vttregion-regionanchorx">regionAnchorX</a><span>, in §7.2</span>
    <li><a href="#dom-vttregion-regionanchory">regionAnchorY</a><span>, in §7.2</span>
-   <li><a href="#dom-alignsetting-right">"right"</a><span>, in §7.1</span>
    <li><a href="#dom-alignsetting-right">right</a><span>, in §7.1</span>
+   <li><a href="#dom-alignsetting-right">"right"</a><span>, in §7.1</span>
    <li><a href="#dom-directionsetting-rl">rl</a><span>, in §7.1</span>
    <li><a href="#dom-directionsetting-rl">"rl"</a><span>, in §7.1</span>
    <li><a href="#rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</a><span>, in §6.1</span>
@@ -5404,8 +5469,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-class-object">WebVTT Class Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-comment-block">WebVTT comment block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue">WebVTT cue</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-automatic-position">WebVTT cue
-  automatic position</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-automatic-position">WebVTT cue automatic position</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-background-box">WebVTT cue background box</a><span>, in §6.1</span>
    <li><a href="#webvtt-cue-block">WebVTT cue block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-bold-span">WebVTT cue bold span</a><span>, in §4.2.2</span>
@@ -5422,8 +5486,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-left-alignment">WebVTT cue left alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line">WebVTT cue line</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-alignment">WebVTT cue line alignment</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-line-automatic">WebVTT cue line
-  automatic</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-line-automatic">WebVTT cue line automatic</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-center-alignment">WebVTT cue line center alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-end-alignment">WebVTT cue line end alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-line-start-alignment">WebVTT cue line start alignment</a><span>, in §3.1</span>
@@ -5437,8 +5500,7 @@ settings</a><span>, in §5.2</span>
    <li><a href="#webvtt-cue-right-alignment">WebVTT cue right alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-ruby-span">WebVTT cue ruby span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-ruby-text-span">WebVTT cue ruby text span</a><span>, in §4.2.2</span>
-   <li><a href="#webvtt-cue-setting">WebVTT cue
-setting</a><span>, in §4.1</span>
+   <li><a href="#webvtt-cue-setting">WebVTT cue setting</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-setting-name">WebVTT cue setting name</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-settings-list">WebVTT cue settings list</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-setting-value">WebVTT cue setting value</a><span>, in §4.1</span>
@@ -5468,8 +5530,7 @@ setting</a><span>, in §4.1</span>
    <li><a href="#webvtt-file-using-chapter-title-text">WebVTT file using chapter title text</a><span>, in §4.6.2</span>
    <li><a href="#webvtt-file-using-cue-text">WebVTT file using cue text</a><span>, in §4.6.3</span>
    <li><a href="#webvtt-file-using-metadata-content">WebVTT file using metadata content</a><span>, in §4.6.1</span>
-   <li><a href="#webvtt-file-using-only-nested-cues">WebVTT file
-using only nested cues</a><span>, in §4.5.1</span>
+   <li><a href="#webvtt-file-using-only-nested-cues">WebVTT file using only nested cues</a><span>, in §4.5.1</span>
    <li><a href="#webvtt-internal-node-object">WebVTT Internal Node Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-italic-object">WebVTT Italic Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-language-object">WebVTT Language Object</a><span>, in §5.4</span>
@@ -5720,7 +5781,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-bcp47">[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. 19 May 2016. WD. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. 14 June 2016. WD. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
    <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
    <dd>CSS Backgrounds and Borders Module Level 3 URL: <a href="https://drafts.csswg.org/css-backgrounds-3/">https://drafts.csswg.org/css-backgrounds-3/</a>
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
@@ -5730,7 +5791,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-css-display-3">[CSS-DISPLAY-3]
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="http://dev.w3.org/csswg/css-display/">CSS Display Module Level 3</a>. 15 October 2015. WD. URL: <a href="http://dev.w3.org/csswg/css-display/">http://dev.w3.org/csswg/css-display/</a>
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
-   <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. 1 March 2016. CR. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
+   <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. 26 May 2016. CR. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
    <dt id="biblio-css-fonts-3">[CSS-FONTS-3]
    <dd>John Daggett. <a href="http://dev.w3.org/csswg/css-fonts/">CSS Fonts Module Level 3</a>. 3 October 2013. CR. URL: <a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>
    <dt id="biblio-css-overflow-4">[CSS-OVERFLOW-4]
@@ -5754,9 +5815,9 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-writing-modes-3/">CSS Writing Modes Level 3</a>. 15 December 2015. CR. URL: <a href="http://dev.w3.org/csswg/css-writing-modes-3/">http://dev.w3.org/csswg/css-writing-modes-3/</a>
    <dt id="biblio-css21">[CSS21]
-   <dd>Bert Bos; et al. <a href="http://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="http://www.w3.org/TR/CSS2">http://www.w3.org/TR/CSS2</a>
+   <dd>Bert Bos; et al. <a href="https://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/CSS2">https://www.w3.org/TR/CSS2</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
-   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="http://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="http://www.w3.org/TR/css3-color">http://www.w3.org/TR/css3-color</a>
+   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/css3-color">https://www.w3.org/TR/css3-color</a>
    <dt id="biblio-css3-ruby">[CSS3-RUBY]
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. 5 August 2014. WD. URL: <a href="http://dev.w3.org/csswg/css-ruby-1/">http://dev.w3.org/csswg/css-ruby-1/</a>
    <dt id="biblio-cssom">[CSSOM]
@@ -5770,7 +5831,7 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dt id="biblio-selectors-4">[SELECTORS-4]
    <dd>Selectors Level 4 URL: <a href="https://drafts.csswg.org/selectors-4/">https://drafts.csswg.org/selectors-4/</a>
    <dt id="biblio-selectors4">[SELECTORS4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="http://www.w3.org/TR/selectors4/">http://www.w3.org/TR/selectors4/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 8 March 2016. CR. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-whatwg-dom">[WHATWG-DOM]
@@ -5784,36 +5845,36 @@ using only nested cues</a><span>, in §4.5.1</span>
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl def">enum <a href="#enumdef-autokeyword">AutoKeyword</a> { <a href="#dom-autokeyword-auto">"auto"</a> };
-enum <a href="#enumdef-directionsetting">DirectionSetting</a> { <a href="#dom-directionsetting">""</a> /* horizontal */, <a href="#dom-directionsetting-rl">"rl"</a>, <a href="#dom-directionsetting-lr">"lr"</a> };
-enum <a href="#enumdef-linealignsetting">LineAlignSetting</a> { <a href="#dom-linealignsetting-start">"start"</a>, <a href="#dom-linealignsetting-center">"center"</a>, <a href="#dom-linealignsetting-end">"end"</a> };
-enum <a href="#enumdef-positionalignsetting">PositionAlignSetting</a> { <a href="#dom-positionalignsetting-line-left">"line-left"</a>, <a href="#dom-positionalignsetting-center">"center"</a>, <a href="#dom-positionalignsetting-line-right">"line-right"</a>, <a href="#dom-positionalignsetting-auto">"auto"</a> };
-enum <a href="#enumdef-alignsetting">AlignSetting</a> { <a href="#dom-alignsetting-start">"start"</a>, <a href="#dom-alignsetting-center">"center"</a>, <a href="#dom-alignsetting-end">"end"</a>, <a href="#dom-alignsetting-left">"left"</a>, <a href="#dom-alignsetting-right">"right"</a> };
-[<a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(double <a href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, double <a href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, DOMString <a href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
-interface <a href="#vttcue">VTTCue</a> : <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
-  attribute <a data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
-  attribute boolean <a class="idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
-  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line">line</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-linealignsetting">LineAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign">lineAlign</a>;
-  attribute (double or <a data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-position">position</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-positionalignsetting">PositionAlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign">positionAlign</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align">align</a>;
-  attribute DOMString <a class="idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
-  <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
+<pre class="idl def"><span class="kt">enum</span> <a class="nv" href="#enumdef-autokeyword">AutoKeyword</a> { <a class="s" href="#dom-autokeyword-auto">"auto"</a> };
+<span class="kt">enum</span> <a class="nv" href="#enumdef-directionsetting">DirectionSetting</a> { <a class="s" href="#dom-directionsetting">""</a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl">"rl"</a>, <a class="s" href="#dom-directionsetting-lr">"lr"</a> };
+<span class="kt">enum</span> <a class="nv" href="#enumdef-linealignsetting">LineAlignSetting</a> { <a class="s" href="#dom-linealignsetting-start">"start"</a>, <a class="s" href="#dom-linealignsetting-center">"center"</a>, <a class="s" href="#dom-linealignsetting-end">"end"</a> };
+<span class="kt">enum</span> <a class="nv" href="#enumdef-positionalignsetting">PositionAlignSetting</a> { <a class="s" href="#dom-positionalignsetting-line-left">"line-left"</a>, <a class="s" href="#dom-positionalignsetting-center">"center"</a>, <a class="s" href="#dom-positionalignsetting-line-right">"line-right"</a>, <a class="s" href="#dom-positionalignsetting-auto">"auto"</a> };
+<span class="kt">enum</span> <a class="nv" href="#enumdef-alignsetting">AlignSetting</a> { <a class="s" href="#dom-alignsetting-start">"start"</a>, <a class="s" href="#dom-alignsetting-center">"center"</a>, <a class="s" href="#dom-alignsetting-end">"end"</a>, <a class="s" href="#dom-alignsetting-left">"left"</a>, <a class="s" href="#dom-alignsetting-right">"right"</a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<span class="kt">double</span> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, <span class="kt">double</span> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, <span class="kt">DOMString</span> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
+<span class="kt">interface</span> <a class="nv" href="#vttcue">VTTCue</a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
+  <span class="kt">attribute</span> <span class="kt">boolean</span> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
+  <span class="kt">attribute</span> (<span class="kt">double</span> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-line">line</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign">lineAlign</a>;
+  <span class="kt">attribute</span> (<span class="kt">double</span> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv idl-code" data-link-type="attribute" data-type="(double or AutoKeyword)" href="#dom-vttcue-position">position</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign">positionAlign</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align">align</a>;
+  <span class="kt">attribute</span> <span class="kt">DOMString</span> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
 };
 
-enum <a href="#enumdef-scrollsetting">ScrollSetting</a> { <a href="#dom-scrollsetting">""</a> /* none */, <a href="#dom-scrollsetting-up">"up"</a> };
-[<a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
-interface <a href="#vttregion">VTTRegion</a> {
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
-  attribute long <a class="idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
-  attribute double <a class="idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
-  attribute <a data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll">scroll</a>;
+<span class="kt">enum</span> <a class="nv" href="#enumdef-scrollsetting">ScrollSetting</a> { <a class="s" href="#dom-scrollsetting">""</a> /* none */, <a class="s" href="#dom-scrollsetting-up">"up"</a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
+<span class="kt">interface</span> <a class="nv" href="#vttregion">VTTRegion</a> {
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
+  <span class="kt">attribute</span> <span class="kt">long</span> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
+  <span class="kt">attribute</span> <span class="kt">double</span> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll">scroll</a>;
 };
 
 </pre>
