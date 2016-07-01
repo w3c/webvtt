@@ -1096,11 +1096,13 @@ cues</a> are the <a>rules for updating the display of WebVTT text tracks</a>.</p
 
  <p>When a <a>WebVTT cue</a> whose <a lt="text track cue active flag">active flag</a> is set has its
  <a lt="WebVTT cue writing direction">writing direction</a>, <a lt="WebVTT cue snap-to-lines
- flag">snap-to-lines flag</a>, <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue
- position">position</a>, <a lt="WebVTT cue size">size</a>, <a lt="WebVTT cue text alignment">text
- alignment</a>, <a lt="WebVTT cue region">region</a>, or <a lt="text track cue text">text</a> change
- value, then the user agent must empty the <a>text track cue display state</a>, and then immediately
- run the <a>text track</a>'s <a>rules for updating the display of WebVTT text tracks</a>.</p>
+ flag">snap-to-lines flag</a>, <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue line
+ alignment">line alignment</a>, <a lt="WebVTT cue position">position</a>, <a lt="WebVTT cue position
+ alignment">position alignment</a>, <a lt="WebVTT cue size">size</a>, <a lt="WebVTT cue text
+ alignment">text alignment</a>, <a lt="WebVTT cue region">region</a>, or <a lt="text track cue
+ text">text</a> change value, then the user agent must empty the <a>text track cue display
+ state</a>, and then immediately run the <a>text track</a>'s <a>rules for updating the display of
+ WebVTT text tracks</a>.</p>
 
 </div>
 
@@ -4825,9 +4827,9 @@ updating the display of WebVTT text tracks</a>, <a lt="WebVTT region object">Web
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
 support the pseudo-element must dynamically update renderings accordingly. When either 'white-space'
 or one of the properties corresponding to the 'font' shorthand (including 'line-height') changes
-value, then the text track cue display state of all the <a lt="WebVTT cue">WebVTT cues</a> in the
-region must be emptied and the text track's rules for updating the text track rendering must be
-immediately rerun.</p>
+value, then the <a>text track cue display state</a> of all the <a lt="WebVTT cue">WebVTT cues</a> in
+the region must be emptied and the <a>text track</a>'s <a>rules for updating the text track
+rendering</a> must be immediately rerun.</p>
 
 <p>A CSS user agent that implements the text tracks model must implement the ''::cue-region''
 pseudo-element.</p>
