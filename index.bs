@@ -1199,7 +1199,7 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
 
 <p>A <dfn>WebVTT file body</dfn> consists of the following components, in the following order:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.</li>
 
@@ -1627,6 +1627,7 @@ example, when the font size grows, the region grows uniformly in all directions 
 
 <p>A <dfn>WebVTT region identifier setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>id</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
@@ -1644,28 +1645,33 @@ referenced by the cues that belong to the region.</p>
 
 <p>A <dfn>WebVTT region width setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>width</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage of the
 video width for the region into which cues are rendered and based on which alignment is
 calculated.</p>
 
 <p>A <dfn>WebVTT region lines setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>lines</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
  <li><p>One or more <a>ASCII digits</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of lines
 for the region into which cues are rendered. As such, it defines the height of the roll-up region if
 it is a scroll region.</p>
 
 <p>A <dfn>WebVTT region anchor setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>regionanchor</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
@@ -1673,6 +1679,7 @@ given:</p>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages that
 specify the point within the region box that is fixed in location. The first percentage measures the
 x-dimension and the second percentage y-dimension from the top left corner of the region box. If no
@@ -1681,6 +1688,7 @@ corner).</p>
 
 <p>A <dfn>WebVTT region viewport anchor setting</dfn> consists of the following components, in the
 order given:</p>
+
 <ol>
  <li><p>The string "<code>viewportanchor</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
@@ -1688,6 +1696,7 @@ order given:</p>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two percentages
 that specify the point within the video viewport that the region anchor point is anchored to. The
 first percentage measures the x-dimension and the second percentage measures the y-dimension from
@@ -1700,11 +1709,13 @@ to which the regions are absolutely positioned. Overflow is hidden.</p>
 
 <p>A <dfn>WebVTT region scroll setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>scroll</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
  <li><p>The string "<code>up</code>".</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into the
 region are allowed to move out of their initial rendering place and roll up, i.e. move towards the
 top of the video viewport. If the scroll setting is omitted, cues do not move from their rendered
@@ -2024,7 +2035,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
 <p>The <dfn>WebVTT parser algorithm</dfn> is as follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li>
   <p>Let |input| be the string being parsed, after conversion to Unicode, and with the following
@@ -2122,7 +2133,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 <p>When the algorithm above says to <dfn>collect a WebVTT block</dfn>, optionally with a flag <i>in
 header</i> set, the user agent must run the following steps:</p>
 
-<ol algorithm="collect a WebVTT block">
+<ol class=algorithm algorithm="collect a WebVTT block">
 
  <li><p>Let |input|, |position|, |seen cue| and |regions| be the same variables as those of the same
  name in the algorithm that invoked these steps.</p></li>
@@ -2380,7 +2391,7 @@ that is used as a root node for <a lt="List of WebVTT node objects">lists of Web
 objects</a>. This algorithm returns a list of <a lt="WebVTT region object">WebVTT Region
 Objects</a>.</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
 
@@ -2484,7 +2495,7 @@ Objects</a>.</p>
 number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
 means that it is aborted at that point and returns nothing.</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Let |input| be the string being parsed.</p></li>
 
  <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
@@ -2504,7 +2515,7 @@ means that it is aborted at that point and returns nothing.</p>
 settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
 <a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -2550,7 +2561,7 @@ settings</dfn> from a string |input| using a <a>text track list of regions</a> |
 <a>text track list of regions</a> |regions| for a <a>text track cue</a> |cue|, the user agent must
 run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
@@ -2772,7 +2783,7 @@ run the following steps:</p>
 <p>When this specification says that a user agent is to <dfn>collect a WebVTT timestamp</dfn>, the
 user agent must run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -2980,7 +2991,7 @@ Objects</a>:</p>
 string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fallback language
 |language|. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -3187,7 +3198,7 @@ string (whose value is a sequence of characters), a start tag (with a tag name, 
 and optionally an annotation), an end tag (with a tag name), or a timestamp tag (with a tag
 value).</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -3655,7 +3666,7 @@ title</h3>
 <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> for a <a>WebVTT cue</a> |cue| are as
 follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue
  text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
@@ -3694,7 +3705,7 @@ manner suiting the user.</p>
 
 <p>The rules are as follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
@@ -3876,7 +3887,7 @@ entirely.</p>
 obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
 following algorithm.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
  direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
@@ -4559,6 +4570,7 @@ which the <a>WebVTT region object</a> was constructed.</p>
 
 <p>The children of every <a>WebVTT region object</a> are further initialized with these CSS
 settings:</p>
+
 <ul>
  <li>the 'position' property must be set to ''position/relative''</li>
  <li>the 'unicode-bidi' property must be set to ''unicode-bidi/plaintext''</li>
@@ -4987,7 +4999,7 @@ interface VTTCue : TextTrackCue {
 <p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|, |endTime|, |text|)</dfn>
 constructor, when invoked, must run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Create a new <a>WebVTT cue</a>. Let |cue| be that <a>WebVTT cue</a>.</p></li>
 
@@ -5294,7 +5306,7 @@ interface VTTRegion {
 <p>The <dfn constructor for=VTTRegion>VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Create a new <a>WebVTT region</a>. Let |region| be that <a>WebVTT region</a>.</p></li>
 
  <!-- default settings -->
@@ -5354,6 +5366,7 @@ Y distance must be set to the new value, interpreted as a percentage.</p>
 <p>The <dfn attribute for=VTTRegion>scroll</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT region scroll</a>
 setting of the <a>WebVTT region</a> that the {{VTTRegion}} object represents:</p>
+
 <table class="complex data">
  <thead>
   <tr>

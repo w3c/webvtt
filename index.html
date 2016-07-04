@@ -1417,7 +1417,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-07-01">1 July 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-07-04">4 July 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2329,7 +2329,7 @@ area for <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-12">W
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-file">WebVTT file</dfn> must consist of a <a data-link-type="dfn" href="#webvtt-file-body" id="ref-for-webvtt-file-body-1">WebVTT file body</a> encoded as UTF-8 and labeled
 with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#mime-type">MIME type</a> <code>text/vtt</code>. <a data-link-type="biblio" href="#biblio-rfc3629">[RFC3629]</a></p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-file-body">WebVTT file body</dfn> consists of the following components, in the following order:</p>
-   <ol>
+   <ol class="algorithm">
     <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.
     <li>The string "<code>WEBVTT</code>".
     <li>Optionally, either a U+0020 SPACE character or a U+0009 CHARACTER TABULATION (tab) character
@@ -2953,7 +2953,7 @@ downloaded; this is called an <dfn class="dfn-paneled" data-dfn-type="dfn" data-
    <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-3">WebVTT parser</a> verifies a file signature before parsing the provided byte stream. If the
 stream lacks this WebVTT file signature, then the parser aborts.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser-algorithm">WebVTT parser algorithm</dfn> is as follows:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed, after conversion to Unicode, and with the following
   transformations applied:</p>
@@ -3029,7 +3029,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
    </ol>
    <p>When the algorithm above says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-a-webvtt-block">collect a WebVTT block</dfn>, optionally with a flag <i>in
 header</i> set, the user agent must run the following steps:</p>
-   <ol data-algorithm="collect a WebVTT block">
+   <ol class="algorithm" data-algorithm="collect a WebVTT block">
     <li>
      <p>Let <var>input</var>, <var>position</var>, <var>seen cue</var> and <var>regions</var> be the same variables as those of the same
  name in the algorithm that invoked these steps.</p>
@@ -3209,7 +3209,7 @@ algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-9">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-1">lists of WebVTT node
 objects</a>. This algorithm returns a list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-3">WebVTT Region
 Objects</a>.</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>settings</var> be the result of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#split-a-string-on-spaces">splitting <var>input</var> on
  spaces</a>.</p>
@@ -3299,7 +3299,7 @@ Objects</a>.</p>
    <p>The rules to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="parse-a-percentage-string">parse a percentage string</dfn> are as follows. This will return either a
 number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
 means that it is aborted at that point and returns nothing.</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
     <li>
@@ -3315,7 +3315,7 @@ means that it is aborted at that point and returns nothing.</p>
    <h3 class="heading settled" data-algorithm="WebVTT cue timings and settings parsing" data-level="5.3" id="cue-timings-and-settings-parsing"><span class="secno">5.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
    <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT cue timings and settings" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
 settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-2">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-18">WebVTT cue</a> <var>cue</var>, the user agent must run the following algorithm.</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
     <li>
@@ -3351,7 +3351,7 @@ settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" hr
    </ol>
    <p>When the user agent is to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="parse-the-webvtt-cue-settings">parse the WebVTT cue settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-3">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> <var>cue</var>, the user agent must
 run the following steps:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>settings</var> be the result of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#split-a-string-on-spaces">splitting <var>input</var> on
  spaces</a>.</p>
@@ -3509,7 +3509,7 @@ run the following steps:</p>
    </ol>
    <p>When this specification says that a user agent is to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-a-webvtt-timestamp">collect a WebVTT timestamp</dfn>, the
 user agent must run the following steps:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> and <var>position</var> be the same variables as those of the same name in the algorithm
  that invoked these steps.</p>
@@ -3649,7 +3649,7 @@ Objects</a>:</p>
    </dl>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</dfn> consist of the following algorithm. The input is a
 string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-15">WebVTT cue text</a>, and optionally a fallback language <var>language</var>. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-2">list of WebVTT Node Objects</a>.</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
     <li>
@@ -3780,7 +3780,7 @@ string <var>input</var> supposedly containing <a data-link-type="dfn" href="#web
 string (whose value is a sequence of characters), a start tag (with a tag name, a list of classes,
 and optionally an annotation), an end tag (with a tag name), or a timestamp tag (with a tag
 value).</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>input</var> and <var>position</var> be the same variables as those of the same name in the algorithm
  that invoked these steps.</p>
@@ -4057,7 +4057,7 @@ title" data-level="5.6" id="rules-for-extracting-the-chapter-title"><span class=
 title</span><a class="self-link" href="#rules-for-extracting-the-chapter-title"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter title</dfn> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-20">WebVTT cue</a> <var>cue</var> are as
 follows:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-6">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-1">WebVTT cue
  text parsing rules</a> to the <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
@@ -4082,7 +4082,7 @@ audio resources, they need to publish them in a video element for rendering by t
    <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> or other playback mechanism, which user agents are expected to render in a
 manner suiting the user.</p>
    <p>The rules are as follows:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>If the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#audio">audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p>
@@ -4218,7 +4218,7 @@ dragging them to another location on the <a data-link-type="element" href="https
    <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue settings</dfn> to
 obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-8">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the
 following algorithm.</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-13">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-12">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-14">WebVTT
  cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-5">vertical
@@ -4951,7 +4951,7 @@ rendering</a> must be immediately rerun.</p>
   elements</a> and other DOM nodes.</p>
    </dl>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" id="dom-vttcue-vttcue">VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)</dfn> constructor, when invoked, must run the following steps:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-31">WebVTT cue</a>. Let <var>cue</var> be that <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-32">WebVTT cue</a>.</p>
     <li>
@@ -5169,7 +5169,7 @@ text</a>.</p>
    </dl>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="constructor" data-export="" id="dom-vttregion-vttregion">VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
-   <ol>
+   <ol class="algorithm">
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-15">WebVTT region</a>. Let <var>region</var> be that <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-16">WebVTT region</a>.</p>
     <li>
