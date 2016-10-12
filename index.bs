@@ -3687,9 +3687,9 @@ follows:</p>
 <h2 id=rendering>Rendering</h2>
 
 <p class="note">This section describes in some detail how to visually render WebVTT cues in a user
-agent. It also specifies extra CSS functionality made available to manipulate the visual rendering.
-The processing model is quite tightly linked to media elements in HTML. When supporting WebVTT in
-media players that don't support CSS, equivalent visual rendering will need to be implemented.</p>
+agent. The processing model is quite tightly linked to media elements in HTML. When supporting
+WebVTT in media players that don't support CSS, equivalent visual rendering will need to be
+implemented.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
@@ -4598,7 +4598,265 @@ object">WebVTT region objects</a> must take their initial values.</p>
 then they must be interpreted as defined in the next section.</p>
 
 
-<h4 id=css-extensions>CSS extensions</h4>
+<h2 id=css-extensions>CSS extensions</h2>
+
+<p class="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
+apply to WebVTT. This section does not apply to user agents that don't support CSS.</p>
+
+
+<h3 id=css-extensions-introduction>Introduction</h3>
+
+<p><i>This section is non-normative.</i></p>
+
+<p>The ''::cue'' pseudo-element represents a cue.</p>
+
+<p>The ''::cue(|selector|)'' pseudo-element represents a cue or element inside a cue that match the
+given selector.</p>
+
+<p>The ''::cue-region'' pseudo-element represents a region.</p>
+
+<p class="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
+present in the <{video}> element's document tree.</p>
+
+<p>The '':past'' and '':future'' pseudo-classes can be used in ''::cue(|selector|)'' to match <a>WebVTT Internal Node Objects</a> based on the <a>current playback position</a>.</p>
+
+<div class="example" id="example-cue-selector">
+ <p>The following table shows examples of what can be selected with a given selector, together with
+ WebVTT syntax to produce the relevant objects.</p>
+
+ <table class="data">
+  <thead>
+   <tr>
+    <th>Selector (CSS syntax example)
+    <th>Matches (WebVTT syntax example)
+  <tbody>
+   <tr>
+    <td class=long>
+     <p>''::cue''</p>
+
+     <pre>
+     video::cue {
+       color: yellow;
+     }</pre>
+    <td class=long>
+     <p>Any <a>list of WebVTT Node Objects</a>.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     Also yellow!
+     </pre>
+   <tr>
+    <td class=long>
+     <p><a>ID selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(#cue1) {
+       color: yellow;
+     }</pre>
+    <td class=long>
+     <p>Any <a>list of WebVTT Node Objects</a> with the cue's <a>text track cue identifier</a>
+     matching the given ID.</p>
+
+     <pre>
+     WEBVTT
+
+     cue1
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+     </pre>
+   <tr>
+    <td class=long>
+     <p><a>Type selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(c),
+     video::cue(i),
+     video::cue(b),
+     video::cue(u),
+     video::cue(ruby),
+     video::cue(rt),
+     video::cue(v),
+     video::cue(lang) {
+       color: yellow;
+     }
+     </pre>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
+     with the given name.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c>Yellow!&lt;/c>
+     &lt;i>Yellow!&lt;/i>
+     &lt;u>Yellow!&lt;/u>
+     &lt;b>Yellow!&lt;/b>
+     &lt;u>Yellow!&lt;/u>
+     &lt;ruby>Yellow! &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
+     &lt;v Kathryn>Yellow!&lt;/v>
+     &lt;lang en>Yellow!&lt;/lang>
+     </pre>
+   <tr>
+    <td class=long>
+     <p><a>Class selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(.loud) {
+       color: yellow;
+     }</pre>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
+     with the given <a lt="WebVTT Node Object's applicable classes">applicable classes.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c.loud>Yellow!&lt;/c>
+     &lt;i.loud>Yellow!&lt;/i>
+     &lt;u.loud>Yellow!&lt;/u>
+     &lt;b.loud>Yellow!&lt;/b>
+     &lt;u.loud>Yellow!&lt;/u>
+     &lt;ruby.loud>Yellow! &lt;rt.loud>Yellow!&lt;/rt>&lt;/ruby>
+     &lt;v.loud Kathryn>Yellow!&lt;/v>
+     &lt;lang.loud en>Yellow!&lt;/lang>
+     </pre>
+   <tr>
+    <td class=long>
+     <p><a>Attribute selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue([lang="en-US"]) {
+       color: yellow;
+     }
+     video::cue(lang[lang="en-GB"]) {
+       color: cyan;
+     }
+     video::cue(v[voice="Kathryn"] {
+       color: lime;
+     }
+     </pre>
+    <td class=long>
+     <p>For "lang", the root <a>list of WebVTT Node Objects</a> or <a>WebVTT Language Object</a>
+     with the given <a lt="WebVTT Node Object's applicable language">applicable language</a>; for
+     "voice", the <a>WebVTT Voice Object</a> with the given voice.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     &lt;lang en-GB>Cyan!&lt;/lang>
+
+     00:00:16.000 --> 00:00:24.000
+     &lt;v Kathryn>I like lime.&lt;/v>
+     </pre>
+
+     <p>The <a lt="WebVTT Node Object's applicable language">applicable language</a> for the <a>list
+     of WebVTT Node Objects</a> can be set by the <{track/srclang}> attribute in HTML.</p>
+
+     <pre>
+     &lt;video ...>
+      &lt;track src="example-attr.vtt"
+             <mark>srclang="en-US"</mark> default>
+     &lt;/video>
+     </pre>
+   <tr>
+    <td class=long>
+     <p>'':lang()'' pseudo-class in ''::cue()''</p>
+     <pre>
+     video::cue(:lang(en)) {
+       color: yellow;
+     }
+     video::cue(:lang(en-GB)) {
+       color: cyan;
+     }
+     </pre>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> with an <a lt="WebVTT Node Object's applicable
+     language">applicable language</a> matching the given language range.</p>
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     &lt;lang en-GB>Cyan!&lt;/lang>
+     </pre>
+
+     <p>As above, the <a lt="WebVTT Node Object's applicable language">applicable language</a> for
+     the <a>list of WebVTT Node Objects</a> can be set by the <{track/srclang}> attribute in
+     HTML.</p>
+   <tr>
+    <td class=long>
+     <p>'':past'' and '':future'' pseudo-classes in ''::cue()''</p>
+
+     <pre>
+     video::cue(:past) {
+       color: yellow;
+     }
+     video::cue(:future) {
+       color: cyan;
+     }
+     </pre>
+    <td class=long>
+     <p>In cues that have <a>WebVTT Timestamp Objects</a>, <a>WebVTT Internal Node Objects</a>,
+     depending on the <a>current playback position</a>.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c>No match (no timestamps)&lt;/c>
+
+     00:00:08.000 --> 00:00:16.000
+     No match &lt;00:00:12.000> (no elements)
+
+     00:00:16.000 --> 00:00:24.000
+     &lt;00:00:16.000> &lt;c>This&lt;/c>
+     &lt;00:00:18.000> &lt;c>can&lt;/c>
+     &lt;00:00:20.000> &lt;c>match&lt;/c>
+     &lt;00:00:22.000> &lt;c>:past/:future&lt;/c>
+     &lt;00:00:24.000>
+     </pre>
+   <tr>
+    <td class=long>
+     <p>''::cue-region''</p>
+
+     <pre>
+     video::cue-region {
+       color: yellow;
+     }</pre>
+    <td class=long>
+     <p>Any region (list of <a>WebVTT region objects</a>).</p>
+
+     <pre>
+     WEBVTT
+
+     REGION
+     id:editor-comments
+     regionanchor:0%,0%
+     viewportanchor:0%,0%
+
+     00:00:00.000 --> 00:00:08.000
+     No match (normal cue)
+
+     00:00:08.000 --> 00:00:16.000 region:editor-comments
+     Yellow!
+     </pre>
+ </table>
+</div>
+
+<h3 id="css-extensions-processing-model">Processing model</h3>
 
 <p>When a user agent is rendering one or more <a lt="WebVTT cue">WebVTT cues</a> according to the
 <a>rules for updating the display of WebVTT text tracks</a>, <a lt="WebVTT Node Object">WebVTT Node
@@ -4626,7 +4884,7 @@ pseudo-elements defined below won't have any effect according to this specificat
 pseudo-classes.</p>
 
 
-<h5 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h5>
+<h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
 
 <p>The <dfn>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -4801,7 +5059,7 @@ would have been applied to the <a>list of WebVTT Node Objects</a>, must instead 
 <a>WebVTT cue background box</a>.</p>
 
 
-<h5 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h5>
+<h4 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h4>
 
 <p>The '':past'' and '':future'' pseudo-classes sometimes match <a lt="WebVTT Node Object">WebVTT
 Node Objects</a>. [[!SELECTORS4]]</p>
@@ -4825,7 +5083,7 @@ position</a> of the <a>media element</a> that is the <i>matched element</i>, ent
 <a>WebVTT Node Object</a> |c|.</p>
 
 
-<h5 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h5>
+<h4 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h4>
 
 <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
 that element is the matched element. The pseudo-element defined below affects the styling of text
