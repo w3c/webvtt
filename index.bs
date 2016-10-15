@@ -367,7 +367,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
  NOTE style blocks cannot appear after the first cue.
  </pre>
 
- </div>
+</div>
 
 <h3 id=introduction-other-features>Other features</h3>
 
@@ -677,14 +677,10 @@ precomposed character).</p>
 
   </ul>
 
-  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
-  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue line">line</a>
-  percentages are relative to the height of the video, and <a lt="WebVTT cue position">position</a>
-  and <a lt="WebVTT cue size">size</a> percentages are relative to the width of the video.</p>
-
-  <p>Otherwise, <a lt="WebVTT cue line">line</a> percentages are relative to the width of the video,
-  and <a lt="WebVTT cue position">position</a> and <a lt="WebVTT cue size">size</a> percentages are
-  relative to the height of the video.</p>
+  <p class=note>The <a lt="WebVTT cue writing direction">writing direction</a> affects the
+  interpretation of the <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue position">position</a>,
+  and <a lt="WebVTT cue size">size</a> cue settings to be interpreted with respect to either the
+  width or height of the video.</p>
 
   <p>By default, the <a lt="WebVTT cue writing direction">writing direction</a> is set to to <a
   lt="WebVTT cue horizontal writing direction">horizontal</a>.</p>
@@ -729,6 +725,10 @@ precomposed character).</p>
   <p>By default, the <a lt="WebVTT cue line">line</a> is set to <a lt="WebVTT cue line
   automatic">auto</a>.</p>
 
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue line">line</a>
+  percentages are relative to the height of the video, otherwise to the width of the video.</p>
+
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed line">computed line</dfn> whose value is that
   returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
@@ -753,9 +753,9 @@ precomposed character).</p>
    value, not just those in the range 0..100, is valid, or the value is in the range 0..100 and is
    thus valid regardless of the value of that flag.)</p></li>
 
-   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is false, return
-   the value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value
-   <a lt="WebVTT cue line automatic">auto</a>.)</p></li>
+   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is false, return the
+   value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value <a
+   lt="WebVTT cue line automatic">auto</a>.)</p></li>
 
    <li><p>Let |cue| be the <a>WebVTT cue</a>.</p></li>
 
@@ -839,6 +839,10 @@ precomposed character).</p>
 
   <p>By default, the <a lt="WebVTT cue position">position</a> is set to <a lt="WebVTT cue automatic
   position">auto</a>.</p>
+
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue position">position</a>
+  percentages are relative to the width of the video, otherwise to the height of the video.</p>
 
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed position">computed position</dfn> whose value
   is that returned by the following algorithm, which is defined in terms of the other aspects of the
@@ -957,6 +961,10 @@ precomposed character).</p>
 
   <p>By default, the <a>WebVTT cue size</a> is set to 100%.</p>
 
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue size">size</a>
+  percentages are relative to the width of the video, otherwise to the height of the video.</p>
+
  </dd>
 
  <dt><dfn lt="WebVTT cue text alignment">A text alignment</dfn></dt>
@@ -968,17 +976,17 @@ precomposed character).</p>
   <dl>
 
    <dt><dfn lt="WebVTT cue start alignment">Start alignment</dfn></dt>
-   <dd>The text of each line is individually aligned towards the start side of the box,
-   where the start side for that line is determined by using the CSS rules for
-   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
+   <dd>The text of each line is individually aligned towards the start side of the box, where the
+   start side for that line is determined by using the CSS rules for ''unicode-bidi/plaintext''
+   value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue center alignment">Center alignment</dfn></dt>
    <dd>The text is aligned centered between the box's start and end sides.</dd>
 
    <dt><dfn lt="WebVTT cue end alignment">End alignment</dfn></dt>
-   <dd>The text of each line is individually aligned towards the end side of the box,
-   where the end side for that line is determined by using the CSS rules for
-   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
+   <dd>The text of each line is individually aligned towards the end side of the box, where the end
+   side for that line is determined by using the CSS rules for ''unicode-bidi/plaintext'' value of
+   the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue left alignment">Left alignment</dfn></dt>
    <dd>The text is aligned to the box's left side (for <a lt="WebVTT cue horizontal writing
@@ -1254,9 +1262,9 @@ order:</p>
  U+0059 LATIN CAPITAL LETTER Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E).</li>
  <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.</li>
  <li>A <a>WebVTT line terminator</a>.</li>
- <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
- U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT
- line terminator</a>, except that the entire resulting string must not contain the substring
+ <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and U+000D
+ CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT line
+ terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
  represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply.
  [[!CSS21]]</li>
@@ -2336,9 +2344,7 @@ header</i> set, the user agent must run the following steps:</p>
 
        </li>
 
-       <!--
-       <li><p>Otherwise, (check for new block types here)</p></li>
-       -->
+       <!-- <li><p>Otherwise, (check for new block types here)</p></li> -->
 
       </ol>
 
@@ -2371,7 +2377,7 @@ header</i> set, the user agent must run the following steps:</p>
 
  <li><p>Otherwise, if |region| is not null, then <a>collect WebVTT region settings</a> from |buffer|
  using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
- it.</li>
+ it.</p></li>
 
  <!-- return new block types here -->
 
@@ -2400,8 +2406,8 @@ Objects</a>.</p>
 
   <ol>
    <li><p>If |setting| does not contain a U+003A COLON character (:), or if the first U+003A COLON
-   character (:) in |setting| is either the first or last character of |setting|, then
-   jump to the step labeled <i>next setting</i>.</p></li>
+   character (:) in |setting| is either the first or last character of |setting|, then jump to the
+   step labeled <i>next setting</i>.</p></li>
 
    <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003A
    COLON character (:) in that string.</p></li>
@@ -4404,8 +4410,8 @@ following algorithm.</p>
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by half of the height of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end
-         alignment">end alignment</a></dt>
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end alignment">end
+         alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by the height of |bounding box|.</p></dd>
         </dl>
        </dd>
@@ -4419,8 +4425,8 @@ following algorithm.</p>
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by half of the width of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end
-         alignment">end alignment</a></dt>
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end alignment">end
+         alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by the width of |bounding box|.</p></dd>
         </dl>
        </dd>
@@ -4878,7 +4884,8 @@ interface VTTCue : TextTrackCue {
 
 <dl class="note">
 
- <dt>|cue| = new <a constructor lt="VTTCue(startTime, endTime, text)">VTTCue</a>( |startTime|, |endTime|, |text| )</dt>
+ <dt>|cue| = new <a constructor lt="VTTCue(startTime, endTime, text)">VTTCue</a>( |startTime|,
+ |endTime|, |text| )</dt>
  <dd>
   <p>Returns a new {{VTTCue}} object, for use with the {{TextTrack/addCue()}} method.</p>
   <p>The |startTime| argument sets the <a>text track cue start time</a>.</p>
@@ -4996,8 +5003,8 @@ interface VTTCue : TextTrackCue {
 
 </dl>
 
-<p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|, |endTime|, |text|)</dfn>
-constructor, when invoked, must run the following steps:</p>
+<p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|,
+|endTime|, |text|)</dfn> constructor, when invoked, must run the following steps:</p>
 
 <ol class=algorithm>
 
@@ -5084,8 +5091,8 @@ value.</p>
 
 <p>The <dfn attribute for=VTTCue>snapToLines</dfn> attribute, on getting, must return true if the
 <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents
-is true; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set to
-the new value.</p>
+is true; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTCue>line</dfn> attribute, on getting, must return the <a>WebVTT cue
 line</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
@@ -5096,7 +5103,7 @@ automatic">auto</a>.</p>
 
 <p class="note">In order to be able to set the {{VTTCue/snapToLines}} and {{VTTCue/line}} attributes
 in any order, the API does not reject setting {{VTTCue/snapToLines}} to false when {{VTTCue/line}}
-has a value outside the range 0..100, or vice versa.
+has a value outside the range 0..100, or vice versa.</p>
 
 <p>The <dfn attribute for=VTTCue>lineAlign</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT cue line
@@ -5132,10 +5139,10 @@ value.</p>
 <p>The <dfn attribute for=VTTCue>position</dfn> attribute, on getting, must return the <a>WebVTT cue
 position</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
 lt="WebVTT cue automatic position">auto</a> must be represented as the string "<code>auto</code>".
-On setting, if the new value is negative or greater than 100, then an
-{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT cue position</a> must be set
-to the new value; if the new value is the string "<code>auto</code>", then it must be
-interpreted as the special value <a lt="WebVTT cue automatic position">auto</a>.</p>
+On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}} exception
+must be thrown. Otherwise, the <a>WebVTT cue position</a> must be set to the new value; if the new
+value is the string "<code>auto</code>", then it must be interpreted as the special value <a
+lt="WebVTT cue automatic position">auto</a>.</p>
 
 <p>The <dfn attribute for=VTTCue>positionAlign</dfn> attribute, on getting, must return the string
 from the second cell of the row in the table below whose first cell is the <a>WebVTT cue position
@@ -5452,8 +5459,8 @@ and registration with IANA.</p>
      <li> 57 45 42 56 54 54 09 </li>
      <li> 57 45 42 56 54 54 EOF </li>
     </ul>
-    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code>WEBVTT</code>", and
-    finally a space, tab, line break, or the end of the file.)</p>
+    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code>WEBVTT</code>", and finally a
+    space, tab, line break, or the end of the file.)</p>
    </dd>
    <dt>File extension(s):</dt>
    <dd>"<code>vtt</code>"</dd>
