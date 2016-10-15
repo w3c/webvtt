@@ -35,6 +35,7 @@
  *   - .note       for informative notes             (div, p, span, aside, details)
  *   - .example    for informative examples          (div, p, pre, span)
  *   - .issue      for issues                        (div, p, span)
+ *   - .assertion  for assertions                    (div, p, span)
  *   - .advisement for loud normative statements     (div, p, strong)
  *   - .annoying-warning for spec obsoletion notices (div, aside, details)
  *
@@ -49,9 +50,9 @@
  *   - ::before styled for CSS-generated issue/example/figure numbers:
  *     -> Documents wishing to use this only need to add
  *        figcaption::before,
- *        .caption::before { content: "Figure "  counter(figure);  }
- *        .example::before { content: "Example " counter(example); }
- *        .issue::before   { content: "Issue "   counter(issue);   }
+ *        .caption::before { content: "Figure "  counter(figure) " ";  }
+ *        .example::before { content: "Example " counter(example) " "; }
+ *        .issue::before   { content: "Issue "   counter(issue) " ";   }
  *
  * Header Stuff (ignore, just don't conflict with these classes)
  *   - .head for the header
@@ -414,6 +415,19 @@
 	 border-left: 0.5em solid #DEF;
 	}
 
+	/* Put nice boxes around each algorithm. */
+	[data-algorithm]:not(.heading) {
+	  padding: .5em;
+	  border: thin solid #ddd; border-radius: .5em;
+	  margin: .5em 0;
+	}
+	[data-algorithm]:not(.heading) > :first-child {
+	  margin-top: 0;
+	}
+	[data-algorithm]:not(.heading) > :last-child {
+	  margin-bottom: 0;
+	}
+
 	/* Style for switch/case <dl>s */
 	dl.switch > dd > ol.only,
 	dl.switch > dd > .only > ol {
@@ -457,7 +471,7 @@
 		font-style: normal;
 	}
 	dt dfn code, code.idl {
-		font-size: inherit;
+		font-size: normal;
 	}
 	dfn var {
 		font-style: normal;
@@ -598,7 +612,7 @@
 /*                             Colored Boxes                                  */
 /******************************************************************************/
 
-	.issue, .note, .example, .advisement, blockquote {
+	.issue, .note, .example, .assertion, .advisement, blockquote {
 		padding: .5em;
 		border: .5em;
 		border-left-style: solid;
@@ -613,6 +627,7 @@
 	.note,
 	.example,
 	.advisement,
+	.assertion,
 	blockquote {
 		margin: 1em auto;
 	}
@@ -645,7 +660,7 @@
 		padding-right: 1em;
 		text-transform: uppercase;
 	}
-	/* Add .issue::before { content: "Issue " counter(issue); } for autogen numbers,
+	/* Add .issue::before { content: "Issue " counter(issue) " "; } for autogen numbers,
 	   or use class="marker" to mark up the issue number in source. */
 
 /** Example *******************************************************************/
@@ -663,7 +678,7 @@
 		min-width: 7.5em;
 		display: block;
 	}
-	/* Add .example::before { content: "Example " counter(example); } for autogen numbers,
+	/* Add .example::before { content: "Example " counter(example) " "; } for autogen numbers,
 	   or use class="marker" to mark up the example number in source. */
 
 /** Non-normative Note ********************************************************/
@@ -690,6 +705,14 @@
 	}
 	details.note[open] > summary {
 		border-bottom: 1px silver solid;
+	}
+
+/** Assertion Box *************************************************************/
+	/*  for assertions in algorithms */
+
+	.assertion {
+		border-color: #AAA;
+		background: #EEE;
 	}
 
 /** Advisement Box ************************************************************/
@@ -1254,7 +1277,7 @@ Possible extra rowspan handling
                 counter-increment: figure;
             }
             figcaption:not(.no-marker)::before {
-                content: "Figure " counter(figure);
+                content: "Figure " counter(figure) " ";
             }</style>
 <style>/* style-autolinks */
 
@@ -1417,7 +1440,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-07-15">15 July 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2016-10-15">15 October 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2049,7 +2072,7 @@ precomposed character).</p>
      <p>A <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-2">WebVTT cue</a> has a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="cue computed line" data-noexport="" id="cue-computed-line">computed line</dfn> whose value is that
   returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
-     <ol data-algorithm="computed line">
+     <ol class="algorithm" data-algorithm="computed line">
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-9">line</a> is numeric, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-4">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-3">WebVTT cue</a> is false, and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-10">line</a> is negative or
     greater than 100, then return 100 and abort these steps.</p>
@@ -2111,7 +2134,7 @@ precomposed character).</p>
      <p>A <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-7">WebVTT cue</a> has a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="cue computed position" data-noexport="" id="cue-computed-position">computed position</dfn> whose value
   is that returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
-     <ol data-algorithm="computed position">
+     <ol class="algorithm" data-algorithm="computed position">
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-7">position</a> is numeric, then return the value of the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-8">position</a> and abort these steps. (Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-9">position</a> is the special value <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-2">auto</a>.)</p>
       <li>
@@ -2149,7 +2172,7 @@ precomposed character).</p>
      <p>A <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-9">WebVTT cue</a> has a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="cue computed position alignment" data-noexport="" id="cue-computed-position-alignment">computed position
   alignment</dfn> whose value is that returned by the following algorithm, which is defined in terms
   of other aspects of the cue:</p>
-     <ol data-algorithm="computed position alignment">
+     <ol class="algorithm" data-algorithm="computed position alignment">
       <li>
        <p>If the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-3">WebVTT cue position alignment</a> is not <a data-link-type="dfn" href="#webvtt-cue-position-automatic-alignment" id="ref-for-webvtt-cue-position-automatic-alignment-2">auto</a>, then return the value of the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-4">WebVTT cue position alignment</a> and abort
    these steps.</p>
@@ -2275,7 +2298,7 @@ area for <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-12">W
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region identifier" data-noexport="" id="webvtt-region-identifier">An identifier</dfn>
     <dd>
-     <p>An arbitrary string.</p>
+     <p>An arbitrary string. An identifier is required for a region to exist.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region width" data-noexport="" id="webvtt-region-width">A width</dfn>
     <dd>
      <p>A number giving the width of the box within which the text of each line of the containing cues
@@ -2634,7 +2657,7 @@ given:</p>
  HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
    </ol>
    <p>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-2">WebVTT region identifier setting</a> must be unique amongst all the <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-3">WebVTT region identifier settings</a> of all <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-7">WebVTT
-regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>.</p>
+regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>. For a region to exist, a region identifier setting has to be provided.</p>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-4">WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-width-setting">WebVTT region width setting</dfn> consists of the following components, in the order
@@ -2943,7 +2966,7 @@ terminator</a>:</p>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-5">WebVTT cue text</a> is
 said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-cue-text">WebVTT file using cue text<a class="self-link" href="#webvtt-file-using-cue-text"></a></dfn>.</p>
    <h2 class="heading settled" data-level="5" id="parsing"><span class="secno">5. </span><span class="content">Parsing</span><a class="self-link" href="#parsing"></a></h2>
-   <h3 class="heading settled" data-algorithm="WebVTT file parsing" data-level="5.1" id="file-parsing"><span class="secno">5.1. </span><span class="content">WebVTT file parsing</span><a class="self-link" href="#file-parsing"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="WebVTT file parsing" data-level="5.1" id="file-parsing"><span class="secno">5.1. </span><span class="content">WebVTT file parsing</span><a class="self-link" href="#file-parsing"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser">WebVTT parser</dfn>, given an input byte stream, a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>, and a collection of <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheets</a> <var>stylesheets</var>, must decode the byte
 stream using the <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#utf-8-decode">UTF-8 decode</a> algorithm, and then must parse the resulting
 string according to the <a data-link-type="dfn" href="#webvtt-parser-algorithm" id="ref-for-webvtt-parser-algorithm-1">WebVTT parser algorithm</a> below. This results in <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-14">WebVTT cues</a> being added to <var>output</var>, and <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheets</a> being added to <var>stylesheets</var>. <a data-link-type="biblio" href="#biblio-rfc3629">[RFC3629]</a></p>
@@ -3202,7 +3225,7 @@ header</i> set, the user agent must run the following steps:</p>
     <li>
      <p>Otherwise, return null.</p>
    </ol>
-   <h3 class="heading settled" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
    <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT region settings" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
 settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>, the user agent must run the following
 algorithm.</p>
@@ -3230,14 +3253,14 @@ Objects</a>.</p>
        <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
        <dl>
         <dt>
-         <p>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>id</code>"</p>
+         <p>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>id</code>"</p>
         <dd>
          <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-2">identifier</a> be <var>value</var>.</p>
         <dt>
-         <p>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>width</code>"</p>
+         <p>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>width</code>"</p>
         <dd>
          <p>If <a data-link-type="dfn" href="#parse-a-percentage-string" id="ref-for-parse-a-percentage-string-1">parse a percentage string</a> from <var>value</var> returns a <var>percentage</var>, let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-2">WebVTT region width</a> be <var>percentage</var>.</p>
-        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>lines</code>"
+        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>lines</code>"
         <dd>
          <ol>
           <li>
@@ -3248,7 +3271,7 @@ Objects</a>.</p>
           <li>
            <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-2">WebVTT region lines</a> be <var>number</var>.</p>
          </ol>
-        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>regionanchor</code>"
+        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>regionanchor</code>"
         <dd>
          <ol>
           <li>
@@ -3267,7 +3290,7 @@ Objects</a>.</p>
            <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-2">WebVTT region anchor point</a> be the
        tuple of the <var>percentage</var> values calculated from <var>anchorX</var> and <var>anchorY</var>.</p>
          </ol>
-        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>viewportanchor</code>"
+        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>viewportanchor</code>"
         <dd>
          <ol>
           <li>
@@ -3286,11 +3309,11 @@ Objects</a>.</p>
            <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-2">WebVTT region anchor point</a> be
        the tuple of the <var>percentage</var> values calculated from <var>viewportanchorX</var> and <var>viewportanchorY</var>.</p>
          </ol>
-        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>scroll</code>"
+        <dt>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>scroll</code>"
         <dd>
          <ol>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>up</code>", then let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-2">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-1">up</a>.</p>
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>up</code>", then let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-2">scroll value</a> be <a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-1">up</a>.</p>
          </ol>
        </dl>
       <li><i>Next setting</i>: Continue to the next setting, if any.
@@ -3312,7 +3335,7 @@ means that it is aborted at that point and returns nothing.</p>
     <li>
      <p>Return <var>percentage</var>.</p>
    </ol>
-   <h3 class="heading settled" data-algorithm="WebVTT cue timings and settings parsing" data-level="5.3" id="cue-timings-and-settings-parsing"><span class="secno">5.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="WebVTT cue timings and settings parsing" data-level="5.3" id="cue-timings-and-settings-parsing"><span class="secno">5.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
    <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT cue timings and settings" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
 settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-2">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-18">WebVTT cue</a> <var>cue</var>, the user agent must run the following algorithm.</p>
    <ol class="algorithm">
@@ -3371,22 +3394,22 @@ run the following steps:</p>
       <li>
        <p>Run the appropriate substeps that apply for the value of <var>name</var>, as follows:</p>
        <dl>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>region</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>region</code>"
         <dd>
          <ol>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-3">WebVTT cue region</a> be the last <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-10">WebVTT region</a> in <var>regions</var> whose <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-3">WebVTT region identifier</a> is <var>value</var>, if any, or null otherwise.</p>
          </ol>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>vertical</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>vertical</code>"
         <dd>
          <ol>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>rl</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-11">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-4">vertical growing left</a>.</p>
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>rl</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-11">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-4">vertical growing left</a>.</p>
           <li>
-           <p>Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string
+           <p>Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>lr</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-12">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-4">vertical growing right</a>.</p>
          </ol>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>line</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>line</code>"
         <dd>
          <ol>
           <li>
@@ -3434,16 +3457,16 @@ run the following steps:</p>
           <li>
            <p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character (%), then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-10">WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p>
           <li>
-           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>start</code>",
+           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>start</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-7">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-5">start alignment</a>.</p>
           <li>
-           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
+           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-8">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-2">center alignment</a>.</p>
           <li>
-           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>end</code>",
+           <p>If <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>end</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-9">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-2">end alignment</a>.</p>
          </ol>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>position</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>position</code>"
         <dd>
          <ol>
           <li>
@@ -3460,16 +3483,16 @@ run the following steps:</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-22">position</a> be <var>number</var>.</p>
           <li>
-           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string
+           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>line-left</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-8">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-line-left-alignment" id="ref-for-webvtt-cue-position-line-left-alignment-4">line-left alignment</a>.</p>
           <li>
-           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
+           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>center</code>",
        then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-9">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment" id="ref-for-webvtt-cue-position-center-alignment-2">center alignment</a>.</p>
           <li>
-           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string
+           <p>If <var>colalign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>line-right</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-10">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-line-right-alignment" id="ref-for-webvtt-cue-position-line-right-alignment-3">line-right alignment</a>.</p>
          </ol>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>size</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>size</code>"
         <dd>
          <ol>
           <li>
@@ -3478,27 +3501,27 @@ run the following steps:</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-8">WebVTT cue size</a> be <var>number</var>.</p>
          </ol>
-        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for "<code>align</code>"
+        <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>align</code>"
         <dd>
          <ol>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>start</code>", then
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>start</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-14">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-start-alignment" id="ref-for-webvtt-cue-start-alignment-6">start
        alignment</a>.</p>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>center</code>", then
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>center</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-15">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment" id="ref-for-webvtt-cue-center-alignment-6">center
        alignment</a>.</p>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>end</code>", then
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>end</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-16">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-end-alignment" id="ref-for-webvtt-cue-end-alignment-5">end
        alignment</a>.</p>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>left</code>", then
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>left</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-17">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-left-alignment" id="ref-for-webvtt-cue-left-alignment-5">left
        alignment</a>.</p>
           <li>
-           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the string "<code>right</code>", then
+           <p>If <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string "<code>right</code>", then
        let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-18">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-right-alignment" id="ref-for-webvtt-cue-right-alignment-5">right
        alignment</a>.</p>
          </ol>
@@ -3579,7 +3602,7 @@ user agent must run the following steps:</p>
     <li>
      <p>Return <var>result</var>.</p>
    </ol>
-   <h3 class="heading settled" data-algorithm="WebVTT cue text parsing rules" data-level="5.4" id="cue-text-parsing-rules"><span class="secno">5.4. </span><span class="content">WebVTT cue text parsing rules</span><a class="self-link" href="#cue-text-parsing-rules"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="WebVTT cue text parsing rules" data-level="5.4" id="cue-text-parsing-rules"><span class="secno">5.4. </span><span class="content">WebVTT cue text parsing rules</span><a class="self-link" href="#cue-text-parsing-rules"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-node-object">WebVTT Node Object</dfn> is a conceptual construct used to represent components of <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-6">WebVTT cue text</a> so that its processing can be described without reference to the underlying
 syntax.</p>
    <p>There are two broad classes of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-1">WebVTT Node Objects</a>: <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-1">WebVTT Internal Node Objects</a> and <a data-link-type="dfn" href="#webvtt-leaf-node-object" id="ref-for-webvtt-leaf-node-object-1">WebVTT
@@ -4052,7 +4075,7 @@ separated from the next by a single U+0020 SPACE character.</p>
 document <var>owner</var>.</p>
    <p>All characteristics of the DOM nodes that are not described above or dependent on characteristics
 defined above must be left at their initial values.</p>
-   <h3 class="heading settled" data-algorithm="WebVTT rules for extracting the chapter
+   <h3 class="heading settled algorithm" data-algorithm="WebVTT rules for extracting the chapter
 title" data-level="5.6" id="rules-for-extracting-the-chapter-title"><span class="secno">5.6. </span><span class="content">WebVTT rules for extracting the chapter
 title</span><a class="self-link" href="#rules-for-extracting-the-chapter-title"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter title</dfn> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-20">WebVTT cue</a> <var>cue</var> are as
@@ -4071,7 +4094,7 @@ follows:</p>
 agent. It also specifies extra CSS functionality made available to manipulate the visual rendering.
 The processing model is quite tightly linked to media elements in HTML. When supporting WebVTT in
 media players that don’t support CSS, equivalent visual rendering will need to be implemented.</p>
-   <h3 class="heading settled" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element), or
 of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text
 tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>, or other playback mechanism, are
@@ -4108,7 +4131,7 @@ manner suiting the user.</p>
     <li>
      <p>Let <var>regions</var> be an empty list of <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-11">WebVTT regions</a>.</p>
     <li>
-     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of regions</a>.</p>
+     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> with an identifier from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of regions</a>.</p>
     <li>
      <p>If <var>reset</var> is false, then, for each <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-13">WebVTT region</a> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-5">WebVTT region object</a>.</p>
     <li>
@@ -4118,9 +4141,9 @@ manner suiting the user.</p>
        <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as follows:</p>
        <ul>
         <li>
-         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://html.spec.whatwg.org/multipage/infrastructure.html#&apos;vw&apos;">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
-         <p>Let <var>lineHeight</var> be <span class="css">5.33vh</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
+         <p>Let <var>lineHeight</var> be <span class="css">5.33vh</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
         <li>
          <p>Let <var>viewportAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-3">WebVTT region anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-4">WebVTT region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
      from <span class="css"><var>viewportAnchorX</var> vw</span>.</p>
@@ -4250,7 +4273,7 @@ following algorithm.</p>
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-13">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
- (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+ (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://html.spec.whatwg.org/multipage/infrastructure.html#&apos;vw&apos;">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
   the following list:</p>
@@ -4355,7 +4378,7 @@ following algorithm.</p>
      </dl>
     <li>
      <p>Let <var>left</var> be <span class="css"><var>x-position</var> vw</span> and <var>top</var> be <span class="css"><var>y-position</var> vh</span>. (These are
- CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-3/#vh">vh</a> are
+ CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://html.spec.whatwg.org/multipage/infrastructure.html#&apos;vw&apos;">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are
  CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints, thus
@@ -4412,10 +4435,10 @@ Red or green?
    Text Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> nodes.
       <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently restyled using style
    sheets after their boxes are generated, as described below.)
-      <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a> property has
+      <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has
    the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-display-3/#valdef-display-inline">inline</a>. This is the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-background-box">WebVTT cue background box</dfn>.
       <li>Runs of children of <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-5">WebVTT Ruby Objects</a> that are not <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-6">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
+   whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
       <li>Properties on <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-10">WebVTT Node Objects</a> have their values set as
    defined in the next section. (That section uses some of the variables whose values were
    calculated earlier in this algorithm.)
@@ -4567,7 +4590,7 @@ Red or green?
     <li>
      <p><i>Done positioning</i>: Return <var>boxes</var>.</p>
    </ol>
-   <h4 class="heading settled" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="6.1.1" id="applying-css-properties"><span class="secno">6.1.1. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h4>
+   <h4 class="heading settled algorithm" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="6.1.1" id="applying-css-properties"><span class="secno">6.1.1. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h4>
    <p>When following the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-12">WebVTT Node Objects</a> at the CSS user agent cascade
 layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
@@ -4578,8 +4601,8 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-writing-mode">writing-mode</a> property must be set to <var>writing-mode</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> property must be set to <var>top</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
     <li>the <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
    </ul>
@@ -4617,11 +4640,11 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
 Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a> property on <a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object-4">WebVTT Italic Objects</a> must be set
-to <span class="css">italic</span>.</p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a> property on <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-5">WebVTT Bold Objects</a> must be set to <span class="css">bold</span>.</p>
+to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic">italic</a>.</p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a> property on <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-5">WebVTT Bold Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold">bold</a>.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> property on <a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-4">WebVTT Underline Objects</a> must be set to <span class="css">underline</span>.</p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-6">WebVTT Ruby Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-8">WebVTT Ruby Text Objects</a> must be
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-6">WebVTT Ruby Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-8">WebVTT Ruby Text Objects</a> must be
 set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
    <p>Every <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-6">WebVTT region object</a> is initialized with the following CSS settings:</p>
    <ul>
@@ -4632,12 +4655,12 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to <span class="css">5vh sans-serif</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-4/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-4/#valdef-overflow-hidden">hidden</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-max-height">max-height</a> property must be set to <var>height</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-max-height">max-height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> property must be set to <var>top</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex">inline-flex</a>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex">inline-flex</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-flexbox-1/#propdef-flex-flow">flex-flow</a> property must be set to <span class="css">column</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-align-3/#propdef-justify-content">justify-content</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-flexbox-1/#valdef-justify-content-flex-end">flex-end</a>
    </ul>
@@ -4649,8 +4672,8 @@ settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-relative">relative</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-3/#valdef-unicode-bidi-plaintext">plaintext</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <span class="css">auto</span>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-width">width</a> property must be set to <span class="css">auto</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-text-align">text-align</a> property must be set as described for the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-15">List of WebVTT Node
  Objects</a> not part of a region
@@ -4667,7 +4690,7 @@ Objects</a> in the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" i
 certain pseudo-selectors as defined below. These selectors can begin or stop matching individual <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-14">WebVTT Node Objects</a> while a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">cue</a> is being
 rendered, even in between applications of the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-8">rules for updating the display of WebVTT text
 tracks</a> (which are only run when the set of active cues changes). User agents that support the
-pseudo-element described below must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>) changes value, then the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-26">WebVTT cue</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a> must
+pseudo-element described below must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-line-height">line-height</a>) changes value, then the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-26">WebVTT cue</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a> must
 be emptied and the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> must be
 immediately rerun.</p>
    <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
@@ -4685,12 +4708,12 @@ set on the pseudo-element must be ignored:</p>
    <ul class="brief">
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-opacity">opacity</a>
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
+    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visufx.html#propdef-visibility">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-3/#propdef-outline">outline</a> shorthand
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-line-height">line-height</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-text-combine-upright">text-combine-upright</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
@@ -4771,7 +4794,7 @@ being treated as follows:</p>
    <ul class="brief">
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-opacity">opacity</a>
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
+    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visufx.html#propdef-visibility">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand
@@ -4781,7 +4804,7 @@ being treated as follows:</p>
    <p>In addition, the following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector-4">::cue()</a> pseudo-element with an argument
 when the selector does not contain the <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past-2">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future-2">:future</a> pseudo-classes:</p>
    <ul class="brief">
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-line-height">line-height</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-text-combine-upright">text-combine-upright</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
@@ -4793,13 +4816,13 @@ would have been applied to the <a data-link-type="dfn" href="#list-of-webvtt-nod
    <p>The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past-4">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future-4">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-16">WebVTT
 Node Objects</a>. <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a></p>
    <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export="" id="selectordef-past">:past</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-17">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
-   <p data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-18">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-past">in the past<a class="self-link" href="#in-the-past"></a></dfn> if, in a
+   <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-18">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-past">in the past<a class="self-link" href="#in-the-past"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-28">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-5">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-19">WebVTT Node Object</a> <var>c</var>.</p>
    <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export="" id="selectordef-future">:future</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-20">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
-   <p data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-21">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
+   <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-21">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-29">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-27">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-6">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-22">WebVTT Node Object</a> <var>c</var>.</p>
@@ -4815,13 +4838,13 @@ argument; other properties set on the pseudo-element must be ignored.</p>
    <p>When a user agent is rendering one or more text track regions according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">rules for
 updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-11">WebVTT region
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
-support the pseudo-element must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>) changes
+support the pseudo-element must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-line-height">line-height</a>) changes
 value, then the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a> of all the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-30">WebVTT cues</a> in
 the region must be emptied and the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track
 rendering</a> must be immediately rerun.</p>
    <p>A CSS user agent that implements the text tracks model must implement the <a class="css" data-link-type="maybe" href="#selectordef-cue-region" id="ref-for-selectordef-cue-region-5">::cue-region</a> pseudo-element.</p>
    <h2 class="heading settled" data-level="7" id="api"><span class="secno">7. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
-   <h3 class="heading settled" data-algorithm="The VTTCue interface" data-level="7.1" id="the-vttcue-interface"><span class="secno">7.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="The VTTCue interface" data-level="7.1" id="the-vttcue-interface"><span class="secno">7.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 <pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword</dfn> { <dfn class="s idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto">"auto"<a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting</dfn> { <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting">""<a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl">"rl"<a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr">"lr"<a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
@@ -4843,7 +4866,7 @@ rendering</a> must be immediately rerun.</p>
   <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-2">getCueAsHTML</a>();
 };
 </pre>
-   <dl class="note" role="note">
+   <dl class="note">
     <dt><var>cue</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-2">VTTCue</a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )
     <dd>
      <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-3">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#dom-texttrack-addcue">addCue()</a></code> method.</p>
@@ -5012,7 +5035,7 @@ direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
       <td>"<code>lr</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-36">WebVTT cue writing direction</a> must be set to the value given in the first
-cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
+cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines">snapToLines</dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-35">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
 is true; or false otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-19">WebVTT cue snap-to-lines flag</a> must be set to
@@ -5043,7 +5066,7 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
       <td>"<code>end</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-18">WebVTT cue line alignment</a> must be set to the value given in the first cell
-of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
+of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-position">position</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-25">WebVTT cue
 position</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-38">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-10">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-10">auto</a> must be represented as the string "<code>auto</code>".
@@ -5073,7 +5096,7 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
       <td>"<code>auto</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-15">WebVTT cue position alignment</a> must be set to the value given in the first
-cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
+cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-size">size</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-13">WebVTT cue
 size</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-40">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-12">VTTCue</a></code> object represents. On setting, if the new
@@ -5104,7 +5127,7 @@ second cell of the row in the table below whose first cell is the <a data-link-t
       <td>"<code>right</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-25">WebVTT cue text alignment</a> must be set to the value given in the first cell
-of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new
+of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text">text</dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track
 cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-42">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-14">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text
@@ -5114,7 +5137,7 @@ text</a> to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.w
 the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
 text</a>.</p>
    <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
-   <h3 class="heading settled" data-algorithm="The VTTRegion interface" data-level="7.2" id="the-vttregion-interface"><span class="secno">7.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
+   <h3 class="heading settled algorithm" data-algorithm="The VTTRegion interface" data-level="7.2" id="the-vttregion-interface"><span class="secno">7.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 <pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting">ScrollSetting</dfn> { <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting">""<a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up">"up"<a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-1">Constructor</a>]
@@ -5128,7 +5151,7 @@ text</a>.</p>
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting" id="ref-for-enumdef-scrollsetting-1">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll" id="ref-for-dom-vttregion-scroll-1">scroll</a>;
 };
 </pre>
-   <dl class="note" role="note">
+   <dl class="note">
     <dt><var>region</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-2">VTTRegion</a>()
     <dd>
      <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-5">VTTRegion</a></code> object.</p>
@@ -5226,7 +5249,7 @@ the second cell of the row in the table below whose first cell is the <a data-li
       <td>"<code>up</code>"
    </table>
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-8">WebVTT region scroll</a> must be set to the value given on the first cell of
-the row in the table above whose second cell is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a> match for the new value.</p>
+the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new value.</p>
    <h2 class="heading settled" data-level="8" id="iana"><span class="secno">8. </span><span class="content">IANA considerations</span><a class="self-link" href="#iana"></a></h2>
    <h3 class="heading settled" data-level="8.1" id="iana-text-vtt"><span class="secno">8.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="text-vtt"><code>text/vtt</code></dfn></span><a class="self-link" href="#iana-text-vtt"></a></h3>
    <p>This registration is for community review and will be submitted to the IESG for review, approval,
@@ -5609,6 +5632,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[css-display-3]</a> defines the following terms:
     <ul>
+     <li><a href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a>
      <li><a href="https://drafts.csswg.org/css-display-3/#valdef-display-inline">inline</a>
     </ul>
    <li>
@@ -5624,6 +5648,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a>
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a>
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[css-fonts-4]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold">bold</a>
+     <li><a href="https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic">italic</a>
     </ul>
    <li>
     <a data-link-type="biblio">[css-overflow-4]</a> defines the following terms:
@@ -5687,8 +5717,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[CSS-VALUES]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-values-3/#vh">vh</a>
-     <li><a href="https://drafts.csswg.org/css-values-3/#vw">vw</a>
+     <li><a href="https://drafts.csswg.org/css-values-4/#vh">vh</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS-WRITING-MODES-3]</a> defines the following terms:
@@ -5702,13 +5731,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[CSS21]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css2/visuren.html#propdef-display">display</a>
-     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a>
-     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
-     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-max-height">max-height</a>
-     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a>
-     <li><a href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
-     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a>
+     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-height">height</a>
+     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-line-height">line-height</a>
+     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-max-height">max-height</a>
+     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-min-height">min-height</a>
+     <li><a href="https://drafts.csswg.org/css21/visufx.html#propdef-visibility">visibility</a>
+     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-width">width</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSSOM]</a> defines the following terms:
@@ -5732,7 +5760,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a>
      <li><a href="https://dom.spec.whatwg.org/#processinginstruction">ProcessingInstruction</a>
      <li><a href="https://dom.spec.whatwg.org/#text">Text</a>
-     <li><a href="https://dom.spec.whatwg.org/#case-sensitive">case-sensitive</a>
      <li><a href="https://dom.spec.whatwg.org/#dom-characterdata-data">data</a>
      <li><a href="https://dom.spec.whatwg.org/#html-namespace">html namespace</a>
      <li><a href="https://dom.spec.whatwg.org/#dom-node-namespaceuri">namespaceURI</a>
@@ -5747,6 +5774,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ascii digits</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#audio">audio</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-b-element">b</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a>
      <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">character references</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of characters</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a>
@@ -5766,6 +5794,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element">track</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-u-element">u</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#&apos;vw&apos;">vw</a>
     </ul>
    <li>
     <a data-link-type="biblio">[selectors-4]</a> defines the following terms:
@@ -5786,13 +5815,15 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-cascade/">CSS Cascading and Inheritance Level 4</a>. 14 January 2016. CR. URL: <a href="http://dev.w3.org/csswg/css-cascade/">http://dev.w3.org/csswg/css-cascade/</a>
    <dt id="biblio-css-color-4">[CSS-COLOR-4]
-   <dd>CSS Color Module Level 4 URL: <a href="https://drafts.csswg.org/css-color-4/">https://drafts.csswg.org/css-color-4/</a>
+   <dd>Tab Atkins Jr.; Chris Lilley. <a href="https://drafts.csswg.org/css-color/">CSS Color Module Level 4</a>. 5 July 2016. WD. URL: <a href="https://drafts.csswg.org/css-color/">https://drafts.csswg.org/css-color/</a>
    <dt id="biblio-css-display-3">[CSS-DISPLAY-3]
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="http://dev.w3.org/csswg/css-display/">CSS Display Module Level 3</a>. 15 October 2015. WD. URL: <a href="http://dev.w3.org/csswg/css-display/">http://dev.w3.org/csswg/css-display/</a>
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
    <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. 26 May 2016. CR. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
    <dt id="biblio-css-fonts-3">[CSS-FONTS-3]
    <dd>John Daggett. <a href="http://dev.w3.org/csswg/css-fonts/">CSS Fonts Module Level 3</a>. 3 October 2013. CR. URL: <a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>
+   <dt id="biblio-css-fonts-4">[CSS-FONTS-4]
+   <dd>CSS Fonts Module Level 4 URL: <a href="https://drafts.csswg.org/css-fonts-4/">https://drafts.csswg.org/css-fonts-4/</a>
    <dt id="biblio-css-overflow-4">[CSS-OVERFLOW-4]
    <dd>CSS Overflow Module Level 4 URL: <a href="https://drafts.csswg.org/css-overflow-4/">https://drafts.csswg.org/css-overflow-4/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
@@ -5832,7 +5863,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-selectors4">[SELECTORS4]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
    <dt id="biblio-webidl">[WEBIDL]
-   <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 8 March 2016. CR. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 15 September 2016. PR. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-whatwg-dom">[WHATWG-DOM]
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
   </dl>

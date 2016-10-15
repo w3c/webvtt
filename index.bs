@@ -1118,7 +1118,7 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
 
  <dt><dfn lt="WebVTT region identifier">An identifier</dfn></dt>
  <dd>
-  <p>An arbitrary string.</p>
+  <p>An arbitrary string. An identifier is required for a region to exist.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region width">A width</dfn></dt>
@@ -1638,7 +1638,7 @@ given:</p>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
 identifier setting">WebVTT region identifier settings</a> of all <a lt="WebVTT region">WebVTT
-regions</a> of a <a>WebVTT file</a>.</p>
+regions</a> of a <a>WebVTT file</a>. For a region to exist, a region identifier setting has to be provided.</p>
 
 <p class="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
@@ -3736,7 +3736,7 @@ manner suiting the user.</p>
  <li><p>Let |regions| be an empty list of <a lt="WebVTT region">WebVTT regions</a>.</p></li>
 
  <li><p>For each track |track| in |tracks|, append to |regions| all the <a lt="WebVTT
- region">regions</a> from |track|'s <a lt="text track list of regions">list of regions</a>.</p></li>
+ region">regions</a> with an identifier from |track|'s <a lt="text track list of regions">list of regions</a>.</p></li>
 
  <li><p>If |reset| is false, then, for each <a>WebVTT region</a> |region| in |regions| let
  |regionNode| be a <a>WebVTT region object</a>.</p></li>
