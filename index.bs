@@ -2099,6 +2099,10 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
  |position| to the next character in |input|.</p></li>
 
+ <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
+ processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
+ to |output|.</p></li>
+
  <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
  character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
  advance |position| to the next character in |input|.</p></li>
