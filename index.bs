@@ -5603,34 +5603,37 @@ following steps:</p>
 </ol>
 
 <p>The <dfn attribute for=VTTRegion>width</dfn> attribute, on getting, must return the <a>WebVTT
-region width</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents, in percent of
-video width. On setting, the <a>WebVTT region width</a> must be set to the new value, interpreted as
-a percentage.</p>
+region width</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
+if the new value is negative or greater than 100, then an {{IndexSizeError}} exception must be
+thrown. Otherwise, the <a>WebVTT region width</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>lines</dfn> attribute, on getting, must return the <a>WebVTT
-region lines</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents, as number of
-lines. On setting, the <a>WebVTT region lines</a> must be set to the new value, interpreted as a
-number of lines.</p>
+region lines</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
+the <a>WebVTT region lines</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>regionAnchorX</dfn> attribute, on getting, must return the
 <a>WebVTT region anchor</a> X offset of the <a>WebVTT region</a> that the {{VTTRegion}} object
-represents, in percent of region width. On setting, the <a>WebVTT region anchor</a> X distance must
-be set to the new value, interpreted as a percentage.</p>
+represents. On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}}
+exception must be thrown. Otherwise, the <a>WebVTT region anchor</a> X distance must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>regionAnchorY</dfn> attribute, on getting, must return the
 <a>WebVTT region anchor</a> Y offset of the <a>WebVTT region</a> that the {{VTTRegion}} object
-represents, in percent of region height. On setting, the <a>WebVTT region anchor</a> Y distance must
-be set to the new value, interpreted as a percentage.</p>
+represents. On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}}
+exception must be thrown. Otherwise, the <a>WebVTT region anchor</a> Y distance must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>viewportAnchorX</dfn> attribute, on getting, must return the
 <a>WebVTT region viewport anchor</a> X offset of the <a>WebVTT region</a> that the {{VTTRegion}}
-object represents, in percent of video width. On setting, the <a>WebVTT region viewport anchor</a> X
-distance must be set to the new value, interpreted as a percentage.</p>
+object represents. On setting, if the new value is negative or greater than 100, then an
+{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT region viewport anchor</a> X
+distance must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>viewportAnchorY</dfn> attribute, on getting, must return the
 <a>WebVTT region viewport anchor</a> Y offset of the <a>WebVTT region</a> that the {{VTTRegion}}
-object represents, in percent of video height. On setting, the <a>WebVTT region viewport anchor</a>
-Y distance must be set to the new value, interpreted as a percentage.</p>
+object represents. On setting, if the new value is negative or greater than 100, then an
+{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT region viewport anchor</a> Y
+distance must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>scroll</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT region scroll</a>
