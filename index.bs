@@ -5533,7 +5533,8 @@ interface VTTRegion {
 
  <dt>|region| . {{VTTRegion/lines}}</dt>
  <dd>
-  <p>Returns the text track region height as a number of lines. Can be set.</p>
+  <p>Returns the text track region height as a number of lines. Can be set. Throws an
+  {{IndexSizeError}} if the new value is negative.</p>
  </dd>
 
  <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
@@ -5542,7 +5543,7 @@ interface VTTRegion {
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
+ <dt>|region| . {{VTTRegion/regionAnchorY}}</dt>
  <dd>
   <p>Returns the WebVTT region anchor Y offset as a percentage of the region height. Can be set.
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
@@ -5610,7 +5611,8 @@ thrown. Otherwise, the <a>WebVTT region width</a> must be set to the new value.<
 
 <p>The <dfn attribute for=VTTRegion>lines</dfn> attribute, on getting, must return the <a>WebVTT
 region lines</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
-the <a>WebVTT region lines</a> must be set to the new value.</p>
+if the new value is negative, then an {{IndexSizeError}} exception must be thrown. Otherwise, the
+<a>WebVTT region lines</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>regionAnchorX</dfn> attribute, on getting, must return the
 <a>WebVTT region anchor</a> X offset of the <a>WebVTT region</a> that the {{VTTRegion}} object

@@ -1442,7 +1442,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-02-21">21 February 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-02-22">22 February 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -5390,12 +5390,12 @@ text</a>.</p>
      <p>Returns the WebVTT region width as a percentage of the video width. Can be set. Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> if the new value is not in the range 0..100.</p>
     <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-2">lines</a></code>
     <dd>
-     <p>Returns the text track region height as a number of lines. Can be set.</p>
+     <p>Returns the text track region height as a number of lines. Can be set. Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> if the new value is negative.</p>
     <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-2">regionAnchorX</a></code>
     <dd>
      <p>Returns the WebVTT region anchor X offset as a percentage of the region width. Can be set.
   Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> if the new value is not in the range 0..100.</p>
-    <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-3">regionAnchorX</a></code>
+    <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-2">regionAnchorY</a></code>
     <dd>
      <p>Returns the WebVTT region anchor Y offset as a percentage of the region height. Can be set.
   Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> if the new value is not in the range 0..100.</p>
@@ -5452,7 +5452,7 @@ if the new value is negative or greater than 100, then an <code class="idl"><a d
 thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-9">WebVTT region width</a> must be set to the new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-lines">lines</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-5">WebVTT
 region lines</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-18">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-8">VTTRegion</a></code> object represents. On setting,
-the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-6">WebVTT region lines</a> must be set to the new value.</p>
+if the new value is negative, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-6">WebVTT region lines</a> must be set to the new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-regionanchorx">regionAnchorX</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-9">WebVTT region anchor</a> X offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-19">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-9">VTTRegion</a></code> object
 represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-10">WebVTT region anchor</a> X distance must be set to the
 new value.</p>
@@ -7371,13 +7371,13 @@ title</a>
   <aside class="dfn-panel" data-for="dom-vttregion-regionanchorx">
    <b><a href="#dom-vttregion-regionanchorx">#dom-vttregion-regionanchorx</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-vttregion-regionanchorx-1">8.2. The VTTRegion interface</a> <a href="#ref-for-dom-vttregion-regionanchorx-2">(2)</a> <a href="#ref-for-dom-vttregion-regionanchorx-3">(3)</a>
+    <li><a href="#ref-for-dom-vttregion-regionanchorx-1">8.2. The VTTRegion interface</a> <a href="#ref-for-dom-vttregion-regionanchorx-2">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttregion-regionanchory">
    <b><a href="#dom-vttregion-regionanchory">#dom-vttregion-regionanchory</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-vttregion-regionanchory-1">8.2. The VTTRegion interface</a>
+    <li><a href="#ref-for-dom-vttregion-regionanchory-1">8.2. The VTTRegion interface</a> <a href="#ref-for-dom-vttregion-regionanchory-2">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttregion-viewportanchorx">
