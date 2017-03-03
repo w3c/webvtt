@@ -2511,10 +2511,12 @@ means that it is aborted at that point and returns nothing.</p>
 
  <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
 
- <li><p>Ignoring the trailing percent sign, interpret |input| as a real number. Let that number be
- the |percentage|.</p></li>
+ <li><p>Remove the last character from |input|.</p></li>
 
- <li><p>If |percentage| is outside the range 0..100, then fail.</p></li>
+ <li><p>Let |percentage| be the result of parsing |input| using the <a>rules for parsing
+ floating-point number values</a>. [[!HTML]]</p></li>
+
+ <li><p>If |percentage| is an error, is less than 0, or is greater than 100, then fail.</p></li>
 
  <li><p>Return |percentage|.</p></li>
 </ol>
@@ -2668,8 +2670,11 @@ run the following steps:</p>
            after is not an <a>ASCII digit</a>, or if the U+002E DOT character (.) is the first or
            the last character, then jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>Interpret |linepos| as a (potentially signed) real number, and let |number| be
-           that number.</p></li>
+           <li><p>Let |number| be the result of parsing |linepos| using the <a>rules for parsing
+           floating-point number values</a>. [[!HTML]]</p></li>
+
+           <li><p>If |number| is an error, then jump to the step labeled <i>next
+           setting</i>.</p></li>
           </ol>
          </dd>
         </dl>
