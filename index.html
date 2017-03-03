@@ -1442,7 +1442,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-10">10 March 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-14">14 March 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -3353,10 +3353,12 @@ means that it is aborted at that point and returns nothing.</p>
     <li>
      <p>If <var>input</var> does not match the syntax for a <a data-link-type="dfn" href="#webvtt-percentage" id="ref-for-webvtt-percentage-10">WebVTT percentage</a>, then fail.</p>
     <li>
-     <p>Ignoring the trailing percent sign, interpret <var>input</var> as a real number. Let that number be
- the <var>percentage</var>.</p>
+     <p>Remove the last character from <var>input</var>.</p>
     <li>
-     <p>If <var>percentage</var> is outside the range 0..100, then fail.</p>
+     <p>Let <var>percentage</var> be the result of parsing <var>input</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing
+ floating-point number values</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
+    <li>
+     <p>If <var>percentage</var> is an error, is less than 0, or is greater than 100, then fail.</p>
     <li>
      <p>Return <var>percentage</var>.</p>
    </ol>
@@ -3473,8 +3475,11 @@ run the following steps:</p>
            after is not an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digit</a>, or if the U+002E DOT character (.) is the first or
            the last character, then jump to the step labeled <i>next setting</i>.</p>
               <li>
-               <p>Interpret <var>linepos</var> as a (potentially signed) real number, and let <var>number</var> be
-           that number.</p>
+               <p>Let <var>number</var> be the result of parsing <var>linepos</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing
+           floating-point number values</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
+              <li>
+               <p>If <var>number</var> is an error, then jump to the step labeled <i>next
+           setting</i>.</p>
              </ol>
            </dl>
           <li>
@@ -6076,6 +6081,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-rt-element">rt</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element">ruby</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a>
      <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-track-srclang">srclang</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a>
