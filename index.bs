@@ -2639,8 +2639,7 @@ run the following steps:</p>
        and let |linealign| be the trailing substring of |value| starting from the character
        immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be the empty
-       string.</p></li>
+       <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be null.</p></li>
 
        <li><p>If |linepos| does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
        jump to the step labeled <i>next setting</i>.</p></li>
@@ -2680,22 +2679,25 @@ run the following steps:</p>
         </dl>
        </li>
 
-       <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
-
-       <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
-       |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
-
        <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
        then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
        alignment">start alignment</a>.</p></li>
 
-       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>center</code>",
-       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line center
-       alignment">center alignment</a>.</p></li>
+       <li><p>Otherwise, if |linealign| is a <a>case-sensitive</a> match for the string
+       "<code>center</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
+       line center alignment">center alignment</a>.</p></li>
 
-       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>end</code>",
-       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line end
-       alignment">end alignment</a>.</p></li>
+       <li><p>Otherwise, if |linealign| is a <a>case-sensitive</a> match for the string
+       "<code>end</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
+       line end alignment">end alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled
+       <i>next setting</i>.</p></li>
+
+       <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
+
+       <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
+       |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
 
       </ol>
 
@@ -2712,27 +2714,29 @@ run the following steps:</p>
        and let |colalign| be the trailing substring of |value| starting from the character
        immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Otherwise let |colpos| be the full |value| string and |colalign| be the empty
-       string.</p></li>
+       <li><p>Otherwise let |colpos| be the full |value| string and |colalign| be null.</p></li>
 
        <li><p>If <a>parse a percentage string</a> from |colpos| doesn't fail, let |number| be the
        returned |percentage|, otherwise jump to the step labeled <i>next setting</i> (<a lt="WebVTT
        cue position">position</a>'s value remains the special value <a lt="WebVTT cue automatic
        position">auto</a>).</p></li>
 
-       <li><p>Let |cue|'s <a lt="WebVTT cue position">position</a> be |number|.</p></li>
-
        <li><p>If |colalign| is a <a>case-sensitive</a> match for the string
        "<code>line-left</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
        lt="WebVTT cue position line-left alignment">line-left alignment</a>.</p></li>
 
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>center</code>",
-       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position center
-       alignment">center alignment</a>.</p></li>
+       <li><p>Otherwise, if |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>center</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT
+       cue position center alignment">center alignment</a>.</p></li>
 
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string
+       <li><p>Otherwise, if |colalign| is a <a>case-sensitive</a> match for the string
        "<code>line-right</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
        lt="WebVTT cue position line-right alignment">line-right alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |colalign| is not null, then jump to the step labeled <i>next
+       setting</i>.</p></li>
+
+       <li><p>Let |cue|'s <a lt="WebVTT cue position">position</a> be |number|.</p></li>
 
       </ol>
 
