@@ -53,9 +53,6 @@ check "Add Date metadata"
 replace "1,/^$/s/^$/Previous Version: $PREV_URL/" index.temp.bs
 check "Add Previous Version metadata"
 
-replace "1,/^$/s/^$/TR: http:\/\/www.w3.org\/TR\/webvtt-1\//" index.temp.bs
-check "Add TR metadata"
-
 bikeshed spec index.temp.bs archives/$NEW_DATE/Overview.html
 check "Generate with bikeshed"
 
