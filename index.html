@@ -1442,7 +1442,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-09">9 March 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-10">10 March 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1584,6 +1584,14 @@ title</span></a>
      <a href="#iana"><span class="secno">9</span> <span class="content">IANA considerations</span></a>
      <ol class="toc">
       <li><a href="#iana-text-vtt"><span class="secno">9.1</span> <span class="content"><span><code>text/vtt</code></span></span></a>
+     </ol>
+    <li>
+     <a href="#privacy-and-security-considerations"><span class="secno"></span> <span class="content">Privacy and Security Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#fromat-security"><span class="secno"></span> <span class="content">Text-based format security</span></a>
+      <li><a href="#styling-security"><span class="secno"></span> <span class="content">Styling-related privacy and security</span></a>
+      <li><a href="#scripting-security"><span class="secno"></span> <span class="content">Scripting-related security</span></a>
+      <li><a href="#privacy-of-preference"><span class="secno"></span> <span class="content">Privacy of preference</span></a>
      </ol>
     <li><a href="#acknowledgements"><span class="secno"></span> <span class="content">Acknowledgements</span></a>
     <li>
@@ -1753,11 +1761,10 @@ NOTE end of file
    </div>
    <h3 class="heading settled" data-level="1.3" id="styling"><span class="secno">1.3. </span><span class="content">Styling</span><a class="self-link" href="#styling"></a></h3>
    <p><i>This section is non-normative.</i></p>
-   <p>CSS stylesheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element
-can target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span> and <span class="css">::cue-region</span> pseudo-elements.</p>
-   <div class="example" id="example-81aa0582">
-    <a class="self-link" href="#example-81aa0582"></a> 
-    <p>In this example, an HTML page has a CSS stylesheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element
+   <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element can target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span> and <span class="css">::cue-region</span> pseudo-elements.</p>
+   <div class="example" id="example-58732c3d">
+    <a class="self-link" href="#example-58732c3d"></a> 
+    <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element
  that styles all cues in the video with a gradient background and a text color, as well as changing
  the text color for all <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-1">WebVTT Bold Objects</a> in cues in the video.</p>
 <pre>&lt;!doctype html>
@@ -1782,12 +1789,12 @@ can target WebVTT cues and regions in the video using the <span class="css">::cu
 &lt;/html>
 </pre>
    </div>
-   <p>CSS stylesheets can also be embedded in WebVTT files themselves.</p>
+   <p>CSS style sheets can also be embedded in WebVTT files themselves.</p>
    <p>Style blocks are placed after any headers but before the first cue, and start with the line
 "STYLE". Comment blocks can be interleaved with style blocks.</p>
-   <p>Blank lines cannot appear in the stylesheet. They can be removed or be filled with a space or a
+   <p>Blank lines cannot appear in the style sheet. They can be removed or be filled with a space or a
 CSS comment (e.g. <code>/**/</code>).</p>
-   <p>The string "<code>--></code>" cannot be used in the stylesheet. If the stylesheet is wrapped in
+   <p>The string "<code>--></code>" cannot be used in the style sheet. If the style sheet is wrapped in
 "<code>&lt;!--</code>" and "<code>--></code>", then those strings can just be removed. If
 "<code>--></code>" appears inside a CSS string, then it can use CSS escaping e.g.
 "<code>--\></code>".</p>
@@ -2405,7 +2412,7 @@ order:</p>
  CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-9">WebVTT line
  terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
- represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a>
+ represents a CSS style sheet; the requirements given in the relevant CSS specifications apply. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a>
     <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-10">WebVTT line terminator</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-block">WebVTT cue block</dfn> consists of the following components, in the given order:</p>
@@ -4442,8 +4449,9 @@ Red or green?
      the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element in the document order.</p>
        </div>
       <li>
-       <p>For the purpose of resolving URLs in STYLE blocks of a WebVTT file, if the URL’s scheme is
-    not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+       <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
+    file, if the URL’s scheme is not "<code>data</code>", then the user agent must act as if the URL
+    failed to resolve.</p>
        <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element">track</a> elements to issue network requests as the user watches the video, which could be a privacy
     issue.</strong></p>
       <li>
@@ -4723,8 +4731,8 @@ present in the <code><a data-link-type="element" href="https://html.spec.whatwg.
     <table class="data">
      <thead>
       <tr>
-       <th>Selector (CSS syntax example) 
-       <th>Matches (WebVTT syntax example) 
+       <th>Selector (CSS syntax example)
+       <th>Matches (WebVTT syntax example)
      <tbody>
       <tr>
        <td class="long">
@@ -5550,6 +5558,40 @@ and registration with IANA.</p>
     <dd>W3C
    </dl>
    <p>Fragment identifiers have no meaning with <code>text/vtt</code> resources.</p>
+   <h2 class="no-num heading settled" id="privacy-and-security-considerations"><span class="content">Privacy and Security Considerations</span><a class="self-link" href="#privacy-and-security-considerations"></a></h2>
+   <h3 class="heading settled" id="fromat-security"><span class="content">Text-based format security</span><a class="self-link" href="#fromat-security"></a></h3>
+   <p>As with any text-based format, it is possible to construct malicious content that might cause
+buffer over-runs, value overflows (e.g. string representations of integers that overflow a given
+word length), and the like. Implementers should take care in implementing a parser that over-long
+lines, field values, or encoded values do not cause security problems.</p>
+   <h3 class="heading settled" id="styling-security"><span class="content">Styling-related privacy and security</span><a class="self-link" href="#styling-security"></a></h3>
+   <p>WebVTT can embed CSS style sheets, which will be applied in user agents that support CSS. Under
+these circumstances, the privacy and security considerations of CSS apply, with the following
+caveats.</p>
+   <p>Such style sheets <a href="#style-no-external-resources">cannot fetch any external resources</a>,
+and it is important for privacy that user agents do not allow this. Otherwise, WebVTT files could be
+authored such that a third party is notified when the user watches a particular video, and even the
+current time in that video.</p>
+   <p>It is possible for a user agent to offer user style sheets, but their presence and nature will
+not be detectable by scripts running in the same user agent (e.g. browser) since the CSS object
+model for such style sheets is not exposed to script and there is no way to get the computed style
+for pseudo-elements other than <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-pseudo-4/#selectordef-before">::before</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-pseudo-4/#selectordef-after">::after</a> with the <code class="idl"><a data-link-type="idl" href="https://drafts.csswg.org/cssom-1/#dom-window-getcomputedstyle">getComputedStyle()</a></code> API. <a data-link-type="biblio" href="#biblio-cssom">[CSSOM]</a></p>
+   <h3 class="heading settled" id="scripting-security"><span class="content">Scripting-related security</span><a class="self-link" href="#scripting-security"></a></h3>
+   <p>WebVTT does not include or enable scripting. It is important that user agents do not support a
+way to execute script embedded in a WebVTT file.</p>
+   <p>However, it is possible to construct and deliver a file that is designed not to present captions
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
+script or script system might then cause security, privacy or other problems; however, this
+consideration really applies to the script system. Since WebVTT supplies these triggers at their
+timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
+resource consumption.</p>
+   <h3 class="heading settled" id="privacy-of-preference"><span class="content">Privacy of preference</span><a class="self-link" href="#privacy-of-preference"></a></h3>
+   <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
+the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for
+captions or subtitles. That is a (small) piece of information about the user. However, the offering
+of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
+the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
+format itself. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
    <h2 class="no-num heading settled" id="acknowledgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Thanks to the SubRip community, including in particular Zuggy and ai4spam, for their work on the
 SubRip software program whose SRT file format was used as the basis for the WebVTT text track file
@@ -5904,6 +5946,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[css-pseudo-4]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-pseudo-4/#selectordef-after">::after</a>
+     <li><a href="https://drafts.csswg.org/css-pseudo-4/#selectordef-before">::before</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[CSS3-RUBY]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>
@@ -5987,6 +6035,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/cssom-1/#create-a-css-style-sheet">create a css style sheet</a>
      <li><a href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-css-rules">css rules</a>
      <li><a href="https://drafts.csswg.org/cssom-1/#css-style-sheet">css style sheet</a>
+     <li><a href="https://drafts.csswg.org/cssom-1/#dom-window-getcomputedstyle">getComputedStyle(elt, pseudoElt)</a>
      <li><a href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-location">location</a>
      <li><a href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-media">media</a>
      <li><a href="https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-origin-clean-flag">origin-clean flag</a>
@@ -6018,6 +6067,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a>
      <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">character references</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">honor user preferences for automatic text track selection</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">html elements</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-i-element">i</a>
      <li><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">lang</a>
@@ -6086,6 +6136,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>CSS Overflow Module Level 4 URL: <a href="https://drafts.csswg.org/css-overflow-4/">https://drafts.csswg.org/css-overflow-4/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
    <dd>Rossen Atanassov; Arron Eicholz. <a href="https://www.w3.org/TR/css-position-3/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
+   <dt id="biblio-css-pseudo-4">[CSS-PSEUDO-4]
+   <dd>Daniel Glazman; Elika Etemad; Alan Stearns. <a href="https://www.w3.org/TR/css-pseudo-4/">CSS Pseudo-Elements Module Level 4</a>. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
    <dd>Tab Atkins Jr.; Simon Sapin. <a href="https://www.w3.org/TR/css-syntax-3/">CSS Syntax Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-syntax-3/">https://www.w3.org/TR/css-syntax-3/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]

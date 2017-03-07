@@ -291,13 +291,13 @@ one line except when a line break is definitely necessary.</p>
 
 <p><i>This section is non-normative.</i></p>
 
-<p>CSS stylesheets that apply to an HTML page that contains a <a spec=html element>video</a> element
-can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'' and
+<p>CSS style sheets that apply to an HTML page that contains a <a spec=html element>video</a>
+element can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'' and
 ''::cue-region'' pseudo-elements.</p>
 
 <div class="example">
 
- <p>In this example, an HTML page has a CSS stylesheet in a <a spec=html element>style</a> element
+ <p>In this example, an HTML page has a CSS style sheet in a <a spec=html element>style</a> element
  that styles all cues in the video with a gradient background and a text color, as well as changing
  the text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
 
@@ -326,15 +326,15 @@ can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()''
 
 </div>
 
-<p>CSS stylesheets can also be embedded in WebVTT files themselves.</p>
+<p>CSS style sheets can also be embedded in WebVTT files themselves.</p>
 
 <p>Style blocks are placed after any headers but before the first cue, and start with the line
 "STYLE". Comment blocks can be interleaved with style blocks.</p>
 
-<p>Blank lines cannot appear in the stylesheet. They can be removed or be filled with a space or a
+<p>Blank lines cannot appear in the style sheet. They can be removed or be filled with a space or a
 CSS comment (e.g. <code>/**/</code>).</p>
 
-<p>The string "<code>--></code>" cannot be used in the stylesheet. If the stylesheet is wrapped in
+<p>The string "<code>--></code>" cannot be used in the style sheet. If the style sheet is wrapped in
 "<code>&lt;!--</code>" and "<code>--></code>", then those strings can just be removed. If
 "<code>--></code>" appears inside a CSS string, then it can use CSS escaping e.g.
 "<code>--\></code>".</p>
@@ -1266,7 +1266,7 @@ order:</p>
  CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT line
  terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
- represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply.
+ represents a CSS style sheet; the requirements given in the relevant CSS specifications apply.
  [[!CSS21]]</li>
  <li>A <a>WebVTT line terminator</a>.</li>
 </ol>
@@ -4186,8 +4186,9 @@ following algorithm.</p>
 
    <li>
 
-    <p>For the purpose of resolving URLs in STYLE blocks of a WebVTT file, if the URL's scheme is
-    not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+    <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
+    file, if the URL's scheme is not "<code>data</code>", then the user agent must act as if the URL
+    failed to resolve.</p>
 
     <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
     would be a new ability for <a spec=html>media elements</a> and <a spec=html element>track</a>
@@ -4623,7 +4624,8 @@ given selector.</p>
 <p class="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <{video}> element's document tree.</p>
 
-<p>The '':past'' and '':future'' pseudo-classes can be used in ''::cue(|selector|)'' to match <a>WebVTT Internal Node Objects</a> based on the <a>current playback position</a>.</p>
+<p>The '':past'' and '':future'' pseudo-classes can be used in ''::cue(|selector|)'' to match
+<a>WebVTT Internal Node Objects</a> based on the <a>current playback position</a>.</p>
 
 <div class="example" id="example-cue-selector">
  <p>The following table shows examples of what can be selected with a given selector, together with
@@ -4632,8 +4634,10 @@ present in the <{video}> element's document tree.</p>
  <table class="data">
   <thead>
    <tr>
-    <th>Selector (CSS syntax example)
-    <th>Matches (WebVTT syntax example)
+    <th>Selector (CSS syntax example)</th>
+    <th>Matches (WebVTT syntax example)</th>
+   </tr>
+  </thead>
   <tbody>
    <tr>
     <td class=long>
@@ -4643,6 +4647,7 @@ present in the <{video}> element's document tree.</p>
      video::cue {
        color: yellow;
      }</pre>
+    </td>
     <td class=long>
      <p>Any <a>list of WebVTT Node Objects</a>.</p>
 
@@ -4655,6 +4660,8 @@ present in the <{video}> element's document tree.</p>
      00:00:08.000 --> 00:00:16.000
      Also yellow!
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p><a>ID selector</a> in ''::cue()''</p>
@@ -4663,6 +4670,7 @@ present in the <{video}> element's document tree.</p>
      video::cue(#cue1) {
        color: yellow;
      }</pre>
+    </td>
     <td class=long>
      <p>Any <a>list of WebVTT Node Objects</a> with the cue's <a>text track cue identifier</a>
      matching the given ID.</p>
@@ -4674,6 +4682,8 @@ present in the <{video}> element's document tree.</p>
      00:00:00.000 --> 00:00:08.000
      Yellow!
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p><a>Type selector</a> in ''::cue()''</p>
@@ -4690,6 +4700,7 @@ present in the <{video}> element's document tree.</p>
        color: yellow;
      }
      </pre>
+    </td>
     <td class=long>
      <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
      with the given name.</p>
@@ -4707,6 +4718,8 @@ present in the <{video}> element's document tree.</p>
      &lt;v Kathryn>Yellow!&lt;/v>
      &lt;lang en>Yellow!&lt;/lang>
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p><a>Class selector</a> in ''::cue()''</p>
@@ -4715,6 +4728,7 @@ present in the <{video}> element's document tree.</p>
      video::cue(.loud) {
        color: yellow;
      }</pre>
+    </td>
     <td class=long>
      <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
      with the given <a lt="WebVTT Node Object's applicable classes">applicable classes</a>.</p>
@@ -4732,6 +4746,8 @@ present in the <{video}> element's document tree.</p>
      &lt;v.loud Kathryn>Yellow!&lt;/v>
      &lt;lang.loud en>Yellow!&lt;/lang>
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p><a>Attribute selector</a> in ''::cue()''</p>
@@ -4747,6 +4763,7 @@ present in the <{video}> element's document tree.</p>
        color: lime;
      }
      </pre>
+    </td>
     <td class=long>
      <p>For "lang", the root <a>list of WebVTT Node Objects</a> or <a>WebVTT Language Object</a>
      with the given <a lt="WebVTT Node Object's applicable language">applicable language</a>; for
@@ -4774,6 +4791,8 @@ present in the <{video}> element's document tree.</p>
              <mark>srclang="en-US"</mark> default>
      &lt;/video>
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p>'':lang()'' pseudo-class in ''::cue()''</p>
@@ -4785,6 +4804,7 @@ present in the <{video}> element's document tree.</p>
        color: cyan;
      }
      </pre>
+    </td>
     <td class=long>
      <p><a>WebVTT Internal Node Objects</a> with an <a lt="WebVTT Node Object's applicable
      language">applicable language</a> matching the given language range.</p>
@@ -4801,6 +4821,8 @@ present in the <{video}> element's document tree.</p>
      <p>As above, the <a lt="WebVTT Node Object's applicable language">applicable language</a> for
      the <a>list of WebVTT Node Objects</a> can be set by the <{track/srclang}> attribute in
      HTML.</p>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p>'':past'' and '':future'' pseudo-classes in ''::cue()''</p>
@@ -4813,6 +4835,7 @@ present in the <{video}> element's document tree.</p>
        color: cyan;
      }
      </pre>
+    </td>
     <td class=long>
      <p>In cues that have <a>WebVTT Timestamp Objects</a>, <a>WebVTT Internal Node Objects</a>,
      depending on the <a>current playback position</a>.</p>
@@ -4833,6 +4856,8 @@ present in the <{video}> element's document tree.</p>
      &lt;00:00:22.000> &lt;c>:past/:future&lt;/c>
      &lt;00:00:24.000>
      </pre>
+    </td>
+   </tr>
    <tr>
     <td class=long>
      <p>''::cue-region''</p>
@@ -4841,6 +4866,7 @@ present in the <{video}> element's document tree.</p>
      video::cue-region {
        color: yellow;
      }</pre>
+    </td>
     <td class=long>
      <p>Any region (list of <a>WebVTT region objects</a>).</p>
 
@@ -4858,6 +4884,9 @@ present in the <{video}> element's document tree.</p>
      00:00:08.000 --> 00:00:16.000 region:editor-comments
      Yellow!
      </pre>
+    </td>
+   </tr>
+  </tbody>
  </table>
 </div>
 
@@ -5751,6 +5780,55 @@ and registration with IANA.</p>
 </dl>
 
 <p>Fragment identifiers have no meaning with <code>text/vtt</code> resources.</p>
+
+<h2 class="no-num" id=privacy-and-security-considerations>Privacy and Security Considerations</h2>
+
+
+<h3 id=fromat-security>Text-based format security</h3>
+
+<p>As with any text-based format, it is possible to construct malicious content that might cause
+buffer over-runs, value overflows (e.g. string representations of integers that overflow a given
+word length), and the like. Implementers should take care in implementing a parser that over-long
+lines, field values, or encoded values do not cause security problems.</p>
+
+<h3 id=styling-security>Styling-related privacy and security</h3>
+
+<p>WebVTT can embed CSS style sheets, which will be applied in user agents that support CSS. Under
+these circumstances, the privacy and security considerations of CSS apply, with the following
+caveats.</p>
+
+<p>Such style sheets <a href="#style-no-external-resources">cannot fetch any external resources</a>,
+and it is important for privacy that user agents do not allow this. Otherwise, WebVTT files could be
+authored such that a third party is notified when the user watches a particular video, and even the
+current time in that video.</p>
+
+<p>It is possible for a user agent to offer user style sheets, but their presence and nature will
+not be detectable by scripts running in the same user agent (e.g. browser) since the CSS object
+model for such style sheets is not exposed to script and there is no way to get the computed style
+for pseudo-elements other than ''::before'' and ''::after'' with the {{Window/getComputedStyle()}}
+API. [[CSSOM]]</p>
+
+<h3 id=scripting-security>Scripting-related security</h3>
+
+<p>WebVTT does not include or enable scripting. It is important that user agents do not support a
+way to execute script embedded in a WebVTT file.</p>
+
+<p>However, it is possible to construct and deliver a file that is designed not to present captions
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
+script or script system might then cause security, privacy or other problems; however, this
+consideration really applies to the script system. Since WebVTT supplies these triggers at their
+timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
+resource consumption.</p>
+
+<h3 id=privacy-of-preference>Privacy of preference</h3>
+
+<p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
+the origin server that the user has a need for captions or subtitles, and also the <a lt="honor user
+preferences for automatic text track selection" spec=html>language preference</a> of the user for
+captions or subtitles. That is a (small) piece of information about the user. However, the offering
+of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
+the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
+format itself. [[HTML]]</p>
 
 
 <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>
