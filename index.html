@@ -1442,7 +1442,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-14">14 March 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-21">21 March 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4455,8 +4455,9 @@ Red or green?
        </div>
       <li>
        <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
-    file, if the URL’s scheme is not "<code>data</code>", then the user agent must act as if the URL
-    failed to resolve.</p>
+    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s
+    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
+    resolve.</p>
        <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element">track</a> elements to issue network requests as the user watches the video, which could be a privacy
     issue.</strong></p>
       <li>
