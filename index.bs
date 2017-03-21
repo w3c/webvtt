@@ -4192,8 +4192,9 @@ following algorithm.</p>
    <li>
 
     <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
-    file, if the URL's scheme is not "<code>data</code>", then the user agent must act as if the URL
-    failed to resolve.</p>
+    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's
+    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
+    resolve.</p>
 
     <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
     would be a new ability for <a spec=html>media elements</a> and <a spec=html element>track</a>
