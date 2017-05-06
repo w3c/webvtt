@@ -1186,7 +1186,8 @@ Possible extra rowspan handling
       background-repeat: no-repeat;
     }
   </style>
-  <meta content="Bikeshed version 6502bba05cb4f82ef5545cd14be1b0c8bf55e17b" name="generator">
+  <meta content="Bikeshed version 5bd73bb15eb04ad9f7d1a57f012e9ee6eca5a765" name="generator">
+  <link href="http://www.w3.org/TR/webvtt1/" rel="canonical">
 <style>
  samp {
    font-family: inherit;
@@ -1440,9 +1441,9 @@ pre.idl.highlight { color: #708090; }
         </style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-03-27">27 March 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-05-06">6 May 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1472,8 +1473,8 @@ pre.idl.highlight { color: #708090; }
    <hr title="Separator for header">
   </div>
 <script async="" src="https://resources.whatwg.org/file-issue.js"></script>
-  <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
   <div class="p-summary" data-fill-with="abstract">
+   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 
 WebVTT files provide captions or subtitles for video content, and also text video descriptions <a data-link-type="biblio" href="#biblio-maur">[MAUR]</a>, chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.</p>
@@ -2474,7 +2475,7 @@ position</a> of the media data that the WebVTT file is to be synchronized with.<
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-settings-list">WebVTT cue settings list</dfn> consist of a sequence of zero or more <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue
 setting" data-noexport="" id="webvtt-cue-setting">WebVTT cue settings</dfn> in any order, separated from each other by one or more U+0020
 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each setting consists of the
-following components, in the order given:</p>
+following components:</p>
    <ol>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-setting-name" id="ref-for-webvtt-cue-setting-name-1">WebVTT cue setting name</a>.
     <li>An optional U+003A COLON (colon) character.
@@ -2559,39 +2560,53 @@ underlined text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" i
     <li>
       One or more occurrences of the following group of components, in the order given: 
      <ol>
-      <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-5">WebVTT cue internal text</a>, representing the ruby base.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-6">WebVTT cue span start tag</a> "<code>rt</code>" that disallows an annotation.
-      <li>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-ruby-text-span">WebVTT cue ruby text span</dfn>: <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-6">WebVTT cue internal text</a>, representing the
-   ruby text component of the ruby annotation.
-      <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-5">WebVTT cue span end tag</a> "<code>rt</code>". If this is the last occurrence of this
-   group of components in the <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-2">WebVTT cue ruby span</a>, then this last end tag string may be
-   omitted.
+      <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-5">WebVTT cue internal text</a>, representing a ruby base.
+      <li>a ruby text component:
+      <ol>
+       <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-6">WebVTT cue span start tag</a> "<code>rt</code>" that disallows an annotation.
+       <li>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-ruby-text-span">WebVTT cue ruby text span</dfn>: <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-6">WebVTT cue internal text</a>, representing the
+    ruby text component of the ruby annotation.
+       <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-5">WebVTT cue span end tag</a> "<code>rt</code>". If this is the last occurrence of this group of components in the <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-2">WebVTT
+    cue ruby span</a> or a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-7">WebVTT cue span start tag</a> "<code>rb</code>" is next, then this
+    last end tag string may be omitted.
+      </ol>
+      <li>a ruby base text component:
+      <ol>
+       <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-8">WebVTT cue span start tag</a> "<code>rb</code>" that disallows an annotation.
+       <li>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-ruby-base-text-span">WebVTT cue ruby base text span</dfn>: <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-7">WebVTT cue internal text</a>, representing
+    the ruby base text component of the ruby annotation.
+       <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-6">WebVTT cue span end tag</a> "<code>rb</code>". If this is the last occurrence of this
+    group of components in the <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-3">WebVTT cue ruby span</a> or a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-9">WebVTT cue span start tag</a> "<code>rt</code>" is next, then this last end tag string may be omitted.
+      </ol>
      </ol>
     <li>If the last end tag string was not omitted: Optionally, a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-23">WebVTT line terminator</a>.
     <li>If the last end tag string was not omitted: Zero or more U+0020 SPACE characters or U+0009
  CHARACTER TABULATION (tab) characters, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-24">WebVTT line
  terminator</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-6">WebVTT cue span end tag</a> "<code>ruby</code>".
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-7">WebVTT cue span end tag</a> "<code>ruby</code>".
    </ol>
    <p class="note" role="note">Cue positioning controls the positioning of the baseline text, not the ruby
 text.</p>
+   <p class="note" role="note">WebVTT follows the development of ruby support in HTML. WebVTT supports simple ruby
+with the semantics of the <code>ruby</code>, <code>rt</code> and <code>rb</code> elements as in
+HTML. Complex ruby will require functionality still under development in the CSS Ruby spec.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-voice-span">WebVTT cue voice span</dfn> consists of the following components, in the order given:</p>
    <ol>
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-7">WebVTT cue span start tag</a> "<code>v</code>" that requires an annotation; the annotation
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-10">WebVTT cue span start tag</a> "<code>v</code>" that requires an annotation; the annotation
  represents the name of the voice.
-    <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-7">WebVTT cue internal text</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-7">WebVTT cue span end tag</a> "<code>v</code>". If this <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-2">WebVTT cue voice span</a> is the
+    <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-8">WebVTT cue internal text</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-8">WebVTT cue span end tag</a> "<code>v</code>". If this <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-2">WebVTT cue voice span</a> is the
  only <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-3">component</a> of its <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-3">WebVTT cue text</a> sequence, then the
  end tag may be omitted for brevity.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-language-span">WebVTT cue language span</dfn> consists of the following components, in the order
 given:</p>
    <ol>
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-8">WebVTT cue span start tag</a> "<code>lang</code>" that requires an annotation; the
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-11">WebVTT cue span start tag</a> "<code>lang</code>" that requires an annotation; the
  annotation represents the language of the following component, and must be a valid BCP 47 language
  tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a>
-    <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-8">WebVTT cue internal text</a>.
-    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-8">WebVTT cue span end tag</a> "<code>lang</code>".
+    <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-9">WebVTT cue internal text</a>.
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-9">WebVTT cue span end tag</a> "<code>lang</code>".
    </ol>
    <p class="note" role="note">The requirement above regarding valid BCP 47 language tag is an authoring requirement,
 so a conformance checker will do validity checking of the language tag, but other user agents will
@@ -3491,7 +3506,8 @@ run the following steps:</p>
            <p>Otherwise, if <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>end</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-9">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-2">end alignment</a>.</p>
           <li>
-           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next setting</i>.</p>
+           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next
+       setting</i>.</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue line</a> be <var>number</var>.</p>
           <li>
@@ -3673,19 +3689,23 @@ Objects</a>:</p>
   text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Ruby Object" data-noexport="" id="webvtt-ruby-object">WebVTT Ruby Objects</dfn>
     <dd>
-     <p>These represent spans of ruby (a <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-3">WebVTT cue ruby span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-11">WebVTT cue text</a>.</p>
+     <p>These represent spans of ruby (a <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-4">WebVTT cue ruby span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-11">WebVTT cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Ruby Text Object" data-noexport="" id="webvtt-ruby-text-object">WebVTT Ruby Text Objects</dfn>
     <dd>
      <p>These represent spans of ruby text (a <a data-link-type="dfn" href="#webvtt-cue-ruby-text-span" id="ref-for-webvtt-cue-ruby-text-span-1">WebVTT cue ruby text span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-12">WebVTT cue
   text</a>.</p>
+    <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Ruby Base Text Object" data-noexport="" id="webvtt-ruby-base-text-object">WebVTT Ruby Base Text Objects</dfn>
+    <dd>
+     <p>These represent spans of ruby base text (a <a data-link-type="dfn" href="#webvtt-cue-ruby-base-text-span" id="ref-for-webvtt-cue-ruby-base-text-span-1">WebVTT cue ruby base text span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-13">WebVTT
+  cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Voice Object" data-noexport="" id="webvtt-voice-object">WebVTT Voice Objects</dfn>
     <dd>
      <p>These represent spans of text associated with a specific voice (a <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-3">WebVTT cue voice span</a>)
-  in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-13">WebVTT cue text</a>. A <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-1">WebVTT Voice Object</a> has a value, which is the name of the
+  in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-14">WebVTT cue text</a>. A <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-1">WebVTT Voice Object</a> has a value, which is the name of the
   voice.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Language Object" data-noexport="" id="webvtt-language-object">WebVTT Language Objects</dfn>
     <dd>
-     <p>These represent spans of text (a <a data-link-type="dfn" href="#webvtt-cue-language-span" id="ref-for-webvtt-cue-language-span-2">WebVTT cue language span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-14">WebVTT cue text</a>,
+     <p>These represent spans of text (a <a data-link-type="dfn" href="#webvtt-cue-language-span" id="ref-for-webvtt-cue-language-span-2">WebVTT cue language span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-15">WebVTT cue text</a>,
   and are used to annotate parts of the cue where the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-2">applicable language</a> might be different than the surrounding text’s, without implying
   further meaning (such as italics or bold).</p>
    </dl>
@@ -3704,7 +3724,7 @@ Objects</a>:</p>
   second, which is the time represented by the timestamp.</p>
    </dl>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</dfn> consist of the following algorithm. The input is a
-string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-15">WebVTT cue text</a>, and optionally a fallback language <var>language</var>. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-2">list of WebVTT Node Objects</a>.</p>
+string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-16">WebVTT cue text</a>, and optionally a fallback language <var>language</var>. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-2">list of WebVTT Node Objects</a>.</p>
    <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
@@ -3759,15 +3779,18 @@ string <var>input</var> supposedly containing <a data-link-type="dfn" href="#web
         <dt>If the tag name is "<code>rt</code>"
         <dd>
          <p>If <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-2">WebVTT Ruby Object</a>, then <a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-6">attach</a> a <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-1">WebVTT Ruby Text Object</a>.</p>
+        <dt>If the tag name is "<code>rb</code>"
+        <dd>
+         <p>If <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-3">WebVTT Ruby Object</a>, then <a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-7">attach</a> a <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-1">WebVTT Ruby Base Text Object</a>.</p>
         <dt>If the tag name is "<code>v</code>"
         <dd>
-         <p><a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-7">Attach</a> a <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-2">WebVTT Voice Object</a>, and
+         <p><a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-8">Attach</a> a <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-2">WebVTT Voice Object</a>, and
       set its value to the token’s annotation string, or the empty string if there is no annotation
       string.</p>
         <dt>If the tag name is "<code>lang</code>"
         <dd>
          <p>Push the value of the token’s annotation string, or the empty string if there is no
-      annotation string, onto the <var>language stack</var>; then <a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-8">attach</a> a <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-1">WebVTT Language Object</a>.</p>
+      annotation string, onto the <var>language stack</var>; then <a data-link-type="dfn" href="#attach-a-webvtt-internal-node-object" id="ref-for-attach-a-webvtt-internal-node-object-9">attach</a> a <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-1">WebVTT Language Object</a>.</p>
         <dt>Otherwise
         <dd>
          <p>Ignore the token.</p>
@@ -3802,15 +3825,17 @@ string <var>input</var> supposedly containing <a data-link-type="dfn" href="#web
      Bold Object</a>.
         <li>The tag name of the end tag token <var>token</var> is "<code>u</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-2">WebVTT
      Underline Object</a>.
-        <li>The tag name of the end tag token <var>token</var> is "<code>ruby</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-3">WebVTT Ruby Object</a>.
+        <li>The tag name of the end tag token <var>token</var> is "<code>ruby</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-4">WebVTT Ruby Object</a>.
         <li>The tag name of the end tag token <var>token</var> is "<code>rt</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-2">WebVTT
      Ruby Text Object</a>.
+        <li>The tag name of the end tag token <var>token</var> is "<code>rb</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-2">WebVTT
+     Ruby Base Text Object</a>.
         <li>The tag name of the end tag token <var>token</var> is "<code>v</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-3">WebVTT
      Voice Object</a>.
        </ul>
        <p>Otherwise, if the tag name of the end tag token <var>token</var> is "<code>lang</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-2">WebVTT Language Object</a>, then let <var>current</var> be the parent node of <var>current</var>, and pop
     the top value from the <var>language stack</var>.</p>
-       <p>Otherwise, if the tag name of the end tag token <var>token</var> is "<code>ruby</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-3">WebVTT Ruby Text Object</a>, then let <var>current</var> be the parent node of the parent node of <var>current</var>.</p>
+       <p>Otherwise, if the tag name of the end tag token <var>token</var> is "<code>ruby</code>" and <var>current</var> is a <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-3">WebVTT Ruby Text Object</a> or a <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-3">WebVTT Ruby Base Text Object</a>, then let <var>current</var> be the parent node of the parent node of <var>current</var>.</p>
        <p>Otherwise, ignore the token.</p>
       <dt>If <var>token</var> is a timestamp tag
       <dd>
@@ -4079,11 +4104,14 @@ Node Objects</a> to DOM nodes:</p>
       <td class="long"><a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-3">WebVTT Underline Object</a>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-u-element">u</a> element.
      <tr>
-      <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-4">WebVTT Ruby Object</a>
+      <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-5">WebVTT Ruby Object</a>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element">ruby</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-4">WebVTT Ruby Text Object</a>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-rt-element">rt</a> element.
+     <tr>
+      <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-4">WebVTT Ruby Base Text Object</a>
+      <td class="long">HTML <a data-link-type="element" href="https://w3c.github.io/html/textlevel-semantics.html#the-rb-element">rb</a> element. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a>
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-4">WebVTT Voice Object</a>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-title">title</a> attribute set to the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
@@ -4120,7 +4148,8 @@ follows:</p>
     <li>
      <p>Return the concatenation of the values of each <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-6">WebVTT Text Object</a> in <var>nodes</var>, in a
  pre-order, depth-first traversal, excluding <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-5">WebVTT Ruby Text
- Objects</a> and their descendants.</p>
+ Objects</a> and <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-5">WebVTT Ruby Base Text Objects</a> their
+ descendants.</p>
    </ol>
    <h2 class="heading settled" data-level="6" id="rendering"><span class="secno">6. </span><span class="content">Rendering</span><a class="self-link" href="#rendering"></a></h2>
    <p class="note" role="note">This section describes in some detail how to visually render WebVTT cues in a user
@@ -4472,8 +4501,7 @@ Red or green?
    sheets after their boxes are generated, as described below.)
       <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has
    the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-display-3/#valdef-display-inline">inline</a>. This is the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-background-box">WebVTT cue background box</dfn>.
-      <li>Runs of children of <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-5">WebVTT Ruby Objects</a> that are not <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-6">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
+      <li>Runs of children of <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-6">WebVTT Ruby Objects</a> that are not <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-6">WebVTT Ruby Text Objects</a> or <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-6">WebVTT Ruby Base Text Objects</a> must be wrapped in anonymous boxes whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
       <li>Properties on <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-10">WebVTT Node Objects</a> have their values set as
    defined in the next section. (That section uses some of the variables whose values were
    calculated earlier in this algorithm.)
@@ -4674,15 +4702,18 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-12">list of WebVTT Node Objects</a> must be set to <span class="css">5vh sans-serif</span>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a> <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-13">list of WebVTT Node Objects</a> must be set to <span class="css">rgba(255,255,255,1)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box-1">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-7">WebVTT Ruby
-Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
+Text Objects</a> and <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-7">WebVTT Ruby Base Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-8">WebVTT Ruby Text Objects</a> and <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-8">WebVTT Ruby Base Text
+Objects</a> to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-nowrap">nowrap</a>. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a> property on <a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object-4">WebVTT Italic Objects</a> must be set
 to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic">italic</a>.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a> property on <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-5">WebVTT Bold Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold">bold</a>.</p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-size">font-size</a> property on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-9">WebVTT Ruby Text Objects</a> must be set to <span class="css">50%</span>.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> property on <a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-4">WebVTT Underline Objects</a> must be set to <span class="css">underline</span>.</p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-6">WebVTT Ruby Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-8">WebVTT Ruby Text Objects</a> must be
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-7">WebVTT Ruby Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-10">WebVTT Ruby Text Objects</a> must be
 set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property on <a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-9">WebVTT Ruby Base Text Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a></p>
    <p>Every <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-6">WebVTT region object</a> is initialized with the following CSS settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
@@ -4782,6 +4813,7 @@ video::cue(b),
 video::cue(u),
 video::cue(ruby),
 video::cue(rt),
+video::cue(rb),
 video::cue(v),
 video::cue(lang) {
   color: yellow;
@@ -4798,7 +4830,7 @@ video::cue(lang) {
 &lt;u>Yellow!&lt;/u>
 &lt;b>Yellow!&lt;/b>
 &lt;u>Yellow!&lt;/u>
-&lt;ruby>Yellow! &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
+&lt;ruby>&lt;rb>Yellow!&lt;/rb> &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
 &lt;v Kathryn>Yellow!&lt;/v>
 &lt;lang en>Yellow!&lt;/lang>
 </pre>
@@ -4998,11 +5030,14 @@ being treated as follows:</p>
         <td><a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-5">WebVTT Underline Objects</a>
         <td><code>u</code>
        <tr>
-        <td><a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-7">WebVTT Ruby Objects</a>
+        <td><a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-8">WebVTT Ruby Objects</a>
         <td><code>ruby</code>
        <tr>
-        <td><a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-9">WebVTT Ruby Text Objects</a>
+        <td><a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-11">WebVTT Ruby Text Objects</a>
         <td><code>rt</code>
+       <tr>
+        <td><a data-link-type="dfn" href="#webvtt-ruby-base-text-object" id="ref-for-webvtt-ruby-base-text-object-10">WebVTT Ruby Base Text Objects</a>
+        <td><code>rb</code>
        <tr>
         <td><a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-7">WebVTT Voice Objects</a>
         <td><code>v</code>
@@ -5589,11 +5624,11 @@ for pseudo-elements other than <a class="css" data-link-type="maybe" href="https
    <p>WebVTT does not include or enable scripting. It is important that user agents do not support a
 way to execute script embedded in a WebVTT file.</p>
    <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
    <h3 class="heading settled" id="privacy-of-preference"><span class="content">Privacy of preference</span><a class="self-link" href="#privacy-of-preference"></a></h3>
    <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
 the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for
@@ -5804,6 +5839,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt-cue-position-line-right-alignment">WebVTT cue position line-right alignment</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-region">WebVTT cue region</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-right-alignment">WebVTT cue right alignment</a><span>, in §3.1</span>
+   <li><a href="#webvtt-cue-ruby-base-text-span">WebVTT cue ruby base text span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-ruby-span">WebVTT cue ruby span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-ruby-text-span">WebVTT cue ruby text span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-setting">WebVTT cue setting</a><span>, in §4.1</span>
@@ -5870,6 +5906,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt-region-viewport-anchor-setting">WebVTT region viewport anchor setting</a><span>, in §4.3</span>
    <li><a href="#webvtt-region-width">WebVTT region width</a><span>, in §3.2</span>
    <li><a href="#webvtt-region-width-setting">WebVTT region width setting</a><span>, in §4.3</span>
+   <li><a href="#webvtt-ruby-base-text-object">WebVTT Ruby Base Text Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-ruby-object">WebVTT Ruby Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-ruby-text-object">WebVTT Ruby Text Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-rules-for-extracting-the-chapter-title">WebVTT rules for extracting the chapter title</a><span>, in §5.6</span>
@@ -5930,6 +5967,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <a data-link-type="biblio">[css-fonts-3]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a>
+     <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font-size">font-size</a>
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a>
      <li><a href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a>
     </ul>
@@ -5961,14 +5999,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-pseudo-4/#selectordef-before">::before</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[CSS3-RUBY]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>
-     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>
-     <li><a href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
-     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>
-    </ul>
-   <li>
     <a data-link-type="biblio">[CSS-SYNTAX-3]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-syntax-3/#parse-a-stylesheet">parse a stylesheet</a>
@@ -5980,6 +6010,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-text-3/#valdef-text-align-center">center</a>
      <li><a href="https://drafts.csswg.org/css-text-3/#valdef-text-align-end">end</a>
      <li><a href="https://drafts.csswg.org/css-text-3/#valdef-text-align-left">left</a>
+     <li><a href="https://drafts.csswg.org/css-text-3/#valdef-white-space-nowrap">nowrap</a>
      <li><a href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a>
      <li><a href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>
      <li><a href="https://drafts.csswg.org/css-text-3/#valdef-text-align-right">right</a>
@@ -6036,6 +6067,14 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
      <li><a href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[CSS3-RUBY]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby">ruby</a>
+     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>
+     <li><a href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
+     <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSSOM]</a> defines the following terms:
@@ -6127,59 +6166,61 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-bcp47">[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/css-align-3/">CSS Box Alignment Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
    <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
-   <dd>CSS Backgrounds and Borders Module Level 3 URL: <a href="https://www.w3.org/TR/css3-background/">https://www.w3.org/TR/css3-background/</a>
+   <dd>CSS Backgrounds and Borders Module Level 3 URL: <a href="https://drafts.csswg.org/css-backgrounds-3/">https://drafts.csswg.org/css-backgrounds-3/</a>
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/css-cascade-4/">CSS Cascading and Inheritance Level 4</a>. URL: <a href="https://www.w3.org/TR/css-cascade-4/">https://www.w3.org/TR/css-cascade-4/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-cascade/">CSS Cascading and Inheritance Level 4</a>. URL: <a href="http://dev.w3.org/csswg/css-cascade/">http://dev.w3.org/csswg/css-cascade/</a>
    <dt id="biblio-css-color-4">[CSS-COLOR-4]
-   <dd>Tab Atkins Jr.; Chris Lilley. <a href="https://www.w3.org/TR/css-color-4/">CSS Color Module Level 4</a>. URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>
+   <dd>Tab Atkins Jr.; Chris Lilley. <a href="https://drafts.csswg.org/css-color/">CSS Color Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-color/">https://drafts.csswg.org/css-color/</a>
    <dt id="biblio-css-display-3">[CSS-DISPLAY-3]
-   <dd>Elika Etemad. <a href="https://www.w3.org/TR/css-display-3/">CSS Display Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-display-3/">https://www.w3.org/TR/css-display-3/</a>
+   <dd>Elika Etemad. <a href="https://drafts.csswg.org/css-display/">CSS Display Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-display/">https://drafts.csswg.org/css-display/</a>
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
-   <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://www.w3.org/TR/css-flexbox-1/">CSS Flexible Box Layout Module Level 1</a>. URL: <a href="https://www.w3.org/TR/css-flexbox-1/">https://www.w3.org/TR/css-flexbox-1/</a>
+   <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
    <dt id="biblio-css-fonts-3">[CSS-FONTS-3]
-   <dd>John Daggett. <a href="https://www.w3.org/TR/css-fonts-3/">CSS Fonts Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-fonts-3/">https://www.w3.org/TR/css-fonts-3/</a>
+   <dd>John Daggett. <a href="http://dev.w3.org/csswg/css-fonts/">CSS Fonts Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>
    <dt id="biblio-css-fonts-4">[CSS-FONTS-4]
    <dd>CSS Fonts Module Level 4 URL: <a href="https://drafts.csswg.org/css-fonts-4/">https://drafts.csswg.org/css-fonts-4/</a>
    <dt id="biblio-css-overflow-4">[CSS-OVERFLOW-4]
    <dd>CSS Overflow Module Level 4 URL: <a href="https://drafts.csswg.org/css-overflow-4/">https://drafts.csswg.org/css-overflow-4/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
-   <dd>Rossen Atanassov; Arron Eicholz. <a href="https://www.w3.org/TR/css-position-3/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
+   <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
    <dt id="biblio-css-pseudo-4">[CSS-PSEUDO-4]
-   <dd>Daniel Glazman; Elika Etemad; Alan Stearns. <a href="https://www.w3.org/TR/css-pseudo-4/">CSS Pseudo-Elements Module Level 4</a>. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
+   <dd>Daniel Glazman; Elika Etemad; Alan Stearns. <a href="https://drafts.csswg.org/css-pseudo-4/">CSS Pseudo-Elements Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-pseudo-4/">https://drafts.csswg.org/css-pseudo-4/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
-   <dd>Tab Atkins Jr.; Simon Sapin. <a href="https://www.w3.org/TR/css-syntax-3/">CSS Syntax Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-syntax-3/">https://www.w3.org/TR/css-syntax-3/</a>
+   <dd>Tab Atkins Jr.; Simon Sapin. <a href="http://dev.w3.org/csswg/css-syntax/">CSS Syntax Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]
-   <dd>Elika Etemad; Koji Ishii. <a href="https://www.w3.org/TR/css-text-3/">CSS Text Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-text-3/">https://www.w3.org/TR/css-text-3/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-text-3/">CSS Text Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-text-3/">http://dev.w3.org/csswg/css-text-3/</a>
    <dt id="biblio-css-text-4">[CSS-TEXT-4]
    <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="http://dev.w3.org/csswg/css-text-4/">CSS Text Module Level 4</a>. URL: <a href="http://dev.w3.org/csswg/css-text-4/">http://dev.w3.org/csswg/css-text-4/</a>
    <dt id="biblio-css-text-decor-3">[CSS-TEXT-DECOR-3]
-   <dd>Elika Etemad; Koji Ishii. <a href="https://www.w3.org/TR/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-text-decor-3/">https://www.w3.org/TR/css-text-decor-3/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-text-decor-3/">http://dev.w3.org/csswg/css-text-decor-3/</a>
    <dt id="biblio-css-transitions-1">[CSS-TRANSITIONS-1]
-   <dd>CSS Transitions Module Level 1 URL: <a href="https://www.w3.org/TR/css3-transitions/">https://www.w3.org/TR/css3-transitions/</a>
+   <dd>CSS Transitions Module Level 1 URL: <a href="https://drafts.csswg.org/css-transitions-1/">https://drafts.csswg.org/css-transitions-1/</a>
    <dt id="biblio-css-ui-3">[CSS-UI-3]
-   <dd>Tantek Çelik; Florian Rivoal. <a href="https://www.w3.org/TR/css-ui-3/">CSS Basic User Interface Module Level 3 (CSS3 UI)</a>. URL: <a href="https://www.w3.org/TR/css-ui-3/">https://www.w3.org/TR/css-ui-3/</a>
+   <dd>Tantek Çelik; Florian Rivoal. <a href="https://drafts.csswg.org/css-ui/">CSS Basic User Interface Module Level 3 (CSS3 UI)</a>. URL: <a href="https://drafts.csswg.org/css-ui/">https://drafts.csswg.org/css-ui/</a>
    <dt id="biblio-css-values">[CSS-VALUES]
-   <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://www.w3.org/TR/css-values-3/">CSS Values and Units Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-values-3/">https://www.w3.org/TR/css-values-3/</a>
+   <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://drafts.csswg.org/css-values/">CSS Values and Units Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-values/">https://drafts.csswg.org/css-values/</a>
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
-   <dd>Elika Etemad; Koji Ishii. <a href="https://www.w3.org/TR/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="https://www.w3.org/TR/css-writing-modes-3/">https://www.w3.org/TR/css-writing-modes-3/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-writing-modes-3/">http://dev.w3.org/csswg/css-writing-modes-3/</a>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
-   <dd>CSS Writing Modes Module Level 4 URL: <a href="https://www.w3.org/TR/css-writing-modes-4/">https://www.w3.org/TR/css-writing-modes-4/</a>
+   <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-css21">[CSS21]
    <dd>Bert Bos; et al. <a href="https://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/CSS2">https://www.w3.org/TR/CSS2</a>
    <dt id="biblio-css22">[CSS22]
-   <dd>Bert Bos. <a href="https://www.w3.org/TR/CSS22/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="https://www.w3.org/TR/CSS22/">https://www.w3.org/TR/CSS22/</a>
+   <dd>Bert Bos. <a href="http://dev.w3.org/csswg/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="http://dev.w3.org/csswg/css2/">http://dev.w3.org/csswg/css2/</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
    <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/css3-color">https://www.w3.org/TR/css3-color</a>
    <dt id="biblio-css3-ruby">[CSS3-RUBY]
-   <dd>Elika Etemad; Koji Ishii. <a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="https://www.w3.org/TR/css-ruby-1/">https://www.w3.org/TR/css-ruby-1/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="http://dev.w3.org/csswg/css-ruby-1/">http://dev.w3.org/csswg/css-ruby-1/</a>
    <dt id="biblio-cssom">[CSSOM]
-   <dd>Simon Pieters; Glenn Adams. <a href="https://www.w3.org/TR/cssom-1/">CSS Object Model (CSSOM)</a>. URL: <a href="https://www.w3.org/TR/cssom-1/">https://www.w3.org/TR/cssom-1/</a>
+   <dd>Simon Pieters; Glenn Adams. <a href="https://drafts.csswg.org/cssom/">CSS Object Model (CSSOM)</a>. URL: <a href="https://drafts.csswg.org/cssom/">https://drafts.csswg.org/cssom/</a>
    <dt id="biblio-dom">[DOM]
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-html51">[HTML51]
+   <dd>Steve Faulkner; et al. <a href="https://w3c.github.io/html/">HTML 5.1</a>. URL: <a href="https://w3c.github.io/html/">https://w3c.github.io/html/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-rfc2119">[RFC2119]
@@ -6187,51 +6228,51 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-rfc3629">[RFC3629]
    <dd>F. Yergeau. <a href="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>. November 2003. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3629">https://tools.ietf.org/html/rfc3629</a>
    <dt id="biblio-selectors-4">[SELECTORS-4]
-   <dd>Selectors Level 4 URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
+   <dd>Selectors Level 4 URL: <a href="https://drafts.csswg.org/selectors-4/">https://drafts.csswg.org/selectors-4/</a>
    <dt id="biblio-selectors4">[SELECTORS4]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
    <dt id="biblio-webidl">[WEBIDL]
-   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://www.w3.org/TR/WebIDL-1/">Web IDL</a>. URL: <a href="https://www.w3.org/TR/WebIDL-1/">https://www.w3.org/TR/WebIDL-1/</a>
+   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-bidi">[BIDI]
-   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/">Unicode Bidirectional Algorithm</a>. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/">http://www.unicode.org/reports/tr9/</a>
+   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/tr9-35.html">Unicode Bidirectional Algorithm</a>. 18 May 2016. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/tr9-35.html">http://www.unicode.org/reports/tr9/tr9-35.html</a>
    <dt id="biblio-maur">[MAUR]
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl def"><span class="kt">enum</span> <a class="nv" href="#enumdef-autokeyword">AutoKeyword</a> { <a class="s" href="#dom-autokeyword-auto">"auto"</a> };
-<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a>;
-<span class="kt">enum</span> <a class="nv" href="#enumdef-directionsetting">DirectionSetting</a> { <a class="s" href="#dom-directionsetting">""</a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl">"rl"</a>, <a class="s" href="#dom-directionsetting-lr">"lr"</a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-linealignsetting">LineAlignSetting</a> { <a class="s" href="#dom-linealignsetting-start">"start"</a>, <a class="s" href="#dom-linealignsetting-center">"center"</a>, <a class="s" href="#dom-linealignsetting-end">"end"</a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-positionalignsetting">PositionAlignSetting</a> { <a class="s" href="#dom-positionalignsetting-line-left">"line-left"</a>, <a class="s" href="#dom-positionalignsetting-center">"center"</a>, <a class="s" href="#dom-positionalignsetting-line-right">"line-right"</a>, <a class="s" href="#dom-positionalignsetting-auto">"auto"</a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-alignsetting">AlignSetting</a> { <a class="s" href="#dom-alignsetting-start">"start"</a>, <a class="s" href="#dom-alignsetting-center">"center"</a>, <a class="s" href="#dom-alignsetting-end">"end"</a>, <a class="s" href="#dom-alignsetting-left">"left"</a>, <a class="s" href="#dom-alignsetting-right">"right"</a> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime</a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime</a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text">text</a>)]
-<span class="kt">interface</span> <a class="nv" href="#vttcue">VTTCue</a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line">line</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign">lineAlign</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position">position</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign">positionAlign</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align">align</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
+<pre class="idl highlight def"><span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-autokeyword"><span class="nv">AutoKeyword</span></a> { <a class="s" href="#dom-autokeyword-auto"><span class="s">"auto"</span></a> };
+<span class="kt"><span class="kt">typedef</span></span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <span class="kt"><span class="kt">or</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword"><span class="n">AutoKeyword</span></a>) <a class="nv" href="#typedefdef-lineandpositionsetting"><span class="nv">LineAndPositionSetting</span></a>;
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-directionsetting"><span class="nv">DirectionSetting</span></a> { <a class="s" href="#dom-directionsetting"><span class="s">""</span></a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl"><span class="s">"rl"</span></a>, <a class="s" href="#dom-directionsetting-lr"><span class="s">"lr"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-linealignsetting"><span class="nv">LineAlignSetting</span></a> { <a class="s" href="#dom-linealignsetting-start"><span class="s">"start"</span></a>, <a class="s" href="#dom-linealignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-linealignsetting-end"><span class="s">"end"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-positionalignsetting"><span class="nv">PositionAlignSetting</span></a> { <a class="s" href="#dom-positionalignsetting-line-left"><span class="s">"line-left"</span></a>, <a class="s" href="#dom-positionalignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-positionalignsetting-line-right"><span class="s">"line-right"</span></a>, <a class="s" href="#dom-positionalignsetting-auto"><span class="s">"auto"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-alignsetting"><span class="nv">AlignSetting</span></a> { <a class="s" href="#dom-alignsetting-start"><span class="s">"start"</span></a>, <a class="s" href="#dom-alignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-alignsetting-end"><span class="s">"end"</span></a>, <a class="s" href="#dom-alignsetting-left"><span class="s">"left"</span></a>, <a class="s" href="#dom-alignsetting-right"><span class="s">"right"</span></a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue"><span class="nv">Constructor</span></a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><span class="nv">startTime</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><span class="nv">endTime</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt"><span class="kt">DOMString</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><span class="nv">text</span></a>)]
+<span class="kt"><span class="kt">interface</span></span> <a class="nv" href="#vttcue"><span class="nv">VTTCue</span></a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue"><span class="n">TextTrackCue</span></a> {
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#vttregion"><span class="n">VTTRegion</span></a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region"><span class="nv">region</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting"><span class="n">DirectionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical"><span class="nv">vertical</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt"><span class="kt">boolean</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines"><span class="nv">snapToLines</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting"><span class="n">LineAndPositionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line"><span class="nv">line</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting"><span class="n">LineAlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign"><span class="nv">lineAlign</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting"><span class="n">LineAndPositionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position"><span class="nv">position</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting"><span class="n">PositionAlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign"><span class="nv">positionAlign</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size"><span class="nv">size</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting"><span class="n">AlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align"><span class="nv">align</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt"><span class="kt">DOMString</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text"><span class="nv">text</span></a>;
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment"><span class="n">DocumentFragment</span></a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml"><span class="nv">getCueAsHTML</span></a>();
 };
 
-<span class="kt">enum</span> <a class="nv" href="#enumdef-scrollsetting">ScrollSetting</a> { <a class="s" href="#dom-scrollsetting">""</a> /* none */, <a class="s" href="#dom-scrollsetting-up">"up"</a> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
-<span class="kt">interface</span> <a class="nv" href="#vttregion">VTTRegion</a> {
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll">scroll</a>;
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-scrollsetting"><span class="nv">ScrollSetting</span></a> { <a class="s" href="#dom-scrollsetting"><span class="s">""</span></a> /* none */, <a class="s" href="#dom-scrollsetting-up"><span class="s">"up"</span></a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion"><span class="nv">Constructor</span></a>]
+<span class="kt"><span class="kt">interface</span></span> <a class="nv" href="#vttregion"><span class="nv">VTTRegion</span></a> {
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width"><span class="nv">width</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt"><span class="kt">long</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines"><span class="nv">lines</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx"><span class="nv">regionAnchorX</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory"><span class="nv">regionAnchorY</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx"><span class="nv">viewportAnchorX</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory"><span class="nv">viewportAnchorY</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting"><span class="n">ScrollSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll"><span class="nv">scroll</span></a>;
 };
 
 </pre>
@@ -6758,7 +6799,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-text-3">4.2.2. WebVTT cue text</a>
     <li><a href="#ref-for-webvtt-cue-text-4">4.6.2. WebVTT file using chapter title text</a>
     <li><a href="#ref-for-webvtt-cue-text-5">4.6.3. WebVTT file using cue text</a>
-    <li><a href="#ref-for-webvtt-cue-text-6">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-cue-text-7">(2)</a> <a href="#ref-for-webvtt-cue-text-8">(3)</a> <a href="#ref-for-webvtt-cue-text-9">(4)</a> <a href="#ref-for-webvtt-cue-text-10">(5)</a> <a href="#ref-for-webvtt-cue-text-11">(6)</a> <a href="#ref-for-webvtt-cue-text-12">(7)</a> <a href="#ref-for-webvtt-cue-text-13">(8)</a> <a href="#ref-for-webvtt-cue-text-14">(9)</a> <a href="#ref-for-webvtt-cue-text-15">(10)</a>
+    <li><a href="#ref-for-webvtt-cue-text-6">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-cue-text-7">(2)</a> <a href="#ref-for-webvtt-cue-text-8">(3)</a> <a href="#ref-for-webvtt-cue-text-9">(4)</a> <a href="#ref-for-webvtt-cue-text-10">(5)</a> <a href="#ref-for-webvtt-cue-text-11">(6)</a> <a href="#ref-for-webvtt-cue-text-12">(7)</a> <a href="#ref-for-webvtt-cue-text-13">(8)</a> <a href="#ref-for-webvtt-cue-text-14">(9)</a> <a href="#ref-for-webvtt-cue-text-15">(10)</a> <a href="#ref-for-webvtt-cue-text-16">(11)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-components">
@@ -6770,7 +6811,7 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-internal-text">
    <b><a href="#webvtt-cue-internal-text">#webvtt-cue-internal-text</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-internal-text-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-internal-text-2">(2)</a> <a href="#ref-for-webvtt-cue-internal-text-3">(3)</a> <a href="#ref-for-webvtt-cue-internal-text-4">(4)</a> <a href="#ref-for-webvtt-cue-internal-text-5">(5)</a> <a href="#ref-for-webvtt-cue-internal-text-6">(6)</a> <a href="#ref-for-webvtt-cue-internal-text-7">(7)</a> <a href="#ref-for-webvtt-cue-internal-text-8">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-internal-text-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-internal-text-2">(2)</a> <a href="#ref-for-webvtt-cue-internal-text-3">(3)</a> <a href="#ref-for-webvtt-cue-internal-text-4">(4)</a> <a href="#ref-for-webvtt-cue-internal-text-5">(5)</a> <a href="#ref-for-webvtt-cue-internal-text-6">(6)</a> <a href="#ref-for-webvtt-cue-internal-text-7">(7)</a> <a href="#ref-for-webvtt-cue-internal-text-8">(8)</a> <a href="#ref-for-webvtt-cue-internal-text-9">(9)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-class-span">
@@ -6804,14 +6845,20 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-ruby-span">
    <b><a href="#webvtt-cue-ruby-span">#webvtt-cue-ruby-span</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-ruby-span-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-ruby-span-2">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-ruby-span-3">5.4. WebVTT cue text parsing rules</a>
+    <li><a href="#ref-for-webvtt-cue-ruby-span-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-ruby-span-2">(2)</a> <a href="#ref-for-webvtt-cue-ruby-span-3">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-ruby-span-4">5.4. WebVTT cue text parsing rules</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-ruby-text-span">
    <b><a href="#webvtt-cue-ruby-text-span">#webvtt-cue-ruby-text-span</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-cue-ruby-text-span-1">5.4. WebVTT cue text parsing rules</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="webvtt-cue-ruby-base-text-span">
+   <b><a href="#webvtt-cue-ruby-base-text-span">#webvtt-cue-ruby-base-text-span</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-webvtt-cue-ruby-base-text-span-1">5.4. WebVTT cue text parsing rules</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-voice-span">
@@ -6831,13 +6878,13 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-span-start-tag">
    <b><a href="#webvtt-cue-span-start-tag">#webvtt-cue-span-start-tag</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-span-start-tag-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-span-start-tag-2">(2)</a> <a href="#ref-for-webvtt-cue-span-start-tag-3">(3)</a> <a href="#ref-for-webvtt-cue-span-start-tag-4">(4)</a> <a href="#ref-for-webvtt-cue-span-start-tag-5">(5)</a> <a href="#ref-for-webvtt-cue-span-start-tag-6">(6)</a> <a href="#ref-for-webvtt-cue-span-start-tag-7">(7)</a> <a href="#ref-for-webvtt-cue-span-start-tag-8">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-span-start-tag-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-span-start-tag-2">(2)</a> <a href="#ref-for-webvtt-cue-span-start-tag-3">(3)</a> <a href="#ref-for-webvtt-cue-span-start-tag-4">(4)</a> <a href="#ref-for-webvtt-cue-span-start-tag-5">(5)</a> <a href="#ref-for-webvtt-cue-span-start-tag-6">(6)</a> <a href="#ref-for-webvtt-cue-span-start-tag-7">(7)</a> <a href="#ref-for-webvtt-cue-span-start-tag-8">(8)</a> <a href="#ref-for-webvtt-cue-span-start-tag-9">(9)</a> <a href="#ref-for-webvtt-cue-span-start-tag-10">(10)</a> <a href="#ref-for-webvtt-cue-span-start-tag-11">(11)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-span-end-tag">
    <b><a href="#webvtt-cue-span-end-tag">#webvtt-cue-span-end-tag</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-span-end-tag-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-span-end-tag-2">(2)</a> <a href="#ref-for-webvtt-cue-span-end-tag-3">(3)</a> <a href="#ref-for-webvtt-cue-span-end-tag-4">(4)</a> <a href="#ref-for-webvtt-cue-span-end-tag-5">(5)</a> <a href="#ref-for-webvtt-cue-span-end-tag-6">(6)</a> <a href="#ref-for-webvtt-cue-span-end-tag-7">(7)</a> <a href="#ref-for-webvtt-cue-span-end-tag-8">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-span-end-tag-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-span-end-tag-2">(2)</a> <a href="#ref-for-webvtt-cue-span-end-tag-3">(3)</a> <a href="#ref-for-webvtt-cue-span-end-tag-4">(4)</a> <a href="#ref-for-webvtt-cue-span-end-tag-5">(5)</a> <a href="#ref-for-webvtt-cue-span-end-tag-6">(6)</a> <a href="#ref-for-webvtt-cue-span-end-tag-7">(7)</a> <a href="#ref-for-webvtt-cue-span-end-tag-8">(8)</a> <a href="#ref-for-webvtt-cue-span-end-tag-9">(9)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-timestamp">
@@ -7117,11 +7164,11 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-ruby-object">
    <b><a href="#webvtt-ruby-object">#webvtt-ruby-object</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-ruby-object-1">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-ruby-object-2">(2)</a> <a href="#ref-for-webvtt-ruby-object-3">(3)</a>
-    <li><a href="#ref-for-webvtt-ruby-object-4">5.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-ruby-object-5">6.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-ruby-object-6">6.1.1. Applying CSS properties to WebVTT Node Objects</a>
-    <li><a href="#ref-for-webvtt-ruby-object-7">7.2.1. The ::cue pseudo-element</a>
+    <li><a href="#ref-for-webvtt-ruby-object-1">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-ruby-object-2">(2)</a> <a href="#ref-for-webvtt-ruby-object-3">(3)</a> <a href="#ref-for-webvtt-ruby-object-4">(4)</a>
+    <li><a href="#ref-for-webvtt-ruby-object-5">5.5. WebVTT cue text DOM construction rules</a>
+    <li><a href="#ref-for-webvtt-ruby-object-6">6.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-ruby-object-7">6.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-ruby-object-8">7.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-ruby-text-object">
@@ -7132,8 +7179,20 @@ title</a>
     <li><a href="#ref-for-webvtt-ruby-text-object-5">5.6. WebVTT rules for extracting the chapter
 title</a>
     <li><a href="#ref-for-webvtt-ruby-text-object-6">6.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-ruby-text-object-7">6.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-ruby-text-object-8">(2)</a>
-    <li><a href="#ref-for-webvtt-ruby-text-object-9">7.2.1. The ::cue pseudo-element</a>
+    <li><a href="#ref-for-webvtt-ruby-text-object-7">6.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-ruby-text-object-8">(2)</a> <a href="#ref-for-webvtt-ruby-text-object-9">(3)</a> <a href="#ref-for-webvtt-ruby-text-object-10">(4)</a>
+    <li><a href="#ref-for-webvtt-ruby-text-object-11">7.2.1. The ::cue pseudo-element</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="webvtt-ruby-base-text-object">
+   <b><a href="#webvtt-ruby-base-text-object">#webvtt-ruby-base-text-object</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-1">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-ruby-base-text-object-2">(2)</a> <a href="#ref-for-webvtt-ruby-base-text-object-3">(3)</a>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-4">5.5. WebVTT cue text DOM construction rules</a>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-5">5.6. WebVTT rules for extracting the chapter
+title</a>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-6">6.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-7">6.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-ruby-base-text-object-8">(2)</a> <a href="#ref-for-webvtt-ruby-base-text-object-9">(3)</a>
+    <li><a href="#ref-for-webvtt-ruby-base-text-object-10">7.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-voice-object">
@@ -7192,7 +7251,7 @@ title</a>
   <aside class="dfn-panel" data-for="attach-a-webvtt-internal-node-object">
    <b><a href="#attach-a-webvtt-internal-node-object">#attach-a-webvtt-internal-node-object</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-attach-a-webvtt-internal-node-object-1">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-2">(2)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-3">(3)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-4">(4)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-5">(5)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-6">(6)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-7">(7)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-8">(8)</a>
+    <li><a href="#ref-for-attach-a-webvtt-internal-node-object-1">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-2">(2)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-3">(3)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-4">(4)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-5">(5)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-6">(6)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-7">(7)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-8">(8)</a> <a href="#ref-for-attach-a-webvtt-internal-node-object-9">(9)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-text-tokenizer">
