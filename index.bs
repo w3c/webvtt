@@ -67,16 +67,20 @@ urlPrefix: https://encoding.spec.whatwg.org/
 urlPrefix: https://heycam.github.io/webidl/
     type: exception
         text: IndexSizeError
+urlPrefix: https://w3c.github.io/html/
+    type: element
+        urlPrefix: textlevel-semantics.html
+            text: the rb element
 </pre>
 
 <pre class=link-defaults>
 spec:dom; type:interface; text:Document
-spec:css-ruby-1; type:value; text:ruby-base
 spec:css-color-4; type:property; text:color
 spec:css-fonts-3; type:property; text:font-style
 spec:css-fonts-3; type:property; text:font-weight
 spec:css-ruby-1; type:value; text:ruby
 spec:css-ruby-1; type:value; text:ruby-text
+spec:css-ruby-1; type:value; text:ruby-base
 spec:css21; type:property; text:min-height
 spec:css21; type:property; text:max-height
 spec:css-flexbox-1; type:value; text:inline-flex
@@ -1366,7 +1370,7 @@ position</a> of the media data that the WebVTT file is to be synchronized with.<
 <p>A <dfn>WebVTT cue settings list</dfn> consist of a sequence of zero or more <dfn lt="WebVTT cue
 setting">WebVTT cue settings</dfn> in any order, separated from each other by one or more U+0020
 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each setting consists of the
-following components, in the order given:</p>
+following components:</p>
 
 <ol>
  <li>A <a lt="WebVTT cue setting name">WebVTT cue setting name</a>.</li>
@@ -1491,13 +1495,25 @@ underlined text, and a <a>WebVTT cue span end tag</a> "<code>u</code>".</p>
  <li>
   One or more occurrences of the following group of components, in the order given:
   <ol>
-   <li><a>WebVTT cue internal text</a>, representing the ruby base.</li>
-   <li>A <a>WebVTT cue span start tag</a> "<code>rt</code>" that disallows an annotation.</li>
-   <li>A <dfn>WebVTT cue ruby text span</dfn>: <a>WebVTT cue internal text</a>, representing the
-   ruby text component of the ruby annotation.</li>
-   <li>A <a>WebVTT cue span end tag</a> "<code>rt</code>". If this is the last occurrence of this
-   group of components in the <a>WebVTT cue ruby span</a>, then this last end tag string may be
-   omitted.</li>
+   <li><a>WebVTT cue internal text</a>, representing a ruby base.</li>
+   <li>a ruby text component:</li>
+   <ol>
+    <li>A <a>WebVTT cue span start tag</a> "<code>rt</code>" that disallows an annotation.</li>
+    <li>A <dfn>WebVTT cue ruby text span</dfn>: <a>WebVTT cue internal text</a>, representing the
+    ruby text component of the ruby annotation.</li> <li>A <a>WebVTT cue span end tag</a>
+    "<code>rt</code>". If this is the last occurrence of this group of components in the <a>WebVTT
+    cue ruby span</a> or a <a>WebVTT cue span start tag</a> "<code>rb</code>" is next, then this
+    last end tag string may be omitted.</li>
+   </ol>
+   <li>a ruby base text component:</li>
+   <ol>
+    <li>A <a>WebVTT cue span start tag</a> "<code>rb</code>" that disallows an annotation.</li>
+    <li>A <dfn>WebVTT cue ruby base text span</dfn>: <a>WebVTT cue internal text</a>, representing
+    the ruby base text component of the ruby annotation.</li>
+    <li>A <a>WebVTT cue span end tag</a> "<code>rb</code>". If this is the last occurrence of this
+    group of components in the <a>WebVTT cue ruby span</a> or a <a>WebVTT cue span start tag</a>
+    "<code>rt</code>" is next, then this last end tag string may be omitted.</li>
+   </ol>
   </ol>
  </li>
  <li>If the last end tag string was not omitted: Optionally, a <a>WebVTT line terminator</a>.</li>
@@ -1509,6 +1525,10 @@ underlined text, and a <a>WebVTT cue span end tag</a> "<code>u</code>".</p>
 
 <p class="note">Cue positioning controls the positioning of the baseline text, not the ruby
 text.</p>
+
+<p class="note">WebVTT follows the development of ruby support in HTML. WebVTT supports simple ruby
+with the semantics of the <code>ruby</code>, <code>rt</code> and <code>rb</code> elements as in
+HTML. Complex ruby will require functionality still under development in the CSS Ruby spec.</p>
 
 <p>A <dfn>WebVTT cue voice span</dfn> consists of the following components, in the order given:</p>
 
@@ -2691,8 +2711,8 @@ run the following steps:</p>
        "<code>end</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
        line end alignment">end alignment</a>.</p></li>
 
-       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled
-       <i>next setting</i>.</p></li>
+       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled <i>next
+       setting</i>.</p></li>
 
        <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
 
@@ -2968,6 +2988,12 @@ Objects</a>:</p>
   text</a>.</p>
  </dd>
 
+ <dt><dfn lt="WebVTT Ruby Base Text Object">WebVTT Ruby Base Text Objects</dfn></dt>
+ <dd>
+  <p>These represent spans of ruby base text (a <a>WebVTT cue ruby base text span</a>) in <a>WebVTT
+  cue text</a>.</p>
+ </dd>
+
  <dt><dfn lt="WebVTT Voice Object">WebVTT Voice Objects</dfn></dt>
  <dd>
   <p>These represent spans of text associated with a specific voice (a <a>WebVTT cue voice span</a>)
@@ -3092,6 +3118,12 @@ string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fa
       Object">attach</a> a <a>WebVTT Ruby Text Object</a>.</p>
      </dd>
 
+     <dt>If the tag name is "<code>rb</code>"</dt>
+     <dd>
+      <p>If |current| is a <a>WebVTT Ruby Object</a>, then <a lt="attach a WebVTT Internal Node
+      Object">attach</a> a <a>WebVTT Ruby Base Text Object</a>.</p>
+     </dd>
+
      <dt>If the tag name is "<code>v</code>"</dt>
      <dd>
       <p><a lt="attach a WebVTT Internal Node Object">Attach</a> a <a>WebVTT Voice Object</a>, and
@@ -3162,6 +3194,9 @@ string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fa
      <li>The tag name of the end tag token |token| is "<code>rt</code>" and |current| is a <a>WebVTT
      Ruby Text Object</a>.</li>
 
+     <li>The tag name of the end tag token |token| is "<code>rb</code>" and |current| is a <a>WebVTT
+     Ruby Base Text Object</a>.</li>
+
      <li>The tag name of the end tag token |token| is "<code>v</code>" and |current| is a <a>WebVTT
      Voice Object</a>.</li>
 
@@ -3172,8 +3207,8 @@ string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fa
     the top value from the |language stack|.</p>
 
     <p>Otherwise, if the tag name of the end tag token |token| is "<code>ruby</code>" and |current|
-    is a <a>WebVTT Ruby Text Object</a>, then let |current| be the parent node of the parent node of
-    |current|.</p>
+    is a <a>WebVTT Ruby Text Object</a> or a <a>WebVTT Ruby Base Text Object</a>, then let |current|
+    be the parent node of the parent node of |current|.</p>
 
     <p>Otherwise, ignore the token.</p>
 
@@ -3640,6 +3675,10 @@ Node Objects</a> to DOM nodes:</p>
    <td class=long>HTML <a spec=html element>rt</a> element.</td>
   </tr>
   <tr>
+   <td class=long><a>WebVTT Ruby Base Text Object</a></td>
+   <td class=long>HTML <a data-lt="the rb element" element>rb</a> element. [[!HTML51]]</td>
+  </tr>
+  <tr>
    <td class=long><a>WebVTT Voice Object</a></td>
    <td class=long>HTML <a spec=html element>span</a> element with a <a spec=html
    element-attr>title</a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
@@ -3693,7 +3732,8 @@ follows:</p>
 
  <li><p>Return the concatenation of the values of each <a>WebVTT Text Object</a> in |nodes|, in a
  pre-order, depth-first traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text
- Objects</a> and their descendants.</p></li>
+ Objects</a> and <a lt="WebVTT Ruby Base Text Object">WebVTT Ruby Base Text Objects</a> their
+ descendants.</p></li>
 
 </ol>
 
@@ -4221,8 +4261,9 @@ following algorithm.</p>
    the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
 
    <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
-   lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
+   lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> or <a lt="WebVTT Ruby Base Text
+   Object">WebVTT Ruby Base Text Objects</a> must be wrapped in anonymous boxes whose 'display'
+   property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
 
    <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
    defined in the next section. (That section uses some of the variables whose values were
@@ -4546,16 +4587,20 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 ''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'background' shorthand property on the <a>WebVTT cue background box</a> and on <a>WebVTT Ruby
-Text Objects</a> must be set to ''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
+Text Objects</a> and <a>WebVTT Ruby Base Text Objects</a> must be set to ''rgba(0,0,0,0.8)''.
+[[!CSS3-COLOR]]</p>
 
 <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-''white-space/pre-line''. [[!CSS21]]</p>
+''white-space/pre-line'' and on <a>WebVTT Ruby Text Objects</a> and <a>WebVTT Ruby Base Text
+Objects</a> to ''white-space/nowrap''. [[!CSS21]]</p>
 
 <p>The 'font-style' property on <a lt="WebVTT Italic Object">WebVTT Italic Objects</a> must be set
 to ''font-style/italic''.</p>
 
 <p>The 'font-weight' property on <a lt="WebVTT Bold Object">WebVTT Bold Objects</a> must be set to
 ''font-weight/bold''.</p>
+
+<p>The 'font-size' property on <a>WebVTT Ruby Text Objects</a> must be set to ''font-size/50%''.</p>
 
 <p>The 'text-decoration' property on <a lt="WebVTT Underline Object">WebVTT Underline Objects</a>
 must be set to ''text-decoration/underline''.</p>
@@ -4565,6 +4610,9 @@ must be set to ''text-decoration/underline''.</p>
 
 <p>The 'display' property on <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be
 set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
+
+<p>The 'display' property on <a lt="WebVTT Ruby Base Text Object">WebVTT Ruby Base Text Objects</a>
+must be set to ''display/ruby-base''. [[!CSS3-RUBY]]</p>
 
 <p>Every <a>WebVTT region object</a> is initialized with the following CSS settings:</p>
 
@@ -4705,6 +4753,7 @@ present in the <{video}> element's document tree.</p>
      video::cue(u),
      video::cue(ruby),
      video::cue(rt),
+     video::cue(rb),
      video::cue(v),
      video::cue(lang) {
        color: yellow;
@@ -4724,7 +4773,7 @@ present in the <{video}> element's document tree.</p>
      &lt;u>Yellow!&lt;/u>
      &lt;b>Yellow!&lt;/b>
      &lt;u>Yellow!&lt;/u>
-     &lt;ruby>Yellow! &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
+     &lt;ruby>&lt;rb>Yellow!&lt;/rb> &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
      &lt;v Kathryn>Yellow!&lt;/v>
      &lt;lang en>Yellow!&lt;/lang>
      </pre>
@@ -5011,6 +5060,10 @@ being treated as follows:</p>
     <tr>
      <td><a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a></td>
      <td><code>rt</code></td>
+    </tr>
+    <tr>
+     <td><a lt="WebVTT Ruby Base Text Object">WebVTT Ruby Base Text Objects</a></td>
+     <td><code>rb</code></td>
     </tr>
     <tr>
      <td><a lt="WebVTT Voice Object">WebVTT Voice Objects</a></td>
@@ -5824,11 +5877,11 @@ API. [[CSSOM]]</p>
 way to execute script embedded in a WebVTT file.</p>
 
 <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
 
 <h3 id=privacy-of-preference>Privacy of preference</h3>
 
@@ -5838,7 +5891,7 @@ preferences for automatic text track selection" spec=html>language preference</a
 captions or subtitles. That is a (small) piece of information about the user. However, the offering
 of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
 the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
-format itself. [[HTML]]</p>
+format itself. [[!HTML]]</p>
 
 
 <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>
