@@ -2319,7 +2319,9 @@ area for <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-12">W
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region identifier" data-noexport="" id="webvtt-region-identifier">An identifier</dfn>
     <dd>
-     <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
+     <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
+  TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D
+  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region width" data-noexport="" id="webvtt-region-width">A width</dfn>
     <dd>
      <p>A number giving the width of the box within which the text of each line of the containing cues
@@ -2381,7 +2383,9 @@ with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/in
  (CR) characters.
     <li>Two or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-1">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-1">WebVTT region definition blocks</a>, <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-1">WebVTT region definition blocks</a>, <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment
+ blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line
+ terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-3">WebVTT line terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-cue-block" id="ref-for-webvtt-cue-block-1">WebVTT cue blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-2">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-4">WebVTT line terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-5">WebVTT line terminators</a>.
@@ -2681,7 +2685,8 @@ given:</p>
  HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
    </ol>
    <p>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-2">WebVTT region identifier setting</a> must be unique amongst all the <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-3">WebVTT region identifier settings</a> of all <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-7">WebVTT
-regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>. For a region to exist, a region identifier setting has to be provided.</p>
+regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>. For a region to exist, a region identifier setting has to be
+provided.</p>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-4">WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-width-setting">WebVTT region width setting</dfn> consists of the following components, in the order
@@ -3492,7 +3497,8 @@ run the following steps:</p>
            <p>Otherwise, if <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>end</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-9">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-2">end alignment</a>.</p>
           <li>
-           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next setting</i>.</p>
+           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next
+       setting</i>.</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue line</a> be <var>number</var>.</p>
           <li>
@@ -4165,7 +4171,8 @@ manner suiting the user.</p>
     <li>
      <p>Let <var>regions</var> be an empty list of <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-11">WebVTT regions</a>.</p>
     <li>
-     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> with an identifier from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of regions</a>.</p>
+     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> with an identifier from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of
+ regions</a>.</p>
     <li>
      <p>If <var>reset</var> is false, then, for each <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-13">WebVTT region</a> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-5">WebVTT region object</a>.</p>
     <li>
@@ -4731,7 +4738,8 @@ apply to WebVTT. This section does not apply to user agents that don’t support
    <p>The <span class="css">::cue(<var>selector</var>)</span> pseudo-element represents a cue or element inside a cue that match the
 given selector.</p>
    <p>The <span class="css">::cue-region</span> pseudo-element represents a region.</p>
-   <p>The <span class="css">::cue-region(<var>selector</var>)</span> pseudo-element represents a region or element inside a region that match the given selector.</p>
+   <p>The <span class="css">::cue-region(<var>selector</var>)</span> pseudo-element represents a region or element inside a region
+that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a></code> element’s document tree.</p>
    <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback position</a>.</p>
@@ -4979,7 +4987,8 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-28">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements,
+and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="7.2.1" id="the-cue-pseudo-element"><span class="secno">7.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5114,12 +5123,15 @@ track regions that are being rendered for the matched element.</p>
    <p class="note" role="note">If the matched element is not a video element, the pseudo-element defined below
 won’t have any effect according to this specification.</p>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region">::cue-region<a class="self-link" href="#cue-region"></a></dfn> pseudo-element (with no argument) matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-12">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region-selector">::cue-region(selector)<a class="self-link" href="#cue-region-selector"></a></dfn> pseudo-element with an argument must have an argument that consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-13">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the given CSS selector as follows:</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region-selector">::cue-region(selector)<a class="self-link" href="#cue-region-selector"></a></dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-13">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
+given CSS selector as follows:</p>
    <ul>
     <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-14">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-6">WebVTT region identifier</a> matching the given ID.</p>
    </ul>
    <p>No other selector matching is defined for <span class="css">::cue-region(<var>selector</var>)</span>.</p>
-   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element; other properties set on the pseudo-element must be ignored.</p>
+   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element; other
+properties set on the pseudo-element must be ignored.</p>
    <p>When a user agent is rendering one or more text track regions according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">rules for
 updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-15">WebVTT region
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
@@ -5505,7 +5517,8 @@ following steps:</p>
     <li>
      <p>Return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-6">VTTRegion</a></code> object representing <var>region</var>.</p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-id">id</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-8">WebVTT region identifier</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-17">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-7">VTTRegion</a></code> object represents. On setting, the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-9">WebVTT region identifier</a> must be set to the new value.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-id">id</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-8">WebVTT region
+identifier</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-17">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-7">VTTRegion</a></code> object represents. On setting, the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-9">WebVTT region identifier</a> must be set to the new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-width">width</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-8">WebVTT
 region width</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-18">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-8">VTTRegion</a></code> object represents. On setting,
 if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be
@@ -5631,11 +5644,11 @@ for pseudo-elements other than <a class="css" data-link-type="maybe" href="https
    <p>WebVTT does not include or enable scripting. It is important that user agents do not support a
 way to execute script embedded in a WebVTT file.</p>
    <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
    <h3 class="heading settled" id="privacy-of-preference"><span class="content">Privacy of preference</span><a class="self-link" href="#privacy-of-preference"></a></h3>
    <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
 the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for

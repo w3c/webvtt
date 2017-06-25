@@ -1126,7 +1126,9 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
 
  <dt><dfn lt="WebVTT region identifier">An identifier</dfn></dt>
  <dd>
-  <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
+  <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
+  TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D
+  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region width">A width</dfn></dt>
@@ -1220,9 +1222,10 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>Two or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.</li>
 
- <li>Zero or more <a lt="WebVTT region definition block">WebVTT region definition blocks</a>, <a lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment
- block">WebVTT comment blocks</a> separated from each other by one or more <a lt="WebVTT line
- terminator">WebVTT line terminators</a>.</li>
+ <li>Zero or more <a lt="WebVTT region definition block">WebVTT region definition blocks</a>, <a
+ lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment block">WebVTT comment
+ blocks</a> separated from each other by one or more <a lt="WebVTT line terminator">WebVTT line
+ terminators</a>.</li>
 
  <li>Zero or more <a lt="WebVTT line terminator">WebVTT line terminators</a>.</li>
 
@@ -1650,7 +1653,8 @@ given:</p>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
 identifier setting">WebVTT region identifier settings</a> of all <a lt="WebVTT region">WebVTT
-regions</a> of a <a>WebVTT file</a>. For a region to exist, a region identifier setting has to be provided.</p>
+regions</a> of a <a>WebVTT file</a>. For a region to exist, a region identifier setting has to be
+provided.</p>
 
 <p class="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
@@ -2692,8 +2696,8 @@ run the following steps:</p>
        "<code>end</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
        line end alignment">end alignment</a>.</p></li>
 
-       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled
-       <i>next setting</i>.</p></li>
+       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled <i>next
+       setting</i>.</p></li>
 
        <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
 
@@ -3757,7 +3761,8 @@ manner suiting the user.</p>
  <li><p>Let |regions| be an empty list of <a lt="WebVTT region">WebVTT regions</a>.</p></li>
 
  <li><p>For each track |track| in |tracks|, append to |regions| all the <a lt="WebVTT
- region">regions</a> with an identifier from |track|'s <a lt="text track list of regions">list of regions</a>.</p></li>
+ region">regions</a> with an identifier from |track|'s <a lt="text track list of regions">list of
+ regions</a>.</p></li>
 
  <li><p>If |reset| is false, then, for each <a>WebVTT region</a> |region| in |regions| let
  |regionNode| be a <a>WebVTT region object</a>.</p></li>
@@ -4632,7 +4637,8 @@ given selector.</p>
 
 <p>The ''::cue-region'' pseudo-element represents a region.</p>
 
-<p>The ''::cue-region(|selector|)'' pseudo-element represents a region or element inside a region that match the given selector.</p>
+<p>The ''::cue-region(|selector|)'' pseudo-element represents a region or element inside a region
+that match the given selector.</p>
 
 <p class="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <{video}> element's document tree.</p>
@@ -4909,7 +4915,8 @@ present in the <{video}> element's document tree.</p>
      }</pre>
     </td>
     <td class=long>
-     <p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a> matching the given ID.</p>
+     <p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a>
+     matching the given ID.</p>
 
      <pre>
      WEBVTT
@@ -4967,7 +4974,8 @@ affect the styling of parts of <a lt="WebVTT cue">WebVTT cues</a> that are being
 pseudo-elements defined below won't have any effect according to this specification.</p>
 
 <p>A CSS user agent that implements the <a lt="text track">text tracks</a> model must implement the
-''::cue'', ''::cue(|selector|)'', ''::cue-region'' and ''::cue-region(|selector|)'' pseudo-elements, and the '':past'' and '':future'' pseudo-classes.</p>
+''::cue'', ''::cue(|selector|)'', ''::cue-region'' and ''::cue-region(|selector|)'' pseudo-elements,
+and the '':past'' and '':future'' pseudo-classes.</p>
 
 
 <h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
@@ -5182,15 +5190,20 @@ won't have any effect according to this specification.</p>
 region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
 
-<p>The <dfn>::cue-region(selector)</dfn> pseudo-element with an argument must have an argument that consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT region object">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the given CSS selector as follows:</p>
+<p>The <dfn>::cue-region(selector)</dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT region
+object">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
+given CSS selector as follows:</p>
 
 <ul>
- <p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a> matching the given ID.</p>
+ <p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a>
+ matching the given ID.</p>
 </ul>
 
 <p>No other selector matching is defined for ''::cue-region(|selector|)''.</p>
 
-<p>The same properties that apply to ''::cue'' apply to the ''::cue-region'' pseudo-element; other properties set on the pseudo-element must be ignored.</p>
+<p>The same properties that apply to ''::cue'' apply to the ''::cue-region'' pseudo-element; other
+properties set on the pseudo-element must be ignored.</p>
 
 <p>When a user agent is rendering one or more text track regions according to the <a>rules for
 updating the display of WebVTT text tracks</a>, <a lt="WebVTT region object">WebVTT region
@@ -5698,7 +5711,9 @@ following steps:</p>
 </ol>
 
 
-<p>The <dfn attribute for=VTTRegion>id</dfn> attribute, on getting, must return the <a>WebVTT region identifier</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting, the <a>WebVTT region identifier</a> must be set to the new value.</p>
+<p>The <dfn attribute for=VTTRegion>id</dfn> attribute, on getting, must return the <a>WebVTT region
+identifier</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting, the
+<a>WebVTT region identifier</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>width</dfn> attribute, on getting, must return the <a>WebVTT
 region width</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
@@ -5880,11 +5895,11 @@ API. [[CSSOM]]</p>
 way to execute script embedded in a WebVTT file.</p>
 
 <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
 
 <h3 id=privacy-of-preference>Privacy of preference</h3>
 
