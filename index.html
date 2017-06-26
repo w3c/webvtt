@@ -1186,7 +1186,7 @@ Possible extra rowspan handling
       background-repeat: no-repeat;
     }
   </style>
-  <meta content="Bikeshed version 39e591568007a470c8705dd14db3d9d86db98356" name="generator">
+  <meta content="Bikeshed version 5bd73bb15eb04ad9f7d1a57f012e9ee6eca5a765" name="generator">
   <link href="http://www.w3.org/TR/webvtt1/" rel="canonical">
 <style>
  samp {
@@ -1443,7 +1443,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-06-15">15 June 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-06-25">25 June 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1762,7 +1762,7 @@ NOTE end of file
    </div>
    <h3 class="heading settled" data-level="1.3" id="styling"><span class="secno">1.3. </span><span class="content">Styling</span><a class="self-link" href="#styling"></a></h3>
    <p><i>This section is non-normative.</i></p>
-   <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element can target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span> and <span class="css">::cue-region</span> pseudo-elements.</p>
+   <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element can target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
    <div class="example" id="example-58732c3d">
     <a class="self-link" href="#example-58732c3d"></a> 
     <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element
@@ -2319,7 +2319,9 @@ area for <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-12">W
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region identifier" data-noexport="" id="webvtt-region-identifier">An identifier</dfn>
     <dd>
-     <p>An arbitrary string.</p>
+     <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
+  TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D
+  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region width" data-noexport="" id="webvtt-region-width">A width</dfn>
     <dd>
      <p>A number giving the width of the box within which the text of each line of the containing cues
@@ -2381,7 +2383,9 @@ with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/in
  (CR) characters.
     <li>Two or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-1">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.
-    <li>Zero or more <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line terminators</a>.
+    <li>Zero or more <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-1">WebVTT region definition blocks</a>, <a data-link-type="dfn" href="#webvtt-style-block" id="ref-for-webvtt-style-block-1">WebVTT style blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-1">WebVTT comment
+ blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-2">WebVTT line
+ terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-3">WebVTT line terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-cue-block" id="ref-for-webvtt-cue-block-1">WebVTT cue blocks</a> and <a data-link-type="dfn" href="#webvtt-comment-block" id="ref-for-webvtt-comment-block-2">WebVTT comment blocks</a> separated from each other by one or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-4">WebVTT line terminators</a>.
     <li>Zero or more <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-5">WebVTT line terminators</a>.
@@ -2650,7 +2654,7 @@ than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
    <h3 class="heading settled" data-level="4.3" id="region-settings"><span class="secno">4.3. </span><span class="content">WebVTT region settings</span><a class="self-link" href="#region-settings"></a></h3>
    <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-2">WebVTT cue settings list</a> can contain a reference to a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-6">WebVTT region</a>. To define a
-region, a <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-1">WebVTT region definition block</a> is specified.</p>
+region, a <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-2">WebVTT region definition block</a> is specified.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-settings-list">WebVTT region settings list</dfn> consists of zero or more of the following components,
 in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
 TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-25">WebVTT line terminators</a>, except that the string must not
@@ -2681,7 +2685,8 @@ given:</p>
  HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
    </ol>
    <p>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-2">WebVTT region identifier setting</a> must be unique amongst all the <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-3">WebVTT region identifier settings</a> of all <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-7">WebVTT
-regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>.</p>
+regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>. For a region to exist, a region identifier setting has to be
+provided.</p>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-4">WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-width-setting">WebVTT region width setting</dfn> consists of the following components, in the order
@@ -2897,10 +2902,7 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>
-     <p>As the <a data-link-type="dfn" href="#webvtt-cue-setting-value" id="ref-for-webvtt-cue-setting-value-7">WebVTT cue setting value</a>: an arbitrary string of one or more characters other
- than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the
- substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
- SIGN).</p>
+     <p>As the <a data-link-type="dfn" href="#webvtt-cue-setting-value" id="ref-for-webvtt-cue-setting-value-7">WebVTT cue setting value</a>: a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-1">WebVTT region identifier</a>.</p>
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-region-cue-setting" id="ref-for-webvtt-region-cue-setting-2">WebVTT region cue setting</a> configures a cue to become part of a region by
 referencing the region’s identifier unless the cue has a <a data-link-type="dfn" href="#webvtt-vertical-text-cue-setting" id="ref-for-webvtt-vertical-text-cue-setting-3">"vertical"</a>, <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-4">"line"</a> or <a data-link-type="dfn" href="#webvtt-size-cue-setting" id="ref-for-webvtt-size-cue-setting-3">"size"</a> cue setting. If a cue is part of a region, its cue settings for <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-5">"position"</a> and <a data-link-type="dfn" href="#webvtt-alignment-cue-setting" id="ref-for-webvtt-alignment-cue-setting-3">"align"</a> are
@@ -3216,7 +3218,7 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p><i>Region creation</i>: Let <var>region</var> be a new <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-8">WebVTT region</a>.</p>
             <li>
-             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-1">identifier</a> be the empty
+             <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-2">identifier</a> be the empty
          string.</p>
             <li>
              <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-1">width</a> be 100.</p>
@@ -3284,7 +3286,7 @@ Objects</a>.</p>
         <dt>
          <p>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>id</code>"</p>
         <dd>
-         <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-2">identifier</a> be <var>value</var>.</p>
+         <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-3">identifier</a> be <var>value</var>.</p>
         <dt>
          <p>Otherwise if <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>width</code>"</p>
         <dd>
@@ -3359,7 +3361,7 @@ means that it is aborted at that point and returns nothing.</p>
     <li>
      <p>Remove the last character from <var>input</var>.</p>
     <li>
-     <p>Let <var>percentage</var> be the result of parsing <var>input</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-floating-point-number-values">rules for parsing
+     <p>Let <var>percentage</var> be the result of parsing <var>input</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing
  floating-point number values</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
     <li>
      <p>If <var>percentage</var> is an error, is less than 0, or is greater than 100, then fail.</p>
@@ -3429,7 +3431,7 @@ run the following steps:</p>
         <dd>
          <ol>
           <li>
-           <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-3">WebVTT cue region</a> be the last <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-10">WebVTT region</a> in <var>regions</var> whose <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-3">WebVTT region identifier</a> is <var>value</var>, if any, or null otherwise.</p>
+           <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-3">WebVTT cue region</a> be the last <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-10">WebVTT region</a> in <var>regions</var> whose <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-4">WebVTT region identifier</a> is <var>value</var>, if any, or null otherwise.</p>
          </ol>
         <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>vertical</code>"
         <dd>
@@ -3478,7 +3480,7 @@ run the following steps:</p>
            after is not an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ASCII digit</a>, or if the U+002E DOT character (.) is the first or
            the last character, then jump to the step labeled <i>next setting</i>.</p>
               <li>
-               <p>Let <var>number</var> be the result of parsing <var>linepos</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-floating-point-number-values">rules for parsing
+               <p>Let <var>number</var> be the result of parsing <var>linepos</var> using the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing
            floating-point number values</a>. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
               <li>
                <p>If <var>number</var> is an error, then jump to the step labeled <i>next
@@ -3495,7 +3497,8 @@ run the following steps:</p>
            <p>Otherwise, if <var>linealign</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>end</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-9">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-2">end alignment</a>.</p>
           <li>
-           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next setting</i>.</p>
+           <p>Otherwise, if <var>linealign</var> is not null, then jump to the step labeled <i>next
+       setting</i>.</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue line</a> be <var>number</var>.</p>
           <li>
@@ -4072,28 +4075,28 @@ Node Objects</a> to DOM nodes:</p>
       <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> node.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-class-object" id="ref-for-webvtt-class-object-3">WebVTT Class Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object-3">WebVTT Italic Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-i-element">i</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-4">WebVTT Bold Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-b-element">b</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-underline-object" id="ref-for-webvtt-underline-object-3">WebVTT Underline Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-u-element">u</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-4">WebVTT Ruby Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element">ruby</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-4">WebVTT Ruby Text Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">rt</a> element.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-rt-element">rt</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-4">WebVTT Voice Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-title">title</a> attribute set to the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-title">title</a> attribute set to the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-3">WebVTT Language Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">lang</a> attribute set to the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable language</a>.
+      <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">lang</a> attribute set to the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable language</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-4">WebVTT Text Object</a>
       <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-characterdata-data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
@@ -4132,7 +4135,7 @@ agent. The processing model is quite tightly linked to media elements in HTML. W
 WebVTT in media players that don’t support CSS, equivalent visual rendering will need to be
 implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element), or
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element), or
 of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text
 tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>, or other playback mechanism, are
 rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling this algorithm.</p>
@@ -4144,7 +4147,7 @@ manner suiting the user.</p>
    <p>The rules are as follows:</p>
    <ol class="algorithm">
     <li>
-     <p>If the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a> element, or is another playback
+     <p>If the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#audio">audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p>
     <li>
      <p>Let <var>video</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> or other playback mechanism.</p>
@@ -4168,7 +4171,8 @@ manner suiting the user.</p>
     <li>
      <p>Let <var>regions</var> be an empty list of <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-11">WebVTT regions</a>.</p>
     <li>
-     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of regions</a>.</p>
+     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>regions</var> all the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-12">regions</a> with an identifier from <var>track</var>’s <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-4">list of
+ regions</a>.</p>
     <li>
      <p>If <var>reset</var> is false, then, for each <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-13">WebVTT region</a> <var>region</var> in <var>regions</var> let <var>regionNode</var> be a <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-5">WebVTT region object</a>.</p>
     <li>
@@ -4274,7 +4278,7 @@ manner suiting the user.</p>
      <p>Return <var>output</var>.</p>
    </ol>
    <p>User agents may allow the user to override the above algorithm’s positioning of cues, e.g. by
-dragging them to another location on the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a>, or even off the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> entirely.</p>
+dragging them to another location on the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a>, or even off the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> entirely.</p>
    <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue settings</dfn> to
 obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-8">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the
 following algorithm.</p>
@@ -4426,16 +4430,16 @@ following algorithm.</p>
       <li>
        <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
     a hypothetical document that contains a single empty element with no explicit name, no
-    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element">media element</a> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#text-track">text tracks</a> that were sourced from the
-    given WebVTT file. The selectors must not match other <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element">media element</a>. In this hypothetical document, the element must not match any
+    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that were sourced from the
+    given WebVTT file. The selectors must not match other <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>. In this hypothetical document, the element must not match any
     selector that would match the element itself.</p>
        <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#originating-element">originating element</a> for
-    the <span class="css">::cue</span>, <span class="css">::cue()</span> and <span class="css">::cue-region</span> pseudo-elements.</p>
+    the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
       <li>
        <p>For the purpose of determining the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a> of the declarations in
     STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
     same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element’s document.</p>
+    must be after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element’s document.</p>
        <div class="example" id="example-4f8c2eb0">
         <a class="self-link" href="#example-4f8c2eb0"></a> 
         <p>For example, given the following (invalid) HTML document:</p>
@@ -4458,14 +4462,14 @@ STYLE
 Red or green?
 </pre>
         <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element is after
-     the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element in the document order.</p>
+     the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element in the document order.</p>
        </div>
       <li>
        <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
     file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s
     scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
     resolve.</p>
-       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">track</a> elements to issue network requests as the user watches the video, which could be a privacy
+       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element">track</a> elements to issue network requests as the user watches the video, which could be a privacy
     issue.</strong></p>
       <li>
        <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
@@ -4695,7 +4699,7 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to <span class="css">5vh sans-serif</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-3/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-3/#valdef-overflow-hidden">hidden</a>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-4/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-4/#valdef-overflow-hidden">hidden</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-max-height">max-height</a> property must be set to <var>height</var>
@@ -4734,8 +4738,10 @@ apply to WebVTT. This section does not apply to user agents that don’t support
    <p>The <span class="css">::cue(<var>selector</var>)</span> pseudo-element represents a cue or element inside a cue that match the
 given selector.</p>
    <p>The <span class="css">::cue-region</span> pseudo-element represents a region.</p>
+   <p>The <span class="css">::cue-region(<var>selector</var>)</span> pseudo-element represents a region or element inside a region
+that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
-present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a></code> element’s document tree.</p>
+present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a></code> element’s document tree.</p>
    <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback position</a>.</p>
    <div class="example" id="example-cue-selector">
     <a class="self-link" href="#example-cue-selector"></a> 
@@ -4855,7 +4861,7 @@ Yellow!
 &lt;v Kathryn>I like lime.&lt;/v>
 </pre>
         <p>The <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-7">applicable language</a> for the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-23">list
-     of WebVTT Node Objects</a> can be set by the <code><a data-link-type="element-sub" href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">srclang</a></code> attribute in HTML.</p>
+     of WebVTT Node Objects</a> can be set by the <code><a data-link-type="element-sub" href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-track-srclang">srclang</a></code> attribute in HTML.</p>
 <pre>&lt;video ...>
  &lt;track src="example-attr.vtt"
         <mark>srclang="en-US"</mark> default>
@@ -4882,7 +4888,7 @@ Yellow!
 &lt;lang en-GB>Cyan!&lt;/lang>
 </pre>
         <p>As above, the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-9">applicable language</a> for
-     the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-24">list of WebVTT Node Objects</a> can be set by the <code><a data-link-type="element-sub" href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">srclang</a></code> attribute in
+     the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-24">list of WebVTT Node Objects</a> can be set by the <code><a data-link-type="element-sub" href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-track-srclang">srclang</a></code> attribute in
      HTML.</p>
       <tr>
        <td class="long">
@@ -4933,6 +4939,38 @@ No match (normal cue)
 00:00:08.000 --> 00:00:16.000 region:editor-comments
 Yellow!
 </pre>
+      <tr>
+       <td class="long">
+        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#id-selector">ID selector</a> in <span class="css">::cue-region()</span></p>
+<pre>video::cue-region(#scroll) {
+  color: cyan;
+}</pre>
+       <td class="long">
+        <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-11">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-5">WebVTT region identifier</a> matching the given ID.</p>
+<pre>WEBVTT
+
+REGION
+id:editor-comments
+width: 40%
+regionanchor:0%,100%
+viewportanchor:10%,90%
+
+REGION
+id:scroll
+width: 40%
+regionanchor:100%,100%
+viewportanchor:90%,90%
+scroll:up
+
+00:00:00.000 --> 00:00:08.000
+No match (normal cue)
+
+00:00:08.000 --> 00:00:16.000 region:editor-comments
+Yellow!
+
+00:00:10.000 --> 00:00:16.000 region:scroll
+Over here it’s Cyan!
+</pre>
     </table>
    </div>
    <h3 class="heading settled" data-level="7.2" id="css-extensions-processing-model"><span class="secno">7.2. </span><span class="content">Processing model</span><a class="self-link" href="#css-extensions-processing-model"></a></h3>
@@ -4947,9 +4985,10 @@ immediately rerun.</p>
    <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
 that element is the <i>matched element</i>. The pseudo-elements defined in the following sections
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-28">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
-   <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element, the
+   <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span> and <span class="css">::cue(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements,
+and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="7.2.1" id="the-cue-pseudo-element"><span class="secno">7.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5083,28 +5122,34 @@ that element is the matched element. The pseudo-element defined below affects th
 track regions that are being rendered for the matched element.</p>
    <p class="note" role="note">If the matched element is not a video element, the pseudo-element defined below
 won’t have any effect according to this specification.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region">::cue-region<a class="self-link" href="#cue-region"></a></dfn> pseudo-element (with no argument) matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-11">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
-   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element with no
-argument; other properties set on the pseudo-element must be ignored.</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region">::cue-region<a class="self-link" href="#cue-region"></a></dfn> pseudo-element (with no argument) matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-12">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
+   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region-selector">::cue-region(selector)<a class="self-link" href="#cue-region-selector"></a></dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-13">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
+given CSS selector as follows:</p>
+   <ul>
+    <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-14">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-6">WebVTT region identifier</a> matching the given ID.</p>
+   </ul>
+   <p>No other selector matching is defined for <span class="css">::cue-region(<var>selector</var>)</span>.</p>
+   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element; other
+properties set on the pseudo-element must be ignored.</p>
    <p>When a user agent is rendering one or more text track regions according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">rules for
-updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-12">WebVTT region
+updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-15">WebVTT region
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
 support the pseudo-element must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>) changes
 value, then the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-display-state">text track cue display state</a> of all the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-31">WebVTT cues</a> in
 the region must be emptied and the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track
 rendering</a> must be immediately rerun.</p>
-   <p>A CSS user agent that implements the text tracks model must implement the <span class="css">::cue-region</span> pseudo-element.</p>
    <h2 class="heading settled" data-level="8" id="api"><span class="secno">8. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="The VTTCue interface" data-level="8.1" id="the-vttcue-interface"><span class="secno">8.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
-<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword"><code>AutoKeyword</code></dfn> { <dfn class="s idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto"><code>"auto"</code><a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
-<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <dfn class="nv dfn-paneled idl-code" data-dfn-type="typedef" data-export="" id="typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></dfn>;
-<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting"><code>DirectionSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting"><code>""</code><a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl"><code>"rl"</code><a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr"><code>"lr"</code><a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
-<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting"><code>LineAlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start"><code>"start"</code><a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center"><code>"center"</code><a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end"><code>"end"</code><a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
-<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting"><code>PositionAlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left"><code>"line-left"</code><a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center"><code>"center"</code><a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right"><code>"line-right"</code><a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto"><code>"auto"</code><a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
-<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting"><code>AlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start"><code>"start"</code><a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center"><code>"center"</code><a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end"><code>"end"</code><a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left"><code>"left"</code><a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right"><code>"right"</code><a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue"><code>VTTCue</code></dfn> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a> {
+<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword">AutoKeyword</dfn> { <dfn class="s idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto">"auto"<a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
+<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <dfn class="nv dfn-paneled idl-code" data-dfn-type="typedef" data-export="" id="typedefdef-lineandpositionsetting">LineAndPositionSetting</dfn>;
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting">DirectionSetting</dfn> { <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting">""<a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl">"rl"<a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr">"lr"<a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting">LineAlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start">"start"<a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center">"center"<a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end">"end"<a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting">PositionAlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left">"line-left"<a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center">"center"<a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right">"line-right"<a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto">"auto"<a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting">AlignSetting</dfn> { <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start">"start"<a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center">"center"<a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end">"end"<a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left">"left"<a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right">"right"<a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime">startTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime">endTime<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text">text<a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
+<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue">VTTCue</dfn> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a> {
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
@@ -5121,7 +5166,7 @@ rendering</a> must be immediately rerun.</p>
    <dl class="note">
     <dt><var>cue</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-2">VTTCue</a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )
     <dd>
-     <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-3">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue">addCue()</a></code> method.</p>
+     <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-3">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#dom-texttrack-addcue">addCue()</a></code> method.</p>
      <p>The <var>startTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-start-time">text track cue start time</a>.</p>
      <p>The <var>endTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-end-time">text track cue end time</a>.</p>
      <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
@@ -5225,7 +5270,7 @@ rendering</a> must be immediately rerun.</p>
      <p>Returns the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
   elements</a> and other DOM nodes.</p>
    </dl>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue"><code>VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)</code></dfn> constructor, when invoked, must run the following steps:</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue">VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)</dfn> constructor, when invoked, must run the following steps:</p>
    <ol class="algorithm">
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-32">WebVTT cue</a>. Let <var>cue</var> be that <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-33">WebVTT cue</a>.</p>
@@ -5264,10 +5309,10 @@ rendering</a> must be immediately rerun.</p>
     <li>
      <p>Return the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-4">VTTCue</a></code> object representing <var>cue</var>.</p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-region"><code>region</code></dfn> attribute, on getting, must return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-3">VTTRegion</a></code> object representing the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-8">WebVTT cue region</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-34">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-5">VTTCue</a></code> object
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-region">region</dfn> attribute, on getting, must return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-3">VTTRegion</a></code> object representing the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-8">WebVTT cue region</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-34">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-5">VTTCue</a></code> object
 represents, if any; or null otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-9">WebVTT cue region</a> must be set to the
 new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-vertical"><code>vertical</code></dfn> attribute, on getting, must return the string from
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-vertical">vertical</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-37">WebVTT cue writing
 direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-35">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-6">VTTCue</a></code> object represents:</p>
    <table class="complex data">
@@ -5289,16 +5334,16 @@ direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-39">WebVTT cue writing direction</a> must be set to the value given in the first
 cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines"><code>snapToLines</code></dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-36">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines">snapToLines</dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-36">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
 is true; or false otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-19">WebVTT cue snap-to-lines flag</a> must be set to the
 new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line"><code>line</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-25">WebVTT cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line">line</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-25">WebVTT cue
 line</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-37">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-8">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-7">auto</a> must be represented as the string "<code>auto</code>". On
 setting, the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-26">WebVTT cue line</a> must be set to the new value; if the new value is the string
 "<code>auto</code>", then it must be interpreted as the special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-8">auto</a>.</p>
    <p class="note" role="note">In order to be able to set the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-4">snapToLines</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-4">line</a></code> attributes
 in any order, the API does not reject setting <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-5">snapToLines</a></code> to false when <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-5">line</a></code> has a value outside the range 0..100, or vice versa.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-linealign"><code>lineAlign</code></dfn> attribute, on getting, must return the string from
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-linealign">lineAlign</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-16">WebVTT cue line
 alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-38">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-9">VTTCue</a></code> object represents:</p>
    <table class="complex data">
@@ -5320,12 +5365,12 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-18">WebVTT cue line alignment</a> must be set to the value given in the first cell
 of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-position"><code>position</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-25">WebVTT cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-position">position</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-25">WebVTT cue
 position</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-39">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-10">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-10">auto</a> must be represented as the string "<code>auto</code>".
 On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception
 must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-26">WebVTT cue position</a> must be set to the new value; if the new
 value is the string "<code>auto</code>", then it must be interpreted as the special value <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-11">auto</a>.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-positionalign"><code>positionAlign</code></dfn> attribute, on getting, must return the string
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-positionalign">positionAlign</dfn> attribute, on getting, must return the string
 from the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-13">WebVTT cue position
 alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-40">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-11">VTTCue</a></code> object represents:</p>
    <table class="complex data">
@@ -5350,11 +5395,11 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-15">WebVTT cue position alignment</a> must be set to the value given in the first
 cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-size"><code>size</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-13">WebVTT cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-size">size</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-13">WebVTT cue
 size</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-41">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-12">VTTCue</a></code> object represents. On setting, if the new
 value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown.
 Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-14">WebVTT cue size</a> must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-align"><code>align</code></dfn> attribute, on getting, must return the string from the
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-align">align</dfn> attribute, on getting, must return the string from the
 second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-23">WebVTT cue text alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-42">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-13">VTTCue</a></code> object represents:</p>
    <table class="complex data">
     <thead>
@@ -5381,19 +5426,20 @@ second cell of the row in the table below whose first cell is the <a data-link-t
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-25">WebVTT cue text alignment</a> must be set to the value given in the first cell
 of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text"><code>text</code></dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text">text</dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track
 cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-43">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-14">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text
 track cue text</a> must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml"><code>getCueAsHTML()</code></dfn> method must convert the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml">getCueAsHTML()</dfn> method must convert the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
 text</a> to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules" id="ref-for-webvtt-cue-text-dom-construction-rules-1">WebVTT cue text DOM construction rules</a> to
 the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-text">text track cue
 text</a>.</p>
    <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled algorithm" data-algorithm="The VTTRegion interface" data-level="8.2" id="the-vttregion-interface"><span class="secno">8.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
-<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting"><code>ScrollSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting"><code>""</code><a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up"><code>"up"</code><a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
+<pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting">ScrollSetting</dfn> { <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting">""<a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up">"up"<a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-1">Constructor</a>]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion"><code>VTTRegion</code></dfn> {
+<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion">VTTRegion</dfn> {
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id" id="ref-for-dom-vttregion-id-1">id</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
@@ -5407,6 +5453,9 @@ text</a>.</p>
     <dt><var>region</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-2">VTTRegion</a>()
     <dd>
      <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-5">VTTRegion</a></code> object.</p>
+    <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-id" id="ref-for-dom-vttregion-id-2">id</a></code>
+    <dd>
+     <p>Returns the text track region identifier. Can be set.</p>
     <dt><var>region</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-2">width</a></code>
     <dd>
      <p>Returns the WebVTT region width as a percentage of the video width. Can be set. Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> if the new value is not in the range 0..100.</p>
@@ -5442,13 +5491,13 @@ text</a>.</p>
      </dl>
      <p>Can be set.</p>
    </dl>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="constructor" data-export="" id="dom-vttregion-vttregion"><code>VTTRegion()</code></dfn> constructor, when invoked, must run the
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="constructor" data-export="" id="dom-vttregion-vttregion">VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
    <ol class="algorithm">
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-15">WebVTT region</a>. Let <var>region</var> be that <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-16">WebVTT region</a>.</p>
     <li>
-     <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-4">WebVTT region identifier</a> be the empty string.</p>
+     <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-7">WebVTT region identifier</a> be the empty string.</p>
     <li>
      <p>Let <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-7">WebVTT region width</a> be 100.</p>
     <li>
@@ -5468,25 +5517,27 @@ following steps:</p>
     <li>
      <p>Return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-6">VTTRegion</a></code> object representing <var>region</var>.</p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-width"><code>width</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-8">WebVTT
-region width</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-17">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-7">VTTRegion</a></code> object represents. On setting,
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-id">id</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-8">WebVTT region
+identifier</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-17">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-7">VTTRegion</a></code> object represents. On setting, the <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-9">WebVTT region identifier</a> must be set to the new value.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-width">width</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-8">WebVTT
+region width</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-18">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-8">VTTRegion</a></code> object represents. On setting,
 if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be
 thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-9">WebVTT region width</a> must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-lines"><code>lines</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-5">WebVTT
-region lines</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-18">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-8">VTTRegion</a></code> object represents. On setting,
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-lines">lines</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-5">WebVTT
+region lines</a> of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-19">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-9">VTTRegion</a></code> object represents. On setting,
 if the new value is negative, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-6">WebVTT region lines</a> must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-regionanchorx"><code>regionAnchorX</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-9">WebVTT region anchor</a> X offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-19">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-9">VTTRegion</a></code> object
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-regionanchorx">regionAnchorX</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-9">WebVTT region anchor</a> X offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-20">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-10">VTTRegion</a></code> object
 represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-10">WebVTT region anchor</a> X distance must be set to the
 new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-regionanchory"><code>regionAnchorY</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-11">WebVTT region anchor</a> Y offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-20">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-10">VTTRegion</a></code> object
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-regionanchory">regionAnchorY</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-11">WebVTT region anchor</a> Y offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-21">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-11">VTTRegion</a></code> object
 represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-12">WebVTT region anchor</a> Y distance must be set to the
 new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-viewportanchorx"><code>viewportAnchorX</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-5">WebVTT region viewport anchor</a> X offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-21">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-11">VTTRegion</a></code> object represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-6">WebVTT region viewport anchor</a> X
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-viewportanchorx">viewportAnchorX</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-5">WebVTT region viewport anchor</a> X offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-22">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-12">VTTRegion</a></code> object represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-6">WebVTT region viewport anchor</a> X
 distance must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-viewportanchory"><code>viewportAnchorY</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-7">WebVTT region viewport anchor</a> Y offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-22">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-12">VTTRegion</a></code> object represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-8">WebVTT region viewport anchor</a> Y
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-viewportanchory">viewportAnchorY</dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-7">WebVTT region viewport anchor</a> Y offset of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-23">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-13">VTTRegion</a></code> object represents. On setting, if the new value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown. Otherwise, the <a data-link-type="dfn" href="#webvtt-region-viewport-anchor" id="ref-for-webvtt-region-viewport-anchor-8">WebVTT region viewport anchor</a> Y
 distance must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-scroll"><code>scroll</code></dfn> attribute, on getting, must return the string from
-the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-6">WebVTT region scroll</a> setting of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-23">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-13">VTTRegion</a></code> object represents:</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTRegion" data-dfn-type="attribute" data-export="" id="dom-vttregion-scroll">scroll</dfn> attribute, on getting, must return the string from
+the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-6">WebVTT region scroll</a> setting of the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-24">WebVTT region</a> that the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-14">VTTRegion</a></code> object represents:</p>
    <table class="complex data">
     <thead>
      <tr>
@@ -5593,14 +5644,14 @@ for pseudo-elements other than <a class="css" data-link-type="maybe" href="https
    <p>WebVTT does not include or enable scripting. It is important that user agents do not support a
 way to execute script embedded in a WebVTT file.</p>
    <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
    <h3 class="heading settled" id="privacy-of-preference"><span class="content">Privacy of preference</span><a class="self-link" href="#privacy-of-preference"></a></h3>
    <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
-the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for
+the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for
 captions or subtitles. That is a (small) piece of information about the user. However, the offering
 of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
 the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
@@ -5695,6 +5746,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#cue-computed-position-alignment">cue computed position alignment</a><span>, in §3.1</span>
    <li><a href="#cue-payload">cue payload</a><span>, in §4.1</span>
    <li><a href="#cue-region">::cue-region</a><span>, in §7.2.3</span>
+   <li><a href="#cue-region-selector">::cue-region(selector)</a><span>, in §7.2.3</span>
    <li><a href="#cue-selector">::cue(selector)</a><span>, in §7.2.1</span>
    <li><a href="#enumdef-directionsetting">DirectionSetting</a><span>, in §8.1</span>
    <li>
@@ -5713,6 +5765,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#dom-vttcue-getcueashtml">getCueAsHTML()</a><span>, in §8.1</span>
    <li><a href="#html-character-reference-in-annotation-state">HTML character reference in annotation state</a><span>, in §5.4</span>
    <li><a href="#html-character-reference-in-data-state">HTML character reference in data state</a><span>, in §5.4</span>
+   <li><a href="#dom-vttregion-id">id</a><span>, in §8.2</span>
    <li><a href="#incremental-webvtt-parser">incremental WebVTT parser</a><span>, in §5.1</span>
    <li><a href="#in-the-future">in the future</a><span>, in §7.2.2</span>
    <li><a href="#in-the-past">in the past</a><span>, in §7.2.2</span>
@@ -5944,10 +5997,10 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic">italic</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[css-overflow-3]</a> defines the following terms:
+    <a data-link-type="biblio">[css-overflow-4]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-overflow-3/#valdef-overflow-hidden">hidden</a>
-     <li><a href="https://drafts.csswg.org/css-overflow-3/#propdef-overflow">overflow</a>
+     <li><a href="https://drafts.csswg.org/css-overflow-4/#valdef-overflow-hidden">hidden</a>
+     <li><a href="https://drafts.csswg.org/css-overflow-4/#propdef-overflow">overflow</a>
     </ul>
    <li>
     <a data-link-type="biblio">[css-position-3]</a> defines the following terms:
@@ -6072,32 +6125,32 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue">addCue(cue)</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue">TextTrackCue</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#dom-texttrack-addcue">addCue(cue)</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#ascii-digits">ascii digit</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#audio">audio</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-b-element">b</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a>
      <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">character references</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#honor-user-preferences-for-automatic-text-track-selection">honor user preferences for automatic text track selection</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">honor user preferences for automatic text track selection</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">html elements</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-i-element">i</a>
      <li><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">lang</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#media-element">media elements</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#mime-type">mime type</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">rt</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">srclang</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-rt-element">rt</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element">ruby</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-span-element">span</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#attr-track-srclang">srclang</a>
      <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#text-track">text tracks</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a>
      <li><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-title">title</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">track</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#video">video</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element">track</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-u-element">u</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#video">video</a>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
@@ -6146,8 +6199,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>John Daggett. <a href="http://dev.w3.org/csswg/css-fonts/">CSS Fonts Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>
    <dt id="biblio-css-fonts-4">[CSS-FONTS-4]
    <dd>CSS Fonts Module Level 4 URL: <a href="https://drafts.csswg.org/css-fonts-4/">https://drafts.csswg.org/css-fonts-4/</a>
-   <dt id="biblio-css-overflow-3">[CSS-OVERFLOW-3]
-   <dd>David Baron; Florian Rivoal. <a href="http://drafts.csswg.org/css-overflow/">CSS Overflow Module Level 3</a>. URL: <a href="http://drafts.csswg.org/css-overflow/">http://drafts.csswg.org/css-overflow/</a>
+   <dt id="biblio-css-overflow-4">[CSS-OVERFLOW-4]
+   <dd>CSS Overflow Module Level 4 URL: <a href="https://drafts.csswg.org/css-overflow-4/">https://drafts.csswg.org/css-overflow-4/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
    <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
    <dt id="biblio-css-pseudo-4">[CSS-PSEUDO-4]
@@ -6205,37 +6258,38 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def"><span class="kt">enum</span> <a class="nv" href="#enumdef-autokeyword"><code>AutoKeyword</code></a> { <a class="s" href="#dom-autokeyword-auto"><code>"auto"</code></a> };
-<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv" href="#typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></a>;
-<span class="kt">enum</span> <a class="nv" href="#enumdef-directionsetting"><code>DirectionSetting</code></a> { <a class="s" href="#dom-directionsetting"><code>""</code></a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl"><code>"rl"</code></a>, <a class="s" href="#dom-directionsetting-lr"><code>"lr"</code></a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-linealignsetting"><code>LineAlignSetting</code></a> { <a class="s" href="#dom-linealignsetting-start"><code>"start"</code></a>, <a class="s" href="#dom-linealignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-linealignsetting-end"><code>"end"</code></a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-positionalignsetting"><code>PositionAlignSetting</code></a> { <a class="s" href="#dom-positionalignsetting-line-left"><code>"line-left"</code></a>, <a class="s" href="#dom-positionalignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-positionalignsetting-line-right"><code>"line-right"</code></a>, <a class="s" href="#dom-positionalignsetting-auto"><code>"auto"</code></a> };
-<span class="kt">enum</span> <a class="nv" href="#enumdef-alignsetting"><code>AlignSetting</code></a> { <a class="s" href="#dom-alignsetting-start"><code>"start"</code></a>, <a class="s" href="#dom-alignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-alignsetting-end"><code>"end"</code></a>, <a class="s" href="#dom-alignsetting-left"><code>"left"</code></a>, <a class="s" href="#dom-alignsetting-right"><code>"right"</code></a> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code></a>)]
-<span class="kt">interface</span> <a class="nv" href="#vttcue"><code>VTTCue</code></a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a> {
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line">line</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign">lineAlign</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position">position</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign">positionAlign</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align">align</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
+<pre class="idl highlight def"><span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-autokeyword"><span class="nv">AutoKeyword</span></a> { <a class="s" href="#dom-autokeyword-auto"><span class="s">"auto"</span></a> };
+<span class="kt"><span class="kt">typedef</span></span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <span class="kt"><span class="kt">or</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword"><span class="n">AutoKeyword</span></a>) <a class="nv" href="#typedefdef-lineandpositionsetting"><span class="nv">LineAndPositionSetting</span></a>;
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-directionsetting"><span class="nv">DirectionSetting</span></a> { <a class="s" href="#dom-directionsetting"><span class="s">""</span></a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl"><span class="s">"rl"</span></a>, <a class="s" href="#dom-directionsetting-lr"><span class="s">"lr"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-linealignsetting"><span class="nv">LineAlignSetting</span></a> { <a class="s" href="#dom-linealignsetting-start"><span class="s">"start"</span></a>, <a class="s" href="#dom-linealignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-linealignsetting-end"><span class="s">"end"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-positionalignsetting"><span class="nv">PositionAlignSetting</span></a> { <a class="s" href="#dom-positionalignsetting-line-left"><span class="s">"line-left"</span></a>, <a class="s" href="#dom-positionalignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-positionalignsetting-line-right"><span class="s">"line-right"</span></a>, <a class="s" href="#dom-positionalignsetting-auto"><span class="s">"auto"</span></a> };
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-alignsetting"><span class="nv">AlignSetting</span></a> { <a class="s" href="#dom-alignsetting-start"><span class="s">"start"</span></a>, <a class="s" href="#dom-alignsetting-center"><span class="s">"center"</span></a>, <a class="s" href="#dom-alignsetting-end"><span class="s">"end"</span></a>, <a class="s" href="#dom-alignsetting-left"><span class="s">"left"</span></a>, <a class="s" href="#dom-alignsetting-right"><span class="s">"right"</span></a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue"><span class="nv">Constructor</span></a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><span class="nv">startTime</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><span class="nv">endTime</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt"><span class="kt">DOMString</span></span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><span class="nv">text</span></a>)]
+<span class="kt"><span class="kt">interface</span></span> <a class="nv" href="#vttcue"><span class="nv">VTTCue</span></a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue"><span class="n">TextTrackCue</span></a> {
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#vttregion"><span class="n">VTTRegion</span></a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region"><span class="nv">region</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting"><span class="n">DirectionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical"><span class="nv">vertical</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt"><span class="kt">boolean</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines"><span class="nv">snapToLines</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting"><span class="n">LineAndPositionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line"><span class="nv">line</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting"><span class="n">LineAlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign"><span class="nv">lineAlign</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting"><span class="n">LineAndPositionSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position"><span class="nv">position</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting"><span class="n">PositionAlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign"><span class="nv">positionAlign</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size"><span class="nv">size</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting"><span class="n">AlignSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align"><span class="nv">align</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt"><span class="kt">DOMString</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text"><span class="nv">text</span></a>;
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment"><span class="n">DocumentFragment</span></a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml"><span class="nv">getCueAsHTML</span></a>();
 };
 
-<span class="kt">enum</span> <a class="nv" href="#enumdef-scrollsetting"><code>ScrollSetting</code></a> { <a class="s" href="#dom-scrollsetting"><code>""</code></a> /* none */, <a class="s" href="#dom-scrollsetting-up"><code>"up"</code></a> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
-<span class="kt">interface</span> <a class="nv" href="#vttregion"><code>VTTRegion</code></a> {
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll">scroll</a>;
+<span class="kt"><span class="kt">enum</span></span> <a class="nv" href="#enumdef-scrollsetting"><span class="nv">ScrollSetting</span></a> { <a class="s" href="#dom-scrollsetting"><span class="s">""</span></a> /* none */, <a class="s" href="#dom-scrollsetting-up"><span class="s">"up"</span></a> };
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion"><span class="nv">Constructor</span></a>]
+<span class="kt"><span class="kt">interface</span></span> <a class="nv" href="#vttregion"><span class="nv">VTTRegion</span></a> {
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt"><span class="kt">DOMString</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id"><span class="nv">id</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width"><span class="nv">width</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt"><span class="kt">long</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines"><span class="nv">lines</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx"><span class="nv">regionAnchorX</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory"><span class="nv">regionAnchorY</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx"><span class="nv">viewportAnchorX</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt"><span class="kt">double</span></span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory"><span class="nv">viewportAnchorY</span></a>;
+  <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting"><span class="n">ScrollSetting</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll"><span class="nv">scroll</span></a>;
 };
 
 </pre>
@@ -6547,16 +6601,19 @@ title</a>
     <li><a href="#ref-for-webvtt-region-10">5.3. WebVTT cue timings and settings parsing</a>
     <li><a href="#ref-for-webvtt-region-11">6.1. Processing model</a> <a href="#ref-for-webvtt-region-12">(2)</a> <a href="#ref-for-webvtt-region-13">(3)</a>
     <li><a href="#ref-for-webvtt-region-14">6.1.1. Applying CSS properties to WebVTT Node Objects</a>
-    <li><a href="#ref-for-webvtt-region-15">8.2. The VTTRegion interface</a> <a href="#ref-for-webvtt-region-16">(2)</a> <a href="#ref-for-webvtt-region-17">(3)</a> <a href="#ref-for-webvtt-region-18">(4)</a> <a href="#ref-for-webvtt-region-19">(5)</a> <a href="#ref-for-webvtt-region-20">(6)</a> <a href="#ref-for-webvtt-region-21">(7)</a> <a href="#ref-for-webvtt-region-22">(8)</a> <a href="#ref-for-webvtt-region-23">(9)</a>
+    <li><a href="#ref-for-webvtt-region-15">8.2. The VTTRegion interface</a> <a href="#ref-for-webvtt-region-16">(2)</a> <a href="#ref-for-webvtt-region-17">(3)</a> <a href="#ref-for-webvtt-region-18">(4)</a> <a href="#ref-for-webvtt-region-19">(5)</a> <a href="#ref-for-webvtt-region-20">(6)</a> <a href="#ref-for-webvtt-region-21">(7)</a> <a href="#ref-for-webvtt-region-22">(8)</a> <a href="#ref-for-webvtt-region-23">(9)</a> <a href="#ref-for-webvtt-region-24">(10)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region-identifier">
    <b><a href="#webvtt-region-identifier">#webvtt-region-identifier</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-region-identifier-1">5.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-region-identifier-2">5.2. WebVTT region settings parsing</a>
-    <li><a href="#ref-for-webvtt-region-identifier-3">5.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-region-identifier-4">8.2. The VTTRegion interface</a>
+    <li><a href="#ref-for-webvtt-region-identifier-1">4.4. WebVTT cue settings</a>
+    <li><a href="#ref-for-webvtt-region-identifier-2">5.1. WebVTT file parsing</a>
+    <li><a href="#ref-for-webvtt-region-identifier-3">5.2. WebVTT region settings parsing</a>
+    <li><a href="#ref-for-webvtt-region-identifier-4">5.3. WebVTT cue timings and settings parsing</a>
+    <li><a href="#ref-for-webvtt-region-identifier-5">7.1. Introduction</a>
+    <li><a href="#ref-for-webvtt-region-identifier-6">7.2.3. The ::cue-region pseudo-element</a>
+    <li><a href="#ref-for-webvtt-region-identifier-7">8.2. The VTTRegion interface</a> <a href="#ref-for-webvtt-region-identifier-8">(2)</a> <a href="#ref-for-webvtt-region-identifier-9">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region-width">
@@ -6658,7 +6715,8 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-region-definition-block">
    <b><a href="#webvtt-region-definition-block">#webvtt-region-definition-block</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-region-definition-block-1">4.3. WebVTT region settings</a>
+    <li><a href="#ref-for-webvtt-region-definition-block-1">4.1. WebVTT file structure</a>
+    <li><a href="#ref-for-webvtt-region-definition-block-2">4.3. WebVTT region settings</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-style-block">
@@ -6996,8 +7054,8 @@ title</a>
     <li><a href="#ref-for-webvtt-region-object-4">5.5. WebVTT cue text DOM construction rules</a>
     <li><a href="#ref-for-webvtt-region-object-5">6.1. Processing model</a>
     <li><a href="#ref-for-webvtt-region-object-6">6.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-region-object-7">(2)</a> <a href="#ref-for-webvtt-region-object-8">(3)</a> <a href="#ref-for-webvtt-region-object-9">(4)</a>
-    <li><a href="#ref-for-webvtt-region-object-10">7.1. Introduction</a>
-    <li><a href="#ref-for-webvtt-region-object-11">7.2.3. The ::cue-region pseudo-element</a> <a href="#ref-for-webvtt-region-object-12">(2)</a>
+    <li><a href="#ref-for-webvtt-region-object-10">7.1. Introduction</a> <a href="#ref-for-webvtt-region-object-11">(2)</a>
+    <li><a href="#ref-for-webvtt-region-object-12">7.2.3. The ::cue-region pseudo-element</a> <a href="#ref-for-webvtt-region-object-13">(2)</a> <a href="#ref-for-webvtt-region-object-14">(3)</a> <a href="#ref-for-webvtt-region-object-15">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="parse-a-percentage-string">
@@ -7428,13 +7486,19 @@ title</a>
    <b><a href="#vttregion">#vttregion</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-vttregion-1">8.1. The VTTCue interface</a> <a href="#ref-for-vttregion-2">(2)</a> <a href="#ref-for-vttregion-3">(3)</a>
-    <li><a href="#ref-for-vttregion-4">8.2. The VTTRegion interface</a> <a href="#ref-for-vttregion-5">(2)</a> <a href="#ref-for-vttregion-6">(3)</a> <a href="#ref-for-vttregion-7">(4)</a> <a href="#ref-for-vttregion-8">(5)</a> <a href="#ref-for-vttregion-9">(6)</a> <a href="#ref-for-vttregion-10">(7)</a> <a href="#ref-for-vttregion-11">(8)</a> <a href="#ref-for-vttregion-12">(9)</a> <a href="#ref-for-vttregion-13">(10)</a>
+    <li><a href="#ref-for-vttregion-4">8.2. The VTTRegion interface</a> <a href="#ref-for-vttregion-5">(2)</a> <a href="#ref-for-vttregion-6">(3)</a> <a href="#ref-for-vttregion-7">(4)</a> <a href="#ref-for-vttregion-8">(5)</a> <a href="#ref-for-vttregion-9">(6)</a> <a href="#ref-for-vttregion-10">(7)</a> <a href="#ref-for-vttregion-11">(8)</a> <a href="#ref-for-vttregion-12">(9)</a> <a href="#ref-for-vttregion-13">(10)</a> <a href="#ref-for-vttregion-14">(11)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttregion-vttregion">
    <b><a href="#dom-vttregion-vttregion">#dom-vttregion-vttregion</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-vttregion-vttregion-1">8.2. The VTTRegion interface</a> <a href="#ref-for-dom-vttregion-vttregion-2">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-vttregion-id">
+   <b><a href="#dom-vttregion-id">#dom-vttregion-id</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-vttregion-id-1">8.2. The VTTRegion interface</a> <a href="#ref-for-dom-vttregion-id-2">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-vttregion-width">
