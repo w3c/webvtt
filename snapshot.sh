@@ -53,6 +53,26 @@ check "Add Date metadata"
 replace "1,/^$/s/^$/Previous Version: $PREV_URL/" index.temp.bs
 check "Add Previous Version metadata"
 
+
+if [ $STATUS = "WD" ]; then
+  replace "1,/^$/s/^$/Default Ref Status: current/" index.temp.bs
+  check "Use current biblio references rather than snapshots"
+
+  replace "1,/^$/s/^$/Prepare For TR: true/" index.temp.bs
+  check "Prepare For TR"
+
+  replace "/ANCHORS_REPLACE/{
+      s/ANCHORS_REPLACE//g
+      r anchors-w3c.txt
+  }" index.temp.bs
+else
+  replace "/ANCHORS_REPLACE/{
+      s/ANCHORS_REPLACE//g
+      r anchors-whatwg.txt
+  }" index.temp.bs
+fi
+check "Replacing anchors"
+
 bikeshed spec index.temp.bs archives/$NEW_DATE/Overview.html
 check "Generate with bikeshed"
 
