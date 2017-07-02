@@ -1609,7 +1609,7 @@ given:</p>
 <ol>
  <li><p>The string "<code>id</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
- <li><p>An arbitrary string of one or more characters other than <a spec=html>space characters</a>.
+ <li><p>An arbitrary string of one or more characters other than <a>ASCII whitespace</a>.
  The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
  HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
 </ol>
@@ -2057,7 +2057,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  The file does not start with the correct <a>WebVTT file</a> signature and was therefore not
  successfully processed.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+ <li><p><a spec=html>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
  (LF) characters.</p></li>
 
  <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
@@ -2075,7 +2075,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
  advance |position| to the next character in |input|.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
+ <li><p><a spec=html>collect a sequence of code points</a> that are U+000A LINE FEED (LF)
  characters.</p></li>
 
  <li><p>Let |regions| be an empty <a>text track list of regions</a>.</p></li>
@@ -2098,7 +2098,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
    <!-- handle new block types here -->
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
+   <li><p><a spec=html>collect a sequence of code points</a> that are U+000A LINE FEED (LF)
    characters.</p></li>
 
   </ol>
@@ -2142,7 +2142,7 @@ header</i> set, the user agent must run the following steps:</p>
 
   <ol>
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
+   <li><p><a spec=html>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
    (LF) characters. Let |line| be those characters, if any.</p></li>
 
    <li><p>Increment |line count| by 1.</p></li>
@@ -2252,7 +2252,7 @@ header</i> set, the user agent must run the following steps:</p>
         <p>If |seen cue| is false and |buffer| starts with the substring "<code>STYLE</code>"
         (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T, U+0059 LATIN CAPITAL LETTER
         Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E), and the remaining
-        characters in |buffer| (if any) are all <a spec=html>space characters</a>, then run these
+        characters in |buffer| (if any) are all <a>ASCII whitespace</a>, then run these
         substeps:</p>
 
         <ol>
@@ -2289,8 +2289,7 @@ header</i> set, the user agent must run the following steps:</p>
         <p>Otherwise, if |seen cue| is false and |buffer| starts with the substring
         "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
         LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
-        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a
-        spec=html>space characters</a>, then run these substeps:</p>
+        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a>ASCII whitespace</a>, then run these substeps:</p>
 
         <ol>
 
@@ -2783,7 +2782,7 @@ user agent must run the following steps:</p>
  <li><p>If the character indicated by |position| is not an <a spec=html>ASCII digit</a>, then return
  an error and abort these steps.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+ <li><p><a spec=html>Collect a sequence of code points</a> that are <a spec=html>ASCII digits</a>,
  and let |string| be the collected substring.</p></li>
 
  <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>1</sub></var> be that
@@ -2796,7 +2795,7 @@ user agent must run the following steps:</p>
  COLON character (:), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+ <li><p><a spec=html>collect a sequence of code points</a> that are <a spec=html>ASCII digits</a>,
  and let |string| be the collected substring.</p></li>
 
  <li><p>If |string| is not exactly two characters in length, return an error and abort these
@@ -2816,7 +2815,7 @@ user agent must run the following steps:</p>
    U+003A COLON character (:), then return an error and abort these steps. Otherwise, move
    |position| forwards one character.</p></li>
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+   <li><p><a spec=html>collect a sequence of code points</a> that are <a spec=html>ASCII digits</a>,
    and let |string| be the collected substring.</p></li>
 
    <li><p>If |string| is not exactly two characters in length, return an error and abort these
@@ -2839,7 +2838,7 @@ user agent must run the following steps:</p>
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
+ <li><p><a spec=html>collect a sequence of code points</a> that are <a spec=html>ASCII digits</a>,
  and let |string| be the collected substring.</p></li>
 
  <li><p>If |string| is not exactly three characters in length, return an error and abort these
@@ -3252,7 +3251,7 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with no <a spec=html>additional
+    <p>Attempt to <a>consume an HTML character reference</a>, with no <a>additional
     allowed character</a>.</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |result|.</p>
@@ -3446,9 +3445,8 @@ value).</p>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Remove any leading or trailing <a lt="space character">space characters</a> from |buffer|,
-      and replace any sequence of one or more consecutive <a lt="space character">space
-      characters</a> in |buffer| with a single U+0020 SPACE character; then, return a start tag
+      <p>Remove any leading or trailing <a>ASCII whitespace</a> characters from |buffer|,
+      and replace any sequence of one or more consecutive <a>ASCII whitespace</a> characters in |buffer| with a single U+0020 SPACE character; then, return a start tag
       whose tag name is |result|, with the classes given in |classes|, and with |buffer| as the
       annotation, and abort these steps.</p>
      </dd>
@@ -3466,7 +3464,7 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with the <a spec=html>additional
+    <p>Attempt to <a>consume an HTML character reference</a>, with the <a>additional
     allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |buffer|.</p>
@@ -3547,7 +3545,7 @@ value).</p>
 </ol>
 
 <p>When the algorithm above says to attempt to <dfn>consume an HTML character reference</dfn>, it
-means to attempt to <a spec=html>consume a character reference</a> as defined in HTML. [[!HTML]]</p>
+means to attempt to <a>consume a character reference</a> as defined in HTML. [[!HTML]]</p>
 
 <p>When the HTML specification says to consume a character, in this context, it means to advance
 |position| to the next character in |input|. When it says to unconsume a character, it means to move
