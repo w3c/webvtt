@@ -55,9 +55,6 @@ check "Add Previous Version metadata"
 
 
 if [ $STATUS = "WD" ]; then
-  replace "1,/^$/s/^$/Default Ref Status: current/" index.temp.bs
-  check "Use current biblio references rather than snapshots"
-
   replace "1,/^$/s/^$/Prepare For TR: true/" index.temp.bs
   check "Prepare For TR"
 
