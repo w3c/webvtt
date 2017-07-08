@@ -57,6 +57,8 @@ check "Add Previous Version metadata"
 if [ $STATUS = "WD" ]; then
   replace "1,/^$/s/^$/Prepare For TR: true/" index.temp.bs
   check "Prepare For TR"
+  replace "s/^Default Ref Status: current$/Default Ref Status: snapshot/" index.temp.bs
+  check "Default Ref Status"
 
   replace "/ANCHORS_REPLACE/{
       s/ANCHORS_REPLACE//g
