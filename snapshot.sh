@@ -59,6 +59,8 @@ if [ $STATUS = "WD" ]; then
   check "Prepare For TR"
   replace "s/^Default Ref Status: current$/Default Ref Status: snapshot/" index.temp.bs
   check "Default Ref Status"
+  replace "s/WEBIDL/WEBIDL-1/" index.temp.bs
+  check "Replace WEBIDL ref"
 
   replace "/ANCHORS_REPLACE/{
       s/ANCHORS_REPLACE//g

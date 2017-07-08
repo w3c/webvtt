@@ -2051,7 +2051,7 @@ requirements.</p>
     <dd>
      <p>All processing requirements in this specification apply. The user agent must also be
  conforming implementations of the IDL fragments in this specification, as described in the Web IDL
- specification. <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a></p>
+ specification. <a data-link-type="biblio" href="#biblio-webidl-1">[WEBIDL-1]</a></p>
     <dt>User agents with no scripting support
     <dd>
      <p>All processing requirements in this specification apply, except those in <a href="#api">§8 API</a>.</p>
@@ -2078,7 +2078,7 @@ cue with an ID consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RI
 precomposed character).</p>
    <h2 class="heading settled" data-level="3" id="data-model"><span class="secno">3. </span><span class="content">Data model</span><a class="self-link" href="#data-model"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="cues"><span class="secno">3.1. </span><span class="content">WebVTT cues</span><a class="self-link" href="#cues"></a></h3>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">text track cue</a> that additionally consist of the following: <a data-link-type="biblio" href="#biblio-html">[HTML]</a><a data-link-type="biblio" href="#biblio-html51">[HTML51]</a></p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">text track cue</a> that additionally consist of the following: <a data-link-type="biblio" href="#biblio-html">[HTML]</a><a data-link-type="biblio" href="#biblio-html51">[HTML51]</a></p>
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue box" data-noexport="" id="webvtt-cue-box">A cue box</dfn>
     <dd>
@@ -2152,14 +2152,14 @@ precomposed character).</p>
       <li>
        <p>Let <var>cue</var> be the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-5">WebVTT cue</a>.</p>
       <li>
-       <p>If <var>cue</var> is not in a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-list-of-cues">list of cues</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text
-   track</a>, or if that <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a> is not in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#list-of-text-tracks">list of text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media
+       <p>If <var>cue</var> is not in a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">list of cues</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text
+   track</a>, or if that <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a> is not in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media
    element</a>, return −1 and abort these steps.</p>
       <li>
-       <p>Let <var>track</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-list-of-cues">list of
+       <p>Let <var>track</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">list of
    cues</a> the <var>cue</var> is in.</p>
       <li>
-       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#list-of-text-tracks">list of
+       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of
    text tracks</a> before <var>track</var>.</p>
       <li>
        <p>Increment <var>n</var> by one.</p>
@@ -2168,7 +2168,7 @@ precomposed character).</p>
       <li>
        <p>Return <var>n</var>.</p>
      </ol>
-     <p class="example" id="example-d1c46c31"><a class="self-link" href="#example-d1c46c31"></a>For example, if two <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text tracks</a> are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-showing">showing</a> at the same time in one <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a>, and each <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a> currently has an active <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-6">WebVTT cue</a> whose <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-15">line</a> are both <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-3">auto</a>, then the first <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a>’s cue’s <a data-link-type="dfn" href="#cue-computed-line" id="ref-for-cue-computed-line-1">computed line</a> will be −1 and the second will be −2.</p>
+     <p class="example" id="example-d1c46c31"><a class="self-link" href="#example-d1c46c31"></a>For example, if two <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-showing">showing</a> at the same time in one <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>, and each <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a> currently has an active <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-6">WebVTT cue</a> whose <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-15">line</a> are both <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-3">auto</a>, then the first <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a>’s cue’s <a data-link-type="dfn" href="#cue-computed-line" id="ref-for-cue-computed-line-1">computed line</a> will be −1 and the second will be −2.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line alignment" data-noexport="" id="webvtt-cue-line-alignment">A line alignment</dfn>
     <dd>
      <p>An alignment for the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-10">cue box</a>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-16">line</a>, one
@@ -2350,11 +2350,11 @@ Hello!
      <p>An optional <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-2">WebVTT region</a> to which a cue belongs.</p>
      <p>By default, the <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-3">region</a> is set to null.</p>
    </dl>
-   <p>The associated <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-10">WebVTT
+   <p>The associated <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-10">WebVTT
 cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-1">rules for updating the display of WebVTT text tracks</a>.</p>
    <div class="impl">
-    <p>When a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-11">WebVTT cue</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-active-flag">active flag</a> is set has its <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-11">writing direction</a>, <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-8">snap-to-lines flag</a>, <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-20">line</a>, <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-4">line alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-19">position</a>, <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-6">position alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-6">size</a>, <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-12">text alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-1">region</a>, or <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text</a> change value, then the user agent must empty the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track cue display
- state</a>, and then immediately run the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-2">rules for updating the display of
+    <p>When a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-11">WebVTT cue</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-active-flag">active flag</a> is set has its <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-11">writing direction</a>, <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-8">snap-to-lines flag</a>, <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-20">line</a>, <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-4">line alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-19">position</a>, <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-6">position alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-6">size</a>, <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-12">text alignment</a>, <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-1">region</a>, or <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text</a> change value, then the user agent must empty the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display
+ state</a>, and then immediately run the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-2">rules for updating the display of
  WebVTT text tracks</a>.</p>
    </div>
    <h3 class="heading settled" data-level="3.2" id="regions"><span class="secno">3.2. </span><span class="content">WebVTT regions</span><a class="self-link" href="#regions"></a></h3>
@@ -2519,7 +2519,7 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
     <li>Three <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, representing the thousandths of a second <var>seconds-frac</var> as a base
  ten integer.
    </ol>
-   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-5">WebVTT timestamp</a> is always interpreted relative to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#current-playback-position">current playback
+   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-5">WebVTT timestamp</a> is always interpreted relative to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-playback-position">current playback
 position</a> of the media data that the WebVTT file is to be synchronized with.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-settings-list">WebVTT cue settings list</dfn> consist of a sequence of zero or more <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue
 setting" data-noexport="" id="webvtt-cue-setting">WebVTT cue settings</dfn> in any order, separated from each other by one or more U+0020
@@ -2574,7 +2574,7 @@ U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, eac
 separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-17">WebVTT line terminator</a>. (In other words, any text that does not
 have two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-18">WebVTT line terminators</a> and does not start
 or end with a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-19">WebVTT line terminator</a>.)</p>
-   <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (using the <code>metadata</code> <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-kind">text track kind</a>).</p>
+   <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (using the <code>metadata</code> <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-kind">text track kind</a>).</p>
    <h4 class="heading settled" data-level="4.2.2" id="cue-text"><span class="secno">4.2.2. </span><span class="content">WebVTT cue text</span><a class="self-link" href="#cue-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text">WebVTT cue text</dfn> is <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-2">cue payload</a> that consists of zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-1">WebVTT cue
 components</a>, in any order, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line
@@ -3038,7 +3038,7 @@ terminator</a>:</p>
 said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-cue-text">WebVTT file using cue text<a class="self-link" href="#webvtt-file-using-cue-text"></a></dfn>.</p>
    <h2 class="heading settled" data-level="5" id="parsing"><span class="secno">5. </span><span class="content">Parsing</span><a class="self-link" href="#parsing"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT file parsing" data-level="5.1" id="file-parsing"><span class="secno">5.1. </span><span class="content">WebVTT file parsing</span><a class="self-link" href="#file-parsing"></a></h3>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser">WebVTT parser</dfn>, given an input byte stream, a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>, and a collection of <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#css-style-sheet">CSS style sheets</a> <var>stylesheets</var>, must decode the byte
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser">WebVTT parser</dfn>, given an input byte stream, a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>, and a collection of <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#css-style-sheet">CSS style sheets</a> <var>stylesheets</var>, must decode the byte
 stream using the <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#utf-8-decode">UTF-8 decode</a> algorithm, and then must parse the resulting
 string according to the <a data-link-type="dfn" href="#webvtt-parser-algorithm" id="ref-for-webvtt-parser-algorithm-1">WebVTT parser algorithm</a> below. This results in <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-14">WebVTT cues</a> being added to <var>output</var>, and <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#css-style-sheet">CSS style sheets</a> being added to <var>stylesheets</var>. <a data-link-type="biblio" href="#biblio-rfc3629">[RFC3629]</a></p>
    <p>A <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-2">WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
@@ -3112,7 +3112,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
       <li>
        <p><a data-link-type="dfn" href="#collect-a-webvtt-block" id="ref-for-collect-a-webvtt-block-2">Collect a WebVTT block</a>, and let <var>block</var> be the returned value.</p>
       <li>
-       <p>If <var>block</var> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-17">WebVTT cue</a>, add <var>block</var> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>.</p>
+       <p>If <var>block</var> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-17">WebVTT cue</a>, add <var>block</var> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>.</p>
       <li>
        <p>Otherwise, if <var>block</var> is a <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#css-style-sheet">CSS style sheet</a>, add <var>block</var> to <var>stylesheets</var>.</p>
       <li>
@@ -3184,9 +3184,9 @@ header</i> set, the user agent must run the following steps:</p>
         follows:</p>
            <ol>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be <var>buffer</var>.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be <var>buffer</var>.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-2">WebVTT cue region</a> be null.</p>
             <li>
@@ -3206,7 +3206,7 @@ header</i> set, the user agent must run the following steps:</p>
             <li>
              <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-13">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment" id="ref-for-webvtt-cue-center-alignment-5">center alignment</a>.</p>
             <li>
-             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
+             <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> be the empty string.</p>
            </ol>
           <li>
            <p><a data-link-type="dfn" href="#collect-webvtt-cue-timings-and-settings" id="ref-for-collect-webvtt-cue-timings-and-settings-1">Collect WebVTT cue timings and settings</a> from <var>line</var> using <var>regions</var> for <var>cue</var>.
@@ -3291,7 +3291,7 @@ header</i> set, the user agent must run the following steps:</p>
        <p>If <var>seen EOF</var> is true, break out of <i>loop</i>.</p>
      </ol>
     <li>
-     <p>If <var>cue</var> is not null, let the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a> of <var>cue</var> be <var>buffer</var>, and return <var>cue</var>.</p>
+     <p>If <var>cue</var> is not null, let the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> of <var>cue</var> be <var>buffer</var>, and return <var>cue</var>.</p>
     <li>
      <p>Otherwise, if <var>stylesheet</var> is not null, then <a data-link-type="dfn" href="https://www.w3.org/TR/css-syntax-3/#parse-a-stylesheet0">Parse a stylesheet</a> from <var>buffer</var>. If it returned a list of rules, assign the list as <var>stylesheet</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#concept-css-style-sheet-css-rules">CSS rules</a>; otherwise, set <var>stylesheet</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/cssom-1/#concept-css-style-sheet-css-rules">CSS
  rules</a> to an empty list. <a data-link-type="biblio" href="#biblio-cssom">[CSSOM]</a> <a data-link-type="biblio" href="#biblio-css-syntax-3">[CSS-SYNTAX-3]</a> Finally, return <var>stylesheet</var>.</p>
@@ -3303,7 +3303,7 @@ header</i> set, the user agent must run the following steps:</p>
    </ol>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
    <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT region settings" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
-settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a>, the user agent must run the following
+settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a>, the user agent must run the following
 algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-9">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-1">lists of WebVTT node
 objects</a>. This algorithm returns a list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-3">WebVTT Region
@@ -3426,7 +3426,7 @@ settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" hr
      <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#skip-whitespace">Skip whitespace</a>.</p>
     <li>
      <p><a data-link-type="dfn" href="#collect-a-webvtt-timestamp" id="ref-for-collect-a-webvtt-timestamp-1">Collect a WebVTT timestamp</a>. If that algorithm fails, then abort these steps and
- return failure. Otherwise, let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-start-time">text track cue start time</a> be the collected
+ return failure. Otherwise, let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-start-time">text track cue start time</a> be the collected
  time.</p>
     <li>
      <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#skip-whitespace">Skip whitespace</a>.</p>
@@ -3443,14 +3443,14 @@ settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" hr
      <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#skip-whitespace">Skip whitespace</a>.</p>
     <li>
      <p><a data-link-type="dfn" href="#collect-a-webvtt-timestamp" id="ref-for-collect-a-webvtt-timestamp-2">Collect a WebVTT timestamp</a>. If that algorithm fails, then abort these steps and
- return failure. Otherwise, let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-end-time">text track cue end time</a> be the collected
+ return failure. Otherwise, let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-end-time">text track cue end time</a> be the collected
  time.</p>
     <li>
      <p>Let <var>remainder</var> be the trailing substring of <var>input</var> starting at <var>position</var>.</p>
     <li>
      <p><a data-link-type="dfn" href="#parse-the-webvtt-cue-settings" id="ref-for-parse-the-webvtt-cue-settings-1">Parse the WebVTT cue settings</a> from <var>remainder</var> using <var>regions</var> for <var>cue</var>.</p>
    </ol>
-   <p>When the user agent is to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="parse-the-webvtt-cue-settings">parse the WebVTT cue settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-3">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">text track cue</a> <var>cue</var>, the user agent must
+   <p>When the user agent is to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="parse-the-webvtt-cue-settings">parse the WebVTT cue settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-3">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">text track cue</a> <var>cue</var>, the user agent must
 run the following steps:</p>
    <ol class="algorithm">
     <li>
@@ -4101,8 +4101,8 @@ means to attempt to <a data-link-type="dfn" href="https://www.w3.org/TR/html51/s
 in this specification. Finally, this context is <em>not</em> "as part of an attribute" (when it
 comes to handling a missing semicolon).</p>
    <h3 class="heading settled" data-level="5.5" id="dom-construction-rules"><span class="secno">5.5. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-dom-construction-rules">WebVTT cue text DOM construction rules</dfn></span><a class="self-link" href="#dom-construction-rules"></a></h3>
-   <p class="note" role="note">For the purpose of retrieving a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-20">WebVTT cue</a>’s content via the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-1">getCueAsHTML()</a></code> method of the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-1">VTTCue</a></code> interface, it needs to be parsed to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code>. This section describes how.</p>
-   <p>To convert a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-4">list of WebVTT Node Objects</a> to a DOM tree for <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document">Document</a></code> <var>owner</var>, user
+   <p class="note" role="note">For the purpose of retrieving a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-20">WebVTT cue</a>’s content via the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-1">getCueAsHTML()</a></code> method of the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-1">VTTCue</a></code> interface, it needs to be parsed to a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code>. This section describes how.</p>
+   <p>To convert a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-4">list of WebVTT Node Objects</a> to a DOM tree for <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#document">Document</a></code> <var>owner</var>, user
 agents must create a tree of DOM nodes that is isomorphous to the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-6">WebVTT Node Objects</a>, with the following mapping of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-7">WebVTT
 Node Objects</a> to DOM nodes:</p>
    <table class="complex data">
@@ -4113,10 +4113,10 @@ Node Objects</a> to DOM nodes:</p>
     <tbody>
      <tr>
       <td class="long"><a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-5">List of WebVTT Node Objects</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> node.
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> node.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-4">WebVTT Region Object</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> node.
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> node.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-class-object" id="ref-for-webvtt-class-object-3">WebVTT Class Object</a>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a> element.
@@ -4143,19 +4143,19 @@ Node Objects</a> to DOM nodes:</p>
       <td class="long">HTML <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a> element with a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">lang</a> attribute set to the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable language</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-4">WebVTT Text Object</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-characterdata-data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
    Object</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-3">WebVTT Timestamp Object</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#processinginstruction">ProcessingInstruction</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-processinginstruction-target">target</a></code> is
-   "<code>timestamp</code>" and whose <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-characterdata-data">data</a></code> is a <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-8">WebVTT timestamp</a> representing the value of the <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-4">WebVTT Timestamp Object</a>, with all optional components
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#processinginstruction">ProcessingInstruction</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#target">target</a></code> is
+   "<code>timestamp</code>" and whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#data">data</a></code> is a <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-8">WebVTT timestamp</a> representing the value of the <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-4">WebVTT Timestamp Object</a>, with all optional components
    included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading
    zeros otherwise.
    </table>
-   <p>HTML elements created as part of the mapping described above must have their <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-node-namespaceuri">namespaceURI</a></code> set to the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#html-namespace">HTML namespace</a>, use the appropriate IDL interface as defined
+   <p>HTML elements created as part of the mapping described above must have their <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#namespaceuri">namespaceURI</a></code> set to the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#html-namespace">HTML namespace</a>, use the appropriate IDL interface as defined
 in the HTML specification, and, if the corresponding <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-8">WebVTT Internal Node Object</a> has any <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-3">applicable classes</a>, must have a <a data-link-type="element-attr">class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-node-ownerdocument">ownerDocument</a></code> attribute of all nodes in the DOM tree must be set to the given
+   <p>The <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#ownerdocument">ownerDocument</a></code> attribute of all nodes in the DOM tree must be set to the given
 document <var>owner</var>.</p>
    <p>All characteristics of the DOM nodes that are not described above or dependent on characteristics
 defined above must be left at their initial values.</p>
@@ -4167,7 +4167,7 @@ follows:</p>
    <ol class="algorithm">
     <li>
      <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-6">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-1">WebVTT cue
- text parsing rules</a> to the <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+ text parsing rules</a> to the <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
     <li>
      <p>Return the concatenation of the values of each <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-6">WebVTT Text Object</a> in <var>nodes</var>, in a
  pre-order, depth-first traversal, excluding <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-5">WebVTT Ruby Text
@@ -4179,38 +4179,38 @@ agent. The processing model is quite tightly linked to media elements in HTML. W
 WebVTT in media players that don’t support CSS, equivalent visual rendering will need to be
 implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element), or
-of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text
-tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a>, or other playback mechanism, are
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element), or
+of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text
+tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>, or other playback mechanism, are
 rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling this algorithm.</p>
    <p class="note" role="note">In HTML, audio elements don’t have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
 audio resources, they need to publish them in a video element for rendering by the user agent.</p>
-   <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> or other playback mechanism, which user agents are expected to render in a
+   <p>The output of the steps below is a set of CSS boxes that covers the rendering area of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> or other playback mechanism, which user agents are expected to render in a
 manner suiting the user.</p>
    <p>The rules are as follows:</p>
    <ol class="algorithm">
     <li>
-     <p>If the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a> element, or is another playback
+     <p>If the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p>
     <li>
-     <p>Let <var>video</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> or other playback mechanism.</p>
+     <p>Let <var>video</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> or other playback mechanism.</p>
     <li>
      <p>Let <var>output</var> be an empty list of absolutely positioned CSS block boxes.</p>
     <li>
-     <p>If the user agent is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#expose-a-user-interface-to-the-user">exposing a user
+     <p>If the user agent is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#expose-a-user-interface-to-the-user">exposing a user
  interface</a> for <var>video</var>, add to <var>output</var> one or more completely transparent positioned CSS block
  boxes that cover the same region as the user interface.</p>
     <li>
-     <p>If the last time these rules were run, the user agent was not <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#expose-a-user-interface-to-the-user">exposing a user interface</a> for <var>video</var>, but now it is, optionally let <var>reset</var> be
+     <p>If the last time these rules were run, the user agent was not <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#expose-a-user-interface-to-the-user">exposing a user interface</a> for <var>video</var>, but now it is, optionally let <var>reset</var> be
  true. Otherwise, let <var>reset</var> be false.</p>
     <li>
-     <p>Let <var>tracks</var> be the subset of <var>video</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#list-of-text-tracks">list of text tracks</a> that have as their <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> these <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-3">rules for updating the display of
- WebVTT text tracks</a>, and whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-showing">showing</a>.</p>
+     <p>Let <var>tracks</var> be the subset of <var>video</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> that have as their <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> these <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-3">rules for updating the display of
+ WebVTT text tracks</a>, and whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-showing">showing</a>.</p>
     <li>
-     <p>Let <var>cues</var> be an empty list of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">text track cues</a>.</p>
+     <p>Let <var>cues</var> be an empty list of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">text track cues</a>.</p>
     <li>
-     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>cues</var> all the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">cues</a> from <var>track</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-list-of-cues">list of cues</a> that have their <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-active-flag">text track cue
+     <p>For each track <var>track</var> in <var>tracks</var>, append to <var>cues</var> all the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">cues</a> from <var>track</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">list of cues</a> that have their <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-active-flag">text track cue
  active flag</a> set.</p>
     <li>
      <p>Let <var>regions</var> be an empty list of <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-11">WebVTT regions</a>.</p>
@@ -4254,7 +4254,7 @@ manner suiting the user.</p>
        <p>Add the CSS box <var>box</var> to <var>output</var>.</p>
      </ol>
     <li>
-     <p>If <var>reset</var> is false, then, for each <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-22">WebVTT cue</a> <var>cue</var> in <var>cues</var>: if <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track
+     <p>If <var>reset</var> is false, then, for each <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-22">WebVTT cue</a> <var>cue</var> in <var>cues</var>: if <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track
   cue display state</a> has a set of CSS boxes, then:</p>
      <ul>
       <li>
@@ -4264,17 +4264,17 @@ manner suiting the user.</p>
      </ul>
     <li>
      <p>For each <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-23">WebVTT cue</a> <var>cue</var> in <var>cues</var> that has not yet had corresponding CSS boxes added
-  to <var>output</var>, in <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-order">text track cue order</a>, run the following substeps:</p>
+  to <var>output</var>, in <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-order">text track cue order</a>, run the following substeps:</p>
      <ol>
       <li>
        <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-7">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-2">WebVTT
-   cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+   cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
       <li>
        <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-5">WebVTT cue region</a> is null, run the following substeps:</p>
        <ol>
         <li><a data-link-type="dfn" href="#apply-webvtt-cue-settings" id="ref-for-apply-webvtt-cue-settings-1">Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from <var>nodes</var>.
         <li>
-         <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p>
+         <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p>
         <li>
          <p>Add the CSS boxes in <var>boxes</var> to <var>output</var>.</p>
        </ol>
@@ -4311,7 +4311,7 @@ manner suiting the user.</p>
          <p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>.
      The cue is ignored.</p>
         <li>
-         <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p>
+         <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display state</a> have the CSS boxes in <var>boxes</var>.</p>
         <li>
          <p>Add the CSS boxes in <var>boxes</var> to <var>region</var>.</p>
         <li>
@@ -4519,7 +4519,7 @@ Red or green?
        <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
    contents.</p>
       <li>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-7">WebVTT
-   Text Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> nodes.
+   Text Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#text">Text</a></code> nodes.
       <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently restyled using style
    sheets after their boxes are generated, as described below.)
       <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-display-3/#propdef-display">display</a> property has
@@ -4696,11 +4696,11 @@ layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21
     <li>the <a class="property" data-link-type="propdesc">text-wrap</a> property must be set to <span class="css">balance</span> <a data-link-type="biblio" href="#biblio-css-text-4">[CSS-TEXT-4]</a>
    </ul>
    <p>The variables <var>writing-mode</var>, <var>top</var>, <var>left</var>, <var>width</var>, and <var>height</var> are the values with those
-names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-5">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-24">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-10">list of WebVTT Node
+names determined by the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-5">rules for updating the display of WebVTT text tracks</a> for the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-24">WebVTT cue</a> from whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text</a> the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-10">list of WebVTT Node
 Objects</a> was constructed.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#text-align">text-align</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-11">list of WebVTT Node Objects</a> must be set to the
 value in the second cell of the row of the table below whose first cell is the value of the
-corresponding <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">cue</a>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-19">WebVTT cue text alignment</a>:</p>
+corresponding <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">cue</a>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-19">WebVTT cue text alignment</a>:</p>
    <table class="complex data">
     <thead>
      <tr>
@@ -4768,10 +4768,10 @@ settings:</p>
  Objects</a> not part of a region
    </ul>
    <p>All other non-inherited properties must be set to their initial values; inherited properties on
-the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-16">list of WebVTT Node Objects</a> must inherit their values from the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> for which the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-25">WebVTT cue</a> is being rendered, if any. If there is no <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> (i.e.
-if the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a> is being rendered for another media playback mechanism), then inherited
+the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-16">list of WebVTT Node Objects</a> must inherit their values from the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> for which the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-25">WebVTT cue</a> is being rendered, if any. If there is no <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> (i.e.
+if the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a> is being rendered for another media playback mechanism), then inherited
 properties on the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-17">list of WebVTT Node Objects</a> and the <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-9">WebVTT region objects</a> must take their initial values.</p>
-   <p>If there are style sheets that apply to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> or other playback mechanism,
+   <p>If there are style sheets that apply to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> or other playback mechanism,
 then they must be interpreted as defined in the next section.</p>
    <h2 class="heading settled" data-level="7" id="css-extensions"><span class="secno">7. </span><span class="content">CSS extensions</span><a class="self-link" href="#css-extensions"></a></h2>
    <p class="note" role="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
@@ -4786,7 +4786,7 @@ given selector.</p>
 that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a></code> element’s document tree.</p>
-   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#current-playback-position">current playback position</a>.</p>
+   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-playback-position">current playback position</a>.</p>
    <div class="example" id="example-cue-selector">
     <a class="self-link" href="#example-cue-selector"></a> 
     <p>The following table shows examples of what can be selected with a given selector, together with
@@ -4820,7 +4820,7 @@ Also yellow!
   color: yellow;
 }</pre>
        <td class="long">
-        <p>Any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-19">list of WebVTT Node Objects</a> with the cue’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> matching the given ID.</p>
+        <p>Any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-19">list of WebVTT Node Objects</a> with the cue’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-identifier">text track cue identifier</a> matching the given ID.</p>
 <pre>WEBVTT
 
 cue1
@@ -4946,7 +4946,7 @@ video::cue(:future) {
 </pre>
        <td class="long">
         <p>In cues that have <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-5">WebVTT Timestamp Objects</a>, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-14">WebVTT Internal Node Objects</a>,
-     depending on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#current-playback-position">current playback position</a>.</p>
+     depending on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-playback-position">current playback position</a>.</p>
 <pre>WEBVTT
 
 00:00:00.000 --> 00:00:08.000
@@ -5020,18 +5020,18 @@ Over here it’s Cyan!
    <h3 class="heading settled" data-level="7.2" id="css-extensions-processing-model"><span class="secno">7.2. </span><span class="content">Processing model</span><a class="self-link" href="#css-extensions-processing-model"></a></h3>
    <p>When a user agent is rendering one or more <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-26">WebVTT cues</a> according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-7">rules for updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-13">WebVTT Node
 Objects</a> in the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-25">list of WebVTT Node Objects</a> used in the rendering can be matched by
-certain pseudo-selectors as defined below. These selectors can begin or stop matching individual <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-14">WebVTT Node Objects</a> while a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue">cue</a> is being
+certain pseudo-selectors as defined below. These selectors can begin or stop matching individual <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-14">WebVTT Node Objects</a> while a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue">cue</a> is being
 rendered, even in between applications of the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-8">rules for updating the display of WebVTT text
 tracks</a> (which are only run when the set of active cues changes). User agents that support the
-pseudo-element described below must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/CSS22/visudet.html#propdef-line-height">line-height</a>) changes value, then the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-27">WebVTT cue</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track cue display state</a> must
-be emptied and the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> must be
+pseudo-element described below must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/CSS22/visudet.html#propdef-line-height">line-height</a>) changes value, then the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-27">WebVTT cue</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display state</a> must
+be emptied and the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> must be
 immediately rerun.</p>
    <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
 that element is the <i>matched element</i>. The pseudo-elements defined in the following sections
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-28">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements,
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements,
 and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="7.2.1" id="the-cue-pseudo-element"><span class="secno">7.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
@@ -5121,7 +5121,7 @@ being treated as follows:</p>
  language</a>.</p>
     <li>
      <p>For the purposes of ID selector matching, <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-31">lists of
- WebVTT Node Objects</a> have the ID given by the cue’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-identifier">text track cue identifier</a>, if
+ WebVTT Node Objects</a> have the ID given by the cue’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-identifier">text track cue identifier</a>, if
  any.</p>
    </ul>
    <p>The following properties apply to the <span class="css">::cue()</span> pseudo-element with an argument:</p>
@@ -5152,14 +5152,14 @@ Node Objects</a>. <a data-link-type="biblio" href="#biblio-selectors4">[SELECTOR
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="past">:past<a class="self-link" href="#past"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-17">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
    <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-18">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-past">in the past<a class="self-link" href="#in-the-past"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-29">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-33">list of WebVTT Node Objects</a>,
-there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-6">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#current-playback-position">current playback
-position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-19">WebVTT Node Object</a> <var>c</var>.</p>
+there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-6">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-playback-position">current playback
+position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-19">WebVTT Node Object</a> <var>c</var>.</p>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="future">:future<a class="self-link" href="#future"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-20">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
    <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-21">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-30">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-34">list of WebVTT Node Objects</a>,
-there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-7">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#current-playback-position">current playback
-position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-22">WebVTT Node Object</a> <var>c</var>.</p>
+there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-7">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-playback-position">current playback
+position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-22">WebVTT Node Object</a> <var>c</var>.</p>
    <h4 class="heading settled" data-level="7.2.3" id="the-cue-region-pseudo-element"><span class="secno">7.2.3. </span><span class="content">The <span class="css">::cue-region</span> pseudo-element</span><a class="self-link" href="#the-cue-region-pseudo-element"></a></h4>
    <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
 that element is the matched element. The pseudo-element defined below affects the styling of text
@@ -5181,40 +5181,40 @@ properties set on the pseudo-element must be ignored.</p>
 updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-15">WebVTT region
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
 support the pseudo-element must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/CSS22/visudet.html#propdef-line-height">line-height</a>) changes
-value, then the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-display-state">text track cue display state</a> of all the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-31">WebVTT cues</a> in
-the region must be emptied and the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track
+value, then the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display state</a> of all the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-31">WebVTT cues</a> in
+the region must be emptied and the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track
 rendering</a> must be immediately rerun.</p>
    <h2 class="heading settled" data-level="8" id="api"><span class="secno">8. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="The VTTCue interface" data-level="8.1" id="the-vttcue-interface"><span class="secno">8.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
 <pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-autokeyword"><code>AutoKeyword</code></dfn> { <dfn class="s idl-code" data-dfn-for="AutoKeyword" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-autokeyword-auto"><code>"auto"</code><a class="self-link" href="#dom-autokeyword-auto"></a></dfn> };
-<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <dfn class="nv dfn-paneled idl-code" data-dfn-type="typedef" data-export="" id="typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></dfn>;
+<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword" id="ref-for-enumdef-autokeyword-1">AutoKeyword</a>) <dfn class="nv dfn-paneled idl-code" data-dfn-type="typedef" data-export="" id="typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></dfn>;
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-directionsetting"><code>DirectionSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-directionsetting"><code>""</code><a class="self-link" href="#dom-directionsetting"></a></dfn> /* horizontal */, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;rl&quot;|rl" id="dom-directionsetting-rl"><code>"rl"</code><a class="self-link" href="#dom-directionsetting-rl"></a></dfn>, <dfn class="s idl-code" data-dfn-for="DirectionSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;lr&quot;|lr" id="dom-directionsetting-lr"><code>"lr"</code><a class="self-link" href="#dom-directionsetting-lr"></a></dfn> };
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-linealignsetting"><code>LineAlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-linealignsetting-start"><code>"start"</code><a class="self-link" href="#dom-linealignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-linealignsetting-center"><code>"center"</code><a class="self-link" href="#dom-linealignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LineAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-linealignsetting-end"><code>"end"</code><a class="self-link" href="#dom-linealignsetting-end"></a></dfn> };
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting"><code>PositionAlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left"><code>"line-left"</code><a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center"><code>"center"</code><a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right"><code>"line-right"</code><a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto"><code>"auto"</code><a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting"><code>AlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start"><code>"start"</code><a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center"><code>"center"</code><a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end"><code>"end"</code><a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left"><code>"left"</code><a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right"><code>"right"</code><a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue"><code>VTTCue</code></dfn> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a> {
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting" id="ref-for-typedefdef-lineandpositionsetting-1">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-2">line</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting" id="ref-for-enumdef-linealignsetting-1">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-1">lineAlign</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting" id="ref-for-typedefdef-lineandpositionsetting-2">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position" id="ref-for-dom-vttcue-position-1">position</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting" id="ref-for-enumdef-positionalignsetting-1">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign" id="ref-for-dom-vttcue-positionalign-1">positionAlign</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size" id="ref-for-dom-vttcue-size-1">size</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size" id="ref-for-dom-vttcue-size-1">size</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting" id="ref-for-enumdef-alignsetting-1">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align" id="ref-for-dom-vttcue-align-1">align</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text" id="ref-for-dom-vttcue-text-1">text</a>;
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-2">getCueAsHTML</a>();
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text" id="ref-for-dom-vttcue-text-1">text</a>;
+  <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-2">getCueAsHTML</a>();
 };
 </pre>
    <dl class="note">
     <dt><var>cue</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-2">VTTCue</a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )
     <dd>
      <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-3">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue">addCue()</a></code> method.</p>
-     <p>The <var>startTime</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-start-time">text track cue start time</a>.</p>
-     <p>The <var>endTime</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-end-time">text track cue end time</a>.</p>
-     <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
+     <p>The <var>startTime</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-start-time">text track cue start time</a>.</p>
+     <p>The <var>endTime</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-end-time">text track cue end time</a>.</p>
+     <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-2">region</a></code>
     <dd>
      <p>Returns the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-2">VTTRegion</a></code> object to which this cue belongs, if any, or null otherwise.</p>
@@ -5308,11 +5308,11 @@ rendering</a> must be immediately rerun.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-text" id="ref-for-dom-vttcue-text-2">text</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a> in raw unparsed form.</p>
+     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> in raw unparsed form.</p>
      <p>Can be set.</p>
     <dt><var>fragment</var> = <var>cue</var> . <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-3">getCueAsHTML</a>()
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
+     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements">HTML
   elements</a> and other DOM nodes.</p>
    </dl>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue"><code>VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)</code></dfn> constructor, when invoked, must run the following steps:</p>
@@ -5320,18 +5320,18 @@ rendering</a> must be immediately rerun.</p>
     <li>
      <p>Create a new <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-32">WebVTT cue</a>. Let <var>cue</var> be that <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-33">WebVTT cue</a>.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-start-time">text track cue start time</a> be the value of the <var>startTime</var> argument,
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-start-time">text track cue start time</a> be the value of the <var>startTime</var> argument,
  interpreted as a time in seconds.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-end-time">text track cue end time</a> be the value of the <var>endTime</var> argument,
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-end-time">text track cue end time</a> be the value of the <var>endTime</var> argument,
  interpreted as a time in seconds.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue text</a> be the value of the <var>text</var> argument, and let the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#rules-for-extracting-the-chapter-title">rules for extracting the chapter title</a> be the <a data-link-type="dfn" href="#webvtt-rules-for-extracting-the-chapter-title" id="ref-for-webvtt-rules-for-extracting-the-chapter-title-1">WebVTT rules for extracting the chapter
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> be the value of the <var>text</var> argument, and let the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-extracting-the-chapter-title">rules for extracting the chapter title</a> be the <a data-link-type="dfn" href="#webvtt-rules-for-extracting-the-chapter-title" id="ref-for-webvtt-rules-for-extracting-the-chapter-title-1">WebVTT rules for extracting the chapter
  title</a>.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be the empty string.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-identifier">text track cue identifier</a> be the empty string.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-7">WebVTT cue region</a> be null.</p>
     <li>
@@ -5471,26 +5471,26 @@ second cell of the row in the table below whose first cell is the <a data-link-t
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-25">WebVTT cue text alignment</a> must be set to the value given in the first cell
 of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text"><code>text</code></dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track
-cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-43">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-14">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-text"><code>text</code></dfn> attribute, on getting, must return the raw <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track
+cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-43">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-14">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text
 track cue text</a> must be set to the new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml"><code>getCueAsHTML()</code></dfn> method must convert the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue
-text</a> to a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules" id="ref-for-webvtt-cue-text-dom-construction-rules-1">WebVTT cue text DOM construction rules</a> to
-the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/embedded-content.html#text-track-cue-text">text track cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml"><code>getCueAsHTML()</code></dfn> method must convert the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue
+text</a> to a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules" id="ref-for-webvtt-cue-text-dom-construction-rules-1">WebVTT cue text DOM construction rules</a> to
+the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue
 text</a>.</p>
-   <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
+   <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled algorithm" data-algorithm="The VTTRegion interface" data-level="8.2" id="the-vttregion-interface"><span class="secno">8.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
 <pre class="idl highlight def"><span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-scrollsetting"><code>ScrollSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;&quot;|" id="dom-scrollsetting"><code>""</code><a class="self-link" href="#dom-scrollsetting"></a></dfn> /* none */, <dfn class="s idl-code" data-dfn-for="ScrollSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;up&quot;|up" id="dom-scrollsetting-up"><code>"up"</code><a class="self-link" href="#dom-scrollsetting-up"></a></dfn> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion" id="ref-for-dom-vttregion-vttregion-1">Constructor</a>]
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion"><code>VTTRegion</code></dfn> {
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id" id="ref-for-dom-vttregion-id-1">id</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-1">regionAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx" id="ref-for-dom-vttregion-viewportanchorx-1">viewportAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory" id="ref-for-dom-vttregion-viewportanchory-1">viewportAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id" id="ref-for-dom-vttregion-id-1">id</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-1">regionAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx" id="ref-for-dom-vttregion-viewportanchorx-1">viewportAnchorX</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory" id="ref-for-dom-vttregion-viewportanchory-1">viewportAnchorY</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting" id="ref-for-enumdef-scrollsetting-1">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll" id="ref-for-dom-vttregion-scroll-1">scroll</a>;
 };
 </pre>
@@ -6152,14 +6152,14 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[DOM]</a> defines the following terms:
     <ul>
-     <li><a href="https://dom.spec.whatwg.org/#document">Document</a>
-     <li><a href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a>
-     <li><a href="https://dom.spec.whatwg.org/#processinginstruction">ProcessingInstruction</a>
-     <li><a href="https://dom.spec.whatwg.org/#text">Text</a>
-     <li><a href="https://dom.spec.whatwg.org/#dom-characterdata-data">data</a>
-     <li><a href="https://dom.spec.whatwg.org/#dom-node-namespaceuri">namespaceURI</a>
-     <li><a href="https://dom.spec.whatwg.org/#dom-node-ownerdocument">ownerDocument</a>
-     <li><a href="https://dom.spec.whatwg.org/#dom-processinginstruction-target">target</a>
+     <li><a href="https://www.w3.org/TR/dom/#document">Document</a>
+     <li><a href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a>
+     <li><a href="https://www.w3.org/TR/dom/#processinginstruction">ProcessingInstruction</a>
+     <li><a href="https://www.w3.org/TR/dom/#text">Text</a>
+     <li><a href="https://www.w3.org/TR/dom/#data">data</a>
+     <li><a href="https://www.w3.org/TR/dom/#namespaceuri">namespaceURI</a>
+     <li><a href="https://www.w3.org/TR/dom/#ownerdocument">ownerDocument</a>
+     <li><a href="https://www.w3.org/TR/dom/#target">target</a>
     </ul>
    <li>
     <a data-link-type="biblio">[ENCODING]</a> defines the following terms:
@@ -6222,17 +6222,13 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/selectors-4/#type-selector">type selector</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
+    <a data-link-type="biblio">[WEBIDL-1]</a> defines the following terms:
     <ul>
-     <li><a href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-boolean">boolean</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-double">double</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-long">long</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[WebIDL-20161215]</a> defines the following terms:
-    <ul>
+     <li><a href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString">DOMString</a>
      <li><a href="https://www.w3.org/TR/WebIDL-1/#indexsizeerror">IndexSizeError</a>
+     <li><a href="https://www.w3.org/TR/WebIDL-1/#idl-boolean">boolean</a>
+     <li><a href="https://www.w3.org/TR/WebIDL-1/#idl-double">double</a>
+     <li><a href="https://www.w3.org/TR/WebIDL-1/#idl-long">long</a>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -6240,6 +6236,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
   <dl>
    <dt id="biblio-bcp47">[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
+   <dt id="biblio-bidi">[BIDI]
+   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/tr9-35.html">Unicode Bidirectional Algorithm</a>. 18 May 2016. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/tr9-35.html">http://www.unicode.org/reports/tr9/tr9-35.html</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/css-align-3/">CSS Box Alignment Module Level 3</a>. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
    <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
@@ -6308,50 +6306,46 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Selectors Level 4 URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
    <dt id="biblio-selectors4">[SELECTORS4]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
-   <dt id="biblio-webidl">[WEBIDL]
-   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
-   <dt id="biblio-webidl-20161215">[WebIDL-20161215]
+   <dt id="biblio-webidl-1">[WEBIDL-1]
    <dd>Cameron McCormack. <a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/">WebIDL Level 1</a>. URL: <a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/">https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-bidi">[BIDI]
-   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/tr9-35.html">Unicode Bidirectional Algorithm</a>. 18 May 2016. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/tr9-35.html">http://www.unicode.org/reports/tr9/tr9-35.html</a>
    <dt id="biblio-maur">[MAUR]
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="https://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a>. WD. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><span class="kt">enum</span> <a class="nv" href="#enumdef-autokeyword"><code>AutoKeyword</code></a> { <a class="s" href="#dom-autokeyword-auto"><code>"auto"</code></a> };
-<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv" href="#typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></a>;
+<span class="kt">typedef</span> (<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <span class="kt">or</span> <a class="n" data-link-type="idl-name" href="#enumdef-autokeyword">AutoKeyword</a>) <a class="nv" href="#typedefdef-lineandpositionsetting"><code>LineAndPositionSetting</code></a>;
 <span class="kt">enum</span> <a class="nv" href="#enumdef-directionsetting"><code>DirectionSetting</code></a> { <a class="s" href="#dom-directionsetting"><code>""</code></a> /* horizontal */, <a class="s" href="#dom-directionsetting-rl"><code>"rl"</code></a>, <a class="s" href="#dom-directionsetting-lr"><code>"lr"</code></a> };
 <span class="kt">enum</span> <a class="nv" href="#enumdef-linealignsetting"><code>LineAlignSetting</code></a> { <a class="s" href="#dom-linealignsetting-start"><code>"start"</code></a>, <a class="s" href="#dom-linealignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-linealignsetting-end"><code>"end"</code></a> };
 <span class="kt">enum</span> <a class="nv" href="#enumdef-positionalignsetting"><code>PositionAlignSetting</code></a> { <a class="s" href="#dom-positionalignsetting-line-left"><code>"line-left"</code></a>, <a class="s" href="#dom-positionalignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-positionalignsetting-line-right"><code>"line-right"</code></a>, <a class="s" href="#dom-positionalignsetting-auto"><code>"auto"</code></a> };
 <span class="kt">enum</span> <a class="nv" href="#enumdef-alignsetting"><code>AlignSetting</code></a> { <a class="s" href="#dom-alignsetting-start"><code>"start"</code></a>, <a class="s" href="#dom-alignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-alignsetting-end"><code>"end"</code></a>, <a class="s" href="#dom-alignsetting-left"><code>"left"</code></a>, <a class="s" href="#dom-alignsetting-right"><code>"right"</code></a> };
-[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code></a>)]
+[<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code></a>)]
 <span class="kt">interface</span> <a class="nv" href="#vttcue"><code>VTTCue</code></a> : <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a> {
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-line">line</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-linealignsetting">LineAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAlignSetting" href="#dom-vttcue-linealign">lineAlign</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="LineAndPositionSetting" href="#dom-vttcue-position">position</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-positionalignsetting">PositionAlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="PositionAlignSetting" href="#dom-vttcue-positionalign">positionAlign</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttcue-size">size</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-alignsetting">AlignSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="AlignSetting" href="#dom-vttcue-align">align</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttcue-text">text</a>;
+  <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a> <a class="nv idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml">getCueAsHTML</a>();
 };
 
 <span class="kt">enum</span> <a class="nv" href="#enumdef-scrollsetting"><code>ScrollSetting</code></a> { <a class="s" href="#dom-scrollsetting"><code>""</code></a> /* none */, <a class="s" href="#dom-scrollsetting-up"><code>"up"</code></a> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttregion-vttregion">Constructor</a>]
 <span class="kt">interface</span> <a class="nv" href="#vttregion"><code>VTTRegion</code></a> {
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id">id</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id">id</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchory">viewportAnchorY</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-scrollsetting">ScrollSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="ScrollSetting" href="#dom-vttregion-scroll">scroll</a>;
 };
 

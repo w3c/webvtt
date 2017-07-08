@@ -45,4 +45,39 @@ urlPrefix: https://www.w3.org/TR/encoding/#; type: dfn; spec: ENCODING;
 urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WEBIDL-1
     type: interface
         text: IndexSizeError
+        text: DOMString; url: idl-DOMString
+        text: double; url: idl-double
+        text: boolean; url: idl-boolean
+        text: long; url: idl-long
+
+urlPrefix: https://www.w3.org/TR/dom/#; spec: DOM
+    type: interface
+        text: Document
+        text: DocumentFragment
+        text: Text
+        text: ProcessingInstruction
+        text: namespaceURI; url: dom-node-namespaceuri
+        text: ownerDocument; url: dom-node-ownerdocument
+    type: attribute; for: CharacterData
+        text: data
+    type: attribute; for: ProcessingInstruction
+        text: target
+    type: attribute; for: Node
+        text: namespaceURI
+        text: ownerDocument
+</pre>
+
+<pre class=link-defaults>
+spec:css-ruby-1; type:value; text:ruby-base
+spec:css-color-4; type:property; text:color
+spec:css-fonts-3; type:property; text:font-style
+spec:css-fonts-3; type:property; text:font-weight
+spec:css-ruby-1; type:value; text:ruby
+spec:css-ruby-1; type:value; text:ruby-text
+spec:css21; type:property; text:min-height
+spec:css21; type:property; text:max-height
+spec:css-flexbox-1; type:value; text:inline-flex
+spec:selectors-3; type:selector; text:::before
+spec:selectors-3; type:selector; text:::after
+spec:css-display-3; type:property; text:display
 </pre>

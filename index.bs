@@ -28,23 +28,6 @@ Default Ref Status: current
 
 ANCHORS_REPLACE
 
-
-<pre class=link-defaults>
-spec:dom; type:interface; text:Document
-spec:css-ruby-1; type:value; text:ruby-base
-spec:css-color-4; type:property; text:color
-spec:css-fonts-3; type:property; text:font-style
-spec:css-fonts-3; type:property; text:font-weight
-spec:css-ruby-1; type:value; text:ruby
-spec:css-ruby-1; type:value; text:ruby-text
-spec:css21; type:property; text:min-height
-spec:css21; type:property; text:max-height
-spec:css-flexbox-1; type:value; text:inline-flex
-spec:selectors-3; type:selector; text:::before
-spec:selectors-3; type:selector; text:::after
-spec:css-display-3; type:property; text:display
-</pre>
-
 <pre class=biblio>
 {
     "MAUR": {
@@ -970,7 +953,7 @@ precomposed character).</p>
   ''unicode-bidi/plaintext'' algorithm. In the occasional cases where the first strong character on
   a line would produce the wrong base direction for that line, the author can use an U+200E
   LEFT-TO-RIGHT MARK or U+200F RIGHT-TO-LEFT MARK character at the start of the line to correct it.
-  [[BIDI]]</p>
+  [[!BIDI]]</p>
 
   <div class=example>
    <p>In this example, the second cue will have a right-to-left base direction, rendering as
@@ -3675,7 +3658,7 @@ implemented.</p>
 <h3 id=processing-model algorithm>Processing model</h3>
 
 <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a lt="text
-track">text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a> element), or
+track">text tracks</a> of a <a>media element</a> (specifically, a <a element spec=html>video</a> element), or
 of another playback mechanism, by applying the steps below. All the <a lt="text track">text
 tracks</a> that use these rules for a given <a>media element</a>, or other playback mechanism, are
 rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language
@@ -3693,7 +3676,7 @@ manner suiting the user.</p>
 
 <ol class=algorithm>
 
- <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
+ <li><p>If the <a>media element</a> is an <a element spec=html>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
 
  <li><p>Let |video| be the <a>media element</a> or other playback mechanism.</p></li>
@@ -3867,7 +3850,7 @@ manner suiting the user.</p>
 </ol>
 
 <p>User agents may allow the user to override the above algorithm's positioning of cues, e.g. by
-dragging them to another location on the <a element>video</a>, or even off the <a element>video</a>
+dragging them to another location on the <a element spec=html>video</a>, or even off the <a element spec=html>video</a>
 entirely.</p>
 
 <p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn> to
@@ -4931,7 +4914,7 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a lt="WebVTT cue">WebVTT cues</a> that are being rendered for the
 <i>matched element</i>.</p>
 
-<p class="note">If the <i>matched element</i> is not a <a element>video</a> element, the
+<p class="note">If the <i>matched element</i> is not a <a element spec=html>video</a> element, the
 pseudo-elements defined below won't have any effect according to this specification.</p>
 
 <p>A CSS user agent that implements the <a lt="text track">text tracks</a> model must implement the
@@ -5848,7 +5831,7 @@ current time in that video.</p>
 not be detectable by scripts running in the same user agent (e.g. browser) since the CSS object
 model for such style sheets is not exposed to script and there is no way to get the computed style
 for pseudo-elements other than ''::before'' and ''::after'' with the {{Window/getComputedStyle()}}
-API. [[CSSOM]]</p>
+API. [[!CSSOM]]</p>
 
 <h3 id=scripting-security>Scripting-related security</h3>
 
@@ -5870,7 +5853,7 @@ preferences for automatic text track selection" spec=html>language preference</a
 captions or subtitles. That is a (small) piece of information about the user. However, the offering
 of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
 the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
-format itself. [[HTML]]</p>
+format itself. [[!HTML]]</p>
 
 
 <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>
