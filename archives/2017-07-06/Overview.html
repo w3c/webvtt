@@ -4145,19 +4145,19 @@ Node Objects</a> to DOM nodes:</p>
    language</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-4">WebVTT Text Object</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/##concept-cd-data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#concept-cd-data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
    Object</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-3">WebVTT Timestamp Object</a>
-      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#processinginstruction">ProcessingInstruction</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/##dom-event-target">target</a></code> is
-   "<code>timestamp</code>" and whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/##concept-cd-data">data</a></code> is a <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-8">WebVTT timestamp</a> representing the value of the <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-4">WebVTT Timestamp Object</a>, with all optional components
+      <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#processinginstruction">ProcessingInstruction</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#dom-event-target">target</a></code> is
+   "<code>timestamp</code>" and whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#concept-cd-data">data</a></code> is a <a data-link-type="dfn" href="#webvtt-timestamp" id="ref-for-webvtt-timestamp-8">WebVTT timestamp</a> representing the value of the <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-4">WebVTT Timestamp Object</a>, with all optional components
    included, with one leading zero if the <var>hours</var> component is less than ten, and with no leading
    zeros otherwise.
    </table>
-   <p>HTML elements created as part of the mapping described above must have their <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#namespaceuri">namespaceURI</a></code> set to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#html-namespace">HTML namespace</a>, use the appropriate IDL interface as defined
+   <p>HTML elements created as part of the mapping described above must have their <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#dom-element-namespaceuri">namespaceURI</a></code> set to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#html-namespace">HTML namespace</a>, use the appropriate IDL interface as defined
 in the HTML specification, and, if the corresponding <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-8">WebVTT Internal Node Object</a> has any <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-3">applicable classes</a>, must have a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#classes">class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#ownerdocument">ownerDocument</a></code> attribute of all nodes in the DOM tree must be set to the given
+   <p>The <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#dom-node-ownerdocument">ownerDocument</a></code> attribute of all nodes in the DOM tree must be set to the given
 document <var>owner</var>.</p>
    <p>All characteristics of the DOM nodes that are not described above or dependent on characteristics
 defined above must be left at their initial values.</p>
@@ -6154,10 +6154,10 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
      <li><a href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a>
      <li><a href="https://www.w3.org/TR/dom/#processinginstruction">ProcessingInstruction</a>
      <li><a href="https://www.w3.org/TR/dom/#text">Text</a>
-     <li><a href="https://www.w3.org/TR/dom/##concept-cd-data">data</a>
-     <li><a href="https://www.w3.org/TR/dom/#namespaceuri">namespaceURI</a>
-     <li><a href="https://www.w3.org/TR/dom/#ownerdocument">ownerDocument</a>
-     <li><a href="https://www.w3.org/TR/dom/##dom-event-target">target</a>
+     <li><a href="https://www.w3.org/TR/dom/#concept-cd-data">data</a>
+     <li><a href="https://www.w3.org/TR/dom/#dom-element-namespaceuri">namespaceURI</a>
+     <li><a href="https://www.w3.org/TR/dom/#dom-node-ownerdocument">ownerDocument</a>
+     <li><a href="https://www.w3.org/TR/dom/#dom-event-target">target</a>
     </ul>
    <li>
     <a data-link-type="biblio">[ENCODING-CR]</a> defines the following terms:
