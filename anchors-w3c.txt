@@ -1,4 +1,4 @@
-<pre class='anchors'>
+<pre class=anchors>
 urlPrefix: https://www.w3.org/TR/html51/
     type: dfn
         urlPrefix: infrastructure.html
@@ -7,6 +7,13 @@ urlPrefix: https://www.w3.org/TR/html51/
             text: skip whitespace
             text: alphanumeric ascii characters
             text: space character
+            text: MIME type
+            text: ASCII digits
+            text: collect a sequence of code points
+            text: case-sensitive
+            text: rules for parsing floating-point number values
+            text: HTML namespace
+            text: HTML element
         urlPrefix: semantics-embedded-content.html
             text: text track kind
             text: text track cue
@@ -28,17 +35,43 @@ urlPrefix: https://www.w3.org/TR/html51/
             text: text track cue end time
             text: expose a user interface to the user
             text: text track cue order
+            text: honor user preferences for automatic text track selection
+        urlPrefix: webappapis.html
+            text: responsible document
+            text: entry settings object
         urlPrefix: syntax.html
-            text: character references; url: #syntax-charref
+            text: character references
             text: additional allowed character
             text: consume a character reference
+    type: element
+        urlPrefix: textlevel-semantics.html
+            text: span; url: #elementdef-span
+            text: i; url: #elementdef-i
+            text: b; url: #elementdef-b
+            text: u; url: #elementdef-u
+            text: ruby; url: #the-ruby-element
+            text: rt; url: #the-rt-element
+        urlPrefix: semantics-embedded-content.html
+            text: video; url: #the-video-element
+            text: audio; url: #the-audio-element
+            text: track; url: #the-track-element
+        urlPrefix: document-metadata.html
+            text: style; url: #the-style-element
     type: element-attr
         urlPrefix: dom.html
             text: title; url: #attr-title
             text: lang; url: #attr-lang
             text: class; url: #classes
+        urlPrefix: semantics-embedded-content.html; for: track
+            text: srclang; url: #dom-htmltrackelement-srclang
+    type: interface
+        urlPrefix: semantics-embedded-content.html
+            text: TextTrackCue
+    type: method; for: TextTrack
+        urlPrefix: semantics-embedded-content.html
+            text: addCue()
 
-urlPrefix: https://www.w3.org/TR/encoding/#; type: dfn; spec: ENCODING;
+urlPrefix: https://www.w3.org/TR/encoding/#; type: dfn; spec: ENCODING-CR;
     text: utf-8 decode
     text: ascii whitespace
 
@@ -80,4 +113,24 @@ spec:css-flexbox-1; type:value; text:inline-flex
 spec:selectors-3; type:selector; text:::before
 spec:selectors-3; type:selector; text:::after
 spec:css-display-3; type:property; text:display
+</pre>
+
+<pre class=biblio>
+{
+    "MAUR": {
+        "authors": [ "Shane McCarron", "Michael Cooper", "Mark Sadecki"],
+        "href": "http://www.w3.org/TR/media-accessibility-reqs/",
+        "title": "Media Accessibility User Requirements",
+        "status": "WD",
+        "publisher": "W3C"
+    },
+    "ENCODING-CR": {
+        "authors": ["Anne van Kesteren", "Joshua Bell", "Addison Phillips"],
+        "href": "https://www.w3.org/TR/2017/CR-encoding-20170413/",
+        "title": "Encoding",
+        "status": "CR",
+        "publisher": "W3C",
+        "date": "13 April 2017"
+    }
+}
 </pre>
