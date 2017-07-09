@@ -2417,7 +2417,7 @@ order:</p>
  CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-9">WebVTT line
  terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
- represents a CSS style sheet; the requirements given in the relevant CSS specifications apply. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a>
+ represents a CSS style sheet; the requirements given in the relevant CSS specifications apply. <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a>
     <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-10">WebVTT line terminator</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-block">WebVTT cue block</dfn> consists of the following components, in the given order:</p>
@@ -4425,7 +4425,7 @@ following algorithm.</p>
  CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints, thus
-  obtaining a set of CSS boxes positioned relative to an initial containing block: <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
+  obtaining a set of CSS boxes positioned relative to an initial containing block: <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
      <ul>
       <li>
        <p>The <i>document tree</i> is the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-9">WebVTT Node Objects</a> rooted at <var>nodes</var>.</p>
@@ -4641,7 +4641,7 @@ Red or green?
    <h4 class="heading settled algorithm" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="6.1.1" id="applying-css-properties"><span class="secno">6.1.1. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h4>
    <p>When following the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-12">WebVTT Node Objects</a> at the CSS user agent cascade
-layer as defined in this section. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
+layer as defined in this section. <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
    <p>Initialize the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-9">list of WebVTT Node Objects</a> with the following CSS settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute">absolute</a>
@@ -4686,7 +4686,7 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-13">list of WebVTT Node Objects</a> must be set to <span class="css">rgba(255,255,255,1)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box-1">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-7">WebVTT Ruby
 Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css21">[CSS21]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-14">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style">font-style</a> property on <a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object-4">WebVTT Italic Objects</a> must be set
 to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic">italic</a>.</p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-weight">font-weight</a> property on <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-5">WebVTT Bold Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold">bold</a>.</p>
@@ -4704,8 +4704,8 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-3/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-3/#valdef-overflow-hidden">hidden</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css21/visudet.html#propdef-max-height">max-height</a> property must be set to <var>height</var>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a> property must be set to <span class="css">0px</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-max-height">max-height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a> property must be set to <var>top</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex">inline-flex</a>
@@ -6069,16 +6069,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-writing-modes-4/#propdef-writing-mode">writing-mode</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[CSS21]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-max-height">max-height</a>
-     <li><a href="https://drafts.csswg.org/css21/visudet.html#propdef-min-height">min-height</a>
-    </ul>
-   <li>
     <a data-link-type="biblio">[CSS22]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a>
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
+     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-max-height">max-height</a>
+     <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a>
      <li><a href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a>
     </ul>
@@ -6224,8 +6220,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-writing-modes-3/">http://dev.w3.org/csswg/css-writing-modes-3/</a>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
    <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
-   <dt id="biblio-css21">[CSS21]
-   <dd>Bert Bos; et al. <a href="https://www.w3.org/TR/CSS2">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/CSS2">https://www.w3.org/TR/CSS2</a>
    <dt id="biblio-css22">[CSS22]
    <dd>Bert Bos. <a href="http://dev.w3.org/csswg/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="http://dev.w3.org/csswg/css2/">http://dev.w3.org/csswg/css2/</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
