@@ -3084,7 +3084,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  The file does not start with the correct <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-16">WebVTT file</a> signature and was therefore not
  successfully processed.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
  characters.</p>
     <li>
      <p>If <var>position</var> is past the end of <var>input</var>, then abort these steps. The file was successfully
@@ -3101,7 +3101,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  character, then <a data-link-type="dfn" href="#collect-a-webvtt-block" id="ref-for-collect-a-webvtt-block-1">collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
  advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p>
     <li>
      <p>Let <var>regions</var> be an empty <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-1">text track list of regions</a>.</p>
     <li>
@@ -3116,7 +3116,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
       <li>
        <p>Otherwise, if <var>block</var> is a <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-1">WebVTT region object</a>, add <var>block</var> to <var>regions</var>.</p>
       <li>
-       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are U+000A LINE FEED (LF)
+       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are U+000A LINE FEED (LF)
    characters.</p>
      </ol>
     <li>
@@ -3151,7 +3151,7 @@ header</i> set, the user agent must run the following steps:</p>
      <p><i>Loop</i>: Run these substeps in a loop:</p>
      <ol>
       <li>
-       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
    characters. Let <var>line</var> be those characters, if any.</p>
       <li>
        <p>Increment <var>line count</var> by 1.</p>
@@ -3628,7 +3628,7 @@ user agent must run the following steps:</p>
      <p>If the character indicated by <var>position</var> is not an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digit</a>, then return an error
  and abort these steps.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">Collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">Collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
  the collected substring.</p>
     <li>
      <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>1</sub></var> be that
@@ -3640,7 +3640,7 @@ user agent must run the following steps:</p>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+003A
  COLON character (:), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
  the collected substring.</p>
     <li>
      <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
@@ -3655,7 +3655,7 @@ user agent must run the following steps:</p>
        <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a
    U+003A COLON character (:), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
       <li>
-       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
    the collected substring.</p>
       <li>
        <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
@@ -3670,7 +3670,7 @@ user agent must run the following steps:</p>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+002E
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-characters">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
  the collected substring.</p>
     <li>
      <p>If <var>string</var> is not exactly three characters in length, return an error and abort these
@@ -4136,11 +4136,11 @@ Node Objects</a> to DOM nodes:</p>
       <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#the-rt-element">rt</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-4">WebVTT Voice Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-title">title</a> attribute set to
+      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#the-title-attribute">title</a> attribute set to
    the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-3">WebVTT Language Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-lang">lang</a> attribute set to
+      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#element-attrdef-global-lang">lang</a> attribute set to
    the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable
    language</a>.
      <tr>
