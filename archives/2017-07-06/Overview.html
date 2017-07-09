@@ -2160,7 +2160,7 @@ precomposed character).</p>
        <p>Let <var>track</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text track</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-cues">list of
    cues</a> the <var>cue</var> is in.</p>
       <li>
-       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#modedef-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> before <var>track</var>.</p>
+       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#a-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#modedef-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> before <var>track</var>.</p>
       <li>
        <p>Increment <var>n</var> by one.</p>
       <li>
@@ -2724,7 +2724,7 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>
-     <p>An arbitrary string of one or more characters other than <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>. The string
+     <p>An arbitrary string of one or more characters other than <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#space-characters">ASCII whitespace</a>. The string
  must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
  GREATER-THAN SIGN).</p>
    </ol>
@@ -3225,7 +3225,7 @@ header</i> set, the user agent must run the following steps:</p>
            <p>If <var>seen cue</var> is false and <var>buffer</var> starts with the substring "<code>STYLE</code>"
         (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T, U+0059 LATIN CAPITAL LETTER
         Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E), and the remaining
-        characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>, then run these
+        characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#space-characters">ASCII whitespace</a>, then run these
         substeps:</p>
            <ol>
             <li>
@@ -3256,7 +3256,7 @@ header</i> set, the user agent must run the following steps:</p>
            <p>Otherwise, if <var>seen cue</var> is false and <var>buffer</var> starts with the substring
         "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
         LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
-        LATIN CAPITAL LETTER N), and the remaining characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII
+        LATIN CAPITAL LETTER N), and the remaining characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#space-characters">ASCII
         whitespace</a>, then run these substeps:</p>
            <ol>
             <li>
@@ -4042,8 +4042,8 @@ value).</p>
       marker" entry below.</p>
         <dt>End-of-file marker
         <dd>
-         <p>Remove any leading or trailing <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters from <var>buffer</var>, and
-      replace any sequence of one or more consecutive <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters in <var>buffer</var> with a single U+0020 SPACE character; then, return a start tag whose tag name is <var>result</var>,
+         <p>Remove any leading or trailing <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#space-characters">ASCII whitespace</a> characters from <var>buffer</var>, and
+      replace any sequence of one or more consecutive <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#space-characters">ASCII whitespace</a> characters in <var>buffer</var> with a single U+0020 SPACE character; then, return a start tag whose tag name is <var>result</var>,
       with the classes given in <var>classes</var>, and with <var>buffer</var> as the annotation, and abort these
       steps.</p>
         <dt>Anything else
@@ -4209,7 +4209,7 @@ manner suiting the user.</p>
  true. Otherwise, let <var>reset</var> be false.</p>
     <li>
      <p>Let <var>tracks</var> be the subset of <var>video</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> that have as their <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track rendering</a> these <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-3">rules for updating the display of
- WebVTT text tracks</a>, and whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#modedef-track-showing">showing</a>.</p>
+ WebVTT text tracks</a>, and whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#a-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#modedef-track-showing">showing</a>.</p>
     <li>
      <p>Let <var>cues</var> be an empty list of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#cue">text track cues</a>.</p>
     <li>
@@ -5197,7 +5197,7 @@ rendering</a> must be immediately rerun.</p>
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-positionalignsetting"><code>PositionAlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-left&quot;|line-left" id="dom-positionalignsetting-line-left"><code>"line-left"</code><a class="self-link" href="#dom-positionalignsetting-line-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-positionalignsetting-center"><code>"center"</code><a class="self-link" href="#dom-positionalignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;line-right&quot;|line-right" id="dom-positionalignsetting-line-right"><code>"line-right"</code><a class="self-link" href="#dom-positionalignsetting-line-right"></a></dfn>, <dfn class="s idl-code" data-dfn-for="PositionAlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;auto&quot;|auto" id="dom-positionalignsetting-auto"><code>"auto"</code><a class="self-link" href="#dom-positionalignsetting-auto"></a></dfn> };
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-alignsetting"><code>AlignSetting</code></dfn> { <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;start&quot;|start" id="dom-alignsetting-start"><code>"start"</code><a class="self-link" href="#dom-alignsetting-start"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;center&quot;|center" id="dom-alignsetting-center"><code>"center"</code><a class="self-link" href="#dom-alignsetting-center"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;end&quot;|end" id="dom-alignsetting-end"><code>"end"</code><a class="self-link" href="#dom-alignsetting-end"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;left&quot;|left" id="dom-alignsetting-left"><code>"left"</code><a class="self-link" href="#dom-alignsetting-left"></a></dfn>, <dfn class="s idl-code" data-dfn-for="AlignSetting" data-dfn-type="enum-value" data-export="" data-lt="&quot;right&quot;|right" id="dom-alignsetting-right"><code>"right"</code><a class="self-link" href="#dom-alignsetting-right"></a></dfn> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue-1">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <dfn class="nv idl-code" data-dfn-for="VTTCue/VTTCue(startTime, endTime, text)" data-dfn-type="argument" data-export="" id="dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code><a class="self-link" href="#dom-vttcue-vttcue-starttime-endtime-text-text"></a></dfn>)]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue"><code>VTTCue</code></dfn> : <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#texttrackcue">TextTrackCue</a> {
+<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttcue"><code>VTTCue</code></dfn> : <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#texttrackcue-texttrackcue">TextTrackCue</a> {
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion" id="ref-for-vttregion-1">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region" id="ref-for-dom-vttcue-region-1">region</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting" id="ref-for-enumdef-directionsetting-1">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-1">vertical</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-2">snapToLines</a>;
@@ -6162,7 +6162,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
    <li>
     <a data-link-type="biblio">[ENCODING-CR]</a> defines the following terms:
     <ul>
-     <li><a href="https://www.w3.org/TR/encoding/#ascii-whitespace">ascii whitespace</a>
      <li><a href="https://www.w3.org/TR/encoding/#utf-8-decode">utf-8 decode</a>
     </ul>
    <li>
@@ -6278,7 +6277,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
 <span class="kt">enum</span> <a class="nv" href="#enumdef-positionalignsetting"><code>PositionAlignSetting</code></a> { <a class="s" href="#dom-positionalignsetting-line-left"><code>"line-left"</code></a>, <a class="s" href="#dom-positionalignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-positionalignsetting-line-right"><code>"line-right"</code></a>, <a class="s" href="#dom-positionalignsetting-auto"><code>"auto"</code></a> };
 <span class="kt">enum</span> <a class="nv" href="#enumdef-alignsetting"><code>AlignSetting</code></a> { <a class="s" href="#dom-alignsetting-start"><code>"start"</code></a>, <a class="s" href="#dom-alignsetting-center"><code>"center"</code></a>, <a class="s" href="#dom-alignsetting-end"><code>"end"</code></a>, <a class="s" href="#dom-alignsetting-left"><code>"left"</code></a>, <a class="s" href="#dom-alignsetting-right"><code>"right"</code></a> };
 [<a class="nv idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-starttime"><code>startTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-double"><span class="kt">double</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-endtime"><code>endTime</code></a>, <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv" href="#dom-vttcue-vttcue-starttime-endtime-text-text"><code>text</code></a>)]
-<span class="kt">interface</span> <a class="nv" href="#vttcue"><code>VTTCue</code></a> : <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#texttrackcue">TextTrackCue</a> {
+<span class="kt">interface</span> <a class="nv" href="#vttcue"><code>VTTCue</code></a> : <a class="n" data-link-type="idl-name" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#texttrackcue-texttrackcue">TextTrackCue</a> {
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#vttregion">VTTRegion</a>? <a class="nv idl-code" data-link-type="attribute" data-type="VTTRegion?" href="#dom-vttcue-region">region</a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#enumdef-directionsetting">DirectionSetting</a> <a class="nv idl-code" data-link-type="attribute" data-type="DirectionSetting" href="#dom-vttcue-vertical">vertical</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://www.w3.org/TR/WebIDL-1/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="boolean" href="#dom-vttcue-snaptolines">snapToLines</a>;
