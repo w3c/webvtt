@@ -297,15 +297,15 @@ one line except when a line break is definitely necessary.</p>
 
 <p><i>This section is non-normative.</i></p>
 
-<p>CSS style sheets that apply to an HTML page that contains a <a element>video</a>
-element can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'',
-''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
+<p>CSS style sheets that apply to an HTML page that contains a <a element>video</a> element can
+target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'', ''::cue-region'' and
+''::cue-region()'' pseudo-elements.</p>
 
 <div class="example">
 
- <p>In this example, an HTML page has a CSS style sheet in a <a element>style</a> element
- that styles all cues in the video with a gradient background and a text color, as well as changing
- the text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
+ <p>In this example, an HTML page has a CSS style sheet in a <a element>style</a> element that
+ styles all cues in the video with a gradient background and a text color, as well as changing the
+ text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
 
  <pre>
  &lt;!doctype html>
@@ -772,9 +772,9 @@ precomposed character).</p>
    <li><p>Let |track| be the <a>text track</a> whose <a lt="text track list of cues">list of
    cues</a> the |cue| is in.</p></li>
 
-   <li><p>Let |n| be the number of <a>text tracks</a> whose <a>text track mode</a>
-   is <a lt="text track showing">showing</a> and that are in the <a>media element</a>'s <a>list of
-   text tracks</a> before |track|.</p></li>
+   <li><p>Let |n| be the number of <a>text tracks</a> whose <a>text track mode</a> is <a lt="text
+   track showing">showing</a> and that are in the <a>media element</a>'s <a>list of text tracks</a>
+   before |track|.</p></li>
 
    <li><p>Increment |n| by one.</p></li>
 
@@ -1345,8 +1345,7 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
 
   <ol>
 
-   <li>Two or more <a>ASCII digits</a>, representing the |hours| as a base ten
-   integer.</li>
+   <li>Two or more <a>ASCII digits</a>, representing the |hours| as a base ten integer.</li>
 
    <li>A U+003A COLON character (:)</li>
 
@@ -1468,8 +1467,8 @@ terminator</a>.</p>
 
  <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
 
- <li>An <a lt="character references">HTML character reference</a>, representing one or two
- Unicode code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
+ <li>An <a lt="character references">HTML character reference</a>, representing one or two Unicode
+ code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
 
 </ul>
 
@@ -1585,8 +1584,8 @@ given:</p>
   <ul>
    <li><a>WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.</li>
-   <li>An <a lt="character references">HTML character reference</a>, representing one or
-   two Unicode code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
+   <li>An <a lt="character references">HTML character reference</a>, representing one or two Unicode
+   code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
   </ul>
 
  </li>
@@ -1652,9 +1651,9 @@ given:</p>
 <ol>
  <li><p>The string "<code>id</code>".</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
- <li><p>An arbitrary string of one or more characters other than <a>ASCII whitespace</a>.
- The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
- HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
+ <li><p>An arbitrary string of one or more characters other than <a>ASCII whitespace</a>. The string
+ must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
+ GREATER-THAN SIGN).</p></li>
 </ol>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
@@ -2100,8 +2099,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  The file does not start with the correct <a>WebVTT file</a> signature and was therefore not
  successfully processed.</p></li>
 
- <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+ characters.</p></li>
 
  <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
  processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
@@ -2118,8 +2117,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
  advance |position| to the next character in |input|.</p></li>
 
- <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF)
- characters.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p></li>
 
  <li><p>Let |regions| be an empty <a>text track list of regions</a>.</p></li>
 
@@ -2185,8 +2183,8 @@ header</i> set, the user agent must run the following steps:</p>
 
   <ol>
 
-   <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
-   (LF) characters. Let |line| be those characters, if any.</p></li>
+   <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+   characters. Let |line| be those characters, if any.</p></li>
 
    <li><p>Increment |line count| by 1.</p></li>
 
@@ -2332,7 +2330,8 @@ header</i> set, the user agent must run the following steps:</p>
         <p>Otherwise, if |seen cue| is false and |buffer| starts with the substring
         "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
         LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
-        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a>ASCII whitespace</a>, then run these substeps:</p>
+        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a>ASCII
+        whitespace</a>, then run these substeps:</p>
 
         <ol>
 
@@ -2651,8 +2650,8 @@ run the following steps:</p>
 
        <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be null.</p></li>
 
-       <li><p>If |linepos| does not contain at least one <a>ASCII digit</a>, then
-       jump to the step labeled <i>next setting</i>.</p></li>
+       <li><p>If |linepos| does not contain at least one <a>ASCII digit</a>, then jump to the step
+       labeled <i>next setting</i>.</p></li>
 
        <li>
         <dl>
@@ -2822,11 +2821,11 @@ user agent must run the following steps:</p>
 
  <li><p>If |position| is past the end of |input|, return an error and abort these steps.</p></li>
 
- <li><p>If the character indicated by |position| is not an <a>ASCII digit</a>, then return
- an error and abort these steps.</p></li>
+ <li><p>If the character indicated by |position| is not an <a>ASCII digit</a>, then return an error
+ and abort these steps.</p></li>
 
- <li><p><a>Collect a sequence of code points</a> that are <a>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>Collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>1</sub></var> be that
  integer.</p></li>
@@ -2838,8 +2837,8 @@ user agent must run the following steps:</p>
  COLON character (:), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>If |string| is not exactly two characters in length, return an error and abort these
  steps.</p></li>
@@ -2858,8 +2857,8 @@ user agent must run the following steps:</p>
    U+003A COLON character (:), then return an error and abort these steps. Otherwise, move
    |position| forwards one character.</p></li>
 
-   <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>,
-   and let |string| be the collected substring.</p></li>
+   <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+   the collected substring.</p></li>
 
    <li><p>If |string| is not exactly two characters in length, return an error and abort these
    steps.</p></li>
@@ -2881,8 +2880,8 @@ user agent must run the following steps:</p>
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>If |string| is not exactly three characters in length, return an error and abort these
  steps.</p></li>
@@ -3294,8 +3293,8 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with no <a>additional
-    allowed character</a>.</p>
+    <p>Attempt to <a>consume an HTML character reference</a>, with no <a>additional allowed
+    character</a>.</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |result|.</p>
 
@@ -3488,10 +3487,11 @@ value).</p>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Remove any leading or trailing <a>ASCII whitespace</a> characters from |buffer|,
-      and replace any sequence of one or more consecutive <a>ASCII whitespace</a> characters in |buffer| with a single U+0020 SPACE character; then, return a start tag
-      whose tag name is |result|, with the classes given in |classes|, and with |buffer| as the
-      annotation, and abort these steps.</p>
+      <p>Remove any leading or trailing <a>ASCII whitespace</a> characters from |buffer|, and
+      replace any sequence of one or more consecutive <a>ASCII whitespace</a> characters in |buffer|
+      with a single U+0020 SPACE character; then, return a start tag whose tag name is |result|,
+      with the classes given in |classes|, and with |buffer| as the annotation, and abort these
+      steps.</p>
      </dd>
 
      <dt>Anything else</dt>
@@ -3507,8 +3507,8 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with the <a>additional
-    allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
+    <p>Attempt to <a>consume an HTML character reference</a>, with the <a>additional allowed
+    character</a> being U+003E GREATER-THAN SIGN (>).</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |buffer|.</p>
 
@@ -3650,14 +3650,14 @@ Node Objects</a> to DOM nodes:</p>
   </tr>
   <tr>
    <td class=long><a>WebVTT Voice Object</a></td>
-   <td class=long>HTML <a element>span</a> element with a <a
-   element-attr>title</a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
+   <td class=long>HTML <a element>span</a> element with a <a element-attr>title</a> attribute set to
+   the <a>WebVTT Voice Object</a>'s value.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Language Object</a></td>
-   <td class=long>HTML <a element>span</a> element with a <a
-   element-attr>lang</a> attribute set to the <a>WebVTT Language Object</a>'s <a lt="WebVTT Node
-   Object's applicable language">applicable language</a>.</td>
+   <td class=long>HTML <a element>span</a> element with a <a element-attr>lang</a> attribute set to
+   the <a>WebVTT Language Object</a>'s <a lt="WebVTT Node Object's applicable language">applicable
+   language</a>.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Text Object</a></td>
@@ -3678,7 +3678,8 @@ Node Objects</a> to DOM nodes:</p>
 <p>HTML elements created as part of the mapping described above must have their
 {{Node/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
 in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a
-lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
+lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a
+element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
 
 <p>The {{Node/ownerDocument}} attribute of all nodes in the DOM tree must be set to the given
@@ -3716,11 +3717,12 @@ implemented.</p>
 
 <h3 id=processing-model algorithm>Processing model</h3>
 
-<p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a>text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a> element), or
-of another playback mechanism, by applying the steps below. All the <a lt="text track">text
-tracks</a> that use these rules for a given <a>media element</a>, or other playback mechanism, are
-rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language
-|language| may be set when calling this algorithm.</p>
+<p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a>text tracks</a>
+of a <a>media element</a> (specifically, a <a element>video</a> element), or of another playback
+mechanism, by applying the steps below. All the <a lt="text track">text tracks</a> that use these
+rules for a given <a>media element</a>, or other playback mechanism, are rendered together, to avoid
+overlapping subtitles from multiple tracks. A fallback language |language| may be set when calling
+this algorithm.</p>
 
 <p class="note">In HTML, audio elements don't have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
@@ -4153,10 +4155,10 @@ following algorithm.</p>
     <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
     a hypothetical document that contains a single empty element with no explicit name, no
     namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the
-    <a>media element</a> for the <a>text tracks</a> that were sourced from the
-    given WebVTT file. The selectors must not match other <a>text tracks</a> for the same
-    <a>media element</a>. In this hypothetical document, the element must not match any
-    selector that would match the element itself.</p>
+    <a>media element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file.
+    The selectors must not match other <a>text tracks</a> for the same <a>media element</a>. In this
+    hypothetical document, the element must not match any selector that would match the element
+    itself.</p>
 
     <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for
     the ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
@@ -4166,8 +4168,8 @@ following algorithm.</p>
     <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in
     STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
     same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a element>video</a>
-    element's document.</p>
+    must be after any style sheets that apply to the associated <a element>video</a> element's
+    document.</p>
 
     <div class=example>
      <p>For example, given the following (invalid) HTML document:</p>
@@ -4196,8 +4198,8 @@ following algorithm.</p>
      </pre>
 
      <p>The ''color:lime'' declaration would win, because it is last in the <a
-     spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after
-     the <a element>video</a> element in the document order.</p>
+     spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
+     element>video</a> element in the document order.</p>
     </div>
    </li>
 
@@ -4209,9 +4211,8 @@ following algorithm.</p>
     resolve.</p>
 
     <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
-    would be a new ability for <a>media elements</a> and <a element>track</a>
-    elements to issue network requests as the user watches the video, which could be a privacy
-    issue.</strong></p>
+    would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
+    network requests as the user watches the video, which could be a privacy issue.</strong></p>
 
    </li>
 
@@ -4975,9 +4976,9 @@ affect the styling of parts of <a lt="WebVTT cue">WebVTT cues</a> that are being
 <p class="note">If the <i>matched element</i> is not a <a element>video</a> element, the
 pseudo-elements defined below won't have any effect according to this specification.</p>
 
-<p>A CSS user agent that implements the <a>text tracks</a> model must implement the
-''::cue'', ''::cue(|selector|)'', ''::cue-region'' and ''::cue-region(|selector|)'' pseudo-elements,
-and the '':past'' and '':future'' pseudo-classes.</p>
+<p>A CSS user agent that implements the <a>text tracks</a> model must implement the ''::cue'',
+''::cue(|selector|)'', ''::cue-region'' and ''::cue-region(|selector|)'' pseudo-elements, and the
+'':past'' and '':future'' pseudo-classes.</p>
 
 
 <h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
@@ -5362,8 +5363,8 @@ interface VTTCue : TextTrackCue {
 
  <dt>|fragment| = |cue| . <a method lt="getCueAsHTML()">getCueAsHTML</a>()</dt>
  <dd>
-  <p>Returns the <a>text track cue text</a> as a {{DocumentFragment}} of <a>HTML
-  elements</a> and other DOM nodes.</p>
+  <p>Returns the <a>text track cue text</a> as a {{DocumentFragment}} of <a>HTML elements</a> and
+  other DOM nodes.</p>
  </dd>
 
 </dl>
@@ -5593,9 +5594,9 @@ cue text</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. On 
 track cue text</a> must be set to the new value.</p>
 
 <p>The <dfn method for=VTTCue>getCueAsHTML()</dfn> method must convert the <a>text track cue
-text</a> to a {{DocumentFragment}} for the <a>responsible document</a> specified by the <a>entry settings object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to
-the result of applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue
-text</a>.</p>
+text</a> to a {{DocumentFragment}} for the <a>responsible document</a> specified by the <a>entry
+settings object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to the result of
+applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue text</a>.</p>
 
 <p class=note>A fallback language is not provided for {{VTTCue/getCueAsHTML()}} since a
 {{DocumentFragment}} cannot expose language information.</p>
@@ -5906,11 +5907,11 @@ causing undue resource consumption.</p>
 
 <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
 the origin server that the user has a need for captions or subtitles, and also the <a lt="honor user
-preferences for automatic text track selection">language preference</a> of the user for
-captions or subtitles. That is a (small) piece of information about the user. However, the offering
-of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
-the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
-format itself. [[!HTML]]</p>
+preferences for automatic text track selection">language preference</a> of the user for captions or
+subtitles. That is a (small) piece of information about the user. However, the offering of a caption
+file, and the choice whether to retrieve and consume it, are really characteristics of the format or
+protocol which does the offer (e.g. the HTML element), rather than of the caption format itself.
+[[!HTML]]</p>
 
 
 <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>

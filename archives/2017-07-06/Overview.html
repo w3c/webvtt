@@ -1807,12 +1807,13 @@ NOTE end of file
    </div>
    <h3 class="heading settled" data-level="1.3" id="styling"><span class="secno">1.3. </span><span class="content">Styling</span><a class="self-link" href="#styling"></a></h3>
    <p><i>This section is non-normative.</i></p>
-   <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element can target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
-   <div class="example" id="example-9351b070">
-    <a class="self-link" href="#example-9351b070"></a> 
-    <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://www.w3.org/TR/html51/document-metadata.html#the-style-element">style</a> element
- that styles all cues in the video with a gradient background and a text color, as well as changing
- the text color for all <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-1">WebVTT Bold Objects</a> in cues in the video.</p>
+   <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element can
+target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+   <div class="example" id="example-6a17c0df">
+    <a class="self-link" href="#example-6a17c0df"></a> 
+    <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://www.w3.org/TR/html51/document-metadata.html#the-style-element">style</a> element that
+ styles all cues in the video with a gradient background and a text color, as well as changing the
+ text color for all <a data-link-type="dfn" href="#webvtt-bold-object" id="ref-for-webvtt-bold-object-1">WebVTT Bold Objects</a> in cues in the video.</p>
 <pre>&lt;!doctype html>
 &lt;html>
  &lt;head>
@@ -2159,8 +2160,7 @@ precomposed character).</p>
        <p>Let <var>track</var> be the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text track</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-list-of-cues">list of
    cues</a> the <var>cue</var> is in.</p>
       <li>
-       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of
-   text tracks</a> before <var>track</var>.</p>
+       <p>Let <var>n</var> be the number of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> whose <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-mode">text track mode</a> is <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-showing">showing</a> and that are in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#list-of-text-tracks">list of text tracks</a> before <var>track</var>.</p>
       <li>
        <p>Increment <var>n</var> by one.</p>
       <li>
@@ -2506,8 +2506,7 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
     <li>
       Optionally (required if <var>hours</var> is non-zero): 
      <ol>
-      <li>Two or more <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>hours</var> as a base ten
-   integer.
+      <li>Two or more <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>hours</var> as a base ten integer.
       <li>A U+003A COLON character (:)
      </ol>
     <li>Two <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, representing the <var>minutes</var> as a base ten integer in the range
@@ -2590,8 +2589,8 @@ terminator</a>.</p>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-language-span" id="ref-for-webvtt-cue-language-span-1">WebVTT cue language span</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-timestamp" id="ref-for-webvtt-cue-timestamp-1">WebVTT cue timestamp</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-text-span" id="ref-for-webvtt-cue-text-span-1">WebVTT cue text span</a>, representing the text of the cue.
-    <li>An <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#character-references">HTML character reference</a>, representing one or two
- Unicode code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a>
+    <li>An <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#character-references">HTML character reference</a>, representing one or two Unicode
+ code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a>
    </ul>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text</dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-21">WebVTT line terminator</a>,
 followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
@@ -2673,8 +2672,8 @@ given:</p>
      <ul>
       <li><a data-link-type="dfn" href="#webvtt-cue-span-start-tag-annotation-text" id="ref-for-webvtt-cue-span-start-tag-annotation-text-1">WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.
-      <li>An <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#character-references">HTML character reference</a>, representing one or
-   two Unicode code points, as defined in HTML, in the text of the annotation. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a>
+      <li>An <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#character-references">HTML character reference</a>, representing one or two Unicode
+   code points, as defined in HTML, in the text of the annotation. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a>
      </ul>
     <li>A U+003E GREATER-THAN SIGN character (>).
    </ol>
@@ -2725,9 +2724,9 @@ given:</p>
     <li>
      <p>A U+003A COLON character (:).</p>
     <li>
-     <p>An arbitrary string of one or more characters other than <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
- The string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
- HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p>
+     <p>An arbitrary string of one or more characters other than <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>. The string
+ must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
+ GREATER-THAN SIGN).</p>
    </ol>
    <p>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-2">WebVTT region identifier setting</a> must be unique amongst all the <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-3">WebVTT region identifier settings</a> of all <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-7">WebVTT
 regions</a> of a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-9">WebVTT file</a>. For a region to exist, a region identifier setting has to be
@@ -3085,8 +3084,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  The file does not start with the correct <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-16">WebVTT file</a> signature and was therefore not
  successfully processed.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+ characters.</p>
     <li>
      <p>If <var>position</var> is past the end of <var>input</var>, then abort these steps. The file was successfully
  processed, but it contains no useful data and so no <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-15">WebVTT cues</a> were added
@@ -3102,8 +3101,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  character, then <a data-link-type="dfn" href="#collect-a-webvtt-block" id="ref-for-collect-a-webvtt-block-1">collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
  advance <var>position</var> to the next character in <var>input</var>.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are U+000A LINE FEED (LF)
- characters.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p>
     <li>
      <p>Let <var>regions</var> be an empty <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-1">text track list of regions</a>.</p>
     <li>
@@ -3153,8 +3151,8 @@ header</i> set, the user agent must run the following steps:</p>
      <p><i>Loop</i>: Run these substeps in a loop:</p>
      <ol>
       <li>
-       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED
-   (LF) characters. Let <var>line</var> be those characters, if any.</p>
+       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+   characters. Let <var>line</var> be those characters, if any.</p>
       <li>
        <p>Increment <var>line count</var> by 1.</p>
       <li>
@@ -3258,7 +3256,8 @@ header</i> set, the user agent must run the following steps:</p>
            <p>Otherwise, if <var>seen cue</var> is false and <var>buffer</var> starts with the substring
         "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
         LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
-        LATIN CAPITAL LETTER N), and the remaining characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>, then run these substeps:</p>
+        LATIN CAPITAL LETTER N), and the remaining characters in <var>buffer</var> (if any) are all <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII
+        whitespace</a>, then run these substeps:</p>
            <ol>
             <li>
              <p><i>Region creation</i>: Let <var>region</var> be a new <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-8">WebVTT region</a>.</p>
@@ -3498,8 +3497,8 @@ run the following steps:</p>
           <li>
            <p>Otherwise let <var>linepos</var> be the full <var>value</var> string and <var>linealign</var> be null.</p>
           <li>
-           <p>If <var>linepos</var> does not contain at least one <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digit</a>, then
-       jump to the step labeled <i>next setting</i>.</p>
+           <p>If <var>linepos</var> does not contain at least one <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digit</a>, then jump to the step
+       labeled <i>next setting</i>.</p>
           <li>
            <dl>
             <dt>
@@ -3626,11 +3625,11 @@ user agent must run the following steps:</p>
     <li>
      <p>If <var>position</var> is past the end of <var>input</var>, return an error and abort these steps.</p>
     <li>
-     <p>If the character indicated by <var>position</var> is not an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digit</a>, then return
- an error and abort these steps.</p>
+     <p>If the character indicated by <var>position</var> is not an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digit</a>, then return an error
+ and abort these steps.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">Collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">Collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+ the collected substring.</p>
     <li>
      <p>Interpret <var>string</var> as a base-ten integer. Let <var>value<sub>1</sub></var> be that
  integer.</p>
@@ -3641,8 +3640,8 @@ user agent must run the following steps:</p>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+003A
  COLON character (:), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+ the collected substring.</p>
     <li>
      <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
  steps.</p>
@@ -3656,8 +3655,8 @@ user agent must run the following steps:</p>
        <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a
    U+003A COLON character (:), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
       <li>
-       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>,
-   and let <var>string</var> be the collected substring.</p>
+       <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+   the collected substring.</p>
       <li>
        <p>If <var>string</var> is not exactly two characters in length, return an error and abort these
    steps.</p>
@@ -3671,8 +3670,8 @@ user agent must run the following steps:</p>
      <p>If <var>position</var> is beyond the end of <var>input</var> or if the character at <var>position</var> is not a U+002E
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move <var>position</var> forwards one character.</p>
     <li>
-     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>,
- and let <var>string</var> be the collected substring.</p>
+     <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#collect-a-sequence-of-code-points">collect a sequence of code points</a> that are <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#ascii-digits">ASCII digits</a>, and let <var>string</var> be
+ the collected substring.</p>
     <li>
      <p>If <var>string</var> is not exactly three characters in length, return an error and abort these
  steps.</p>
@@ -3927,8 +3926,8 @@ value).</p>
        </dl>
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="html-character-reference-in-data-state">HTML character reference in data state</dfn>
       <dd>
-       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference-1">consume an HTML character reference</a>, with no <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#additional-allowed-character">additional
-    allowed character</a>.</p>
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference-1">consume an HTML character reference</a>, with no <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#additional-allowed-character">additional allowed
+    character</a>.</p>
        <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>result</var>.</p>
        <p>Otherwise, append the data of the character tokens that were returned to <var>result</var>.</p>
        <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-data-state" id="ref-for-webvtt-data-state-2">WebVTT data state</a>, and jump to the
@@ -4043,18 +4042,18 @@ value).</p>
       marker" entry below.</p>
         <dt>End-of-file marker
         <dd>
-         <p>Remove any leading or trailing <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters from <var>buffer</var>,
-      and replace any sequence of one or more consecutive <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters in <var>buffer</var> with a single U+0020 SPACE character; then, return a start tag
-      whose tag name is <var>result</var>, with the classes given in <var>classes</var>, and with <var>buffer</var> as the
-      annotation, and abort these steps.</p>
+         <p>Remove any leading or trailing <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters from <var>buffer</var>, and
+      replace any sequence of one or more consecutive <a data-link-type="dfn" href="https://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> characters in <var>buffer</var> with a single U+0020 SPACE character; then, return a start tag whose tag name is <var>result</var>,
+      with the classes given in <var>classes</var>, and with <var>buffer</var> as the annotation, and abort these
+      steps.</p>
         <dt>Anything else
         <dd>
          <p>Append <var>c</var> to <var>buffer</var> and jump to the step labeled <i>next</i>.</p>
        </dl>
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="html-character-reference-in-annotation-state">HTML character reference in annotation state</dfn>
       <dd>
-       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference-2">consume an HTML character reference</a>, with the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#additional-allowed-character">additional
-    allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference-2">consume an HTML character reference</a>, with the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/syntax.html#additional-allowed-character">additional allowed
+    character</a> being U+003E GREATER-THAN SIGN (>).</p>
        <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>buffer</var>.</p>
        <p>Otherwise, append the data of the character tokens that were returned to <var>buffer</var>.</p>
        <p>Then, in any case, set <var>tokenizer state</var> to the <a data-link-type="dfn" href="#webvtt-start-tag-annotation-state" id="ref-for-webvtt-start-tag-annotation-state-6">WebVTT start tag annotation state</a>, and
@@ -4137,10 +4136,13 @@ Node Objects</a> to DOM nodes:</p>
       <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#the-rt-element">rt</a> element.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-4">WebVTT Voice Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-title">title</a> attribute set to the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
+      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-title">title</a> attribute set to
+   the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-5">WebVTT Voice Object</a>’s value.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-3">WebVTT Language Object</a>
-      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-lang">lang</a> attribute set to the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable language</a>.
+      <td class="long">HTML <a data-link-type="element" href="https://www.w3.org/TR/html51/textlevel-semantics.html#elementdef-span">span</a> element with a <a data-link-type="element-attr" href="https://www.w3.org/TR/html51/dom.html#attr-lang">lang</a> attribute set to
+   the <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-4">WebVTT Language Object</a>’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-5">applicable
+   language</a>.
      <tr>
       <td class="long"><a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-4">WebVTT Text Object</a>
       <td class="long"><code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#text">Text</a></code> node whose <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#data">data</a></code> is the value of the <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-5">WebVTT Text
@@ -4179,10 +4181,11 @@ agent. The processing model is quite tightly linked to media elements in HTML. W
 WebVTT in media players that don’t support CSS, equivalent visual rendering will need to be
 implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element), or
-of another playback mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text
-tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>, or other playback mechanism, are
-rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling this algorithm.</p>
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element), or of another playback
+mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> that use these
+rules for a given <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>, or other playback mechanism, are rendered together, to avoid
+overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling
+this algorithm.</p>
    <p class="note" role="note">In HTML, audio elements don’t have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
 audio resources, they need to publish them in a video element for rendering by the user agent.</p>
@@ -4474,18 +4477,20 @@ following algorithm.</p>
       <li>
        <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
     a hypothetical document that contains a single empty element with no explicit name, no
-    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> for the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> that were sourced from the
-    given WebVTT file. The selectors must not match other <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>. In this hypothetical document, the element must not match any
-    selector that would match the element itself.</p>
+    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> for the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> that were sourced from the given WebVTT file.
+    The selectors must not match other <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>. In this
+    hypothetical document, the element must not match any selector that would match the element
+    itself.</p>
        <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://www.w3.org/TR/selectors4/#originating-element">originating element</a> for
     the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
       <li>
        <p>For the purpose of determining the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a> of the declarations in
     STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
     same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element’s document.</p>
-       <div class="example" id="example-cd41a39f">
-        <a class="self-link" href="#example-cd41a39f"></a> 
+    must be after any style sheets that apply to the associated <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element’s
+    document.</p>
+       <div class="example" id="example-29aea910">
+        <a class="self-link" href="#example-29aea910"></a> 
         <p>For example, given the following (invalid) HTML document:</p>
 <pre>&lt;!doctype html>
 &lt;title>Invalid cascade example&lt;/title>
@@ -4505,16 +4510,15 @@ STYLE
 00:00:00.000 --> 00:00:25.000
 Red or green?
 </pre>
-        <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://www.w3.org/TR/html51/document-metadata.html#the-style-element">style</a> element is after
-     the <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element in the document order.</p>
+        <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://www.w3.org/TR/html51/document-metadata.html#the-style-element">style</a> element is after the <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element in the document order.</p>
        </div>
       <li>
        <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
     file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s
     scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
     resolve.</p>
-       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css3-background/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-track-element">track</a> elements to issue network requests as the user watches the video, which could be a privacy
-    issue.</strong></p>
+       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css3-background/#background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-track-element">track</a> elements to issue
+    network requests as the user watches the video, which could be a privacy issue.</strong></p>
       <li>
        <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
    contents.</p>
@@ -5031,8 +5035,7 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-28">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements,
-and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="7.2.1" id="the-cue-pseudo-element"><span class="secno">7.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5312,8 +5315,8 @@ rendering</a> must be immediately rerun.</p>
      <p>Can be set.</p>
     <dt><var>fragment</var> = <var>cue</var> . <a class="idl-code" data-link-type="method" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-3">getCueAsHTML</a>()
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#html-element">HTML
-  elements</a> and other DOM nodes.</p>
+     <p>Returns the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a> as a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> of <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#html-element">HTML elements</a> and
+  other DOM nodes.</p>
    </dl>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="constructor" data-export="" data-lt="VTTCue(startTime, endTime, text)" id="dom-vttcue-vttcue"><code>VTTCue(<var>startTime</var>, <var>endTime</var>, <var>text</var>)</code></dfn> constructor, when invoked, must run the following steps:</p>
    <ol class="algorithm">
@@ -5475,9 +5478,9 @@ value.</p>
 cue text</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-43">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-14">VTTCue</a></code> object represents. On setting, the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text
 track cue text</a> must be set to the new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="method" data-export="" id="dom-vttcue-getcueashtml"><code>getCueAsHTML()</code></dfn> method must convert the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue
-text</a> to a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#entry-settings-object">entry settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules" id="ref-for-webvtt-cue-text-dom-construction-rules-1">WebVTT cue text DOM construction rules</a> to
-the result of applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue
-text</a>.</p>
+text</a> to a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> for the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#responsible-document">responsible document</a> specified by the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#entry-settings-object">entry
+settings object</a> by applying the <a data-link-type="dfn" href="#webvtt-cue-text-dom-construction-rules" id="ref-for-webvtt-cue-text-dom-construction-rules-1">WebVTT cue text DOM construction rules</a> to the result of
+applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-3">WebVTT cue text parsing rules</a> to the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-text">text track cue text</a>.</p>
    <p class="note" role="note">A fallback language is not provided for <code class="idl"><a data-link-type="idl" href="#dom-vttcue-getcueashtml" id="ref-for-dom-vttcue-getcueashtml-4">getCueAsHTML()</a></code> since a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/dom/#documentfragment">DocumentFragment</a></code> cannot expose language information.</p>
    <h3 class="heading settled algorithm" data-algorithm="The VTTRegion interface" data-level="8.2" id="the-vttregion-interface"><span class="secno">8.2. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-4">VTTRegion</a></code> interface</span><a class="self-link" href="#the-vttregion-interface"></a></h3>
    <p>The following interface is used to expose WebVTT regions in the DOM API:</p>
@@ -5696,11 +5699,10 @@ triggers at their timestamps, a malicious file might present such triggers very 
 causing undue resource consumption.</p>
    <h3 class="heading settled" id="privacy-of-preference"><span class="content">Privacy of preference</span><a class="self-link" href="#privacy-of-preference"></a></h3>
    <p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
-the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for
-captions or subtitles. That is a (small) piece of information about the user. However, the offering
-of a caption file, and the choice whether to retrieve and consume it, are really characteristics of
-the format or protocol which does the offer (e.g. the HTML element), rather than of the caption
-format itself. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a></p>
+the origin server that the user has a need for captions or subtitles, and also the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#honor-user-preferences-for-automatic-text-track-selection">language preference</a> of the user for captions or
+subtitles. That is a (small) piece of information about the user. However, the offering of a caption
+file, and the choice whether to retrieve and consume it, are really characteristics of the format or
+protocol which does the offer (e.g. the HTML element), rather than of the caption format itself. <a data-link-type="biblio" href="#biblio-html51">[HTML51]</a></p>
    <h2 class="no-num heading settled" id="acknowledgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Thanks to the SubRip community, including in particular Zuggy and ai4spam, for their work on the
 SubRip software program whose SRT file format was used as the basis for the WebVTT text track file
