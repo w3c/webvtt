@@ -1,0 +1,134 @@
+<pre class=anchors>
+urlPrefix: https://www.w3.org/TR/html51/
+    type: dfn
+        urlPrefix: infrastructure.html
+            text: ascii digits
+            text: split a string on spaces
+            text: skip whitespace
+            text: alphanumeric ascii characters
+            text: space character
+            text: MIME type
+            text: ASCII digits
+            text: collect a sequence of code points; url: #collect-a-sequence-of-characters
+            text: case-sensitive
+            text: rules for parsing floating-point number values
+            text: HTML namespace
+            text: HTML element
+            text: ascii whitespace; url: #space-characters
+        urlPrefix: semantics-embedded-content.html
+            text: text track kind; url: #kind-of-track
+            text: text track cue; url: #cue
+            text: text track list of cues; url: #list-of-cues
+            text: text track; url: #text-tracks
+            text: list of text tracks
+            text: media element
+            text: text track mode; url: #a-mode
+            text: text track showing; url: #modedef-track-showing
+            text: rules for updating the text track rendering
+            text: text track cue active flag
+            text: text track cue text
+            text: text track cue display state
+            text: current playback position; url: #current-position
+            text: text track cue identifier
+            text: text track cue pause-on-exit flag; url: #pause-on-exit-flag
+            text: rules for extracting the chapter title; url: #text-track-rules-for-extracting-the-chapter-title
+            text: text track cue start time
+            text: text track cue end time
+            text: expose a user interface to the user; url: #exposing-a-user-interface
+            text: text track cue order
+            text: honor user preferences for automatic text track selection
+        urlPrefix: webappapis.html
+            text: responsible document
+            text: entry settings object
+        urlPrefix: syntax.html
+            text: character references
+            text: additional allowed character
+            text: consume a character reference
+    type: element
+        urlPrefix: textlevel-semantics.html
+            text: span; url: #elementdef-span
+            text: i; url: #elementdef-i
+            text: b; url: #elementdef-b
+            text: u; url: #elementdef-u
+            text: ruby; url: #the-ruby-element
+            text: rt; url: #the-rt-element
+        urlPrefix: semantics-embedded-content.html
+            text: video; url: #the-video-element
+            text: audio; url: #the-audio-element
+            text: track; url: #the-track-element
+        urlPrefix: document-metadata.html
+            text: style; url: #the-style-element
+    type: element-attr
+        urlPrefix: dom.html
+            text: title; url: #the-title-attribute
+            text: lang; url: #element-attrdef-global-lang
+            text: class; url: #classes
+        urlPrefix: semantics-embedded-content.html; for: track
+            text: srclang; url: #dom-htmltrackelement-srclang
+    type: interface
+        urlPrefix: semantics-embedded-content.html
+            text: TextTrackCue; url: #texttrackcue-texttrackcue
+    type: method; for: TextTrack
+        urlPrefix: semantics-embedded-content.html
+            text: addCue(); url: #dom-texttrack-addcue
+
+urlPrefix: https://www.w3.org/TR/encoding/#; type: dfn; spec: ENCODING-CR;
+    text: utf-8 decode
+
+urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WEBIDL-1
+    type: interface
+        text: IndexSizeError
+        text: DOMString; url: idl-DOMString
+        text: double; url: idl-double
+        text: boolean; url: idl-boolean
+        text: long; url: idl-long
+
+urlPrefix: https://www.w3.org/TR/dom/#; spec: dom4-20151119
+    type: interface
+        text: Document
+        text: DocumentFragment
+        text: Text
+        text: ProcessingInstruction
+    type: attribute; for: CharacterData
+        text: data; url: concept-cd-data
+    type: attribute; for: ProcessingInstruction
+        text: target; url: dom-event-target
+    type: attribute; for: Node
+        text: namespaceURI; url: dom-element-namespaceuri
+        text: ownerDocument; url: dom-node-ownerdocument
+</pre>
+
+<pre class=link-defaults>
+spec:css-ruby-1; type:value; text:ruby-base
+spec:css-color-4; type:property; text:color
+spec:css-fonts-3; type:property; text:font-style
+spec:css-fonts-3; type:property; text:font-weight
+spec:css-ruby-1; type:value; text:ruby
+spec:css-ruby-1; type:value; text:ruby-text
+spec:css22; type:property; text:min-height
+spec:css22; type:property; text:max-height
+spec:css-flexbox-1; type:value; text:inline-flex
+spec:selectors-3; type:selector; text:::before
+spec:selectors-3; type:selector; text:::after
+spec:css-display-3; type:property; text:display
+</pre>
+
+<pre class=biblio>
+{
+    "MAUR": {
+        "authors": [ "Shane McCarron", "Michael Cooper", "Mark Sadecki"],
+        "href": "http://www.w3.org/TR/media-accessibility-reqs/",
+        "title": "Media Accessibility User Requirements",
+        "status": "WD",
+        "publisher": "W3C"
+    },
+    "ENCODING-CR": {
+        "authors": ["Anne van Kesteren", "Joshua Bell", "Addison Phillips"],
+        "href": "https://www.w3.org/TR/2017/CR-encoding-20170413/",
+        "title": "Encoding",
+        "status": "CR",
+        "publisher": "W3C",
+        "date": "13 April 2017"
+    }
+}
+</pre>

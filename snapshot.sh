@@ -53,6 +53,26 @@ check "Add Date metadata"
 replace "1,/^$/s/^$/Previous Version: $PREV_URL/" index.temp.bs
 check "Add Previous Version metadata"
 
+
+replace "1,/^Prepare For TR: false$/s/^$/Prepare For TR: true/" index.temp.bs
+check "Prepare For TR"
+replace "s/^Default Ref Status: current$/Default Ref Status: snapshot/" index.temp.bs
+check "Default Ref Status"
+replace "s/\[\[!WEBIDL/\[\[!WEBIDL-1/" index.temp.bs
+check "Replace WEBIDL ref with W3C snapshot"
+replace "s/\[\[!HTML/\[\[!HTML51/g" index.temp.bs
+check "Replace HTML ref with W3C snapshot"
+
+replace "/<pre class=link-defaults>/,/<.pre>/d" index.temp.bs
+replace "/<pre class=biblio>/,/<.pre>/d" index.temp.bs
+replace "/<pre class=anchors>/,/<.pre>/{
+  /<pre class=anchors>/{
+    r anchors-w3c.txt
+  }
+  d
+}" index.temp.bs
+check "Replacing anchors with W3C anchors"
+
 bikeshed spec index.temp.bs archives/$NEW_DATE/Overview.html
 check "Generate with bikeshed"
 
