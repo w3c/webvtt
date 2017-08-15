@@ -1139,9 +1139,9 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
 
  <dt><dfn lt="WebVTT region identifier">An identifier</dfn></dt>
  <dd>
-  <p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
+  <p>An arbitrary string of zero or more characters other than U+0020 SPACE or U+0009 CHARACTER
   TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D
-  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). An identifier is required for a region to exist.</p>
+  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). Defaults to the empty string.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region width">A width</dfn></dt>
@@ -1665,8 +1665,11 @@ given:</p>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
 identifier setting">WebVTT region identifier settings</a> of all <a lt="WebVTT region">WebVTT
-regions</a> of a <a>WebVTT file</a>. For a region to exist, a region identifier setting has to be
-provided.</p>
+regions</a> of a <a>WebVTT file</a>.</p>
+
+<p>A <a>WebVTT region identifier setting</a> must be present in each <a>WebVTT cue settings
+list</a>. Without an identifier, it is not possible to associate a <a>WebVTT cue</a> with a
+<a>WebVTT region</a> in the syntax.</p>
 
 <p class="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
