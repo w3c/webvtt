@@ -388,7 +388,11 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <pre>
  WEBVTT
 
- 1
+ test
+ 00:00.000 --> 00:02.000
+ This is a test.
+
+ 123
  00:00.000 --> 00:02.000
  That's an, an, that's an L!
 
@@ -397,11 +401,21 @@ CSS comment (e.g. <code>/**/</code>).</p>
  Transcrit par Célestes&trade;
  </pre>
 
- <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
- escape sequences):</p>
+ <p>This allows a style sheet to specifically target the cues.</p>
 
  <pre>
- ::cue(#\31) { color: lime; }
+ /* style for cue: test */
+ ::cue(#test) { color: lime; }
+ </pre>
+
+ <p>Due to the syntax rules of CSS, some characters need to be escaped with CSS character escape
+ sequences. For example, an ID that starts with a number 0-9 needs to be escaped. The ID
+ <code>123</code> can be represented as "\31 23" (31 refers to the Unicode code point for "1").</p>
+
+ <pre>
+ /* style for cue: 123 */
+ ::cue(#\31 23) { color: lime; }
+ /* style for cue: crédit de transcription */
  ::cue(#crédit\ de\ transcription) { color: red; }
  </pre>
 
