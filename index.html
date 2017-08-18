@@ -1186,7 +1186,7 @@ Possible extra rowspan handling
       background-repeat: no-repeat;
     }
   </style>
-  <meta content="Bikeshed version 703f6db9e284db713dfef94b41302880e3e85262" name="generator">
+  <meta content="Bikeshed version 47cdb2827beffb8d4912759c29bec11efe778210" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
 <style>
  samp {
@@ -1443,7 +1443,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-08-15">15 August 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-08-18">18 August 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1829,12 +1829,16 @@ NOTE style blocks cannot appear after the first cue.
    <h3 class="heading settled" data-level="1.4" id="introduction-other-features"><span class="secno">1.4. </span><span class="content">Other features</span><a class="self-link" href="#introduction-other-features"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>WebVTT also supports some less-often used features.</p>
-   <div class="example" id="example-5046f22f">
-    <a class="self-link" href="#example-5046f22f"></a> 
+   <div class="example" id="example-59f83607">
+    <a class="self-link" href="#example-59f83607"></a> 
     <p>In this example, the cues have an identifier:</p>
 <pre>WEBVTT
 
-1
+test
+00:00.000 --> 00:02.000
+This is a test.
+
+123
 00:00.000 --> 00:02.000
 That’s an, an, that’s an L!
 
@@ -1842,9 +1846,16 @@ crédit de transcription
 00:04.000 --> 00:05.000
 Transcrit par Célestes™
 </pre>
-    <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
- escape sequences):</p>
-<pre>::cue(#\31) { color: lime; }
+    <p>This allows a style sheet to specifically target the cues.</p>
+<pre>/* style for cue: test */
+::cue(#test) { color: lime; }
+</pre>
+    <p>Due to the syntax rules of CSS, some characters need to be escaped with CSS character escape
+ sequences. For example, an ID that starts with a number 0-9 needs to be escaped. The ID <code>123</code> can be represented as "\31 23" (31 refers to the Unicode code point for "1"). See <a href="https://www.w3.org/International/questions/qa-escapes">Using character escapes in markup
+ and CSS</a> for more information on CSS escapes.</p>
+<pre>/* style for cue: 123 */
+::cue(#\31 23) { color: lime; }
+/* style for cue: crédit de transcription */
 ::cue(#crédit\ de\ transcription) { color: red; }
 </pre>
    </div>
@@ -6044,7 +6055,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-ui-3/#propdef-outline">outline</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[CSS-VALUES]</a> defines the following terms:
+    <a data-link-type="biblio">[css-values-4]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-values-4/#vh">vh</a>
      <li><a href="https://drafts.csswg.org/css-values-4/#vw">vw</a>
@@ -6220,8 +6231,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://drafts.csswg.org/css-values/">CSS Values and Units Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-values/">https://drafts.csswg.org/css-values/</a>
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
    <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-writing-modes-3/">http://dev.w3.org/csswg/css-writing-modes-3/</a>
-   <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
-   <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-css22">[CSS22]
    <dd>Bert Bos. <a href="http://dev.w3.org/csswg/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="http://dev.w3.org/csswg/css2/">http://dev.w3.org/csswg/css2/</a>
    <dt id="biblio-css3-background">[CSS3-BACKGROUND]
