@@ -5258,7 +5258,8 @@ enum DirectionSetting { "" /* horizontal */, "rl", "lr" };
 enum LineAlignSetting { "start", "center", "end" };
 enum PositionAlignSetting { "line-left", "center", "line-right", "auto" };
 enum AlignSetting { "start", "center", "end", "left", "right" };
-[Constructor(double startTime, double endTime, DOMString text)]
+[Exposed=Window,
+ Constructor(double startTime, double endTime, DOMString text)]
 interface VTTCue : TextTrackCue {
   attribute VTTRegion? region;
   attribute DirectionSetting vertical;
@@ -5634,7 +5635,8 @@ applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue text<
 
 <pre class="idl">
 enum ScrollSetting { "" /* none */, "up" };
-[Constructor]
+[Exposed=Window,
+ Constructor]
 interface VTTRegion {
   attribute DOMString id;
   attribute double width;
