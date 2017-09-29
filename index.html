@@ -1186,9 +1186,9 @@ Possible extra rowspan handling
       background-repeat: no-repeat;
     }
   </style>
-  <meta content="Bikeshed version 6675465218f7813fa6c3cfedf0a0e503b6d8b918" name="generator">
+  <meta content="Bikeshed version afd377055fd60b78052b08cc89f300fd74918048" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="c1aa9b72e7b9d74a1ac6e9b635200a7021465223" name="document-revision">
+  <meta content="76feac6af2228716ad00a0eaed041a053b9c95d4" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-09-14">14 September 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-09-29">29 September 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1454,14 +1454,14 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dt>Test Suite:
      <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/webvtt">https://github.com/w3c/web-platform-tests/tree/master/webvtt</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><span class="p-name fn">NOBODY (OOPS!)</span>
+     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:silvia.pfeiffer@data61.csiro.au">Silvia Pfeiffer</a> (<a class="p-org org" href="https://www.csiro.au/">CSIRO</a>)
      <dt class="editor">Former Editors:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software AS</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="p-org org" href="http://nicta.com.au/">NICTA</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:philipj@opera.com">Philip Jägenstedt</a> (<a class="p-org org" href="http://www.opera.com/">Opera Software ASA</a>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:ian@hixie.ch">Ian Hickson</a> (<a class="p-org org" href="http://www.google.com/">Google</a>)
      <dt>Participate:
-     <dd><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (
+     <dd><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (<a href="https://github.com/w3c/webvtt/issues/new">new issue</a>, <a href="https://github.com/w3c/webvtt/issues">open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---">legacy open bugs</a>)
      <dt>Commits:
      <dd><a href="https://github.com/w3c/webvtt/commits">GitHub w3c/webvtt/commits</a>
      <dd><a href="https://twitter.com/webvtt">@webvtt</a>
@@ -4490,7 +4490,7 @@ Red or green?
     file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s
     scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
     resolve.</p>
-       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import" id="ref-for-at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background-image" id="ref-for-background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①⓪">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element" id="ref-for-the-track-element">track</a> elements to issue
+       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import" id="ref-for-at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image" id="ref-for-propdef-background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①⓪">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element" id="ref-for-the-track-element">track</a> elements to issue
     network requests as the user watches the video, which could be a privacy issue.</strong></p>
       <li>
        <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object⑧">WebVTT Internal Node Objects</a> are equivalent to elements with the same
@@ -4702,7 +4702,7 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
    </table>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font" id="ref-for-propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects①①">list of WebVTT Node Objects</a> must be set to <span class="css">5vh sans-serif</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color" id="ref-for-propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects①②">list of WebVTT Node Objects</a> must be set to <span class="css">rgba(255,255,255,1)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object⑥">WebVTT Ruby
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object⑥">WebVTT Ruby
 Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space" id="ref-for-propdef-white-space">white-space</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects①③">list of WebVTT Node Objects</a> must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-white-space-pre-line" id="ref-for-valdef-white-space-pre-line">pre-line</a>. <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font-style" id="ref-for-propdef-font-style">font-style</a> property on <a data-link-type="dfn" href="#webvtt-italic-object" id="ref-for-webvtt-italic-object③">WebVTT Italic Objects</a> must be set
@@ -4716,7 +4716,7 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position" id="ref-for-propdef-position①">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-absolute" id="ref-for-valdef-position-absolute①">absolute</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-4/#propdef-writing-mode" id="ref-for-propdef-writing-mode①">writing-mode</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-4/#valdef-writing-mode-horizontal-tb" id="ref-for-valdef-writing-mode-horizontal-tb">horizontal-tb</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background①">background</a> shorthand property must be set to <span class="css">rgba(0,0,0,0.8)</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background①">background</a> shorthand property must be set to <span class="css">rgba(0,0,0,0.8)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap" id="ref-for-propdef-overflow-wrap①">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word" id="ref-for-valdef-overflow-wrap-break-word①">break-word</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font" id="ref-for-propdef-font①">font</a> shorthand property must be set to <span class="css">5vh sans-serif</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color" id="ref-for-propdef-color①">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
@@ -5012,7 +5012,7 @@ pseudo-elements defined below won’t have any effect according to this specific
    <h4 class="heading settled" data-level="7.2.1" id="the-cue-pseudo-element"><span class="secno">7.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑤">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
-corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background②">background</a> shorthand must be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box①">WebVTT cue background box</a> rather than the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑥">list of WebVTT Node Objects</a>.</p>
+corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background②">background</a> shorthand must be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box①">WebVTT cue background box</a> rather than the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑥">list of WebVTT Node Objects</a>.</p>
    <p>The following properties apply to the <span class="css">::cue</span> pseudo-element with no argument; other properties
 set on the pseudo-element must be ignored:</p>
    <ul class="brief">
@@ -5021,7 +5021,7 @@ set on the pseudo-element must be ignored:</p>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility" id="ref-for-propdef-visibility">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration" id="ref-for-propdef-text-decoration①">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow" id="ref-for-propdef-text-shadow">text-shadow</a>
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background③">background</a> shorthand
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background③">background</a> shorthand
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-3/#propdef-outline" id="ref-for-propdef-outline">outline</a> shorthand
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font" id="ref-for-propdef-font③">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height" id="ref-for-propdef-line-height①">line-height</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space" id="ref-for-propdef-white-space②">white-space</a>
@@ -5107,7 +5107,7 @@ being treated as follows:</p>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility" id="ref-for-propdef-visibility①">visibility</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration" id="ref-for-propdef-text-decoration②">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow" id="ref-for-propdef-text-shadow①">text-shadow</a>
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background④">background</a> shorthand
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background④">background</a> shorthand
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-3/#propdef-outline" id="ref-for-propdef-outline①">outline</a> shorthand
     <li>properties relating to the transition and animation features
    </ul>
@@ -5120,7 +5120,7 @@ when the selector does not contain the <a class="css" data-link-type="maybe" hre
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position" id="ref-for-propdef-ruby-position①">ruby-position</a>
    </ul>
    <p>Properties that do not apply must be ignored.</p>
-   <p>As a special exception, the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#background" id="ref-for-background⑤">background</a> shorthand, when they
+   <p>As a special exception, the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background⑤">background</a> shorthand, when they
 would have been applied to the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③①">list of WebVTT Node Objects</a>, must instead be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box②">WebVTT cue background box</a>.</p>
    <h4 class="heading settled" data-level="7.2.2" id="the-past-and-future-pseudo-classes"><span class="secno">7.2.2. </span><span class="content">The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo④">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo④">:future</a> pseudo-classes</span><a class="self-link" href="#the-past-and-future-pseudo-classes"></a></h4>
    <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo⑤">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo⑤">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑤">WebVTT
@@ -5188,7 +5188,7 @@ rendering</a> must be immediately rerun.</p>
    <dl class="note">
     <dt><var>cue</var> = new <a class="idl-code" data-link-type="constructor" href="#dom-vttcue-vttcue" id="ref-for-dom-vttcue-vttcue①">VTTCue</a>( <var>startTime</var>, <var>endTime</var>, <var>text</var> )
     <dd>
-     <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue②">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue-2" id="ref-for-dom-texttrack-addcue-2">addCue()</a></code> method.</p>
+     <p>Returns a new <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue②">VTTCue</a></code> object, for use with the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue" id="ref-for-dom-texttrack-addcue">addCue()</a></code> method.</p>
      <p>The <var>startTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-start-time" id="ref-for-text-track-cue-start-time①">text track cue start time</a>.</p>
      <p>The <var>endTime</var> argument sets the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-end-time" id="ref-for-text-track-cue-end-time①">text track cue end time</a>.</p>
      <p>The <var>text</var> argument sets the <a data-link-type="dfn" href="#text-track-cue-text" id="ref-for-text-track-cue-text⑥">text track cue text</a>.</p>
@@ -6090,8 +6090,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[css3-background]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#background">background</a>
-     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#background-image">background-image</a>
+     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a>
+     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS3-RUBY]</a> defines the following terms:
@@ -6145,7 +6145,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><a href="https://html.spec.whatwg.org/multipage/media.html#texttrackcue">TextTrackCue</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue-2">addCue(cue)</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/media.html#dom-texttrack-addcue">addCue(cue)</a>
      <li><a href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a>
      <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a>
@@ -6203,7 +6203,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-bcp47">[BCP47]
    <dd>A. Phillips; M. Davis. <a href="https://tools.ietf.org/html/bcp47">Tags for Identifying Languages</a>. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>
    <dt id="biblio-bidi">[BIDI]
-   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="http://www.unicode.org/reports/tr9/tr9-35.html">Unicode Bidirectional Algorithm</a>. 18 May 2016. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/tr9-35.html">http://www.unicode.org/reports/tr9/tr9-35.html</a>
+   <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="https://www.unicode.org/reports/tr9/tr9-37.html">Unicode Bidirectional Algorithm</a>. 14 May 2017. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-37.html">https://www.unicode.org/reports/tr9/tr9-37.html</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
