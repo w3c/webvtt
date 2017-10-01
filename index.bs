@@ -626,6 +626,12 @@ requirements.</p>
  <dt>User agents with no scripting support</dt>
  <dd><p>All processing requirements in this specification apply, except those in [[#api]].</p></dd>
 
+ <dt>User agents that do not support CSS</dt>
+ <dd><p>All processing requirements in this specification apply, except those in [[#rendering]] and
+ in [[#css-extensions]]. The user agent must instead implement equivalent visual rendering to what a
+ CSS based rendering produces. [[#applying-css-properties]] lists the default styling properties in
+ CSS speak that will also define the default styling in such user agents.</p></dd>
+
  <dt>Conformance checkers</dt>
  <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
  conformance criteria described in this specification. The term "validator" is equivalent to
@@ -2429,9 +2435,8 @@ header</i> set, the user agent must run the following steps:</p>
 
 <h3 id=region-settings-parsing algorithm>WebVTT region settings parsing</h3>
 
-<p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region
-settings</dfn> from a string |input| for a <a>text track</a>, the user agent must run the following
-algorithm.</p>
+<p>When the <a>WebVTT parser</a> says to <dfn>collect WebVTT region settings</dfn> from a string
+|input| for a <a>text track</a>, the user agent must run the following algorithm.</p>
 
 <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a>
 that is used as a root node for <a lt="List of WebVTT node objects">lists of WebVTT node
@@ -2560,9 +2565,9 @@ means that it is aborted at that point and returns nothing.</p>
 
 <h3 id=cue-timings-and-settings-parsing algorithm>WebVTT cue timings and settings parsing</h3>
 
-<p>When the algorithm above requires that the user agent <dfn>collect WebVTT cue timings and
-settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
-<a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
+<p>When the algorithm above requires to <dfn>collect WebVTT cue timings and settings</dfn> from a
+string |input| using a <a>text track list of regions</a> |regions| for a <a>WebVTT cue</a> |cue|,
+the user agent must run the following algorithm.</p>
 
 <ol class=algorithm>
 
@@ -3737,9 +3742,9 @@ follows:</p>
 <h2 id=rendering>Rendering</h2>
 
 <p class="note">This section describes in some detail how to visually render WebVTT cues in a user
-agent. The processing model is quite tightly linked to media elements in HTML. When supporting
-WebVTT in media players that don't support CSS, equivalent visual rendering will need to be
-implemented.</p>
+agent. The processing model is quite tightly linked to media elements in HTML, where CSS is
+available. When supporting WebVTT in media players that do not support CSS, equivalent visual
+rendering will need to be implemented.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
@@ -3940,9 +3945,9 @@ manner suiting the user.</p>
 dragging them to another location on the <a element>video</a>, or even off the <a element>video</a>
 entirely.</p>
 
-<p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn> to
-obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
-following algorithm.</p>
+<p>When the algorithm above requires to <dfn>apply WebVTT cue settings</dfn> to obtain CSS boxes
+from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the following
+algorithm.</p>
 
 <ol class=algorithm>
 
@@ -4653,7 +4658,7 @@ then they must be interpreted as defined in the next section.</p>
 <h2 id=css-extensions>CSS extensions</h2>
 
 <p class="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
-apply to WebVTT. This section does not apply to user agents that don't support CSS.</p>
+apply to WebVTT. This section does not apply to user agents that do not support CSS.</p>
 
 
 <h3 id=css-extensions-introduction>Introduction</h3>

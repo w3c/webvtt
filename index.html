@@ -1188,7 +1188,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version afd377055fd60b78052b08cc89f300fd74918048" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="76feac6af2228716ad00a0eaed041a053b9c95d4" name="document-revision">
+  <meta content="5b07860bcee459ea12d00a9bcd7f8733630a6278" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-09-29">29 September 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-10-01">1 October 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2024,6 +2024,12 @@ requirements.</p>
     <dt>User agents with no scripting support
     <dd>
      <p>All processing requirements in this specification apply, except those in <a href="#api">§8 API</a>.</p>
+    <dt>User agents that do not support CSS
+    <dd>
+     <p>All processing requirements in this specification apply, except those in <a href="#rendering">§6 Rendering</a> and
+ in <a href="#css-extensions">§7 CSS extensions</a>. The user agent must instead implement equivalent visual rendering to what a
+ CSS based rendering produces. <a href="#applying-css-properties">§6.1.1 Applying CSS properties to WebVTT Node Objects</a> lists the default styling properties in
+ CSS speak that will also define the default styling in such user agents.</p>
     <dt>Conformance checkers
     <dd>
      <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file③">WebVTT file</a> conforms to the applicable
@@ -3274,9 +3280,7 @@ header</i> set, the user agent must run the following steps:</p>
      <p>Otherwise, return null.</p>
    </ol>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT region settings parsing" data-level="5.2" id="region-settings-parsing"><span class="secno">5.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
-   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser④">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT region settings" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
-settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track⑧">text track</a>, the user agent must run the following
-algorithm.</p>
+   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser④">WebVTT parser</a> says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track⑧">text track</a>, the user agent must run the following algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region⑨">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects">lists of WebVTT node
 objects</a>. This algorithm returns a list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object②">WebVTT Region
 Objects</a>.</p>
@@ -3386,8 +3390,9 @@ means that it is aborted at that point and returns nothing.</p>
      <p>Return <var>percentage</var>.</p>
    </ol>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT cue timings and settings parsing" data-level="5.3" id="cue-timings-and-settings-parsing"><span class="secno">5.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
-   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT cue timings and settings" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
-settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions①">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①⑨">WebVTT cue</a> <var>cue</var>, the user agent must run the following algorithm.</p>
+   <p>When the algorithm above requires to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and settings</dfn> from a
+string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions①">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①⑨">WebVTT cue</a> <var>cue</var>,
+the user agent must run the following algorithm.</p>
    <ol class="algorithm">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
@@ -4150,9 +4155,9 @@ follows:</p>
    </ol>
    <h2 class="heading settled" data-level="6" id="rendering"><span class="secno">6. </span><span class="content">Rendering</span><a class="self-link" href="#rendering"></a></h2>
    <p class="note" role="note">This section describes in some detail how to visually render WebVTT cues in a user
-agent. The processing model is quite tightly linked to media elements in HTML. When supporting
-WebVTT in media players that don’t support CSS, equivalent visual rendering will need to be
-implemented.</p>
+agent. The processing model is quite tightly linked to media elements in HTML, where CSS is
+available. When supporting WebVTT in media players that do not support CSS, equivalent visual
+rendering will need to be implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="6.1" id="processing-model"><span class="secno">6.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track⑨">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element③">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video①">video</a> element), or of another playback
 mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⓪">text tracks</a> that use these
@@ -4299,9 +4304,9 @@ manner suiting the user.</p>
    </ol>
    <p>User agents may allow the user to override the above algorithm’s positioning of cues, e.g. by
 dragging them to another location on the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video②">video</a>, or even off the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video③">video</a> entirely.</p>
-   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue settings</dfn> to
-obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects⑦">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the
-following algorithm.</p>
+   <p>When the algorithm above requires to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue settings</dfn> to obtain CSS boxes
+from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects⑦">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the following
+algorithm.</p>
    <ol class="algorithm">
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction①⑤">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction①③">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction①⑥">WebVTT
@@ -4752,7 +4757,7 @@ properties on the root <a data-link-type="dfn" href="#list-of-webvtt-node-object
 then they must be interpreted as defined in the next section.</p>
    <h2 class="heading settled" data-level="7" id="css-extensions"><span class="secno">7. </span><span class="content">CSS extensions</span><a class="self-link" href="#css-extensions"></a></h2>
    <p class="note" role="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
-apply to WebVTT. This section does not apply to user agents that don’t support CSS.</p>
+apply to WebVTT. This section does not apply to user agents that do not support CSS.</p>
    <h3 class="heading settled" data-level="7.1" id="css-extensions-introduction"><span class="secno">7.1. </span><span class="content">Introduction</span><a class="self-link" href="#css-extensions-introduction"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>The <span class="css">::cue</span> pseudo-element represents a cue.</p>
