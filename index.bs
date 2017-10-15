@@ -164,6 +164,12 @@ WEBVTT
 &lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.
 </pre>
 
+<p>You can see that a WebVTT file in general consists of a sequence of text segments associated with a time-interval, called a cue (<a lt="WebVTT cue">definition</a>). Beyond captioning and subtitling, WebVTT can be used for time-aligned metadata, typically in use for delivering name-value pairs in cues. WebVTT can also be used for delivering chapters, which helps with contextual navigation around an audio/video file. Finally, WebVTT can be used for the delivery of text video descriptions, which is text that describes the visual content of time-intervals and can be synthesized to speech to help vision-impaired users understand context.</p>
+
+<p class=note>This version of WebVTT focuses on solving the captioning and subtitling use cases. More specification work is possible for the other use cases. A decision on what type of use case a WebVTT file is being used for is made by the software that is using the file. For example, if in use with a HTML file through a &lt;track> element, the <a lt="text track kind">kind</a> attribute defines how the WebVTT file is to be interpreted.</p>
+
+<p>The following subsections provide an overview of some of the key features of the WebVTT file format, particularly when in use for captioning and subtitling.</p>
+
 <h3 id=introduction-multiple-lines>Cues with multiple lines</h3>
 
 <p><i>This section is non-normative.</i></p>
