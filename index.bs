@@ -1650,6 +1650,18 @@ than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
 
 
+<h4 id=chapter-title-text>WebVTT chapter title text</h4>
+
+<p><dfn>WebVTT chapter title text</dfn> is <a>WebVTT cue text</a> that makes use of zero or more of
+the following components, each optionally separated from the next by a <a>WebVTT line
+terminator</a>:</p>
+
+<ul>
+ <li><a>WebVTT cue text span</a></li>
+ <li><a lt="character references">HTML character reference</a> [[!HTML]]</li>
+</ul>
+
+
 <h3 id=region-settings>WebVTT region settings</h3>
 
 <p>A <a>WebVTT cue settings list</a> can contain a reference to a <a>WebVTT region</a>. To define a
@@ -2045,15 +2057,6 @@ is said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
 
 
 <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
-
-<p><dfn>WebVTT chapter title text</dfn> is <a>WebVTT cue text</a> that makes use only of zero or
-more of the following components, each optionally separated from the next by a <a>WebVTT line
-terminator</a>:</p>
-
-<ul>
- <li><a>WebVTT cue text span</a></li>
- <li><a lt="character references">HTML character reference</a> [[!HTML]]</li>
-</ul>
 
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
 whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
