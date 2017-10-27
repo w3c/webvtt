@@ -109,6 +109,10 @@ spec:html; type:element; text:style
    outline: 0.18em solid rgba(0, 0, 0, 0.7);
    color: white;
  }
+
+ [data-algorithm]:not(.heading) {
+   padding-left: 2em;
+ }
 </style>
 
 <h2 id=introduction>Introduction</h2>
@@ -1213,7 +1217,7 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
  the region viewport anchor X and Y offsets. The vertical and horizontal distance from the region's
  edges to the anchor is marked with orange arrows, representing the region anchor X and Y offsets.
  The size of the region is represented by the region width for the horizontal axis, and region lines
- for the vertical axis."></p>
+ for the vertical axis." style="width:100%;"></p>
 </div>
 
 <p>For parsing, we also need the following:</p>
@@ -1239,7 +1243,7 @@ with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
 
 <p>A <dfn>WebVTT file body</dfn> consists of the following components, in the following order:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT file body">
 
  <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.</li>
 
@@ -2083,7 +2087,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
 <p>The <dfn>WebVTT parser algorithm</dfn> is as follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT parser algorithm">
 
  <li>
   <p>Let |input| be the string being parsed, after conversion to Unicode, and with the following
@@ -2184,7 +2188,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 <p>When the algorithm above says to <dfn>collect a WebVTT block</dfn>, optionally with a flag <i>in
 header</i> set, the user agent must run the following steps:</p>
 
-<ol class=algorithm algorithm="collect a WebVTT block">
+<ol algorithm="collect a WebVTT block">
 
  <li><p>Let |input|, |position|, |seen cue| and |regions| be the same variables as those of the same
  name in the algorithm that invoked these steps.</p></li>
@@ -2441,7 +2445,7 @@ that is used as a root node for <a lt="List of WebVTT node objects">lists of Web
 objects</a>. This algorithm returns a list of <a lt="WebVTT region object">WebVTT Region
 Objects</a>.</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT region objects">
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
 
@@ -2545,7 +2549,7 @@ Objects</a>.</p>
 number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
 means that it is aborted at that point and returns nothing.</p>
 
-<ol class=algorithm>
+<ol algorithm="parse a percentage string">
  <li><p>Let |input| be the string being parsed.</p></li>
 
  <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
@@ -2567,7 +2571,7 @@ means that it is aborted at that point and returns nothing.</p>
 settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
 <a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
 
-<ol class=algorithm>
+<ol algorithm="collect WebVTT cue timings and settings">
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -2613,7 +2617,7 @@ settings</dfn> from a string |input| using a <a>text track list of regions</a> |
 <a>text track list of regions</a> |regions| for a <a>text track cue</a> |cue|, the user agent must
 run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="parse the WebVTT cue settings">
 
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
@@ -2842,7 +2846,7 @@ run the following steps:</p>
 <p>When this specification says that a user agent is to <dfn>collect a WebVTT timestamp</dfn>, the
 user agent must run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="collect a WebVTT timestamp">
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -3050,7 +3054,7 @@ Objects</a>:</p>
 string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fallback language
 |language|. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT cue text parsing">
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -3257,7 +3261,7 @@ string (whose value is a sequence of characters), a start tag (with a tag name, 
 and optionally an annotation), an end tag (with a tag name), or a timestamp tag (with a tag
 value).</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT cue text tokenizer">
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -3725,7 +3729,7 @@ title</h3>
 <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> for a <a>WebVTT cue</a> |cue| are as
 follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT rules for extracting the chapter title">
 
  <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue
  text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
@@ -3764,7 +3768,7 @@ manner suiting the user.</p>
 
 <p>The rules are as follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="rules for updating the display of WebVTT text tracks">
 
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
@@ -3947,7 +3951,7 @@ entirely.</p>
 obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
 following algorithm.</p>
 
-<ol class=algorithm>
+<ol algorithm="apply WebVTT cue settings">
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
  direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
@@ -5403,7 +5407,7 @@ interface VTTCue : TextTrackCue {
 <p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|,
 |endTime|, |text|)</dfn> constructor, when invoked, must run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="VTTCue construction">
 
  <li><p>Create a new <a>WebVTT cue</a>. Let |cue| be that <a>WebVTT cue</a>.</p></li>
 
@@ -5717,7 +5721,7 @@ interface VTTRegion {
 <p>The <dfn constructor for=VTTRegion>VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="VTTRegion construction">
  <li><p>Create a new <a>WebVTT region</a>. Let |region| be that <a>WebVTT region</a>.</p></li>
 
  <!-- default settings -->
