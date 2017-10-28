@@ -3074,7 +3074,8 @@ given:</p>
    <p>A <a data-link-type="dfn" href="#webvtt-region-cue-setting" id="ref-for-webvtt-region-cue-setting-2">WebVTT region cue setting</a> configures a cue to become part of a region by referencing the
 region’s identifier unless the cue has a <a data-link-type="dfn" href="#webvtt-vertical-text-cue-setting" id="ref-for-webvtt-vertical-text-cue-setting-3">"vertical"</a>, <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-4">"line"</a> or <a data-link-type="dfn" href="#webvtt-size-cue-setting" id="ref-for-webvtt-size-cue-setting-3">"size"</a> cue setting.
 If a cue is part of a region, its cue settings for <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-5">"position"</a> and <a data-link-type="dfn" href="#webvtt-alignment-cue-setting" id="ref-for-webvtt-alignment-cue-setting-3">"align"</a> are applied to the line
-boxes in the cue relative to the region box.</p>
+boxes in the cue relative to the region box and the cue box width and height are calculated relative
+to the region dimensions rather than the viewport dimensions.</p>
    <h3 class="heading settled" data-level="4.5" id="properties-of-cue-sequences"><span class="secno">4.5. </span><span class="content">Properties of cue sequences</span><a class="self-link" href="#properties-of-cue-sequences"></a></h3>
    <h4 class="heading settled" data-level="4.5.1" id="file-using-only-nested-cues"><span class="secno">4.5.1. </span><span class="content">WebVTT file using only nested cues</span><a class="self-link" href="#file-using-only-nested-cues"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-10">WebVTT file</a> whose cues all follow the following rules is said to be a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT file using only nested cues" data-noexport="" id="webvtt-file-using-only-nested-cues">WebVTT file
