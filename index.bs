@@ -794,7 +794,7 @@ captions, subtitles, chapters, audio descriptions and metadata as data kinds.</p
 
 <p>A WebVTT file only contains data of one kind, never a mix of different kinds of data.</p>
 
-<p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a a
+<p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a
 region, which is a subarea of the video viewport.</p>
 
 <h3 id=model-cues>WebVTT cues</h3>
@@ -824,11 +824,12 @@ fragment:</p>
  <dt><dfn lt="WebVTT cue box">A cue box</dfn></dt>
  <dd>
   <p>The cue box of a <a>WebVTT cue</a> is a box within which the text of all lines of the cue is to
-  be rendered.</p>
+  be rendered. It is either rendered into the video's viewport or a region inside the viewport if
+  the cue is part of a region.</p>
 
   <p class="note">The position of the <a lt="WebVTT cue box">cue box</a> within the video viewport's
-  dimensions depends on the value of the <a>WebVTT cue position</a> and the <a>WebVTT cue
-  line</a>.</p>
+  or region's dimensions depends on the value of the <a>WebVTT cue position</a> and the <a>WebVTT
+  cue line</a>.</p>
 
   <p class="note">Lines are wrapped within the <a lt="WebVTT cue box">cue box</a>'s <a lt="WebVTT
   cue size">size</a> if lines' lengths make this necessary.</p>
@@ -1296,8 +1297,8 @@ cues</a> are the <a>rules for updating the display of WebVTT text tracks</a>.</p
 <p>A <dfn>WebVTT region</dfn> represents a subpart of the video viewport and provides a limited
 rendering area for <a lt="WebVTT caption or subtitle cue">WebVTT caption or subtitle cues</a>.</p>
 
-<p class=note>Regions provide a means to group cues so the cues can be rendered together, when
-scrolling up.</p>
+<p class=note>Regions provide a means to group caption or subtitle cues so the cues can be rendered
+together, when scrolling up.</p>
 
 <p>Each <a>WebVTT region</a> consists of:</p>
 

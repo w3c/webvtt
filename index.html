@@ -2160,7 +2160,7 @@ start and end time, it is called a WebVTT cue. A comment is another kind of data
    <p>A WebVTT file can contain cues with different kinds of data. The HTML specification identifies
 captions, subtitles, chapters, audio descriptions and metadata as data kinds.</p>
    <p>A WebVTT file only contains data of one kind, never a mix of different kinds of data.</p>
-   <p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a a
+   <p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a
 region, which is a subarea of the video viewport.</p>
    <h3 class="heading settled" data-level="3.2" id="model-cues"><span class="secno">3.2. </span><span class="content">WebVTT cues</span><a class="self-link" href="#model-cues"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> <a data-link-type="biblio" href="#biblio-html">[HTML]</a> that additionally consist of the
@@ -2178,10 +2178,11 @@ fragment:</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue box" data-noexport="" id="webvtt-cue-box">A cue box</dfn>
     <dd>
      <p>The cue box of a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-3">WebVTT cue</a> is a box within which the text of all lines of the cue is to
-  be rendered.</p>
+  be rendered. It is either rendered into the video’s viewport or a region inside the viewport if
+  the cue is part of a region.</p>
      <p class="note" role="note">The position of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-6">cue box</a> within the video viewport’s
-  dimensions depends on the value of the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-1">WebVTT cue position</a> and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-1">WebVTT cue
-  line</a>.</p>
+  or region’s dimensions depends on the value of the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-1">WebVTT cue position</a> and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-1">WebVTT
+  cue line</a>.</p>
      <p class="note" role="note">Lines are wrapped within the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-7">cue box</a>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-1">size</a> if lines' lengths make this necessary.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue writing direction" data-noexport="" id="webvtt-cue-writing-direction">A writing direction</dfn>
     <dd>
@@ -2454,8 +2455,8 @@ cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-o
    <h3 class="heading settled" data-level="3.4" id="regions"><span class="secno">3.4. </span><span class="content">WebVTT caption or subtitle regions</span><a class="self-link" href="#regions"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region">WebVTT region</dfn> represents a subpart of the video viewport and provides a limited
 rendering area for <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-1">WebVTT caption or subtitle cues</a>.</p>
-   <p class="note" role="note">Regions provide a means to group cues so the cues can be rendered together, when
-scrolling up.</p>
+   <p class="note" role="note">Regions provide a means to group caption or subtitle cues so the cues can be rendered
+together, when scrolling up.</p>
    <p>Each <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-4">WebVTT region</a> consists of:</p>
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region identifier" data-noexport="" id="webvtt-region-identifier">An identifier</dfn>
