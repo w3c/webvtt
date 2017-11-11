@@ -1443,7 +1443,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-10-15">15 October 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-11-11">11 November 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1528,6 +1528,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
        <ol class="toc">
         <li><a href="#metadata-text"><span class="secno">4.2.1</span> <span class="content">WebVTT metadata text</span></a>
         <li><a href="#cue-text"><span class="secno">4.2.2</span> <span class="content">WebVTT cue text</span></a>
+        <li><a href="#chapter-title-text"><span class="secno">4.2.3</span> <span class="content">WebVTT chapter title text</span></a>
        </ol>
       <li><a href="#region-settings"><span class="secno">4.3</span> <span class="content">WebVTT region settings</span></a>
       <li><a href="#cue-settings"><span class="secno">4.4</span> <span class="content">WebVTT cue settings</span></a>
@@ -2670,13 +2671,21 @@ U+003C LESS-THAN SIGN characters (&lt;).</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-span-start-tag-annotation-text">WebVTT cue span start tag annotation text</dfn> consists of one or more characters other
 than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U+0026 AMPERSAND
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
+   <h4 class="heading settled" data-level="4.2.3" id="chapter-title-text"><span class="secno">4.2.3. </span><span class="content">WebVTT chapter title text</span><a class="self-link" href="#chapter-title-text"></a></h4>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-chapter-title-text">WebVTT chapter title text</dfn> is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-4">WebVTT cue text</a> that makes use of zero or more of
+the following components, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-25">WebVTT line
+terminator</a>:</p>
+   <ul>
+    <li><a data-link-type="dfn" href="#webvtt-cue-text-span" id="ref-for-webvtt-cue-text-span-2">WebVTT cue text span</a>
+    <li><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a> <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
+   </ul>
    <h3 class="heading settled" data-level="4.3" id="region-settings"><span class="secno">4.3. </span><span class="content">WebVTT region settings</span><a class="self-link" href="#region-settings"></a></h3>
    <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-2">WebVTT cue settings list</a> can contain a reference to a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-6">WebVTT region</a>. To define a
 region, a <a data-link-type="dfn" href="#webvtt-region-definition-block" id="ref-for-webvtt-region-definition-block-2">WebVTT region definition block</a> is specified.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-settings-list">WebVTT region settings list</dfn> consists of zero or more of the following components,
 in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
-TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-25">WebVTT line terminators</a>, except that the string must not
-contain two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-26">WebVTT line terminators</a>. Each component must not be included more
+TABULATION (tab) characters, or <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-26">WebVTT line terminators</a>, except that the string must not
+contain two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-27">WebVTT line terminators</a>. Each component must not be included more
 than once per <a data-link-type="dfn" href="#webvtt-region-settings-list" id="ref-for-webvtt-region-settings-list-2">WebVTT region settings list</a> string.</p>
    <ul>
     <li>A <a data-link-type="dfn" href="#webvtt-region-identifier-setting" id="ref-for-webvtt-region-identifier-setting-1">WebVTT region identifier setting</a>.
@@ -2798,8 +2807,13 @@ cue line and allows it to be added.</p>
 the line in the bottom of the region. If no empty line is available, the oldest line is
 replaced.</p>
    <h3 class="heading settled" data-level="4.4" id="cue-settings"><span class="secno">4.4. </span><span class="content">WebVTT cue settings</span><a class="self-link" href="#cue-settings"></a></h3>
-   <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-4">WebVTT cue settings list</a> consists of zero or more of the following settings. Each
-setting must not be included more than once per <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-5">WebVTT cue settings list</a>.</p>
+   <p>A <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-1">WebVTT cue setting</a> is part of a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-4">WebVTT cue settings list</a> and provides
+configuration options regarding the position and alignment of the cue box and the cue text
+within.</p>
+   <p class="note" role="note">For example, a set of WebVTT cue settings may allow a cue box to be aligned to the
+left or positioned at the top right with the cue text within center aligned.</p>
+   <p>The current available <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-2">WebVTT cue settings</a> that may appear in a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-5">WebVTT cue settings
+list</a> are:</p>
    <ul class="brief">
     <li>A <a data-link-type="dfn" href="#webvtt-vertical-text-cue-setting" id="ref-for-webvtt-vertical-text-cue-setting-1">WebVTT vertical text cue setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-1">WebVTT line cue setting</a>.
@@ -2808,10 +2822,9 @@ setting must not be included more than once per <a data-link-type="dfn" href="#w
     <li>A <a data-link-type="dfn" href="#webvtt-alignment-cue-setting" id="ref-for-webvtt-alignment-cue-setting-1">WebVTT alignment cue setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-region-cue-setting" id="ref-for-webvtt-region-cue-setting-1">WebVTT region cue setting</a>.
    </ul>
-   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-6">WebVTT cue settings list</a> gives configuration options regarding the position
-and alignment of the cue box and the cue text within. For example, it allows a cue box to be aligned
-to the left or positioned at the top right with the cue text within center aligned.</p>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting</dfn> is a <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-1">WebVTT cue setting</a> that consists of the
+   <p>Each of these setting must not be included more than once per <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-6">WebVTT cue settings
+list</a>.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting</dfn> is a <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-3">WebVTT cue setting</a> that consists of the
 following components, in the order given:</p>
    <ol>
     <li>The string "<code>vertical</code>" as the <a data-link-type="dfn" href="#webvtt-cue-setting-name" id="ref-for-webvtt-cue-setting-name-2">WebVTT cue setting name</a>.
@@ -2999,13 +3012,6 @@ for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.1" id="file-using-metadata-content"><span class="secno">4.6.1. </span><span class="content">WebVTT file using metadata content</span><a class="self-link" href="#file-using-metadata-content"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-12">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-3">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-3">WebVTT metadata text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-metadata-content">WebVTT file using metadata content<a class="self-link" href="#webvtt-file-using-metadata-content"></a></dfn>.</p>
    <h4 class="heading settled" data-level="4.6.2" id="file-using-chapter-title-text"><span class="secno">4.6.2. </span><span class="content">WebVTT file using chapter title text</span><a class="self-link" href="#file-using-chapter-title-text"></a></h4>
-   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-chapter-title-text">WebVTT chapter title text</dfn> is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-4">WebVTT cue text</a> that makes use only of zero or
-more of the following components, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-27">WebVTT line
-terminator</a>:</p>
-   <ul>
-    <li><a data-link-type="dfn" href="#webvtt-cue-text-span" id="ref-for-webvtt-cue-text-span-2">WebVTT cue text span</a>
-    <li><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a> <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
-   </ul>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-chapter-title-text">WebVTT file using chapter title text<a class="self-link" href="#webvtt-file-using-chapter-title-text"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues" id="ref-for-webvtt-file-using-only-nested-cues-3">WebVTT file using only nested cues</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-4">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text-2">WebVTT chapter title text</a>.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-5">WebVTT cue text</a> is
@@ -5024,7 +5030,7 @@ set on the pseudo-element must be ignored:</p>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a> shorthand
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-3/#propdef-outline">outline</a> shorthand
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-4/#propdef-outline">outline</a> shorthand
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height">line-height</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-white-space">white-space</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-4/#propdef-text-combine-upright">text-combine-upright</a>
@@ -5110,7 +5116,7 @@ being treated as follows:</p>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a> shorthand
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a> shorthand
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-3/#propdef-outline">outline</a> shorthand
+    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-4/#propdef-outline">outline</a> shorthand
     <li>properties relating to the transition and animation features
    </ul>
    <p>In addition, the following properties apply to the <span class="css">::cue()</span> pseudo-element with an argument
@@ -5853,7 +5859,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt">WebVTT</a><span>, in §1</span>
    <li><a href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a><span>, in §4.4</span>
    <li><a href="#webvtt-bold-object">WebVTT Bold Object</a><span>, in §5.4</span>
-   <li><a href="#webvtt-chapter-title-text">WebVTT chapter title text</a><span>, in §4.6.2</span>
+   <li><a href="#webvtt-chapter-title-text">WebVTT chapter title text</a><span>, in §4.2.3</span>
    <li><a href="#webvtt-class-object">WebVTT Class Object</a><span>, in §5.4</span>
    <li><a href="#webvtt-comment-block">WebVTT comment block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue">WebVTT cue</a><span>, in §3.1</span>
@@ -5978,6 +5984,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-align-3/#propdef-justify-content">justify-content</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[css-backgrounds-3]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a>
+     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[css-cascade-4]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a>
@@ -6056,9 +6068,9 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
     </ul>
    <li>
-    <a data-link-type="biblio">[css-ui-3]</a> defines the following terms:
+    <a data-link-type="biblio">[css-ui-4]</a> defines the following terms:
     <ul>
-     <li><a href="https://drafts.csswg.org/css-ui-3/#propdef-outline">outline</a>
+     <li><a href="https://drafts.csswg.org/css-ui-4/#propdef-outline">outline</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS-VALUES]</a> defines the following terms:
@@ -6088,12 +6100,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-min-height">min-height</a>
      <li><a href="https://drafts.csswg.org/css2/visufx.html#propdef-visibility">visibility</a>
      <li><a href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[css3-background]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a>
-     <li><a href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS3-RUBY]</a> defines the following terms:
@@ -6208,8 +6214,10 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Mark Davis; Aharon Lanin; Andrew Glass. <a href="https://www.unicode.org/reports/tr9/tr9-37.html">Unicode Bidirectional Algorithm</a>. 14 May 2017. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-37.html">https://www.unicode.org/reports/tr9/tr9-37.html</a>
    <dt id="biblio-css-align-3">[CSS-ALIGN-3]
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
+   <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
+   <dd>Bert Bos; Elika Etemad; Brad Kemper. <a href="https://drafts.csswg.org/css-backgrounds/">CSS Backgrounds and Borders Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-backgrounds/">https://drafts.csswg.org/css-backgrounds/</a>
    <dt id="biblio-css-cascade-4">[CSS-CASCADE-4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="http://dev.w3.org/csswg/css-cascade/">CSS Cascading and Inheritance Level 4</a>. URL: <a href="http://dev.w3.org/csswg/css-cascade/">http://dev.w3.org/csswg/css-cascade/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-cascade/">CSS Cascading and Inheritance Level 4</a>. URL: <a href="https://drafts.csswg.org/css-cascade/">https://drafts.csswg.org/css-cascade/</a>
    <dt id="biblio-css-color-4">[CSS-COLOR-4]
    <dd>Tab Atkins Jr.; Chris Lilley. <a href="https://drafts.csswg.org/css-color/">CSS Color Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-color/">https://drafts.csswg.org/css-color/</a>
    <dt id="biblio-css-display-3">[CSS-DISPLAY-3]
@@ -6217,7 +6225,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
    <dd>Tab Atkins Jr.; Elika Etemad; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/">CSS Flexible Box Layout Module Level 1</a>. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
    <dt id="biblio-css-fonts-3">[CSS-FONTS-3]
-   <dd>John Daggett. <a href="http://dev.w3.org/csswg/css-fonts/">CSS Fonts Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>
+   <dd>John Daggett. <a href="https://drafts.csswg.org/css-fonts/">CSS Fonts Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-fonts/">https://drafts.csswg.org/css-fonts/</a>
    <dt id="biblio-css-fonts-4">[CSS-FONTS-4]
    <dd>John Daggett; Myles Maxfield. <a href="https://drafts.csswg.org/css-fonts-4/">CSS Fonts Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-fonts-4/">https://drafts.csswg.org/css-fonts-4/</a>
    <dt id="biblio-css-overflow-3">[CSS-OVERFLOW-3]
@@ -6225,33 +6233,31 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
    <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
-   <dd>Tab Atkins Jr.; Simon Sapin. <a href="http://dev.w3.org/csswg/css-syntax/">CSS Syntax Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>
+   <dd>Tab Atkins Jr.; Simon Sapin. <a href="https://drafts.csswg.org/css-syntax/">CSS Syntax Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-syntax/">https://drafts.csswg.org/css-syntax/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-text-3/">CSS Text Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-text-3/">https://drafts.csswg.org/css-text-3/</a>
    <dt id="biblio-css-text-4">[CSS-TEXT-4]
-   <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="http://dev.w3.org/csswg/css-text-4/">CSS Text Module Level 4</a>. URL: <a href="http://dev.w3.org/csswg/css-text-4/">http://dev.w3.org/csswg/css-text-4/</a>
+   <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="https://drafts.csswg.org/css-text-4/">CSS Text Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-text-4/">https://drafts.csswg.org/css-text-4/</a>
    <dt id="biblio-css-text-decor-3">[CSS-TEXT-DECOR-3]
-   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-text-decor-3/">http://dev.w3.org/csswg/css-text-decor-3/</a>
-   <dt id="biblio-css-ui-3">[CSS-UI-3]
-   <dd>Tantek Çelik; Florian Rivoal. <a href="https://drafts.csswg.org/css-ui/">CSS Basic User Interface Module Level 3 (CSS3 UI)</a>. URL: <a href="https://drafts.csswg.org/css-ui/">https://drafts.csswg.org/css-ui/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-text-decor-3/">https://drafts.csswg.org/css-text-decor-3/</a>
+   <dt id="biblio-css-ui-4">[CSS-UI-4]
+   <dd>Florian Rivoal. <a href="https://drafts.csswg.org/css-ui-4/">CSS Basic User Interface Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-ui-4/">https://drafts.csswg.org/css-ui-4/</a>
    <dt id="biblio-css-values">[CSS-VALUES]
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://drafts.csswg.org/css-values/">CSS Values and Units Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-values/">https://drafts.csswg.org/css-values/</a>
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
-   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css-writing-modes-3/">http://dev.w3.org/csswg/css-writing-modes-3/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-3/">https://drafts.csswg.org/css-writing-modes-3/</a>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
    <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-css22">[CSS22]
-   <dd>Bert Bos. <a href="http://dev.w3.org/csswg/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="http://dev.w3.org/csswg/css2/">http://dev.w3.org/csswg/css2/</a>
-   <dt id="biblio-css3-background">[CSS3-BACKGROUND]
-   <dd>Bert Bos; Elika Etemad; Brad Kemper. <a href="http://dev.w3.org/csswg/css3-background/">CSS Backgrounds and Borders Module Level 3</a>. URL: <a href="http://dev.w3.org/csswg/css3-background/">http://dev.w3.org/csswg/css3-background/</a>
+   <dd>Bert Bos. <a href="https://drafts.csswg.org/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="https://drafts.csswg.org/css2/">https://drafts.csswg.org/css2/</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
    <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/css3-color">https://www.w3.org/TR/css3-color</a>
    <dt id="biblio-css3-ruby">[CSS3-RUBY]
-   <dd>Elika Etemad; Koji Ishii. <a href="http://dev.w3.org/csswg/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="http://dev.w3.org/csswg/css-ruby-1/">http://dev.w3.org/csswg/css-ruby-1/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="https://drafts.csswg.org/css-ruby-1/">https://drafts.csswg.org/css-ruby-1/</a>
    <dt id="biblio-css3-selectors">[CSS3-SELECTORS]
    <dd>Tantek Çelik; et al. <a href="https://drafts.csswg.org/selectors-3/">Selectors Level 3</a>. URL: <a href="https://drafts.csswg.org/selectors-3/">https://drafts.csswg.org/selectors-3/</a>
    <dt id="biblio-css3-transitions">[CSS3-TRANSITIONS]
-   <dd>Dean Jackson; et al. <a href="http://dev.w3.org/csswg/css-transitions/">CSS Transitions</a>. URL: <a href="http://dev.w3.org/csswg/css-transitions/">http://dev.w3.org/csswg/css-transitions/</a>
+   <dd>Dean Jackson; et al. <a href="https://drafts.csswg.org/css-transitions/">CSS Transitions</a>. URL: <a href="https://drafts.csswg.org/css-transitions/">https://drafts.csswg.org/css-transitions/</a>
    <dt id="biblio-cssom">[CSSOM]
    <dd>Simon Pieters; Glenn Adams. <a href="https://drafts.csswg.org/cssom/">CSS Object Model (CSSOM)</a>. URL: <a href="https://drafts.csswg.org/cssom/">https://drafts.csswg.org/cssom/</a>
    <dt id="biblio-dom">[DOM]
@@ -6743,8 +6749,8 @@ title</a>
     <li><a href="#ref-for-webvtt-line-terminator-1">4.1. WebVTT file structure</a> <a href="#ref-for-webvtt-line-terminator-2">(2)</a> <a href="#ref-for-webvtt-line-terminator-3">(3)</a> <a href="#ref-for-webvtt-line-terminator-4">(4)</a> <a href="#ref-for-webvtt-line-terminator-5">(5)</a> <a href="#ref-for-webvtt-line-terminator-6">(6)</a> <a href="#ref-for-webvtt-line-terminator-7">(7)</a> <a href="#ref-for-webvtt-line-terminator-8">(8)</a> <a href="#ref-for-webvtt-line-terminator-9">(9)</a> <a href="#ref-for-webvtt-line-terminator-10">(10)</a> <a href="#ref-for-webvtt-line-terminator-11">(11)</a> <a href="#ref-for-webvtt-line-terminator-12">(12)</a> <a href="#ref-for-webvtt-line-terminator-13">(13)</a> <a href="#ref-for-webvtt-line-terminator-14">(14)</a> <a href="#ref-for-webvtt-line-terminator-15">(15)</a> <a href="#ref-for-webvtt-line-terminator-16">(16)</a>
     <li><a href="#ref-for-webvtt-line-terminator-17">4.2.1. WebVTT metadata text</a> <a href="#ref-for-webvtt-line-terminator-18">(2)</a> <a href="#ref-for-webvtt-line-terminator-19">(3)</a>
     <li><a href="#ref-for-webvtt-line-terminator-20">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-line-terminator-21">(2)</a> <a href="#ref-for-webvtt-line-terminator-22">(3)</a> <a href="#ref-for-webvtt-line-terminator-23">(4)</a> <a href="#ref-for-webvtt-line-terminator-24">(5)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-25">4.3. WebVTT region settings</a> <a href="#ref-for-webvtt-line-terminator-26">(2)</a>
-    <li><a href="#ref-for-webvtt-line-terminator-27">4.6.2. WebVTT file using chapter title text</a>
+    <li><a href="#ref-for-webvtt-line-terminator-25">4.2.3. WebVTT chapter title text</a>
+    <li><a href="#ref-for-webvtt-line-terminator-26">4.3. WebVTT region settings</a> <a href="#ref-for-webvtt-line-terminator-27">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region-definition-block">
@@ -6807,7 +6813,7 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-setting">
    <b><a href="#webvtt-cue-setting">#webvtt-cue-setting</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-setting-1">4.4. WebVTT cue settings</a>
+    <li><a href="#ref-for-webvtt-cue-setting-1">4.4. WebVTT cue settings</a> <a href="#ref-for-webvtt-cue-setting-2">(2)</a> <a href="#ref-for-webvtt-cue-setting-3">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-setting-name">
@@ -6853,7 +6859,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-text-1">3.1. WebVTT cues</a>
     <li><a href="#ref-for-webvtt-cue-text-2">4.1. WebVTT file structure</a>
     <li><a href="#ref-for-webvtt-cue-text-3">4.2.2. WebVTT cue text</a>
-    <li><a href="#ref-for-webvtt-cue-text-4">4.6.2. WebVTT file using chapter title text</a>
+    <li><a href="#ref-for-webvtt-cue-text-4">4.2.3. WebVTT chapter title text</a>
     <li><a href="#ref-for-webvtt-cue-text-5">4.6.3. WebVTT file using cue text</a>
     <li><a href="#ref-for-webvtt-cue-text-6">5.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-cue-text-7">(2)</a> <a href="#ref-for-webvtt-cue-text-8">(3)</a> <a href="#ref-for-webvtt-cue-text-9">(4)</a> <a href="#ref-for-webvtt-cue-text-10">(5)</a> <a href="#ref-for-webvtt-cue-text-11">(6)</a> <a href="#ref-for-webvtt-cue-text-12">(7)</a> <a href="#ref-for-webvtt-cue-text-13">(8)</a> <a href="#ref-for-webvtt-cue-text-14">(9)</a> <a href="#ref-for-webvtt-cue-text-15">(10)</a>
    </ul>
@@ -6947,13 +6953,20 @@ title</a>
    <b><a href="#webvtt-cue-text-span">#webvtt-cue-text-span</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-cue-text-span-1">4.2.2. WebVTT cue text</a>
-    <li><a href="#ref-for-webvtt-cue-text-span-2">4.6.2. WebVTT file using chapter title text</a>
+    <li><a href="#ref-for-webvtt-cue-text-span-2">4.2.3. WebVTT chapter title text</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-span-start-tag-annotation-text">
    <b><a href="#webvtt-cue-span-start-tag-annotation-text">#webvtt-cue-span-start-tag-annotation-text</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-cue-span-start-tag-annotation-text-1">4.2.2. WebVTT cue text</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="webvtt-chapter-title-text">
+   <b><a href="#webvtt-chapter-title-text">#webvtt-chapter-title-text</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-webvtt-chapter-title-text-1">4.1. WebVTT file structure</a>
+    <li><a href="#ref-for-webvtt-chapter-title-text-2">4.6.2. WebVTT file using chapter title text</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region-settings-list">
@@ -7040,13 +7053,6 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-file-using-only-nested-cues-1">4.5.1. WebVTT file using only nested cues</a> <a href="#ref-for-webvtt-file-using-only-nested-cues-2">(2)</a>
     <li><a href="#ref-for-webvtt-file-using-only-nested-cues-3">4.6.2. WebVTT file using chapter title text</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="webvtt-chapter-title-text">
-   <b><a href="#webvtt-chapter-title-text">#webvtt-chapter-title-text</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-webvtt-chapter-title-text-1">4.1. WebVTT file structure</a>
-    <li><a href="#ref-for-webvtt-chapter-title-text-2">4.6.2. WebVTT file using chapter title text</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-parser">
