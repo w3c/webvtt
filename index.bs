@@ -3,11 +3,14 @@ Title: WebVTT: The Web Video Text Tracks Format
 H1: WebVTT: The Web Video Text Tracks Format
 Shortname: webvtt1
 Status: CG-DRAFT
+Default Ref Status: current
+Prepare For TR: false
 Group: texttracks
 ED: https://w3c.github.io/webvtt/
-Level: 1
-Editor: Simon Pieters, Opera Software ASA http://www.opera.com/, simonp@opera.com
-Former Editor: Courtney Kennedy, Apple Inc. http://www.apple.com/, ckennedy@apple.com
+TR: https://www.w3.org/TR/webvtt1/
+Level: none
+Editor: Silvia Pfeiffer, CSIRO https://www.csiro.au/, silvia.pfeiffer@data61.csiro.au
+Former Editor: Simon Pieters, Opera Software AS http://www.opera.com/, simonp@opera.com
 Former Editor: Silvia Pfeiffer, NICTA http://nicta.com.au/, silviapfeiffer1@gmail.com
 Former Editor: Philip Jägenstedt, Opera Software ASA http://www.opera.com/, philipj@opera.com
 Former Editor: Ian Hickson, Google http://www.google.com/, ian@hixie.ch
@@ -18,12 +21,13 @@ Test Suite: https://github.com/w3c/web-platform-tests/tree/master/webvtt
 Abstract: This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 Abstract: WebVTT files provide captions or subtitles for video content, and also text video descriptions [[MAUR]], chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.
 Boilerplate: omit conformance, omit feedback-header
-Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap
+Ignored Terms: unicode-bidi, color, text-combine-upright, text-wrap, lang, class, title
 Ignored Vars: seconds-frac, selector, fragment, seen cue
+
 
 </pre>
 
-<pre class='anchors'>
+<pre class=anchors>
 urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: infrastructure.html
@@ -53,8 +57,11 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: text track cue end time
             text: expose a user interface to the user
             text: text track cue order
+            text: honor user preferences for automatic text track selection
+        urlPrefix: webappapis.html
+            text: entry settings object
         urlPrefix: syntax.html
-            text: syntax-charref
+            text: character references; url: #syntax-charref
     type: element-attr
         urlPrefix: dom.html
             text: title; url: #attr-title
@@ -63,22 +70,23 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
 urlPrefix: https://encoding.spec.whatwg.org/
     type: dfn
         text: utf-8 decode
-urlPrefix: https://heycam.github.io/webidl/
-    type: exception
-        text: IndexSizeError
 </pre>
 
 <pre class=link-defaults>
-spec:dom-ls; type:interface; text:Document
+spec:dom; type:interface; text:Document
 spec:css-ruby-1; type:value; text:ruby-base
 spec:css-color-4; type:property; text:color
 spec:css-fonts-3; type:property; text:font-style
 spec:css-fonts-3; type:property; text:font-weight
 spec:css-ruby-1; type:value; text:ruby
 spec:css-ruby-1; type:value; text:ruby-text
-spec:css21; type:property; text:min-height
-spec:css21; type:property; text:max-height
+spec:css22; type:property; text:min-height
+spec:css22; type:property; text:max-height
 spec:css-flexbox-1; type:value; text:inline-flex
+spec:selectors-3; type:selector; text:::before
+spec:selectors-3; type:selector; text:::after
+spec:css-display-3; type:property; text:display
+spec:html; type:element; text:style
 </pre>
 
 <pre class=biblio>
@@ -290,15 +298,15 @@ one line except when a line break is definitely necessary.</p>
 
 <p><i>This section is non-normative.</i></p>
 
-<p>CSS stylesheets that apply to an HTML page that contains a <a spec=html element>video</a> element
-can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'' and
-''::cue-region'' pseudo-elements.</p>
+<p>CSS style sheets that apply to an HTML page that contains a <a element>video</a> element can
+target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'', ''::cue-region'' and
+''::cue-region()'' pseudo-elements.</p>
 
 <div class="example">
 
- <p>In this example, an HTML page has a CSS stylesheet in a <a spec=html element>style</a> element
- that styles all cues in the video with a gradient background and a text color, as well as changing
- the text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
+ <p>In this example, an HTML page has a CSS style sheet in a <a element>style</a> element that
+ styles all cues in the video with a gradient background and a text color, as well as changing the
+ text color for all <a>WebVTT Bold Objects</a> in cues in the video.</p>
 
  <pre>
  &lt;!doctype html>
@@ -325,15 +333,15 @@ can target WebVTT cues and regions in the video using the ''::cue'', ''::cue()''
 
 </div>
 
-<p>CSS stylesheets can also be embedded in WebVTT files themselves.</p>
+<p>CSS style sheets can also be embedded in WebVTT files themselves.</p>
 
 <p>Style blocks are placed after any headers but before the first cue, and start with the line
 "STYLE". Comment blocks can be interleaved with style blocks.</p>
 
-<p>Blank lines cannot appear in the stylesheet. They can be removed or be filled with a space or a
+<p>Blank lines cannot appear in the style sheet. They can be removed or be filled with a space or a
 CSS comment (e.g. <code>/**/</code>).</p>
 
-<p>The string "<code>--></code>" cannot be used in the stylesheet. If the stylesheet is wrapped in
+<p>The string "<code>--></code>" cannot be used in the style sheet. If the style sheet is wrapped in
 "<code>&lt;!--</code>" and "<code>--></code>", then those strings can just be removed. If
 "<code>--></code>" appears inside a CSS string, then it can use CSS escaping e.g.
 "<code>--\></code>".</p>
@@ -366,7 +374,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
  NOTE style blocks cannot appear after the first cue.
  </pre>
 
- </div>
+</div>
 
 <h3 id=introduction-other-features>Other features</h3>
 
@@ -381,7 +389,11 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <pre>
  WEBVTT
 
- 1
+ test
+ 00:00.000 --> 00:02.000
+ This is a test.
+
+ 123
  00:00.000 --> 00:02.000
  That's an, an, that's an L!
 
@@ -390,11 +402,23 @@ CSS comment (e.g. <code>/**/</code>).</p>
  Transcrit par Célestes&trade;
  </pre>
 
- <p>This allows a style sheet to specifically target the cues (notice the use of CSS character
- escape sequences):</p>
+ <p>This allows a style sheet to specifically target the cues.</p>
 
  <pre>
- ::cue(#\31) { color: green; }
+ /* style for cue: test */
+ ::cue(#test) { color: lime; }
+ </pre>
+
+ <p>Due to the syntax rules of CSS, some characters need to be escaped with CSS character escape
+ sequences. For example, an ID that starts with a number 0-9 needs to be escaped. The ID
+ <code>123</code> can be represented as "\31 23" (31 refers to the Unicode code point for "1"). See
+ <a href="https://www.w3.org/International/questions/qa-escapes">Using character escapes in markup
+ and CSS</a> for more information on CSS escapes.</p>
+
+ <pre>
+ /* style for cue: 123 */
+ ::cue(#\31 23) { color: lime; }
+ /* style for cue: crédit de transcription */
  ::cue(#crédit\ de\ transcription) { color: red; }
  </pre>
 
@@ -446,8 +470,8 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <p>Style sheets can style these spans:</p>
 
  <pre>
- ::cue(v[voice="Esme"]) { color: blue }
- ::cue(v[voice="Mary"]) { color: green }
+ ::cue(v[voice="Esme"]) { color: cyan }
+ ::cue(v[voice="Mary"]) { color: lime }
  ::cue(i) { font-style: italic }
  ::cue(.loud) { font-size: 2em }
  </pre>
@@ -460,13 +484,13 @@ CSS comment (e.g. <code>/**/</code>).</p>
  <pre>
  WEBVTT
 
- 00:00:00.000 --> 00:00:04.000 position:10%,start align:left size:35%
+ 00:00:00.000 --> 00:00:04.000 position:10%,line-left align:left size:35%
  Where did he go?
 
  00:00:03.000 --> 00:00:06.500 position:90% align:right size:35%
  I think he went down this lane.
 
- 00:00:04.000 --> 00:00:06.500 position:45%,end align:center size:35%
+ 00:00:04.000 --> 00:00:06.500 position:45%,line-right align:center size:35%
  What are you waiting for?
  </pre>
 
@@ -474,31 +498,34 @@ CSS comment (e.g. <code>/**/</code>).</p>
  of the width of the video viewpoint. If the text were vertical, the "position" setting would refer
  to the height of the viewport.</p>
 
- <p>The "start" or "end" only refers to the physical side of the box to which the "position" setting
- applies, in a way which is agnostic regarding the horizontal or vertical direction of the cue. It
- does not affect or relate to the direction or position of the text itself within the box.</p>
+ <p>The "line-left" or "line-right" only refers to the physical side of the box to which the
+ "position" setting applies, in a way which is agnostic regarding the horizontal or vertical
+ direction of the cue. It does not affect or relate to the direction or position of the text itself
+ within the box.</p>
 
  <p>The cues cover only 35% of the video viewport's width - that's the <a lt="WebVTT cue box">cue
  box</a>'s "size" for all three cues.</p>
 
- <p>The first cue has its <a lt="WebVTT cue box">cue box</a> positioned at the 10% mark. The "start"
- and "end" within the "position" setting indicates which side of the <a lt="WebVTT cue box">cue
- box</a> the position refers to. Since in this case the text is horizontal, "start" refers to the
- left side of the box, and the cue box is thus positioned between the 10% and the 45% mark of the
- video viewport's width, probably underneath a speaker on the left of the video image. If the cue
- was vertical, "start" positioning would be from the top of the video viewport's height and the <a
- lt="WebVTT cue box">cue box</a> would cover 35% of the video viewport's height.</p>
+ <p>The first cue has its <a lt="WebVTT cue box">cue box</a> positioned at the 10% mark. The
+ "line-left" and "line-right" within the "position" setting indicates which side of the <a
+ lt="WebVTT cue box">cue box</a> the position refers to. Since in this case the text is horizontal,
+ "line-left" refers to the left side of the box, and the cue box is thus positioned between the 10%
+ and the 45% mark of the video viewport's width, probably underneath a speaker on the left of the
+ video image. If the cue was vertical, "line-left" positioning would be from the top of the video
+ viewport's height and the <a lt="WebVTT cue box">cue box</a> would cover 35% of the video
+ viewport's height.</p>
 
  <p>The text within the first cue's cue box is aligned using the "align" cue setting. For
  left-to-right rendered text, "start" alignment is the left of that box, for right-to-left rendered
  text the right of the box. So, independent of the directionality of the text, it will stay
- underneath that speaker. Note that "start" alignment of the cue box is the default for start
- aligned text, so does not need to be specified in "position".</p>
+ underneath that speaker. Note that "center" position alignment of the cue box is the default for
+ start aligned text, in order to avoid having the box move when the base direction of the text
+ changes (from left-to-right to right-to-left or vice versa) as a result of translation.</p>
 
  <p>The second cue has its <a lt="WebVTT cue box">cue box</a> right aligned at the 90% mark of the
- video viewport width ("end" aligned text right aligns the box). The same effect can be achieved
- with "position:55%,start", which explicitly positions the cue box. The third cue has center aligned
- text within the same positioned cue box as the first cue.</p>
+ video viewport width ("right" aligned text right aligns the box). The same effect can be achieved
+ with "position:55%,line-left", which explicitly positions the cue box. The third cue has center
+ aligned text within the same positioned cue box as the first cue.</p>
 
 </div>
 
@@ -510,8 +537,22 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
- Region: id=fred width=40% lines=3 regionanchor=0%,100% viewportanchor=10%,90% scroll=up
- Region: id=bill width=40% lines=3 regionanchor=100%,100% viewportanchor=90%,90% scroll=up
+
+ REGION
+ id:fred
+ width:40%
+ lines:3
+ regionanchor:0%,100%
+ viewportanchor:10%,90%
+ scroll:up
+
+ REGION
+ id:bill
+ width:40%
+ lines:3
+ regionanchor:100%,100%
+ viewportanchor:90%,90%
+ scroll:up
 
  00:00:00.000 --> 00:00:20.000 region:fred align:left
  &lt;v Fred>Hi, my name is Fred
@@ -607,9 +648,11 @@ requirements.</p>
 
 <p>Implementations of this specification must not normalize Unicode text during processing.</p>
 
-<p class=example>For example, a cue with the identifier consisting of the characters U+0041 LATIN
-CAPITAL LETTER A and U+212B ANGSTROM SIGN will not match a selector targeting a cue with an ID
-consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
+<p class=example>For example, a cue with an identifier consisting of the characters U+0041 LATIN
+CAPITAL LETTER A followed by U+030A COMBINING RING ABOVE (a decomposed character sequence), or the
+character U+212B ANGSTROM SIGN (a compatibility character), will not match a selector targeting a
+cue with an ID consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE (a
+precomposed character).</p>
 
 
 <h2 id=data-model>Data model</h2>
@@ -623,6 +666,13 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 [[!HTML]]</p>
 
 <dl>
+
+ <dt><dfn lt="text track cue text">A cue text</dfn></dt>
+ <dd>
+  <p>The raw text of the cue, and rules for its interpretation, allowing the text to be rendered and
+  converted to a DOM fragment.</p>
+
+ </dd>
 
  <dt><dfn lt="WebVTT cue box">A cue box</dfn></dt>
  <dd>
@@ -657,17 +707,13 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   </ul>
 
-  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
-  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue line">line</a>
-  percentages are relative to the height of the video, and <a lt="WebVTT cue position">position</a>
-  and <a lt="WebVTT cue size">size</a> percentages are relative to the width of the video.</p>
+  <p class=note>The <a lt="WebVTT cue writing direction">writing direction</a> affects the
+  interpretation of the <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue position">position</a>,
+  and <a lt="WebVTT cue size">size</a> cue settings to be interpreted with respect to either the
+  width or height of the video.</p>
 
-  <p>Otherwise, <a lt="WebVTT cue line">line</a> percentages are relative to the width of the video,
-  and <a lt="WebVTT cue position">position</a> and <a lt="WebVTT cue size">size</a> percentages are
-  relative to the height of the video.</p>
-
-  <p>The <a lt="WebVTT cue writing direction">writing direction</a> defaults to <a lt="WebVTT cue
-  horizontal writing direction">horizontal</a>.</p>
+  <p>By default, the <a lt="WebVTT cue writing direction">writing direction</a> is set to to <a
+  lt="WebVTT cue horizontal writing direction">horizontal</a>.</p>
 
   <p class=note>The <a lt="WebVTT cue vertical growing left writing direction">vertical growing
   left</a> writing direction could be used for vertical Chinese, Japanese, and Korean, and the <a
@@ -681,10 +727,10 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   <p>A boolean indicating whether the <a lt="WebVTT cue line">line</a> is an integer number of lines
   (using the line dimensions of the first line of the cue), or whether it is a percentage of the
-  dimension of the video. The flag is set when lines are counted, unset otherwise.</p>
+  dimension of the video. The flag is set to true when lines are counted, and false otherwise.</p>
 
-  <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is set will be placed within the title-safe
-  area on user agents that use overscan. Cues with the flag unset will be offset as requested
+  <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is true will be placed within the title-safe
+  area on user agents that use overscan. Cues where the flag is false will be offset as requested
   (modulo overlap avoidance if multiple cues are in the same place).</p>
 
   <p>By default, the <a lt="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> is set to
@@ -706,24 +752,40 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   video viewport height or width, or as the special value <dfn lt="WebVTT cue line
   automatic">auto</dfn>, which means the offset is to depend on the other showing tracks.</p>
 
+  <p>By default, the <a lt="WebVTT cue line">line</a> is set to <a lt="WebVTT cue line
+  automatic">auto</a>.</p>
+
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue line">line</a>
+  percentages are relative to the height of the video, otherwise to the width of the video.</p>
+
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed line">computed line</dfn> whose value is that
   returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
 
   <ol algorithm="computed line">
 
-   <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines
-   flag</a> of the <a>WebVTT cue</a> is not set, and the <a lt="WebVTT cue line">line</a> is
-   negative or greater than 100, then return 100 and abort these steps.</p></li>
+   <li>
+
+    <p>If the <a lt="WebVTT cue line">line</a> is numeric, the <a>WebVTT cue snap-to-lines flag</a>
+    of the <a>WebVTT cue</a> is false, and the <a lt="WebVTT cue line">line</a> is negative or
+    greater than 100, then return 100 and abort these steps.</p>
+
+    <p class="note">Although the <a>WebVTT parser</a> will not set the <a lt="WebVTT cue
+    line">line</a> to a number outside the range 0..100 and also set the <a>WebVTT cue snap-to-lines
+    flag</a> to false, this can happen when using the DOM API's {{VTTCue/snapToLines}} and
+    {{VTTCue/line}} attributes.</p>
+
+   </li>
 
    <li><p>If the <a lt="WebVTT cue line">line</a> is numeric, return the value of the <a>WebVTT cue
-   line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a> is set, so any
+   line</a> and abort these steps. (Either the <a>WebVTT cue snap-to-lines flag</a> is true, so any
    value, not just those in the range 0..100, is valid, or the value is in the range 0..100 and is
    thus valid regardless of the value of that flag.)</p></li>
 
-   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is not set, return
-   the value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value
-   <a lt="WebVTT cue line automatic">auto</a>.)</p></li>
+   <li><p>If the <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> is false, return the
+   value 100 and abort these steps. (The <a lt="WebVTT cue line">line</a> is the special value <a
+   lt="WebVTT cue line automatic">auto</a>.)</p></li>
 
    <li><p>Let |cue| be the <a>WebVTT cue</a>.</p></li>
 
@@ -734,9 +796,9 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <li><p>Let |track| be the <a>text track</a> whose <a lt="text track list of cues">list of
    cues</a> the |cue| is in.</p></li>
 
-   <li><p>Let |n| be the number of <a lt="text track">text tracks</a> whose <a>text track mode</a>
-   is <a lt="text track showing">showing</a> and that are in the <a>media element</a>'s <a>list of
-   text tracks</a> before |track|.</p></li>
+   <li><p>Let |n| be the number of <a>text tracks</a> whose <a>text track mode</a> is <a lt="text
+   track showing">showing</a> and that are in the <a>media element</a>'s <a>list of text tracks</a>
+   before |track|.</p></li>
 
    <li><p>Increment |n| by one.</p></li>
 
@@ -745,6 +807,12 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <li><p>Return |n|.</p></li>
 
   </ol>
+
+  <p class="example">For example, if two <a>text tracks</a> are <a lt="text track
+  showing">showing</a> at the same time in one <a>media element</a>, and each <a>text track</a>
+  currently has an active <a>WebVTT cue</a> whose <a lt="WebVTT cue line">line</a> are both <a
+  lt="WebVTT cue line automatic">auto</a>, then the first <a>text track</a>'s cue's <a lt="cue
+  computed line">computed line</a> will be &#x2212;1 and the second will be &#x2212;2.</p>
 
  </dd>
 
@@ -775,8 +843,8 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   </dl>
 
-  <p>A <a>WebVTT cue</a> has a default <a>WebVTT cue line alignment</a> of <a lt="WebVTT cue line
-  start alignment">start</a>.</p>
+  <p>By default, the <a lt="WebVTT cue line alignment">line alignment</a> is set to <a lt="WebVTT
+  cue line start alignment">start</a>.</p>
 
   <p class=note>The <a lt="WebVTT cue line alignment">line alignment</a> is separate from the <a
   lt="WebVTT cue text alignment">text alignment</a> &mdash; right-to-left vs. left-to-right cue text
@@ -799,6 +867,13 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   interpreted as a percentage of the video dimensions, otherwise as a percentage of the region
   dimensions.</p>
 
+  <p>By default, the <a lt="WebVTT cue position">position</a> is set to <a lt="WebVTT cue automatic
+  position">auto</a>.</p>
+
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue position">position</a>
+  percentages are relative to the width of the video, otherwise to the height of the video.</p>
+
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed position">computed position</dfn> whose value
   is that returned by the following algorithm, which is defined in terms of the other aspects of the
   cue:</p>
@@ -810,16 +885,13 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    position">position</a> is the special value <a lt="WebVTT cue automatic
    position">auto</a>.)</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue start
-   alignment">start</a> or <a lt="WebVTT cue left alignment">left</a>, return 0 and abort these
-   steps.</p></li>
+   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue left
+   alignment">left</a>, return 0 and abort these steps.</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue end
-   alignment">end</a> or <a lt="WebVTT cue right alignment">right</a>, return 100 and abort these
-   steps.</p></li>
+   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue right
+   alignment">right</a>, return 100 and abort these steps.</p></li>
 
-   <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue
-   center alignment">center</a>, return 50 and abort these steps.</p></li>
+   <li><p>Otherwise, return 50 and abort these steps.</p></li>
 
   </ol>
 
@@ -830,10 +902,24 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   <p class="note">Even for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues with
   right-to-left cue text, the <a lt="WebVTT cue box">cue box</a> is positioned from the left edge of
   the video viewport. This allows defining a rendering space template which can be filled with
-  either left-to-right or right-to-left cue text, or both. If such a <a lt="WebVTT cue box">cue
-  box</a> template is created with <a lt="WebVTT cue start alignment">start</a> or <a lt="WebVTT cue
-  end alignment">end</a> aligned text, it is best to also specify a <a lt="WebVTT cue size">size</a>
-  since otherwise the text can flip from one side of the video viewport to the other.</p>
+  either left-to-right or right-to-left cue text, or both.</p>
+
+  <p>For <a>WebVTT cues</a> that have a <a lt="WebVTT cue size">size</a> other than 100%, and a <a
+  lt="WebVTT cue text alignment">text alignment</a> of <a lt="WebVTT cue start alignment">start</a>
+  or <a lt="WebVTT cue end alignment">end</a>, authors must not use the default <a lt="WebVTT cue
+  automatic position">auto</a> <a lt="WebVTT cue position">position</a>.</p>
+
+  <p class="note">When the <a lt="WebVTT cue text alignment">text alignment</a> is <a lt="WebVTT cue
+  start alignment">start</a> or <a lt="WebVTT cue end alignment">end</a>, the <a lt="WebVTT cue
+  automatic position">auto</a> <a lt="WebVTT cue position">position</a> is 50%. This is different
+  from <a lt="WebVTT cue left alignment">left</a> and <a lt="WebVTT cue right alignment">right</a>
+  aligned text, where the <a lt="WebVTT cue automatic position">auto</a> <a lt="WebVTT cue
+  position">position</a> is 0% and 100%, respectively. The above requirement is present because it
+  can be surprising that automatic positioning doesn't work for <a lt="WebVTT cue start
+  alignment">start</a> or <a lt="WebVTT cue end alignment">end</a> aligned text. Since <a lt="WebVTT
+  cue text">cue text</a> can consist of text with left-to-right base direction, or right-to-left
+  base direction, or both (on different lines), such automatic positioning would have unexpected
+  results.</p>
 
  </dd>
 
@@ -845,7 +931,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
 
   <dl>
 
-   <dt><dfn lt="WebVTT cue position start alignment">Start alignment</dfn></dt>
+   <dt><dfn lt="WebVTT cue position line-left alignment">Line-left alignment</dfn></dt>
    <dd>The <a lt="WebVTT cue box">cue box</a>'s left side (for <a lt="WebVTT cue horizontal writing
    direction">horizontal</a> cues) or top side (otherwise) is aligned at the <a lt="WebVTT cue
    position">position</a>.</dd>
@@ -854,7 +940,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    <dd>The <a lt="WebVTT cue box">cue box</a> is centered at the <a lt="WebVTT cue
    position">position</a>.</dd>
 
-   <dt><dfn lt="WebVTT cue position end alignment">End alignment</dfn></dt>
+   <dt><dfn lt="WebVTT cue position line-right alignment">Line-right alignment</dfn></dt>
    <dd>The <a lt="WebVTT cue box">cue box</a>'s right side (for <a lt="WebVTT cue horizontal writing
    direction">horizontal</a> cues) or bottom side (otherwise) is aligned at the <a lt="WebVTT cue
    position">position</a>.</dd>
@@ -864,6 +950,9 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    cue text alignment">text alignment</a> of the cue.</dd>
 
   </dl>
+
+  <p>By default, the <a lt="WebVTT cue position alignment">position alignment</a> is set to <a
+  lt="WebVTT cue position automatic alignment">auto</a>.</p>
 
   <p>A <a>WebVTT cue</a> has a <dfn lt="cue computed position alignment">computed position
   alignment</dfn> whose value is that returned by the following algorithm, which is defined in terms
@@ -875,24 +964,22 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
    alignment">auto</a>, then return the value of the <a>WebVTT cue position alignment</a> and abort
    these steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue start alignment">start</a> or
-   <a lt="WebVTT cue left alignment">left</a>, return <a lt="WebVTT cue position start
-   alignment">start</a> and abort these steps.</p></li>
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue left alignment">left</a>,
+   return <a lt="WebVTT cue position line-left alignment">line-left</a> and abort these
+   steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue end alignment">end</a> or <a
-   lt="WebVTT cue right alignment">right</a>, return <a lt="WebVTT cue position end
-   alignment">end</a> and abort these steps.</p></li>
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue right alignment">right</a>,
+   return <a lt="WebVTT cue position line-right alignment">line-right</a> and abort these
+   steps.</p></li>
 
-   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue center alignment">center</a>,
-   return <a lt="WebVTT cue position center alignment">center</a> and abort these steps.</p></li>
+   <li><p>Otherwise, return <a lt="WebVTT cue center alignment">center</a>.</p></li>
 
   </ol>
 
   <p class="note">Since the <a lt="WebVTT cue position">position</a> always measures from the left
   of the video (for <a lt="WebVTT cue horizontal writing direction">horizontal</a> cues) or the top
-  (otherwise), the <a>WebVTT cue position alignment</a> <a lt="WebVTT cue position start
-  alignment">start value</a> varies between left and top for horizontal and vertical cues, but not
-  between left and right for left-to-right and right-to-left cue text.</p>
+  (otherwise), the <a>WebVTT cue position alignment</a> <a lt="WebVTT cue position line-left
+  alignment">line-left</a> value varies between left and top for horizontal and vertical cues.</p>
 
  </dd>
 
@@ -902,7 +989,11 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   percentage of the video, as defined by the <a lt="WebVTT cue writing direction">writing
   direction</a>.</p>
 
-  <p>By default, the <a>WebVTT cue size</a> is 100%.</p>
+  <p>By default, the <a>WebVTT cue size</a> is set to 100%.</p>
+
+  <p>If the <a lt="WebVTT cue writing direction">writing direction</a> is <a lt="WebVTT cue
+  horizontal writing direction">horizontal</a>, then the <a lt="WebVTT cue size">size</a>
+  percentages are relative to the width of the video, otherwise to the height of the video.</p>
 
  </dd>
 
@@ -915,28 +1006,30 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   <dl>
 
    <dt><dfn lt="WebVTT cue start alignment">Start alignment</dfn></dt>
-   <dd>The text of each line is individually aligned towards the start side of the box,
-   where the start side for that line is determined by using the CSS rules for
-   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
+   <dd>The text of each line is individually aligned towards the start side of the box, where the
+   start side for that line is determined by using the CSS rules for ''unicode-bidi/plaintext''
+   value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue center alignment">Center alignment</dfn></dt>
    <dd>The text is aligned centered between the box's start and end sides.</dd>
 
    <dt><dfn lt="WebVTT cue end alignment">End alignment</dfn></dt>
-   <dd>The text of each line is individually aligned towards the start side of the box,
-   where the start side for that line is determined by using the CSS rules for
-   ''unicode-bidi/plaintext'' value of the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
+   <dd>The text of each line is individually aligned towards the end side of the box, where the end
+   side for that line is determined by using the CSS rules for ''unicode-bidi/plaintext'' value of
+   the 'unicode-bidi' property. [[!CSS-WRITING-MODES-3]]</dd>
 
    <dt><dfn lt="WebVTT cue left alignment">Left alignment</dfn></dt>
-   <dd>The text is aligned to the box's left side.</dd>
+   <dd>The text is aligned to the box's left side (for <a lt="WebVTT cue horizontal writing
+   direction">horizontal</a> cues) or top side (otherwise).</dd>
 
    <dt><dfn lt="WebVTT cue right alignment">Right alignment</dfn></dt>
-   <dd>The text is aligned to the box's right side.</dd>
+   <dd>The text is aligned to the box's right side (for <a lt="WebVTT cue horizontal writing
+   direction">horizontal</a> cues) or bottom side (otherwise).</dd>
 
   </dl>
 
-  <p>By default, the value of the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue center
-  alignment">center aligned</a>.</p>
+  <p>By default, the <a lt="WebVTT cue text alignment">text alignment</a> is set to <a lt="WebVTT
+  cue center alignment">center</a>.</p>
 
   <p class=note>The base direction of each line in a cue (which is used by the Unicode Bidirectional
   Algorithm to determine the order in which to display the characters in the line) is determined by
@@ -944,7 +1037,7 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
   ''unicode-bidi/plaintext'' algorithm. In the occasional cases where the first strong character on
   a line would produce the wrong base direction for that line, the author can use an U+200E
   LEFT-TO-RIGHT MARK or U+200F RIGHT-TO-LEFT MARK character at the start of the line to correct it.
-  [[BIDI]]</p>
+  [[!BIDI]]</p>
 
   <div class=example>
    <p>In this example, the second cue will have a right-to-left base direction, rendering as
@@ -1028,6 +1121,8 @@ consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE.</p>
  <dt><dfn lt="WebVTT cue region">A region</dfn></dt>
  <dd>
   <p>An optional <a>WebVTT region</a> to which a cue belongs.</p>
+
+  <p>By default, the <a lt="WebVTT region">region</a> is set to null.</p>
  </dd>
 
 </dl>
@@ -1039,11 +1134,13 @@ cues</a> are the <a>rules for updating the display of WebVTT text tracks</a>.</p
 
  <p>When a <a>WebVTT cue</a> whose <a lt="text track cue active flag">active flag</a> is set has its
  <a lt="WebVTT cue writing direction">writing direction</a>, <a lt="WebVTT cue snap-to-lines
- flag">snap-to-lines flag</a>, <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue
- position">position</a>, <a lt="WebVTT cue size">size</a>, <a lt="WebVTT cue text alignment">text
- alignment</a>, <a lt="WebVTT cue region">region</a>, or <a lt="text track cue text">text</a> change
- value, then the user agent must empty the <a>text track cue display state</a>, and then immediately
- run the <a>text track</a>'s <a>rules for updating the display of WebVTT text tracks</a>.</p>
+ flag">snap-to-lines flag</a>, <a lt="WebVTT cue line">line</a>, <a lt="WebVTT cue line
+ alignment">line alignment</a>, <a lt="WebVTT cue position">position</a>, <a lt="WebVTT cue position
+ alignment">position alignment</a>, <a lt="WebVTT cue size">size</a>, <a lt="WebVTT cue text
+ alignment">text alignment</a>, <a lt="WebVTT cue region">region</a>, or <a lt="text track cue
+ text">text</a> change value, then the user agent must empty the <a>text track cue display
+ state</a>, and then immediately run the <a>text track</a>'s <a>rules for updating the display of
+ WebVTT text tracks</a>.</p>
 
 </div>
 
@@ -1059,7 +1156,9 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
 
  <dt><dfn lt="WebVTT region identifier">An identifier</dfn></dt>
  <dd>
-  <p>An arbitrary string.</p>
+  <p>An arbitrary string of zero or more characters other than U+0020 SPACE or U+0009 CHARACTER
+  TABULATION character. The string must not contain the substring "-->" (U+002D HYPHEN-MINUS, U+002D
+  HYPHEN-MINUS, U+003E GREATER-THAN SIGN). Defaults to the empty string.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region width">A width</dfn></dt>
@@ -1136,11 +1235,11 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
 <h3 id=file-structure>WebVTT file structure</h3>
 
 <p>A <dfn>WebVTT file</dfn> must consist of a <a>WebVTT file body</a> encoded as UTF-8 and labeled
-with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
+with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
 
 <p>A <dfn>WebVTT file body</dfn> consists of the following components, in the following order:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.</li>
 
@@ -1150,17 +1249,13 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  followed by any number of characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN
  (CR) characters.</li> <!-- allows for Emacs line -->
 
- <li>Exactly one <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
+ <li>Two or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.</li>
 
- <li>Zero or more <a lt="WebVTT metadata header">WebVTT metadata headers</a>.</li>
-
- <li>One or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the header
- block and separate the cues from the file header.</li>
-
- <li>Zero or more <a lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment
- block">WebVTT comment blocks</a> separated from each other by one or more <a lt="WebVTT line
- terminator">WebVTT line terminators</a>.</li>
+ <li>Zero or more <a lt="WebVTT region definition block">WebVTT region definition blocks</a>, <a
+ lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment block">WebVTT comment
+ blocks</a> separated from each other by one or more <a lt="WebVTT line terminator">WebVTT line
+ terminators</a>.</li>
 
  <li>Zero or more <a lt="WebVTT line terminator">WebVTT line terminators</a>.</li>
 
@@ -1180,20 +1275,18 @@ with the <a spec=html>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
 </ul>
 
-<p>A <dfn>WebVTT metadata header</dfn> consists of the following components, in the given order:</p>
+<p>A <dfn>WebVTT region definition block</dfn> consists of the following components, in the given
+order:</p>
 
 <ol>
- <li>A <a>WebVTT metadata header name</a>.</li>
- <li>A U+003A COLON (colon) character.</li>
- <li>A <a>WebVTT metadata header value</a>.</li>
+ <li>The string "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E,
+ U+0047 LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+ LATIN CAPITAL LETTER N).</li>
+ <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+ <li>A <a>WebVTT region settings list</a>.</li>
  <li>A <a>WebVTT line terminator</a>.</li>
 </ol>
-
-<p>A <dfn>WebVTT metadata header name</dfn> and a <dfn>WebVTT metadata header value</dfn> each
-consist of any sequence of one or more characters other than U+000A LINE FEED (LF) characters and
-U+000D CARRIAGE RETURN (CR) characters except that the entire resulting string must not contain the
-substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
-SIGN).</p>
 
 <p>A <dfn>WebVTT style block</dfn> consists of the following components, in the given order:</p>
 
@@ -1202,12 +1295,12 @@ SIGN).</p>
  U+0059 LATIN CAPITAL LETTER Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E).</li>
  <li>Zero or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters.</li>
  <li>A <a>WebVTT line terminator</a>.</li>
- <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and
- U+000D CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT
- line terminator</a>, except that the entire resulting string must not contain the substring
+ <li>Any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and U+000D
+ CARRIAGE RETURN (CR) characters, each optionally separated from the next by a <a>WebVTT line
+ terminator</a>, except that the entire resulting string must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN). The string
- represents a CSS stylesheet; the requirements given in the relevant CSS specifications apply.
- [[!CSS21]]</li>
+ represents a CSS style sheet; the requirements given in the relevant CSS specifications apply.
+ [[!CSS22]]</li>
  <li>A <a>WebVTT line terminator</a>.</li>
 </ol>
 
@@ -1276,8 +1369,7 @@ block</a>. Different cues can overlap. Cues are always listed ordered by their s
 
   <ol>
 
-   <li>Two or more <a spec=html>ASCII digits</a>, representing the |hours| as a base ten
-   integer.</li>
+   <li>Two or more <a>ASCII digits</a>, representing the |hours| as a base ten integer.</li>
 
    <li>A U+003A COLON character (:)</li>
 
@@ -1399,7 +1491,7 @@ terminator</a>.</p>
 
  <li>A <a>WebVTT cue text span</a>, representing the text of the cue.</li>
 
- <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two Unicode
+ <li>An <a lt="character references">HTML character reference</a>, representing one or two Unicode
  code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
 
 </ul>
@@ -1449,6 +1541,10 @@ underlined text, and a <a>WebVTT cue span end tag</a> "<code>u</code>".</p>
 
 <p class="note">Cue positioning controls the positioning of the baseline text, not the ruby
 text.</p>
+
+<p class="note">Ruby in WebVTT is a subset of the ruby features in HTML. This might be extended in
+the future to also support an object for ruby base text as well as complex ruby, when these features
+are more mature in HTML and CSS. [[!HTML]] [[CSS3-RUBY]]</p>
 
 <p>A <dfn>WebVTT cue voice span</dfn> consists of the following components, in the order given:</p>
 
@@ -1512,8 +1608,8 @@ given:</p>
   <ul>
    <li><a>WebVTT cue span start tag annotation text</a>, representing the text of the
    annotation.</li>
-   <li>An <a spec=html lt=syntax-charref>HTML character reference</a>, representing one or two
-   Unicode code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
+   <li>An <a lt="character references">HTML character reference</a>, representing one or two Unicode
+   code points, as defined in HTML, in the text of the annotation. [[!HTML]]</li>
   </ul>
 
  </li>
@@ -1548,23 +1644,28 @@ than U+000A LINE FEED (LF) characters, U+000D CARRIAGE RETURN (CR) characters, U
 characters (&amp;), and U+003E GREATER-THAN SIGN characters (>).</p>
 
 
-<h3 id=region-definition>WebVTT region definition</h3>
+<h4 id=chapter-title-text>WebVTT chapter title text</h4>
 
-<p>A <a>WebVTT cue settings list</a> may contain a reference to a <a>WebVTT region</a>. To define a
-region, a <a>WebVTT region metadata header</a> is specified.</p>
-
-<p>A <dfn>WebVTT region metadata header</dfn> is a special kind of <a>WebVTT metadata header</a>
-where both of the following apply:</p>
+<p><dfn>WebVTT chapter title text</dfn> is <a>WebVTT cue text</a> that makes use of zero or more of
+the following components, each optionally separated from the next by a <a>WebVTT line
+terminator</a>:</p>
 
 <ul>
- <li>The <a>WebVTT metadata header name</a> is the string "<code>Region</code>".</li>
- <li>The <a>WebVTT metadata header value</a> is a <a>WebVTT region setting list</a>.</li>
+ <li><a>WebVTT cue text span</a></li>
+ <li><a lt="character references">HTML character reference</a> [[!HTML]]</li>
 </ul>
 
-<p>The <dfn>WebVTT region setting list</dfn> of a <a>WebVTT region metadata header</a> consists of
-zero or more of the following components, in any order, separated from each other by one or more
-U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each component must not be
-included more than once per <a>WebVTT region setting list</a> string.</p>
+
+<h3 id=region-settings>WebVTT region settings</h3>
+
+<p>A <a>WebVTT cue settings list</a> can contain a reference to a <a>WebVTT region</a>. To define a
+region, a <a>WebVTT region definition block</a> is specified.</p>
+
+<p>The <dfn>WebVTT region settings list</dfn> consists of zero or more of the following components,
+in any order, separated from each other by one or more U+0020 SPACE characters, U+0009 CHARACTER
+TABULATION (tab) characters, or <a>WebVTT line terminators</a>, except that the string must not
+contain two consecutive <a>WebVTT line terminators</a>. Each component must not be included more
+than once per <a>WebVTT region settings list</a> string.</p>
 
 <ul>
  <li>A <a>WebVTT region identifier setting</a>.</li>
@@ -1575,59 +1676,70 @@ included more than once per <a>WebVTT region setting list</a> string.</p>
  <li>A <a>WebVTT region scroll setting</a>.</li>
 </ul>
 
-<p class="note">The <a>WebVTT region setting list</a> gives configuration options regarding the
+<p class="note">The <a>WebVTT region settings list</a> gives configuration options regarding the
 dimensions, positioning and anchoring of the region. For example, it allows a group of cues within a
 region to be anchored in the center of the region and the center of the video viewport. In this
 example, when the font size grows, the region grows uniformly in all directions from the center.</p>
 
 <p>A <dfn>WebVTT region identifier setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>id</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
- <li><p>An arbitrary string of one or more characters other than U+0020 SPACE or U+0009 CHARACTER
- TABULATION character. The string must not contain the substring "<code>--></code>" (U+002D
- HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
+ <li><p>An arbitrary string of one or more characters other than <a>ASCII whitespace</a>. The string
+ must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E
+ GREATER-THAN SIGN).</p></li>
 </ol>
 
 <p>A <a>WebVTT region identifier setting</a> must be unique amongst all the <a lt="WebVTT region
 identifier setting">WebVTT region identifier settings</a> of all <a lt="WebVTT region">WebVTT
 regions</a> of a <a>WebVTT file</a>.</p>
 
+<p>A <a>WebVTT region identifier setting</a> must be present in each <a>WebVTT cue settings
+list</a>. Without an identifier, it is not possible to associate a <a>WebVTT cue</a> with a
+<a>WebVTT region</a> in the syntax.</p>
+
 <p class="note">The <a>WebVTT region identifier setting</a> gives a name to the region so it can be
 referenced by the cues that belong to the region.</p>
 
 <p>A <dfn>WebVTT region width setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>width</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region width setting</a> provides a fixed width as a percentage of the
 video width for the region into which cues are rendered and based on which alignment is
 calculated.</p>
 
 <p>A <dfn>WebVTT region lines setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>lines</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>One or more <a>ASCII digits</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region lines setting</a> provides a fixed height as a number of lines
 for the region into which cues are rendered. As such, it defines the height of the roll-up region if
 it is a scroll region.</p>
 
 <p>A <dfn>WebVTT region anchor setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>regionanchor</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region anchor setting</a> provides a tuple of two percentages that
 specify the point within the region box that is fixed in location. The first percentage measures the
 x-dimension and the second percentage y-dimension from the top left corner of the region box. If no
@@ -1636,13 +1748,15 @@ corner).</p>
 
 <p>A <dfn>WebVTT region viewport anchor setting</dfn> consists of the following components, in the
 order given:</p>
+
 <ol>
  <li><p>The string "<code>viewportanchor</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
  <li><p>A U+002C COMMA character (,).</p></li>
  <li><p>A <a>WebVTT percentage</a>.</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two percentages
 that specify the point within the video viewport that the region anchor point is anchored to. The
 first percentage measures the x-dimension and the second percentage measures the y-dimension from
@@ -1655,11 +1769,13 @@ to which the regions are absolutely positioned. Overflow is hidden.</p>
 
 <p>A <dfn>WebVTT region scroll setting</dfn> consists of the following components, in the order
 given:</p>
+
 <ol>
  <li><p>The string "<code>scroll</code>".</p></li>
- <li><p>A U+003D EQUALS SIGN character (=).</p></li>
+ <li><p>A U+003A COLON character (:).</p></li>
  <li><p>The string "<code>up</code>".</p></li>
 </ol>
+
 <p class="note">The <a>WebVTT region scroll setting</a> specifies whether cues rendered into the
 region are allowed to move out of their initial rendering place and roll up, i.e. move towards the
 top of the video viewport. If the scroll setting is omitted, cues do not move from their rendered
@@ -1679,8 +1795,15 @@ replaced.</p>
 
 <h3 id=cue-settings>WebVTT cue settings</h3>
 
-<p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
-setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
+<p>A <a>WebVTT cue setting</a> is part of a <a>WebVTT cue settings list</a> and provides
+configuration options regarding the position and alignment of the cue box and the cue text
+within.</p>
+
+<p class="note">For example, a set of WebVTT cue settings may allow a cue box to be aligned to the
+left or positioned at the top right with the cue text within center aligned.</p>
+
+<p>The current available <a>WebVTT cue settings</a> that may appear in a <a>WebVTT cue settings
+list</a> are:</p>
 
 <ul class="brief">
  <li>A <a>WebVTT vertical text cue setting</a>.</li>
@@ -1691,9 +1814,8 @@ setting must not be included more than once per <a>WebVTT cue settings list</a>.
  <li>A <a>WebVTT region cue setting</a>.</li>
 </ul>
 
-<p class="note">A <a>WebVTT cue settings list</a> gives configuration options regarding the position
-and alignment of the cue box and the cue text within. For example, it allows a cue box to be aligned
-to the left or positioned at the top right with the cue text within center aligned.</p>
+<p>Each of these setting must not be included more than once per <a>WebVTT cue settings
+list</a>.</p>
 
 <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a> that consists of the
 following components, in the order given:</p>
@@ -1771,8 +1893,8 @@ given:</p>
     an optional alignment value consisting of:
     <ol>
      <li>A U+002C COMMA character (,).</li>
-     <li>One of the following strings: "<code>start</code>", "<code>center</code>",
-     "<code>end</code>"</li>
+     <li>One of the following strings: "<code>line-left</code>", "<code>center</code>",
+     "<code>line-right</code>"</li>
     </ol>
    </li>
   </ol>
@@ -1782,11 +1904,11 @@ given:</p>
 <p class="note">A <a>WebVTT position cue setting</a> configures the indent position of the <a
 lt="WebVTT cue box">cue box</a> in the direction orthogonal to the <a>WebVTT line cue setting</a>.
 For horizontal cues, this is the horizontal position. The cue position is given as a percentage of
-the video viewport. The positioning is for the <a lt="WebVTT cue position start
-alignment">start</a>, <a lt="WebVTT cue position center alignment">center</a>, or <a lt="WebVTT cue
-position end alignment">end</a> of the cue box, depending on the cue's <a lt="cue computed position
-alignment">computed position alignment</a>, which is overridden by the <a>WebVTT position cue
-setting</a>.</p>
+the video viewport. The positioning is for the <a lt="WebVTT cue position line-left
+alignment">line-left</a>, <a lt="WebVTT cue position center alignment">center</a>, or <a lt="WebVTT
+cue position line-right alignment">line-right</a> of the cue box, depending on the cue's <a lt="cue
+computed position alignment">computed position alignment</a>, which is overridden by the <a>WebVTT
+position cue setting</a>.</p>
 
 <p>A <dfn>WebVTT size cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -1822,10 +1944,7 @@ given:</p>
 <ol>
  <li><p>The string "<code>region</code>" as the <a>WebVTT cue setting name</a>.</p></li>
  <li><p>A U+003A COLON character (:).</p></li>
- <li><p>As the <a>WebVTT cue setting value</a>: an arbitrary string of one or more characters other
- than U+0020 SPACE or U+0009 CHARACTER TABULATION character. The string must not contain the
- substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN
- SIGN).</p></li>
+ <li><p>As the <a>WebVTT cue setting value</a>: a <a>WebVTT region identifier</a>.</p></li>
 </ol>
 
 <p class="note">A <a>WebVTT region cue setting</a> configures a cue to become part of a region by
@@ -1939,15 +2058,6 @@ is said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
 
 <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
 
-<p><dfn>WebVTT chapter title text</dfn> is <a>WebVTT cue text</a> that makes use only of zero or
-more of the following components, each optionally separated from the next by a <a>WebVTT line
-terminator</a>:</p>
-
-<ul>
- <li><a>WebVTT cue text span</a></li>
- <li><a spec=html lt=syntax-charref>HTML character reference</a> [[!HTML]]</li>
-</ul>
-
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
 whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
 
@@ -1979,7 +2089,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
 <p>The <dfn>WebVTT parser algorithm</dfn> is as follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li>
   <p>Let |input| be the string being parsed, after conversion to Unicode, and with the following
@@ -2025,8 +2135,8 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  The file does not start with the correct <a>WebVTT file</a> signature and was therefore not
  successfully processed.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
- (LF) characters.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+ characters.</p></li>
 
  <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
  processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
@@ -2035,13 +2145,17 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  <li><p>The character indicated by |position| is a U+000A LINE FEED (LF) character. Advance
  |position| to the next character in |input|.</p></li>
 
- <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
- character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set, and let |regions|
- be the result. Otherwise, let |regions| be an empty <a>text track list of regions</a> and advance
- |position| to the next character in |input|.</p></li>
+ <li><p>If |position| is past the end of |input|, then abort these steps. The file was successfully
+ processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
+ to |output|.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
- characters.</p></li>
+ <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
+ character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
+ advance |position| to the next character in |input|.</p></li>
+
+ <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p></li>
+
+ <li><p>Let |regions| be an empty <a>text track list of regions</a>.</p></li>
 
  <li>
 
@@ -2057,9 +2171,11 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
    <li><p>Otherwise, if |block| is a <a spec=cssom>CSS style sheet</a>, add |block| to
    |stylesheets|.</p></li>
 
+   <li><p>Otherwise, if |block| is a <a>WebVTT region object</a>, add |block| to |regions|.</p></li>
+
    <!-- handle new block types here -->
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are U+000A LINE FEED (LF)
+   <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF)
    characters.</p></li>
 
   </ol>
@@ -2074,7 +2190,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 <p>When the algorithm above says to <dfn>collect a WebVTT block</dfn>, optionally with a flag <i>in
 header</i> set, the user agent must run the following steps:</p>
 
-<ol algorithm="collect a WebVTT block">
+<ol class=algorithm algorithm="collect a WebVTT block">
 
  <li><p>Let |input|, |position|, |seen cue| and |regions| be the same variables as those of the same
  name in the algorithm that invoked these steps.</p></li>
@@ -2095,7 +2211,7 @@ header</i> set, the user agent must run the following steps:</p>
 
  <li><p>Let |stylesheet| be null.</p></li>
 
- <li><p>If <i>in header</i> is set, let |regions| be a <a>text track list of regions</a>.</p></li>
+ <li><p>Let |region| be null.</p></li>
 
  <li>
 
@@ -2103,8 +2219,8 @@ header</i> set, the user agent must run the following steps:</p>
 
   <ol>
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are <em>not</em> U+000A LINE FEED
-   (LF) characters. Let |line| be those characters, if any.</p></li>
+   <li><p><a>collect a sequence of code points</a> that are <em>not</em> U+000A LINE FEED (LF)
+   characters. Let |line| be those characters, if any.</p></li>
 
    <li><p>Increment |line count| by 1.</p></li>
 
@@ -2146,7 +2262,7 @@ header</i> set, the user agent must run the following steps:</p>
 
         <ol>
 
-         <li><p>Let |cue|'s <a>text track cue identifier</a> be the empty string.</p></li>
+         <li><p>Let |cue|'s <a>text track cue identifier</a> be |buffer|.</p></li>
 
          <li><p>Let |cue|'s <a>text track cue pause-on-exit flag</a> be false.</p></li>
 
@@ -2181,7 +2297,8 @@ header</i> set, the user agent must run the following steps:</p>
        </li>
 
        <li><p><a>Collect WebVTT cue timings and settings</a> from |line| using |regions| for |cue|.
-       If that fails, let |cue| be null. Otherwise, let |buffer| be the empty string.</p></li>
+       If that fails, let |cue| be null. Otherwise, let |buffer| be the empty string and let |seen
+       cue| be true.</p></li>
 
       </ol>
 
@@ -2212,7 +2329,7 @@ header</i> set, the user agent must run the following steps:</p>
         <p>If |seen cue| is false and |buffer| starts with the substring "<code>STYLE</code>"
         (U+0053 LATIN CAPITAL LETTER S, U+0054 LATIN CAPITAL LETTER T, U+0059 LATIN CAPITAL LETTER
         Y, U+004C LATIN CAPITAL LETTER L, U+0045 LATIN CAPITAL LETTER E), and the remaining
-        characters in |buffer| (if any) are all <a spec=html>space characters</a>, then run these
+        characters in |buffer| (if any) are all <a>ASCII whitespace</a>, then run these
         substeps:</p>
 
         <ol>
@@ -2244,60 +2361,40 @@ header</i> set, the user agent must run the following steps:</p>
 
        </li>
 
-       <!--
-       <li><p>Otherwise, (check for new block types here)</p></li>
-       -->
-
-
-      </ol>
-
-     </li>
-
-     <li>
-
-      <p>If <i>in header</i> is set, run these substeps:</p>
-
-      <ol>
-
        <li>
 
-        <p>If |line| starts with the substring "<code>Region:</code>" (U+0052 LATIN CAPITAL LETTER R
-        character, U+0065 LATIN SMALL LETTER E character, U+0067 LATIN SMALL LETTER G character,
-        U+0069 LATIN SMALL LETTER I character, U+006F LATIN SMALL LETTER O character, U+006E LATIN
-        SMALL LETTER N character, U+003A COLON character (:)), run these substeps:</p>
+        <p>Otherwise, if |seen cue| is false and |buffer| starts with the substring
+        "<code>REGION</code>" (U+0052 LATIN CAPITAL LETTER R, U+0045 LATIN CAPITAL LETTER E, U+0047
+        LATIN CAPITAL LETTER G, U+0049 LATIN CAPITAL LETTER I, U+004F LATIN CAPITAL LETTER O, U+004E
+        LATIN CAPITAL LETTER N), and the remaining characters in |buffer| (if any) are all <a>ASCII
+        whitespace</a>, then run these substeps:</p>
 
         <ol>
 
          <li><p><i>Region creation</i>: Let |region| be a new <a>WebVTT region</a>.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty
-         string.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region identifier">identifier</a> be the empty
+         string.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region width">width</a> be 100.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region lines">lines</a> be 3.</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</li>
+         <li><p>Let |region|'s <a lt="WebVTT region anchor">anchor point</a> be (0,100).</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
-         (0,100).</li>
+         <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">viewport anchor point</a> be
+         (0,100).</p></li>
 
-         <li>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
-         scroll none">NONE</a>.</li>
+         <li><p>Let |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region
+         scroll none">none</a>.</p></li>
 
-         <li><p>Let |region value| be the substring of |line| after the first U+003A COLON character
-         (:).</p></li>
-
-         <li><a>Collect WebVTT region settings</a> from |region value| using |region| for the
-         results.</li>
-
-         <li><i>Region processing</i>: Construct a <a>WebVTT Region Object</a> from |region|.</li>
-
-         <li>Append |region| to the <a>text track list of regions</a> |regions|.</li>
+         <li><p>Let |buffer| be the empty string.</p></li>
 
         </ol>
 
        </li>
+
+       <!-- <li><p>Otherwise, (check for new block types here)</p></li> -->
 
       </ol>
 
@@ -2328,9 +2425,11 @@ header</i> set, the user agent must run the following steps:</p>
  for=CSSStyleSheet>CSS rules</a>; otherwise, set |stylesheet|'s <a spec=cssom for=CSSStyleSheet>CSS
  rules</a> to an empty list. [[!CSSOM]] [[!CSS-SYNTAX-3]] Finally, return |stylesheet|.</p></li>
 
- <!-- return new block types here -->
+ <li><p>Otherwise, if |region| is not null, then <a>collect WebVTT region settings</a> from |buffer|
+ using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
+ it.</p></li>
 
- <li><p>Otherwise, if <i>in header</i> is set, return |regions|.</p></li>
+ <!-- return new block types here -->
 
  <li><p>Otherwise, return null.</p></li>
 
@@ -2348,7 +2447,7 @@ that is used as a root node for <a lt="List of WebVTT node objects">lists of Web
 objects</a>. This algorithm returns a list of <a lt="WebVTT region object">WebVTT Region
 Objects</a>.</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
 
@@ -2356,15 +2455,15 @@ Objects</a>.</p>
   For each token |setting| in the list |settings|, run the following substeps:
 
   <ol>
-   <li><p>If |setting| does not contain a U+003D EQUALS SIGN character (=), or if the first U+003D
-   EQUALS SIGN character (=) in |setting| is either the first or last character of |setting|, then
-   jump to the step labeled <i>next setting</i>.</p></li>
+   <li><p>If |setting| does not contain a U+003A COLON character (:), or if the first U+003A COLON
+   character (:) in |setting| is either the first or last character of |setting|, then jump to the
+   step labeled <i>next setting</i>.</p></li>
 
-   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003D
-   EQUALS SIGN character (=) in that string.</p></li>
+   <li><p>Let |name| be the leading substring of |setting| up to and excluding the first U+003A
+   COLON character (:) in that string.</p></li>
 
    <li><p>Let |value| be the trailing substring of |setting| starting from the character immediately
-   after the first U+003D EQUALS SIGN character (=) in that string.</p></li>
+   after the first U+003A COLON character (:) in that string.</p></li>
 
    <li>
     <p>Run the appropriate substeps that apply for the value of |name|, as follows:</p>
@@ -2426,8 +2525,8 @@ Objects</a>.</p>
        string</a> from |viewportanchorY| don't return a |percentage|, then jump to the step labeled
        <i>next setting</i>.</p></li>
 
-       <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">WebVTT region anchor point</a> be
-       the tuple of the |percentage| values calculated from |viewportanchorX| and
+       <li><p>Let |region|'s <a lt="WebVTT region viewport anchor">WebVTT region viewport anchor
+       point</a> be the tuple of the |percentage| values calculated from |viewportanchorX| and
        |viewportanchorY|.</p></li>
       </ol>
      </dd>
@@ -2436,8 +2535,8 @@ Objects</a>.</p>
      <dd>
       <ol>
        <li><p>If |value| is a <a>case-sensitive</a> match for the string "<code>up</code>", then let
-       |region|'s <a lt="WebVTT region scroll">scroll value</a> be "<a lt="WebVTT region scroll
-       up">scroll up</a>".</p></li>
+       |region|'s <a lt="WebVTT region scroll">scroll value</a> be <a lt="WebVTT region scroll
+       up">up</a>.</p></li>
       </ol>
      </dd>
     </dl>
@@ -2452,15 +2551,17 @@ Objects</a>.</p>
 number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
 means that it is aborted at that point and returns nothing.</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Let |input| be the string being parsed.</p></li>
 
  <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
 
- <li><p>Ignoring the trailing percent sign, interpret |input| as a real number. Let that number be
- the |percentage|.</p></li>
+ <li><p>Remove the last character from |input|.</p></li>
 
- <li><p>If |percentage| is outside the range 0..100, then fail.</p></li>
+ <li><p>Let |percentage| be the result of parsing |input| using the <a>rules for parsing
+ floating-point number values</a>. [[!HTML]]</p></li>
+
+ <li><p>If |percentage| is an error, is less than 0, or is greater than 100, then fail.</p></li>
 
  <li><p>Return |percentage|.</p></li>
 </ol>
@@ -2472,7 +2573,7 @@ means that it is aborted at that point and returns nothing.</p>
 settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
 <a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -2518,7 +2619,7 @@ settings</dfn> from a string |input| using a <a>text track list of regions</a> |
 <a>text track list of regions</a> |regions| for a <a>text track cue</a> |cue|, the user agent must
 run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
@@ -2583,11 +2684,10 @@ run the following steps:</p>
        and let |linealign| be the trailing substring of |value| starting from the character
        immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be the empty
-       string.</p></li>
+       <li><p>Otherwise let |linepos| be the full |value| string and |linealign| be null.</p></li>
 
-       <li><p>If |linepos| does not contain at least one <a lt="ASCII digits">ASCII digit</a>, then
-       jump to the step labeled <i>next setting</i>.</p></li>
+       <li><p>If |linepos| does not contain at least one <a>ASCII digit</a>, then jump to the step
+       labeled <i>next setting</i>.</p></li>
 
        <li>
         <dl>
@@ -2600,35 +2700,49 @@ run the following steps:</p>
 
          <dd>
           <ol>
-           <li><p>If |linepos| contains any characters other than U+002D HYPHEN-MINUS characters (-)
-           and <a>ASCII digits</a>, then jump to the step labeled <i>next setting</i>.</p></li>
+           <li><p>If |linepos| contains any characters other than U+002D HYPHEN-MINUS characters
+           (-), <a>ASCII digits</a>, and U+002E DOT character (.), then jump to the step labeled
+           <i>next setting</i>.</p></li>
 
            <li><p>If any character in |linepos| other than the first character is a U+002D
            HYPHEN-MINUS character (-), then jump to the step labeled <i>next setting</i>.</p></li>
 
-           <li><p>Interpret |linepos| as a (potentially signed) integer, and let |number| be that
-           number.</p></li>
+           <li><p>If there are more than one U+002E DOT characters (.), then jump to the step
+           labeled <i>next setting</i>.</p></li>
+
+           <li><p>If there is a U+002E DOT character (.) and the character before or the character
+           after is not an <a>ASCII digit</a>, or if the U+002E DOT character (.) is the first or
+           the last character, then jump to the step labeled <i>next setting</i>.</p></li>
+
+           <li><p>Let |number| be the result of parsing |linepos| using the <a>rules for parsing
+           floating-point number values</a>. [[!HTML]]</p></li>
+
+           <li><p>If |number| is an error, then jump to the step labeled <i>next
+           setting</i>.</p></li>
           </ol>
          </dd>
         </dl>
        </li>
 
-       <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
-
-       <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
-       |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
-
        <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
        then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line start
        alignment">start alignment</a>.</p></li>
 
-       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>center</code>",
-       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line center
-       alignment">center alignment</a>.</p></li>
+       <li><p>Otherwise, if |linealign| is a <a>case-sensitive</a> match for the string
+       "<code>center</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
+       line center alignment">center alignment</a>.</p></li>
 
-       <li><p>If |linealign| is a <a>case-sensitive</a> match for the string "<code>end</code>",
-       then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue line end
-       alignment">end alignment</a>.</p></li>
+       <li><p>Otherwise, if |linealign| is a <a>case-sensitive</a> match for the string
+       "<code>end</code>", then let |cue|'s <a>WebVTT cue line alignment</a> be <a lt="WebVTT cue
+       line end alignment">end alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |linealign| is not null, then jump to the step labeled <i>next
+       setting</i>.</p></li>
+
+       <li><p>Let |cue|'s <a>WebVTT cue line</a> be |number|.</p></li>
+
+       <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
+       |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
 
       </ol>
 
@@ -2645,27 +2759,29 @@ run the following steps:</p>
        and let |colalign| be the trailing substring of |value| starting from the character
        immediately after the first U+002C COMMA character (,) in that string.</p></li>
 
-       <li><p>Otherwise let |colpos| be the full |value| string and |colalign| be the empty
-       string.</p></li>
+       <li><p>Otherwise let |colpos| be the full |value| string and |colalign| be null.</p></li>
 
        <li><p>If <a>parse a percentage string</a> from |colpos| doesn't fail, let |number| be the
        returned |percentage|, otherwise jump to the step labeled <i>next setting</i> (<a lt="WebVTT
        cue position">position</a>'s value remains the special value <a lt="WebVTT cue automatic
        position">auto</a>).</p></li>
 
+       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>line-left</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
+       lt="WebVTT cue position line-left alignment">line-left alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>center</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT
+       cue position center alignment">center alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |colalign| is a <a>case-sensitive</a> match for the string
+       "<code>line-right</code>", then let |cue|'s <a>WebVTT cue position alignment</a> be <a
+       lt="WebVTT cue position line-right alignment">line-right alignment</a>.</p></li>
+
+       <li><p>Otherwise, if |colalign| is not null, then jump to the step labeled <i>next
+       setting</i>.</p></li>
+
        <li><p>Let |cue|'s <a lt="WebVTT cue position">position</a> be |number|.</p></li>
-
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>start</code>",
-       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position start
-       alignment">start alignment</a>.</p></li>
-
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>center</code>",
-       then let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position center
-       alignment">center alignment</a>.</p></li>
-
-       <li><p>If |colalign| is a <a>case-sensitive</a> match for the string "<code>end</code>", then
-       let |cue|'s <a>WebVTT cue position alignment</a> be <a lt="WebVTT cue position end
-       alignment">end alignment</a>.</p></li>
 
       </ol>
 
@@ -2732,7 +2848,7 @@ run the following steps:</p>
 <p>When this specification says that a user agent is to <dfn>collect a WebVTT timestamp</dfn>, the
 user agent must run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -2741,11 +2857,11 @@ user agent must run the following steps:</p>
 
  <li><p>If |position| is past the end of |input|, return an error and abort these steps.</p></li>
 
- <li><p>If the character indicated by |position| is not an <a spec=html>ASCII digit</a>, then return
- an error and abort these steps.</p></li>
+ <li><p>If the character indicated by |position| is not an <a>ASCII digit</a>, then return an error
+ and abort these steps.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>Collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>Interpret |string| as a base-ten integer. Let <var>value<sub>1</sub></var> be that
  integer.</p></li>
@@ -2757,8 +2873,8 @@ user agent must run the following steps:</p>
  COLON character (:), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>If |string| is not exactly two characters in length, return an error and abort these
  steps.</p></li>
@@ -2777,8 +2893,8 @@ user agent must run the following steps:</p>
    U+003A COLON character (:), then return an error and abort these steps. Otherwise, move
    |position| forwards one character.</p></li>
 
-   <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
-   and let |string| be the collected substring.</p></li>
+   <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+   the collected substring.</p></li>
 
    <li><p>If |string| is not exactly two characters in length, return an error and abort these
    steps.</p></li>
@@ -2800,8 +2916,8 @@ user agent must run the following steps:</p>
  FULL STOP character (.), then return an error and abort these steps. Otherwise, move |position|
  forwards one character.</p></li>
 
- <li><p><a spec=html>Collect a sequence of characters</a> that are <a spec=html>ASCII digits</a>,
- and let |string| be the collected substring.</p></li>
+ <li><p><a>collect a sequence of code points</a> that are <a>ASCII digits</a>, and let |string| be
+ the collected substring.</p></li>
 
  <li><p>If |string| is not exactly three characters in length, return an error and abort these
  steps.</p></li>
@@ -2940,7 +3056,7 @@ Objects</a>:</p>
 string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fallback language
 |language|. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -3147,7 +3263,7 @@ string (whose value is a sequence of characters), a start tag (with a tag name, 
 and optionally an annotation), an end tag (with a tag name), or a timestamp tag (with a tag
 value).</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -3213,8 +3329,8 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with no <a spec=html>additional
-    allowed character</a>.</p>
+    <p>Attempt to <a>consume an HTML character reference</a>, with no <a>additional allowed
+    character</a>.</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |result|.</p>
 
@@ -3407,11 +3523,11 @@ value).</p>
 
      <dt>End-of-file marker</dt>
      <dd>
-      <p>Remove any leading or trailing <a lt="space character">space characters</a> from |buffer|,
-      and replace any sequence of one or more consecutive <a lt="space character">space
-      characters</a> in |buffer| with a single U+0020 SPACE character; then, return a start tag
-      whose tag name is |result|, with the classes given in |classes|, and with |buffer| as the
-      annotation, and abort these steps.</p>
+      <p>Remove any leading or trailing <a>ASCII whitespace</a> characters from |buffer|, and
+      replace any sequence of one or more consecutive <a>ASCII whitespace</a> characters in |buffer|
+      with a single U+0020 SPACE character; then, return a start tag whose tag name is |result|,
+      with the classes given in |classes|, and with |buffer| as the annotation, and abort these
+      steps.</p>
      </dd>
 
      <dt>Anything else</dt>
@@ -3427,8 +3543,8 @@ value).</p>
 
    <dd>
 
-    <p>Attempt to <a>consume an HTML character reference</a>, with the <a spec=html>additional
-    allowed character</a> being U+003E GREATER-THAN SIGN (>).</p>
+    <p>Attempt to <a>consume an HTML character reference</a>, with the <a>additional allowed
+    character</a> being U+003E GREATER-THAN SIGN (>).</p>
 
     <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to |buffer|.</p>
 
@@ -3508,7 +3624,7 @@ value).</p>
 </ol>
 
 <p>When the algorithm above says to attempt to <dfn>consume an HTML character reference</dfn>, it
-means to attempt to <a spec=html>consume a character reference</a> as defined in HTML. [[!HTML]]</p>
+means to attempt to <a>consume a character reference</a> as defined in HTML. [[!HTML]]</p>
 
 <p>When the HTML specification says to consume a character, in this context, it means to advance
 |position| to the next character in |input|. When it says to unconsume a character, it means to move
@@ -3546,38 +3662,38 @@ Node Objects</a> to DOM nodes:</p>
   </tr>
   <tr>
    <td class=long><a>WebVTT Class Object</a></td>
-   <td class=long>HTML <a spec=html element>span</a> element.</td>
+   <td class=long>HTML <a element>span</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Italic Object</a></td>
-   <td class=long>HTML <a spec=html element>i</a> element.</td>
+   <td class=long>HTML <a element>i</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Bold Object</a></td>
-   <td class=long>HTML <a spec=html element>b</a> element.</td>
+   <td class=long>HTML <a element>b</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Underline Object</a></td>
-   <td class=long>HTML <a spec=html element>u</a> element.</td>
+   <td class=long>HTML <a element>u</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Ruby Object</a></td>
-   <td class=long>HTML <a spec=html element>ruby</a> element.</td>
+   <td class=long>HTML <a element>ruby</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Ruby Text Object</a></td>
-   <td class=long>HTML <a spec=html element>rt</a> element.</td>
+   <td class=long>HTML <a element>rt</a> element.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Voice Object</a></td>
-   <td class=long>HTML <a spec=html element>span</a> element with a <a spec=html
-   element-attr>title</a> attribute set to the <a>WebVTT Voice Object</a>'s value.</td>
+   <td class=long>HTML <a element>span</a> element with a <a element-attr>title</a> attribute set to
+   the <a>WebVTT Voice Object</a>'s value.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Language Object</a></td>
-   <td class=long>HTML <a spec=html element>span</a> element with a <a spec=html
-   element-attr>lang</a> attribute set to the <a>WebVTT Language Object</a>'s <a lt="WebVTT Node
-   Object's applicable language">applicable language</a>.</td>
+   <td class=long>HTML <a element>span</a> element with a <a element-attr>lang</a> attribute set to
+   the <a>WebVTT Language Object</a>'s <a lt="WebVTT Node Object's applicable language">applicable
+   language</a>.</td>
   </tr>
   <tr>
    <td class=long><a>WebVTT Text Object</a></td>
@@ -3598,7 +3714,7 @@ Node Objects</a> to DOM nodes:</p>
 <p>HTML elements created as part of the mapping described above must have their
 {{Node/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
 in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a
-lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a spec=html
+lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a
 element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
 
@@ -3615,7 +3731,7 @@ title</h3>
 <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> for a <a>WebVTT cue</a> |cue| are as
 follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue
  text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
@@ -3630,19 +3746,19 @@ follows:</p>
 <h2 id=rendering>Rendering</h2>
 
 <p class="note">This section describes in some detail how to visually render WebVTT cues in a user
-agent. It also specifies extra CSS functionality made available to manipulate the visual rendering.
-The processing model is quite tightly linked to media elements in HTML. When supporting WebVTT in
-media players that don't support CSS, equivalent visual rendering will need to be implemented.</p>
+agent. The processing model is quite tightly linked to media elements in HTML. When supporting
+WebVTT in media players that don't support CSS, equivalent visual rendering will need to be
+implemented.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
 
-<p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a lt="text
-track">text tracks</a> of a <a>media element</a> (specifically, a <a element>video</a> element), or
-of another playback mechanism, by applying the steps below. All the <a lt="text track">text
-tracks</a> that use these rules for a given <a>media element</a>, or other playback mechanism, are
-rendered together, to avoid overlapping subtitles from multiple tracks. A fallback language
-|language| may be set when calling this algorithm.</p>
+<p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a>text tracks</a>
+of a <a>media element</a> (specifically, a <a element>video</a> element), or of another playback
+mechanism, by applying the steps below. All the <a lt="text track">text tracks</a> that use these
+rules for a given <a>media element</a>, or other playback mechanism, are rendered together, to avoid
+overlapping subtitles from multiple tracks. A fallback language |language| may be set when calling
+this algorithm.</p>
 
 <p class="note">In HTML, audio elements don't have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
@@ -3654,7 +3770,7 @@ manner suiting the user.</p>
 
 <p>The rules are as follows:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
@@ -3685,7 +3801,8 @@ manner suiting the user.</p>
  <li><p>Let |regions| be an empty list of <a lt="WebVTT region">WebVTT regions</a>.</p></li>
 
  <li><p>For each track |track| in |tracks|, append to |regions| all the <a lt="WebVTT
- region">regions</a> from |track|'s <a lt="text track list of regions">list of regions</a>.</p></li>
+ region">regions</a> with an identifier from |track|'s <a lt="text track list of regions">list of
+ regions</a>.</p></li>
 
  <li><p>If |reset| is false, then, for each <a>WebVTT region</a> |region| in |regions| let
  |regionNode| be a <a>WebVTT region object</a>.</p></li>
@@ -3698,22 +3815,22 @@ manner suiting the user.</p>
     <p>Prepare some variables for the application of CSS properties to |regionNode| as follows:</p>
 
     <ul>
-     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be '|regionWidth| vw'
-     (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
+     <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be
+     ''|regionWidth|&#x2009;vw'' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
-     <li><p>Let |lineHeight| be '5.33vh' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
-     be the <a>WebVTT region lines</a>. Let |lines| be '|lineHeight| multiplied by
+     <li><p>Let |lineHeight| be ''5.33vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
+     be the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
      |regionHeight|.</p></li>
 
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorX| be the x dimension of the <a>WebVTT region anchor</a>. Let |leftOffset| be
      |regionAnchorX| multiplied by |width| divided by 100.0. Let |left| be |leftOffset| subtracted
-     from '|viewportAnchorX| vw'.</p></li>
+     from ''|viewportAnchorX|&#x2009;vw''.</p></li>
 
      <li><p>Let |viewportAnchorY| be the y dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorY| be the y dimension of the <a>WebVTT region anchor</a>. Let |topOffset| be
      |regionAnchorY| multiplied by |lines| divided by 100.0. Let |top| be |topOffset| subtracted
-     from '|viewportAnchorY| vh'.</p></li>
+     from ''|viewportAnchorY|&#x2009;vh''.</p></li>
     </ul>
    </li>
 
@@ -3776,9 +3893,9 @@ manner suiting the user.</p>
     <ol>
      <li><p>Let |region| be |cue|'s <a>WebVTT cue region</a>.</p></li>
 
-     <li><p>If |region|'s <a>WebVTT region scroll</a> setting is '<code>up</code>' and |region|
-     already has one child, set |region|'s 'transition-property' to 'top' and 'transition-duration'
-     to '0.433s'.</p></li>
+     <li><p>If |region|'s <a>WebVTT region scroll</a> setting is <a lt="WebVTT region scroll
+     up">up</a> and |region| already has one child, set |region|'s 'transition-property' to
+     ''transition-property/top'' and 'transition-duration' to ''0.433s''.</p></li>
 
      <li><p>Let |offset| be |cue|'s <a lt="cue computed position">computed position</a> multiplied
      by |region|'s <a>WebVTT region width</a> and divided by 100 (i.e. interpret it as a percentage
@@ -3793,12 +3910,12 @@ manner suiting the user.</p>
        <dd><p>Subtract half of |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
 
        <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-       lt="WebVTT cue position end alignment">end alignment</a></dt>
+       lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
        <dd><p>Subtract |region|'s <a>WebVTT region width</a> from |offset|.</p></dd>
       </dl>
      </li>
 
-     <li><p>Let |left| be '|offset|&#x2009;%'. [[!CSS-VALUES]]</p></li>
+     <li><p>Let |left| be ''|offset|&#x2009;%''. [[!CSS-VALUES]]</p></li>
 
      <li>
       <p>Apply the terms of the CSS specifications to |nodes| with the same constraints that are
@@ -3836,7 +3953,7 @@ entirely.</p>
 obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
 following algorithm.</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
  direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
@@ -3853,14 +3970,14 @@ following algorithm.</p>
   <dl class="switch">
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-   lt="WebVTT cue position start alignment">start</a></dt>
+   lt="WebVTT cue position line-left alignment">line-left</a></dt>
    <dd>
     <p>Let |maximum size| be the <a lt="cue computed position">computed position</a> subtracted from
     100.</p>
    </dd>
 
    <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-   lt="WebVTT cue position end alignment">end</a></dt>
+   lt="WebVTT cue position line-right alignment">line-right</a></dt>
    <dd>
     <p>Let |maximum size| be the <a lt="cue computed position">computed position</a>.</p>
    </dd>
@@ -3889,10 +4006,10 @@ following algorithm.</p>
  size</a>. Otherwise, let |size| be |maximum size|.</p></li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
- direction">horizontal</a>, then let |width| be '|size|&#x2009;vw' and |height| be ''height/auto''.
- Otherwise, let |width| be ''width/auto'' and |height| be '|size|&#x2009;vh'. (These are CSS values
- used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS units.)
- [[!CSS-VALUES]]</p></li>
+ direction">horizontal</a>, then let |width| be ''|size|&#x2009;vw'' and |height| be
+ ''height/auto''. Otherwise, let |width| be ''width/auto'' and |height| be ''|size|&#x2009;vh''.
+ (These are CSS values used by the next section to set CSS properties for the rendering; ''vw'' and
+ ''vh'' are CSS units.) [[!CSS-VALUES]]</p></li>
 
  <li>
 
@@ -3906,7 +4023,7 @@ following algorithm.</p>
    <dd>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position start alignment">start alignment</a></dt>
+     lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
      <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
@@ -3915,7 +4032,7 @@ following algorithm.</p>
      of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position end alignment">end alignment</a></dt>
+     lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
      <dd><p>Let |x-position| be the <a lt="cue computed position">computed position</a> minus
      |size|.</p></dd>
     </dl>
@@ -3927,7 +4044,7 @@ following algorithm.</p>
    <dd>
     <dl class="switch">
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position start alignment">start alignment</a></dt>
+     lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
      <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a>.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
@@ -3936,7 +4053,7 @@ following algorithm.</p>
      of |size|.</p></dd>
 
      <dt>If the <a lt="cue computed position alignment">computed position alignment</a> is <a
-     lt="WebVTT cue position end alignment">end alignment</a></dt>
+     lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
      <dd><p>Let |y-position| be the <a lt="cue computed position">computed position</a> minus
      |size|.</p></dd>
     </dl>
@@ -3953,7 +4070,7 @@ following algorithm.</p>
 
   <dl class="switch">
 
-   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
+   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is false</dt>
    <dd>
     <dl class="switch">
 
@@ -3969,7 +4086,7 @@ following algorithm.</p>
     </dl>
    </dd>
 
-   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is set</dt>
+   <dt>If the <a>WebVTT cue snap-to-lines flag</a> is true</dt>
    <dd>
     <dl class="switch">
 
@@ -3994,7 +4111,7 @@ following algorithm.</p>
 
  <li>
 
-  <p>If the <a>WebVTT cue snap-to-lines flag</a> is set, then run the appropriate steps from the
+  <p>If the <a>WebVTT cue snap-to-lines flag</a> is true, then run the appropriate steps from the
   following list:</p>
 
   <dl class="switch">
@@ -4056,14 +4173,14 @@ following algorithm.</p>
 
  </li>
 
- <li><p>Let |left| be '|x-position|&#x2009;vw' and |top| be '|y-position|&#x2009;vh'. (These are CSS
- values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are CSS
- units.) [[!CSS-VALUES]]</p></li>
+ <li><p>Let |left| be ''|x-position|&#x2009;vw'' and |top| be ''|y-position|&#x2009;vh''. (These are
+ CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
+ CSS units.) [[!CSS-VALUES]]</p></li>
 
  <li>
 
   <p>Apply the terms of the CSS specifications to |nodes| within the following constraints, thus
-  obtaining a set of CSS boxes positioned relative to an initial containing block: [[!CSS21]]</p>
+  obtaining a set of CSS boxes positioned relative to an initial containing block: [[!CSS22]]</p>
 
   <ul>
 
@@ -4074,21 +4191,21 @@ following algorithm.</p>
     <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
     a hypothetical document that contains a single empty element with no explicit name, no
     namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the
-    <a spec=html>media element</a> for the <a spec=html>text tracks</a> that were sourced from the
-    given WebVTT file. The selectors must not match other <a spec=html>text tracks</a> for the same
-    <a spec=html>media element</a>. In this hypothetical document, the element must not match any
-    selector that would match the element itself.</p>
+    <a>media element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file.
+    The selectors must not match other <a>text tracks</a> for the same <a>media element</a>. In this
+    hypothetical document, the element must not match any selector that would match the element
+    itself.</p>
 
     <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for
-    the ''::cue'', ''::cue()'' and ''::cue-region'' pseudo-elements.</p>
+    the ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
    </li>
 
    <li>
     <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in
     STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
     same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a element spec=html>video</a>
-    element's document.</p>
+    must be after any style sheets that apply to the associated <a element>video</a> element's
+    document.</p>
 
     <div class=example>
      <p>For example, given the following (invalid) HTML document:</p>
@@ -4110,27 +4227,28 @@ following algorithm.</p>
      WEBVTT
 
      STYLE
-     ::cue { color:green }
+     ::cue { color:lime }
 
      00:00:00.000 --> 00:00:25.000
      Red or green?
      </pre>
 
-     <p>The ''color:green'' declaration would win, because it is last in the <a
-     spec=css-cascade>cascade</a>, even though the <a element spec=html>style</a> element is after
-     the <a element spec=html>video</a> element in the document order.</p>
+     <p>The ''color:lime'' declaration would win, because it is last in the <a
+     spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
+     element>video</a> element in the document order.</p>
     </div>
    </li>
 
    <li>
 
-    <p>For the purpose of resolving URLs in STYLE blocks of a WebVTT file, if the URL's scheme is
-    not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+    <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
+    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's
+    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
+    resolve.</p>
 
     <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
-    would be a new ability for <a spec=html>media elements</a> and <a spec=html element>track</a>
-    elements to issue network requests as the user watches the video, which could be a privacy
-    issue.</strong></p>
+    would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
+    network requests as the user watches the video, which could be a privacy issue.</strong></p>
 
    </li>
 
@@ -4175,7 +4293,7 @@ following algorithm.</p>
 
   <dl class="switch">
 
-   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is true</dt>
 
    <dd>
 
@@ -4226,8 +4344,8 @@ following algorithm.</p>
 
      <li>
 
-      <p>Let |max dimension| be <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;
-      |margin|).</p>
+      <p>Let |max dimension| be
+      <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;|margin|).</p>
 
      </li>
 
@@ -4247,7 +4365,7 @@ following algorithm.</p>
 
      <li><p><strong>Vertical Growing Left</strong>: Add one to |line| then negate it.</p></li>
 
-     <li><p>Let |position| be the result of multiplying |step| and |line offset|.</p></li>
+     <li><p>Let |position| be the result of multiplying |step| and |line|.</p></li>
 
      <li><p><strong>Vertical Growing Left</strong>: Decrease |position| by the width of the bounding
      box of the boxes in |boxes|, then increase |position| by |step|.</p></li>
@@ -4289,10 +4407,6 @@ following algorithm.</p>
      <li><p><i>Step loop</i>: If none of the boxes in |boxes| would overlap any of the boxes in
      |output|, and all of the boxes in |boxes| are entirely within the |title area| box, then jump
      to the step labeled <i>done positioning</i> below.</p></li>
-
-     <li><p>Let |current position score| be the percentage of the area of the bounding box of the
-     boxes in |boxes| that <!--overlaps the boxes in |output| (if any) or that--> is outside the
-     |title area| box.</p></li>
 
      <li>
 
@@ -4338,7 +4452,7 @@ following algorithm.</p>
 
    </dd>
 
-   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is not set</dt>
+   <dt>If |cue|'s <a>WebVTT cue snap-to-lines flag</a> is false</dt>
    <dd>
 
     <ol>
@@ -4353,12 +4467,12 @@ following algorithm.</p>
        direction">horizontal</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position center
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line center
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by half of the height of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
-         alignment">end alignment</a></dt>
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end alignment">end
+         alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| up by the height of |bounding box|.</p></dd>
         </dl>
        </dd>
@@ -4368,12 +4482,12 @@ following algorithm.</p>
        writing direction">vertical growing right</a></dt>
        <dd>
         <dl class="switch">
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position center
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line center
          alignment">center alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by half of the width of |bounding box|.</p></dd>
 
-         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue position end
-         alignment">end alignment</a></dt>
+         <dt>If the <a>WebVTT cue line alignment</a> is <a lt="WebVTT cue line end alignment">end
+         alignment</a></dt>
          <dd><p>Move all the boxes in |boxes| left by the width of |bounding box|.</p></dd>
         </dl>
        </dd>
@@ -4414,7 +4528,7 @@ Object">WebVTT Node Objects</a></h4>
 
 <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a lt="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user agent cascade
-layer as defined in this section. [[!CSS21]]</p>
+layer as defined in this section. [[!CSS22]]</p>
 
 <p>Initialize the (root) <a>list of WebVTT Node Objects</a> with the following CSS settings:</p>
 
@@ -4471,16 +4585,16 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 </table>
 
 <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-'5vh sans-serif'. [[!CSS3-RUBY]] [[!CSS-VALUES]]</p>
+''5vh sans-serif''. [[!CSS-VALUES]]</p>
 
 <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
 
-<p>The 'background' shorthand property on the <a>WebVTT cue background box</a> must be set to
-''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
+<p>The 'background' shorthand property on the <a>WebVTT cue background box</a> and on <a>WebVTT Ruby
+Text Objects</a> must be set to ''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-''white-space/pre-line''. [[!CSS21]]</p>
+''white-space/pre-line''. [[!CSS22]]</p>
 
 <p>The 'font-style' property on <a lt="WebVTT Italic Object">WebVTT Italic Objects</a> must be set
 to ''font-style/italic''.</p>
@@ -4504,7 +4618,7 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
  <li>the 'writing-mode' property must be set to ''writing-mode/horizontal-tb''</li>
  <li>the 'background' shorthand property must be set to ''rgba(0,0,0,0.8)''</li>
  <li>the 'overflow-wrap' property must be set to ''overflow-wrap/break-word''</li>
- <li>the 'font' shorthand property must be set to '5vh sans-serif'</li>
+ <li>the 'font' shorthand property must be set to ''5vh sans-serif''</li>
  <li>the 'color' property must be set to ''rgba(255,255,255,1)''</li>
  <li>the 'overflow' property must be set to ''overflow/hidden''</li>
  <li>the 'width' property must be set to |width|</li>
@@ -4523,6 +4637,7 @@ which the <a>WebVTT region object</a> was constructed.</p>
 
 <p>The children of every <a>WebVTT region object</a> are further initialized with these CSS
 settings:</p>
+
 <ul>
  <li>the 'position' property must be set to ''position/relative''</li>
  <li>the 'unicode-bidi' property must be set to ''unicode-bidi/plaintext''</li>
@@ -4598,7 +4713,337 @@ object">WebVTT region objects</a> must take their initial values.</p>
 then they must be interpreted as defined in the next section.</p>
 
 
-<h4 id=css-extensions>CSS extensions</h4>
+<h2 id=css-extensions>CSS extensions</h2>
+
+<p class="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
+apply to WebVTT. This section does not apply to user agents that don't support CSS.</p>
+
+
+<h3 id=css-extensions-introduction>Introduction</h3>
+
+<p><i>This section is non-normative.</i></p>
+
+<p>The ''::cue'' pseudo-element represents a cue.</p>
+
+<p>The ''::cue(|selector|)'' pseudo-element represents a cue or element inside a cue that match the
+given selector.</p>
+
+<p>The ''::cue-region'' pseudo-element represents a region.</p>
+
+<p>The ''::cue-region(|selector|)'' pseudo-element represents a region or element inside a region
+that match the given selector.</p>
+
+<p class="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
+present in the <{video}> element's document tree.</p>
+
+<p>The '':past'' and '':future'' pseudo-classes can be used in ''::cue(|selector|)'' to match
+<a>WebVTT Internal Node Objects</a> based on the <a>current playback position</a>.</p>
+
+<div class="example" id="example-cue-selector">
+ <p>The following table shows examples of what can be selected with a given selector, together with
+ WebVTT syntax to produce the relevant objects.</p>
+
+ <table class="data">
+  <thead>
+   <tr>
+    <th>Selector (CSS syntax example)</th>
+    <th>Matches (WebVTT syntax example)</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td class=long>
+     <p>''::cue''</p>
+
+     <pre>
+     video::cue {
+       color: yellow;
+     }</pre>
+    </td>
+    <td class=long>
+     <p>Any <a>list of WebVTT Node Objects</a>.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     Also yellow!
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>ID selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(#cue1) {
+       color: yellow;
+     }</pre>
+    </td>
+    <td class=long>
+     <p>Any <a>list of WebVTT Node Objects</a> with the cue's <a>text track cue identifier</a>
+     matching the given ID.</p>
+
+     <pre>
+     WEBVTT
+
+     cue1
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>Type selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(c),
+     video::cue(i),
+     video::cue(b),
+     video::cue(u),
+     video::cue(ruby),
+     video::cue(rt),
+     video::cue(v),
+     video::cue(lang) {
+       color: yellow;
+     }
+     </pre>
+    </td>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
+     with the given name.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c>Yellow!&lt;/c>
+     &lt;i>Yellow!&lt;/i>
+     &lt;u>Yellow!&lt;/u>
+     &lt;b>Yellow!&lt;/b>
+     &lt;u>Yellow!&lt;/u>
+     &lt;ruby>Yellow! &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
+     &lt;v Kathryn>Yellow!&lt;/v>
+     &lt;lang en>Yellow!&lt;/lang>
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>Class selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(.loud) {
+       color: yellow;
+     }</pre>
+    </td>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
+     with the given <a lt="WebVTT Node Object's applicable classes">applicable classes</a>.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c.loud>Yellow!&lt;/c>
+     &lt;i.loud>Yellow!&lt;/i>
+     &lt;u.loud>Yellow!&lt;/u>
+     &lt;b.loud>Yellow!&lt;/b>
+     &lt;u.loud>Yellow!&lt;/u>
+     &lt;ruby.loud>Yellow! &lt;rt.loud>Yellow!&lt;/rt>&lt;/ruby>
+     &lt;v.loud Kathryn>Yellow!&lt;/v>
+     &lt;lang.loud en>Yellow!&lt;/lang>
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>Attribute selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue([lang="en-US"]) {
+       color: yellow;
+     }
+     video::cue(lang[lang="en-GB"]) {
+       color: cyan;
+     }
+     video::cue(v[voice="Kathryn"] {
+       color: lime;
+     }
+     </pre>
+    </td>
+    <td class=long>
+     <p>For "lang", the root <a>list of WebVTT Node Objects</a> or <a>WebVTT Language Object</a>
+     with the given <a lt="WebVTT Node Object's applicable language">applicable language</a>; for
+     "voice", the <a>WebVTT Voice Object</a> with the given voice.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     &lt;lang en-GB>Cyan!&lt;/lang>
+
+     00:00:16.000 --> 00:00:24.000
+     &lt;v Kathryn>I like lime.&lt;/v>
+     </pre>
+
+     <p>The <a lt="WebVTT Node Object's applicable language">applicable language</a> for the <a>list
+     of WebVTT Node Objects</a> can be set by the <{track/srclang}> attribute in HTML.</p>
+
+     <pre>
+     &lt;video ...>
+      &lt;track src="example-attr.vtt"
+             <mark>srclang="en-US"</mark> default>
+     &lt;/video>
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p>'':lang()'' pseudo-class in ''::cue()''</p>
+     <pre>
+     video::cue(:lang(en)) {
+       color: yellow;
+     }
+     video::cue(:lang(en-GB)) {
+       color: cyan;
+     }
+     </pre>
+    </td>
+    <td class=long>
+     <p><a>WebVTT Internal Node Objects</a> with an <a lt="WebVTT Node Object's applicable
+     language">applicable language</a> matching the given language range.</p>
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     Yellow!
+
+     00:00:08.000 --> 00:00:16.000
+     &lt;lang en-GB>Cyan!&lt;/lang>
+     </pre>
+
+     <p>As above, the <a lt="WebVTT Node Object's applicable language">applicable language</a> for
+     the <a>list of WebVTT Node Objects</a> can be set by the <{track/srclang}> attribute in
+     HTML.</p>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p>'':past'' and '':future'' pseudo-classes in ''::cue()''</p>
+
+     <pre>
+     video::cue(:past) {
+       color: yellow;
+     }
+     video::cue(:future) {
+       color: cyan;
+     }
+     </pre>
+    </td>
+    <td class=long>
+     <p>In cues that have <a>WebVTT Timestamp Objects</a>, <a>WebVTT Internal Node Objects</a>,
+     depending on the <a>current playback position</a>.</p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     &lt;c>No match (no timestamps)&lt;/c>
+
+     00:00:08.000 --> 00:00:16.000
+     No match &lt;00:00:12.000> (no elements)
+
+     00:00:16.000 --> 00:00:24.000
+     &lt;00:00:16.000> &lt;c>This&lt;/c>
+     &lt;00:00:18.000> &lt;c>can&lt;/c>
+     &lt;00:00:20.000> &lt;c>match&lt;/c>
+     &lt;00:00:22.000> &lt;c>:past/:future&lt;/c>
+     &lt;00:00:24.000>
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p>''::cue-region''</p>
+
+     <pre>
+     video::cue-region {
+       color: yellow;
+     }</pre>
+    </td>
+    <td class=long>
+     <p>Any region (list of <a>WebVTT region objects</a>).</p>
+
+     <pre>
+     WEBVTT
+
+     REGION
+     id:editor-comments
+     regionanchor:0%,0%
+     viewportanchor:0%,0%
+
+     00:00:00.000 --> 00:00:08.000
+     No match (normal cue)
+
+     00:00:08.000 --> 00:00:16.000 region:editor-comments
+     Yellow!
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>ID selector</a> in ''::cue-region()''</p>
+
+     <pre>
+     video::cue-region(#scroll) {
+       color: cyan;
+     }</pre>
+    </td>
+    <td class=long>
+     <p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a>
+     matching the given ID.</p>
+
+     <pre>
+     WEBVTT
+
+     REGION
+     id:editor-comments
+     width: 40%
+     regionanchor:0%,100%
+     viewportanchor:10%,90%
+
+     REGION
+     id:scroll
+     width: 40%
+     regionanchor:100%,100%
+     viewportanchor:90%,90%
+     scroll:up
+
+     00:00:00.000 --> 00:00:08.000
+     No match (normal cue)
+
+     00:00:08.000 --> 00:00:16.000 region:editor-comments
+     Yellow!
+
+     00:00:10.000 --> 00:00:16.000 region:scroll
+     Over here it's Cyan!
+     </pre>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</div>
+
+
+<h3 id="css-extensions-processing-model">Processing model</h3>
 
 <p>When a user agent is rendering one or more <a lt="WebVTT cue">WebVTT cues</a> according to the
 <a>rules for updating the display of WebVTT text tracks</a>, <a lt="WebVTT Node Object">WebVTT Node
@@ -4621,12 +5066,12 @@ affect the styling of parts of <a lt="WebVTT cue">WebVTT cues</a> that are being
 <p class="note">If the <i>matched element</i> is not a <a element>video</a> element, the
 pseudo-elements defined below won't have any effect according to this specification.</p>
 
-<p>A CSS user agent that implements the <a lt="text track">text tracks</a> model must implement the
-''::cue'' and ''::cue(|selector|)'' pseudo-elements, and the '':past'' and '':future''
-pseudo-classes.</p>
+<p>A CSS user agent that implements the <a>text tracks</a> model must implement the ''::cue'',
+''::cue(|selector|)'', ''::cue-region'' and ''::cue-region(|selector|)'' pseudo-elements, and the
+'':past'' and '':future'' pseudo-classes.</p>
 
 
-<h5 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h5>
+<h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
 
 <p>The <dfn>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -4801,7 +5246,7 @@ would have been applied to the <a>list of WebVTT Node Objects</a>, must instead 
 <a>WebVTT cue background box</a>.</p>
 
 
-<h5 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h5>
+<h4 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h4>
 
 <p>The '':past'' and '':future'' pseudo-classes sometimes match <a lt="WebVTT Node Object">WebVTT
 Node Objects</a>. [[!SELECTORS4]]</p>
@@ -4825,7 +5270,7 @@ position</a> of the <a>media element</a> that is the <i>matched element</i>, ent
 <a>WebVTT Node Object</a> |c|.</p>
 
 
-<h5 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h5>
+<h4 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h4>
 
 <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
 that element is the matched element. The pseudo-element defined below affects the styling of text
@@ -4837,20 +5282,30 @@ won't have any effect according to this specification.</p>
 <p>The <dfn>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a lt="WebVTT
 region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
-<p>The same properties that apply to ''::cue'' apply to the ''::cue-region'' pseudo-element with no
-argument; other properties set on the pseudo-element must be ignored.</p>
+
+<p>The <dfn>::cue-region(selector)</dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT region
+object">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
+given CSS selector as follows:</p>
+
+<ul>
+ <li><p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a>
+ matching the given ID.</p></li>
+</ul>
+
+<p>No other selector matching is defined for ''::cue-region(|selector|)''.</p>
+
+<p>The same properties that apply to ''::cue'' apply to the ''::cue-region'' pseudo-element; other
+properties set on the pseudo-element must be ignored.</p>
 
 <p>When a user agent is rendering one or more text track regions according to the <a>rules for
 updating the display of WebVTT text tracks</a>, <a lt="WebVTT region object">WebVTT region
 objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
 support the pseudo-element must dynamically update renderings accordingly. When either 'white-space'
 or one of the properties corresponding to the 'font' shorthand (including 'line-height') changes
-value, then the text track cue display state of all the <a lt="WebVTT cue">WebVTT cues</a> in the
-region must be emptied and the text track's rules for updating the text track rendering must be
-immediately rerun.</p>
-
-<p>A CSS user agent that implements the text tracks model must implement the ''::cue-region''
-pseudo-element.</p>
+value, then the <a>text track cue display state</a> of all the <a lt="WebVTT cue">WebVTT cues</a> in
+the region must be emptied and the <a>text track</a>'s <a>rules for updating the text track
+rendering</a> must be immediately rerun.</p>
 
 
 <h2 id=api>API</h2>
@@ -4862,18 +5317,20 @@ pseudo-element.</p>
 
 <pre class="idl">
 enum AutoKeyword { "auto" };
+typedef (double or AutoKeyword) LineAndPositionSetting;
 enum DirectionSetting { "" /* horizontal */, "rl", "lr" };
 enum LineAlignSetting { "start", "center", "end" };
-enum PositionAlignSetting { "start", "center", "end", "auto" };
+enum PositionAlignSetting { "line-left", "center", "line-right", "auto" };
 enum AlignSetting { "start", "center", "end", "left", "right" };
-[Constructor(double startTime, double endTime, DOMString text)]
+[Exposed=Window,
+ Constructor(double startTime, double endTime, DOMString text)]
 interface VTTCue : TextTrackCue {
   attribute VTTRegion? region;
   attribute DirectionSetting vertical;
   attribute boolean snapToLines;
-  attribute (double or AutoKeyword) line;
+  attribute LineAndPositionSetting line;
   attribute LineAlignSetting lineAlign;
-  attribute (double or AutoKeyword) position;
+  attribute LineAndPositionSetting position;
   attribute PositionAlignSetting positionAlign;
   attribute double size;
   attribute AlignSetting align;
@@ -4884,7 +5341,8 @@ interface VTTCue : TextTrackCue {
 
 <dl class="note">
 
- <dt>|cue| = new <a constructor lt="VTTCue()">VTTCue</a>( |startTime|, |endTime|, |text| )</dt>
+ <dt>|cue| = new <a constructor lt="VTTCue(startTime, endTime, text)">VTTCue</a>( |startTime|,
+ |endTime|, |text| )</dt>
  <dd>
   <p>Returns a new {{VTTCue}} object, for use with the {{TextTrack/addCue()}} method.</p>
   <p>The |startTime| argument sets the <a>text track cue start time</a>.</p>
@@ -4916,7 +5374,7 @@ interface VTTCue : TextTrackCue {
 
  <dt>|cue| . {{VTTCue/snapToLines}} [ = |value| ]</dt>
  <dd>
-  <p>Returns true if the <a>WebVTT cue snap-to-lines flag</a> is set, false otherwise.</p>
+  <p>Returns true if the <a>WebVTT cue snap-to-lines flag</a> is true, false otherwise.</p>
   <p>Can be set.</p>
  </dd>
 
@@ -4952,12 +5410,12 @@ interface VTTCue : TextTrackCue {
  <dd>
   <p>Returns a string representing the <a>WebVTT cue position alignment</a>, as follows:</p>
   <dl class="switch">
-   <dt>If it is <a lt="WebVTT cue position start alignment">start alignment</a></dt>
-   <dd><p>The string "<code>start</code>".</p></dd>
+   <dt>If it is <a lt="WebVTT cue position line-left alignment">line-left alignment</a></dt>
+   <dd><p>The string "<code>line-left</code>".</p></dd>
    <dt>If it is <a lt="WebVTT cue position center alignment">center alignment</a></dt>
    <dd><p>The string "<code>center</code>".</p></dd>
-   <dt>If it is <a lt="WebVTT cue position end alignment">end alignment</a></dt>
-   <dd><p>The string "<code>end</code>".</p></dd>
+   <dt>If it is <a lt="WebVTT cue position line-right alignment">line-right alignment</a></dt>
+   <dd><p>The string "<code>line-right</code>".</p></dd>
    <dt>If it is <a lt="WebVTT cue position automatic alignment">automatic alignment</a></dt>
    <dd><p>The string "<code>auto</code>".</p></dd>
   </dl>
@@ -4996,16 +5454,16 @@ interface VTTCue : TextTrackCue {
 
  <dt>|fragment| = |cue| . <a method lt="getCueAsHTML()">getCueAsHTML</a>()</dt>
  <dd>
-  <p>Returns the <a>text track cue text</a> as a {{DocumentFragment}} of <a spec=html>HTML
-  elements</a> and other DOM nodes.</p>
+  <p>Returns the <a>text track cue text</a> as a {{DocumentFragment}} of <a>HTML elements</a> and
+  other DOM nodes.</p>
  </dd>
 
 </dl>
 
-<p>The <dfn constructor for=VTTCue lt="VTTCue()">VTTCue(|startTime|, |endTime|, |text|)</dfn>
-constructor, when invoked, must run the following steps:</p>
+<p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|,
+|endTime|, |text|)</dfn> constructor, when invoked, must run the following steps:</p>
 
-<ol>
+<ol class=algorithm>
 
  <li><p>Create a new <a>WebVTT cue</a>. Let |cue| be that <a>WebVTT cue</a>.</p></li>
 
@@ -5071,15 +5529,15 @@ direction</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT cue horizontal writing direction">Horizontal</a></td>
-   <td>"<code lt=""></code>" (the empty string)</td>
+   <td>"<code></code>" (the empty string)</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue vertical growing left writing direction">Vertical growing left</a></td>
-   <td>"<code lt="">rl</code>"</td>
+   <td>"<code>rl</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue vertical growing right writing direction">Vertical growing right</a></td>
-   <td>"<code lt="">lr</code>"</td>
+   <td>"<code>lr</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5090,15 +5548,19 @@ value.</p>
 
 <p>The <dfn attribute for=VTTCue>snapToLines</dfn> attribute, on getting, must return true if the
 <a>WebVTT cue snap-to-lines flag</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents
-is set; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set if the
-new value is true, and must be unset otherwise.</p>
+is true; or false otherwise. On setting, the <a>WebVTT cue snap-to-lines flag</a> must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTCue>line</dfn> attribute, on getting, must return the <a>WebVTT cue
 line</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
 lt="WebVTT cue line automatic">auto</a> must be represented as the string "<code>auto</code>". On
 setting, the <a>WebVTT cue line</a> must be set to the new value; if the new value is the string
-"<code lt="">auto</code>", then it must be interpreted as the special value <a lt="WebVTT cue line
+"<code>auto</code>", then it must be interpreted as the special value <a lt="WebVTT cue line
 automatic">auto</a>.</p>
+
+<p class="note">In order to be able to set the {{VTTCue/snapToLines}} and {{VTTCue/line}} attributes
+in any order, the API does not reject setting {{VTTCue/snapToLines}} to false when {{VTTCue/line}}
+has a value outside the range 0..100, or vice versa.</p>
 
 <p>The <dfn attribute for=VTTCue>lineAlign</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT cue line
@@ -5114,15 +5576,15 @@ alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT cue line start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td>"<code>start</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue line center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue line end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td>"<code>end</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5133,11 +5595,11 @@ value.</p>
 
 <p>The <dfn attribute for=VTTCue>position</dfn> attribute, on getting, must return the <a>WebVTT cue
 position</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. The special value <a
-lt="WebVTT cue automatic position">auto</a> must be represented as the string "<code
-lt="">auto</code>". On setting, if the new value is negative or greater than 100, then an
-{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT cue position</a> must be set
-to the new value; if the new value is the string "<code lt="">auto</code>", then it must be
-interpreted as the special value <a lt="WebVTT cue automatic position">auto</a>.</p>
+lt="WebVTT cue automatic position">auto</a> must be represented as the string "<code>auto</code>".
+On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}} exception
+must be thrown. Otherwise, the <a>WebVTT cue position</a> must be set to the new value; if the new
+value is the string "<code>auto</code>", then it must be interpreted as the special value <a
+lt="WebVTT cue automatic position">auto</a>.</p>
 
 <p>The <dfn attribute for=VTTCue>positionAlign</dfn> attribute, on getting, must return the string
 from the second cell of the row in the table below whose first cell is the <a>WebVTT cue position
@@ -5152,20 +5614,20 @@ alignment</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p
  </thead>
  <tbody>
   <tr>
-   <td><a lt="WebVTT cue position start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td><a lt="WebVTT cue position line-left alignment">Line-left alignment</a></td>
+   <td>"<code>line-left</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
-   <td><a lt="WebVTT cue position end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td><a lt="WebVTT cue position line-right alignment">Line-right alignment</a></td>
+   <td>"<code>line-right</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue position automatic alignment">Automatic alignment</a></td>
-   <td>"<code lt="">auto</code>"</td>
+   <td>"<code>auto</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5193,23 +5655,23 @@ of the <a>WebVTT cue</a> that the {{VTTCue}} object represents:</p>
  <tbody>
   <tr>
    <td><a lt="WebVTT cue start alignment">Start alignment</a></td>
-   <td>"<code lt="">start</code>"</td>
+   <td>"<code>start</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue center alignment">Center alignment</a></td>
-   <td>"<code lt="">center</code>"</td>
+   <td>"<code>center</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue end alignment">End alignment</a></td>
-   <td>"<code lt="">end</code>"</td>
+   <td>"<code>end</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue left alignment">Left alignment</a></td>
-   <td>"<code lt="">left</code>"</td>
+   <td>"<code>left</code>"</td>
   </tr>
   <tr>
    <td><a lt="WebVTT cue right alignment">Right alignment</a></td>
-   <td>"<code lt="">right</code>"</td>
+   <td>"<code>right</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5223,10 +5685,9 @@ cue text</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. On 
 track cue text</a> must be set to the new value.</p>
 
 <p>The <dfn method for=VTTCue>getCueAsHTML()</dfn> method must convert the <a>text track cue
-text</a> to a {{DocumentFragment}} for the <a spec=html>responsible document</a> specified by the <a
-spec=html>entry settings object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to
-the result of applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue
-text</a>.</p>
+text</a> to a {{DocumentFragment}} for the <a>responsible document</a> specified by the <a>entry
+settings object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to the result of
+applying the <a>WebVTT cue text parsing rules</a> to the <a>text track cue text</a>.</p>
 
 <p class=note>A fallback language is not provided for {{VTTCue/getCueAsHTML()}} since a
 {{DocumentFragment}} cannot expose language information.</p>
@@ -5238,8 +5699,10 @@ text</a>.</p>
 
 <pre class="idl">
 enum ScrollSetting { "" /* none */, "up" };
-[Constructor]
+[Exposed=Window,
+ Constructor]
 interface VTTRegion {
+  attribute DOMString id;
   attribute double width;
   attribute long lines;
   attribute double regionAnchorX;
@@ -5257,6 +5720,11 @@ interface VTTRegion {
   <p>Returns a new {{VTTRegion}} object.</p>
  </dd>
 
+ <dt>|region| . {{VTTRegion/id}}</dt>
+ <dd>
+  <p>Returns the text track region identifier. Can be set.</p>
+ </dd>
+
  <dt>|region| . {{VTTRegion/width}}</dt>
  <dd>
   <p>Returns the WebVTT region width as a percentage of the video width. Can be set. Throws an
@@ -5265,7 +5733,8 @@ interface VTTRegion {
 
  <dt>|region| . {{VTTRegion/lines}}</dt>
  <dd>
-  <p>Returns the text track region height as a number of lines. Can be set.</p>
+  <p>Returns the text track region height as a number of lines. Can be set. Throws an
+  {{IndexSizeError}} if the new value is negative.</p>
  </dd>
 
  <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
@@ -5274,7 +5743,7 @@ interface VTTRegion {
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
  </dd>
 
- <dt>|region| . {{VTTRegion/regionAnchorX}}</dt>
+ <dt>|region| . {{VTTRegion/regionAnchorY}}</dt>
  <dd>
   <p>Returns the WebVTT region anchor Y offset as a percentage of the region height. Can be set.
   Throws an {{IndexSizeError}} if the new value is not in the range 0..100.</p>
@@ -5299,7 +5768,7 @@ interface VTTRegion {
    <dt>If it is unset</dt>
    <dd><p>The empty string.</p></dd>
    <dt>If it is up</dt>
-   <dd><p>The string "<code lt="">up</code>".</p></dd>
+   <dd><p>The string "<code>up</code>".</p></dd>
   </dl>
   <p>Can be set.</p>
  </dd>
@@ -5308,7 +5777,7 @@ interface VTTRegion {
 <p>The <dfn constructor for=VTTRegion>VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
 
-<ol>
+<ol class=algorithm>
  <li><p>Create a new <a>WebVTT region</a>. Let |region| be that <a>WebVTT region</a>.</p></li>
 
  <!-- default settings -->
@@ -5335,39 +5804,49 @@ following steps:</p>
  <li><p>Return the {{VTTRegion}} object representing |region|.</p></li>
 </ol>
 
+
+<p>The <dfn attribute for=VTTRegion>id</dfn> attribute, on getting, must return the <a>WebVTT region
+identifier</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting, the
+<a>WebVTT region identifier</a> must be set to the new value.</p>
+
 <p>The <dfn attribute for=VTTRegion>width</dfn> attribute, on getting, must return the <a>WebVTT
-region width</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents, in percent of
-video width. On setting, the <a>WebVTT region width</a> must be set to the new value, interpreted as
-a percentage.</p>
+region width</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
+if the new value is negative or greater than 100, then an {{IndexSizeError}} exception must be
+thrown. Otherwise, the <a>WebVTT region width</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>lines</dfn> attribute, on getting, must return the <a>WebVTT
-region lines</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents, as number of
-lines. On setting, the <a>WebVTT region lines</a> must be set to the new value, interpreted as a
-number of lines.</p>
+region lines</a> of the <a>WebVTT region</a> that the {{VTTRegion}} object represents. On setting,
+if the new value is negative, then an {{IndexSizeError}} exception must be thrown. Otherwise, the
+<a>WebVTT region lines</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>regionAnchorX</dfn> attribute, on getting, must return the
 <a>WebVTT region anchor</a> X offset of the <a>WebVTT region</a> that the {{VTTRegion}} object
-represents, in percent of region width. On setting, the <a>WebVTT region anchor</a> X distance must
-be set to the new value, interpreted as a percentage.</p>
+represents. On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}}
+exception must be thrown. Otherwise, the <a>WebVTT region anchor</a> X distance must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>regionAnchorY</dfn> attribute, on getting, must return the
 <a>WebVTT region anchor</a> Y offset of the <a>WebVTT region</a> that the {{VTTRegion}} object
-represents, in percent of region height. On setting, the <a>WebVTT region anchor</a> Y distance must
-be set to the new value, interpreted as a percentage.</p>
+represents. On setting, if the new value is negative or greater than 100, then an {{IndexSizeError}}
+exception must be thrown. Otherwise, the <a>WebVTT region anchor</a> Y distance must be set to the
+new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>viewportAnchorX</dfn> attribute, on getting, must return the
 <a>WebVTT region viewport anchor</a> X offset of the <a>WebVTT region</a> that the {{VTTRegion}}
-object represents, in percent of video width. On setting, the <a>WebVTT region viewport anchor</a> X
-distance must be set to the new value, interpreted as a percentage.</p>
+object represents. On setting, if the new value is negative or greater than 100, then an
+{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT region viewport anchor</a> X
+distance must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>viewportAnchorY</dfn> attribute, on getting, must return the
 <a>WebVTT region viewport anchor</a> Y offset of the <a>WebVTT region</a> that the {{VTTRegion}}
-object represents, in percent of video height. On setting, the <a>WebVTT region viewport anchor</a>
-Y distance must be set to the new value, interpreted as a percentage.</p>
+object represents. On setting, if the new value is negative or greater than 100, then an
+{{IndexSizeError}} exception must be thrown. Otherwise, the <a>WebVTT region viewport anchor</a> Y
+distance must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTRegion>scroll</dfn> attribute, on getting, must return the string from
 the second cell of the row in the table below whose first cell is the <a>WebVTT region scroll</a>
 setting of the <a>WebVTT region</a> that the {{VTTRegion}} object represents:</p>
+
 <table class="complex data">
  <thead>
   <tr>
@@ -5378,11 +5857,11 @@ setting of the <a>WebVTT region</a> that the {{VTTRegion}} object represents:</p
  <tbody>
   <tr>
    <td><a lt="WebVTT region scroll none">None</a></td>
-   <td>"<code lt=""></code>" (the empty string)</td>
+   <td>"<code></code>" (the empty string)</td>
   </tr>
   <tr>
    <td><a lt="WebVTT region scroll up">Up</a></td>
-   <td>"<code lt="">up</code>"</td>
+   <td>"<code>up</code>"</td>
   </tr>
  </tbody>
 </table>
@@ -5453,11 +5932,11 @@ and registration with IANA.</p>
      <li> 57 45 42 56 54 54 09 </li>
      <li> 57 45 42 56 54 54 EOF </li>
     </ul>
-    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code lt="">WEBVTT</code>", and
-    finally a space, tab, line break, or the end of the file.)</p>
+    <p class="note">(An optional UTF-8 BOM, the ASCII string "<code>WEBVTT</code>", and finally a
+    space, tab, line break, or the end of the file.)</p>
    </dd>
    <dt>File extension(s):</dt>
-   <dd>"<code lt="">vtt</code>"</dd>
+   <dd>"<code>vtt</code>"</dd>
    <dt>Macintosh file type code(s):</dt>
    <dd>No specific Macintosh file type codes are recommended for this type.</dd>
   </dl>
@@ -5477,6 +5956,55 @@ and registration with IANA.</p>
 
 <p>Fragment identifiers have no meaning with <code>text/vtt</code> resources.</p>
 
+<h2 class="no-num" id=privacy-and-security-considerations>Privacy and Security Considerations</h2>
+
+
+<h3 id=fromat-security>Text-based format security</h3>
+
+<p>As with any text-based format, it is possible to construct malicious content that might cause
+buffer over-runs, value overflows (e.g. string representations of integers that overflow a given
+word length), and the like. Implementers should take care in implementing a parser that over-long
+lines, field values, or encoded values do not cause security problems.</p>
+
+<h3 id=styling-security>Styling-related privacy and security</h3>
+
+<p>WebVTT can embed CSS style sheets, which will be applied in user agents that support CSS. Under
+these circumstances, the privacy and security considerations of CSS apply, with the following
+caveats.</p>
+
+<p>Such style sheets <a href="#style-no-external-resources">cannot fetch any external resources</a>,
+and it is important for privacy that user agents do not allow this. Otherwise, WebVTT files could be
+authored such that a third party is notified when the user watches a particular video, and even the
+current time in that video.</p>
+
+<p>It is possible for a user agent to offer user style sheets, but their presence and nature will
+not be detectable by scripts running in the same user agent (e.g. browser) since the CSS object
+model for such style sheets is not exposed to script and there is no way to get the computed style
+for pseudo-elements other than ''::before'' and ''::after'' with the {{Window/getComputedStyle()}}
+API. [[!CSSOM]]</p>
+
+<h3 id=scripting-security>Scripting-related security</h3>
+
+<p>WebVTT does not include or enable scripting. It is important that user agents do not support a
+way to execute script embedded in a WebVTT file.</p>
+
+<p>However, it is possible to construct and deliver a file that is designed not to present captions
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
+
+<h3 id=privacy-of-preference>Privacy of preference</h3>
+
+<p>A user agent that selects, and causes to download or interpret a WebVTT file, might indicate to
+the origin server that the user has a need for captions or subtitles, and also the <a lt="honor user
+preferences for automatic text track selection">language preference</a> of the user for captions or
+subtitles. That is a (small) piece of information about the user. However, the offering of a caption
+file, and the choice whether to retrieve and consume it, are really characteristics of the format or
+protocol which does the offer (e.g. the HTML element), rather than of the caption format itself.
+[[!HTML]]</p>
+
 
 <h2 class="no-num" id=acknowledgements>Acknowledgements</h2>
 
@@ -5488,31 +6016,35 @@ format.</p>
 originally specified. [[!HTML]]</p>
 
 <p>
- Further thanks to:
- Glenn Adams,
- Victor C&#259;rbune,
- Eric Carlson,
+ Thanks to
+ Addison Phillips,
+ Alastor Wu,
+ Andreas Tai,
  Anna Cavender,
- Cyril Concolato,
- Rick Eyre,
- fantasai,
- John Foliot,
- Lawrence Forooghian,
- Ralph Giles,
- Loretta Guarino Reid,
- Kyle Huey,
- Richard Ishida,
  Anne van Kesteren,
- Dae Kim,
- Glenn Maynard,
- Ronny Mennerich,
- Ms2ger,
- Frank Olivier,
- Giuseppe Pascale,
- Addison Phillips;
- Caitlin Potter,
+ Benjamin Schaaf,
  Brian Quass,
+ Caitlin Potter,
+ Courtney Kennedy,
+ Cyril Concolato,
+ Dae Kim,
  David Singer,
+ Eric Carlson,
+ fantasai,
+ Frank Olivier,
  Fredrik Söderquist,
- Andreas Tai.
+ Giuseppe Pascale,
+ Glenn Adams,
+ Glenn Maynard,
+ John Foliot,
+ Kyle Huey,
+ Lawrence Forooghian,
+ Loretta Guarino Reid,
+ Ms2ger,
+ Ralph Giles,
+ Richard Ishida,
+ Rick Eyre,
+ Ronny Mennerich, and
+ Victor Cărbune
+ for their useful comments.
 </p>

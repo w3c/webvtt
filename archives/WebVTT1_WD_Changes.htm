@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TTML 2 - List of changes</title>
+<style type="text/css">
+div.exampleInner pre { margin-left: 1em;
+                       margin-top: 0em; margin-bottom: 0em}
+div.exampleInner { background-color: #d5dee3;
+                   border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: #d3d3d3;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: #d3d3d3;
+                   padding: 4px; margin: 0em }
+.strong { font-weight: bold; }
+</style>
+<link rel="stylesheet" type="text/css" href="./base.css">
+</head>
+<body class="toc-sidebar" style=""><p id="toc-nav"><a id="toc-jump" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#toc"><span aria-hidden="true">↑</span> <span>Jump to Table of Contents</span></a><a id="toc-toggle" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#toc"><span aria-hidden="true">←</span> <span>Collapse Sidebar</span></a></p>
+<h1>WebVTT: The Web Video Text Tracks Format (WebVTT1)- Change Summary</h1>
+
+<nav id="toc">
+  <h2 class="introductory" id="table-of-contents">Table of Contents</h2>
+  <ul class="toc" role="directory">
+    <li class="tocline">
+      <a class="tocxref" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#change-history">
+        <span class="secno">1</span>Change History (non-normative)
+      </a>
+      <ul class="toc">
+        <li class="tocline">
+          <a class="tocxref" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#change-history-ttml1-rec-2e-to-ttml2-wd">
+            <span class="secno">1.1</span>Changes from WebVTT1 WD 2014 to 2017
+          </a>
+          <ul class="toc">
+            <li class="tocline">
+              <a class="tocxref" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#technical-changes">
+                <span class="secno">1.1.1</span>Technical Changes
+              </a>
+            </li>
+            <li class="tocline">
+              <a class="tocxref" href="https://www.w3.org/TR/2017/WD-ttml2-20170630/ttml2-changes.html#editorial-changes">
+                <span class="secno">1.1.2</span>Editorial Changes
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<div class="div1">
+<h2><a id="change-history"></a>1 Change History</h2>
+<p>Changes are ordered from least recent to most recent.</p>
+
+<div class="div2">
+<h3><a id="change-history-ttml1-rec-2e-to-ttml2-wd"></a>1.1 Changes from WebVTT1 WD 2014 to 2017</h3>
+<div class="exampleInner">
+<pre><span class="strong" id="technical-changes">Technical Changes (normative)</span>
+
+* added a ::cue-region(id) pseudo-element to select regions by ID in CSS
+
+* disallowed external resources in a data URL in the STYLE section
+
+* drop line: and position: settings with invalid linealign/colalign values
+
+* change parsing of 'line' setting to accept non-integers
+
+* change to region blocks instead of region headers
+
+* make align:start/end not affect position or position alignment
+
+* rename start/end for position alignment to left/right
+
+* clarify what align:left/right do for vertical text
+
+* move to using CSS text-wrap:balance instead of custom line wrapping algorithm
+
+* add ruby-position and text-combine-upright to the list of supported properties
+
+* add a non-CSS UA conformance class
+
+* allow external language information to apply
+
+* support all of HTML's character references
+
+* avoid waiting for a LF before checking the WEBVTT signature
+
+* rename "middle" to "center" throughout for consistency with CSS
+
+* make <rt> be bidi-isolated and use default background color on it
+
+* add support for STYLE blocks
+
+<span class="strong" id="editorial-changes">Editorial Changes</span>
+
+Structural Document Changes:
+
+* Added new section explicitly documenting styling (1.3)
+
+* Formalized conformance classes (2.1)
+
+* Added unicode handling information (2.2)
+
+* Made WebVTT comment block part of the WebVTT File structure (3.1)
+
+* Added parsing rules for chapter titles (5.6)
+
+* Removed rendering of cues in isolation - everything is rendered with
+video (6.1)
+
+* Moved CSS extensions into their own chapter (7) and added an intro for authors
+
+* Added new Security and Privacy Considerations section
+
+* Added an index of defined Terms
+
+* Added an overview of the IDL
+
+</pre>
+</div>
+</div>
+</div>
+<script src="./fixup.js"></script>
+
+
+</body></html>
