@@ -627,10 +627,11 @@ requirements.</p>
  <dd><p>All processing requirements in this specification apply, except those in [[#api]].</p></dd>
 
  <dt>User agents that do not support CSS</dt>
- <dd><p>All processing requirements in this specification apply, except those in [[#rendering]] and
- in [[#css-extensions]]. The user agent must instead implement equivalent visual rendering to what a
- CSS based rendering produces. [[#applying-css-properties]] lists the default styling properties in
- CSS speak that will also define the default styling in such user agents.</p></dd>
+ <dd><p>All processing requirements in this specification apply, except those in
+ [[#css-extensions]]. The user agent must instead implement equivalent visual rendering to what a
+ CSS based renderer produces according to [[#rendering]]. [[#applying-css-properties]] lists the
+ default styling properties in CSS speak that will also define the default styling in such user
+ agents.</p></dd>
 
  <dt>Conformance checkers</dt>
  <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
@@ -2444,8 +2445,8 @@ header</i> set, the user agent must run the following steps:</p>
 
 <h3 id=region-settings-parsing algorithm>WebVTT region settings parsing</h3>
 
-<p>When the <a>WebVTT parser</a> says to <dfn>collect WebVTT region settings</dfn> from a string
-|input| for a <a>text track</a>, the user agent must run the following algorithm.</p>
+<p>When the <a>WebVTT parser algorithm</a> says to <dfn>collect WebVTT region settings</dfn> from a
+string |input| for a <a>text track</a>, the user agent must run the following algorithm.</p>
 
 <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a>
 that is used as a root node for <a lt="List of WebVTT node objects">lists of WebVTT node
