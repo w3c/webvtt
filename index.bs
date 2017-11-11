@@ -4648,6 +4648,60 @@ settings:</p>
  Objects</a> not part of a region</li>
 </ul>
 
+<p>The 'color' property on <a>WebVTT Internal Node Objects</a> that have one or more <a lt="WebVTT
+Node Object's applicable classes">applicable classes</a> matching those in the table below, must be
+set, as <a spec=html>presentational hints</a>, to the value in the second cell of the row of the
+table below whose first cell is the value of the corresponding <a lt="WebVTT Node Object's
+applicable classes">applicable class</a>:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="WebVTT Node Object's applicable classes">applicable class</a></th>
+   <th>'color' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>green</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>The color for the class <code>green</code> is <em>not</em> the same as the CSS named
+color ''green''.</p>
+
+<p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the above table, the order
+of appearance is the same as the table itself.</p>
+
+<div class=example>
+ <p>For example, if a <a>WebVTT Internal Node Object</a> has the <a lt="WebVTT Node Object's
+ applicable classes">applicable classes</a> <code>yellow</code> <em>and</em> <code>magenta</code>,
+ assuming no other stylesheets apply, the <a spec=css-cascade>computed value</a> of the 'color'
+ property would be ''rgba(255,0,255,1)'' (magenta).</p>
+</div>
+
 <p>All other non-inherited properties must be set to their initial values; inherited properties on
 the root <a>list of WebVTT Node Objects</a> must inherit their values from the <a>media element</a>
 for which the <a>WebVTT cue</a> is being rendered, if any. If there is no <a>media element</a> (i.e.
