@@ -659,6 +659,16 @@ precomposed character).</p>
 <!-- Add some content here about cues and serialisation format in general -->
 <!-- Describe metadata, caption/subtitle, chapter & description cues -->
 
+<p class=note>The box model of WebVTT consists of three key elements: the video viewport, cues, and
+regions. The video viewport is the rendering area into which cues and regions are rendered. Cues are
+boxes consisting of a set of cue lines. Regions are subareas of the video viewport that are used to
+group cues together. Cues are positioned either inside the video viewport directly or inside a
+region, which is positioned inside the video viewport.</p>
+
+<p class=note>A set of cue settings position cues inside the video viewport. A set of region
+settings position regions inside the video viewport. Cues that are inside regions can only use a
+limited set of their cue settings, otherwise they break out of the region.</p>
+
 
 <h3 id=cues>WebVTT cues</h3>
 
