@@ -1797,8 +1797,15 @@ replaced.</p>
 
 <h3 id=cue-settings>WebVTT cue settings</h3>
 
-<p>A <a>WebVTT cue settings list</a> consists of zero or more of the following settings. Each
-setting must not be included more than once per <a>WebVTT cue settings list</a>.</p>
+<p>A <a>WebVTT cue setting</a> is part of a <a>WebVTT cue settings list</a> and provides
+configuration options regarding the position and alignment of the cue box and the cue text
+within.</p>
+
+<p class="note">For example, a set of WebVTT cue settings may allow a cue box to be aligned to the
+left or positioned at the top right with the cue text within center aligned.</p>
+
+<p>The current available <a>WebVTT cue settings</a> that may appear in a <a>WebVTT cue settings
+list</a> are:</p>
 
 <ul class="brief">
  <li>A <a>WebVTT vertical text cue setting</a>.</li>
@@ -1809,9 +1816,8 @@ setting must not be included more than once per <a>WebVTT cue settings list</a>.
  <li>A <a>WebVTT region cue setting</a>.</li>
 </ul>
 
-<p class="note">A <a>WebVTT cue settings list</a> gives configuration options regarding the position
-and alignment of the cue box and the cue text within. For example, it allows a cue box to be aligned
-to the left or positioned at the top right with the cue text within center aligned.</p>
+<p>Each of these setting must not be included more than once per <a>WebVTT cue settings
+list</a>.</p>
 
 <p>A <dfn>WebVTT vertical text cue setting</dfn> is a <a>WebVTT cue setting</a> that consists of the
 following components, in the order given:</p>
