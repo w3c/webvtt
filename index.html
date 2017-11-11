@@ -2814,8 +2814,13 @@ cue line and allows it to be added.</p>
 the line in the bottom of the region. If no empty line is available, the oldest line is
 replaced.</p>
    <h3 class="heading settled" data-level="4.4" id="cue-settings"><span class="secno">4.4. </span><span class="content">WebVTT cue settings</span><a class="self-link" href="#cue-settings"></a></h3>
-   <p>A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-4">WebVTT cue settings list</a> consists of zero or more of the following settings. Each
-setting must not be included more than once per <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-5">WebVTT cue settings list</a>.</p>
+   <p>A <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-1">WebVTT cue setting</a> is part of a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-4">WebVTT cue settings list</a> and provides
+configuration options regarding the position and alignment of the cue box and the cue text
+within.</p>
+   <p class="note" role="note">For example, a set of WebVTT cue settings may allow a cue box to be aligned to the
+left or positioned at the top right with the cue text within center aligned.</p>
+   <p>The current available <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-2">WebVTT cue settings</a> that may appear in a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-5">WebVTT cue settings
+list</a> are:</p>
    <ul class="brief">
     <li>A <a data-link-type="dfn" href="#webvtt-vertical-text-cue-setting" id="ref-for-webvtt-vertical-text-cue-setting-1">WebVTT vertical text cue setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-1">WebVTT line cue setting</a>.
@@ -2824,10 +2829,9 @@ setting must not be included more than once per <a data-link-type="dfn" href="#w
     <li>A <a data-link-type="dfn" href="#webvtt-alignment-cue-setting" id="ref-for-webvtt-alignment-cue-setting-1">WebVTT alignment cue setting</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-region-cue-setting" id="ref-for-webvtt-region-cue-setting-1">WebVTT region cue setting</a>.
    </ul>
-   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-6">WebVTT cue settings list</a> gives configuration options regarding the position
-and alignment of the cue box and the cue text within. For example, it allows a cue box to be aligned
-to the left or positioned at the top right with the cue text within center aligned.</p>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting</dfn> is a <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-1">WebVTT cue setting</a> that consists of the
+   <p>Each of these setting must not be included more than once per <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-6">WebVTT cue settings
+list</a>.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-vertical-text-cue-setting">WebVTT vertical text cue setting</dfn> is a <a data-link-type="dfn" href="#webvtt-cue-setting" id="ref-for-webvtt-cue-setting-3">WebVTT cue setting</a> that consists of the
 following components, in the order given:</p>
    <ol>
     <li>The string "<code>vertical</code>" as the <a data-link-type="dfn" href="#webvtt-cue-setting-name" id="ref-for-webvtt-cue-setting-name-2">WebVTT cue setting name</a>.
@@ -6921,7 +6925,7 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-setting">
    <b><a href="#webvtt-cue-setting">#webvtt-cue-setting</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-setting-1">4.4. WebVTT cue settings</a>
+    <li><a href="#ref-for-webvtt-cue-setting-1">4.4. WebVTT cue settings</a> <a href="#ref-for-webvtt-cue-setting-2">(2)</a> <a href="#ref-for-webvtt-cue-setting-3">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-setting-name">
