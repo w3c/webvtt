@@ -667,7 +667,9 @@ region, which is positioned inside the video viewport.</p>
 
 <p class=note>A set of cue settings position cues inside the video viewport. A set of region
 settings position regions inside the video viewport. Cues that are inside regions can only use a
-limited set of their cue settings, otherwise they break out of the region.</p>
+limited set of their cue settings. Specifically, if the cue has a "vertical", "line" or "size"
+setting, the cue drops out of the region. Otherwise, the cue's width is calculated to be relative to
+the region width rather than the viewport. </p>
 
 
 <h3 id=cues>WebVTT cues</h3>

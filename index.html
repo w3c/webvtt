@@ -2053,7 +2053,9 @@ group cues together. Cues are positioned either inside the video viewport direct
 region, which is positioned inside the video viewport.</p>
    <p class="note" role="note">A set of cue settings position cues inside the video viewport. A set of region
 settings position regions inside the video viewport. Cues that are inside regions can only use a
-limited set of their cue settings, otherwise they break out of the region.</p>
+limited set of their cue settings. Specifically, if the cue has a "vertical", "line" or "size"
+setting, the cue drops out of the region. Otherwise, the cue’s width is calculated to be relative to
+the region width rather than the viewport. </p>
    <h3 class="heading settled" data-level="3.1" id="cues"><span class="secno">3.1. </span><span class="content">WebVTT cues</span><a class="self-link" href="#cues"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> that additionally consist of the following: <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
    <dl>
