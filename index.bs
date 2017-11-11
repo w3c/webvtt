@@ -1496,6 +1496,11 @@ terminator</a>.</p>
 
 </ul>
 
+<p>All <a>WebVTT cue components</a> bar the HTML character reference may have one or more <dfn>cue
+component class names</dfn> attached to it by separating the cue component class name from the cue
+component start tag using the perido ('.') notation. The class name must immediately follow the
+"period" (.).</p>
+
 <p><dfn>WebVTT cue internal text</dfn> consists of an optional <a>WebVTT line terminator</a>,
 followed by zero or more <a>WebVTT cue components</a>, in any order, each optionally followed by a
 <a>WebVTT line terminator</a>.</p>
@@ -2059,24 +2064,26 @@ whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a
 said to be a <dfn>WebVTT file using cue text</dfn>.</p>
 
 
-<h2 id=default-classes>Default applicable classes for WebVTT Internal Nodes</h2>
+<h2 id=default-classes>Default classes for WebVTT Cue Components</h2>
 
 <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
-background colors for text. Therefore, the WebVTT spec makes available a set of default classes for
-<a>WebVTT Internal Node Objects</a> that authors can use in a standard way to mark up colored text
-and text background.</p>
+background colors for text. Therefore, the WebVTT spec makes available a set of default <a>cue
+component class names</a> for <a>WebVTT Cue Components</a> that authors can use in a standard way to
+mark up colored text and text background.</p>
+
+<p class=note>User agents that support CSS style sheets may implement this section through adding
+User Agent stylesheets.</p>
 
 <h3 id=default-text-color>Default text colors</h3>
 
-<p><a>WebVTT Internal Node Objects</a> that have one or more <a lt="WebVTT Node Object's applicable
-classes">applicable classes</a> matching those in the first cell of a row in the table below must
-set their 'color' property as <a spec=html>presentational hints</a> to the value in the second cell
-of the row:</p>
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their 'color'
+property as <a spec=html>presentational hints</a> to the value in the second cell of the row:</p>
 
 <table class="complex data">
  <thead>
   <tr>
-   <th><a lt="WebVTT Node Object's applicable classes">applicable class</a></th>
+   <th><a lt="cue component class names">class names</a></th>
    <th>'color' value</th>
   </tr>
  </thead>
@@ -2127,15 +2134,15 @@ also the video's color.</p>
 
 <h3 id=default-text-background>Default text background colors</h3>
 
-<p><a>WebVTT Internal Node Objects</a> that have one or more <a lt="WebVTT Node Object's applicable
-classes">applicable classes</a> matching those in the first cell of a row in the table below must
-set their 'background-color' property as <a spec=html>presentational hints</a> to the value in the
-second cell of the row:</p>
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their
+'background-color' property as <a spec=html>presentational hints</a> to the value in the second cell
+of the row:</p>
 
 <table class="complex data">
  <thead>
   <tr>
-   <th><a lt="WebVTT Node Object's applicable classes">applicable class</a></th>
+   <th><a lt="cue component class names">class names</a></th>
    <th>'background' value</th>
   </tr>
  </thead>
@@ -3087,10 +3094,11 @@ elements in HTML or the DOM. <a lt="WebVTT Internal Node Object">WebVTT Internal
 have an ordered list of child <a lt="WebVTT Node Object">WebVTT Node Objects</a>. The <a>WebVTT
 Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles do not occur; the
 parent-child relationships so constructed form a tree structure. <a lt="WebVTT Internal Node
-Object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their
-<dfn lt="WebVTT Node Object's applicable classes">applicable classes</dfn>, and a language, known as
-their <dfn lt="WebVTT Node Object's applicable language">applicable language</dfn>, which is to be
-interpreted as a BCP 47 language tag. [[!BCP47]]</p>
+Object">WebVTT Internal Node Objects</a> also have an ordered list of <a lt="cue component class
+names">class names</a>, known as their <dfn lt="WebVTT Node Object's applicable classes">applicable
+classes</dfn>, and a language, known as their <dfn lt="WebVTT Node Object's applicable
+language">applicable language</dfn>, which is to be interpreted as a BCP 47 language tag.
+[[!BCP47]]</p>
 
 <p class=note>User agents will add a language tag as the <a lt="WebVTT Node Object's applicable
 language">applicable language</a> even if it is not a valid or not even well-formed language tag.
@@ -6118,10 +6126,12 @@ originally specified. [[!HTML]]</p>
  Lawrence Forooghian,
  Loretta Guarino Reid,
  Ms2ger,
+ Nigel Megitt,
  Ralph Giles,
  Richard Ishida,
  Rick Eyre,
- Ronny Mennerich, and
+ Ronny Mennerich,
+ Theresa O'Connor, and
  Victor Cărbune
  for their useful comments.
 </p>

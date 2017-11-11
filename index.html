@@ -1546,7 +1546,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
        </ol>
      </ol>
     <li>
-     <a href="#default-classes"><span class="secno">5</span> <span class="content">Default applicable classes for WebVTT Internal Nodes</span></a>
+     <a href="#default-classes"><span class="secno">5</span> <span class="content">Default classes for WebVTT Cue Components</span></a>
      <ol class="toc">
       <li><a href="#default-text-color"><span class="secno">5.1</span> <span class="content">Default text colors</span></a>
       <li><a href="#default-text-background"><span class="secno">5.2</span> <span class="content">Default text background colors</span></a>
@@ -2570,8 +2570,12 @@ terminator</a>.</p>
     <li>An <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a>, representing one or two Unicode
  code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
    </ul>
+   <p>All <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a> bar the HTML character reference may have one or more <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="cue component class names" data-noexport="" id="cue-component-class-names">cue
+component class names</dfn> attached to it by separating the cue component class name from the cue
+component start tag using the perido ('.') notation. The class name must immediately follow the
+"period" (.).</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text</dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-21">WebVTT line terminator</a>,
-followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
+followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-3">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-class-span">WebVTT cue class span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-1">WebVTT cue span start tag</a> "<code>c</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-1">WebVTT cue internal text</a> representing cue
 text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-1">WebVTT cue span end tag</a> "<code>c</code>".</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-italics-span">WebVTT cue italics span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-2">WebVTT cue span start tag</a> "<code>i</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-2">WebVTT cue internal text</a> representing the
@@ -2611,7 +2615,7 @@ are more mature in HTML and CSS. <a data-link-type="biblio" href="#biblio-html">
  represents the name of the voice.
     <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-7">WebVTT cue internal text</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-7">WebVTT cue span end tag</a> "<code>v</code>". If this <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-2">WebVTT cue voice span</a> is the
- only <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-3">component</a> of its <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-3">WebVTT cue text</a> sequence, then the
+ only <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-4">component</a> of its <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-3">WebVTT cue text</a> sequence, then the
  end tag may be omitted for brevity.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-language-span">WebVTT cue language span</dfn> consists of the following components, in the order
@@ -3015,18 +3019,20 @@ for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-5">WebVTT cue text</a> is
 said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-cue-text">WebVTT file using cue text<a class="self-link" href="#webvtt-file-using-cue-text"></a></dfn>.</p>
-   <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default applicable classes for WebVTT Internal Nodes</span><a class="self-link" href="#default-classes"></a></h2>
+   <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default classes for WebVTT Cue Components</span><a class="self-link" href="#default-classes"></a></h2>
    <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
-background colors for text. Therefore, the WebVTT spec makes available a set of default classes for <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-1">WebVTT Internal Node Objects</a> that authors can use in a standard way to mark up colored text
-and text background.</p>
+background colors for text. Therefore, the WebVTT spec makes available a set of default <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-1">cue
+component class names</a> for <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-5">WebVTT Cue Components</a> that authors can use in a standard way to
+mark up colored text and text background.</p>
+   <p class="note" role="note">User agents that support CSS style sheets may implement this section through adding
+User Agent stylesheets.</p>
    <h3 class="heading settled" data-level="5.1" id="default-text-color"><span class="secno">5.1. </span><span class="content">Default text colors</span><a class="self-link" href="#default-text-color"></a></h3>
-   <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-2">WebVTT Internal Node Objects</a> that have one or more <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-1">applicable classes</a> matching those in the first cell of a row in the table below must
-set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell
-of the row:</p>
+   <p><a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-6">WebVTT Cue Components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-2">class
+names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell of the row:</p>
    <table class="complex data">
     <thead>
      <tr>
-      <th><a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-2">applicable class</a>
+      <th><a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-3">class names</a>
       <th><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> value
     <tbody>
      <tr>
@@ -3061,13 +3067,13 @@ background, since they result in unreadable text. In general, please refer to WC
 color contrast <a data-link-type="biblio" href="#biblio-wcag20">[WCAG20]</a> and make sure to take into account the text color, background color and
 also the video’s color.</p>
    <h3 class="heading settled" data-level="5.2" id="default-text-background"><span class="secno">5.2. </span><span class="content">Default text background colors</span><a class="self-link" href="#default-text-background"></a></h3>
-   <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-3">WebVTT Internal Node Objects</a> that have one or more <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-3">applicable classes</a> matching those in the first cell of a row in the table below must
-set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color">background-color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the
-second cell of the row:</p>
+   <p><a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-7">WebVTT Cue Components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-4">class
+names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color">background-color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell
+of the row:</p>
    <table class="complex data">
     <thead>
      <tr>
-      <th><a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-4">applicable class</a>
+      <th><a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-5">class names</a>
       <th><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a> value
     <tbody>
      <tr>
@@ -3765,17 +3771,17 @@ user agent must run the following steps:</p>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT cue text parsing rules" data-level="6.4" id="cue-text-parsing-rules"><span class="secno">6.4. </span><span class="content">WebVTT cue text parsing rules</span><a class="self-link" href="#cue-text-parsing-rules"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-node-object">WebVTT Node Object</dfn> is a conceptual construct used to represent components of <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-6">WebVTT cue text</a> so that its processing can be described without reference to the underlying
 syntax.</p>
-   <p>There are two broad classes of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-1">WebVTT Node Objects</a>: <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-4">WebVTT Internal Node Objects</a> and <a data-link-type="dfn" href="#webvtt-leaf-node-object" id="ref-for-webvtt-leaf-node-object-1">WebVTT
+   <p>There are two broad classes of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-1">WebVTT Node Objects</a>: <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-1">WebVTT Internal Node Objects</a> and <a data-link-type="dfn" href="#webvtt-leaf-node-object" id="ref-for-webvtt-leaf-node-object-1">WebVTT
 Leaf Node Objects</a>.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Internal Node Object" data-noexport="" id="webvtt-internal-node-object">WebVTT Internal Node Objects</dfn> are those that can
 contain further <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-2">WebVTT Node Objects</a>. They are conceptually similar to
-elements in HTML or the DOM. <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-5">WebVTT Internal Node Objects</a> have an ordered list of child <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-3">WebVTT Node Objects</a>. The <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-6">WebVTT
+elements in HTML or the DOM. <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-2">WebVTT Internal Node Objects</a> have an ordered list of child <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-3">WebVTT Node Objects</a>. The <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-3">WebVTT
 Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles do not occur; the
-parent-child relationships so constructed form a tree structure. <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-7">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable classes" data-noexport="" id="webvtt-node-objects-applicable-classes">applicable classes</dfn>, and a language, known as
-their <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable language" data-noexport="" id="webvtt-node-objects-applicable-language">applicable language</dfn>, which is to be
-interpreted as a BCP 47 language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
+parent-child relationships so constructed form a tree structure. <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-4">WebVTT Internal Node Objects</a> also have an ordered list of <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-6">class names</a>, known as their <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable classes" data-noexport="" id="webvtt-node-objects-applicable-classes">applicable
+classes</dfn>, and a language, known as their <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Node Object’s applicable
+language" data-noexport="" id="webvtt-node-objects-applicable-language">applicable language</dfn>, which is to be interpreted as a BCP 47 language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
    <p class="note" role="note">User agents will add a language tag as the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-1">applicable language</a> even if it is not a valid or not even well-formed language tag. <a data-link-type="biblio" href="#biblio-bcp47">[BCP47]</a></p>
-   <p>There are several concrete classes of <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-8">WebVTT Internal Node
+   <p>There are several concrete classes of <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-5">WebVTT Internal Node
 Objects</a>:</p>
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="List of WebVTT Node Objects" data-noexport="" id="list-of-webvtt-node-objects">Lists of WebVTT Node Objects</dfn>
@@ -3785,7 +3791,7 @@ Objects</a>:</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Class Object" data-noexport="" id="webvtt-class-object">WebVTT Class Objects</dfn>
     <dd>
      <p>These represent spans of text (a <a data-link-type="dfn" href="#webvtt-cue-class-span" id="ref-for-webvtt-cue-class-span-2">WebVTT cue class span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-7">WebVTT cue text</a>, and
-  are used to annotate parts of the cue with <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-5">applicable classes</a> without implying further meaning (such as italics or bold).</p>
+  are used to annotate parts of the cue with <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-1">applicable classes</a> without implying further meaning (such as italics or bold).</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Italic Object" data-noexport="" id="webvtt-italic-object">WebVTT Italic Objects</dfn>
     <dd>
      <p>These represent spans of italic text (a <a data-link-type="dfn" href="#webvtt-cue-italics-span" id="ref-for-webvtt-cue-italics-span-2">WebVTT cue italics span</a>) in <a data-link-type="dfn" href="#webvtt-cue-text" id="ref-for-webvtt-cue-text-8">WebVTT cue
@@ -3841,7 +3847,7 @@ string <var>input</var> supposedly containing <a data-link-type="dfn" href="#web
     <li>
      <p>Let <var>result</var> be a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-3">list of WebVTT Node Objects</a>, initially empty.</p>
     <li>
-     <p>Let <var>current</var> be the <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Object</a> <var>result</var>.</p>
+     <p>Let <var>current</var> be the <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-6">WebVTT Internal Node Object</a> <var>result</var>.</p>
     <li>
      <p>Let <var>language stack</var> be a stack of language tags, initially empty.</p>
     <li>
@@ -3903,10 +3909,10 @@ string <var>input</var> supposedly containing <a data-link-type="dfn" href="#web
     concrete class, the user agent must run the following steps:</p>
        <ol>
         <li>
-         <p>Create a new <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Object</a> of the specified concrete
+         <p>Create a new <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-7">WebVTT Internal Node Object</a> of the specified concrete
      class.</p>
         <li>
-         <p>Set the new object’s list of <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-6">applicable
+         <p>Set the new object’s list of <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-2">applicable
      classes</a> to the list of classes in the token, excluding any classes that are the empty
      string.</p>
         <li>
@@ -4231,7 +4237,7 @@ Node Objects</a> to DOM nodes:</p>
    zeros otherwise.
    </table>
    <p>HTML elements created as part of the mapping described above must have their <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-node-namespaceuri">namespaceURI</a></code> set to the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#html-namespace">HTML namespace</a>, use the appropriate IDL interface as defined
-in the HTML specification, and, if the corresponding <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-11">WebVTT Internal Node Object</a> has any <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-7">applicable classes</a>, must have a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#classes">class</a> attribute set to the string obtained by concatenating all those classes, each
+in the HTML specification, and, if the corresponding <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-8">WebVTT Internal Node Object</a> has any <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-3">applicable classes</a>, must have a <a data-link-type="element-attr" href="https://html.spec.whatwg.org/multipage/dom.html#classes">class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-node-ownerdocument">ownerDocument</a></code> attribute of all nodes in the DOM tree must be set to the given
 document <var>owner</var>.</p>
@@ -4596,7 +4602,7 @@ Red or green?
        <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">track</a> elements to issue
     network requests as the user watches the video, which could be a privacy issue.</strong></p>
       <li>
-       <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-12">WebVTT Internal Node Objects</a> are equivalent to elements with the same
+       <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
    contents.</p>
       <li>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-7">WebVTT
    Text Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> nodes.
@@ -4866,7 +4872,7 @@ given selector.</p>
 that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a></code> element’s document tree.</p>
-   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-13">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback position</a>.</p>
+   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback position</a>.</p>
    <div class="example" id="example-cue-selector">
     <a class="self-link" href="#example-cue-selector"></a> 
     <p>The following table shows examples of what can be selected with a given selector, together with
@@ -4922,7 +4928,7 @@ video::cue(lang) {
 }
 </pre>
        <td class="long">
-        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-14">WebVTT Internal Node Objects</a> (except the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-20">list of WebVTT Node Objects</a>)
+        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-11">WebVTT Internal Node Objects</a> (except the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-20">list of WebVTT Node Objects</a>)
      with the given name.</p>
 <pre>WEBVTT
 
@@ -4943,8 +4949,8 @@ video::cue(lang) {
   color: yellow;
 }</pre>
        <td class="long">
-        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-15">WebVTT Internal Node Objects</a> (except the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-21">list of WebVTT Node Objects</a>)
-     with the given <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-8">applicable classes</a>.</p>
+        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-12">WebVTT Internal Node Objects</a> (except the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-21">list of WebVTT Node Objects</a>)
+     with the given <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-4">applicable classes</a>.</p>
 <pre>WEBVTT
 
 00:00:00.000 --> 00:00:08.000
@@ -5002,7 +5008,7 @@ video::cue(:lang(en-GB)) {
 }
 </pre>
        <td class="long">
-        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-16">WebVTT Internal Node Objects</a> with an <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-8">applicable language</a> matching the given language range.</p>
+        <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-13">WebVTT Internal Node Objects</a> with an <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-8">applicable language</a> matching the given language range.</p>
 <pre>WEBVTT
 
 00:00:00.000 --> 00:00:08.000
@@ -5025,7 +5031,7 @@ video::cue(:future) {
 }
 </pre>
        <td class="long">
-        <p>In cues that have <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-5">WebVTT Timestamp Objects</a>, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-17">WebVTT Internal Node Objects</a>,
+        <p>In cues that have <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-5">WebVTT Timestamp Objects</a>, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-14">WebVTT Internal Node Objects</a>,
      depending on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position">current playback position</a>.</p>
 <pre>WEBVTT
 
@@ -5132,17 +5138,17 @@ set on the pseudo-element must be ignored:</p>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
    </ul>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-selector">::cue(<var>selector</var>)<a class="self-link" href="#cue-selector"></a></dfn> pseudo-element with an argument must have an argument that
-consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-18">WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
+consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-15">WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
 being treated as follows:</p>
    <ul>
     <li>
      <p>The <i>document tree</i> against which the selectors are matched is the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-15">WebVTT Node Objects</a> rooted at the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-28">list of WebVTT Node Objects</a> for the cue.</p>
     <li>
-     <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-19">WebVTT Internal Node Objects</a> are elements in the
+     <p><a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-16">WebVTT Internal Node Objects</a> are elements in the
  tree.</p>
     <li><a data-link-type="dfn" href="#webvtt-leaf-node-object" id="ref-for-webvtt-leaf-node-object-3">WebVTT Leaf Node Objects</a> cannot be matched.
     <li>
-     <p>For the purposes of element type selectors, the names of <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-20">WebVTT Internal Node Objects</a> are as given by the following table, where objects having
+     <p>For the purposes of element type selectors, the names of <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-17">WebVTT Internal Node Objects</a> are as given by the following table, where objects having
   the concrete class given in a cell in the first column have the name given by the second column of
   the same row:</p>
      <table class="complex data">
@@ -5181,21 +5187,21 @@ being treated as follows:</p>
         <td>No explicit name.
      </table>
     <li>
-     <p>For the purposes of element type and universal selectors, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-21">WebVTT Internal Node Objects</a> are considered as being in the namespace expressed as the
+     <p>For the purposes of element type and universal selectors, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-18">WebVTT Internal Node Objects</a> are considered as being in the namespace expressed as the
  empty string.</p>
     <li>
-     <p>For the purposes of attribute selector matching, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-22">WebVTT
+     <p>For the purposes of attribute selector matching, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-19">WebVTT
  Internal Node Objects</a> have no attributes, except for <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-8">WebVTT Voice
  Objects</a>, which have a single attribute named "<code>voice</code>" whose value is the value of
  the <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-9">WebVTT Voice Object</a>, <a data-link-type="dfn" href="#webvtt-language-object" id="ref-for-webvtt-language-object-7">WebVTT Language Objects</a>, which
  have a single attribute named "<code>lang</code>" whose value is the object’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-10">applicable language</a>, and <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-30">lists of WebVTT Node Objects</a> that have a non-empty <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-11">applicable language</a>, which have a single attribute named
  "<code>lang</code>" whose value is the object’s <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-12">applicable language</a>.</p>
     <li>
-     <p>For the purposes of class selector matching, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-23">WebVTT
- Internal Node Objects</a> have the classes described as the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-9">WebVTT Node Object’s applicable
+     <p>For the purposes of class selector matching, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-20">WebVTT
+ Internal Node Objects</a> have the classes described as the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-classes" id="ref-for-webvtt-node-objects-applicable-classes-5">WebVTT Node Object’s applicable
  classes</a>.</p>
     <li>
-     <p>For the purposes of the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#lang-pseudo">:lang()</a> pseudo-class, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-24">WebVTT
+     <p>For the purposes of the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#lang-pseudo">:lang()</a> pseudo-class, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-21">WebVTT
  Internal Node Objects</a> have the language described as the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-13">WebVTT Node Object’s applicable
  language</a>.</p>
     <li>
@@ -5812,10 +5818,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
  Lawrence Forooghian,
  Loretta Guarino Reid,
  Ms2ger,
+ Nigel Megitt,
  Ralph Giles,
  Richard Ishida,
  Rick Eyre,
- Ronny Mennerich, and
+ Ronny Mennerich,
+ Theresa O’Connor, and
  Victor Cărbune
  for their useful comments. </p>
   </main>
@@ -5866,6 +5874,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#collect-webvtt-region-settings">collect WebVTT region settings</a><span>, in §6.2</span>
    <li><a href="#consume-an-html-character-reference">consume an HTML character reference</a><span>, in §6.4</span>
    <li><a href="#cue">::cue</a><span>, in §8.2.1</span>
+   <li><a href="#cue-component-class-names">cue component class names</a><span>, in §4.2.2</span>
    <li><a href="#cue-computed-line">cue computed line</a><span>, in §3.1</span>
    <li><a href="#cue-computed-position">cue computed position</a><span>, in §3.1</span>
    <li><a href="#cue-computed-position-alignment">cue computed position alignment</a><span>, in §3.1</span>
@@ -6966,7 +6975,19 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-cue-components">
    <b><a href="#webvtt-cue-components">#webvtt-cue-components</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-components-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-components-2">(2)</a> <a href="#ref-for-webvtt-cue-components-3">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-components-1">4.2.2. WebVTT cue text</a> <a href="#ref-for-webvtt-cue-components-2">(2)</a> <a href="#ref-for-webvtt-cue-components-3">(3)</a> <a href="#ref-for-webvtt-cue-components-4">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-components-5">5. Default classes for WebVTT Cue Components</a>
+    <li><a href="#ref-for-webvtt-cue-components-6">5.1. Default text colors</a>
+    <li><a href="#ref-for-webvtt-cue-components-7">5.2. Default text background colors</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="cue-component-class-names">
+   <b><a href="#cue-component-class-names">#cue-component-class-names</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-cue-component-class-names-1">5. Default classes for WebVTT Cue Components</a>
+    <li><a href="#ref-for-cue-component-class-names-2">5.1. Default text colors</a> <a href="#ref-for-cue-component-class-names-3">(2)</a>
+    <li><a href="#ref-for-cue-component-class-names-4">5.2. Default text background colors</a> <a href="#ref-for-cue-component-class-names-5">(2)</a>
+    <li><a href="#ref-for-cue-component-class-names-6">6.4. WebVTT cue text parsing rules</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-internal-text">
@@ -7239,25 +7260,20 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-internal-node-object">
    <b><a href="#webvtt-internal-node-object">#webvtt-internal-node-object</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-internal-node-object-1">5. Default applicable classes for WebVTT Internal Nodes</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-2">5.1. Default text colors</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-3">5.2. Default text background colors</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-4">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-internal-node-object-5">(2)</a> <a href="#ref-for-webvtt-internal-node-object-6">(3)</a> <a href="#ref-for-webvtt-internal-node-object-7">(4)</a> <a href="#ref-for-webvtt-internal-node-object-8">(5)</a> <a href="#ref-for-webvtt-internal-node-object-9">(6)</a> <a href="#ref-for-webvtt-internal-node-object-10">(7)</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-11">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-12">7.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-13">8.1. Introduction</a> <a href="#ref-for-webvtt-internal-node-object-14">(2)</a> <a href="#ref-for-webvtt-internal-node-object-15">(3)</a> <a href="#ref-for-webvtt-internal-node-object-16">(4)</a> <a href="#ref-for-webvtt-internal-node-object-17">(5)</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-18">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-webvtt-internal-node-object-19">(2)</a> <a href="#ref-for-webvtt-internal-node-object-20">(3)</a> <a href="#ref-for-webvtt-internal-node-object-21">(4)</a> <a href="#ref-for-webvtt-internal-node-object-22">(5)</a> <a href="#ref-for-webvtt-internal-node-object-23">(6)</a> <a href="#ref-for-webvtt-internal-node-object-24">(7)</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-internal-node-object-2">(2)</a> <a href="#ref-for-webvtt-internal-node-object-3">(3)</a> <a href="#ref-for-webvtt-internal-node-object-4">(4)</a> <a href="#ref-for-webvtt-internal-node-object-5">(5)</a> <a href="#ref-for-webvtt-internal-node-object-6">(6)</a> <a href="#ref-for-webvtt-internal-node-object-7">(7)</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-8">6.5. WebVTT cue text DOM construction rules</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-9">7.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-10">8.1. Introduction</a> <a href="#ref-for-webvtt-internal-node-object-11">(2)</a> <a href="#ref-for-webvtt-internal-node-object-12">(3)</a> <a href="#ref-for-webvtt-internal-node-object-13">(4)</a> <a href="#ref-for-webvtt-internal-node-object-14">(5)</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-15">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-webvtt-internal-node-object-16">(2)</a> <a href="#ref-for-webvtt-internal-node-object-17">(3)</a> <a href="#ref-for-webvtt-internal-node-object-18">(4)</a> <a href="#ref-for-webvtt-internal-node-object-19">(5)</a> <a href="#ref-for-webvtt-internal-node-object-20">(6)</a> <a href="#ref-for-webvtt-internal-node-object-21">(7)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-node-objects-applicable-classes">
    <b><a href="#webvtt-node-objects-applicable-classes">#webvtt-node-objects-applicable-classes</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-1">5.1. Default text colors</a> <a href="#ref-for-webvtt-node-objects-applicable-classes-2">(2)</a>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-3">5.2. Default text background colors</a> <a href="#ref-for-webvtt-node-objects-applicable-classes-4">(2)</a>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-5">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-node-objects-applicable-classes-6">(2)</a>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-7">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-8">8.1. Introduction</a>
-    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-9">8.2.1. The ::cue pseudo-element</a>
+    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-node-objects-applicable-classes-2">(2)</a>
+    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-3">6.5. WebVTT cue text DOM construction rules</a>
+    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-4">8.1. Introduction</a>
+    <li><a href="#ref-for-webvtt-node-objects-applicable-classes-5">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-node-objects-applicable-language">
