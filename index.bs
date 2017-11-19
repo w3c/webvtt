@@ -1211,13 +1211,15 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
  <p>The following diagram illustrates how anchoring of a region to a video viewport works. The black
  cross is the anchor, orange explains the anchor's offset within the region and green the anchor's
  offset within the viewport. Think of it as sticking a pin through a note onto a board:</p>
- <p><img src="webvtt-region-diagram.png" alt="Within the video viewport, there is a WebVTT region.
+ <p><img src="webvtt-region-diagram.png" alt="visual explanation of WebVTT regions"
+ longdesc=#regionsExplained></p>
+ <p id=regionsExplained>Image description: Within the video viewport, there is a WebVTT region.
  Inside the region, there is an anchor point marked with a black cross. The vertical and horizontal
  distance from the video viewport's edges to the anchor is marked with green arrows, representing
  the region viewport anchor X and Y offsets. The vertical and horizontal distance from the region's
  edges to the anchor is marked with orange arrows, representing the region anchor X and Y offsets.
  The size of the region is represented by the region width for the horizontal axis, and region lines
- for the vertical axis." style="width:100%;"></p>
+ for the vertical axis.</p>
 </div>
 
 <p>For parsing, we also need the following:</p>
@@ -1873,15 +1875,16 @@ given:</p>
 </ol>
 
 <p class="note">A <a>WebVTT line cue setting</a> configures the offset of the cue box from the video
-viewport's edge in the direction opposite to the <a lt="WebVTT cue writing direction">writing
-direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport.
-The offset is for the <a lt="WebVTT cue line start alignment">start</a>, <a lt="WebVTT cue line
-center alignment">center</a>, or <a lt="WebVTT cue line end alignment">end</a> of the cue box,
-depending on the <a>WebVTT cue line alignment</a> value - <a lt="WebVTT cue line start
-alignment">start</a> by default. The offset can be given either as a percentage of the video
-dimension or as a line number. Line numbers are based on the size of the first line of the cue.
-Positive line numbers count from the start of the video viewport (the first line is numbered 0),
-negative line numbers from the end of the viewport (the last line is numbered &#x2212;1).</p>
+viewport's edge in the direction orthogonal to the <a lt="WebVTT cue writing direction">writing
+direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport,
+for vertical cues, it's the horizontal offset. The offset is for the <a lt="WebVTT cue line start
+alignment">start</a>, <a lt="WebVTT cue line center alignment">center</a>, or <a lt="WebVTT cue line
+end alignment">end</a> of the cue box, depending on the <a>WebVTT cue line alignment</a> value - <a
+lt="WebVTT cue line start alignment">start</a> by default. The offset can be given either as a
+percentage of the video dimension or as a line number. Line numbers are based on the size of the
+first line of the cue. Positive line numbers count from the start of the video viewport (the first
+line is numbered 0), negative line numbers from the end of the viewport (the last line is numbered
+&#x2212;1).</p>
 
 <p>A <dfn>WebVTT position cue setting</dfn> consists of the following components, in the order
 given:</p>
