@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-11-11">11 November 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-02">2 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2061,11 +2061,11 @@ regions. The video viewport is the rendering area into which cues and regions ar
 boxes consisting of a set of cue lines. Regions are subareas of the video viewport that are used to
 group cues together. Cues are positioned either inside the video viewport directly or inside a
 region, which is positioned inside the video viewport.</p>
-   <p class="note" role="note">A set of cue settings position cues inside the video viewport. A set of region
-settings position regions inside the video viewport. Cues that are inside regions can only use a
-limited set of their cue settings. Specifically, if the cue has a "vertical", "line" or "size"
-setting, the cue drops out of the region. Otherwise, the cue’s width is calculated to be relative to
-the region width rather than the viewport. </p>
+   <p class="note" role="note">The position of a cue inside the video viewport is defined by a set of cue settings.
+The position of a region inside the video viewport is defined through a set of region settings. Cues
+that are inside regions can only use a limited set of their cue settings. Specifically, if the cue
+has a "vertical", "line" or "size" setting, the cue drops out of the region. Otherwise, the cue’s
+width is calculated to be relative to the region width rather than the viewport. </p>
    <h3 class="heading settled" data-level="3.1" id="cues"><span class="secno">3.1. </span><span class="content">WebVTT cues</span><a class="self-link" href="#cues"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> that additionally consist of the following: <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
    <dl>
