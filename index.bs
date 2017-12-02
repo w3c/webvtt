@@ -307,9 +307,9 @@ target WebVTT cues and regions in the video using the ''::cue'', ''::cue()'', ''
 ''::cue-region()'' pseudo-elements.</p>
 
 <p>Only a limited set of CSS styles is allowed in WebVTT because user agents that do not support CSS
-will need to implement CSS functionality equivalents. Browsers therefore also have to be limited in
-what CSS styles they support for WebVTT so as to enable identical rendering in browsers and
-non-browsers.</p>
+will need to implement CSS functionality equivalents. User agents that support a full CSS engine
+must limited the CSS styles they interpret for WebVTT so as to enable identical rendering without
+bleeding in extra CSS styles that are beyond the WebVTT specification.</p>
 
 <div class="example">
 

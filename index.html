@@ -1777,9 +1777,9 @@ NOTE end of file
    <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element can
 target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
    <p>Only a limited set of CSS styles is allowed in WebVTT because user agents that do not support CSS
-will need to implement CSS functionality equivalents. Browsers therefore also have to be limited in
-what CSS styles they support for WebVTT so as to enable identical rendering in browsers and
-non-browsers.</p>
+will need to implement CSS functionality equivalents. User agents that support a full CSS engine
+must limited the CSS styles they interpret for WebVTT so as to enable identical rendering without
+bleeding in extra CSS styles that are beyond the WebVTT specification.</p>
    <div class="example" id="example-6a17c0df">
     <a class="self-link" href="#example-6a17c0df"></a> 
     <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element that
