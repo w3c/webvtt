@@ -1637,8 +1637,7 @@ track resources in connection with the HTML &lt;track> element.</p>
 time-aligned with audio or video content.</p>
    <p>The majority of the current version of this specification is dedicated to describing how to use
 WebVTT files for captioning or subtitling. There is minimal information about chapters and
-time-aligned metadata. Future versions will provide more details for video descriptions, chapters
-and time-aligned metadata.</p>
+time-aligned metadata and nothing about video descriptions at this stage.</p>
    <p>In this section we provide some example WebVTT files as an introduction.</p>
    <h3 class="heading settled" data-level="1.1" id="introduction-caption"><span class="secno">1.1. </span><span class="content">A simple caption file</span><a class="self-link" href="#introduction-caption"></a></h3>
    <p><i>This section is non-normative.</i></p>
@@ -2155,11 +2154,13 @@ precomposed character).</p>
    <p><i>This section is non-normative.</i></p>
    <p>The WebVTT file is a container file for chunks of data that are time-aligned with a video or
 audio resource. It can therefore be regarded as a serialisation format for time-aligned data.</p>
-   <p>A WebVTT file starts with a header and then contains a series data blocks. If a data block has a
-start and end time, it is called a WebVTT cue. A comment is another kind of data block.</p>
-   <p>A WebVTT file can contain cues with different kinds of data. The HTML specification identifies
-captions, subtitles, chapters, audio descriptions and metadata as data kinds.</p>
-   <p>A WebVTT file only contains data of one kind, never a mix of different kinds of data.</p>
+   <p>A WebVTT file starts with a header and then contains a series of data blocks. If a data block has
+a start and end time, it is called a WebVTT cue. A comment is another kind of data block.</p>
+   <p>A WebVTT files can contain different kinds of data. The HTML specification identifies captions,
+subtitles, chapters, audio descriptions and metadata as data kinds and specifies which one is being
+used in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a> attribute of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> element <a data-link-type="biblio" href="#biblio-html">[HTML]</a>.</p>
+   <p>A WebVTT file must only contains data of one kind, never a mix of different kinds of data. The
+data kind of a WebVTT file is externally specified, such as in a HTML file’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> element. The environment is responsible for interpreting the data correctly.</p>
    <p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a
 region, which is a subarea of the video viewport.</p>
    <h3 class="heading settled" data-level="3.2" id="model-cues"><span class="secno">3.2. </span><span class="content">WebVTT cues</span><a class="self-link" href="#model-cues"></a></h3>
@@ -2456,7 +2457,7 @@ cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-o
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region">WebVTT region</dfn> represents a subpart of the video viewport and provides a limited
 rendering area for <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-1">WebVTT caption or subtitle cues</a>.</p>
    <p class="note" role="note">Regions provide a means to group caption or subtitle cues so the cues can be rendered
-together, when scrolling up.</p>
+together, which is particularly important when scrolling up.</p>
    <p>Each <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-4">WebVTT region</a> consists of:</p>
    <dl>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region identifier" data-noexport="" id="webvtt-region-identifier">An identifier</dfn>
@@ -2681,7 +2682,7 @@ U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, eac
 separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-17">WebVTT line terminator</a>. (In other words, any text that does not
 have two consecutive <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-18">WebVTT line terminators</a> and does not start
 or end with a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-19">WebVTT line terminator</a>.)</p>
-   <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (using the <code>metadata</code> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a>).</p>
+   <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (e.g. using the <code>metadata</code> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a> in a HTML <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>).</p>
    <h4 class="heading settled" data-level="4.2.2" id="caption-text"><span class="secno">4.2.2. </span><span class="content">WebVTT caption or subtitle cue text</span><a class="self-link" href="#caption-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-caption-or-subtitle-cue-text">WebVTT caption or subtitle cue text</dfn> is <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-2">cue payload</a> that consists of zero or
 more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-1">WebVTT cue components</a>, in any order, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line terminator</a>.</p>
