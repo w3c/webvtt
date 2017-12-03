@@ -1502,6 +1502,11 @@ terminator</a>.</p>
 
 </ul>
 
+<p>All <a>WebVTT cue components</a> bar the HTML character reference may have one or more <dfn>cue
+component class names</dfn> attached to it by separating the cue component class name from the cue
+component start tag using the perido ('.') notation. The class name must immediately follow the
+"period" (.).</p>
+
 <p><dfn>WebVTT cue internal text</dfn> consists of an optional <a>WebVTT line terminator</a>,
 followed by zero or more <a>WebVTT cue components</a>, in any order, each optionally followed by a
 <a>WebVTT line terminator</a>.</p>
@@ -2056,23 +2061,161 @@ mix of cues. However, only a small subset of WebVTT file types are typically aut
 <p>Conformance checkers, when validating <a>WebVTT files</a>, may offer to restrict syntax checking
 for validating these types.</p>
 
-
 <h4 id=file-using-metadata-content>WebVTT file using metadata content</h4>
 
 <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT metadata text</a>
 is said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
-
 
 <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
 
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
 whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
 
-
 <h4 id=file-using-cue-text>WebVTT file using cue text</h4>
 
 <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT cue text</a> is
 said to be a <dfn>WebVTT file using cue text</dfn>.</p>
+
+
+<h2 id=default-classes>Default classes for WebVTT Cue Components</h2>
+
+<p>Many captioning formats have simple ways of specifying a limited subset of text colors and
+background colors for text. Therefore, the WebVTT spec makes available a set of default <a>cue
+component class names</a> for <a>WebVTT Cue Components</a> that authors can use in a standard way to
+mark up colored text and text background.</p>
+
+<p class=note>User agents that support CSS style sheets may implement this section through adding
+User Agent stylesheets.</p>
+
+<h3 id=default-text-color>Default text colors</h3>
+
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their 'color'
+property as <a spec=html>presentational hints</a> to the value in the second cell of the row:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="cue component class names">class names</a></th>
+   <th>'color' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>lime</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>blue</code></td>
+   <td>''rgba(0,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>black</code></td>
+   <td>''rgba(0,0,0,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>If your background is captioning, don't get confused: The color for the class
+<code>lime</code> is what has traditionally been used in captioning under the name ''green'' (e.g.
+608/708).</p>
+
+<p class=note>Do not use the classes <code>blue</code> and <code>black</code> on the default dark
+background, since they result in unreadable text. In general, please refer to WCAG for guidance on
+color contrast [[WCAG20]] and make sure to take into account the text color, background color and
+also the video's color.</p>
+
+<h3 id=default-text-background>Default text background colors</h3>
+
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their
+'background-color' property as <a spec=html>presentational hints</a> to the value in the second cell
+of the row:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="cue component class names">class names</a></th>
+   <th>'background' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>bg_white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_lime</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_blue</code></td>
+   <td>''rgba(0,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_black</code></td>
+   <td>''rgba(0,0,0,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>The color for the class <code>bg_lime</code> is what has traditionally been used in
+captioning under the name ''green'' (e.g. 608/708).</p>
+
+<p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the color and background
+classes, the order of appearance determines the cascade of the classes.</p>
+
+<div class="example">
+
+ <p>This example shows how to use the classes.</p>
+
+ <pre>
+ WEBVTT
+
+ 02:00.000 --> 02:05.000
+ &lt;c.yellow.bg_blue>This is yellow text on a blue background&lt;/c>
+
+ 04:00.000 --> 04:05.000
+ &lt;c.yellow.bg_blue.magenta.bg_black>This is magenta text on a black background&lt;/c>
+ </pre>
+
+</div>
 
 
 <h2 id=parsing>Parsing</h2>
@@ -2964,10 +3107,11 @@ elements in HTML or the DOM. <a lt="WebVTT Internal Node Object">WebVTT Internal
 have an ordered list of child <a lt="WebVTT Node Object">WebVTT Node Objects</a>. The <a>WebVTT
 Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles do not occur; the
 parent-child relationships so constructed form a tree structure. <a lt="WebVTT Internal Node
-Object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their
-<dfn lt="WebVTT Node Object's applicable classes">applicable classes</dfn>, and a language, known as
-their <dfn lt="WebVTT Node Object's applicable language">applicable language</dfn>, which is to be
-interpreted as a BCP 47 language tag. [[!BCP47]]</p>
+Object">WebVTT Internal Node Objects</a> also have an ordered list of <a lt="cue component class
+names">class names</a>, known as their <dfn lt="WebVTT Node Object's applicable classes">applicable
+classes</dfn>, and a language, known as their <dfn lt="WebVTT Node Object's applicable
+language">applicable language</dfn>, which is to be interpreted as a BCP 47 language tag.
+[[!BCP47]]</p>
 
 <p class=note>User agents will add a language tag as the <a lt="WebVTT Node Object's applicable
 language">applicable language</a> even if it is not a valid or not even well-formed language tag.
@@ -3825,8 +3969,8 @@ manner suiting the user.</p>
      <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be
      ''|regionWidth|&#x2009;vw'' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
-     <li><p>Let |lineHeight| be ''5.33vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
-     be the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
+     <li><p>Let |lineHeight| be ''6vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight| be
+     the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
      |regionHeight|.</p></li>
 
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
@@ -5907,6 +6051,7 @@ and registration with IANA.</p>
 
 <p>Fragment identifiers have no meaning with <code>text/vtt</code> resources.</p>
 
+
 <h2 class="no-num" id=privacy-and-security-considerations>Privacy and Security Considerations</h2>
 
 
@@ -5992,10 +6137,12 @@ originally specified. [[!HTML]]</p>
  Lawrence Forooghian,
  Loretta Guarino Reid,
  Ms2ger,
+ Nigel Megitt,
  Ralph Giles,
  Richard Ishida,
  Rick Eyre,
- Ronny Mennerich, and
+ Ronny Mennerich,
+ Theresa O'Connor, and
  Victor Cărbune
  for their useful comments.
 </p>
