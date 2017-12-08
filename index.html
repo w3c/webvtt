@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-03">3 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-08">8 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -3125,6 +3125,8 @@ classes, the order of appearance determines the cascade of the classes.</p>
 &lt;c.yellow.bg_blue.magenta.bg_black>This is magenta text on a black background&lt;/c>
 </pre>
    </div>
+   <p class="note" role="note">Default classes can be changed by authors, e.g. ::cue(.yellow) {color:cyan} would
+change all .yellow classed text to cyan.</p>
    <h2 class="heading settled" data-level="6" id="parsing"><span class="secno">6. </span><span class="content">Parsing</span><a class="self-link" href="#parsing"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT file parsing" data-level="6.1" id="file-parsing"><span class="secno">6.1. </span><span class="content">WebVTT file parsing</span><a class="self-link" href="#file-parsing"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-parser">WebVTT parser</dfn>, given an input byte stream, a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-list-of-cues">text track list of cues</a> <var>output</var>, and a collection of <a data-link-type="dfn" href="https://drafts.csswg.org/cssom-1/#css-style-sheet">CSS style sheets</a> <var>stylesheets</var>, must decode the byte
