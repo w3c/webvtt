@@ -1557,7 +1557,7 @@ the former is a Draft Community Group Report that continues to evolve. </p>
        </ol>
      </ol>
     <li>
-     <a href="#default-classes"><span class="secno">5</span> <span class="content">Default classes for WebVTT Cue Components</span></a>
+     <a href="#default-classes"><span class="secno">5</span> <span class="content">Default classes for WebVTT Caption or Subtitle Cue Components</span></a>
      <ol class="toc">
       <li><a href="#default-text-color"><span class="secno">5.1</span> <span class="content">Default text colors</span></a>
       <li><a href="#default-text-background"><span class="secno">5.2</span> <span class="content">Default text background colors</span></a>
@@ -2685,8 +2685,9 @@ or end with a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for
    <p><a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-2">WebVTT metadata text</a> cues are only useful for scripted applications (e.g. using the <code>metadata</code> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a> in a HTML <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>).</p>
    <h4 class="heading settled" data-level="4.2.2" id="caption-text"><span class="secno">4.2.2. </span><span class="content">WebVTT caption or subtitle cue text</span><a class="self-link" href="#caption-text"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-caption-or-subtitle-cue-text">WebVTT caption or subtitle cue text</dfn> is <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-2">cue payload</a> that consists of zero or
-more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-1">WebVTT cue components</a>, in any order, each optionally separated from the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line terminator</a>.</p>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-components">WebVTT cue components</dfn> are:</p>
+more <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-1">WebVTT caption or subtitle cue components</a>, in any order, each optionally separated from
+the next by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-20">WebVTT line terminator</a>.</p>
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-caption-or-subtitle-cue-components">WebVTT caption or subtitle cue components</dfn> are:</p>
    <ul>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-class-span" id="ref-for-webvtt-cue-class-span-1">WebVTT cue class span</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-italics-span" id="ref-for-webvtt-cue-italics-span-1">WebVTT cue italics span</a>.
@@ -2700,12 +2701,13 @@ more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cu
     <li>An <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-charref">HTML character reference</a>, representing one or two Unicode
  code points, as defined in HTML, in the text of the cue. <a data-link-type="biblio" href="#biblio-html">[HTML]</a>
    </ul>
-   <p>All <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-2">WebVTT cue components</a> bar the HTML character reference may have one or more <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="cue component class names" data-noexport="" id="cue-component-class-names">cue
-component class names</dfn> attached to it by separating the cue component class name from the cue
-component start tag using the perido ('.') notation. The class name must immediately follow the
-"period" (.).</p>
+   <p>All <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-2">WebVTT caption or subtitle cue components</a> bar the HTML character reference may have
+one or more <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="cue-component-class-names">cue component class names</dfn> attached to it by separating the cue component
+class name from the cue component start tag using the perido ('.') notation. The class name must
+immediately follow the "period" (.).</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-internal-text">WebVTT cue internal text</dfn> consists of an optional <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-21">WebVTT line terminator</a>,
-followed by zero or more <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-3">WebVTT cue components</a>, in any order, each optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
+followed by zero or more <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-3">WebVTT caption or subtitle cue components</a>, in any order, each
+optionally followed by a <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-22">WebVTT line terminator</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-class-span">WebVTT cue class span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-1">WebVTT cue span start tag</a> "<code>c</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-1">WebVTT cue internal text</a> representing cue
 text, and a <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-1">WebVTT cue span end tag</a> "<code>c</code>".</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-italics-span">WebVTT cue italics span</dfn> consists of a <a data-link-type="dfn" href="#webvtt-cue-span-start-tag" id="ref-for-webvtt-cue-span-start-tag-2">WebVTT cue span start tag</a> "<code>i</code>" that disallows an annotation, <a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-2">WebVTT cue internal text</a> representing the
@@ -2745,7 +2747,8 @@ are more mature in HTML and CSS. <a data-link-type="biblio" href="#biblio-html">
  represents the name of the voice.
     <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-7">WebVTT cue internal text</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-7">WebVTT cue span end tag</a> "<code>v</code>". If this <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-2">WebVTT cue voice span</a> is the
- only <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-4">component</a> of its <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-2">WebVTT caption or subtitle cue text</a> sequence, then the end tag may be omitted for brevity.
+ only <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-4">component</a> of its <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-2">WebVTT caption or
+ subtitle cue text</a> sequence, then the end tag may be omitted for brevity.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-language-span">WebVTT cue language span</dfn> consists of the following components, in the order
 given:</p>
@@ -3154,16 +3157,16 @@ for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using caption or subtitle cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-3">WebVTT caption or
 subtitle cue text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-caption-or-subtitle-cue-text">WebVTT file using caption or subtitle cue text<a class="self-link" href="#webvtt-file-using-caption-or-subtitle-cue-text"></a></dfn>.</p>
-   <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default classes for WebVTT Cue Components</span><a class="self-link" href="#default-classes"></a></h2>
+   <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default classes for WebVTT Caption or Subtitle Cue Components</span><a class="self-link" href="#default-classes"></a></h2>
    <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
 background colors for text. Therefore, the WebVTT spec makes available a set of default <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-1">cue
-component class names</a> for <a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-5">WebVTT Cue Components</a> that authors can use in a standard way to
-mark up colored text and text background.</p>
+component class names</a> for <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-5">WebVTT caption or subtitle cue components</a> that authors can use
+in a standard way to mark up colored text and text background.</p>
    <p class="note" role="note">User agents that support CSS style sheets may implement this section through adding
 User Agent stylesheets.</p>
    <h3 class="heading settled" data-level="5.1" id="default-text-color"><span class="secno">5.1. </span><span class="content">Default text colors</span><a class="self-link" href="#default-text-color"></a></h3>
-   <p><a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-6">WebVTT Cue Components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-2">class
-names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell of the row:</p>
+   <p><a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-6">WebVTT caption or subtitle cue components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-2">class names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell of the
+row:</p>
    <table class="complex data">
     <thead>
      <tr>
@@ -3202,8 +3205,7 @@ background, since they result in unreadable text. In general, please refer to WC
 color contrast <a data-link-type="biblio" href="#biblio-wcag20">[WCAG20]</a> and make sure to take into account the text color, background color and
 also the video’s color.</p>
    <h3 class="heading settled" data-level="5.2" id="default-text-background"><span class="secno">5.2. </span><span class="content">Default text background colors</span><a class="self-link" href="#default-text-background"></a></h3>
-   <p><a data-link-type="dfn" href="#webvtt-cue-components" id="ref-for-webvtt-cue-components-7">WebVTT Cue Components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-4">class
-names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color">background-color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell
+   <p><a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-7">WebVTT caption or subtitle cue components</a> that have one or more <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names-4">class names</a> matching those in the first cell of a row in the table below must set their <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color">background-color</a> property as <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/rendering.html#presentational-hints">presentational hints</a> to the value in the second cell
 of the row:</p>
    <table class="complex data">
     <thead>
@@ -6052,8 +6054,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#typedefdef-lineandpositionsetting">LineAndPositionSetting</a><span>, in §9.1</span>
    <li><a href="#dom-positionalignsetting-line-left">"line-left"</a><span>, in §9.1</span>
    <li><a href="#dom-positionalignsetting-line-left">line-left</a><span>, in §9.1</span>
-   <li><a href="#dom-positionalignsetting-line-right">"line-right"</a><span>, in §9.1</span>
    <li><a href="#dom-positionalignsetting-line-right">line-right</a><span>, in §9.1</span>
+   <li><a href="#dom-positionalignsetting-line-right">"line-right"</a><span>, in §9.1</span>
    <li><a href="#dom-vttregion-lines">lines</a><span>, in §9.2</span>
    <li><a href="#list-of-webvtt-node-objects">List of WebVTT Node Objects</a><span>, in §6.4</span>
    <li><a href="#dom-directionsetting-lr">"lr"</a><span>, in §9.1</span>
@@ -6105,6 +6107,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a><span>, in §4.4</span>
    <li><a href="#webvtt-bold-object">WebVTT Bold Object</a><span>, in §6.4</span>
    <li><a href="#webvtt-caption-or-subtitle-cue">WebVTT caption or subtitle cue</a><span>, in §3.3</span>
+   <li><a href="#webvtt-caption-or-subtitle-cue-components">WebVTT caption or subtitle cue components</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-caption-or-subtitle-cue-text">WebVTT caption or subtitle cue text</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-chapter-cue">WebVTT chapter cue</a><span>, in §3.5</span>
    <li><a href="#webvtt-chapter-title-text">WebVTT chapter title text</a><span>, in §4.2.3</span>
@@ -6118,7 +6121,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt-cue-box">WebVTT cue box</a><span>, in §3.3</span>
    <li><a href="#webvtt-cue-center-alignment">WebVTT cue center alignment</a><span>, in §3.3</span>
    <li><a href="#webvtt-cue-class-span">WebVTT cue class span</a><span>, in §4.2.2</span>
-   <li><a href="#webvtt-cue-components">WebVTT cue components</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-end-alignment">WebVTT cue end alignment</a><span>, in §3.3</span>
    <li><a href="#webvtt-cue-horizontal-writing-direction">WebVTT cue horizontal writing direction</a><span>, in §3.3</span>
    <li><a href="#webvtt-cue-identifier">WebVTT cue identifier</a><span>, in §4.1</span>
@@ -7131,19 +7133,19 @@ title</a>
     <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-4">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-5">(2)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-6">(3)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-7">(4)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-8">(5)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-9">(6)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-10">(7)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-11">(8)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="webvtt-cue-components">
-   <b><a href="#webvtt-cue-components">#webvtt-cue-components</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="webvtt-caption-or-subtitle-cue-components">
+   <b><a href="#webvtt-caption-or-subtitle-cue-components">#webvtt-caption-or-subtitle-cue-components</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-components-1">4.2.2. WebVTT caption or subtitle cue text</a> <a href="#ref-for-webvtt-cue-components-2">(2)</a> <a href="#ref-for-webvtt-cue-components-3">(3)</a> <a href="#ref-for-webvtt-cue-components-4">(4)</a>
-    <li><a href="#ref-for-webvtt-cue-components-5">5. Default classes for WebVTT Cue Components</a>
-    <li><a href="#ref-for-webvtt-cue-components-6">5.1. Default text colors</a>
-    <li><a href="#ref-for-webvtt-cue-components-7">5.2. Default text background colors</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-components-1">4.2.2. WebVTT caption or subtitle cue text</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-components-2">(2)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-components-3">(3)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-components-4">(4)</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-components-5">5. Default classes for WebVTT Caption or Subtitle Cue Components</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-components-6">5.1. Default text colors</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-components-7">5.2. Default text background colors</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="cue-component-class-names">
    <b><a href="#cue-component-class-names">#cue-component-class-names</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-cue-component-class-names-1">5. Default classes for WebVTT Cue Components</a>
+    <li><a href="#ref-for-cue-component-class-names-1">5. Default classes for WebVTT Caption or Subtitle Cue Components</a>
     <li><a href="#ref-for-cue-component-class-names-2">5.1. Default text colors</a> <a href="#ref-for-cue-component-class-names-3">(2)</a>
     <li><a href="#ref-for-cue-component-class-names-4">5.2. Default text background colors</a> <a href="#ref-for-cue-component-class-names-5">(2)</a>
     <li><a href="#ref-for-cue-component-class-names-6">6.4. WebVTT cue text parsing rules</a>

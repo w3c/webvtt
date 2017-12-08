@@ -1640,10 +1640,10 @@ or end with a <a>WebVTT line terminator</a>.)</p>
 <h4 id=caption-text>WebVTT caption or subtitle cue text</h4>
 
 <p><dfn>WebVTT caption or subtitle cue text</dfn> is <a>cue payload</a> that consists of zero or
-more <a>WebVTT cue components</a>, in any order, each optionally separated from the next by a
-<a>WebVTT line terminator</a>.</p>
+more <a>WebVTT caption or subtitle cue components</a>, in any order, each optionally separated from
+the next by a <a>WebVTT line terminator</a>.</p>
 
-<p>The <dfn>WebVTT cue components</dfn> are:</p>
+<p>The <dfn>WebVTT caption or subtitle cue components</dfn> are:</p>
 
 <ul>
 
@@ -1664,14 +1664,14 @@ more <a>WebVTT cue components</a>, in any order, each optionally separated from 
 
 </ul>
 
-<p>All <a>WebVTT cue components</a> bar the HTML character reference may have one or more <dfn>cue
-component class names</dfn> attached to it by separating the cue component class name from the cue
-component start tag using the perido ('.') notation. The class name must immediately follow the
-"period" (.).</p>
+<p>All <a>WebVTT caption or subtitle cue components</a> bar the HTML character reference may have
+one or more <dfn>cue component class names</dfn> attached to it by separating the cue component
+class name from the cue component start tag using the perido ('.') notation. The class name must
+immediately follow the "period" (.).</p>
 
 <p><dfn>WebVTT cue internal text</dfn> consists of an optional <a>WebVTT line terminator</a>,
-followed by zero or more <a>WebVTT cue components</a>, in any order, each optionally followed by a
-<a>WebVTT line terminator</a>.</p>
+followed by zero or more <a>WebVTT caption or subtitle cue components</a>, in any order, each
+optionally followed by a <a>WebVTT line terminator</a>.</p>
 
 <p>A <dfn>WebVTT cue class span</dfn> consists of a <a>WebVTT cue span start tag</a>
 "<code>c</code>" that disallows an annotation, <a>WebVTT cue internal text</a> representing cue
@@ -1726,8 +1726,8 @@ are more mature in HTML and CSS. [[!HTML]] [[CSS3-RUBY]]</p>
  represents the name of the voice.</li>
  <li><a>WebVTT cue internal text</a>.</li>
  <li>A <a>WebVTT cue span end tag</a> "<code>v</code>". If this <a>WebVTT cue voice span</a> is the
- only <a lt="WebVTT cue components">component</a> of its <a>WebVTT caption or subtitle cue text</a>
- sequence, then the end tag may be omitted for brevity.</li>
+ only <a lt="WebVTT caption or subtitle cue components">component</a> of its <a>WebVTT caption or
+ subtitle cue text</a> sequence, then the end tag may be omitted for brevity.</li>
 </ol>
 
 <p>A <dfn>WebVTT cue language span</dfn> consists of the following components, in the order
@@ -2241,21 +2241,22 @@ whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a
 subtitle cue text</a> is said to be a <dfn>WebVTT file using caption or subtitle cue text</dfn>.</p>
 
 
-<h2 id=default-classes>Default classes for WebVTT Cue Components</h2>
+<h2 id=default-classes>Default classes for WebVTT Caption or Subtitle Cue Components</h2>
 
 <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
 background colors for text. Therefore, the WebVTT spec makes available a set of default <a>cue
-component class names</a> for <a>WebVTT Cue Components</a> that authors can use in a standard way to
-mark up colored text and text background.</p>
+component class names</a> for <a>WebVTT caption or subtitle cue components</a> that authors can use
+in a standard way to mark up colored text and text background.</p>
 
 <p class=note>User agents that support CSS style sheets may implement this section through adding
 User Agent stylesheets.</p>
 
 <h3 id=default-text-color>Default text colors</h3>
 
-<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
-names</a> matching those in the first cell of a row in the table below must set their 'color'
-property as <a spec=html>presentational hints</a> to the value in the second cell of the row:</p>
+<p><a>WebVTT caption or subtitle cue components</a> that have one or more <a lt="cue component class
+names">class names</a> matching those in the first cell of a row in the table below must set their
+'color' property as <a spec=html>presentational hints</a> to the value in the second cell of the
+row:</p>
 
 <table class="complex data">
  <thead>
@@ -2311,8 +2312,8 @@ also the video's color.</p>
 
 <h3 id=default-text-background>Default text background colors</h3>
 
-<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
-names</a> matching those in the first cell of a row in the table below must set their
+<p><a>WebVTT caption or subtitle cue components</a> that have one or more <a lt="cue component class
+names">class names</a> matching those in the first cell of a row in the table below must set their
 'background-color' property as <a spec=html>presentational hints</a> to the value in the second cell
 of the row:</p>
 
