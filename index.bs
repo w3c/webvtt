@@ -788,11 +788,12 @@ audio resource. It can therefore be regarded as a serialisation format for time-
 <p>A WebVTT file starts with a header and then contains a series of data blocks. If a data block has
 a start and end time, it is called a WebVTT cue. A comment is another kind of data block.</p>
 
-<p>A WebVTT files can contain different kinds of data. The HTML specification identifies captions,
-subtitles, chapters, audio descriptions and metadata as data kinds and specifies which one is being
-used in the <a>text track kind</a> attribute of the <a>text track</a> element [[!HTML]].</p>
+<p>Different kinds of data can be carried in WebVTT files. The HTML specification identifies
+captions, subtitles, chapters, audio descriptions and metadata as data kinds and specifies which one
+is being used in the <a>text track kind</a> attribute of the <a>text track</a> element
+[[!HTML]].</p>
 
-<p>A WebVTT file must only contains data of one kind, never a mix of different kinds of data. The
+<p>A WebVTT file must only contain data of one kind, never a mix of different kinds of data. The
 data kind of a WebVTT file is externally specified, such as in a HTML file's <a>text track</a>
 element. The environment is responsible for interpreting the data correctly.</p>
 

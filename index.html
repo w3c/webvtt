@@ -2156,10 +2156,10 @@ precomposed character).</p>
 audio resource. It can therefore be regarded as a serialisation format for time-aligned data.</p>
    <p>A WebVTT file starts with a header and then contains a series of data blocks. If a data block has
 a start and end time, it is called a WebVTT cue. A comment is another kind of data block.</p>
-   <p>A WebVTT files can contain different kinds of data. The HTML specification identifies captions,
-subtitles, chapters, audio descriptions and metadata as data kinds and specifies which one is being
-used in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a> attribute of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> element <a data-link-type="biblio" href="#biblio-html">[HTML]</a>.</p>
-   <p>A WebVTT file must only contains data of one kind, never a mix of different kinds of data. The
+   <p>Different kinds of data can be carried in WebVTT files. The HTML specification identifies
+captions, subtitles, chapters, audio descriptions and metadata as data kinds and specifies which one
+is being used in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-kind">text track kind</a> attribute of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> element <a data-link-type="biblio" href="#biblio-html">[HTML]</a>.</p>
+   <p>A WebVTT file must only contain data of one kind, never a mix of different kinds of data. The
 data kind of a WebVTT file is externally specified, such as in a HTML file’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> element. The environment is responsible for interpreting the data correctly.</p>
    <p>WebVTT caption or subtitle cues are rendered as overlays on top of a video viewport or into a
 region, which is a subarea of the video viewport.</p>
