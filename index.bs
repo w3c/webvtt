@@ -1187,6 +1187,10 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
  <dd>
   <p>A number giving the number of lines of the box within which the text of each line of the
   containing cues is to be rendered. Defaults to 3.</p>
+
+  <p class="note">Since a WebVTT region defines a fixed rendering area, a cue that has more lines
+  than the region allows will be clipped. For scrolling regions, the clipping happens at the top,
+  for non-scrolling regions it happens at the bottom.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region anchor">A region anchor point</dfn></dt>
@@ -2831,6 +2835,10 @@ run the following steps:</p>
        "<code>lr</code>", then let |cue|'s <a>WebVTT cue writing direction</a> be <a lt="WebVTT cue
        vertical growing right writing direction">vertical growing right</a>.</p></li>
 
+       <li><p>If |cue|'s <a>WebVTT cue writing direction</a> is not <a lt="WebVTT cue horizontal
+       writing direction">horizontal</a>, let |cue|'s <a>WebVTT cue region</a> be null (there are no
+       vertical regions).</p></li>
+
       </ol>
 
      </dd>
@@ -2906,6 +2914,10 @@ run the following steps:</p>
        <li><p>If the last character in |linepos| is a U+0025 PERCENT SIGN character (%), then let
        |cue|'s <a>WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p></li>
 
+       <li><p>If |cue|'s <a>WebVTT cue line</a> is not <a lt="WebVTT cue line automatic">auto</a>,
+       let |cue|'s <a>WebVTT cue region</a> be null (the cue has been explicitly positioned with a
+       line offset and thus drops out of the region).</p></li>
+
       </ol>
 
      </dd>
@@ -2959,6 +2971,9 @@ run the following steps:</p>
        returned |percentage|, otherwise jump to the step labeled <i>next setting</i>.</p></li>
 
        <li><p>Let |cue|'s <a>WebVTT cue size</a> be |number|.</p></li>
+
+       <li><p>If |cue|'s <a>WebVTT cue size</a> is not 100, let |cue|'s <a>WebVTT cue region</a> be
+       null (the cue has been explicitly sized and thus drops out of the region).</p></li>
 
       </ol>
 
