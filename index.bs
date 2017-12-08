@@ -48,7 +48,9 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: rules for updating the text track rendering
             text: text track cue active flag
             text: text track cue text
+            text: text track cue data
             text: text track cue display state
+            text: time marches on
             text: current playback position
             text: text track cue identifier
             text: text track cue pause-on-exit flag
@@ -666,8 +668,14 @@ precomposed character).</p>
 
 <h3 id=cues>WebVTT cues</h3>
 
-<p>A <dfn>WebVTT cue</dfn> is a <a>text track cue</a> that additionally consist of the following:
-[[!HTML]]</p>
+<p>A <dfn>WebVTT cue</dfn> is a <a>text track cue</a> as defined in the HTML specification [[!HTML]]
+with <a lt="text track cue data">additional format-specific data</a>.</p>
+
+<p class=note>Importantly, this provides start and end time attributes to WebVTT cues. They are
+interpreted via the <a>time marches on</a> algorithm of the HTML specification to include the start
+time in the range and exclude the end time.</p>
+
+<p>The additional format-specific data for <a>WebVTT cues</a>is the following:</p>
 
 <dl>
 
