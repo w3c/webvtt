@@ -4080,13 +4080,8 @@ manner suiting the user.</p>
 
      <li><p>Let |left| be ''|offset|&#x2009;%''. [[!CSS-VALUES]]</p></li>
 
-     <li>
-      <p>Apply the terms of the CSS specifications to |nodes| with the same constraints that are
-      used when they are applied to |nodes| of a |cue| that is not part of a region.</p>
-
-      <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along
-      with their positions.</p>
-     </li>
+     <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
+     block.</p></li>
 
      <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|.
      The cue is ignored.</p></li>
@@ -4112,9 +4107,12 @@ manner suiting the user.</p>
 dragging them to another location on the <a element>video</a>, or even off the <a element>video</a>
 entirely.</p>
 
-<p>When the algorithm above requires that the user agent <dfn>apply WebVTT cue settings</dfn> to
-obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the
-following algorithm.</p>
+
+<h3 id=processing-cue-settings algorithm>Processing cue settings</h3>
+
+<p>When the processing algorithm above requires that the user agent <dfn>apply WebVTT cue
+settings</dfn> to obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent
+must run the following algorithm.</p>
 
 <ol algorithm="apply WebVTT cue settings">
 
@@ -4340,112 +4338,8 @@ following algorithm.</p>
  CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
  CSS units.) [[!CSS-VALUES]]</p></li>
 
- <li>
-
-  <p>Apply the terms of the CSS specifications to |nodes| within the following constraints, thus
-  obtaining a set of CSS boxes positioned relative to an initial containing block: [[!CSS22]]</p>
-
-  <ul>
-
-   <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
-   rooted at |nodes|.</p></li>
-
-   <li>
-    <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
-    a hypothetical document that contains a single empty element with no explicit name, no
-    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the
-    <a>media element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file.
-    The selectors must not match other <a>text tracks</a> for the same <a>media element</a>. In this
-    hypothetical document, the element must not match any selector that would match the element
-    itself.</p>
-
-    <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for
-    the ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
-   </li>
-
-   <li>
-    <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in
-    STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
-    same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a element>video</a> element's
-    document.</p>
-
-    <div class=example>
-     <p>For example, given the following (invalid) HTML document:</p>
-
-     <pre>
-     &lt;!doctype html>
-     &lt;title>Invalid cascade example&lt;/title>
-     &lt;video controls autoplay src="video.webm">
-      &lt;track default src="track.vtt">
-     &lt;/video>
-     &lt;style>
-      ::cue { color:red }
-     &lt;/style>
-     </pre>
-
-     <p>...and the "track.vtt" file contains:</p>
-
-     <pre>
-     WEBVTT
-
-     STYLE
-     ::cue { color:lime }
-
-     00:00:00.000 --> 00:00:25.000
-     Red or green?
-     </pre>
-
-     <p>The ''color:lime'' declaration would win, because it is last in the <a
-     spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
-     element>video</a> element in the document order.</p>
-    </div>
-   </li>
-
-   <li>
-
-    <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
-    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's
-    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
-    resolve.</p>
-
-    <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
-    would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
-    network requests as the user watches the video, which could be a privacy issue.</strong></p>
-
-   </li>
-
-   <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
-   Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
-   contents.</p></li>
-
-   <li>For the purposes of processing by the CSS specification, <a lt="WebVTT Text Object">WebVTT
-   Text Objects</a> are equivalent to {{Text}} nodes.</li>
-
-   <li>No style sheets are associated with |nodes|. (The nodes are subsequently restyled using style
-   sheets after their boxes are generated, as described below.)</li>
-
-   <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
-   the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
-
-   <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
-   lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
-
-   <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
-   defined in the next section. (That section uses some of the variables whose values were
-   calculated earlier in this algorithm.)</li>
-
-   <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
-
-   <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
-
-  </ul>
-
-  <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
-  their positions.</p>
-
- </li>
+ <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
+ block.</p></li>
 
  <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|. The
  cue is ignored.</p></li>
@@ -4686,8 +4580,112 @@ following algorithm.</p>
 </ol>
 
 
-<h4 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
-Object">WebVTT Node Objects</a></h4>
+<h3 id=obtaining-css-boxes algorithm>Obtaining CSS boxes</h3>
+
+<p>When the processing algorithm above requires that the user agent <dfn>obtain a set of CSS
+boxes</dfn> |boxes|, then apply the terms of the CSS specifications to |nodes| within the following
+constraints: [[!CSS22]]</p>
+
+<ul>
+
+ <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
+ rooted at |nodes|.</p></li>
+
+ <li>
+  <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to a
+  hypothetical document that contains a single empty element with no explicit name, no namespace, no
+  attributes, no classes, no IDs, and unknown primary language, that acts like the <a>media
+  element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file. The selectors
+  must not match other <a>text tracks</a> for the same <a>media element</a>. In this hypothetical
+  document, the element must not match any selector that would match the element itself.</p>
+
+  <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for the
+  ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
+ </li>
+
+ <li>
+  <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in STYLE
+  blocks of a WebVTT file, the relative order of appearance of the style sheets must be the same
+  order as they were added to the collection, and the order of appearance of the collection must be
+  after any style sheets that apply to the associated <a element>video</a> element's document.</p>
+
+  <div class=example>
+   <p>For example, given the following (invalid) HTML document:</p>
+
+   <pre>
+   &lt;!doctype html>
+   &lt;title>Invalid cascade example&lt;/title>
+   &lt;video controls autoplay src="video.webm">
+    &lt;track default src="track.vtt">
+   &lt;/video>
+   &lt;style>
+    ::cue { color:red }
+   &lt;/style>
+   </pre>
+
+   <p>...and the "track.vtt" file contains:</p>
+
+   <pre>
+   WEBVTT
+
+   STYLE
+   ::cue { color:lime }
+
+   00:00:00.000 --> 00:00:25.000
+   Red or green?
+   </pre>
+
+   <p>The ''color:lime'' declaration would win, because it is last in the <a
+   spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
+   element>video</a> element in the document order.</p>
+  </div>
+ </li>
+
+ <li>
+
+  <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
+  file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's scheme
+  is not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+
+  <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
+  would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
+  network requests as the user watches the video, which could be a privacy issue.</strong></p>
+
+ </li>
+
+ <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
+ Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
+ contents.</p></li>
+
+ <li>For the purposes of processing by the CSS specification, <a lt="WebVTT Text Object">WebVTT Text
+ Objects</a> are equivalent to {{Text}} nodes.</li>
+
+ <li>No style sheets are associated with |nodes|. (The nodes are subsequently restyled using style
+ sheets after their boxes are generated, as described below.)</li>
+
+ <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
+ the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
+
+ <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
+ lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes whose
+ 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
+
+ <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
+ defined in the next section. (That section uses some of the variables whose values were calculated
+ earlier in this algorithm.)</li>
+
+ <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
+
+ <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
+
+</ul>
+
+<p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
+their positions.</p>
+
+
+<h3 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
+Object">WebVTT Node Objects</a></h3>
 
 <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a lt="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user agent cascade
@@ -5813,7 +5811,7 @@ enum ScrollSetting { "" /* none */, "up" };
 interface VTTRegion {
   attribute DOMString id;
   attribute double width;
-  attribute long lines;
+  attribute unsigned long lines;
   attribute double regionAnchorX;
   attribute double regionAnchorY;
   attribute double viewportAnchorX;

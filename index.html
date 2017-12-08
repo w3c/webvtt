@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-02">2 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-08">8 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1569,11 +1569,10 @@ title</span></a>
     <li>
      <a href="#rendering"><span class="secno">7</span> <span class="content">Rendering</span></a>
      <ol class="toc">
-      <li>
-       <a href="#processing-model"><span class="secno">7.1</span> <span class="content">Processing model</span></a>
-       <ol class="toc">
-        <li><a href="#applying-css-properties"><span class="secno">7.1.1</span> <span class="content">Applying CSS properties to <span>WebVTT Node Objects</span></span></a>
-       </ol>
+      <li><a href="#processing-model"><span class="secno">7.1</span> <span class="content">Processing model</span></a>
+      <li><a href="#processing-cue-settings"><span class="secno">7.2</span> <span class="content">Processing cue settings</span></a>
+      <li><a href="#obtaining-css-boxes"><span class="secno">7.3</span> <span class="content">Obtaining CSS boxes</span></a>
+      <li><a href="#applying-css-properties"><span class="secno">7.4</span> <span class="content">Applying CSS properties to <span>WebVTT Node Objects</span></span></a>
      </ol>
     <li>
      <a href="#css-extensions"><span class="secno">8</span> <span class="content">CSS extensions</span></a>
@@ -4408,10 +4407,8 @@ manner suiting the user.</p>
         <li>
          <p>Let <var>left</var> be <span class="css"><var>offset</var> %</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
-         <p>Apply the terms of the CSS specifications to <var>nodes</var> with the same constraints that are
-      used when they are applied to <var>nodes</var> of a <var>cue</var> that is not part of a region.</p>
-         <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along
-      with their positions.</p>
+         <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-1">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to an initial containing
+     block.</p>
         <li>
          <p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>.
      The cue is ignored.</p>
@@ -4428,9 +4425,10 @@ manner suiting the user.</p>
    </ol>
    <p>User agents may allow the user to override the above algorithm’s positioning of cues, e.g. by
 dragging them to another location on the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a>, or even off the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> entirely.</p>
-   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue settings</dfn> to
-obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-8">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent must run the
-following algorithm.</p>
+   <h3 class="heading settled algorithm" data-algorithm="Processing cue settings" data-level="7.2" id="processing-cue-settings"><span class="secno">7.2. </span><span class="content">Processing cue settings</span><a class="self-link" href="#processing-cue-settings"></a></h3>
+   <p>When the processing algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="apply WebVTT cue settings" data-noexport="" id="apply-webvtt-cue-settings">apply WebVTT cue
+settings</dfn> to obtain CSS boxes from a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-8">list of WebVTT Node Objects</a> <var>nodes</var>, the user agent
+must run the following algorithm.</p>
    <ol class="algorithm" data-algorithm="apply WebVTT cue settings">
     <li>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-14">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-17">WebVTT
@@ -4571,75 +4569,8 @@ following algorithm.</p>
  CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are
  CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
-     <p>Apply the terms of the CSS specifications to <var>nodes</var> within the following constraints, thus
-  obtaining a set of CSS boxes positioned relative to an initial containing block: <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
-     <ul>
-      <li>
-       <p>The <i>document tree</i> is the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-9">WebVTT Node Objects</a> rooted at <var>nodes</var>.</p>
-      <li>
-       <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
-    a hypothetical document that contains a single empty element with no explicit name, no
-    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that were sourced from the given WebVTT file.
-    The selectors must not match other <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>. In this
-    hypothetical document, the element must not match any selector that would match the element
-    itself.</p>
-       <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#originating-element">originating element</a> for
-    the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
-      <li>
-       <p>For the purpose of determining the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a> of the declarations in
-    STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
-    same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element’s
-    document.</p>
-       <div class="example" id="example-29aea910">
-        <a class="self-link" href="#example-29aea910"></a> 
-        <p>For example, given the following (invalid) HTML document:</p>
-<pre>&lt;!doctype html>
-&lt;title>Invalid cascade example&lt;/title>
-&lt;video controls autoplay src="video.webm">
- &lt;track default src="track.vtt">
-&lt;/video>
-&lt;style>
- ::cue { color:red }
-&lt;/style>
-</pre>
-        <p>...and the "track.vtt" file contains:</p>
-<pre>WEBVTT
-
-STYLE
-::cue { color:lime }
-
-00:00:00.000 --> 00:00:25.000
-Red or green?
-</pre>
-        <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element is after the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element in the document order.</p>
-       </div>
-      <li>
-       <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
-    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s
-    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
-    resolve.</p>
-       <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">track</a> elements to issue
-    network requests as the user watches the video, which could be a privacy issue.</strong></p>
-      <li>
-       <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
-   contents.</p>
-      <li>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-7">WebVTT
-   Text Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> nodes.
-      <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently restyled using style
-   sheets after their boxes are generated, as described below.)
-      <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has
-   the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-display-3/#valdef-display-inline">inline</a>. This is the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-background-box">WebVTT cue background box</dfn>.
-      <li>Runs of children of <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-5">WebVTT Ruby Objects</a> that are not <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-6">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
-      <li>Properties on <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-10">WebVTT Node Objects</a> have their values set as
-   defined in the next section. (That section uses some of the variables whose values were
-   calculated earlier in this algorithm.)
-      <li>Text runs must be wrapped according to the CSS line-wrapping rules.
-      <li>The viewport (and initial containing block) is <var>video</var>’s rendering area.
-     </ul>
-     <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with
-  their positions.</p>
+     <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-2">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to an initial containing
+ block.</p>
     <li>
      <p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>. The
  cue is ignored.</p>
@@ -4785,7 +4716,74 @@ Red or green?
     <li>
      <p><i>Done positioning</i>: Return <var>boxes</var>.</p>
    </ol>
-   <h4 class="heading settled algorithm" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="7.1.1" id="applying-css-properties"><span class="secno">7.1.1. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h4>
+   <h3 class="heading settled algorithm" data-algorithm="Obtaining CSS boxes" data-level="7.3" id="obtaining-css-boxes"><span class="secno">7.3. </span><span class="content">Obtaining CSS boxes</span><a class="self-link" href="#obtaining-css-boxes"></a></h3>
+   <p>When the processing algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="obtain a set of CSS boxes" data-noexport="" id="obtain-a-set-of-css-boxes">obtain a set of CSS
+boxes</dfn> <var>boxes</var>, then apply the terms of the CSS specifications to <var>nodes</var> within the following
+constraints: <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
+   <ul>
+    <li>
+     <p>The <i>document tree</i> is the tree of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-9">WebVTT Node Objects</a> rooted at <var>nodes</var>.</p>
+    <li>
+     <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to a
+  hypothetical document that contains a single empty element with no explicit name, no namespace, no
+  attributes, no classes, no IDs, and unknown primary language, that acts like the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media
+  element</a> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that were sourced from the given WebVTT file. The selectors
+  must not match other <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> for the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>. In this hypothetical
+  document, the element must not match any selector that would match the element itself.</p>
+     <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#originating-element">originating element</a> for the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+    <li>
+     <p>For the purpose of determining the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a> of the declarations in STYLE
+  blocks of a WebVTT file, the relative order of appearance of the style sheets must be the same
+  order as they were added to the collection, and the order of appearance of the collection must be
+  after any style sheets that apply to the associated <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element’s document.</p>
+     <div class="example" id="example-01d14f75">
+      <a class="self-link" href="#example-01d14f75"></a> 
+      <p>For example, given the following (invalid) HTML document:</p>
+<pre>&lt;!doctype html>
+&lt;title>Invalid cascade example&lt;/title>
+&lt;video controls autoplay src="video.webm">
+ &lt;track default src="track.vtt">
+&lt;/video>
+&lt;style>
+ ::cue { color:red }
+&lt;/style>
+</pre>
+      <p>...and the "track.vtt" file contains:</p>
+<pre>WEBVTT
+
+STYLE
+::cue { color:lime }
+
+00:00:00.000 --> 00:00:25.000
+Red or green?
+</pre>
+      <p>The <span class="css">color:lime</span> declaration would win, because it is last in the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade">cascade</a>, even though the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">style</a> element is after the <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element in the document order.</p>
+     </div>
+    <li>
+     <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
+  file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s scheme
+  is not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+     <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-4/#at-ruledef-import">@import</a> or <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image">background-image</a> would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">track</a> elements to issue
+  network requests as the user watches the video, which could be a privacy issue.</strong></p>
+    <li>
+     <p>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-9">WebVTT Internal Node Objects</a> are equivalent to elements with the same
+ contents.</p>
+    <li>For the purposes of processing by the CSS specification, <a data-link-type="dfn" href="#webvtt-text-object" id="ref-for-webvtt-text-object-7">WebVTT Text
+ Objects</a> are equivalent to <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#text">Text</a></code> nodes.
+    <li>No style sheets are associated with <var>nodes</var>. (The nodes are subsequently restyled using style
+ sheets after their boxes are generated, as described below.)
+    <li>The children of the <var>nodes</var> must be wrapped in an anonymous box whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has
+ the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-display-3/#valdef-display-inline">inline</a>. This is the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-background-box">WebVTT cue background box</dfn>.
+    <li>Runs of children of <a data-link-type="dfn" href="#webvtt-ruby-object" id="ref-for-webvtt-ruby-object-5">WebVTT Ruby Objects</a> that are not <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-6">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes whose <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-display-3/#propdef-display">display</a> property has the value <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>. <a data-link-type="biblio" href="#biblio-css3-ruby">[CSS3-RUBY]</a>
+    <li>Properties on <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-10">WebVTT Node Objects</a> have their values set as
+ defined in the next section. (That section uses some of the variables whose values were calculated
+ earlier in this algorithm.)
+    <li>Text runs must be wrapped according to the CSS line-wrapping rules.
+    <li>The viewport (and initial containing block) is <var>video</var>’s rendering area.
+   </ul>
+   <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with
+their positions.</p>
+   <h3 class="heading settled algorithm" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="7.4" id="applying-css-properties"><span class="secno">7.4. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h3>
    <p>When following the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-12">WebVTT Node Objects</a> at the CSS user agent cascade
 layer as defined in this section. <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
@@ -5593,7 +5591,7 @@ applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="r
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="vttregion"><code>VTTRegion</code></dfn> {
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id" id="ref-for-dom-vttregion-id-1">id</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width" id="ref-for-dom-vttregion-width-1">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="unsigned long" href="#dom-vttregion-lines" id="ref-for-dom-vttregion-lines-1">lines</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx" id="ref-for-dom-vttregion-regionanchorx-1">regionAnchorX</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory" id="ref-for-dom-vttregion-regionanchory-1">regionAnchorY</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx" id="ref-for-dom-vttregion-viewportanchorx-1">viewportAnchorX</a>;
@@ -5859,7 +5857,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     </ul>
    <li><a href="#dom-vttcue-align">align</a><span>, in §9.1</span>
    <li><a href="#enumdef-alignsetting">AlignSetting</a><span>, in §9.1</span>
-   <li><a href="#apply-webvtt-cue-settings">apply WebVTT cue settings</a><span>, in §7.1</span>
+   <li><a href="#apply-webvtt-cue-settings">apply WebVTT cue settings</a><span>, in §7.2</span>
    <li><a href="#attach-a-webvtt-internal-node-object">attach a WebVTT Internal Node Object</a><span>, in §6.4</span>
    <li>
     auto
@@ -5937,6 +5935,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#list-of-webvtt-node-objects">List of WebVTT Node Objects</a><span>, in §6.4</span>
    <li><a href="#dom-directionsetting-lr">"lr"</a><span>, in §9.1</span>
    <li><a href="#dom-directionsetting-lr">lr</a><span>, in §9.1</span>
+   <li><a href="#obtain-a-set-of-css-boxes">obtain a set of CSS boxes</a><span>, in §7.3</span>
    <li><a href="#parse-a-percentage-string">parse a percentage string</a><span>, in §6.2</span>
    <li><a href="#parse-the-webvtt-cue-settings">parse the WebVTT cue settings</a><span>, in §6.3</span>
    <li><a href="#past">:past</a><span>, in §8.2.2</span>
@@ -5988,7 +5987,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#webvtt-comment-block">WebVTT comment block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue">WebVTT cue</a><span>, in §3.1</span>
    <li><a href="#webvtt-cue-automatic-position">WebVTT cue automatic position</a><span>, in §3.1</span>
-   <li><a href="#webvtt-cue-background-box">WebVTT cue background box</a><span>, in §7.1</span>
+   <li><a href="#webvtt-cue-background-box">WebVTT cue background box</a><span>, in §7.3</span>
    <li><a href="#webvtt-cue-block">WebVTT cue block</a><span>, in §4.1</span>
    <li><a href="#webvtt-cue-bold-span">WebVTT cue bold span</a><span>, in §4.2.2</span>
    <li><a href="#webvtt-cue-box">WebVTT cue box</a><span>, in §3.1</span>
@@ -6329,7 +6328,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a>
      <li><a href="https://heycam.github.io/webidl/#idl-boolean">boolean</a>
      <li><a href="https://heycam.github.io/webidl/#idl-double">double</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-long">long</a>
+     <li><a href="https://heycam.github.io/webidl/#idl-unsigned-long">unsigned long</a>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -6440,7 +6439,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
 <span class="kt">interface</span> <a class="nv" href="#vttregion"><code>VTTRegion</code></a> {
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><span class="kt">DOMString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="DOMString" href="#dom-vttregion-id">id</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-width">width</a>;
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long"><span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="long" href="#dom-vttregion-lines">lines</a>;
+  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="unsigned long" href="#dom-vttregion-lines">lines</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchorx">regionAnchorX</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-regionanchory">regionAnchorY</a>;
   <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double"><span class="kt">double</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="double" href="#dom-vttregion-viewportanchorx">viewportAnchorX</a>;
@@ -6468,7 +6467,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <li><a href="#ref-for-webvtt-cue-22">6.6. WebVTT rules for extracting the chapter
 title</a>
     <li><a href="#ref-for-webvtt-cue-23">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-24">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-25">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-26">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-25">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-26">(2)</a>
     <li><a href="#ref-for-webvtt-cue-27">8.2. Processing model</a> <a href="#ref-for-webvtt-cue-28">(2)</a> <a href="#ref-for-webvtt-cue-29">(3)</a>
     <li><a href="#ref-for-webvtt-cue-30">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-cue-31">(2)</a>
     <li><a href="#ref-for-webvtt-cue-32">8.2.3. The ::cue-region pseudo-element</a>
@@ -6483,7 +6482,7 @@ title</a>
     <li><a href="#ref-for-text-track-cue-text-4">6.6. WebVTT rules for extracting the chapter
 title</a>
     <li><a href="#ref-for-text-track-cue-text-5">7.1. Processing model</a>
-    <li><a href="#ref-for-text-track-cue-text-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-text-track-cue-text-6">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-text-track-cue-text-7">9.1. The VTTCue interface</a> <a href="#ref-for-text-track-cue-text-8">(2)</a> <a href="#ref-for-text-track-cue-text-9">(3)</a> <a href="#ref-for-text-track-cue-text-10">(4)</a> <a href="#ref-for-text-track-cue-text-11">(5)</a> <a href="#ref-for-text-track-cue-text-12">(6)</a> <a href="#ref-for-text-track-cue-text-13">(7)</a> <a href="#ref-for-text-track-cue-text-14">(8)</a>
    </ul>
   </aside>
@@ -6502,7 +6501,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-12">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-13">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-14">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-writing-direction-15">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-writing-direction-16">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-writing-direction-17">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-18">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-19">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-20">(5)</a> <a href="#ref-for-webvtt-cue-writing-direction-21">(6)</a> <a href="#ref-for-webvtt-cue-writing-direction-22">(7)</a> <a href="#ref-for-webvtt-cue-writing-direction-23">(8)</a> <a href="#ref-for-webvtt-cue-writing-direction-24">(9)</a> <a href="#ref-for-webvtt-cue-writing-direction-25">(10)</a> <a href="#ref-for-webvtt-cue-writing-direction-26">(11)</a> <a href="#ref-for-webvtt-cue-writing-direction-27">(12)</a> <a href="#ref-for-webvtt-cue-writing-direction-28">(13)</a> <a href="#ref-for-webvtt-cue-writing-direction-29">(14)</a> <a href="#ref-for-webvtt-cue-writing-direction-30">(15)</a> <a href="#ref-for-webvtt-cue-writing-direction-31">(16)</a> <a href="#ref-for-webvtt-cue-writing-direction-32">(17)</a> <a href="#ref-for-webvtt-cue-writing-direction-33">(18)</a> <a href="#ref-for-webvtt-cue-writing-direction-34">(19)</a>
+    <li><a href="#ref-for-webvtt-cue-writing-direction-16">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-writing-direction-17">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-18">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-19">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-20">(5)</a> <a href="#ref-for-webvtt-cue-writing-direction-21">(6)</a> <a href="#ref-for-webvtt-cue-writing-direction-22">(7)</a> <a href="#ref-for-webvtt-cue-writing-direction-23">(8)</a> <a href="#ref-for-webvtt-cue-writing-direction-24">(9)</a> <a href="#ref-for-webvtt-cue-writing-direction-25">(10)</a> <a href="#ref-for-webvtt-cue-writing-direction-26">(11)</a> <a href="#ref-for-webvtt-cue-writing-direction-27">(12)</a> <a href="#ref-for-webvtt-cue-writing-direction-28">(13)</a> <a href="#ref-for-webvtt-cue-writing-direction-29">(14)</a> <a href="#ref-for-webvtt-cue-writing-direction-30">(15)</a> <a href="#ref-for-webvtt-cue-writing-direction-31">(16)</a> <a href="#ref-for-webvtt-cue-writing-direction-32">(17)</a> <a href="#ref-for-webvtt-cue-writing-direction-33">(18)</a> <a href="#ref-for-webvtt-cue-writing-direction-34">(19)</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-35">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-writing-direction-36">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-37">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-38">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-39">(5)</a>
    </ul>
   </aside>
@@ -6511,7 +6510,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-2">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-3">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-4">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-5">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-6">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-7">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-8">(8)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-9">(9)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-10">(10)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-11">(11)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-12">(12)</a>
     <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-13">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-14">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-15">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-16">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-17">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-18">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-19">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-20">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-21">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-14">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-15">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-16">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-17">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-18">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-19">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-20">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-21">(8)</a>
     <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-22">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-23">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-24">(3)</a>
    </ul>
   </aside>
@@ -6520,7 +6519,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-2">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-3">(3)</a>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-4">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-5">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-6">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-7">(3)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-8">(4)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-9">(5)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-10">(6)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-11">(7)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-12">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-5">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-6">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-7">(3)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-8">(4)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-9">(5)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-10">(6)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-11">(7)</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-12">(8)</a>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-13">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-vertical-growing-left-writing-direction-14">(2)</a>
    </ul>
   </aside>
@@ -6529,7 +6528,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-2">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-3">(3)</a>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-4">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-5">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-6">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-7">(3)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-8">(4)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-9">(5)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-10">(6)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-11">(7)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-12">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-5">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-6">(2)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-7">(3)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-8">(4)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-9">(5)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-10">(6)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-11">(7)</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-12">(8)</a>
     <li><a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-13">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-vertical-growing-right-writing-direction-14">(2)</a>
    </ul>
   </aside>
@@ -6539,7 +6538,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-2">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-3">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-4">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-5">(5)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-6">(6)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-7">(7)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-8">(8)</a>
     <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-9">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-10">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-11">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-12">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-13">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-14">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-15">(5)</a>
+    <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-11">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-12">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-13">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-14">(4)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-15">(5)</a>
     <li><a href="#ref-for-webvtt-cue-snap-to-lines-flag-16">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-17">(2)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-18">(3)</a> <a href="#ref-for-webvtt-cue-snap-to-lines-flag-19">(4)</a>
    </ul>
   </aside>
@@ -6564,7 +6563,7 @@ title</a>
    <b><a href="#cue-computed-line">#cue-computed-line</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-cue-computed-line-1">3.1. WebVTT cues</a>
-    <li><a href="#ref-for-cue-computed-line-2">7.1. Processing model</a> <a href="#ref-for-cue-computed-line-3">(2)</a> <a href="#ref-for-cue-computed-line-4">(3)</a>
+    <li><a href="#ref-for-cue-computed-line-2">7.2. Processing cue settings</a> <a href="#ref-for-cue-computed-line-3">(2)</a> <a href="#ref-for-cue-computed-line-4">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-line-alignment">
@@ -6574,7 +6573,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-line-alignment-5">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-line-alignment-6">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-line-alignment-7">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-line-alignment-8">(2)</a> <a href="#ref-for-webvtt-cue-line-alignment-9">(3)</a>
-    <li><a href="#ref-for-webvtt-cue-line-alignment-10">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-line-alignment-11">(2)</a> <a href="#ref-for-webvtt-cue-line-alignment-12">(3)</a> <a href="#ref-for-webvtt-cue-line-alignment-13">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-line-alignment-10">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-line-alignment-11">(2)</a> <a href="#ref-for-webvtt-cue-line-alignment-12">(3)</a> <a href="#ref-for-webvtt-cue-line-alignment-13">(4)</a>
     <li><a href="#ref-for-webvtt-cue-line-alignment-14">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-alignment-15">(2)</a> <a href="#ref-for-webvtt-cue-line-alignment-16">(3)</a> <a href="#ref-for-webvtt-cue-line-alignment-17">(4)</a> <a href="#ref-for-webvtt-cue-line-alignment-18">(5)</a>
    </ul>
   </aside>
@@ -6593,7 +6592,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-line-center-alignment-1">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-line-center-alignment-2">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-center-alignment-3">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-line-center-alignment-4">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-line-center-alignment-3">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-line-center-alignment-4">(2)</a>
     <li><a href="#ref-for-webvtt-cue-line-center-alignment-5">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-center-alignment-6">(2)</a>
    </ul>
   </aside>
@@ -6602,7 +6601,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-line-end-alignment-1">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-line-end-alignment-2">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-end-alignment-3">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-line-end-alignment-4">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-line-end-alignment-3">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-line-end-alignment-4">(2)</a>
     <li><a href="#ref-for-webvtt-cue-line-end-alignment-5">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-end-alignment-6">(2)</a>
    </ul>
   </aside>
@@ -6627,7 +6626,8 @@ title</a>
   <aside class="dfn-panel" data-for="cue-computed-position">
    <b><a href="#cue-computed-position">#cue-computed-position</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-cue-computed-position-1">7.1. Processing model</a> <a href="#ref-for-cue-computed-position-2">(2)</a> <a href="#ref-for-cue-computed-position-3">(3)</a> <a href="#ref-for-cue-computed-position-4">(4)</a> <a href="#ref-for-cue-computed-position-5">(5)</a> <a href="#ref-for-cue-computed-position-6">(6)</a> <a href="#ref-for-cue-computed-position-7">(7)</a> <a href="#ref-for-cue-computed-position-8">(8)</a> <a href="#ref-for-cue-computed-position-9">(9)</a> <a href="#ref-for-cue-computed-position-10">(10)</a> <a href="#ref-for-cue-computed-position-11">(11)</a> <a href="#ref-for-cue-computed-position-12">(12)</a> <a href="#ref-for-cue-computed-position-13">(13)</a>
+    <li><a href="#ref-for-cue-computed-position-1">7.1. Processing model</a>
+    <li><a href="#ref-for-cue-computed-position-2">7.2. Processing cue settings</a> <a href="#ref-for-cue-computed-position-3">(2)</a> <a href="#ref-for-cue-computed-position-4">(3)</a> <a href="#ref-for-cue-computed-position-5">(4)</a> <a href="#ref-for-cue-computed-position-6">(5)</a> <a href="#ref-for-cue-computed-position-7">(6)</a> <a href="#ref-for-cue-computed-position-8">(7)</a> <a href="#ref-for-cue-computed-position-9">(8)</a> <a href="#ref-for-cue-computed-position-10">(9)</a> <a href="#ref-for-cue-computed-position-11">(10)</a> <a href="#ref-for-cue-computed-position-12">(11)</a> <a href="#ref-for-cue-computed-position-13">(12)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-position-alignment">
@@ -6645,7 +6645,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-2">(2)</a>
     <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-3">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-4">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-5">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-6">(2)</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-7">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-5">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-6">(2)</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-7">(3)</a>
     <li><a href="#ref-for-webvtt-cue-position-line-left-alignment-8">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-position-line-left-alignment-9">(2)</a>
    </ul>
   </aside>
@@ -6654,7 +6654,8 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-position-center-alignment-1">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-position-center-alignment-2">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-position-center-alignment-3">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-position-center-alignment-4">(2)</a> <a href="#ref-for-webvtt-cue-position-center-alignment-5">(3)</a> <a href="#ref-for-webvtt-cue-position-center-alignment-6">(4)</a> <a href="#ref-for-webvtt-cue-position-center-alignment-7">(5)</a>
+    <li><a href="#ref-for-webvtt-cue-position-center-alignment-3">7.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-cue-position-center-alignment-4">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-position-center-alignment-5">(2)</a> <a href="#ref-for-webvtt-cue-position-center-alignment-6">(3)</a> <a href="#ref-for-webvtt-cue-position-center-alignment-7">(4)</a>
     <li><a href="#ref-for-webvtt-cue-position-center-alignment-8">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-position-center-alignment-9">(2)</a>
    </ul>
   </aside>
@@ -6664,7 +6665,8 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-1">3.1. WebVTT cues</a>
     <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-2">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-3">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-4">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-5">(2)</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-6">(3)</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-7">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-4">7.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-5">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-6">(2)</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-7">(3)</a>
     <li><a href="#ref-for-webvtt-cue-position-line-right-alignment-8">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-position-line-right-alignment-9">(2)</a>
    </ul>
   </aside>
@@ -6680,7 +6682,8 @@ title</a>
    <b><a href="#cue-computed-position-alignment">#cue-computed-position-alignment</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-cue-computed-position-alignment-1">4.4. WebVTT cue settings</a>
-    <li><a href="#ref-for-cue-computed-position-alignment-2">7.1. Processing model</a> <a href="#ref-for-cue-computed-position-alignment-3">(2)</a> <a href="#ref-for-cue-computed-position-alignment-4">(3)</a> <a href="#ref-for-cue-computed-position-alignment-5">(4)</a> <a href="#ref-for-cue-computed-position-alignment-6">(5)</a> <a href="#ref-for-cue-computed-position-alignment-7">(6)</a> <a href="#ref-for-cue-computed-position-alignment-8">(7)</a> <a href="#ref-for-cue-computed-position-alignment-9">(8)</a> <a href="#ref-for-cue-computed-position-alignment-10">(9)</a> <a href="#ref-for-cue-computed-position-alignment-11">(10)</a> <a href="#ref-for-cue-computed-position-alignment-12">(11)</a> <a href="#ref-for-cue-computed-position-alignment-13">(12)</a> <a href="#ref-for-cue-computed-position-alignment-14">(13)</a>
+    <li><a href="#ref-for-cue-computed-position-alignment-2">7.1. Processing model</a> <a href="#ref-for-cue-computed-position-alignment-3">(2)</a> <a href="#ref-for-cue-computed-position-alignment-4">(3)</a>
+    <li><a href="#ref-for-cue-computed-position-alignment-5">7.2. Processing cue settings</a> <a href="#ref-for-cue-computed-position-alignment-6">(2)</a> <a href="#ref-for-cue-computed-position-alignment-7">(3)</a> <a href="#ref-for-cue-computed-position-alignment-8">(4)</a> <a href="#ref-for-cue-computed-position-alignment-9">(5)</a> <a href="#ref-for-cue-computed-position-alignment-10">(6)</a> <a href="#ref-for-cue-computed-position-alignment-11">(7)</a> <a href="#ref-for-cue-computed-position-alignment-12">(8)</a> <a href="#ref-for-cue-computed-position-alignment-13">(9)</a> <a href="#ref-for-cue-computed-position-alignment-14">(10)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-size">
@@ -6689,7 +6692,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-size-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-size-2">(2)</a> <a href="#ref-for-webvtt-cue-size-3">(3)</a> <a href="#ref-for-webvtt-cue-size-4">(4)</a> <a href="#ref-for-webvtt-cue-size-5">(5)</a> <a href="#ref-for-webvtt-cue-size-6">(6)</a>
     <li><a href="#ref-for-webvtt-cue-size-7">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-size-8">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-size-9">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-size-10">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-size-9">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-size-10">(2)</a>
     <li><a href="#ref-for-webvtt-cue-size-11">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-size-12">(2)</a> <a href="#ref-for-webvtt-cue-size-13">(3)</a> <a href="#ref-for-webvtt-cue-size-14">(4)</a>
    </ul>
   </aside>
@@ -6699,7 +6702,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-text-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-text-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-text-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-text-alignment-4">(4)</a> <a href="#ref-for-webvtt-cue-text-alignment-5">(5)</a> <a href="#ref-for-webvtt-cue-text-alignment-6">(6)</a> <a href="#ref-for-webvtt-cue-text-alignment-7">(7)</a> <a href="#ref-for-webvtt-cue-text-alignment-8">(8)</a> <a href="#ref-for-webvtt-cue-text-alignment-9">(9)</a> <a href="#ref-for-webvtt-cue-text-alignment-10">(10)</a> <a href="#ref-for-webvtt-cue-text-alignment-11">(11)</a> <a href="#ref-for-webvtt-cue-text-alignment-12">(12)</a>
     <li><a href="#ref-for-webvtt-cue-text-alignment-13">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-text-alignment-14">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-text-alignment-15">(2)</a> <a href="#ref-for-webvtt-cue-text-alignment-16">(3)</a> <a href="#ref-for-webvtt-cue-text-alignment-17">(4)</a> <a href="#ref-for-webvtt-cue-text-alignment-18">(5)</a>
-    <li><a href="#ref-for-webvtt-cue-text-alignment-19">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-text-alignment-20">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-text-alignment-19">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-text-alignment-20">(2)</a>
     <li><a href="#ref-for-webvtt-cue-text-alignment-21">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-text-alignment-22">(2)</a> <a href="#ref-for-webvtt-cue-text-alignment-23">(3)</a> <a href="#ref-for-webvtt-cue-text-alignment-24">(4)</a> <a href="#ref-for-webvtt-cue-text-alignment-25">(5)</a>
    </ul>
   </aside>
@@ -6708,7 +6711,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-start-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-start-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-start-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-start-alignment-4">(4)</a> <a href="#ref-for-webvtt-cue-start-alignment-5">(5)</a>
     <li><a href="#ref-for-webvtt-cue-start-alignment-6">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-start-alignment-7">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-start-alignment-7">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-start-alignment-8">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-start-alignment-9">(2)</a>
    </ul>
   </aside>
@@ -6718,7 +6721,7 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-center-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-center-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-center-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-center-alignment-4">(4)</a>
     <li><a href="#ref-for-webvtt-cue-center-alignment-5">6.1. WebVTT file parsing</a>
     <li><a href="#ref-for-webvtt-cue-center-alignment-6">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-center-alignment-7">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-center-alignment-7">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-center-alignment-8">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-center-alignment-9">(2)</a> <a href="#ref-for-webvtt-cue-center-alignment-10">(3)</a>
    </ul>
   </aside>
@@ -6727,7 +6730,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-end-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-end-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-end-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-end-alignment-4">(4)</a>
     <li><a href="#ref-for-webvtt-cue-end-alignment-5">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-end-alignment-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-end-alignment-6">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-end-alignment-7">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-end-alignment-8">(2)</a>
    </ul>
   </aside>
@@ -6736,7 +6739,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-left-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-left-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-left-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-left-alignment-4">(4)</a>
     <li><a href="#ref-for-webvtt-cue-left-alignment-5">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-left-alignment-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-left-alignment-6">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-left-alignment-7">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-left-alignment-8">(2)</a>
    </ul>
   </aside>
@@ -6745,7 +6748,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-right-alignment-1">3.1. WebVTT cues</a> <a href="#ref-for-webvtt-cue-right-alignment-2">(2)</a> <a href="#ref-for-webvtt-cue-right-alignment-3">(3)</a> <a href="#ref-for-webvtt-cue-right-alignment-4">(4)</a>
     <li><a href="#ref-for-webvtt-cue-right-alignment-5">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-right-alignment-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-right-alignment-6">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-right-alignment-7">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-right-alignment-8">(2)</a>
    </ul>
   </aside>
@@ -6769,7 +6772,7 @@ title</a>
     <li><a href="#ref-for-webvtt-region-10">6.2. WebVTT region settings parsing</a>
     <li><a href="#ref-for-webvtt-region-11">6.3. WebVTT cue timings and settings parsing</a>
     <li><a href="#ref-for-webvtt-region-12">7.1. Processing model</a> <a href="#ref-for-webvtt-region-13">(2)</a> <a href="#ref-for-webvtt-region-14">(3)</a>
-    <li><a href="#ref-for-webvtt-region-15">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-region-15">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-region-16">9.2. The VTTRegion interface</a> <a href="#ref-for-webvtt-region-17">(2)</a> <a href="#ref-for-webvtt-region-18">(3)</a> <a href="#ref-for-webvtt-region-19">(4)</a> <a href="#ref-for-webvtt-region-20">(5)</a> <a href="#ref-for-webvtt-region-21">(6)</a> <a href="#ref-for-webvtt-region-22">(7)</a> <a href="#ref-for-webvtt-region-23">(8)</a> <a href="#ref-for-webvtt-region-24">(9)</a> <a href="#ref-for-webvtt-region-25">(10)</a>
    </ul>
   </aside>
@@ -7234,7 +7237,7 @@ title</a>
     <li><a href="#ref-for-webvtt-region-object-3">6.2. WebVTT region settings parsing</a>
     <li><a href="#ref-for-webvtt-region-object-4">6.5. WebVTT cue text DOM construction rules</a>
     <li><a href="#ref-for-webvtt-region-object-5">7.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-region-object-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-region-object-7">(2)</a> <a href="#ref-for-webvtt-region-object-8">(3)</a> <a href="#ref-for-webvtt-region-object-9">(4)</a>
+    <li><a href="#ref-for-webvtt-region-object-6">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-region-object-7">(2)</a> <a href="#ref-for-webvtt-region-object-8">(3)</a> <a href="#ref-for-webvtt-region-object-9">(4)</a>
     <li><a href="#ref-for-webvtt-region-object-10">8.1. Introduction</a> <a href="#ref-for-webvtt-region-object-11">(2)</a>
     <li><a href="#ref-for-webvtt-region-object-12">8.2.3. The ::cue-region pseudo-element</a> <a href="#ref-for-webvtt-region-object-13">(2)</a> <a href="#ref-for-webvtt-region-object-14">(3)</a> <a href="#ref-for-webvtt-region-object-15">(4)</a>
    </ul>
@@ -7270,8 +7273,8 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-node-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-node-object-2">(2)</a> <a href="#ref-for-webvtt-node-object-3">(3)</a> <a href="#ref-for-webvtt-node-object-4">(4)</a> <a href="#ref-for-webvtt-node-object-5">(5)</a>
     <li><a href="#ref-for-webvtt-node-object-6">6.5. WebVTT cue text DOM construction rules</a> <a href="#ref-for-webvtt-node-object-7">(2)</a> <a href="#ref-for-webvtt-node-object-8">(3)</a>
-    <li><a href="#ref-for-webvtt-node-object-9">7.1. Processing model</a> <a href="#ref-for-webvtt-node-object-10">(2)</a>
-    <li><a href="#ref-for-webvtt-node-object-11">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-node-object-12">(2)</a>
+    <li><a href="#ref-for-webvtt-node-object-9">7.3. Obtaining CSS boxes</a> <a href="#ref-for-webvtt-node-object-10">(2)</a>
+    <li><a href="#ref-for-webvtt-node-object-11">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-node-object-12">(2)</a>
     <li><a href="#ref-for-webvtt-node-object-13">8.2. Processing model</a> <a href="#ref-for-webvtt-node-object-14">(2)</a>
     <li><a href="#ref-for-webvtt-node-object-15">8.2.1. The ::cue pseudo-element</a>
     <li><a href="#ref-for-webvtt-node-object-16">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-node-object-17">(2)</a> <a href="#ref-for-webvtt-node-object-18">(3)</a> <a href="#ref-for-webvtt-node-object-19">(4)</a> <a href="#ref-for-webvtt-node-object-20">(5)</a> <a href="#ref-for-webvtt-node-object-21">(6)</a> <a href="#ref-for-webvtt-node-object-22">(7)</a>
@@ -7282,7 +7285,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-internal-node-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-internal-node-object-2">(2)</a> <a href="#ref-for-webvtt-internal-node-object-3">(3)</a> <a href="#ref-for-webvtt-internal-node-object-4">(4)</a> <a href="#ref-for-webvtt-internal-node-object-5">(5)</a> <a href="#ref-for-webvtt-internal-node-object-6">(6)</a> <a href="#ref-for-webvtt-internal-node-object-7">(7)</a>
     <li><a href="#ref-for-webvtt-internal-node-object-8">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-internal-node-object-9">7.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-internal-node-object-9">7.3. Obtaining CSS boxes</a>
     <li><a href="#ref-for-webvtt-internal-node-object-10">8.1. Introduction</a> <a href="#ref-for-webvtt-internal-node-object-11">(2)</a> <a href="#ref-for-webvtt-internal-node-object-12">(3)</a> <a href="#ref-for-webvtt-internal-node-object-13">(4)</a> <a href="#ref-for-webvtt-internal-node-object-14">(5)</a>
     <li><a href="#ref-for-webvtt-internal-node-object-15">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-webvtt-internal-node-object-16">(2)</a> <a href="#ref-for-webvtt-internal-node-object-17">(3)</a> <a href="#ref-for-webvtt-internal-node-object-18">(4)</a> <a href="#ref-for-webvtt-internal-node-object-19">(5)</a> <a href="#ref-for-webvtt-internal-node-object-20">(6)</a> <a href="#ref-for-webvtt-internal-node-object-21">(7)</a>
    </ul>
@@ -7313,8 +7316,9 @@ title</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-4">6.5. WebVTT cue text DOM construction rules</a> <a href="#ref-for-list-of-webvtt-node-objects-5">(2)</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-6">6.6. WebVTT rules for extracting the chapter
 title</a>
-    <li><a href="#ref-for-list-of-webvtt-node-objects-7">7.1. Processing model</a> <a href="#ref-for-list-of-webvtt-node-objects-8">(2)</a>
-    <li><a href="#ref-for-list-of-webvtt-node-objects-9">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-list-of-webvtt-node-objects-10">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-11">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-12">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-13">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-14">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-15">(7)</a> <a href="#ref-for-list-of-webvtt-node-objects-16">(8)</a> <a href="#ref-for-list-of-webvtt-node-objects-17">(9)</a>
+    <li><a href="#ref-for-list-of-webvtt-node-objects-7">7.1. Processing model</a>
+    <li><a href="#ref-for-list-of-webvtt-node-objects-8">7.2. Processing cue settings</a>
+    <li><a href="#ref-for-list-of-webvtt-node-objects-9">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-list-of-webvtt-node-objects-10">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-11">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-12">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-13">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-14">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-15">(7)</a> <a href="#ref-for-list-of-webvtt-node-objects-16">(8)</a> <a href="#ref-for-list-of-webvtt-node-objects-17">(9)</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-18">8.1. Introduction</a> <a href="#ref-for-list-of-webvtt-node-objects-19">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-20">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-21">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-22">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-23">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-24">(7)</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-25">8.2. Processing model</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-26">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-list-of-webvtt-node-objects-27">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-28">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-29">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-30">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-31">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-32">(7)</a>
@@ -7334,7 +7338,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-italic-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-italic-object-2">(2)</a>
     <li><a href="#ref-for-webvtt-italic-object-3">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-italic-object-4">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-italic-object-4">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-italic-object-5">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
@@ -7344,7 +7348,7 @@ title</a>
     <li><a href="#ref-for-webvtt-bold-object-1">1.3. Styling</a>
     <li><a href="#ref-for-webvtt-bold-object-2">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-bold-object-3">(2)</a>
     <li><a href="#ref-for-webvtt-bold-object-4">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-bold-object-5">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-bold-object-5">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-bold-object-6">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
@@ -7353,7 +7357,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-underline-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-underline-object-2">(2)</a>
     <li><a href="#ref-for-webvtt-underline-object-3">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-underline-object-4">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-underline-object-4">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-underline-object-5">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
@@ -7362,8 +7366,8 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-ruby-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-ruby-object-2">(2)</a> <a href="#ref-for-webvtt-ruby-object-3">(3)</a>
     <li><a href="#ref-for-webvtt-ruby-object-4">6.5. WebVTT cue text DOM construction rules</a>
-    <li><a href="#ref-for-webvtt-ruby-object-5">7.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-ruby-object-6">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-ruby-object-5">7.3. Obtaining CSS boxes</a>
+    <li><a href="#ref-for-webvtt-ruby-object-6">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-ruby-object-7">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
@@ -7374,8 +7378,8 @@ title</a>
     <li><a href="#ref-for-webvtt-ruby-text-object-4">6.5. WebVTT cue text DOM construction rules</a>
     <li><a href="#ref-for-webvtt-ruby-text-object-5">6.6. WebVTT rules for extracting the chapter
 title</a>
-    <li><a href="#ref-for-webvtt-ruby-text-object-6">7.1. Processing model</a>
-    <li><a href="#ref-for-webvtt-ruby-text-object-7">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-ruby-text-object-8">(2)</a>
+    <li><a href="#ref-for-webvtt-ruby-text-object-6">7.3. Obtaining CSS boxes</a>
+    <li><a href="#ref-for-webvtt-ruby-text-object-7">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-ruby-text-object-8">(2)</a>
     <li><a href="#ref-for-webvtt-ruby-text-object-9">8.2.1. The ::cue pseudo-element</a>
    </ul>
   </aside>
@@ -7411,7 +7415,7 @@ title</a>
     <li><a href="#ref-for-webvtt-text-object-4">6.5. WebVTT cue text DOM construction rules</a> <a href="#ref-for-webvtt-text-object-5">(2)</a>
     <li><a href="#ref-for-webvtt-text-object-6">6.6. WebVTT rules for extracting the chapter
 title</a>
-    <li><a href="#ref-for-webvtt-text-object-7">7.1. Processing model</a>
+    <li><a href="#ref-for-webvtt-text-object-7">7.3. Obtaining CSS boxes</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-timestamp-object">
@@ -7521,7 +7525,7 @@ title</a>
    <ul>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-1">3.1. WebVTT cues</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-2">(2)</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-3">7.1. Processing model</a>
-    <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">7.1.1. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-5">(2)</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-6">(3)</a>
+    <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-5">(2)</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-6">(3)</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-7">8.2. Processing model</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-8">(2)</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">8.2.3. The ::cue-region pseudo-element</a>
    </ul>
@@ -7532,10 +7536,17 @@ title</a>
     <li><a href="#ref-for-apply-webvtt-cue-settings-1">7.1. Processing model</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="obtain-a-set-of-css-boxes">
+   <b><a href="#obtain-a-set-of-css-boxes">#obtain-a-set-of-css-boxes</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-obtain-a-set-of-css-boxes-1">7.1. Processing model</a>
+    <li><a href="#ref-for-obtain-a-set-of-css-boxes-2">7.2. Processing cue settings</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-background-box">
    <b><a href="#webvtt-cue-background-box">#webvtt-cue-background-box</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-cue-background-box-1">7.1.1. Applying CSS properties to WebVTT Node Objects</a>
+    <li><a href="#ref-for-webvtt-cue-background-box-1">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-background-box-2">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-webvtt-cue-background-box-3">(2)</a>
    </ul>
   </aside>
