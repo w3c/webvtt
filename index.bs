@@ -109,6 +109,10 @@ spec:html; type:element; text:style
    outline: 0.18em solid rgba(0, 0, 0, 0.7);
    color: white;
  }
+
+ [data-algorithm]:not(.heading) {
+   padding-left: 2em;
+ }
 </style>
 
 <h2 id=introduction>Introduction</h2>
@@ -163,6 +167,23 @@ WEBVTT
 00:35.500 --> 00:38.000
 &lt;v Roger Bingham>You know I'm so excited my glasses are falling off here.
 </pre>
+
+<p>You can see that a WebVTT file in general consists of a sequence of text segments associated with
+a time-interval, called a cue (<a lt="WebVTT cue">definition</a>). Beyond captioning and subtitling,
+WebVTT can be used for time-aligned metadata, typically in use for delivering name-value pairs in
+cues. WebVTT can also be used for delivering chapters, which helps with contextual navigation around
+an audio/video file. Finally, WebVTT can be used for the delivery of text video descriptions, which
+is text that describes the visual content of time-intervals and can be synthesized to speech to help
+vision-impaired users understand context.</p>
+
+<p class=note>This version of WebVTT focuses on solving the captioning and subtitling use cases.
+More specification work is possible for the other use cases. A decision on what type of use case a
+WebVTT file is being used for is made by the software that is using the file. For example, if in use
+with a HTML file through a &lt;track> element, the <a lt="text track kind">kind</a> attribute
+defines how the WebVTT file is to be interpreted.</p>
+
+<p>The following subsections provide an overview of some of the key features of the WebVTT file
+format, particularly when in use for captioning and subtitling.</p>
 
 <h3 id=introduction-multiple-lines>Cues with multiple lines</h3>
 
@@ -1214,13 +1235,15 @@ area for <a lt="WebVTT cue">WebVTT cues</a>.</p>
  <p>The following diagram illustrates how anchoring of a region to a video viewport works. The black
  cross is the anchor, orange explains the anchor's offset within the region and green the anchor's
  offset within the viewport. Think of it as sticking a pin through a note onto a board:</p>
- <p><img src="webvtt-region-diagram.png" alt="Within the video viewport, there is a WebVTT region.
+ <p><img src="webvtt-region-diagram.png" alt="visual explanation of WebVTT regions"
+ longdesc=#regionsExplained></p>
+ <p id=regionsExplained>Image description: Within the video viewport, there is a WebVTT region.
  Inside the region, there is an anchor point marked with a black cross. The vertical and horizontal
  distance from the video viewport's edges to the anchor is marked with green arrows, representing
  the region viewport anchor X and Y offsets. The vertical and horizontal distance from the region's
  edges to the anchor is marked with orange arrows, representing the region anchor X and Y offsets.
  The size of the region is represented by the region width for the horizontal axis, and region lines
- for the vertical axis."></p>
+ for the vertical axis.</p>
 </div>
 
 <p>For parsing, we also need the following:</p>
@@ -1246,7 +1269,7 @@ with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
 
 <p>A <dfn>WebVTT file body</dfn> consists of the following components, in the following order:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT file body">
 
  <li>An optional U+FEFF BYTE ORDER MARK (BOM) character.</li>
 
@@ -1502,6 +1525,11 @@ terminator</a>.</p>
  code points, as defined in HTML, in the text of the cue. [[!HTML]]</li>
 
 </ul>
+
+<p>All <a>WebVTT cue components</a> bar the HTML character reference may have one or more <dfn>cue
+component class names</dfn> attached to it by separating the cue component class name from the cue
+component start tag using the perido ('.') notation. The class name must immediately follow the
+"period" (.).</p>
 
 <p><dfn>WebVTT cue internal text</dfn> consists of an optional <a>WebVTT line terminator</a>,
 followed by zero or more <a>WebVTT cue components</a>, in any order, each optionally followed by a
@@ -1876,15 +1904,16 @@ given:</p>
 </ol>
 
 <p class="note">A <a>WebVTT line cue setting</a> configures the offset of the cue box from the video
-viewport's edge in the direction opposite to the <a lt="WebVTT cue writing direction">writing
-direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport.
-The offset is for the <a lt="WebVTT cue line start alignment">start</a>, <a lt="WebVTT cue line
-center alignment">center</a>, or <a lt="WebVTT cue line end alignment">end</a> of the cue box,
-depending on the <a>WebVTT cue line alignment</a> value - <a lt="WebVTT cue line start
-alignment">start</a> by default. The offset can be given either as a percentage of the video
-dimension or as a line number. Line numbers are based on the size of the first line of the cue.
-Positive line numbers count from the start of the video viewport (the first line is numbered 0),
-negative line numbers from the end of the viewport (the last line is numbered &#x2212;1).</p>
+viewport's edge in the direction orthogonal to the <a lt="WebVTT cue writing direction">writing
+direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport,
+for vertical cues, it's the horizontal offset. The offset is for the <a lt="WebVTT cue line start
+alignment">start</a>, <a lt="WebVTT cue line center alignment">center</a>, or <a lt="WebVTT cue line
+end alignment">end</a> of the cue box, depending on the <a>WebVTT cue line alignment</a> value - <a
+lt="WebVTT cue line start alignment">start</a> by default. The offset can be given either as a
+percentage of the video dimension or as a line number. Line numbers are based on the size of the
+first line of the cue. Positive line numbers count from the start of the video viewport (the first
+line is numbered 0), negative line numbers from the end of the viewport (the last line is numbered
+&#x2212;1).</p>
 
 <p>A <dfn>WebVTT position cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -2056,23 +2085,161 @@ mix of cues. However, only a small subset of WebVTT file types are typically aut
 <p>Conformance checkers, when validating <a>WebVTT files</a>, may offer to restrict syntax checking
 for validating these types.</p>
 
-
 <h4 id=file-using-metadata-content>WebVTT file using metadata content</h4>
 
 <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT metadata text</a>
 is said to be a <dfn>WebVTT file using metadata content</dfn>.</p>
-
 
 <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
 
 <p>A <dfn>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
 whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
 
-
 <h4 id=file-using-cue-text>WebVTT file using cue text</h4>
 
 <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT cue text</a> is
 said to be a <dfn>WebVTT file using cue text</dfn>.</p>
+
+
+<h2 id=default-classes>Default classes for WebVTT Cue Components</h2>
+
+<p>Many captioning formats have simple ways of specifying a limited subset of text colors and
+background colors for text. Therefore, the WebVTT spec makes available a set of default <a>cue
+component class names</a> for <a>WebVTT Cue Components</a> that authors can use in a standard way to
+mark up colored text and text background.</p>
+
+<p class=note>User agents that support CSS style sheets may implement this section through adding
+User Agent stylesheets.</p>
+
+<h3 id=default-text-color>Default text colors</h3>
+
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their 'color'
+property as <a spec=html>presentational hints</a> to the value in the second cell of the row:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="cue component class names">class names</a></th>
+   <th>'color' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>lime</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>blue</code></td>
+   <td>''rgba(0,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>black</code></td>
+   <td>''rgba(0,0,0,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>If your background is captioning, don't get confused: The color for the class
+<code>lime</code> is what has traditionally been used in captioning under the name ''green'' (e.g.
+608/708).</p>
+
+<p class=note>Do not use the classes <code>blue</code> and <code>black</code> on the default dark
+background, since they result in unreadable text. In general, please refer to WCAG for guidance on
+color contrast [[WCAG20]] and make sure to take into account the text color, background color and
+also the video's color.</p>
+
+<h3 id=default-text-background>Default text background colors</h3>
+
+<p><a>WebVTT Cue Components</a> that have one or more <a lt="cue component class names">class
+names</a> matching those in the first cell of a row in the table below must set their
+'background-color' property as <a spec=html>presentational hints</a> to the value in the second cell
+of the row:</p>
+
+<table class="complex data">
+ <thead>
+  <tr>
+   <th><a lt="cue component class names">class names</a></th>
+   <th>'background' value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>bg_white</code></td>
+   <td>''rgba(255,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_lime</code></td>
+   <td>''rgba(0,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_cyan</code></td>
+   <td>''rgba(0,255,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_red</code></td>
+   <td>''rgba(255,0,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_yellow</code></td>
+   <td>''rgba(255,255,0,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_magenta</code></td>
+   <td>''rgba(255,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_blue</code></td>
+   <td>''rgba(0,0,255,1)''</td>
+  </tr>
+  <tr>
+   <td><code>bg_black</code></td>
+   <td>''rgba(0,0,0,1)''</td>
+  </tr>
+ </tbody>
+</table>
+
+<p class=note>The color for the class <code>bg_lime</code> is what has traditionally been used in
+captioning under the name ''green'' (e.g. 608/708).</p>
+
+<p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the color and background
+classes, the order of appearance determines the cascade of the classes.</p>
+
+<div class="example">
+
+ <p>This example shows how to use the classes.</p>
+
+ <pre>
+ WEBVTT
+
+ 02:00.000 --> 02:05.000
+ &lt;c.yellow.bg_blue>This is yellow text on a blue background&lt;/c>
+
+ 04:00.000 --> 04:05.000
+ &lt;c.yellow.bg_blue.magenta.bg_black>This is magenta text on a black background&lt;/c>
+ </pre>
+
+</div>
 
 
 <h2 id=parsing>Parsing</h2>
@@ -2096,7 +2263,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
 <p>The <dfn>WebVTT parser algorithm</dfn> is as follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT parser algorithm">
 
  <li>
   <p>Let |input| be the string being parsed, after conversion to Unicode, and with the following
@@ -2197,7 +2364,7 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 <p>When the algorithm above says to <dfn>collect a WebVTT block</dfn>, optionally with a flag <i>in
 header</i> set, the user agent must run the following steps:</p>
 
-<ol class=algorithm algorithm="collect a WebVTT block">
+<ol algorithm="collect a WebVTT block">
 
  <li><p>Let |input|, |position|, |seen cue| and |regions| be the same variables as those of the same
  name in the algorithm that invoked these steps.</p></li>
@@ -2453,7 +2620,7 @@ that is used as a root node for <a lt="List of WebVTT node objects">lists of Web
 objects</a>. This algorithm returns a list of <a lt="WebVTT region object">WebVTT Region
 Objects</a>.</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT region objects">
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
 
@@ -2557,7 +2724,7 @@ Objects</a>.</p>
 number in the range 0..100, or nothing. If at any point the algorithm says that it "fails", this
 means that it is aborted at that point and returns nothing.</p>
 
-<ol class=algorithm>
+<ol algorithm="parse a percentage string">
  <li><p>Let |input| be the string being parsed.</p></li>
 
  <li><p>If |input| does not match the syntax for a <a>WebVTT percentage</a>, then fail.</p></li>
@@ -2579,7 +2746,7 @@ means that it is aborted at that point and returns nothing.</p>
 string |input| using a <a>text track list of regions</a> |regions| for a <a>WebVTT cue</a> |cue|,
 the user agent must run the following algorithm.</p>
 
-<ol class=algorithm>
+<ol algorithm="collect WebVTT cue timings and settings">
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -2625,7 +2792,7 @@ the user agent must run the following algorithm.</p>
 <a>text track list of regions</a> |regions| for a <a>text track cue</a> |cue|, the user agent must
 run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="parse the WebVTT cue settings">
 
  <li><p>Let |settings| be the result of <a lt="split a string on spaces">splitting |input| on
  spaces</a>.</p></li>
@@ -2854,7 +3021,7 @@ run the following steps:</p>
 <p>When this specification says that a user agent is to <dfn>collect a WebVTT timestamp</dfn>, the
 user agent must run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="collect a WebVTT timestamp">
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -2963,10 +3130,11 @@ elements in HTML or the DOM. <a lt="WebVTT Internal Node Object">WebVTT Internal
 have an ordered list of child <a lt="WebVTT Node Object">WebVTT Node Objects</a>. The <a>WebVTT
 Internal Node Object</a> is said to be the <i>parent</i> of the children. Cycles do not occur; the
 parent-child relationships so constructed form a tree structure. <a lt="WebVTT Internal Node
-Object">WebVTT Internal Node Objects</a> also have an ordered list of class names, known as their
-<dfn lt="WebVTT Node Object's applicable classes">applicable classes</dfn>, and a language, known as
-their <dfn lt="WebVTT Node Object's applicable language">applicable language</dfn>, which is to be
-interpreted as a BCP 47 language tag. [[!BCP47]]</p>
+Object">WebVTT Internal Node Objects</a> also have an ordered list of <a lt="cue component class
+names">class names</a>, known as their <dfn lt="WebVTT Node Object's applicable classes">applicable
+classes</dfn>, and a language, known as their <dfn lt="WebVTT Node Object's applicable
+language">applicable language</dfn>, which is to be interpreted as a BCP 47 language tag.
+[[!BCP47]]</p>
 
 <p class=note>User agents will add a language tag as the <a lt="WebVTT Node Object's applicable
 language">applicable language</a> even if it is not a valid or not even well-formed language tag.
@@ -3062,7 +3230,7 @@ Objects</a>:</p>
 string |input| supposedly containing <a>WebVTT cue text</a>, and optionally a fallback language
 |language|. This algorithm returns a <a>list of WebVTT Node Objects</a>.</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT cue text parsing">
 
  <li><p>Let |input| be the string being parsed.</p></li>
 
@@ -3269,7 +3437,7 @@ string (whose value is a sequence of characters), a start tag (with a tag name, 
 and optionally an annotation), an end tag (with a tag name), or a timestamp tag (with a tag
 value).</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT cue text tokenizer">
 
  <li><p>Let |input| and |position| be the same variables as those of the same name in the algorithm
  that invoked these steps.</p></li>
@@ -3737,7 +3905,7 @@ title</h3>
 <p>The <dfn>WebVTT rules for extracting the chapter title</dfn> for a <a>WebVTT cue</a> |cue| are as
 follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="WebVTT rules for extracting the chapter title">
 
  <li><p>Let |nodes| be the <a>list of WebVTT Node Objects</a> obtained by applying the <a>WebVTT cue
  text parsing rules</a> to the |cue|'s <a>text track cue text</a>.</p></li>
@@ -3776,7 +3944,7 @@ manner suiting the user.</p>
 
 <p>The rules are as follows:</p>
 
-<ol class=algorithm>
+<ol algorithm="rules for updating the display of WebVTT text tracks">
 
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
@@ -3824,8 +3992,8 @@ manner suiting the user.</p>
      <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be
      ''|regionWidth|&#x2009;vw'' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
 
-     <li><p>Let |lineHeight| be ''5.33vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight|
-     be the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
+     <li><p>Let |lineHeight| be ''6vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight| be
+     the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
      |regionHeight|.</p></li>
 
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
@@ -3923,13 +4091,8 @@ manner suiting the user.</p>
 
      <li><p>Let |left| be ''|offset|&#x2009;%''. [[!CSS-VALUES]]</p></li>
 
-     <li>
-      <p>Apply the terms of the CSS specifications to |nodes| with the same constraints that are
-      used when they are applied to |nodes| of a |cue| that is not part of a region.</p>
-
-      <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along
-      with their positions.</p>
-     </li>
+     <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
+     block.</p></li>
 
      <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|.
      The cue is ignored.</p></li>
@@ -3955,11 +4118,14 @@ manner suiting the user.</p>
 dragging them to another location on the <a element>video</a>, or even off the <a element>video</a>
 entirely.</p>
 
-<p>When the algorithm above requires to <dfn>apply WebVTT cue settings</dfn> to obtain CSS boxes
-from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent must run the following
-algorithm.</p>
 
-<ol class=algorithm>
+<h3 id=processing-cue-settings algorithm>Processing cue settings</h3>
+
+<p>When the processing algorithm above requires that the user agent <dfn>apply WebVTT cue
+settings</dfn> to obtain CSS boxes from a <a>list of WebVTT Node Objects</a> |nodes|, the user agent
+must run the following algorithm.</p>
+
+<ol algorithm="apply WebVTT cue settings">
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
  direction">horizontal</a>, then let |writing-mode| be "horizontal-tb". Otherwise, if the <a>WebVTT
@@ -4183,112 +4349,8 @@ algorithm.</p>
  CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
  CSS units.) [[!CSS-VALUES]]</p></li>
 
- <li>
-
-  <p>Apply the terms of the CSS specifications to |nodes| within the following constraints, thus
-  obtaining a set of CSS boxes positioned relative to an initial containing block: [[!CSS22]]</p>
-
-  <ul>
-
-   <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
-   rooted at |nodes|.</p></li>
-
-   <li>
-    <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to
-    a hypothetical document that contains a single empty element with no explicit name, no
-    namespace, no attributes, no classes, no IDs, and unknown primary language, that acts like the
-    <a>media element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file.
-    The selectors must not match other <a>text tracks</a> for the same <a>media element</a>. In this
-    hypothetical document, the element must not match any selector that would match the element
-    itself.</p>
-
-    <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for
-    the ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
-   </li>
-
-   <li>
-    <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in
-    STYLE blocks of a WebVTT file, the relative order of appearance of the style sheets must be the
-    same order as they were added to the collection, and the order of appearance of the collection
-    must be after any style sheets that apply to the associated <a element>video</a> element's
-    document.</p>
-
-    <div class=example>
-     <p>For example, given the following (invalid) HTML document:</p>
-
-     <pre>
-     &lt;!doctype html>
-     &lt;title>Invalid cascade example&lt;/title>
-     &lt;video controls autoplay src="video.webm">
-      &lt;track default src="track.vtt">
-     &lt;/video>
-     &lt;style>
-      ::cue { color:red }
-     &lt;/style>
-     </pre>
-
-     <p>...and the "track.vtt" file contains:</p>
-
-     <pre>
-     WEBVTT
-
-     STYLE
-     ::cue { color:lime }
-
-     00:00:00.000 --> 00:00:25.000
-     Red or green?
-     </pre>
-
-     <p>The ''color:lime'' declaration would win, because it is last in the <a
-     spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
-     element>video</a> element in the document order.</p>
-    </div>
-   </li>
-
-   <li>
-
-    <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
-    file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's
-    scheme is not "<code>data</code>", then the user agent must act as if the URL failed to
-    resolve.</p>
-
-    <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
-    would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
-    network requests as the user watches the video, which could be a privacy issue.</strong></p>
-
-   </li>
-
-   <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
-   Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
-   contents.</p></li>
-
-   <li>For the purposes of processing by the CSS specification, <a lt="WebVTT Text Object">WebVTT
-   Text Objects</a> are equivalent to {{Text}} nodes.</li>
-
-   <li>No style sheets are associated with |nodes|. (The nodes are subsequently restyled using style
-   sheets after their boxes are generated, as described below.)</li>
-
-   <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
-   the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
-
-   <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
-   lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes
-   whose 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
-
-   <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
-   defined in the next section. (That section uses some of the variables whose values were
-   calculated earlier in this algorithm.)</li>
-
-   <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
-
-   <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
-
-  </ul>
-
-  <p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
-  their positions.</p>
-
- </li>
+ <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
+ block.</p></li>
 
  <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|. The
  cue is ignored.</p></li>
@@ -4529,8 +4591,112 @@ algorithm.</p>
 </ol>
 
 
-<h4 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
-Object">WebVTT Node Objects</a></h4>
+<h3 id=obtaining-css-boxes algorithm>Obtaining CSS boxes</h3>
+
+<p>When the processing algorithm above requires that the user agent <dfn>obtain a set of CSS
+boxes</dfn> |boxes|, then apply the terms of the CSS specifications to |nodes| within the following
+constraints: [[!CSS22]]</p>
+
+<ul>
+
+ <li><p>The <i>document tree</i> is the tree of <a lt="WebVTT Node Object">WebVTT Node Objects</a>
+ rooted at |nodes|.</p></li>
+
+ <li>
+  <p>For the purpose of selectors in STYLE blocks of a WebVTT file, the style sheet must apply to a
+  hypothetical document that contains a single empty element with no explicit name, no namespace, no
+  attributes, no classes, no IDs, and unknown primary language, that acts like the <a>media
+  element</a> for the <a>text tracks</a> that were sourced from the given WebVTT file. The selectors
+  must not match other <a>text tracks</a> for the same <a>media element</a>. In this hypothetical
+  document, the element must not match any selector that would match the element itself.</p>
+
+  <p class=note>This element exists only to be the <a spec=selectors>originating element</a> for the
+  ''::cue'', ''::cue()'', ''::cue-region'' and ''::cue-region()'' pseudo-elements.</p>
+ </li>
+
+ <li>
+  <p>For the purpose of determining the <a spec=css-cascade>cascade</a> of the declarations in STYLE
+  blocks of a WebVTT file, the relative order of appearance of the style sheets must be the same
+  order as they were added to the collection, and the order of appearance of the collection must be
+  after any style sheets that apply to the associated <a element>video</a> element's document.</p>
+
+  <div class=example>
+   <p>For example, given the following (invalid) HTML document:</p>
+
+   <pre>
+   &lt;!doctype html>
+   &lt;title>Invalid cascade example&lt;/title>
+   &lt;video controls autoplay src="video.webm">
+    &lt;track default src="track.vtt">
+   &lt;/video>
+   &lt;style>
+    ::cue { color:red }
+   &lt;/style>
+   </pre>
+
+   <p>...and the "track.vtt" file contains:</p>
+
+   <pre>
+   WEBVTT
+
+   STYLE
+   ::cue { color:lime }
+
+   00:00:00.000 --> 00:00:25.000
+   Red or green?
+   </pre>
+
+   <p>The ''color:lime'' declaration would win, because it is last in the <a
+   spec=css-cascade>cascade</a>, even though the <a element>style</a> element is after the <a
+   element>video</a> element in the document order.</p>
+  </div>
+ </li>
+
+ <li>
+
+  <p id=style-no-external-resources>For the purpose of resolving URLs in STYLE blocks of a WebVTT
+  file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL's scheme
+  is not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
+
+  <p><strong class=advisement>Supporting external resources with ''@import'' or 'background-image'
+  would be a new ability for <a>media elements</a> and <a element>track</a> elements to issue
+  network requests as the user watches the video, which could be a privacy issue.</strong></p>
+
+ </li>
+
+ <li><p>For the purposes of processing by the CSS specification, <a lt="WebVTT Internal Node
+ Object">WebVTT Internal Node Objects</a> are equivalent to elements with the same
+ contents.</p></li>
+
+ <li>For the purposes of processing by the CSS specification, <a lt="WebVTT Text Object">WebVTT Text
+ Objects</a> are equivalent to {{Text}} nodes.</li>
+
+ <li>No style sheets are associated with |nodes|. (The nodes are subsequently restyled using style
+ sheets after their boxes are generated, as described below.)</li>
+
+ <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
+ the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
+
+ <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
+ lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes whose
+ 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
+
+ <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
+ defined in the next section. (That section uses some of the variables whose values were calculated
+ earlier in this algorithm.)</li>
+
+ <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
+
+ <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
+
+</ul>
+
+<p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
+their positions.</p>
+
+
+<h3 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
+Object">WebVTT Node Objects</a></h3>
 
 <p>When following the <a>rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a lt="WebVTT Node Object">WebVTT Node Objects</a> at the CSS user agent cascade
@@ -4852,7 +5018,7 @@ present in the <{video}> element's document tree.</p>
      <pre>
      &lt;video ...>
       &lt;track src="example-attr.vtt"
-             <mark>srclang="en-US"</mark> default>
+             srclang="en-US" default>
      &lt;/video>
      </pre>
     </td>
@@ -5415,7 +5581,7 @@ interface VTTCue : TextTrackCue {
 <p>The <dfn constructor for=VTTCue lt="VTTCue(startTime, endTime, text)">VTTCue(|startTime|,
 |endTime|, |text|)</dfn> constructor, when invoked, must run the following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="VTTCue construction">
 
  <li><p>Create a new <a>WebVTT cue</a>. Let |cue| be that <a>WebVTT cue</a>.</p></li>
 
@@ -5656,7 +5822,7 @@ enum ScrollSetting { "" /* none */, "up" };
 interface VTTRegion {
   attribute DOMString id;
   attribute double width;
-  attribute long lines;
+  attribute unsigned long lines;
   attribute double regionAnchorX;
   attribute double regionAnchorY;
   attribute double viewportAnchorX;
@@ -5729,7 +5895,7 @@ interface VTTRegion {
 <p>The <dfn constructor for=VTTRegion>VTTRegion()</dfn> constructor, when invoked, must run the
 following steps:</p>
 
-<ol class=algorithm>
+<ol algorithm="VTTRegion construction">
  <li><p>Create a new <a>WebVTT region</a>. Let |region| be that <a>WebVTT region</a>.</p></li>
 
  <!-- default settings -->
@@ -5908,6 +6074,7 @@ and registration with IANA.</p>
 
 <p>Fragment identifiers have no meaning with <code>text/vtt</code> resources.</p>
 
+
 <h2 class="no-num" id=privacy-and-security-considerations>Privacy and Security Considerations</h2>
 
 
@@ -5993,10 +6160,12 @@ originally specified. [[!HTML]]</p>
  Lawrence Forooghian,
  Loretta Guarino Reid,
  Ms2ger,
+ Nigel Megitt,
  Ralph Giles,
  Richard Ishida,
  Rick Eyre,
- Ronny Mennerich, and
+ Ronny Mennerich,
+ Theresa O'Connor, and
  Victor Cărbune
  for their useful comments.
 </p>
