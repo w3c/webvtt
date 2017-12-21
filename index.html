@@ -1684,7 +1684,7 @@ that captions an interview:</p>
 00:35.500 --> 00:38.000
 &lt;v Roger Bingham>You know I’m so excited my glasses are falling off here.
 </pre>
-   <p>You can see that a WebVTT file in general consist of a sequence of text segments associated with
+   <p>You can see that a WebVTT file in general consists of a sequence of text segments associated with
 a time-interval, called a cue (<a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-1">definition</a>). Beyond captioning and subtitling,
 WebVTT can be used for time-aligned metadata, typically in use for delivering name-value pairs in
 cues. WebVTT can also be used for delivering chapters, which helps with contextual navigation around
@@ -2150,6 +2150,16 @@ character U+212B ANGSTROM SIGN (a compatibility character), will not match a sel
 cue with an ID consisting of the character U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE (a
 precomposed character).</p>
    <h2 class="heading settled" data-level="3" id="data-model"><span class="secno">3. </span><span class="content">Data model</span><a class="self-link" href="#data-model"></a></h2>
+   <p class="note" role="note">The box model of WebVTT consists of three key elements: the video viewport, cues, and
+regions. The video viewport is the rendering area into which cues and regions are rendered. Cues are
+boxes consisting of a set of cue lines. Regions are subareas of the video viewport that are used to
+group cues together. Cues are positioned either inside the video viewport directly or inside a
+region, which is positioned inside the video viewport.</p>
+   <p class="note" role="note">The position of a cue inside the video viewport is defined by a set of cue settings.
+The position of a region inside the video viewport is defined by a set of region settings. Cues that
+are inside regions can only use a limited set of their cue settings. Specifically, if the cue has a
+"vertical", "line" or "size" setting, the cue drops out of the region. Otherwise, the cue’s width is
+calculated to be relative to the region width rather than the viewport. </p>
    <h3 class="heading settled" data-level="3.1" id="model-overview"><span class="secno">3.1. </span><span class="content">Overview</span><a class="self-link" href="#model-overview"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>The WebVTT file is a container file for chunks of data that are time-aligned with a video or
@@ -2473,6 +2483,9 @@ together, which is particularly important when scrolling up.</p>
     <dd>
      <p>A number giving the number of lines of the box within which the text of each line of the
   containing cues is to be rendered. Defaults to 3.</p>
+     <p class="note" role="note">Since a WebVTT region defines a fixed rendering area, a cue that has more lines
+  than the region allows will be clipped. For scrolling regions, the clipping happens at the top,
+  for non-scrolling regions it happens at the bottom.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region anchor" data-noexport="" id="webvtt-region-anchor">A region anchor point</dfn>
     <dd>
      <p>Two numbers giving the x and y coordinates within the region which is anchored to the video
@@ -3706,6 +3719,9 @@ run the following steps:</p>
           <li>
            <p>Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the string
        "<code>lr</code>", then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-15">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-4">vertical growing right</a>.</p>
+          <li>
+           <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is not <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-14">horizontal</a>, let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-4">WebVTT cue region</a> be null (there are no
+       vertical regions).</p>
          </ol>
         <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>line</code>"
         <dd>
@@ -3768,6 +3784,10 @@ run the following steps:</p>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-22">WebVTT cue line</a> be <var>number</var>.</p>
           <li>
            <p>If the last character in <var>linepos</var> is a U+0025 PERCENT SIGN character (%), then let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-10">WebVTT cue snap-to-lines flag</a> be false. Otherwise, let it be true.</p>
+          <li>
+           <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-23">WebVTT cue line</a> is not <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-5">auto</a>,
+       let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-5">WebVTT cue region</a> be null (the cue has been explicitly positioned with a
+       line offset and thus drops out of the region).</p>
          </ol>
         <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>position</code>"
         <dd>
@@ -3805,6 +3825,9 @@ run the following steps:</p>
        returned <var>percentage</var>, otherwise jump to the step labeled <i>next setting</i>.</p>
           <li>
            <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-8">WebVTT cue size</a> be <var>number</var>.</p>
+          <li>
+           <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-9">WebVTT cue size</a> is not 100, let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-6">WebVTT cue region</a> be
+       null (the cue has been explicitly sized and thus drops out of the region).</p>
          </ol>
         <dt>If <var>name</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for "<code>align</code>"
         <dd>
@@ -4486,7 +4509,7 @@ manner suiting the user.</p>
   cue display state</a> has a set of CSS boxes, then:</p>
      <ul>
       <li>
-       <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-4">WebVTT cue region</a> is not null, add those boxes to that region’s <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p>
+       <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-7">WebVTT cue region</a> is not null, add those boxes to that region’s <var>box</var> and remove <var>cue</var> from <var>cues</var>.</p>
       <li>
        <p>Otherwise, add those boxes to <var>output</var> and remove <var>cue</var> from <var>cues</var>.</p>
      </ul>
@@ -4498,7 +4521,7 @@ manner suiting the user.</p>
        <p>Let <var>nodes</var> be the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-7">list of WebVTT Node Objects</a> obtained by applying the <a data-link-type="dfn" href="#webvtt-cue-text-parsing-rules" id="ref-for-webvtt-cue-text-parsing-rules-2">WebVTT
    cue text parsing rules</a>, with the fallback language <var>language</var> if provided, to the <var>cue</var>’s <a data-link-type="dfn" href="#cue-text" id="ref-for-cue-text-12">cue text</a>.</p>
       <li>
-       <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-5">WebVTT cue region</a> is null, run the following substeps:</p>
+       <p>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-8">WebVTT cue region</a> is null, run the following substeps:</p>
        <ol>
         <li><a data-link-type="dfn" href="#apply-webvtt-cue-settings" id="ref-for-apply-webvtt-cue-settings-1">Apply WebVTT cue settings</a> to obtain CSS boxes <var>boxes</var> from <var>nodes</var>.
         <li>
@@ -4510,7 +4533,7 @@ manner suiting the user.</p>
        <p>Otherwise, run the following substeps:</p>
        <ol>
         <li>
-         <p>Let <var>region</var> be <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-6">WebVTT cue region</a>.</p>
+         <p>Let <var>region</var> be <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-9">WebVTT cue region</a>.</p>
         <li>
          <p>If <var>region</var>’s <a data-link-type="dfn" href="#webvtt-region-scroll" id="ref-for-webvtt-region-scroll-3">WebVTT region scroll</a> setting is <a data-link-type="dfn" href="#webvtt-region-scroll-up" id="ref-for-webvtt-region-scroll-up-2">up</a> and <var>region</var> already has one child, set <var>region</var>’s <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a> to <span class="css">top</span> and <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a> to <span class="css">0.433s</span>.</p>
         <li>
@@ -4555,9 +4578,9 @@ settings</dfn> to obtain CSS boxes from a <a data-link-type="dfn" href="#list-of
 must run the following algorithm.</p>
    <ol class="algorithm" data-algorithm="apply WebVTT cue settings">
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-16">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-14">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-17">WebVTT
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-17">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-15">horizontal</a>, then let <var>writing-mode</var> be "horizontal-tb". Otherwise, if the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-18">WebVTT
  cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-5">vertical
- growing left</a>, then let <var>writing-mode</var> be "vertical-rl". Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-18">WebVTT cue writing
+ growing left</a>, then let <var>writing-mode</var> be "vertical-rl". Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-19">WebVTT cue writing
  direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-5">vertical growing
  right</a>; let <var>writing-mode</var> be "vertical-lr".</p>
     <li>
@@ -4581,16 +4604,16 @@ must run the following algorithm.</p>
     position</a> from 100 and then multiplying the result by two.</p>
      </dl>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-9">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-11">WebVTT cue
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-19">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-15">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
  (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
   the following list:</p>
      <dl class="switch">
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-21">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-17">horizontal</a>
       <dd>
        <dl class="switch">
         <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment" id="ref-for-cue-computed-position-alignment-9">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-line-left-alignment" id="ref-for-webvtt-cue-position-line-left-alignment-6">line-left alignment</a>
@@ -4604,7 +4627,7 @@ must run the following algorithm.</p>
         <dd>
          <p>Let <var>x-position</var> be the <a data-link-type="dfn" href="#cue-computed-position" id="ref-for-cue-computed-position-10">computed position</a> minus <var>size</var>.</p>
        </dl>
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-21">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-6">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-6">vertical growing right</a>
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-22">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-6">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-6">vertical growing right</a>
       <dd>
        <dl class="switch">
         <dt>If the <a data-link-type="dfn" href="#cue-computed-position-alignment" id="ref-for-cue-computed-position-alignment-12">computed position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-position-line-left-alignment" id="ref-for-webvtt-cue-position-line-left-alignment-7">line-left alignment</a>
@@ -4625,20 +4648,20 @@ must run the following algorithm.</p>
       <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-11">WebVTT cue snap-to-lines flag</a> is false
       <dd>
        <dl class="switch">
-        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-22">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-17">horizontal</a>
+        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-23">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-18">horizontal</a>
         <dd>
          <p>Let <var>y-position</var> be the <a data-link-type="dfn" href="#cue-computed-line" id="ref-for-cue-computed-line-2">computed line</a>.</p>
-        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-23">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-7">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-7">vertical growing right</a>
+        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-24">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-7">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-7">vertical growing right</a>
         <dd>
          <p>Let <var>x-position</var> be the <a data-link-type="dfn" href="#cue-computed-line" id="ref-for-cue-computed-line-3">computed line</a>.</p>
        </dl>
       <dt>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-12">WebVTT cue snap-to-lines flag</a> is true
       <dd>
        <dl class="switch">
-        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-24">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-18">horizontal</a>
+        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-25">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-19">horizontal</a>
         <dd>
          <p>Let <var>y-position</var> be 0.</p>
-        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-25">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-8">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-8">vertical growing right</a>
+        <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-26">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-8">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-8">vertical growing right</a>
         <dd>
          <p>Let <var>x-position</var> be 0.</p>
        </dl>
@@ -4649,7 +4672,7 @@ must run the following algorithm.</p>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-13">WebVTT cue snap-to-lines flag</a> is true, then run the appropriate steps from the
   following list:</p>
      <dl class="switch">
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-26">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-19">horizontal</a>
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-27">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-20">horizontal</a>
       <dd>
        <ol>
         <li>
@@ -4668,7 +4691,7 @@ must run the following algorithm.</p>
         <li>
          <p>If <var>x-position</var> is less than <var>right margin edge</var>, and the sum of <var>x-position</var> and <var>size</var> is more than <var>right margin edge</var>, then decrease <var>size</var> by <var>edge margin</var>.</p>
        </ol>
-      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-27">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-9">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-9">vertical growing right</a>
+      <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-28">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-9">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-9">vertical growing right</a>
       <dd>
        <ol>
         <li>
@@ -4703,10 +4726,10 @@ must run the following algorithm.</p>
      <dl class="switch">
       <dt>If <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-14">WebVTT cue snap-to-lines flag</a> is true
       <dd>
-       <p>Many of the steps in this algorithm vary according to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-28">WebVTT cue writing
-    direction</a>. Steps labeled "<strong>Horizontal</strong>" must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-29">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-20">horizontal</a>, steps labeled "<strong>Vertical</strong>" must be followed when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-30">WebVTT cue writing direction</a> is either <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-10">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-10">vertical growing right</a>, steps labeled "<strong>Vertical Growing Left</strong>"
-    must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-31">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-11">vertical growing left</a>, and steps labeled "<strong>Vertical
-    Growing Right</strong>" must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-32">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-11">vertical growing right</a>.</p>
+       <p>Many of the steps in this algorithm vary according to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-29">WebVTT cue writing
+    direction</a>. Steps labeled "<strong>Horizontal</strong>" must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-30">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-21">horizontal</a>, steps labeled "<strong>Vertical</strong>" must be followed when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-31">WebVTT cue writing direction</a> is either <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-10">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-10">vertical growing right</a>, steps labeled "<strong>Vertical Growing Left</strong>"
+    must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-32">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-11">vertical growing left</a>, and steps labeled "<strong>Vertical
+    Growing Right</strong>" must be followed only when the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-33">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-11">vertical growing right</a>.</p>
        <ol>
         <li>
          <p><strong>Horizontal</strong>: Let <var>margin</var> be a user-agent-defined vertical length which
@@ -4798,7 +4821,7 @@ must run the following algorithm.</p>
         <li>
          <p>Run the appropriate steps from the following list:</p>
          <dl class="switch">
-          <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-33">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-21">horizontal</a>
+          <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-34">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-22">horizontal</a>
           <dd>
            <dl class="switch">
             <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-10">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-3">center alignment</a>
@@ -4809,7 +4832,7 @@ must run the following algorithm.</p>
             <dd>
              <p>Move all the boxes in <var>boxes</var> up by the height of <var>bounding box</var>.</p>
            </dl>
-          <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-34">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-12">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-12">vertical growing right</a>
+          <dt>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-35">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-12">vertical growing left</a> or <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-12">vertical growing right</a>
           <dd>
            <dl class="switch">
             <dt>If the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-12">WebVTT cue line alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-4">center alignment</a>
@@ -5449,9 +5472,9 @@ rendering</a> must be immediately rerun.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-2">vertical</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns a string representing the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-35">WebVTT cue writing direction</a>, as follows:</p>
+     <p>Returns a string representing the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-36">WebVTT cue writing direction</a>, as follows:</p>
      <dl class="switch">
-      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-22">horizontal</a>
+      <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-23">horizontal</a>
       <dd>
        <p>The empty string.</p>
       <dt>If it is <a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-13">vertical growing
@@ -5470,7 +5493,7 @@ rendering</a> must be immediately rerun.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-3">line</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-23">WebVTT cue line</a>. In the case of the value being <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-5">auto</a>, the string "<code>auto</code>" is returned.</p>
+     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-24">WebVTT cue line</a>. In the case of the value being <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-6">auto</a>, the string "<code>auto</code>" is returned.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-linealign" id="ref-for-dom-vttcue-linealign-2">lineAlign</a></code> [ = <var>value</var> ]
     <dd>
@@ -5511,7 +5534,7 @@ rendering</a> must be immediately rerun.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-size" id="ref-for-dom-vttcue-size-2">size</a></code> [ = <var>value</var> ]
     <dd>
-     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-11">WebVTT cue size</a>.</p>
+     <p>Returns the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-12">WebVTT cue size</a>.</p>
      <p>Can be set.</p>
     <dt><var>cue</var> . <code class="idl"><a data-link-type="idl" href="#dom-vttcue-align" id="ref-for-dom-vttcue-align-2">align</a></code> [ = <var>value</var> ]
     <dd>
@@ -5562,13 +5585,13 @@ rendering</a> must be immediately rerun.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-pause-on-exit-flag">text track cue pause-on-exit flag</a> be false.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-7">WebVTT cue region</a> be null.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-10">WebVTT cue region</a> be null.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-36">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-23">horizontal</a>.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-37">WebVTT cue writing direction</a> be <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-24">horizontal</a>.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-17">WebVTT cue snap-to-lines flag</a> be true.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-24">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-6">auto</a>.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-25">WebVTT cue line</a> be <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-7">auto</a>.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-15">WebVTT cue line alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-7">start alignment</a>.</p>
     <li>
@@ -5576,27 +5599,27 @@ rendering</a> must be immediately rerun.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-12">WebVTT cue position alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-position-automatic-alignment" id="ref-for-webvtt-cue-position-automatic-alignment-5">auto</a>.</p>
     <li>
-     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-12">WebVTT cue size</a> be 100.</p>
+     <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-13">WebVTT cue size</a> be 100.</p>
     <li>
      <p>Let <var>cue</var>’s <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-22">WebVTT cue text alignment</a> be <a data-link-type="dfn" href="#webvtt-cue-center-alignment" id="ref-for-webvtt-cue-center-alignment-9">center
  alignment</a>.</p>
     <li>
      <p>Return the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-4">VTTCue</a></code> object representing <var>cue</var>.</p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-region"><code>region</code></dfn> attribute, on getting, must return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-3">VTTRegion</a></code> object representing the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-8">WebVTT cue region</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-38">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-5">VTTCue</a></code> object
-represents, if any; or null otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-9">WebVTT cue region</a> must be set to the
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-region"><code>region</code></dfn> attribute, on getting, must return the <code class="idl"><a data-link-type="idl" href="#vttregion" id="ref-for-vttregion-3">VTTRegion</a></code> object representing the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-11">WebVTT cue region</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-38">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-5">VTTCue</a></code> object
+represents, if any; or null otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-region" id="ref-for-webvtt-cue-region-12">WebVTT cue region</a> must be set to the
 new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-vertical"><code>vertical</code></dfn> attribute, on getting, must return the string from
-the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-37">WebVTT cue writing
+the second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-38">WebVTT cue writing
 direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-39">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-6">VTTCue</a></code> object represents:</p>
    <table class="complex data">
     <thead>
      <tr>
-      <th><a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-38">WebVTT cue writing direction</a>
+      <th><a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-39">WebVTT cue writing direction</a>
       <th><code class="idl"><a data-link-type="idl" href="#dom-vttcue-vertical" id="ref-for-dom-vttcue-vertical-3">vertical</a></code> value
     <tbody>
      <tr>
-      <td><a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-24">Horizontal</a>
+      <td><a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-25">Horizontal</a>
       <td>"<code></code>" (the empty string)
      <tr>
       <td><a data-link-type="dfn" href="#webvtt-cue-vertical-growing-left-writing-direction" id="ref-for-webvtt-cue-vertical-growing-left-writing-direction-14">Vertical growing left</a>
@@ -5605,16 +5628,16 @@ direction</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
       <td><a data-link-type="dfn" href="#webvtt-cue-vertical-growing-right-writing-direction" id="ref-for-webvtt-cue-vertical-growing-right-writing-direction-14">Vertical growing right</a>
       <td>"<code>lr</code>"
    </table>
-   <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-39">WebVTT cue writing direction</a> must be set to the value given in the first
+   <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-40">WebVTT cue writing direction</a> must be set to the value given in the first
 cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-snaptolines"><code>snapToLines</code></dfn> attribute, on getting, must return true if the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-18">WebVTT cue snap-to-lines flag</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-40">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-7">VTTCue</a></code> object represents
 is true; or false otherwise. On setting, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-19">WebVTT cue snap-to-lines flag</a> must be set to the
 new value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line"><code>line</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-25">WebVTT cue
-line</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-41">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-8">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-7">auto</a> must be represented as the string "<code>auto</code>". On
-setting, the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-26">WebVTT cue line</a> must be set to the new value; if the new value is the string
-"<code>auto</code>", then it must be interpreted as the special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-8">auto</a>.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-line"><code>line</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-26">WebVTT cue
+line</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-41">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-8">VTTCue</a></code> object represents. The special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-8">auto</a> must be represented as the string "<code>auto</code>". On
+setting, the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-27">WebVTT cue line</a> must be set to the new value; if the new value is the string
+"<code>auto</code>", then it must be interpreted as the special value <a data-link-type="dfn" href="#webvtt-cue-line-automatic" id="ref-for-webvtt-cue-line-automatic-9">auto</a>.</p>
    <p class="note" role="note">In order to be able to set the <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-4">snapToLines</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-4">line</a></code> attributes
 in any order, the API does not reject setting <code class="idl"><a data-link-type="idl" href="#dom-vttcue-snaptolines" id="ref-for-dom-vttcue-snaptolines-5">snapToLines</a></code> to false when <code class="idl"><a data-link-type="idl" href="#dom-vttcue-line" id="ref-for-dom-vttcue-line-5">line</a></code> has a value outside the range 0..100, or vice versa.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-linealign"><code>lineAlign</code></dfn> attribute, on getting, must return the string from
@@ -5669,10 +5692,10 @@ alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webv
    <p>On setting, the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-15">WebVTT cue position alignment</a> must be set to the value given in the first
 cell of the row in the table above whose second cell is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#case-sensitive">case-sensitive</a> match for the new
 value.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-size"><code>size</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-13">WebVTT cue
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-size"><code>size</code></dfn> attribute, on getting, must return the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-14">WebVTT cue
 size</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-45">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-12">VTTCue</a></code> object represents. On setting, if the new
 value is negative or greater than 100, then an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#indexsizeerror">IndexSizeError</a></code> exception must be thrown.
-Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-14">WebVTT cue size</a> must be set to the new value.</p>
+Otherwise, the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-15">WebVTT cue size</a> must be set to the new value.</p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="VTTCue" data-dfn-type="attribute" data-export="" id="dom-vttcue-align"><code>align</code></dfn> attribute, on getting, must return the string from the
 second cell of the row in the table below whose first cell is the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-23">WebVTT cue text alignment</a> of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-46">WebVTT cue</a> that the <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-13">VTTCue</a></code> object represents:</p>
    <table class="complex data">
@@ -6640,9 +6663,9 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-1">3.3. WebVTT caption or subtitle cues</a> <a href="#ref-for-webvtt-cue-writing-direction-2">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-3">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-4">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-5">(5)</a> <a href="#ref-for-webvtt-cue-writing-direction-6">(6)</a> <a href="#ref-for-webvtt-cue-writing-direction-7">(7)</a> <a href="#ref-for-webvtt-cue-writing-direction-8">(8)</a> <a href="#ref-for-webvtt-cue-writing-direction-9">(9)</a> <a href="#ref-for-webvtt-cue-writing-direction-10">(10)</a> <a href="#ref-for-webvtt-cue-writing-direction-11">(11)</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-12">4.4. WebVTT cue settings</a>
     <li><a href="#ref-for-webvtt-cue-writing-direction-13">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-writing-direction-14">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-writing-direction-15">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-writing-direction-16">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-writing-direction-17">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-18">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-19">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-20">(5)</a> <a href="#ref-for-webvtt-cue-writing-direction-21">(6)</a> <a href="#ref-for-webvtt-cue-writing-direction-22">(7)</a> <a href="#ref-for-webvtt-cue-writing-direction-23">(8)</a> <a href="#ref-for-webvtt-cue-writing-direction-24">(9)</a> <a href="#ref-for-webvtt-cue-writing-direction-25">(10)</a> <a href="#ref-for-webvtt-cue-writing-direction-26">(11)</a> <a href="#ref-for-webvtt-cue-writing-direction-27">(12)</a> <a href="#ref-for-webvtt-cue-writing-direction-28">(13)</a> <a href="#ref-for-webvtt-cue-writing-direction-29">(14)</a> <a href="#ref-for-webvtt-cue-writing-direction-30">(15)</a> <a href="#ref-for-webvtt-cue-writing-direction-31">(16)</a> <a href="#ref-for-webvtt-cue-writing-direction-32">(17)</a> <a href="#ref-for-webvtt-cue-writing-direction-33">(18)</a> <a href="#ref-for-webvtt-cue-writing-direction-34">(19)</a>
-    <li><a href="#ref-for-webvtt-cue-writing-direction-35">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-writing-direction-36">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-37">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-38">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-39">(5)</a>
+    <li><a href="#ref-for-webvtt-cue-writing-direction-14">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-writing-direction-15">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-16">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-writing-direction-17">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-writing-direction-18">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-19">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-20">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-21">(5)</a> <a href="#ref-for-webvtt-cue-writing-direction-22">(6)</a> <a href="#ref-for-webvtt-cue-writing-direction-23">(7)</a> <a href="#ref-for-webvtt-cue-writing-direction-24">(8)</a> <a href="#ref-for-webvtt-cue-writing-direction-25">(9)</a> <a href="#ref-for-webvtt-cue-writing-direction-26">(10)</a> <a href="#ref-for-webvtt-cue-writing-direction-27">(11)</a> <a href="#ref-for-webvtt-cue-writing-direction-28">(12)</a> <a href="#ref-for-webvtt-cue-writing-direction-29">(13)</a> <a href="#ref-for-webvtt-cue-writing-direction-30">(14)</a> <a href="#ref-for-webvtt-cue-writing-direction-31">(15)</a> <a href="#ref-for-webvtt-cue-writing-direction-32">(16)</a> <a href="#ref-for-webvtt-cue-writing-direction-33">(17)</a> <a href="#ref-for-webvtt-cue-writing-direction-34">(18)</a> <a href="#ref-for-webvtt-cue-writing-direction-35">(19)</a>
+    <li><a href="#ref-for-webvtt-cue-writing-direction-36">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-writing-direction-37">(2)</a> <a href="#ref-for-webvtt-cue-writing-direction-38">(3)</a> <a href="#ref-for-webvtt-cue-writing-direction-39">(4)</a> <a href="#ref-for-webvtt-cue-writing-direction-40">(5)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-horizontal-writing-direction">
@@ -6650,8 +6673,9 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-1">3.3. WebVTT caption or subtitle cues</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-2">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-3">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-4">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-5">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-6">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-7">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-8">(8)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-9">(9)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-10">(10)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-11">(11)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-12">(12)</a>
     <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-13">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-14">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-15">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-16">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-17">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-18">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-19">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-20">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-21">(8)</a>
-    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-22">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-23">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-24">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-14">6.3. WebVTT cue timings and settings parsing</a>
+    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-15">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-16">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-17">(3)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-18">(4)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-19">(5)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-20">(6)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-21">(7)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-22">(8)</a>
+    <li><a href="#ref-for-webvtt-cue-horizontal-writing-direction-23">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-24">(2)</a> <a href="#ref-for-webvtt-cue-horizontal-writing-direction-25">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-vertical-growing-left-writing-direction">
@@ -6687,8 +6711,8 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-line-1">3.3. WebVTT caption or subtitle cues</a> <a href="#ref-for-webvtt-cue-line-2">(2)</a> <a href="#ref-for-webvtt-cue-line-3">(3)</a> <a href="#ref-for-webvtt-cue-line-4">(4)</a> <a href="#ref-for-webvtt-cue-line-5">(5)</a> <a href="#ref-for-webvtt-cue-line-6">(6)</a> <a href="#ref-for-webvtt-cue-line-7">(7)</a> <a href="#ref-for-webvtt-cue-line-8">(8)</a> <a href="#ref-for-webvtt-cue-line-9">(9)</a> <a href="#ref-for-webvtt-cue-line-10">(10)</a> <a href="#ref-for-webvtt-cue-line-11">(11)</a> <a href="#ref-for-webvtt-cue-line-12">(12)</a> <a href="#ref-for-webvtt-cue-line-13">(13)</a> <a href="#ref-for-webvtt-cue-line-14">(14)</a> <a href="#ref-for-webvtt-cue-line-15">(15)</a> <a href="#ref-for-webvtt-cue-line-16">(16)</a> <a href="#ref-for-webvtt-cue-line-17">(17)</a> <a href="#ref-for-webvtt-cue-line-18">(18)</a> <a href="#ref-for-webvtt-cue-line-19">(19)</a> <a href="#ref-for-webvtt-cue-line-20">(20)</a>
     <li><a href="#ref-for-webvtt-cue-line-21">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-22">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-23">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-24">(2)</a> <a href="#ref-for-webvtt-cue-line-25">(3)</a> <a href="#ref-for-webvtt-cue-line-26">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-line-22">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-line-23">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-line-24">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-25">(2)</a> <a href="#ref-for-webvtt-cue-line-26">(3)</a> <a href="#ref-for-webvtt-cue-line-27">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-line-automatic">
@@ -6696,7 +6720,8 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-line-automatic-1">3.3. WebVTT caption or subtitle cues</a> <a href="#ref-for-webvtt-cue-line-automatic-2">(2)</a> <a href="#ref-for-webvtt-cue-line-automatic-3">(3)</a>
     <li><a href="#ref-for-webvtt-cue-line-automatic-4">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-line-automatic-5">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-automatic-6">(2)</a> <a href="#ref-for-webvtt-cue-line-automatic-7">(3)</a> <a href="#ref-for-webvtt-cue-line-automatic-8">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-line-automatic-5">6.3. WebVTT cue timings and settings parsing</a>
+    <li><a href="#ref-for-webvtt-cue-line-automatic-6">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-line-automatic-7">(2)</a> <a href="#ref-for-webvtt-cue-line-automatic-8">(3)</a> <a href="#ref-for-webvtt-cue-line-automatic-9">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="cue-computed-line">
@@ -6831,9 +6856,9 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-size-1">3.3. WebVTT caption or subtitle cues</a> <a href="#ref-for-webvtt-cue-size-2">(2)</a> <a href="#ref-for-webvtt-cue-size-3">(3)</a> <a href="#ref-for-webvtt-cue-size-4">(4)</a> <a href="#ref-for-webvtt-cue-size-5">(5)</a> <a href="#ref-for-webvtt-cue-size-6">(6)</a>
     <li><a href="#ref-for-webvtt-cue-size-7">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-size-8">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-size-9">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-size-10">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-size-11">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-size-12">(2)</a> <a href="#ref-for-webvtt-cue-size-13">(3)</a> <a href="#ref-for-webvtt-cue-size-14">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-size-8">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-size-9">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-size-10">7.2. Processing cue settings</a> <a href="#ref-for-webvtt-cue-size-11">(2)</a>
+    <li><a href="#ref-for-webvtt-cue-size-12">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-size-13">(2)</a> <a href="#ref-for-webvtt-cue-size-14">(3)</a> <a href="#ref-for-webvtt-cue-size-15">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-text-alignment">
@@ -6897,9 +6922,9 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-region-1">3.3. WebVTT caption or subtitle cues</a>
     <li><a href="#ref-for-webvtt-cue-region-2">6.1. WebVTT file parsing</a>
-    <li><a href="#ref-for-webvtt-cue-region-3">6.3. WebVTT cue timings and settings parsing</a>
-    <li><a href="#ref-for-webvtt-cue-region-4">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-region-5">(2)</a> <a href="#ref-for-webvtt-cue-region-6">(3)</a>
-    <li><a href="#ref-for-webvtt-cue-region-7">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-region-8">(2)</a> <a href="#ref-for-webvtt-cue-region-9">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-region-3">6.3. WebVTT cue timings and settings parsing</a> <a href="#ref-for-webvtt-cue-region-4">(2)</a> <a href="#ref-for-webvtt-cue-region-5">(3)</a> <a href="#ref-for-webvtt-cue-region-6">(4)</a>
+    <li><a href="#ref-for-webvtt-cue-region-7">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-region-8">(2)</a> <a href="#ref-for-webvtt-cue-region-9">(3)</a>
+    <li><a href="#ref-for-webvtt-cue-region-10">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-region-11">(2)</a> <a href="#ref-for-webvtt-cue-region-12">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-region">
