@@ -4291,9 +4291,9 @@ must run the following algorithm.</p>
      <li><p>Let |edge margin| be a user-agent-defined horizontal length, expressed as a percentage
      of the width of the |video|'s rendering area, which will be used to define a margin at the left
      and right edges of the video into which this cue will not be placed. In situations with
-     overscan, this margin should be sufficient to place the cue within the title-safe area. In the
-     absence of overscan, this value should be picked for aesthetics (to avoid text being aligned
-     precisely on the left or right edge of the video, which can be ugly).</p></li>
+     overscan, this margin should be sufficient to place the cue within the title-safe area. Even in
+     the absence of overscan, it enhances readability to avoid text being aligned precisely on the
+     left or right edge of the video.</p></li>
 
      <li><p>If |x-position| is less than |edge margin| and the sum of |x-position| and |size| is
      more than |edge margin|, then increase |x-position| by |edge margin| and decrease |size| by the
@@ -4318,9 +4318,9 @@ must run the following algorithm.</p>
      <li><p>Let |edge margin| be a user-agent-defined vertical length, expressed as a percentage of
      the height of the |video|'s rendering area, which will be used to define a margin at the top
      and bottom edges of the video into which this cue will not be placed. In situations with
-     overscan, this margin should be sufficient to place the cue within the title-safe area. In the
-     absence of overscan, this value should be picked for aesthetics (to avoid text being aligned
-     precisely on the top or bottom edge of the video, which can be ugly).</p></li>
+     overscan, this margin should be sufficient to place the cue within the title-safe area. Even in
+     the absence of overscan, it enhances readability to avoid text being aligned precisely on the
+     left or right edge of the video.</p></li>
 
      <li><p>If |y-position| is less than |edge margin| and the sum of |y-position| and |size| is
      more than |edge margin|, then increase |y-position| by |edge margin| and decrease |size| by the
@@ -4378,16 +4378,14 @@ must run the following algorithm.</p>
       <p><strong>Horizontal</strong>: Let |margin| be a user-agent-defined vertical length which
       will be used to define a margin at the top and bottom edges of the video into which cues will
       not be placed. In situations with overscan, this margin should be sufficient to place all cues
-      within the title-safe area. In the absence of overscan, this value should be picked for
-      aesthetics (to avoid text being aligned precisely on the bottom edge of the video, which can
-      be ugly).</p>
+      within the title-safe area. Even in the absence of overscan, it enhances readability to avoid
+      text being aligned precisely on the left or right edge of the video.</p>
 
       <p><strong>Vertical</strong>: Let |margin| be a user-agent-defined horizontal length which
       will be used to define a margin at the left and right edges of the video into which cues will
       not be placed. In situations with overscan, this margin should be sufficient to place all cues
-      within the title-safe area. In the absence of overscan, this value should be picked for
-      aesthetics (to avoid text being aligned precisely on the left or right edges of the video,
-      which can be ugly).</p>
+      within the title-safe area. Even in the absence of overscan, it enhances readability to avoid
+      text being aligned precisely on the left or right edge of the video.</p>
 
      </li>
 
