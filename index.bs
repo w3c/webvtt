@@ -1134,6 +1134,16 @@ fragment:</p>
    return <a lt="WebVTT cue position line-right alignment">line-right</a> and abort these
    steps.</p></li>
 
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue start alignment">start</a>,
+   return <a lt="WebVTT cue position line-left alignment">line-left</a> if the base direction of the
+   cue text is left-to-right, <a lt="WebVTT cue position line-right alignment">line-right</a>
+   otherwise.</p></li>
+
+   <li><p>If the <a>WebVTT cue text alignment</a> is <a lt="WebVTT cue end alignment">end</a>,
+   return <a lt="WebVTT cue position line-right alignment">line-right</a> if the base direction of
+   the cue text is left-to-right, <a lt="WebVTT cue position line-left alignment">line-left</a>
+   otherwise.</p></li>
+
    <li><p>Otherwise, return <a lt="WebVTT cue center alignment">center</a>.</p></li>
 
   </ol>
