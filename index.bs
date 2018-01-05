@@ -751,13 +751,14 @@ requirements.</p>
  <dd><p>All processing requirements in this specification apply, except parts of [[#parsing]] that
  relate to stylesheets and CSS, and all of [[#rendering]] and [[#css-extensions]]. The user agent
  must instead only render the text inside <a>WebVTT caption or subtitle cue text</a> in an
- appropriate manner. Any other styling and positioning instructions are optional.</p> </dd>
+ appropriate manner and specifically support the color classes defined in [[#default-classes]]. Any
+ other styling instructions are optional.</p> </dd>
 
  <dt><dfn>User agents that do not support a full HTML CSS engine</dfn></dt>
- <dd><p>All processing requirements in this specification apply. However, the user agent will need
- to interpret the CSS related features in [[#parsing]], [[#rendering]] and [[#css-extensions]] in
- such a way that the rendered results are equivalent to what a full CSS supporting renderer
- produces.</p></dd>
+ <dd><p>All processing requirements in this specification apply, including the color classes defined
+ in [[#default-classes]]. However, the user agent will need to interpret the CSS related features in
+ [[#parsing]], [[#rendering]] and [[#css-extensions]] in such a way that the rendered results are
+ equivalent to what a full CSS supporting renderer produces.</p></dd>
 
  <dt>Conformance checkers</dt>
  <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
