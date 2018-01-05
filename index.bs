@@ -750,8 +750,8 @@ requirements.</p>
  <dt><dfn>User agents that do not support CSS</dfn></dt>
  <dd><p>All processing requirements in this specification apply, except parts of [[#parsing]] that
  relate to stylesheets and CSS, and all of [[#rendering]] and [[#css-extensions]]. The user agent
- must instead only render the text inside <a>WebVTT cue text</a> in an appropriate manner. Any other
- styling and positioning instructions are optional.</p> </dd>
+ must instead only render the text inside <a>WebVTT caption or subtitle cue text</a> in an
+ appropriate manner. Any other styling and positioning instructions are optional.</p> </dd>
 
  <dt><dfn>User agents that do not support a full HTML CSS engine</dfn></dt>
  <dd><p>All processing requirements in this specification apply. However, the user agent will need
@@ -4115,11 +4115,11 @@ follows:</p>
 <h2 id=rendering>Rendering</h2>
 
 <p class="note">This section describes in some detail how to visually render <a>WebVTT caption or
-subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in HTML, where CSS is
-available. <a>User agents that do not support CSS</a> are expected to render plain text only,
-without styling and positioning features. <a>User agents that do not support a full HTML CSS
-engine</a> are expected to render an equivalent visual representation to what a user agent with a
-full CSS engine would render.</p>
+subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
+HTML, where CSS is available. <a>User agents that do not support CSS</a> are expected to render
+plain text only, without styling and positioning features. <a>User agents that do not support a full
+HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
+with a full CSS engine would render.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
