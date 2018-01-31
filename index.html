@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2017-12-22">22 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-01-31">31 January 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1472,7 +1472,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
    </div>
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-    2011-2017
+    2011-2018
     the Contributors to the WebVTT: The Web Video Text Tracks Format Specification, published by the <a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
       A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
    <hr title="Separator for header">
@@ -2127,7 +2127,19 @@ requirements.</p>
  specification. <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a></p>
     <dt>User agents with no scripting support
     <dd>
-     <p>All processing requirements in this specification apply, except those in <a href="#api">§9 API</a>.</p>
+     <p>All processing requirements in this specification apply, except those in <a href="#dom-construction-rules">§6.5 WebVTT cue text DOM construction rules</a> and <a href="#api">§9 API</a>.</p>
+    <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="user-agents-that-do-not-support-css">User agents that do not support CSS</dfn>
+    <dd>
+     <p>All processing requirements in this specification apply, except parts of <a href="#parsing">§6 Parsing</a> that
+ relate to stylesheets and CSS, and all of <a href="#rendering">§7 Rendering</a> and <a href="#css-extensions">§8 CSS extensions</a>. The user agent
+ must instead only render the text inside <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-1">WebVTT caption or subtitle cue text</a> in an
+ appropriate manner and specifically support the color classes defined in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. Any
+ other styling instructions are optional.</p>
+    <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine</dfn>
+    <dd>
+     <p>All processing requirements in this specification apply, including the color classes defined
+ in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. However, the user agent will need to interpret the CSS related features in <a href="#parsing">§6 Parsing</a>, <a href="#rendering">§7 Rendering</a> and <a href="#css-extensions">§8 CSS extensions</a> in such a way that the rendered results are
+ equivalent to what a full CSS supporting renderer produces.</p>
     <dt>Conformance checkers
     <dd>
      <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-4">WebVTT file</a> conforms to the applicable
@@ -2601,7 +2613,7 @@ order:</p>
     <li>Optionally, one or more U+0020 SPACE characters or U+0009 CHARACTER TABULATION (tab) characters
  followed by a <a data-link-type="dfn" href="#webvtt-cue-settings-list" id="ref-for-webvtt-cue-settings-list-1">WebVTT cue settings list</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-12">WebVTT line terminator</a>.
-    <li>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="cue-payload">cue payload</dfn>: either <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-1">WebVTT caption or subtitle cue text</a>, <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text-1">WebVTT
+    <li>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="cue-payload">cue payload</dfn>: either <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-2">WebVTT caption or subtitle cue text</a>, <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text-1">WebVTT
  chapter title text</a>, or <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text-1">WebVTT metadata text</a>, but it must not contain the substring
  "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).
     <li>A <a data-link-type="dfn" href="#webvtt-line-terminator" id="ref-for-webvtt-line-terminator-13">WebVTT line terminator</a>.
@@ -2768,7 +2780,7 @@ are more mature in HTML and CSS. <a data-link-type="biblio" href="#biblio-html">
  represents the name of the voice.
     <li><a data-link-type="dfn" href="#webvtt-cue-internal-text" id="ref-for-webvtt-cue-internal-text-7">WebVTT cue internal text</a>.
     <li>A <a data-link-type="dfn" href="#webvtt-cue-span-end-tag" id="ref-for-webvtt-cue-span-end-tag-7">WebVTT cue span end tag</a> "<code>v</code>". If this <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-2">WebVTT cue voice span</a> is the
- only <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-4">component</a> of its <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-2">WebVTT caption or
+ only <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-components" id="ref-for-webvtt-caption-or-subtitle-cue-components-4">component</a> of its <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-3">WebVTT caption or
  subtitle cue text</a> sequence, then the end tag may be omitted for brevity.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-language-span">WebVTT cue language span</dfn> consists of the following components, in the order
@@ -3176,7 +3188,7 @@ for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.2" id="file-using-chapter-title-text"><span class="secno">4.6.2. </span><span class="content">WebVTT file using chapter title text</span><a class="self-link" href="#file-using-chapter-title-text"></a></h4>
    <p>A <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-chapter-title-text">WebVTT file using chapter title text<a class="self-link" href="#webvtt-file-using-chapter-title-text"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues" id="ref-for-webvtt-file-using-only-nested-cues-3">WebVTT file using only nested cues</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-4">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text-2">WebVTT chapter title text</a>.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using caption or subtitle cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
-   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-3">WebVTT caption or
+   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-13">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload-5">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-4">WebVTT caption or
 subtitle cue text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport="" id="webvtt-file-using-caption-or-subtitle-cue-text">WebVTT file using caption or subtitle cue text<a class="self-link" href="#webvtt-file-using-caption-or-subtitle-cue-text"></a></dfn>.</p>
    <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default classes for WebVTT Caption or Subtitle Cue Components</span><a class="self-link" href="#default-classes"></a></h2>
    <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
@@ -3543,9 +3555,8 @@ header</i> set, the user agent must run the following steps:</p>
      <p>Otherwise, return null.</p>
    </ol>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT region settings parsing" data-level="6.2" id="region-settings-parsing"><span class="secno">6.2. </span><span class="content">WebVTT region settings parsing</span><a class="self-link" href="#region-settings-parsing"></a></h3>
-   <p>When the <a data-link-type="dfn" href="#webvtt-parser" id="ref-for-webvtt-parser-5">WebVTT parser</a> requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT region settings" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region
-settings</dfn> from a string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>, the user agent must run the following
-algorithm.</p>
+   <p>When the <a data-link-type="dfn" href="#webvtt-parser-algorithm" id="ref-for-webvtt-parser-algorithm-2">WebVTT parser algorithm</a> says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-region-settings">collect WebVTT region settings</dfn> from a
+string <var>input</var> for a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a>, the user agent must run the following algorithm.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-object">WebVTT region object</dfn> is a conceptual construct to represent a <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region-10">WebVTT region</a> that is used as a root node for <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-1">lists of WebVTT node
 objects</a>. This algorithm returns a list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-3">WebVTT Region
 Objects</a>.</p>
@@ -3655,8 +3666,8 @@ means that it is aborted at that point and returns nothing.</p>
      <p>Return <var>percentage</var>.</p>
    </ol>
    <h3 class="heading settled algorithm" data-algorithm="WebVTT cue timings and settings parsing" data-level="6.3" id="cue-timings-and-settings-parsing"><span class="secno">6.3. </span><span class="content">WebVTT cue timings and settings parsing</span><a class="self-link" href="#cue-timings-and-settings-parsing"></a></h3>
-   <p>When the algorithm above requires that the user agent <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="collect WebVTT cue timings and settings" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and
-settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-2">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-23">WebVTT cue</a> <var>cue</var>, the user agent must run the following algorithm.</p>
+   <p>When the algorithm above says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and settings</dfn> from a string <var>input</var> using a <a data-link-type="dfn" href="#text-track-list-of-regions" id="ref-for-text-track-list-of-regions-2">text track list of regions</a> <var>regions</var> for a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-23">WebVTT cue</a> <var>cue</var>, the user
+agent must run the following algorithm.</p>
    <ol class="algorithm" data-algorithm="collect WebVTT cue timings and settings">
     <li>
      <p>Let <var>input</var> be the string being parsed.</p>
@@ -3965,32 +3976,32 @@ Objects</a>:</p>
   classes</a> without implying further meaning (such as italics or bold).</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Italic Object" data-noexport="" id="webvtt-italic-object">WebVTT Italic Objects</dfn>
     <dd>
-     <p>These represent spans of italic text (a <a data-link-type="dfn" href="#webvtt-cue-italics-span" id="ref-for-webvtt-cue-italics-span-2">WebVTT cue italics span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-4">WebVTT caption or
+     <p>These represent spans of italic text (a <a data-link-type="dfn" href="#webvtt-cue-italics-span" id="ref-for-webvtt-cue-italics-span-2">WebVTT cue italics span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-5">WebVTT caption or
   subtitle cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Bold Object" data-noexport="" id="webvtt-bold-object">WebVTT Bold Objects</dfn>
     <dd>
-     <p>These represent spans of bold text (a <a data-link-type="dfn" href="#webvtt-cue-bold-span" id="ref-for-webvtt-cue-bold-span-2">WebVTT cue bold span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-5">WebVTT caption or
+     <p>These represent spans of bold text (a <a data-link-type="dfn" href="#webvtt-cue-bold-span" id="ref-for-webvtt-cue-bold-span-2">WebVTT cue bold span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-6">WebVTT caption or
   subtitle cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Underline Object" data-noexport="" id="webvtt-underline-object">WebVTT Underline Objects</dfn>
     <dd>
-     <p>These represent spans of underline text (a <a data-link-type="dfn" href="#webvtt-cue-underline-span" id="ref-for-webvtt-cue-underline-span-2">WebVTT cue underline span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-6">WebVTT
+     <p>These represent spans of underline text (a <a data-link-type="dfn" href="#webvtt-cue-underline-span" id="ref-for-webvtt-cue-underline-span-2">WebVTT cue underline span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-7">WebVTT
   caption or subtitle cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Ruby Object" data-noexport="" id="webvtt-ruby-object">WebVTT Ruby Objects</dfn>
     <dd>
-     <p>These represent spans of ruby (a <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-3">WebVTT cue ruby span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-7">WebVTT caption or subtitle
+     <p>These represent spans of ruby (a <a data-link-type="dfn" href="#webvtt-cue-ruby-span" id="ref-for-webvtt-cue-ruby-span-3">WebVTT cue ruby span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-8">WebVTT caption or subtitle
   cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Ruby Text Object" data-noexport="" id="webvtt-ruby-text-object">WebVTT Ruby Text Objects</dfn>
     <dd>
-     <p>These represent spans of ruby text (a <a data-link-type="dfn" href="#webvtt-cue-ruby-text-span" id="ref-for-webvtt-cue-ruby-text-span-1">WebVTT cue ruby text span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-8">WebVTT caption or
+     <p>These represent spans of ruby text (a <a data-link-type="dfn" href="#webvtt-cue-ruby-text-span" id="ref-for-webvtt-cue-ruby-text-span-1">WebVTT cue ruby text span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-9">WebVTT caption or
   subtitle cue text</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Voice Object" data-noexport="" id="webvtt-voice-object">WebVTT Voice Objects</dfn>
     <dd>
      <p>These represent spans of text associated with a specific voice (a <a data-link-type="dfn" href="#webvtt-cue-voice-span" id="ref-for-webvtt-cue-voice-span-3">WebVTT cue voice span</a>)
-  in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-9">WebVTT caption or subtitle cue text</a>. A <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-1">WebVTT Voice Object</a> has a value, which is
+  in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-10">WebVTT caption or subtitle cue text</a>. A <a data-link-type="dfn" href="#webvtt-voice-object" id="ref-for-webvtt-voice-object-1">WebVTT Voice Object</a> has a value, which is
   the name of the voice.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT Language Object" data-noexport="" id="webvtt-language-object">WebVTT Language Objects</dfn>
     <dd>
-     <p>These represent spans of text (a <a data-link-type="dfn" href="#webvtt-cue-language-span" id="ref-for-webvtt-cue-language-span-2">WebVTT cue language span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-10">WebVTT caption or
+     <p>These represent spans of text (a <a data-link-type="dfn" href="#webvtt-cue-language-span" id="ref-for-webvtt-cue-language-span-2">WebVTT cue language span</a>) in <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-11">WebVTT caption or
   subtitle cue text</a>, and are used to annotate parts of the cue where the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-2">applicable language</a> might be different than the surrounding
   text’s, without implying further meaning (such as italics or bold).</p>
    </dl>
@@ -4009,7 +4020,7 @@ Objects</a>:</p>
   second, which is the time represented by the timestamp.</p>
    </dl>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue-text-parsing-rules">WebVTT cue text parsing rules</dfn> consist of the following algorithm. The input is a
-string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-11">WebVTT caption or subtitle cue text</a>, and optionally a
+string <var>input</var> supposedly containing <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-12">WebVTT caption or subtitle cue text</a>, and optionally a
 fallback language <var>language</var>. This algorithm returns a <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-2">list of WebVTT Node Objects</a>.</p>
    <ol class="algorithm" data-algorithm="WebVTT cue text parsing">
     <li>
@@ -4433,8 +4444,10 @@ follows:</p>
    <h2 class="heading settled" data-level="7" id="rendering"><span class="secno">7. </span><span class="content">Rendering</span><a class="self-link" href="#rendering"></a></h2>
    <p class="note" role="note">This section describes in some detail how to visually render <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-2">WebVTT caption or
 subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
-HTML. When supporting WebVTT in media players that don’t support CSS, equivalent visual rendering
-will need to be implemented.</p>
+HTML, where CSS is available. <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">User agents that do not support CSS</a> are expected to render
+plain text only, without styling and positioning features. <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">User agents that do not support a full
+HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
+with a full CSS engine would render.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="7.1" id="processing-model"><span class="secno">7.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element), or of another playback
 mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that use these
@@ -5034,7 +5047,7 @@ properties on the root <a data-link-type="dfn" href="#list-of-webvtt-node-object
 then they must be interpreted as defined in the next section.</p>
    <h2 class="heading settled" data-level="8" id="css-extensions"><span class="secno">8. </span><span class="content">CSS extensions</span><a class="self-link" href="#css-extensions"></a></h2>
    <p class="note" role="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
-apply to WebVTT. This section does not apply to user agents that don’t support CSS.</p>
+apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-2">user agents that do not support CSS</a>.</p>
    <h3 class="heading settled" data-level="8.1" id="css-extensions-introduction"><span class="secno">8.1. </span><span class="content">Introduction</span><a class="self-link" href="#css-extensions-introduction"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>The <span class="css">::cue</span> pseudo-element represents a cue.</p>
@@ -6089,8 +6102,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#dom-positionalignsetting-line-right">"line-right"</a><span>, in §9.1</span>
    <li><a href="#dom-vttregion-lines">lines</a><span>, in §9.2</span>
    <li><a href="#list-of-webvtt-node-objects">List of WebVTT Node Objects</a><span>, in §6.4</span>
-   <li><a href="#dom-directionsetting-lr">"lr"</a><span>, in §9.1</span>
    <li><a href="#dom-directionsetting-lr">lr</a><span>, in §9.1</span>
+   <li><a href="#dom-directionsetting-lr">"lr"</a><span>, in §9.1</span>
    <li><a href="#obtain-a-set-of-css-boxes">obtain a set of CSS boxes</a><span>, in §7.3</span>
    <li><a href="#parse-a-percentage-string">parse a percentage string</a><span>, in §6.2</span>
    <li><a href="#parse-the-webvtt-cue-settings">parse the WebVTT cue settings</a><span>, in §6.3</span>
@@ -6127,6 +6140,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#text-vtt">text/vtt</a><span>, in §10.1</span>
    <li><a href="#dom-scrollsetting-up">up</a><span>, in §9.2</span>
    <li><a href="#dom-scrollsetting-up">"up"</a><span>, in §9.2</span>
+   <li><a href="#user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine</a><span>, in §2.1</span>
+   <li><a href="#user-agents-that-do-not-support-css">User agents that do not support CSS</a><span>, in §2.1</span>
    <li><a href="#dom-vttcue-vertical">vertical</a><span>, in §9.1</span>
    <li><a href="#dom-vttregion-viewportanchorx">viewportAnchorX</a><span>, in §9.2</span>
    <li><a href="#dom-vttregion-viewportanchory">viewportAnchorY</a><span>, in §9.2</span>
@@ -6610,6 +6625,19 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <b><a href="#webvtt">#webvtt</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-1">2.1. Conformance classes</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="user-agents-that-do-not-support-css">
+   <b><a href="#user-agents-that-do-not-support-css">#user-agents-that-do-not-support-css</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-user-agents-that-do-not-support-css-1">7. Rendering</a>
+    <li><a href="#ref-for-user-agents-that-do-not-support-css-2">8. CSS extensions</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="user-agents-that-do-not-support-a-full-html-css-engine">
+   <b><a href="#user-agents-that-do-not-support-a-full-html-css-engine">#user-agents-that-do-not-support-a-full-html-css-engine</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">7. Rendering</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue">
@@ -7160,10 +7188,11 @@ title</a>
   <aside class="dfn-panel" data-for="webvtt-caption-or-subtitle-cue-text">
    <b><a href="#webvtt-caption-or-subtitle-cue-text">#webvtt-caption-or-subtitle-cue-text</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-1">4.1. WebVTT file structure</a>
-    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-2">4.2.2. WebVTT caption or subtitle cue text</a>
-    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-3">4.6.3. WebVTT file using caption or subtitle cue text</a>
-    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-4">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-5">(2)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-6">(3)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-7">(4)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-8">(5)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-9">(6)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-10">(7)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-11">(8)</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-1">2.1. Conformance classes</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-2">4.1. WebVTT file structure</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-3">4.2.2. WebVTT caption or subtitle cue text</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-4">4.6.3. WebVTT file using caption or subtitle cue text</a>
+    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-text-5">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-6">(2)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-7">(3)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-8">(4)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-9">(5)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-10">(6)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-11">(7)</a> <a href="#ref-for-webvtt-caption-or-subtitle-cue-text-12">(8)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-caption-or-subtitle-cue-components">
@@ -7374,7 +7403,6 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-parser-1">3.3. WebVTT caption or subtitle cues</a>
     <li><a href="#ref-for-webvtt-parser-2">6.1. WebVTT file parsing</a> <a href="#ref-for-webvtt-parser-3">(2)</a> <a href="#ref-for-webvtt-parser-4">(3)</a>
-    <li><a href="#ref-for-webvtt-parser-5">6.2. WebVTT region settings parsing</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="incremental-webvtt-parser">
@@ -7387,6 +7415,7 @@ title</a>
    <b><a href="#webvtt-parser-algorithm">#webvtt-parser-algorithm</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-parser-algorithm-1">6.1. WebVTT file parsing</a>
+    <li><a href="#ref-for-webvtt-parser-algorithm-2">6.2. WebVTT region settings parsing</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="collect-a-webvtt-block">

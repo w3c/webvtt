@@ -744,7 +744,21 @@ requirements.</p>
  specification. [[!WEBIDL]]</p></dd>
 
  <dt>User agents with no scripting support</dt>
- <dd><p>All processing requirements in this specification apply, except those in [[#api]].</p></dd>
+ <dd><p>All processing requirements in this specification apply, except those in
+ [[#dom-construction-rules]] and [[#api]].</p></dd>
+
+ <dt><dfn>User agents that do not support CSS</dfn></dt>
+ <dd><p>All processing requirements in this specification apply, except parts of [[#parsing]] that
+ relate to stylesheets and CSS, and all of [[#rendering]] and [[#css-extensions]]. The user agent
+ must instead only render the text inside <a>WebVTT caption or subtitle cue text</a> in an
+ appropriate manner and specifically support the color classes defined in [[#default-classes]]. Any
+ other styling instructions are optional.</p> </dd>
+
+ <dt><dfn>User agents that do not support a full HTML CSS engine</dfn></dt>
+ <dd><p>All processing requirements in this specification apply, including the color classes defined
+ in [[#default-classes]]. However, the user agent will need to interpret the CSS related features in
+ [[#parsing]], [[#rendering]] and [[#css-extensions]] in such a way that the rendered results are
+ equivalent to what a full CSS supporting renderer produces.</p></dd>
 
  <dt>Conformance checkers</dt>
  <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
@@ -2783,9 +2797,8 @@ header</i> set, the user agent must run the following steps:</p>
 
 <h3 id=region-settings-parsing algorithm>WebVTT region settings parsing</h3>
 
-<p>When the <a>WebVTT parser</a> requires that the user agent <dfn>collect WebVTT region
-settings</dfn> from a string |input| for a <a>text track</a>, the user agent must run the following
-algorithm.</p>
+<p>When the <a>WebVTT parser algorithm</a> says to <dfn>collect WebVTT region settings</dfn> from a
+string |input| for a <a>text track</a>, the user agent must run the following algorithm.</p>
 
 <p>A <dfn>WebVTT region object</dfn> is a conceptual construct to represent a <a>WebVTT region</a>
 that is used as a root node for <a lt="List of WebVTT node objects">lists of WebVTT node
@@ -2914,9 +2927,9 @@ means that it is aborted at that point and returns nothing.</p>
 
 <h3 id=cue-timings-and-settings-parsing algorithm>WebVTT cue timings and settings parsing</h3>
 
-<p>When the algorithm above requires that the user agent <dfn>collect WebVTT cue timings and
-settings</dfn> from a string |input| using a <a>text track list of regions</a> |regions| for a
-<a>WebVTT cue</a> |cue|, the user agent must run the following algorithm.</p>
+<p>When the algorithm above says to <dfn>collect WebVTT cue timings and settings</dfn> from a string
+|input| using a <a>text track list of regions</a> |regions| for a <a>WebVTT cue</a> |cue|, the user
+agent must run the following algorithm.</p>
 
 <ol algorithm="collect WebVTT cue timings and settings">
 
@@ -4104,8 +4117,10 @@ follows:</p>
 
 <p class="note">This section describes in some detail how to visually render <a>WebVTT caption or
 subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
-HTML. When supporting WebVTT in media players that don't support CSS, equivalent visual rendering
-will need to be implemented.</p>
+HTML, where CSS is available. <a>User agents that do not support CSS</a> are expected to render
+plain text only, without styling and positioning features. <a>User agents that do not support a full
+HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
+with a full CSS engine would render.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
@@ -5017,7 +5032,7 @@ then they must be interpreted as defined in the next section.</p>
 <h2 id=css-extensions>CSS extensions</h2>
 
 <p class="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
-apply to WebVTT. This section does not apply to user agents that don't support CSS.</p>
+apply to WebVTT. This section does not apply to <a>user agents that do not support CSS</a>.</p>
 
 
 <h3 id=css-extensions-introduction>Introduction</h3>
