@@ -22,3 +22,7 @@ To generate a WD snapshot, run e.g.:
     $ ./snapshot.sh WD 2016-01-01 2015-12-08
 
 Also see https://github.com/w3c/webvtt/commit/754f13e3cf03d6036c3e4628c6920d17b412f778 for manual fixup of the generated output.
+
+To format the index.bs file, run:
+
+  $ ./format.py index.bs
