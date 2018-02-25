@@ -475,7 +475,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <p>Since the cues in these examples are horizontal, the "position" setting refers to a percentage
  of the width of the video viewpoint. If the text were vertical, the "position" setting would refer
- to the height of the viewport.</p>
+ to the height of the video viewport.</p>
 
  <p>The "line-left" or "line-right" only refers to the physical side of the box to which the
  "position" setting applies, in a way which is agnostic regarding the horizontal or vertical
@@ -1376,7 +1376,7 @@ together, which is particularly important when scrolling up.</p>
  <dt><dfn lt="WebVTT region viewport anchor">A region viewport anchor point</dfn></dt>
  <dd>
   <p>Two numbers giving the x and y coordinates within the video viewport to which the region anchor
-  point is anchored. Defaults to (0,100), i.e. the bottom left corner of the viewport.</p>
+  point is anchored. Defaults to (0,100), i.e. the bottom left corner of the video viewport.</p>
  </dd>
 
  <dt><dfn lt="WebVTT region scroll">A scroll value</dfn></dt>
@@ -1399,7 +1399,7 @@ together, which is particularly important when scrolling up.</p>
 <div class="note">
  <p>The following diagram illustrates how anchoring of a region to a video viewport works. The black
  cross is the anchor, orange explains the anchor's offset within the region and green the anchor's
- offset within the viewport. Think of it as sticking a pin through a note onto a board:</p>
+ offset within the video viewport. Think of it as sticking a pin through a note onto a board:</p>
  <p><img src="webvtt-region-diagram.png" alt="visual explanation of WebVTT regions"
  longdesc=#regionsExplained></p>
  <p id=regionsExplained>Image description: Within the video viewport, there is a WebVTT region.
@@ -1974,8 +1974,8 @@ order given:</p>
 <p class="note">The <a>WebVTT region viewport anchor setting</a> provides a tuple of two percentages
 that specify the point within the video viewport that the region anchor point is anchored to. The
 first percentage measures the x-dimension and the second percentage measures the y-dimension from
-the top left corner of the video viewport box. If no viewport anchor is given, it defaults to 0%,
-100% (i.e. the bottom left corner).</p>
+the top left corner of the video viewport box. If no region viewport anchor is given, it defaults to
+0%, 100% (i.e. the bottom left corner).</p>
 
 <p class="note">For browsers, the region maps to an absolute positioned CSS box relative to the
 video viewport, i.e. there is a relative positioned box that represents the video viewport relative
@@ -2089,10 +2089,10 @@ for vertical cues, it's the horizontal offset. The offset is for the <a lt="WebV
 alignment">start</a>, <a lt="WebVTT cue line center alignment">center</a>, or <a lt="WebVTT cue line
 end alignment">end</a> of the cue box, depending on the <a>WebVTT cue line alignment</a> value - <a
 lt="WebVTT cue line start alignment">start</a> by default. The offset can be given either as a
-percentage of the video dimension or as a line number. Line numbers are based on the size of the
-first line of the cue. Positive line numbers count from the start of the video viewport (the first
-line is numbered 0), negative line numbers from the end of the viewport (the last line is numbered
-&#x2212;1).</p>
+percentage of the relevant writing-mode dependent video viewport dimension or as a line number. Line
+numbers are based on the size of the first line of the cue. Positive line numbers count from the
+start of the video viewport (the first line is numbered 0), negative line numbers from the end of
+the video viewport (the last line is numbered &#x2212;1).</p>
 
 <p>A <dfn>WebVTT position cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -2137,7 +2137,7 @@ given:</p>
 <p class="note">A <a>WebVTT size cue setting</a> configures the size of the <a lt="WebVTT cue
 box">cue box</a> in the same direction as the <a>WebVTT position cue setting</a>. For horizontal
 cues, this is the width of the <a lt="WebVTT cue box">cue box</a>. It is given as a percentage of
-the width of the viewport.</p>
+the width of the video viewport.</p>
 
 <p>A <dfn>WebVTT alignment cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -4215,7 +4215,7 @@ manner suiting the user.</p>
      <li><p>Properties on |regionNode| have their values set as defined in the next section. (That
      section uses some of the variables whose values were calculated earlier in this
      algorithm.)</p></li>
-     <li><p>The viewport (and initial containing block) is video's rendering area.</p></li>
+     <li><p>The video viewport (and initial containing block) is video's rendering area.</p></li>
     </ol>
    </li>
 
@@ -4885,7 +4885,7 @@ constraints: [[!CSS22]]</p>
 
  <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
 
- <li>The viewport (and initial containing block) is |video|'s rendering area.</li>
+ <li>The video viewport (and initial containing block) is |video|'s rendering area.</li>
 
 </ul>
 
