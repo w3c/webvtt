@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-01-31">31 January 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-02-25">25 February 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1895,8 +1895,8 @@ Sur les &lt;i.foreignphrase>&lt;lang en>playground&lt;/lang>&lt;/i>, ici à Mont
 ::cue(.loud) { font-size: 2em }
 </pre>
    </div>
-   <div class="example" id="example-0c2976c9">
-    <a class="self-link" href="#example-0c2976c9"></a> 
+   <div class="example" id="example-b30cb609">
+    <a class="self-link" href="#example-b30cb609"></a> 
     <p>This example shows how to position cues at explicit positions in the video viewport.</p>
 <pre>WEBVTT
 
@@ -1911,7 +1911,7 @@ What are you waiting for?
 </pre>
     <p>Since the cues in these examples are horizontal, the "position" setting refers to a percentage
  of the width of the video viewpoint. If the text were vertical, the "position" setting would refer
- to the height of the viewport.</p>
+ to the height of the video viewport.</p>
     <p>The "line-left" or "line-right" only refers to the physical side of the box to which the
  "position" setting applies, in a way which is agnostic regarding the horizontal or vertical
  direction of the cue. It does not affect or relate to the direction or position of the text itself
@@ -2514,7 +2514,7 @@ together, which is particularly important when scrolling up.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region viewport anchor" data-noexport="" id="webvtt-region-viewport-anchor">A region viewport anchor point</dfn>
     <dd>
      <p>Two numbers giving the x and y coordinates within the video viewport to which the region anchor
-  point is anchored. Defaults to (0,100), i.e. the bottom left corner of the viewport.</p>
+  point is anchored. Defaults to (0,100), i.e. the bottom left corner of the video viewport.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region scroll" data-noexport="" id="webvtt-region-scroll">A scroll value</dfn>
     <dd>
      <p>One of the following:</p>
@@ -2531,7 +2531,7 @@ together, which is particularly important when scrolling up.</p>
    <div class="note" role="note">
     <p>The following diagram illustrates how anchoring of a region to a video viewport works. The black
  cross is the anchor, orange explains the anchor’s offset within the region and green the anchor’s
- offset within the viewport. Think of it as sticking a pin through a note onto a board:</p>
+ offset within the video viewport. Think of it as sticking a pin through a note onto a board:</p>
     <p><img alt="visual explanation of WebVTT regions" longdesc="#regionsExplained" src="webvtt-region-diagram.png"></p>
     <p id="regionsExplained">Image description: Within the video viewport, there is a WebVTT region.
  Inside the region, there is an anchor point marked with a black cross. The vertical and horizontal
@@ -2950,8 +2950,8 @@ order given:</p>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-viewport-anchor-setting" id="ref-for-webvtt-region-viewport-anchor-setting-2">WebVTT region viewport anchor setting</a> provides a tuple of two percentages
 that specify the point within the video viewport that the region anchor point is anchored to. The
 first percentage measures the x-dimension and the second percentage measures the y-dimension from
-the top left corner of the video viewport box. If no viewport anchor is given, it defaults to 0%,
-100% (i.e. the bottom left corner).</p>
+the top left corner of the video viewport box. If no region viewport anchor is given, it defaults to
+0%, 100% (i.e. the bottom left corner).</p>
    <p class="note" role="note">For browsers, the region maps to an absolute positioned CSS box relative to the
 video viewport, i.e. there is a relative positioned box that represents the video viewport relative
 to which the regions are absolutely positioned. Overflow is hidden.</p>
@@ -3044,10 +3044,10 @@ given:</p>
 viewport’s edge in the direction orthogonal to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-12">writing
 direction</a>. For horizontal cues, this is the vertical offset from the top of the video viewport,
 for vertical cues, it’s the horizontal offset. The offset is for the <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-2">start</a>, <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-1">center</a>, or <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-1">end</a> of the cue box, depending on the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-5">WebVTT cue line alignment</a> value - <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-3">start</a> by default. The offset can be given either as a
-percentage of the relevant writing-mode dependent video dimension or as a line number. Line numbers
-are based on the size of the first line of the cue. Positive line numbers count from the start of
-the video viewport (the first line is numbered 0), negative line numbers from the end of the
-viewport (the last line is numbered −1).</p>
+percentage of the relevant writing-mode dependent video viewport dimension or as a line number. Line
+numbers are based on the size of the first line of the cue. Positive line numbers count from the
+start of the video viewport (the first line is numbered 0), negative line numbers from the end of
+the video viewport (the last line is numbered −1).</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-position-cue-setting">WebVTT position cue setting</dfn> consists of the following components, in the order
 given:</p>
    <ol>
@@ -3084,7 +3084,7 @@ given:</p>
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-size-cue-setting" id="ref-for-webvtt-size-cue-setting-2">WebVTT size cue setting</a> configures the size of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-25">cue box</a> in the same direction as the <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-4">WebVTT position cue setting</a>. For horizontal
 cues, this is the width of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-26">cue box</a>. It is given as a percentage of
-the width of the viewport.</p>
+the width of the video viewport.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-alignment-cue-setting">WebVTT alignment cue setting</dfn> consists of the following components, in the order
 given:</p>
    <ol>
@@ -3287,6 +3287,8 @@ classes, the order of appearance determines the cascade of the classes.</p>
 &lt;c.yellow.bg_blue.magenta.bg_black>This is magenta text on a black background&lt;/c>
 </pre>
    </div>
+   <p class="note" role="note">Default classes can be changed by authors, e.g. ::cue(.yellow) {color:cyan} would
+change all .yellow classed text to cyan.</p>
    <h2 class="heading settled" data-level="6" id="parsing"><span class="secno">6. </span><span class="content">Parsing</span><a class="self-link" href="#parsing"></a></h2>
    <p>WebVTT file parsing is the same for all types of WebVTT files, including captions, subtitles,
 chapters, or metadata. Most of the steps will be skipped for chapters or metadata files.</p>
@@ -4520,7 +4522,7 @@ manner suiting the user.</p>
      section uses some of the variables whose values were calculated earlier in this
      algorithm.)</p>
         <li>
-         <p>The viewport (and initial containing block) is video’s rendering area.</p>
+         <p>The video viewport (and initial containing block) is video’s rendering area.</p>
        </ol>
       <li>
        <p>Add the CSS box <var>box</var> to <var>output</var>.</p>
@@ -4628,7 +4630,7 @@ must run the following algorithm.</p>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-11">WebVTT cue
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>. Otherwise, let <var>width</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
  (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
@@ -4947,7 +4949,7 @@ Red or green?
  defined in the next section. (That section uses some of the variables whose values were calculated
  earlier in this algorithm.)
     <li>Text runs must be wrapped according to the CSS line-wrapping rules.
-    <li>The viewport (and initial containing block) is <var>video</var>’s rendering area.
+    <li>The video viewport (and initial containing block) is <var>video</var>’s rendering area.
    </ul>
    <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with
 their positions.</p>
@@ -5033,7 +5035,7 @@ settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-relative">relative</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-4/#valdef-unicode-bidi-plaintext">plaintext</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <span class="css">auto</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-text-align">text-align</a> property must be set as described for the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-15">List of WebVTT Node
@@ -6341,6 +6343,11 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[css-sizing-3]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[CSS-SYNTAX-3]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-syntax-3/#parse-a-stylesheet">parse a stylesheet</a>
@@ -6364,6 +6371,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <ul>
      <li><a href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a>
      <li><a href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[css-transitions-1]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a>
+     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a>
     </ul>
    <li>
     <a data-link-type="biblio">[css-ui-4]</a> defines the following terms:
@@ -6406,18 +6419,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>
      <li><a href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
      <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[css3-selectors]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/selectors-3/#sel-after">::after</a>
-     <li><a href="https://drafts.csswg.org/selectors-3/#sel-before">::before</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[css3-transitions]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a>
-     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSSOM]</a> defines the following terms:
@@ -6482,6 +6483,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://mimesniff.spec.whatwg.org/#mime-type">mime type</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[selectors-3]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/selectors-3/#sel-after">::after</a>
+     <li><a href="https://drafts.csswg.org/selectors-3/#sel-before">::before</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[SELECTORS4]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a>
@@ -6531,6 +6538,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>David Baron; Florian Rivoal. <a href="http://drafts.csswg.org/css-overflow/">CSS Overflow Module Level 3</a>. URL: <a href="http://drafts.csswg.org/css-overflow/">http://drafts.csswg.org/css-overflow/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
    <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
+   <dt id="biblio-css-sizing-3">[CSS-SIZING-3]
+   <dd>Elika Etemad. <a href="https://drafts.csswg.org/css-sizing-3/">CSS Intrinsic &amp; Extrinsic Sizing Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-sizing-3/">https://drafts.csswg.org/css-sizing-3/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
    <dd>Tab Atkins Jr.; Simon Sapin. <a href="https://drafts.csswg.org/css-syntax/">CSS Syntax Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-syntax/">https://drafts.csswg.org/css-syntax/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]
@@ -6539,6 +6548,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="https://drafts.csswg.org/css-text-4/">CSS Text Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-text-4/">https://drafts.csswg.org/css-text-4/</a>
    <dt id="biblio-css-text-decor-3">[CSS-TEXT-DECOR-3]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-text-decor-3/">https://drafts.csswg.org/css-text-decor-3/</a>
+   <dt id="biblio-css-transitions-1">[CSS-TRANSITIONS-1]
+   <dd>David Baron; Dean Jackson; Brian Birtles. <a href="https://drafts.csswg.org/css-transitions/">CSS Transitions</a>. URL: <a href="https://drafts.csswg.org/css-transitions/">https://drafts.csswg.org/css-transitions/</a>
    <dt id="biblio-css-ui-4">[CSS-UI-4]
    <dd>Florian Rivoal. <a href="https://drafts.csswg.org/css-ui-4/">CSS Basic User Interface Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-ui-4/">https://drafts.csswg.org/css-ui-4/</a>
    <dt id="biblio-css-values">[CSS-VALUES]
@@ -6546,17 +6557,13 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-3/">https://drafts.csswg.org/css-writing-modes-3/</a>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
-   <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-4/">CSS Writing Modes Level 4</a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-css22">[CSS22]
    <dd>Bert Bos. <a href="https://drafts.csswg.org/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="https://drafts.csswg.org/css2/">https://drafts.csswg.org/css2/</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
-   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/css3-color">https://www.w3.org/TR/css3-color</a>
+   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css-color-3/">CSS Color Module Level 3</a>. 5 December 2017. CR. URL: <a href="https://www.w3.org/TR/css-color-3/">https://www.w3.org/TR/css-color-3/</a>
    <dt id="biblio-css3-ruby">[CSS3-RUBY]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="https://drafts.csswg.org/css-ruby-1/">https://drafts.csswg.org/css-ruby-1/</a>
-   <dt id="biblio-css3-selectors">[CSS3-SELECTORS]
-   <dd>Tantek Çelik; et al. <a href="https://drafts.csswg.org/selectors-3/">Selectors Level 3</a>. URL: <a href="https://drafts.csswg.org/selectors-3/">https://drafts.csswg.org/selectors-3/</a>
-   <dt id="biblio-css3-transitions">[CSS3-TRANSITIONS]
-   <dd>Dean Jackson; et al. <a href="https://drafts.csswg.org/css-transitions/">CSS Transitions</a>. URL: <a href="https://drafts.csswg.org/css-transitions/">https://drafts.csswg.org/css-transitions/</a>
    <dt id="biblio-cssom">[CSSOM]
    <dd>Simon Pieters; Glenn Adams. <a href="https://drafts.csswg.org/cssom/">CSS Object Model (CSSOM)</a>. URL: <a href="https://drafts.csswg.org/cssom/">https://drafts.csswg.org/cssom/</a>
    <dt id="biblio-dom">[DOM]
@@ -6571,8 +6578,10 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-rfc3629">[RFC3629]
    <dd>F. Yergeau. <a href="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>. November 2003. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3629">https://tools.ietf.org/html/rfc3629</a>
+   <dt id="biblio-selectors-3">[SELECTORS-3]
+   <dd>Tantek Çelik; et al. <a href="https://drafts.csswg.org/selectors-3/">Selectors Level 3</a>. URL: <a href="https://drafts.csswg.org/selectors-3/">https://drafts.csswg.org/selectors-3/</a>
    <dt id="biblio-selectors4">[SELECTORS4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/selectors">Selectors Level 4</a>. URL: <a href="https://drafts.csswg.org/selectors">https://drafts.csswg.org/selectors</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
