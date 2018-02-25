@@ -906,9 +906,7 @@ fragment:</p>
   (using the line dimensions of the first line of the cue), or whether it is a percentage of the
   dimension of the video. The flag is set to true when lines are counted, and false otherwise.</p>
 
-  <p>Cues whose <a>WebVTT cue snap-to-lines flag</a> is true will be placed within the title-safe
-  area on user agents that use overscan. Cues where the flag is false will be offset as requested
-  (modulo overlap avoidance if multiple cues are in the same place).</p>
+  <p>Cues where the flag is false will be offset as requested modulo overlap avoidance if multiple cues are in the same place.</p>
 
   <p>By default, the <a lt="WebVTT cue snap-to-lines flag">snap-to-lines flag</a> is set to
   true.</p>
@@ -1057,9 +1055,9 @@ fragment:</p>
 
   <ol algorithm="computed position">
 
-   <li><p>If the <a lt="WebVTT cue position">position</a> is numeric, then return the value of the
-   <a lt="WebVTT cue position">position</a> and abort these steps. (Otherwise, the <a lt="WebVTT cue
-   position">position</a> is the special value <a lt="WebVTT cue automatic
+   <li><p>If the <a lt="WebVTT cue position">position</a> is numeric between 0 and 100, then return
+   the value of the <a lt="WebVTT cue position">position</a> and abort these steps. (Otherwise, the
+   <a lt="WebVTT cue position">position</a> is the special value <a lt="WebVTT cue automatic
    position">auto</a>.)</p></li>
 
    <li><p>If the <a lt="WebVTT cue text alignment">cue text alignment</a> is <a lt="WebVTT cue left
@@ -4479,70 +4477,6 @@ must run the following algorithm.</p>
 
  </li>
 
- <li>
-
-  <p>If the <a>WebVTT cue snap-to-lines flag</a> is true, then run the appropriate steps from the
-  following list:</p>
-
-  <dl class="switch">
-
-   <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
-   direction">horizontal</a></dt>
-   <dd>
-
-    <ol>
-
-     <li><p>Let |edge margin| be a user-agent-defined horizontal length, expressed as a percentage
-     of the width of the |video|'s rendering area, which will be used to define a margin at the left
-     and right edges of the video into which this cue will not be placed. In situations with
-     overscan, this margin should be sufficient to place the cue within the title-safe area. Even in
-     the absence of overscan, it enhances readability to avoid text being aligned precisely on the
-     left or right edge of the video.</p></li>
-
-     <li><p>If |x-position| is less than |edge margin| and the sum of |x-position| and |size| is
-     more than |edge margin|, then increase |x-position| by |edge margin| and decrease |size| by the
-     same amount.</p></li>
-
-     <li><p>Let |right margin edge| be 100 minus |edge margin|.</p></li>
-
-     <li><p>If |x-position| is less than |right margin edge|, and the sum of |x-position| and |size|
-     is more than |right margin edge|, then decrease |size| by |edge margin|.</p></li>
-
-    </ol>
-
-   </dd>
-
-   <dt>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue vertical growing left writing
-   direction">vertical growing left</a> or <a lt="WebVTT cue vertical growing right writing
-   direction">vertical growing right</a></dt>
-   <dd>
-
-    <ol>
-
-     <li><p>Let |edge margin| be a user-agent-defined vertical length, expressed as a percentage of
-     the height of the |video|'s rendering area, which will be used to define a margin at the top
-     and bottom edges of the video into which this cue will not be placed. In situations with
-     overscan, this margin should be sufficient to place the cue within the title-safe area. Even in
-     the absence of overscan, it enhances readability to avoid text being aligned precisely on the
-     left or right edge of the video.</p></li>
-
-     <li><p>If |y-position| is less than |edge margin| and the sum of |y-position| and |size| is
-     more than |edge margin|, then increase |y-position| by |edge margin| and decrease |size| by the
-     same amount.</p></li>
-
-     <li><p>Let |bottom margin edge| be 100 minus |edge margin|.</p></li>
-
-     <li><p>If |y-position| is less than |bottom margin edge|, and the sum of |y-position| and
-     |size| is more than |right margin edge|, then decrease |size| by |edge margin|.</p></li>
-
-    </ol>
-
-   </dd>
-
-  </dl>
-
- </li>
-
  <li><p>Let |left| be ''|x-position|&#x2009;vw'' and |top| be ''|y-position|&#x2009;vh''. (These are
  CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
  CSS units.) [[!CSS-VALUES]]</p></li>
@@ -4579,37 +4513,11 @@ must run the following algorithm.</p>
 
      <li>
 
-      <p><strong>Horizontal</strong>: Let |margin| be a user-agent-defined vertical length which
-      will be used to define a margin at the top and bottom edges of the video into which cues will
-      not be placed. In situations with overscan, this margin should be sufficient to place all cues
-      within the title-safe area. Even in the absence of overscan, it enhances readability to avoid
-      text being aligned precisely on the left or right edge of the video.</p>
-
-      <p><strong>Vertical</strong>: Let |margin| be a user-agent-defined horizontal length which
-      will be used to define a margin at the left and right edges of the video into which cues will
-      not be placed. In situations with overscan, this margin should be sufficient to place all cues
-      within the title-safe area. Even in the absence of overscan, it enhances readability to avoid
-      text being aligned precisely on the left or right edge of the video.</p>
-
-     </li>
-
-     <li>
-
       <p><strong>Horizontal</strong>: Let |full dimension| be the height of |video|'s rendering
       area.</p>
 
       <p><strong>Vertical</strong>: Let |full dimension| be the width of |video|'s rendering
       area.</p>
-
-      <p>These dimensions must not be adjusted for overscan. (The algorithm does that
-      separately.)</p>
-
-     </li>
-
-     <li>
-
-      <p>Let |max dimension| be
-      <var>full&nbsp;dimension</var>&nbsp;-&nbsp;(2&nbsp;&times;&nbsp;|margin|).</p>
 
      </li>
 
@@ -4639,8 +4547,6 @@ must run the following algorithm.</p>
       <p>If |line| is less than zero then increase |position| by |max dimension|, and negate
       |step|.</p>
 
-      <p>Otherwise, increase |position| by |margin|.</p>
-
      </li>
 
      <li>
@@ -4656,17 +4562,7 @@ must run the following algorithm.</p>
      <li><p>Remember the position of all the boxes in |boxes| as their |specified
      position|.</p></li>
 
-     <li>
-
-      <p><strong>Horizontal</strong>: Let |title area| be a box that covers all of the |video|'s
-      rendering area except for a height of |margin| at the top of the rendering area and a height
-      of |margin| at the bottom of the rendering area.</p>
-
-      <p><strong>Vertical</strong>: Let |title area| be a box that covers all of the |video|'s
-      rendering area except for a width of |margin| at the left of the rendering area and a width of
-      |margin| at the right of the rendering area.</p>
-
-     </li>
+     <li><p>Let |title area| be a box that covers all of the |video|'s rendering area.</p></li>
 
      <li><p><i>Step loop</i>: If none of the boxes in |boxes| would overlap any of the boxes in
      |output|, and all of the boxes in |boxes| are entirely within the |title area| box, then jump
