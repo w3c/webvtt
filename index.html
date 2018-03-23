@@ -2138,8 +2138,15 @@ requirements.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine</dfn>
     <dd>
      <p>All processing requirements in this specification apply, including the color classes defined
- in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. However, the user agent will need to interpret the CSS related features in <a href="#parsing">§6 Parsing</a>, <a href="#rendering">§7 Rendering</a> and <a href="#css-extensions">§8 CSS extensions</a> in such a way that the rendered results are
+ in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. However, the user agent will need to apply the CSS related features in <a href="#parsing">§6 Parsing</a>, <a href="#rendering">§7 Rendering</a> and <a href="#css-extensions">§8 CSS extensions</a> in such a way that the rendered results are
  equivalent to what a full CSS supporting renderer produces.</p>
+    <dt><dfn data-dfn-type="dfn" data-noexport="" id="user-agents-that-support-a-full-html-css-engine">User agents that support a full HTML CSS engine<a class="self-link" href="#user-agents-that-support-a-full-html-css-engine"></a></dfn>
+    <dd>
+     <p>All processing requirements in this specification apply. However, only a limited set of CSS
+ styles is allowed because <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">user agents that do not support a full HTML CSS engine</a> will need
+ to implement CSS functionality equivalents. User agents that support a full CSS engine must
+ therefore limit the CSS styles they apply for WebVTT so as to enable identical rendering without
+ bleeding in extra CSS styles that are beyond the WebVTT specification.</p>
     <dt>Conformance checkers
     <dd>
      <p>Conformance checkers must verify that a <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-4">WebVTT file</a> conforms to the applicable
@@ -3287,6 +3294,8 @@ classes, the order of appearance determines the cascade of the classes.</p>
 &lt;c.yellow.bg_blue.magenta.bg_black>This is magenta text on a black background&lt;/c>
 </pre>
    </div>
+   <p class="note" role="note">Default classes can be changed by authors, e.g. ::cue(.yellow) {color:cyan} would
+change all .yellow classed text to cyan.</p>
    <h2 class="heading settled" data-level="6" id="parsing"><span class="secno">6. </span><span class="content">Parsing</span><a class="self-link" href="#parsing"></a></h2>
    <p>WebVTT file parsing is the same for all types of WebVTT files, including captions, subtitles,
 chapters, or metadata. Most of the steps will be skipped for chapters or metadata files.</p>
@@ -4445,7 +4454,7 @@ follows:</p>
    <p class="note" role="note">This section describes in some detail how to visually render <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-2">WebVTT caption or
 subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
 HTML, where CSS is available. <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">User agents that do not support CSS</a> are expected to render
-plain text only, without styling and positioning features. <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">User agents that do not support a full
+plain text only, without styling and positioning features. <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-2">User agents that do not support a full
 HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
 with a full CSS engine would render.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="7.1" id="processing-model"><span class="secno">7.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
@@ -6077,6 +6086,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#dom-scrollsetting-up">"up"</a><span>, in §9.2</span>
    <li><a href="#user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine</a><span>, in §2.1</span>
    <li><a href="#user-agents-that-do-not-support-css">User agents that do not support CSS</a><span>, in §2.1</span>
+   <li><a href="#user-agents-that-support-a-full-html-css-engine">User agents that support a full HTML CSS engine</a><span>, in §2.1</span>
    <li><a href="#dom-vttcue-vertical">vertical</a><span>, in §9.1</span>
    <li><a href="#dom-vttregion-viewportanchorx">viewportAnchorX</a><span>, in §9.2</span>
    <li><a href="#dom-vttregion-viewportanchory">viewportAnchorY</a><span>, in §9.2</span>
@@ -6579,7 +6589,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
   <aside class="dfn-panel" data-for="user-agents-that-do-not-support-a-full-html-css-engine">
    <b><a href="#user-agents-that-do-not-support-a-full-html-css-engine">#user-agents-that-do-not-support-a-full-html-css-engine</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">7. Rendering</a>
+    <li><a href="#ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">2.1. Conformance classes</a>
+    <li><a href="#ref-for-user-agents-that-do-not-support-a-full-html-css-engine-2">7. Rendering</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue">

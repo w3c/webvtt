@@ -756,9 +756,16 @@ requirements.</p>
 
  <dt><dfn>User agents that do not support a full HTML CSS engine</dfn></dt>
  <dd><p>All processing requirements in this specification apply, including the color classes defined
- in [[#default-classes]]. However, the user agent will need to interpret the CSS related features in
+ in [[#default-classes]]. However, the user agent will need to apply the CSS related features in
  [[#parsing]], [[#rendering]] and [[#css-extensions]] in such a way that the rendered results are
  equivalent to what a full CSS supporting renderer produces.</p></dd>
+
+ <dt><dfn>User agents that support a full HTML CSS engine</dfn></dt>
+ <dd><p>All processing requirements in this specification apply. However, only a limited set of CSS
+ styles is allowed because <a>user agents that do not support a full HTML CSS engine</a> will need
+ to implement CSS functionality equivalents. User agents that support a full CSS engine must
+ therefore limit the CSS styles they apply for WebVTT so as to enable identical rendering without
+ bleeding in extra CSS styles that are beyond the WebVTT specification.</p></dd>
 
  <dt>Conformance checkers</dt>
  <dd><p>Conformance checkers must verify that a <a>WebVTT file</a> conforms to the applicable
@@ -2421,6 +2428,10 @@ classes, the order of appearance determines the cascade of the classes.</p>
  </pre>
 
 </div>
+
+<p class=note>Default classes can be changed by authors, e.g. ::cue(.yellow) {color:cyan} would
+change all .yellow classed text to cyan.</p>
+
 
 
 <h2 id=parsing>Parsing</h2>
