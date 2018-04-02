@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-04-01">1 April 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-04-02">2 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2192,6 +2192,16 @@ into a region, which is a subarea of the video viewport.</p>
    <h3 class="heading settled" data-level="3.2" id="video-viewport"><span class="secno">3.2. </span><span class="content">Video viewport</span><a class="self-link" href="#video-viewport"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="video-viewport0">video viewport</dfn> is the video’s rendering area which in the case
 of HTML5 is defined by the <var>video</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/css-images-3/#concrete-object-size">concrete object size</a>.</p>
+   <p>The following video-viewport-percentage lengths are defined analogously to how CSS defines
+viewport-percentage-lengths <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a>:</p>
+   <dl>
+    <dt><dfn data-dfn-type="dfn" data-lt="vvw" data-noexport="" id="vvw">vvw unit<a class="self-link" href="#vvw"></a></dfn>
+    <dd>
+     <p>Equal to 1% of the width of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-12">video viewport</a>.</p>
+    <dt><dfn data-dfn-type="dfn" data-lt="vvh" data-noexport="" id="vvh">vvh unit<a class="self-link" href="#vvh"></a></dfn>
+    <dd>
+     <p>Equal to 1% of the height of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-13">video viewport</a>.</p>
+   </dl>
    <h3 class="heading settled" data-level="3.3" id="model-cues"><span class="secno">3.3. </span><span class="content">WebVTT cues</span><a class="self-link" href="#model-cues"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-cue">WebVTT cue</dfn> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue">text track cue</a> <a data-link-type="biblio" href="#biblio-html">[HTML]</a> that additionally consist of the
 following:</p>
@@ -2208,7 +2218,7 @@ fragment:</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue box" data-noexport="" id="webvtt-cue-box">A cue box</dfn>
     <dd>
      <p>The cue box of a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-5">WebVTT cue</a> is a box within which the text of all lines of the cue is to
-  be rendered. It is either rendered into the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-12">video viewport</a> or a region inside the video
+  be rendered. It is either rendered into the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-14">video viewport</a> or a region inside the video
   viewport if the cue is part of a region.</p>
      <p class="note" role="note">The position of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-6">cue box</a> within the video viewport’s
   or region’s dimensions depends on the value of the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-1">WebVTT cue position</a> and the <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-1">WebVTT
@@ -2219,7 +2229,7 @@ fragment:</p>
      <p>A writing direction, either</p>
      <ul>
       <li><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue horizontal writing direction" data-noexport="" id="webvtt-cue-horizontal-writing-direction">horizontal</dfn> (a line extends
-   horizontally and is offset vertically from the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-13">video viewport</a>’s top edge, with consecutive
+   horizontally and is offset vertically from the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-15">video viewport</a>’s top edge, with consecutive
    lines displayed below each other),
       <li><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue vertical growing left writing direction" data-noexport="" id="webvtt-cue-vertical-growing-left-writing-direction">vertical growing left</dfn> (a
    line extends vertically and is offset horizontally from the video viewport’s right edge, with
@@ -2250,7 +2260,7 @@ fragment:</p>
      <p>The <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-4">line</a> defines positioning of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-8">cue
   box</a>.</p>
      <p>The <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-5">line</a> offsets the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-9">cue box</a> from the
-  top, the right or left of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-14">video viewport</a> as defined by the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-3">writing direction</a>, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-2">snap-to-lines
+  top, the right or left of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-16">video viewport</a> as defined by the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-3">writing direction</a>, the <a data-link-type="dfn" href="#webvtt-cue-snap-to-lines-flag" id="ref-for-webvtt-cue-snap-to-lines-flag-2">snap-to-lines
   flag</a>, or the lines occupied by any other showing tracks.</p>
      <p>The <a data-link-type="dfn" href="#webvtt-cue-line" id="ref-for-webvtt-cue-line-6">line</a> is set either as a number of lines, a percentage of the
   video viewport height or width, or as the special value <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT cue line
@@ -2336,7 +2346,7 @@ fragment:</p>
      <p class="note" role="note">Since the default value of the <a data-link-type="dfn" href="#webvtt-cue-position-alignment" id="ref-for-webvtt-cue-position-alignment-1">WebVTT cue position alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-center-alignment" id="ref-for-webvtt-cue-center-alignment-1">center</a>, if there is no <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-5">WebVTT cue text alignment</a> setting for a cue, the <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-10">WebVTT cue position</a> defaults to 50%.</p>
      <p class="note" role="note">Even for <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-6">horizontal</a> cues with
   right-to-left cue text, the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-16">cue box</a> is positioned from the left edge of
-  the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-15">video viewport</a>. This allows defining a rendering space template which can be filled
+  the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-17">video viewport</a>. This allows defining a rendering space template which can be filled
   with either left-to-right or right-to-left cue text, or both.</p>
      <p>For <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-12">WebVTT cues</a> that have a <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-3">size</a> other than 100%, and a <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-6">text alignment</a> of <a data-link-type="dfn" href="#webvtt-cue-start-alignment" id="ref-for-webvtt-cue-start-alignment-1">start</a> or <a data-link-type="dfn" href="#webvtt-cue-end-alignment" id="ref-for-webvtt-cue-end-alignment-1">end</a>, authors must not use the default <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-3">auto</a> <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-11">position</a>.</p>
      <p class="note" role="note">When the <a data-link-type="dfn" href="#webvtt-cue-text-alignment" id="ref-for-webvtt-cue-text-alignment-7">text alignment</a> is <a data-link-type="dfn" href="#webvtt-cue-start-alignment" id="ref-for-webvtt-cue-start-alignment-2">start</a> or <a data-link-type="dfn" href="#webvtt-cue-end-alignment" id="ref-for-webvtt-cue-end-alignment-2">end</a>, the <a data-link-type="dfn" href="#webvtt-cue-automatic-position" id="ref-for-webvtt-cue-automatic-position-4">auto</a> <a data-link-type="dfn" href="#webvtt-cue-position" id="ref-for-webvtt-cue-position-12">position</a> is 50%. This is different
@@ -2491,7 +2501,7 @@ cues</a> are the <a data-link-type="dfn" href="#rules-for-updating-the-display-o
  tracks</a>.</p>
    </div>
    <h3 class="heading settled" data-level="3.5" id="regions"><span class="secno">3.5. </span><span class="content">WebVTT caption or subtitle regions</span><a class="self-link" href="#regions"></a></h3>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region">WebVTT region</dfn> represents a subpart of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-16">video viewport</a> and provides a
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region">WebVTT region</dfn> represents a subpart of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-18">video viewport</a> and provides a
 limited rendering area for <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-1">WebVTT caption or subtitle
 cues</a>.</p>
    <p class="note" role="note">Regions provide a means to group caption or subtitle cues so the cues can be rendered
@@ -2516,13 +2526,13 @@ together, which is particularly important when scrolling up.</p>
   for non-scrolling regions it happens at the bottom.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region anchor" data-noexport="" id="webvtt-region-anchor">A region anchor point</dfn>
     <dd>
-     <p>Two numbers giving the x and y coordinates within the region which is anchored to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-17">video
+     <p>Two numbers giving the x and y coordinates within the region which is anchored to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-19">video
   viewport</a> and does not change location even when the region does, e.g. because of font size
   changes. Defaults to (0,100), i.e. the bottom left corner of the region.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region viewport anchor" data-noexport="" id="webvtt-region-viewport-anchor">A region viewport anchor point</dfn>
     <dd>
-     <p>Two numbers giving the x and y coordinates within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-18">video viewport</a> to which the region
-  anchor point is anchored. Defaults to (0,100), i.e. the bottom left corner of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-19">video
+     <p>Two numbers giving the x and y coordinates within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-20">video viewport</a> to which the region
+  anchor point is anchored. Defaults to (0,100), i.e. the bottom left corner of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-21">video
   viewport</a>.</p>
     <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT region scroll" data-noexport="" id="webvtt-region-scroll">A scroll value</dfn>
     <dd>
@@ -2538,12 +2548,12 @@ together, which is particularly important when scrolling up.</p>
      </dl>
    </dl>
    <div class="note" role="note">
-    <p>The following diagram illustrates how anchoring of a region to a <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-20">video viewport</a> works.
+    <p>The following diagram illustrates how anchoring of a region to a <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-22">video viewport</a> works.
  The black cross is the anchor, orange explains the anchor’s offset within the region and green the
- anchor’s offset within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-21">video viewport</a>. Think of it as sticking a pin through a note onto
+ anchor’s offset within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-23">video viewport</a>. Think of it as sticking a pin through a note onto
  a board:</p>
     <p><img alt="visual explanation of WebVTT regions" longdesc="#regionsExplained" src="webvtt-region-diagram.png"></p>
-    <p id="regionsExplained">Image description: Within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-22">video viewport</a>, there is a WebVTT
+    <p id="regionsExplained">Image description: Within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-24">video viewport</a>, there is a WebVTT
  region. Inside the region, there is an anchor point marked with a black cross. The vertical and
  horizontal distance from the video viewport’s edges to the anchor is marked with green arrows,
  representing the region viewport anchor X and Y offsets. The vertical and horizontal distance from
@@ -2879,7 +2889,7 @@ than once per <a data-link-type="dfn" href="#webvtt-region-settings-list" id="re
    </ul>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-settings-list" id="ref-for-webvtt-region-settings-list-3">WebVTT region settings list</a> gives configuration options regarding the
 dimensions, positioning and anchoring of the region. For example, it allows a group of cues within a
-region to be anchored in the center of the region and the center of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-23">video viewport</a>. In
+region to be anchored in the center of the region and the center of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-25">video viewport</a>. In
 this example, when the font size grows, the region grows uniformly in all directions from the
 center.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-identifier-setting">WebVTT region identifier setting</dfn> consists of the following components, in the order
@@ -2959,11 +2969,11 @@ order given:</p>
      <p>A <a data-link-type="dfn" href="#webvtt-percentage" id="ref-for-webvtt-percentage-6">WebVTT percentage</a>.</p>
    </ol>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-viewport-anchor-setting" id="ref-for-webvtt-region-viewport-anchor-setting-2">WebVTT region viewport anchor setting</a> provides a tuple of two percentages
-that specify the point within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-24">video viewport</a> that the region anchor point is anchored to.
+that specify the point within the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-26">video viewport</a> that the region anchor point is anchored to.
 The first percentage measures the x-dimension and the second percentage measures the y-dimension
-from the top left corner of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-25">video viewport</a>. If no region viewport anchor is given, it
+from the top left corner of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-27">video viewport</a>. If no region viewport anchor is given, it
 defaults to 0%, 100% (i.e. the bottom left corner).</p>
-   <p class="note" role="note">For browsers, the region maps to an absolute positioned CSS box relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-26">video viewport</a>, i.e. there is a relative positioned box that represents the video viewport
+   <p class="note" role="note">For browsers, the region maps to an absolute positioned CSS box relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-28">video viewport</a>, i.e. there is a relative positioned box that represents the video viewport
 relative to which the regions are absolutely positioned. Overflow is hidden.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-region-scroll-setting">WebVTT region scroll setting</dfn> consists of the following components, in the order
 given:</p>
@@ -2977,7 +2987,7 @@ given:</p>
    </ol>
    <p class="note" role="note">The <a data-link-type="dfn" href="#webvtt-region-scroll-setting" id="ref-for-webvtt-region-scroll-setting-2">WebVTT region scroll setting</a> specifies whether cues rendered into the
 region are allowed to move out of their initial rendering place and roll up, i.e. move towards the
-top of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-27">video viewport</a>. If the scroll setting is omitted, cues do not move from their
+top of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-29">video viewport</a>. If the scroll setting is omitted, cues do not move from their
 rendered position.</p>
    <p class="note" role="note">Cues are added to a region one line at a time below existing cue lines. When an
 existing rendered cue line is removed, and it was above another already rendered cue line, that cue
@@ -3031,7 +3041,7 @@ given:</p>
       <li>
         an offset value, either: 
        <dl>
-        <dt>To represent a specific offset relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-28">video viewport</a>
+        <dt>To represent a specific offset relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-30">video viewport</a>
         <dd>
          <p>A <a data-link-type="dfn" href="#webvtt-percentage" id="ref-for-webvtt-percentage-7">WebVTT percentage</a>.</p>
         <dt>Or to represent a line number
@@ -3050,11 +3060,11 @@ given:</p>
        </ol>
      </ol>
    </ol>
-   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-2">WebVTT line cue setting</a> configures the offset of the cue box from the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-29">video viewport</a>’s edge in the direction orthogonal to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-12">writing direction</a>. For horizontal cues, this is the vertical offset from the top of
-the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-30">video viewport</a>, for vertical cues, it’s the horizontal offset. The offset is for the <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-2">start</a>, <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-1">center</a>,
+   <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-2">WebVTT line cue setting</a> configures the offset of the cue box from the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-31">video viewport</a>’s edge in the direction orthogonal to the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-12">writing direction</a>. For horizontal cues, this is the vertical offset from the top of
+the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-32">video viewport</a>, for vertical cues, it’s the horizontal offset. The offset is for the <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-2">start</a>, <a data-link-type="dfn" href="#webvtt-cue-line-center-alignment" id="ref-for-webvtt-cue-line-center-alignment-1">center</a>,
 or <a data-link-type="dfn" href="#webvtt-cue-line-end-alignment" id="ref-for-webvtt-cue-line-end-alignment-1">end</a> of the cue box, depending on the <a data-link-type="dfn" href="#webvtt-cue-line-alignment" id="ref-for-webvtt-cue-line-alignment-5">WebVTT cue line
 alignment</a> value - <a data-link-type="dfn" href="#webvtt-cue-line-start-alignment" id="ref-for-webvtt-cue-line-start-alignment-3">start</a> by default. The offset can
-be given either as a percentage of the relevant writing-mode dependent <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-31">video viewport</a> dimension or as a line number. Line numbers are based on the size of the first line of the cue.
+be given either as a percentage of the relevant writing-mode dependent <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-33">video viewport</a> dimension or as a line number. Line numbers are based on the size of the first line of the cue.
 Positive line numbers count from the start of the video viewport (the first line is numbered 0),
 negative line numbers from the end of the video viewport (the last line is numbered −1).</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-position-cue-setting">WebVTT position cue setting</dfn> consists of the following components, in the order
@@ -3079,7 +3089,7 @@ given:</p>
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-2">WebVTT position cue setting</a> configures the indent position of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-24">cue box</a> in the direction orthogonal to the <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-3">WebVTT line cue setting</a>.
 For horizontal cues, this is the horizontal position. The cue position is given as a percentage of
-the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-32">video viewport</a>. The positioning is for the <a data-link-type="dfn" href="#webvtt-cue-position-line-left-alignment" id="ref-for-webvtt-cue-position-line-left-alignment-5">line-left</a>, <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment" id="ref-for-webvtt-cue-position-center-alignment-1">center</a>, or <a data-link-type="dfn" href="#webvtt-cue-position-line-right-alignment" id="ref-for-webvtt-cue-position-line-right-alignment-4">line-right</a> of the cue box, depending on the cue’s <a data-link-type="dfn" href="#cue-computed-position-alignment" id="ref-for-cue-computed-position-alignment-1">computed position alignment</a>, which is overridden by the <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-3">WebVTT
+the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-34">video viewport</a>. The positioning is for the <a data-link-type="dfn" href="#webvtt-cue-position-line-left-alignment" id="ref-for-webvtt-cue-position-line-left-alignment-5">line-left</a>, <a data-link-type="dfn" href="#webvtt-cue-position-center-alignment" id="ref-for-webvtt-cue-position-center-alignment-1">center</a>, or <a data-link-type="dfn" href="#webvtt-cue-position-line-right-alignment" id="ref-for-webvtt-cue-position-line-right-alignment-4">line-right</a> of the cue box, depending on the cue’s <a data-link-type="dfn" href="#cue-computed-position-alignment" id="ref-for-cue-computed-position-alignment-1">computed position alignment</a>, which is overridden by the <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-3">WebVTT
 position cue setting</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-size-cue-setting">WebVTT size cue setting</dfn> consists of the following components, in the order
 given:</p>
@@ -3093,7 +3103,7 @@ given:</p>
    </ol>
    <p class="note" role="note">A <a data-link-type="dfn" href="#webvtt-size-cue-setting" id="ref-for-webvtt-size-cue-setting-2">WebVTT size cue setting</a> configures the size of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-25">cue box</a> in the same direction as the <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-4">WebVTT position cue setting</a>. For horizontal
 cues, this is the width of the <a data-link-type="dfn" href="#webvtt-cue-box" id="ref-for-webvtt-cue-box-26">cue box</a>. It is given as a percentage of
-the width of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-33">video viewport</a>.</p>
+the width of the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-35">video viewport</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="webvtt-alignment-cue-setting">WebVTT alignment cue setting</dfn> consists of the following components, in the order
 given:</p>
    <ol>
@@ -3121,7 +3131,7 @@ given:</p>
 region’s identifier unless the cue has a <a data-link-type="dfn" href="#webvtt-vertical-text-cue-setting" id="ref-for-webvtt-vertical-text-cue-setting-3">"vertical"</a>, <a data-link-type="dfn" href="#webvtt-line-cue-setting" id="ref-for-webvtt-line-cue-setting-4">"line"</a> or <a data-link-type="dfn" href="#webvtt-size-cue-setting" id="ref-for-webvtt-size-cue-setting-3">"size"</a> cue setting.
 If a cue is part of a region, its cue settings for <a data-link-type="dfn" href="#webvtt-position-cue-setting" id="ref-for-webvtt-position-cue-setting-5">"position"</a> and <a data-link-type="dfn" href="#webvtt-alignment-cue-setting" id="ref-for-webvtt-alignment-cue-setting-3">"align"</a> are applied to the line
 boxes in the cue relative to the region box and the cue box width and height are calculated relative
-to the region dimensions rather than the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-34">video viewport</a> dimensions.</p>
+to the region dimensions rather than the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-36">video viewport</a> dimensions.</p>
    <h3 class="heading settled" data-level="4.5" id="properties-of-cue-sequences"><span class="secno">4.5. </span><span class="content">Properties of cue sequences</span><a class="self-link" href="#properties-of-cue-sequences"></a></h3>
    <h4 class="heading settled" data-level="4.5.1" id="file-using-only-nested-cues"><span class="secno">4.5.1. </span><span class="content">WebVTT file using only nested cues</span><a class="self-link" href="#file-using-only-nested-cues"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file-10">WebVTT file</a> whose cues all follow the following rules is said to be a <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="WebVTT file using only nested cues" data-noexport="" id="webvtt-file-using-only-nested-cues">WebVTT file
@@ -4508,20 +4518,19 @@ manner suiting the user.</p>
        <p>Prepare some variables for the application of CSS properties to <var>regionNode</var> as follows:</p>
        <ul>
         <li>
-         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vw</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> is a CSS unit). <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+         <p>Let <var>regionWidth</var> be the <a data-link-type="dfn" href="#webvtt-region-width" id="ref-for-webvtt-region-width-3">WebVTT region width</a>. Let <var>width</var> be <span class="css"><var>regionWidth</var> vvw</span>.</p>
         <li>
-         <p>Let <var>lineHeight</var> be <span class="css">6vh</span> (<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> is a CSS unit) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a> and <var>regionHeight</var> be
-     the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
+         <p>Let <var>lineHeight</var> be <span class="css">6vvh</span> and <var>regionHeight</var> be the <a data-link-type="dfn" href="#webvtt-region-lines" id="ref-for-webvtt-region-lines-3">WebVTT region lines</a>. Let <var>lines</var> be <var>lineHeight</var> multiplied by <var>regionHeight</var>.</p>
         <li>
          <p>Let <var>viewportAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-3">WebVTT region anchor</a> and <var>regionAnchorX</var> be the x dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-4">WebVTT region anchor</a>. Let <var>leftOffset</var> be <var>regionAnchorX</var> multiplied by <var>width</var> divided by 100.0. Let <var>left</var> be <var>leftOffset</var> subtracted
-     from <span class="css"><var>viewportAnchorX</var> vw</span>.</p>
+     from <span class="css"><var>viewportAnchorX</var> vvw</span>.</p>
         <li>
          <p>Let <var>viewportAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-5">WebVTT region anchor</a> and <var>regionAnchorY</var> be the y dimension of the <a data-link-type="dfn" href="#webvtt-region-anchor" id="ref-for-webvtt-region-anchor-6">WebVTT region anchor</a>. Let <var>topOffset</var> be <var>regionAnchorY</var> multiplied by <var>lines</var> divided by 100.0. Let <var>top</var> be <var>topOffset</var> subtracted
-     from <span class="css"><var>viewportAnchorY</var> vh</span>.</p>
+     from <span class="css"><var>viewportAnchorY</var> vvh</span>.</p>
        </ul>
       <li>
        <p>Apply the terms of the CSS specifications to <var>regionNode</var> within the following constraints,
-    thus obtaining a CSS box <var>box</var> positioned relative to an initial containing block:</p>
+    thus obtaining a CSS box <var>box</var> positioned relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-37">video viewport</a>:</p>
        <ol>
         <li>
          <p>No style sheets are associated with <var>regionNode</var>. (The regionNodes are subsequently
@@ -4530,7 +4539,7 @@ manner suiting the user.</p>
          <p>Properties on <var>regionNode</var> have their values set as defined in the next section. (That
      section uses some of the variables whose values were calculated earlier in this
      algorithm.)</p>
-        <li>The <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-35">video viewport</a> is the initial containing block for positioning boxes.
+        <li>The <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-38">video viewport</a> is the containing block for positioning boxes.
        </ol>
       <li>
        <p>Add the CSS box <var>box</var> to <var>output</var>.</p>
@@ -4585,8 +4594,8 @@ manner suiting the user.</p>
         <li>
          <p>Let <var>left</var> be <span class="css"><var>offset</var> %</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
         <li>
-         <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-1">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to an initial containing
-     block.</p>
+         <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-1">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-39">video
+     viewport</a>.</p>
         <li>
          <p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>.
      The cue is ignored.</p>
@@ -4638,8 +4647,7 @@ must run the following algorithm.</p>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-11">WebVTT cue
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>. Otherwise, let <var>width</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
- (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vvw</span> and <var>height</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>. Otherwise, let <var>width</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a> and <var>height</var> be <span class="css"><var>size</var> vvh</span>.</p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
   the following list:</p>
@@ -4700,12 +4708,10 @@ must run the following algorithm.</p>
      <p class="note" role="note">These are not final positions, they are merely temporary positions used to
   calculate box dimensions below.</p>
     <li>
-     <p>Let <var>left</var> be <span class="css"><var>x-position</var> vw</span> and <var>top</var> be <span class="css"><var>y-position</var> vh</span>. (These are
- CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are
- CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+     <p>Let <var>left</var> be <span class="css"><var>x-position</var> vvw</span> and <var>top</var> be <span class="css"><var>y-position</var> vvh</span>.</p>
     <li>
-     <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-2">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to an initial containing
- block.</p>
+     <p><a data-link-type="dfn" href="#obtain-a-set-of-css-boxes" id="ref-for-obtain-a-set-of-css-boxes-2">Obtain a set of CSS boxes</a> <var>boxes</var> positioned relative to the <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-40">video
+ viewport</a>.</p>
     <li>
      <p>If there are no line boxes in <var>boxes</var>, skip the remainder of these substeps for <var>cue</var>. The
  cue is ignored.</p>
@@ -4892,10 +4898,10 @@ Red or green?
  defined in the next section. (That section uses some of the variables whose values were calculated
  earlier in this algorithm.)
     <li>Text runs must be wrapped according to the CSS line-wrapping rules.
-    <li>The <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-36">video viewport</a> is the initial containing block for positioning boxes.
+    <li>The <a data-link-type="dfn" href="#video-viewport0" id="ref-for-video-viewport0-41">video viewport</a> is the containing block for positioning boxes.
    </ul>
-   <p>Let <var>boxes</var> be the boxes generated as descendants of the initial containing block, along with
-their positions.</p>
+   <p>Let <var>boxes</var> be the boxes generated as descendants of the containing block, along with their
+positions.</p>
    <h3 class="heading settled algorithm" data-algorithm="Applying CSS properties to WebVTT Node Objects" data-level="7.4" id="applying-css-properties"><span class="secno">7.4. </span><span class="content">Applying CSS properties to <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-11">WebVTT Node Objects</a></span><a class="self-link" href="#applying-css-properties"></a></h3>
    <p>When following the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">rules for updating the display of WebVTT text tracks</a>, user agents must
 set properties of <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-12">WebVTT Node Objects</a> at the CSS user agent cascade
@@ -4940,7 +4946,7 @@ corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipa
       <td><a data-link-type="dfn" href="#webvtt-cue-right-alignment" id="ref-for-webvtt-cue-right-alignment-6">Right alignment</a>
       <td><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-text-align-right">right</a>
    </table>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-12">list of WebVTT Node Objects</a> must be set to <span class="css">5vh sans-serif</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-12">list of WebVTT Node Objects</a> must be set to <span class="css">5vvh sans-serif</span>. <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property on the (root) <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-13">list of WebVTT Node Objects</a> must be set to <span class="css">rgba(255,255,255,1)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
    <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a> shorthand property on the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box-1">WebVTT cue background box</a> and on <a data-link-type="dfn" href="#webvtt-ruby-text-object" id="ref-for-webvtt-ruby-text-object-7">WebVTT Ruby
 Text Objects</a> must be set to <span class="css">rgba(0,0,0,0.8)</span>. <a data-link-type="biblio" href="#biblio-css3-color">[CSS3-COLOR]</a></p>
@@ -4958,7 +4964,7 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-4/#propdef-writing-mode">writing-mode</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-4/#valdef-writing-mode-horizontal-tb">horizontal-tb</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background">background</a> shorthand property must be set to <span class="css">rgba(0,0,0,0.8)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap">overflow-wrap</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-text-3/#valdef-overflow-wrap-break-word">break-word</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to <span class="css">5vh sans-serif</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font">font</a> shorthand property must be set to <span class="css">5vvh sans-serif</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color">color</a> property must be set to <span class="css">rgba(255,255,255,1)</span>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-overflow-3/#propdef-overflow">overflow</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-overflow-3/#valdef-overflow-hidden">hidden</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <var>width</var>
@@ -6096,6 +6102,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#dom-vttcue-vttcue">VTTCue(startTime, endTime, text)</a><span>, in §9.1</span>
    <li><a href="#dom-vttregion-vttregion">VTTRegion()</a><span>, in §9.2</span>
    <li><a href="#vttregion">VTTRegion</a><span>, in §9.2</span>
+   <li><a href="#vvh">vvh</a><span>, in §3.2</span>
+   <li><a href="#vvw">vvw</a><span>, in §3.2</span>
    <li><a href="#webvtt">WebVTT</a><span>, in §1</span>
    <li><a href="#webvtt-alignment-cue-setting">WebVTT alignment cue setting</a><span>, in §4.4</span>
    <li><a href="#webvtt-bold-object">WebVTT Bold Object</a><span>, in §6.4</span>
@@ -6608,12 +6616,14 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <li><a href="#ref-for-video-viewport0-1">1.4. Other caption and subtitling features</a> <a href="#ref-for-video-viewport0-2">(2)</a> <a href="#ref-for-video-viewport0-3">(3)</a> <a href="#ref-for-video-viewport0-4">(4)</a> <a href="#ref-for-video-viewport0-5">(5)</a> <a href="#ref-for-video-viewport0-6">(6)</a> <a href="#ref-for-video-viewport0-7">(7)</a> <a href="#ref-for-video-viewport0-8">(8)</a>
     <li><a href="#ref-for-video-viewport0-9">3. Data model</a> <a href="#ref-for-video-viewport0-10">(2)</a>
     <li><a href="#ref-for-video-viewport0-11">3.1. Overview</a>
-    <li><a href="#ref-for-video-viewport0-12">3.4. WebVTT caption or subtitle cues</a> <a href="#ref-for-video-viewport0-13">(2)</a> <a href="#ref-for-video-viewport0-14">(3)</a> <a href="#ref-for-video-viewport0-15">(4)</a>
-    <li><a href="#ref-for-video-viewport0-16">3.5. WebVTT caption or subtitle regions</a> <a href="#ref-for-video-viewport0-17">(2)</a> <a href="#ref-for-video-viewport0-18">(3)</a> <a href="#ref-for-video-viewport0-19">(4)</a> <a href="#ref-for-video-viewport0-20">(5)</a> <a href="#ref-for-video-viewport0-21">(6)</a> <a href="#ref-for-video-viewport0-22">(7)</a>
-    <li><a href="#ref-for-video-viewport0-23">4.3. WebVTT region settings</a> <a href="#ref-for-video-viewport0-24">(2)</a> <a href="#ref-for-video-viewport0-25">(3)</a> <a href="#ref-for-video-viewport0-26">(4)</a> <a href="#ref-for-video-viewport0-27">(5)</a>
-    <li><a href="#ref-for-video-viewport0-28">4.4. WebVTT cue settings</a> <a href="#ref-for-video-viewport0-29">(2)</a> <a href="#ref-for-video-viewport0-30">(3)</a> <a href="#ref-for-video-viewport0-31">(4)</a> <a href="#ref-for-video-viewport0-32">(5)</a> <a href="#ref-for-video-viewport0-33">(6)</a> <a href="#ref-for-video-viewport0-34">(7)</a>
-    <li><a href="#ref-for-video-viewport0-35">7.1. Processing model</a>
-    <li><a href="#ref-for-video-viewport0-36">7.3. Obtaining CSS boxes</a>
+    <li><a href="#ref-for-video-viewport0-12">3.2. Video viewport</a> <a href="#ref-for-video-viewport0-13">(2)</a>
+    <li><a href="#ref-for-video-viewport0-14">3.4. WebVTT caption or subtitle cues</a> <a href="#ref-for-video-viewport0-15">(2)</a> <a href="#ref-for-video-viewport0-16">(3)</a> <a href="#ref-for-video-viewport0-17">(4)</a>
+    <li><a href="#ref-for-video-viewport0-18">3.5. WebVTT caption or subtitle regions</a> <a href="#ref-for-video-viewport0-19">(2)</a> <a href="#ref-for-video-viewport0-20">(3)</a> <a href="#ref-for-video-viewport0-21">(4)</a> <a href="#ref-for-video-viewport0-22">(5)</a> <a href="#ref-for-video-viewport0-23">(6)</a> <a href="#ref-for-video-viewport0-24">(7)</a>
+    <li><a href="#ref-for-video-viewport0-25">4.3. WebVTT region settings</a> <a href="#ref-for-video-viewport0-26">(2)</a> <a href="#ref-for-video-viewport0-27">(3)</a> <a href="#ref-for-video-viewport0-28">(4)</a> <a href="#ref-for-video-viewport0-29">(5)</a>
+    <li><a href="#ref-for-video-viewport0-30">4.4. WebVTT cue settings</a> <a href="#ref-for-video-viewport0-31">(2)</a> <a href="#ref-for-video-viewport0-32">(3)</a> <a href="#ref-for-video-viewport0-33">(4)</a> <a href="#ref-for-video-viewport0-34">(5)</a> <a href="#ref-for-video-viewport0-35">(6)</a> <a href="#ref-for-video-viewport0-36">(7)</a>
+    <li><a href="#ref-for-video-viewport0-37">7.1. Processing model</a> <a href="#ref-for-video-viewport0-38">(2)</a> <a href="#ref-for-video-viewport0-39">(3)</a>
+    <li><a href="#ref-for-video-viewport0-40">7.2. Processing cue settings</a>
+    <li><a href="#ref-for-video-viewport0-41">7.3. Obtaining CSS boxes</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue">

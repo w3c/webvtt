@@ -840,6 +840,23 @@ into a region, which is a subarea of the video viewport.</p>
 <p>The <dfn lt="video viewport">video viewport</dfn> is the video's rendering area which in the case
 of HTML5 is defined by the |video|'s <a>concrete object size</a>.</p>
 
+<p>The following video-viewport-percentage lengths are defined analogously to how CSS defines
+viewport-percentage-lengths ''vh'' and ''vw'' [[!CSS-VALUES]]:</p>
+
+<dl>
+
+ <dt><dfn lt="vvw">vvw unit</dfn></dt>
+ <dd>
+  <p>Equal to 1% of the width of the <a>video viewport</a>.</p>
+ </dd>
+
+ <dt><dfn lt="vvh">vvh unit</dfn></dt>
+ <dd>
+  <p>Equal to 1% of the height of the <a>video viewport</a>.</p>
+ </dd>
+
+</dl>
+
 
 <h3 id=model-cues>WebVTT cues</h3>
 
@@ -851,7 +868,6 @@ following:</p>
  <dt><dfn lt="cue text">A cue text</dfn></dt>
  <dd>
   <p>The raw text of the cue, and rules for its interpretation.</p>
-
  </dd>
 
 </dl>
@@ -4210,34 +4226,33 @@ manner suiting the user.</p>
 
     <ul>
      <li><p>Let |regionWidth| be the <a>WebVTT region width</a>. Let |width| be
-     ''|regionWidth|&#x2009;vw'' (''vw'' is a CSS unit). [[!CSS-VALUES]]</p></li>
+     ''|regionWidth|&#x2009;vvw''.</p></li>
 
-     <li><p>Let |lineHeight| be ''6vh'' (''vh'' is a CSS unit) [[!CSS-VALUES]] and |regionHeight| be
-     the <a>WebVTT region lines</a>. Let |lines| be |lineHeight| multiplied by
-     |regionHeight|.</p></li>
+     <li><p>Let |lineHeight| be ''6vvh'' and |regionHeight| be the <a>WebVTT region lines</a>. Let
+     |lines| be |lineHeight| multiplied by |regionHeight|.</p></li>
 
      <li><p>Let |viewportAnchorX| be the x dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorX| be the x dimension of the <a>WebVTT region anchor</a>. Let |leftOffset| be
      |regionAnchorX| multiplied by |width| divided by 100.0. Let |left| be |leftOffset| subtracted
-     from ''|viewportAnchorX|&#x2009;vw''.</p></li>
+     from ''|viewportAnchorX|&#x2009;vvw''.</p></li>
 
      <li><p>Let |viewportAnchorY| be the y dimension of the <a>WebVTT region anchor</a> and
      |regionAnchorY| be the y dimension of the <a>WebVTT region anchor</a>. Let |topOffset| be
      |regionAnchorY| multiplied by |lines| divided by 100.0. Let |top| be |topOffset| subtracted
-     from ''|viewportAnchorY|&#x2009;vh''.</p></li>
+     from ''|viewportAnchorY|&#x2009;vvh''.</p></li>
     </ul>
    </li>
 
    <li>
     <p>Apply the terms of the CSS specifications to |regionNode| within the following constraints,
-    thus obtaining a CSS box |box| positioned relative to an initial containing block:</p>
+    thus obtaining a CSS box |box| positioned relative to the <a>video viewport</a>:</p>
     <ol>
      <li><p>No style sheets are associated with |regionNode|. (The regionNodes are subsequently
      restyled using style sheets after their boxes are generated, as described below.)</p></li>
      <li><p>Properties on |regionNode| have their values set as defined in the next section. (That
      section uses some of the variables whose values were calculated earlier in this
      algorithm.)</p></li>
-     <li>The <a>video viewport</a> is the initial containing block for positioning boxes.</li>
+     <li>The <a>video viewport</a> is the containing block for positioning boxes.</li>
     </ol>
    </li>
 
@@ -4311,8 +4326,8 @@ manner suiting the user.</p>
 
      <li><p>Let |left| be ''|offset|&#x2009;%''. [[!CSS-VALUES]]</p></li>
 
-     <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
-     block.</p></li>
+     <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to the <a>video
+     viewport</a>.</p></li>
 
      <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|.
      The cue is ignored.</p></li>
@@ -4398,10 +4413,9 @@ must run the following algorithm.</p>
  size</a>. Otherwise, let |size| be |maximum size|.</p></li>
 
  <li><p>If the <a>WebVTT cue writing direction</a> is <a lt="WebVTT cue horizontal writing
- direction">horizontal</a>, then let |width| be ''|size|&#x2009;vw'' and |height| be
- ''height/auto''. Otherwise, let |width| be ''width/auto'' and |height| be ''|size|&#x2009;vh''.
- (These are CSS values used by the next section to set CSS properties for the rendering; ''vw'' and
- ''vh'' are CSS units.) [[!CSS-VALUES]]</p></li>
+ direction">horizontal</a>, then let |width| be ''|size|&#x2009;vvw'' and |height| be
+ ''height/auto''. Otherwise, let |width| be ''width/auto'' and |height| be
+ ''|size|&#x2009;vvh''.</p></li>
 
  <li>
 
@@ -4501,12 +4515,10 @@ must run the following algorithm.</p>
 
  </li>
 
- <li><p>Let |left| be ''|x-position|&#x2009;vw'' and |top| be ''|y-position|&#x2009;vh''. (These are
- CSS values used by the next section to set CSS properties for the rendering; ''vw'' and ''vh'' are
- CSS units.) [[!CSS-VALUES]]</p></li>
+ <li><p>Let |left| be ''|x-position|&#x2009;vvw'' and |top| be ''|y-position|&#x2009;vvh''.</p></li>
 
- <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to an initial containing
- block.</p></li>
+ <li><p><a>Obtain a set of CSS boxes</a> |boxes| positioned relative to the <a>video
+ viewport</a>.</p></li>
 
  <li><p>If there are no line boxes in |boxes|, skip the remainder of these substeps for |cue|. The
  cue is ignored.</p></li>
@@ -4803,12 +4815,12 @@ constraints: [[!CSS22]]</p>
 
  <li>Text runs must be wrapped according to the CSS line-wrapping rules.</li>
 
- <li>The <a>video viewport</a> is the initial containing block for positioning boxes.</li>
+ <li>The <a>video viewport</a> is the containing block for positioning boxes.</li>
 
 </ul>
 
-<p>Let |boxes| be the boxes generated as descendants of the initial containing block, along with
-their positions.</p>
+<p>Let |boxes| be the boxes generated as descendants of the containing block, along with their
+positions.</p>
 
 
 <h3 id=applying-css-properties algorithm>Applying CSS properties to <a lt="WebVTT Node
@@ -4873,7 +4885,7 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 </table>
 
 <p>The 'font' shorthand property on the (root) <a>list of WebVTT Node Objects</a> must be set to
-''5vh sans-serif''. [[!CSS-VALUES]]</p>
+''5vvh sans-serif''. [[!CSS-VALUES]]</p>
 
 <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
@@ -4906,7 +4918,7 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
  <li>the 'writing-mode' property must be set to ''writing-mode/horizontal-tb''</li>
  <li>the 'background' shorthand property must be set to ''rgba(0,0,0,0.8)''</li>
  <li>the 'overflow-wrap' property must be set to ''overflow-wrap/break-word''</li>
- <li>the 'font' shorthand property must be set to ''5vh sans-serif''</li>
+ <li>the 'font' shorthand property must be set to ''5vvh sans-serif''</li>
  <li>the 'color' property must be set to ''rgba(255,255,255,1)''</li>
  <li>the 'overflow' property must be set to ''overflow/hidden''</li>
  <li>the 'width' property must be set to |width|</li>
