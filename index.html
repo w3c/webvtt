@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-02-25">25 February 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-04-02">2 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2135,7 +2135,7 @@ requirements.</p>
  must instead only render the text inside <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text-1">WebVTT caption or subtitle cue text</a> in an
  appropriate manner and specifically support the color classes defined in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. Any
  other styling instructions are optional.</p>
-    <dt><dfn data-dfn-type="dfn" data-noexport="" id="user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine<a class="self-link" href="#user-agents-that-do-not-support-a-full-html-css-engine"></a></dfn>
+    <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="user-agents-that-do-not-support-a-full-html-css-engine">User agents that do not support a full HTML CSS engine</dfn>
     <dd>
      <p>All processing requirements in this specification apply, including the color classes defined
  in <a href="#default-classes">§5 Default classes for WebVTT Caption or Subtitle Cue Components</a>. However, the user agent will need to interpret the CSS related features in <a href="#parsing">§6 Parsing</a>, <a href="#rendering">§7 Rendering</a> and <a href="#css-extensions">§8 CSS extensions</a> in such a way that the rendered results are
@@ -4444,8 +4444,9 @@ follows:</p>
    <h2 class="heading settled" data-level="7" id="rendering"><span class="secno">7. </span><span class="content">Rendering</span><a class="self-link" href="#rendering"></a></h2>
    <p>This section describes how to visually render WebVTT cues in a user agent. The processing model
 is tightly linked to media elements in HTML and follows the handling of cues when <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#list-of-newly-introduced-cues">playing the
-media resource</a>. When supporting WebVTT in media players that don’t support HTML nor CSS,
-equivalent visual rendering will need to be implemented.</p>
+media resource</a>. When supporting WebVTT in media players that falls into the <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">User agents that
+do not support CSS</a> or <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">User agents that do not support a full HTML CSS engine</a> conformace
+classes, equivalent visual rendering will need to be implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="7.1" id="processing-model"><span class="secno">7.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element) by applying the steps
 below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media
@@ -4625,7 +4626,7 @@ must run the following algorithm.</p>
      <p>If the <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-10">WebVTT cue size</a> is less than <var>maximum size</var>, then let <var>size</var> be <a data-link-type="dfn" href="#webvtt-cue-size" id="ref-for-webvtt-cue-size-11">WebVTT cue
  size</a>. Otherwise, let <var>size</var> be <var>maximum size</var>.</p>
     <li>
-     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <span class="css">auto</span>. Otherwise, let <var>width</var> be <span class="css">auto</span> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
+     <p>If the <a data-link-type="dfn" href="#webvtt-cue-writing-direction" id="ref-for-webvtt-cue-writing-direction-20">WebVTT cue writing direction</a> is <a data-link-type="dfn" href="#webvtt-cue-horizontal-writing-direction" id="ref-for-webvtt-cue-horizontal-writing-direction-16">horizontal</a>, then let <var>width</var> be <span class="css"><var>size</var> vw</span> and <var>height</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>. Otherwise, let <var>width</var> be <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a> and <var>height</var> be <span class="css"><var>size</var> vh</span>.
  (These are CSS values used by the next section to set CSS properties for the rendering; <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vw">vw</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#vh">vh</a> are CSS units.) <a data-link-type="biblio" href="#biblio-css-values">[CSS-VALUES]</a></p>
     <li>
      <p>Determine the value of <var>x-position</var> or <var>y-position</var> for <var>cue</var> as per the appropriate rules from
@@ -5030,7 +5031,7 @@ settings:</p>
    <ul>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-position">position</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-position-3/#valdef-position-relative">relative</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-3/#propdef-unicode-bidi">unicode-bidi</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-writing-modes-4/#valdef-unicode-bidi-plaintext">plaintext</a>
-    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <span class="css">auto</span>
+    <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-width">width</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-height">height</a> property must be set to <var>height</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-position-3/#propdef-left">left</a> property must be set to <var>left</var>
     <li>the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-3/#propdef-text-align">text-align</a> property must be set as described for the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-15">List of WebVTT Node
@@ -5044,7 +5045,7 @@ properties on the root <a data-link-type="dfn" href="#list-of-webvtt-node-object
 as defined in the next section.</p>
    <h2 class="heading settled" data-level="8" id="css-extensions"><span class="secno">8. </span><span class="content">CSS extensions</span><a class="self-link" href="#css-extensions"></a></h2>
    <p class="note" role="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
-apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">user agents that do not support CSS</a>.</p>
+apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-2">user agents that do not support CSS</a>.</p>
    <h3 class="heading settled" data-level="8.1" id="css-extensions-introduction"><span class="secno">8.1. </span><span class="content">Introduction</span><a class="self-link" href="#css-extensions-introduction"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>The <span class="css">::cue</span> pseudo-element represents a cue.</p>
@@ -6338,6 +6339,11 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-position-3/#propdef-top">top</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[css-sizing-3]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto">auto</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[CSS-SYNTAX-3]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/css-syntax-3/#parse-a-stylesheet">parse a stylesheet</a>
@@ -6361,6 +6367,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <ul>
      <li><a href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-decoration">text-decoration</a>
      <li><a href="https://drafts.csswg.org/css-text-decor-3/#propdef-text-shadow">text-shadow</a>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[css-transitions-1]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a>
+     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a>
     </ul>
    <li>
     <a data-link-type="biblio">[css-ui-4]</a> defines the following terms:
@@ -6403,18 +6415,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-base">ruby-base</a>
      <li><a href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position">ruby-position</a>
      <li><a href="https://drafts.csswg.org/css-ruby-1/#valdef-display-ruby-text">ruby-text</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[css3-selectors]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/selectors-3/#sel-after">::after</a>
-     <li><a href="https://drafts.csswg.org/selectors-3/#sel-before">::before</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[css3-transitions]</a> defines the following terms:
-    <ul>
-     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-duration">transition-duration</a>
-     <li><a href="https://drafts.csswg.org/css-transitions-1/#propdef-transition-property">transition-property</a>
     </ul>
    <li>
     <a data-link-type="biblio">[CSSOM]</a> defines the following terms:
@@ -6479,6 +6479,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="https://mimesniff.spec.whatwg.org/#mime-type">mime type</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[selectors-3]</a> defines the following terms:
+    <ul>
+     <li><a href="https://drafts.csswg.org/selectors-3/#sel-after">::after</a>
+     <li><a href="https://drafts.csswg.org/selectors-3/#sel-before">::before</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[SELECTORS4]</a> defines the following terms:
     <ul>
      <li><a href="https://drafts.csswg.org/selectors-4/#future-pseudo">:future</a>
@@ -6528,6 +6534,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>David Baron; Florian Rivoal. <a href="http://drafts.csswg.org/css-overflow/">CSS Overflow Module Level 3</a>. URL: <a href="http://drafts.csswg.org/css-overflow/">http://drafts.csswg.org/css-overflow/</a>
    <dt id="biblio-css-position-3">[CSS-POSITION-3]
    <dd>Rossen Atanassov; Arron Eicholz. <a href="https://drafts.csswg.org/css-position/">CSS Positioned Layout Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-position/">https://drafts.csswg.org/css-position/</a>
+   <dt id="biblio-css-sizing-3">[CSS-SIZING-3]
+   <dd>Elika Etemad. <a href="https://drafts.csswg.org/css-sizing-3/">CSS Intrinsic &amp; Extrinsic Sizing Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-sizing-3/">https://drafts.csswg.org/css-sizing-3/</a>
    <dt id="biblio-css-syntax-3">[CSS-SYNTAX-3]
    <dd>Tab Atkins Jr.; Simon Sapin. <a href="https://drafts.csswg.org/css-syntax/">CSS Syntax Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-syntax/">https://drafts.csswg.org/css-syntax/</a>
    <dt id="biblio-css-text-3">[CSS-TEXT-3]
@@ -6536,6 +6544,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>Elika Etemad; Koji Ishii; Alan Stearns. <a href="https://drafts.csswg.org/css-text-4/">CSS Text Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-text-4/">https://drafts.csswg.org/css-text-4/</a>
    <dt id="biblio-css-text-decor-3">[CSS-TEXT-DECOR-3]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-text-decor-3/">CSS Text Decoration Module Level 3</a>. URL: <a href="https://drafts.csswg.org/css-text-decor-3/">https://drafts.csswg.org/css-text-decor-3/</a>
+   <dt id="biblio-css-transitions-1">[CSS-TRANSITIONS-1]
+   <dd>David Baron; Dean Jackson; Brian Birtles. <a href="https://drafts.csswg.org/css-transitions/">CSS Transitions</a>. URL: <a href="https://drafts.csswg.org/css-transitions/">https://drafts.csswg.org/css-transitions/</a>
    <dt id="biblio-css-ui-4">[CSS-UI-4]
    <dd>Florian Rivoal. <a href="https://drafts.csswg.org/css-ui-4/">CSS Basic User Interface Module Level 4</a>. URL: <a href="https://drafts.csswg.org/css-ui-4/">https://drafts.csswg.org/css-ui-4/</a>
    <dt id="biblio-css-values">[CSS-VALUES]
@@ -6543,17 +6553,13 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dt id="biblio-css-writing-modes-3">[CSS-WRITING-MODES-3]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-3/">CSS Writing Modes Level 3</a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-3/">https://drafts.csswg.org/css-writing-modes-3/</a>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
-   <dd>CSS Writing Modes Module Level 4 URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
+   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-4/">CSS Writing Modes Level 4</a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-css22">[CSS22]
    <dd>Bert Bos. <a href="https://drafts.csswg.org/css2/">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>. URL: <a href="https://drafts.csswg.org/css2/">https://drafts.csswg.org/css2/</a>
    <dt id="biblio-css3-color">[CSS3-COLOR]
-   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css3-color">CSS Color Module Level 3</a>. 7 June 2011. REC. URL: <a href="https://www.w3.org/TR/css3-color">https://www.w3.org/TR/css3-color</a>
+   <dd>Tantek Çelik; Chris Lilley; David Baron. <a href="https://www.w3.org/TR/css-color-3/">CSS Color Module Level 3</a>. 5 December 2017. CR. URL: <a href="https://www.w3.org/TR/css-color-3/">https://www.w3.org/TR/css-color-3/</a>
    <dt id="biblio-css3-ruby">[CSS3-RUBY]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-ruby-1/">CSS Ruby Layout Module Level 1</a>. URL: <a href="https://drafts.csswg.org/css-ruby-1/">https://drafts.csswg.org/css-ruby-1/</a>
-   <dt id="biblio-css3-selectors">[CSS3-SELECTORS]
-   <dd>Tantek Çelik; et al. <a href="https://drafts.csswg.org/selectors-3/">Selectors Level 3</a>. URL: <a href="https://drafts.csswg.org/selectors-3/">https://drafts.csswg.org/selectors-3/</a>
-   <dt id="biblio-css3-transitions">[CSS3-TRANSITIONS]
-   <dd>Dean Jackson; et al. <a href="https://drafts.csswg.org/css-transitions/">CSS Transitions</a>. URL: <a href="https://drafts.csswg.org/css-transitions/">https://drafts.csswg.org/css-transitions/</a>
    <dt id="biblio-cssom">[CSSOM]
    <dd>Simon Pieters; Glenn Adams. <a href="https://drafts.csswg.org/cssom/">CSS Object Model (CSSOM)</a>. URL: <a href="https://drafts.csswg.org/cssom/">https://drafts.csswg.org/cssom/</a>
    <dt id="biblio-dom">[DOM]
@@ -6568,8 +6574,10 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-rfc3629">[RFC3629]
    <dd>F. Yergeau. <a href="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>. November 2003. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3629">https://tools.ietf.org/html/rfc3629</a>
+   <dt id="biblio-selectors-3">[SELECTORS-3]
+   <dd>Tantek Çelik; et al. <a href="https://drafts.csswg.org/selectors-3/">Selectors Level 3</a>. URL: <a href="https://drafts.csswg.org/selectors-3/">https://drafts.csswg.org/selectors-3/</a>
    <dt id="biblio-selectors4">[SELECTORS4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors4/">Selectors Level 4</a>. 2 May 2013. WD. URL: <a href="https://www.w3.org/TR/selectors4/">https://www.w3.org/TR/selectors4/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/selectors">Selectors Level 4</a>. URL: <a href="https://drafts.csswg.org/selectors">https://drafts.csswg.org/selectors</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
@@ -6627,7 +6635,14 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
   <aside class="dfn-panel" data-for="user-agents-that-do-not-support-css">
    <b><a href="#user-agents-that-do-not-support-css">#user-agents-that-do-not-support-css</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-user-agents-that-do-not-support-css-1">8. CSS extensions</a>
+    <li><a href="#ref-for-user-agents-that-do-not-support-css-1">7. Rendering</a>
+    <li><a href="#ref-for-user-agents-that-do-not-support-css-2">8. CSS extensions</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="user-agents-that-do-not-support-a-full-html-css-engine">
+   <b><a href="#user-agents-that-do-not-support-a-full-html-css-engine">#user-agents-that-do-not-support-a-full-html-css-engine</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-user-agents-that-do-not-support-a-full-html-css-engine-1">7. Rendering</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue">
