@@ -838,7 +838,7 @@ into a region, which is a subarea of the video viewport.</p>
 <h3 id="video-viewport">Video viewport</h3>
 
 <p>The <dfn lt="video viewport">video viewport</dfn> is the video's rendering area which in the case
-of HTML5 is defined by the |video|'s <a>concrete object size</a>.</p>
+of HTML5 is defined by the |video|'s <a spec=css-images-3>concrete object size</a>.</p>
 
 <p>The following video-viewport-percentage lengths are defined analogously to how CSS defines
 viewport-percentage-lengths ''vh'' and ''vw'' [[!CSS-VALUES]]:</p>
@@ -4807,7 +4807,8 @@ constraints: [[!CSS22]]</p>
 
  <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
  lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes whose
- 'display' property has the value ''display/ruby-base''. [[!CSS3-RUBY]]</li>
+ 'display' property has the value <a class="css" spec=css-ruby-1 data-link-type="maybe"
+ data-lt="ruby-base" data-link-for="display">ruby-base</a>. [[!CSS3-RUBY]]</li>
 
  <li>Properties on <a lt="WebVTT Node Object">WebVTT Node Objects</a> have their values set as
  defined in the next section. (That section uses some of the variables whose values were calculated
@@ -4905,11 +4906,13 @@ to ''font-style/italic''.</p>
 <p>The 'text-decoration' property on <a lt="WebVTT Underline Object">WebVTT Underline Objects</a>
 must be set to ''text-decoration/underline''.</p>
 
-<p>The 'display' property on <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> must be set to
-''display/ruby''. [[!CSS3-RUBY]]</p>
+<p>The 'display' property on <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> must be set to <a
+class="css" spec=css-ruby-1 data-link-type="maybe" data-lt="ruby" data-link-for="display">ruby</a>.
+[[!CSS3-RUBY]]</p>
 
 <p>The 'display' property on <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be
-set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
+set to <a class="css" spec=css-ruby-1 data-link-type="maybe" data-lt="ruby-text"
+data-link-for="display">ruby-text</a>. [[!CSS3-RUBY]]</p>
 
 <p>Every <a>WebVTT region object</a> is initialized with the following CSS settings:</p>
 
@@ -4926,7 +4929,8 @@ set to ''display/ruby-text''. [[!CSS3-RUBY]]</p>
  <li>the 'max-height' property must be set to |height|</li>
  <li>the 'left' property must be set to |left|</li>
  <li>the 'top' property must be set to |top|</li>
- <li>the 'display' property must be set to ''display/inline-flex''</li>
+ <li>the 'display' property must be set to <a class="css" spec=css-flexbox-1 data-link-type="maybe"
+ data-lt="inline-flex" data-link-for="display">inline-flex</a></li>
  <li>the 'flex-flow' property must be set to ''flex-flow/column''</li>
  <li>the 'justify-content' property must be set to ''justify-content/flex-end''</li>
 </ul>
