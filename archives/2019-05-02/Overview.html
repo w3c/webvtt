@@ -1184,6 +1184,9 @@ Possible extra rowspan handling
 <script>
    document.addEventListener("DOMContentLoaded", function() {
      var snapshot = document.body.getElementsByClassName("snapshot")[0];
+     if (!snapshot) {
+       return;
+     }
      var button = snapshot.getElementsByTagName("button")[0];
      button.addEventListener("click", function() {
        snapshot.setAttribute("hidden", "");
