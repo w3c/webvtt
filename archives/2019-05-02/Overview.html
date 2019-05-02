@@ -1548,7 +1548,6 @@ Group does not require that implementations are publicly available but encourage
 <div data-fill-with="at-risk">
   <p>The following features are at-risk, and may be dropped during the CR period:</p>
   <ul>
-    <li><a href="#the-cue-region-pseudo-element">::cue-region pseudo-element</a></li>
     <li><a href="#the-past-and-future-pseudo-classes">:past and :future pseudo-classes</a></li>
   </ul>
 </div>
@@ -1665,7 +1664,6 @@ title</span></a>
        <ol class="toc">
         <li><a href="#the-cue-pseudo-element"><span class="secno">8.2.1</span> <span class="content">The <span class="css">::cue</span> pseudo-element</span></a>
         <li><a href="#the-past-and-future-pseudo-classes"><span class="secno">8.2.2</span> <span class="content">The <span class="css">:past</span> and <span class="css">:future</span> pseudo-classes</span></a>
-        <li><a href="#the-cue-region-pseudo-element"><span class="secno">8.2.3</span> <span class="content">The <span class="css">::cue-region</span> pseudo-element</span></a>
        </ol>
      </ol>
     <li>
@@ -1832,7 +1830,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
    <h3 class="heading settled" data-level="1.3" id="styling"><span class="secno">1.3. </span><span class="content">Styling captions</span><a class="self-link" href="#styling"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element can
-target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+target WebVTT cues and regions in the video using the <span class="css">::cue</span> and <span class="css">::cue()</span> pseudo-elements.</p>
    <div class="example" id="example-6a17c0df">
     <a class="self-link" href="#example-6a17c0df"></a> 
     <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://www.w3.org/TR/html51/document-metadata.html#the-style-element">style</a> element that
@@ -4910,7 +4908,7 @@ constraints: <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
   element</a> for the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> that were sourced from the given WebVTT file. The selectors
   must not match other <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> for the same <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a>. In this hypothetical
   document, the element must not match any selector that would match the element itself.</p>
-     <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://www.w3.org/TR/selectors4/#originating-element">originating element</a> for the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+     <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://www.w3.org/TR/selectors4/#originating-element">originating element</a> for the <span class="css">::cue</span> and <span class="css">::cue()</span pseudo-elements.</p>
     <li>
      <p>For the purpose of determining the <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#cascade">cascade</a> of the declarations in STYLE
   blocks of a WebVTT file, the relative order of appearance of the style sheets must be the same
@@ -5065,9 +5063,6 @@ apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#u
    <p>The <span class="css">::cue</span> pseudo-element represents a cue.</p>
    <p>The <span class="css">::cue(<var>selector</var>)</span> pseudo-element represents a cue or element inside a cue that match the
 given selector.</p>
-   <p>The <span class="css">::cue-region</span> pseudo-element represents a region.</p>
-   <p>The <span class="css">::cue-region(<var>selector</var>)</span> pseudo-element represents a region or element inside a region
-that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a></code> element’s document tree.</p>
    <p>The <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback position</a>.</p>
@@ -5246,59 +5241,6 @@ No match &lt;00:00:12.000> (no elements)
 &lt;00:00:22.000> &lt;c>:past/:future&lt;/c>
 &lt;00:00:24.000>
 </pre>
-      <tr>
-       <td class="long">
-        <p><span class="css">::cue-region</span></p>
-<pre>video::cue-region {
-  color: yellow;
-}</pre>
-       <td class="long">
-        <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-10">WebVTT region objects</a>).</p>
-<pre>WEBVTT
-
-REGION
-id:editor-comments
-regionanchor:0%,0%
-viewportanchor:0%,0%
-
-00:00:00.000 --> 00:00:08.000
-No match (normal cue)
-
-00:00:08.000 --> 00:00:16.000 region:editor-comments
-Yellow!
-</pre>
-      <tr>
-       <td class="long">
-        <p><a data-link-type="dfn" href="https://www.w3.org/TR/selectors4/#id-selector">ID selector</a> in <span class="css">::cue-region()</span></p>
-<pre>video::cue-region(#scroll) {
-  color: cyan;
-}</pre>
-       <td class="long">
-        <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-11">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-5">WebVTT region identifier</a> matching the given ID.</p>
-<pre>WEBVTT
-
-REGION
-id:editor-comments
-width: 40%
-regionanchor:0%,100%
-viewportanchor:10%,90%
-
-REGION
-id:scroll
-width: 40%
-regionanchor:100%,100%
-viewportanchor:90%,90%
-scroll:up
-
-00:00:00.000 --> 00:00:08.000
-No match (normal cue)
-
-00:00:08.000 --> 00:00:16.000 region:editor-comments
-Yellow!
-
-00:00:10.000 --> 00:00:16.000 region:scroll
-Over here it’s Cyan!
-</pre>
     </table>
    </div>
    <h3 class="heading settled" data-level="8.2" id="css-extensions-processing-model"><span class="secno">8.2. </span><span class="content">Processing model</span><a class="self-link" href="#css-extensions-processing-model"></a></h3>
@@ -5315,7 +5257,7 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-32">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> model must implement the <span class="css">::cue</span> and <span class="css">::cue(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="8.2.1" id="the-cue-pseudo-element"><span class="secno">8.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5443,30 +5385,6 @@ Objects</a> that are <i>in the future</i>.</p>
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-34">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-34">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-7">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback
 position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-22">WebVTT Node Object</a> <var>c</var>.</p>
-   <h4 class="heading settled" data-level="8.2.3" id="the-cue-region-pseudo-element"><span class="secno">8.2.3. </span><span class="content">The <span class="css">::cue-region</span> pseudo-element</span><a class="self-link" href="#the-cue-region-pseudo-element"></a></h4>
-   <p>Pseudo-elements apply to elements that are matched by selectors. For the purpose of this section,
-that element is the matched element. The pseudo-element defined below affects the styling of text
-track regions that are being rendered for the matched element.</p>
-   <p class="note" role="note">If the matched element is not a video element, the pseudo-element defined below
-won’t have any effect according to this specification.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region">::cue-region<a class="self-link" href="#cue-region"></a></dfn> pseudo-element (with no argument) matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-12">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue-region-selector">::cue-region(selector)<a class="self-link" href="#cue-region-selector"></a></dfn> pseudo-element with an argument must have an argument that
-consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-13">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
-given CSS selector as follows:</p>
-   <ul>
-    <li>
-     <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-14">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier-6">WebVTT region identifier</a> matching the given ID.</p>
-   </ul>
-   <p>No other selector matching is defined for <span class="css">::cue-region(<var>selector</var>)</span>.</p>
-   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element; other
-properties set on the pseudo-element must be ignored.</p>
-   <p>When a user agent is rendering one or more text track regions according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">rules for
-updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-15">WebVTT region
-objects</a> used in the rendering can be matched by the above pseudo-element. User agents that
-support the pseudo-element must dynamically update renderings accordingly. When either <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#propdef-white-space">white-space</a> or one of the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-fonts-3/#propdef-font">font</a> shorthand (including <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/CSS22/visudet.html#propdef-line-height">line-height</a>) changes
-value, then the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-track-cue-display-state">text track cue display state</a> of all the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-35">WebVTT cues</a> in
-the region must be emptied and the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text track</a>’s <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#rules-for-updating-the-text-track-rendering">rules for updating the text track
-rendering</a> must be immediately rerun.</p>
    <h2 class="heading settled" data-level="9" id="api"><span class="secno">9. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="The VTTCue interface" data-level="9.1" id="the-vttcue-interface"><span class="secno">9.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
@@ -6077,8 +5995,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
    <li><a href="#cue-computed-position">cue computed position</a><span>, in §3.3</span>
    <li><a href="#cue-computed-position-alignment">cue computed position alignment</a><span>, in §3.3</span>
    <li><a href="#cue-payload">cue payload</a><span>, in §4.1</span>
-   <li><a href="#cue-region">::cue-region</a><span>, in §8.2.3</span>
-   <li><a href="#cue-region-selector">::cue-region(selector)</a><span>, in §8.2.3</span>
    <li><a href="#cue-selector">::cue(selector)</a><span>, in §8.2.1</span>
    <li><a href="#cue-text">cue text</a><span>, in §3.2</span>
    <li><a href="#enumdef-directionsetting">DirectionSetting</a><span>, in §9.1</span>
@@ -6661,7 +6577,6 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-28">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-29">(2)</a>
     <li><a href="#ref-for-webvtt-cue-30">8.2. Processing model</a> <a href="#ref-for-webvtt-cue-31">(2)</a> <a href="#ref-for-webvtt-cue-32">(3)</a>
     <li><a href="#ref-for-webvtt-cue-33">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-cue-34">(2)</a>
-    <li><a href="#ref-for-webvtt-cue-35">8.2.3. The ::cue-region pseudo-element</a>
     <li><a href="#ref-for-webvtt-cue-36">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-37">(2)</a> <a href="#ref-for-webvtt-cue-38">(3)</a> <a href="#ref-for-webvtt-cue-39">(4)</a> <a href="#ref-for-webvtt-cue-40">(5)</a> <a href="#ref-for-webvtt-cue-41">(6)</a> <a href="#ref-for-webvtt-cue-42">(7)</a> <a href="#ref-for-webvtt-cue-43">(8)</a> <a href="#ref-for-webvtt-cue-44">(9)</a> <a href="#ref-for-webvtt-cue-45">(10)</a> <a href="#ref-for-webvtt-cue-46">(11)</a> <a href="#ref-for-webvtt-cue-47">(12)</a>
    </ul>
   </aside>
@@ -6988,7 +6903,6 @@ title</a>
     <li><a href="#ref-for-webvtt-region-identifier-3">6.2. WebVTT region settings parsing</a>
     <li><a href="#ref-for-webvtt-region-identifier-4">6.3. WebVTT cue timings and settings parsing</a>
     <li><a href="#ref-for-webvtt-region-identifier-5">8.1. Introduction</a>
-    <li><a href="#ref-for-webvtt-region-identifier-6">8.2.3. The ::cue-region pseudo-element</a>
     <li><a href="#ref-for-webvtt-region-identifier-7">9.2. The VTTRegion interface</a> <a href="#ref-for-webvtt-region-identifier-8">(2)</a> <a href="#ref-for-webvtt-region-identifier-9">(3)</a>
    </ul>
   </aside>
@@ -7442,7 +7356,6 @@ title</a>
     <li><a href="#ref-for-webvtt-region-object-5">7.1. Processing model</a>
     <li><a href="#ref-for-webvtt-region-object-6">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-region-object-7">(2)</a> <a href="#ref-for-webvtt-region-object-8">(3)</a> <a href="#ref-for-webvtt-region-object-9">(4)</a>
     <li><a href="#ref-for-webvtt-region-object-10">8.1. Introduction</a> <a href="#ref-for-webvtt-region-object-11">(2)</a>
-    <li><a href="#ref-for-webvtt-region-object-12">8.2.3. The ::cue-region pseudo-element</a> <a href="#ref-for-webvtt-region-object-13">(2)</a> <a href="#ref-for-webvtt-region-object-14">(3)</a> <a href="#ref-for-webvtt-region-object-15">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="parse-a-percentage-string">
@@ -7730,7 +7643,6 @@ title</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-3">7.1. Processing model</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-4">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-5">(2)</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-6">(3)</a>
     <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-7">8.2. Processing model</a> <a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-8">(2)</a>
-    <li><a href="#ref-for-rules-for-updating-the-display-of-webvtt-text-tracks-9">8.2.3. The ::cue-region pseudo-element</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="apply-webvtt-cue-settings">
