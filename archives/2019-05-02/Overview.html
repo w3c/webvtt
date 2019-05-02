@@ -1546,10 +1546,7 @@ implementation report is based on implementer-provided test results for the
 Group does not require that implementations are publicly available but encourages them to be so.</p>
 
 <div data-fill-with="at-risk">
-  <p>The following features are at-risk, and may be dropped during the CR period:</p>
-  <ul>
-    <li><a href="#the-past-and-future-pseudo-classes">:past and :future pseudo-classes</a></li>
-  </ul>
+There are currently no features identified as at risk.
 </div>
 
 <p>A cumulative summary of all changes applied to this version since the
@@ -1663,7 +1660,6 @@ title</span></a>
        <a href="#css-extensions-processing-model"><span class="secno">8.2</span> <span class="content">Processing model</span></a>
        <ol class="toc">
         <li><a href="#the-cue-pseudo-element"><span class="secno">8.2.1</span> <span class="content">The <span class="css">::cue</span> pseudo-element</span></a>
-        <li><a href="#the-past-and-future-pseudo-classes"><span class="secno">8.2.2</span> <span class="content">The <span class="css">:past</span> and <span class="css">:future</span> pseudo-classes</span></a>
        </ol>
      </ol>
     <li>
@@ -5065,7 +5061,6 @@ apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#u
 given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a></code> element’s document tree.</p>
-   <p>The <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-10">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback position</a>.</p>
    <div class="example" id="example-cue-selector">
     <a class="self-link" href="#example-cue-selector"></a> 
     <p>The following table shows examples of what can be selected with a given selector, together with
@@ -5213,34 +5208,6 @@ Yellow!
         <p>As above, the <a data-link-type="dfn" href="#webvtt-node-objects-applicable-language" id="ref-for-webvtt-node-objects-applicable-language-9">applicable language</a> for
      the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-24">list of WebVTT Node Objects</a> can be set by the <code><a data-link-type="element-sub" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#dom-htmltrackelement-srclang">srclang</a></code> attribute in
      HTML.</p>
-      <tr>
-       <td class="long">
-        <p><a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes in <span class="css">::cue()</span></p>
-<pre>video::cue(:past) {
-  color: yellow;
-}
-video::cue(:future) {
-  color: cyan;
-}
-</pre>
-       <td class="long">
-        <p>In cues that have <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-5">WebVTT Timestamp Objects</a>, <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object-14">WebVTT Internal Node Objects</a>,
-     depending on the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback position</a>.</p>
-<pre>WEBVTT
-
-00:00:00.000 --> 00:00:08.000
-&lt;c>No match (no timestamps)&lt;/c>
-
-00:00:08.000 --> 00:00:16.000
-No match &lt;00:00:12.000> (no elements)
-
-00:00:16.000 --> 00:00:24.000
-&lt;00:00:16.000> &lt;c>This&lt;/c>
-&lt;00:00:18.000> &lt;c>can&lt;/c>
-&lt;00:00:20.000> &lt;c>match&lt;/c>
-&lt;00:00:22.000> &lt;c>:past/:future&lt;/c>
-&lt;00:00:24.000>
-</pre>
     </table>
    </div>
    <h3 class="heading settled" data-level="8.2" id="css-extensions-processing-model"><span class="secno">8.2. </span><span class="content">Processing model</span><a class="self-link" href="#css-extensions-processing-model"></a></h3>
@@ -5257,7 +5224,7 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-32">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#the-video-element">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> model must implement the <span class="css">::cue</span> and <span class="css">::cue(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#text-tracks">text tracks</a> model must implement the <span class="css">::cue</span> and <span class="css">::cue(<var>selector</var>)</span> pseudo-elements.</p>
    <h4 class="heading settled" data-level="8.2.1" id="the-cue-pseudo-element"><span class="secno">8.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn data-dfn-type="dfn" data-noexport="" id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-26">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5360,31 +5327,9 @@ being treated as follows:</p>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-4/#propdef-outline">outline</a> shorthand
     <li>properties relating to the transition and animation features
    </ul>
-   <p>In addition, the following properties apply to the <span class="css">::cue()</span> pseudo-element with an argument
-when the selector does not contain the <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes:</p>
-   <ul class="brief">
-    <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-fonts-3/#propdef-font">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/CSS22/visudet.html#propdef-line-height">line-height</a>
-    <li><a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#propdef-white-space">white-space</a>
-    <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-4/#propdef-text-combine-upright">text-combine-upright</a>
-    <li><a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css-ruby-1/#propdef-ruby-position">ruby-position</a>
-   </ul>
    <p>Properties that do not apply must be ignored.</p>
    <p>As a special exception, the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://www.w3.org/TR/css3-background/#propdef-background">background</a> shorthand, when they
 would have been applied to the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-32">list of WebVTT Node Objects</a>, must instead be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box-3">WebVTT cue background box</a>.</p>
-   <h4 class="heading settled" data-level="8.2.2" id="the-past-and-future-pseudo-classes"><span class="secno">8.2.2. </span><span class="content">The <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes</span><a class="self-link" href="#the-past-and-future-pseudo-classes"></a></h4>
-   <p>The <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-16">WebVTT
-Node Objects</a>. <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a></p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="past">:past<a class="self-link" href="#past"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-17">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
-   <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-18">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-past">in the past<a class="self-link" href="#in-the-past"></a></dfn> if, in a
-pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-33">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-33">list of WebVTT Node Objects</a>,
-there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-6">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback
-position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-19">WebVTT Node Object</a> <var>c</var>.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport="" id="future">:future<a class="self-link" href="#future"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-20">WebVTT Node
-Objects</a> that are <i>in the future</i>.</p>
-   <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-21">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport="" id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
-pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-34">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-34">list of WebVTT Node Objects</a>,
-there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object-7">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#current-position">current playback
-position</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/semantics-embedded-content.html#media-element">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object-22">WebVTT Node Object</a> <var>c</var>.</p>
    <h2 class="heading settled" data-level="9" id="api"><span class="secno">9. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled algorithm" data-algorithm="The VTTCue interface" data-level="9.1" id="the-vttcue-interface"><span class="secno">9.1. </span><span class="content">The <code class="idl"><a data-link-type="idl" href="#vttcue" id="ref-for-vttcue-2">VTTCue</a></code> interface</span><a class="self-link" href="#the-vttcue-interface"></a></h3>
    <p>The following interface is used to expose WebVTT cues in the DOM API:</p>
@@ -6010,7 +5955,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
      <li><a href="#dom-linealignsetting-end">enum-value for LineAlignSetting</a><span>, in §9.1</span>
      <li><a href="#dom-alignsetting-end">enum-value for AlignSetting</a><span>, in §9.1</span>
     </ul>
-   <li><a href="#future">:future</a><span>, in §8.2.2</span>
    <li><a href="#dom-vttcue-getcueashtml">getCueAsHTML()</a><span>, in §9.1</span>
    <li><a href="#html-character-reference-in-annotation-state">HTML character reference in annotation state</a><span>, in §6.4</span>
    <li><a href="#html-character-reference-in-data-state">HTML character reference in data state</a><span>, in §6.4</span>
@@ -6035,7 +5979,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
    <li><a href="#obtain-a-set-of-css-boxes">obtain a set of CSS boxes</a><span>, in §7.3</span>
    <li><a href="#parse-a-percentage-string">parse a percentage string</a><span>, in §6.2</span>
    <li><a href="#parse-the-webvtt-cue-settings">parse the WebVTT cue settings</a><span>, in §6.3</span>
-   <li><a href="#past">:past</a><span>, in §8.2.2</span>
    <li><a href="#dom-vttcue-position">position</a><span>, in §9.1</span>
    <li><a href="#dom-vttcue-positionalign">positionAlign</a><span>, in §9.1</span>
    <li><a href="#enumdef-positionalignsetting">PositionAlignSetting</a><span>, in §9.1</span>
@@ -6394,9 +6337,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html51">[HTML51]<
    <li>
     <a data-link-type="biblio">[SELECTORS4]</a> defines the following terms:
     <ul>
-     <li><a href="https://www.w3.org/TR/selectors4/#future-pseudo">:future</a>
      <li><a href="https://www.w3.org/TR/selectors4/#lang-pseudo">:lang()</a>
-     <li><a href="https://www.w3.org/TR/selectors4/#past-pseudo">:past</a>
      <li><a href="https://www.w3.org/TR/selectors4/#attribute-selector">attribute selector</a>
      <li><a href="https://www.w3.org/TR/selectors4/#class-selector">class selector</a>
      <li><a href="https://www.w3.org/TR/selectors4/#id-selector">id selector</a>
@@ -6576,7 +6517,6 @@ title</a>
     <li><a href="#ref-for-webvtt-cue-26">7.1. Processing model</a> <a href="#ref-for-webvtt-cue-27">(2)</a>
     <li><a href="#ref-for-webvtt-cue-28">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-cue-29">(2)</a>
     <li><a href="#ref-for-webvtt-cue-30">8.2. Processing model</a> <a href="#ref-for-webvtt-cue-31">(2)</a> <a href="#ref-for-webvtt-cue-32">(3)</a>
-    <li><a href="#ref-for-webvtt-cue-33">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-cue-34">(2)</a>
     <li><a href="#ref-for-webvtt-cue-36">9.1. The VTTCue interface</a> <a href="#ref-for-webvtt-cue-37">(2)</a> <a href="#ref-for-webvtt-cue-38">(3)</a> <a href="#ref-for-webvtt-cue-39">(4)</a> <a href="#ref-for-webvtt-cue-40">(5)</a> <a href="#ref-for-webvtt-cue-41">(6)</a> <a href="#ref-for-webvtt-cue-42">(7)</a> <a href="#ref-for-webvtt-cue-43">(8)</a> <a href="#ref-for-webvtt-cue-44">(9)</a> <a href="#ref-for-webvtt-cue-45">(10)</a> <a href="#ref-for-webvtt-cue-46">(11)</a> <a href="#ref-for-webvtt-cue-47">(12)</a>
    </ul>
   </aside>
@@ -7393,7 +7333,6 @@ title</a>
     <li><a href="#ref-for-webvtt-node-object-11">7.4. Applying CSS properties to WebVTT Node Objects</a> <a href="#ref-for-webvtt-node-object-12">(2)</a>
     <li><a href="#ref-for-webvtt-node-object-13">8.2. Processing model</a> <a href="#ref-for-webvtt-node-object-14">(2)</a>
     <li><a href="#ref-for-webvtt-node-object-15">8.2.1. The ::cue pseudo-element</a>
-    <li><a href="#ref-for-webvtt-node-object-16">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-node-object-17">(2)</a> <a href="#ref-for-webvtt-node-object-18">(3)</a> <a href="#ref-for-webvtt-node-object-19">(4)</a> <a href="#ref-for-webvtt-node-object-20">(5)</a> <a href="#ref-for-webvtt-node-object-21">(6)</a> <a href="#ref-for-webvtt-node-object-22">(7)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-internal-node-object">
@@ -7438,7 +7377,6 @@ title</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-18">8.1. Introduction</a> <a href="#ref-for-list-of-webvtt-node-objects-19">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-20">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-21">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-22">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-23">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-24">(7)</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-25">8.2. Processing model</a>
     <li><a href="#ref-for-list-of-webvtt-node-objects-26">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-list-of-webvtt-node-objects-27">(2)</a> <a href="#ref-for-list-of-webvtt-node-objects-28">(3)</a> <a href="#ref-for-list-of-webvtt-node-objects-29">(4)</a> <a href="#ref-for-list-of-webvtt-node-objects-30">(5)</a> <a href="#ref-for-list-of-webvtt-node-objects-31">(6)</a> <a href="#ref-for-list-of-webvtt-node-objects-32">(7)</a>
-    <li><a href="#ref-for-list-of-webvtt-node-objects-33">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-list-of-webvtt-node-objects-34">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-class-object">
@@ -7540,7 +7478,6 @@ title</a>
     <li><a href="#ref-for-webvtt-timestamp-object-1">6.4. WebVTT cue text parsing rules</a> <a href="#ref-for-webvtt-timestamp-object-2">(2)</a>
     <li><a href="#ref-for-webvtt-timestamp-object-3">6.5. WebVTT cue text DOM construction rules</a> <a href="#ref-for-webvtt-timestamp-object-4">(2)</a>
     <li><a href="#ref-for-webvtt-timestamp-object-5">8.1. Introduction</a>
-    <li><a href="#ref-for-webvtt-timestamp-object-6">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-webvtt-timestamp-object-7">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-text-parsing-rules">
