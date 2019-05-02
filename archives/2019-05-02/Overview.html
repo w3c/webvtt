@@ -1545,7 +1545,6 @@ Group does not require that implementations are publicly available but encourage
 <div data-fill-with="at-risk">
   <p>The following features are at-risk, and may be dropped during the CR period:</p>
   <ul>
-    <li><a href="#collision-avoidance">collision avoidance with snap-to-lines false</a></li>
     <li><a href="#the-cue-region-pseudo-element">::cue-region pseudo-element</a></li>
     <li><a href="#the-past-and-future-pseudo-classes">:past and :future pseudo-classes</a></li>
   </ul>
@@ -4886,13 +4885,6 @@ must run the following algorithm.</p>
          <p>If none of the boxes in <var>boxes</var> would overlap any of the boxes in <var>output</var>, and all the
      boxes in <var>boxes</var> are within the <var>video</var>’s rendering area, then jump to the step labeled <i>done
      positioning</i> below.</p>
-        <li>
-         <p id="collision-avoidance">If there is a position to which the boxes in <var>boxes</var> can be moved while maintaining the
-     relative positions of the boxes in <var>boxes</var> to each other such that none of the boxes in <var>boxes</var> would overlap any of the boxes in <var>output</var>, and all the boxes in <var>boxes</var> would be within the <var>video</var>’s rendering area, then move the boxes in <var>boxes</var> to the closest such position to their
-     current position, and then jump to the step labeled <i>done positioning</i> below. If there are
-     multiple such positions that are equidistant from their current position, use the highest one
-     amongst them; if there are several at that height, then use the leftmost one amongst
-     them.</p>
         <li>
          <p>Otherwise, jump to the step labeled <i>done positioning</i> below. (The boxes will
      unfortunately overlap.)</p>
