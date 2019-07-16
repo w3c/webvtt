@@ -5474,19 +5474,19 @@ would have been applied to the <a>list of WebVTT Node Objects</a>, must instead 
 <p>The '':past'' and '':future'' pseudo-classes sometimes match <a lt="WebVTT Node Object">WebVTT
 Node Objects</a>. [[!SELECTORS4]]</p>
 
-<p>The <dfn>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node Objects</a>
+<p>The <dfn selector>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node Objects</a>
 that are <i>in the past</i>.</p>
 
-<p algorithm="in the past">A <a>WebVTT Node Object</a> |c| is <dfn>in the past</dfn> if, in a
+<p algorithm="in the past">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the past</dfn> if, in a
 pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
 there exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
 position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
 <a>WebVTT Node Object</a> |c|.</p>
 
-<p>The <dfn>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
+<p>The <dfn selector>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
 
-<p algorithm="in the future">A <a>WebVTT Node Object</a> |c| is <dfn>in the future</dfn> if, in a
+<p algorithm="in the future">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the future</dfn> if, in a
 pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
 there exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
 position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before the
