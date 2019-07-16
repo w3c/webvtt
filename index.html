@@ -1224,7 +1224,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version a3b64e58e069c2e8a9ffcadffb76601231663a47" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="d2d7423be71cba03d361697976a9d302317fe9ac" name="document-revision">
+  <meta content="6e879d21924800a2ff121612bb71bbd7a17bf76b" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -1805,7 +1805,7 @@ The Organisation for Sample Public Service Announcements accepts no liability fo
    <h3 class="heading settled" data-level="1.3" id="styling"><span class="secno">1.3. </span><span class="content">Styling captions</span><a class="self-link" href="#styling"></a></h3>
    <p><i>This section is non-normative.</i></p>
    <p>CSS style sheets that apply to an HTML page that contains a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video">video</a> element can
-target WebVTT cues and regions in the video using the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+target WebVTT cues and regions in the video using the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue">::cue</a>, <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector">::cue()</a>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
    <div class="example" id="example-75dc6540">
     <a class="self-link" href="#example-75dc6540"></a> 
     <p>In this example, an HTML page has a CSS style sheet in a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element" id="ref-for-the-style-element">style</a> element that
@@ -4890,7 +4890,7 @@ constraints: <a data-link-type="biblio" href="#biblio-css22">[CSS22]</a></p>
   element</a> for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①④">text tracks</a> that were sourced from the given WebVTT file. The selectors
   must not match other <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⑤">text tracks</a> for the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element⑨">media element</a>. In this hypothetical
   document, the element must not match any selector that would match the element itself.</p>
-     <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#originating-element" id="ref-for-originating-element">originating element</a> for the <span class="css">::cue</span>, <span class="css">::cue()</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
+     <p class="note" role="note">This element exists only to be the <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#originating-element" id="ref-for-originating-element">originating element</a> for the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue①">::cue</a>, <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector①">::cue()</a>, <span class="css">::cue-region</span> and <span class="css">::cue-region()</span> pseudo-elements.</p>
     <li>
      <p>For the purpose of determining the <a data-link-type="dfn" href="https://drafts.csswg.org/css-cascade-4/#cascade" id="ref-for-cascade①">cascade</a> of the declarations in STYLE
   blocks of a WebVTT file, the relative order of appearance of the style sheets must be the same
@@ -5042,7 +5042,7 @@ then they must be interpreted as defined in the next section.</p>
 apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css①">user agents that do not support CSS</a>.</p>
    <h3 class="heading settled" data-level="8.1" id="css-extensions-introduction"><span class="secno">8.1. </span><span class="content">Introduction</span><a class="self-link" href="#css-extensions-introduction"></a></h3>
    <p><i>This section is non-normative.</i></p>
-   <p>The <span class="css">::cue</span> pseudo-element represents a cue.</p>
+   <p>The <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue②">::cue</a> pseudo-element represents a cue.</p>
    <p>The <span class="css">::cue(<var>selector</var>)</span> pseudo-element represents a cue or element inside a cue that match the
 given selector.</p>
    <p>The <span class="css">::cue-region</span> pseudo-element represents a region.</p>
@@ -5063,7 +5063,7 @@ present in the <code><a data-link-type="element" href="https://html.spec.whatwg.
      <tbody>
       <tr>
        <td class="long">
-        <p><span class="css">::cue</span></p>
+        <p><a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue③">::cue</a></p>
 <pre>video::cue {
   color: yellow;
 }</pre>
@@ -5079,7 +5079,7 @@ Also yellow!
 </pre>
       <tr>
        <td class="long">
-        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#id-selector" id="ref-for-id-selector">ID selector</a> in <span class="css">::cue()</span></p>
+        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#id-selector" id="ref-for-id-selector">ID selector</a> in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector②">::cue()</a></p>
 <pre>video::cue(#cue1) {
   color: yellow;
 }</pre>
@@ -5093,7 +5093,7 @@ Yellow!
 </pre>
       <tr>
        <td class="long">
-        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#type-selector" id="ref-for-type-selector">Type selector</a> in <span class="css">::cue()</span></p>
+        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#type-selector" id="ref-for-type-selector">Type selector</a> in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector③">::cue()</a></p>
 <pre>video::cue(c),
 video::cue(i),
 video::cue(b),
@@ -5122,7 +5122,7 @@ video::cue(lang) {
 </pre>
       <tr>
        <td class="long">
-        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#class-selector" id="ref-for-class-selector">Class selector</a> in <span class="css">::cue()</span></p>
+        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#class-selector" id="ref-for-class-selector">Class selector</a> in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector④">::cue()</a></p>
 <pre>video::cue(.loud) {
   color: yellow;
 }</pre>
@@ -5143,7 +5143,7 @@ video::cue(lang) {
 </pre>
       <tr>
        <td class="long">
-        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#attribute-selector" id="ref-for-attribute-selector">Attribute selector</a> in <span class="css">::cue()</span></p>
+        <p><a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#attribute-selector" id="ref-for-attribute-selector">Attribute selector</a> in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑤">::cue()</a></p>
 <pre>video::cue([lang="en-US"]) {
   color: yellow;
 }
@@ -5177,7 +5177,7 @@ Yellow!
 </pre>
       <tr>
        <td class="long">
-        <p><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#lang-pseudo" id="ref-for-lang-pseudo">:lang()</a> pseudo-class in <span class="css">::cue()</span></p>
+        <p><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#lang-pseudo" id="ref-for-lang-pseudo">:lang()</a> pseudo-class in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑥">::cue()</a></p>
 <pre>video::cue(:lang(en)) {
   color: yellow;
 }
@@ -5200,7 +5200,7 @@ Yellow!
      HTML.</p>
       <tr>
        <td class="long">
-        <p><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo①">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo①">:future</a> pseudo-classes in <span class="css">::cue()</span></p>
+        <p><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo①">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo①">:future</a> pseudo-classes in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑦">::cue()</a></p>
 <pre>video::cue(:past) {
   color: yellow;
 }
@@ -5295,12 +5295,12 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③①">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video⑦">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⑧">text tracks</a> model must implement the <span class="css">::cue</span>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo②">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo②">:future</a> pseudo-classes.</p>
-   <h4 class="heading settled" data-level="8.2.1" id="the-cue-pseudo-element"><span class="secno">8.2.1. </span><span class="content">The <span class="css">::cue</span> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
-   <p>The <dfn data-dfn-type="dfn" data-noexport id="cue">::cue<a class="self-link" href="#cue"></a></dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑤">list of WebVTT Node
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⑧">text tracks</a> model must implement the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue④">::cue</a>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo②">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo②">:future</a> pseudo-classes.</p>
+   <h4 class="heading settled" data-level="8.2.1" id="the-cue-pseudo-element"><span class="secno">8.2.1. </span><span class="content">The <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue⑤">::cue</a> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-cue">::cue</dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑤">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
 corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background③">background</a> shorthand must be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box①">WebVTT cue background box</a> rather than the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑥">list of WebVTT Node Objects</a>.</p>
-   <p>The following properties apply to the <span class="css">::cue</span> pseudo-element with no argument; other properties
+   <p>The following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue⑥">::cue</a> pseudo-element with no argument; other properties
 set on the pseudo-element must be ignored:</p>
    <ul class="brief">
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color" id="ref-for-propdef-color④">color</a>
@@ -5315,7 +5315,7 @@ set on the pseudo-element must be ignored:</p>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-writing-modes-4/#propdef-text-combine-upright" id="ref-for-propdef-text-combine-upright">text-combine-upright</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ruby-1/#propdef-ruby-position" id="ref-for-propdef-ruby-position">ruby-position</a>
    </ul>
-   <p>The <dfn data-dfn-type="dfn" data-noexport id="cue-selector">::cue(<var>selector</var>)<a class="self-link" href="#cue-selector"></a></dfn> pseudo-element with an argument must have an argument that
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-cue-selector">::cue(<var>selector</var>)</dfn> pseudo-element with an argument must have an argument that
 consists of a CSS selector <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a>. It matches any <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object①④">WebVTT Internal Node Object</a> constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
 being treated as follows:</p>
    <ul>
@@ -5387,7 +5387,7 @@ being treated as follows:</p>
  WebVTT Node Objects</a> have the ID given by the cue’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-identifier" id="ref-for-text-track-cue-identifier②">text track cue identifier</a>, if
  any.</p>
    </ul>
-   <p>The following properties apply to the <span class="css">::cue()</span> pseudo-element with an argument:</p>
+   <p>The following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑧">::cue()</a> pseudo-element with an argument:</p>
    <ul class="brief">
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-color" id="ref-for-propdef-color⑤">color</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-color-4/#propdef-opacity" id="ref-for-propdef-opacity①">opacity</a>
@@ -5398,7 +5398,7 @@ being treated as follows:</p>
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-ui-4/#propdef-outline" id="ref-for-propdef-outline①">outline</a> shorthand
     <li>properties relating to the transition and animation features
    </ul>
-   <p>In addition, the following properties apply to the <span class="css">::cue()</span> pseudo-element with an argument
+   <p>In addition, the following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑨">::cue()</a> pseudo-element with an argument
 when the selector does not contain the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo③">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo③">:future</a> pseudo-classes:</p>
    <ul class="brief">
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font" id="ref-for-propdef-font④">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height" id="ref-for-propdef-line-height②">line-height</a>
@@ -5438,7 +5438,7 @@ given CSS selector as follows:</p>
      <p>Any region (list of <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object①③">WebVTT region objects</a>) with a <a data-link-type="dfn" href="#webvtt-region-identifier" id="ref-for-webvtt-region-identifier⑤">WebVTT region identifier</a> matching the given ID.</p>
    </ul>
    <p>No other selector matching is defined for <span class="css">::cue-region(<var>selector</var>)</span>.</p>
-   <p>The same properties that apply to <span class="css">::cue</span> apply to the <span class="css">::cue-region</span> pseudo-element; other
+   <p>The same properties that apply to <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue⑦">::cue</a> apply to the <span class="css">::cue-region</span> pseudo-element; other
 properties set on the pseudo-element must be ignored.</p>
    <p>When a user agent is rendering one or more text track regions according to the <a data-link-type="dfn" href="#rules-for-updating-the-display-of-webvtt-text-tracks" id="ref-for-rules-for-updating-the-display-of-webvtt-text-tracks⑧">rules for
 updating the display of WebVTT text tracks</a>, <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object①④">WebVTT region
@@ -6038,7 +6038,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#collect-webvtt-cue-timings-and-settings">collect WebVTT cue timings and settings</a><span>, in §6.3</span>
    <li><a href="#collect-webvtt-region-settings">collect WebVTT region settings</a><span>, in §6.2</span>
    <li><a href="#consume-an-html-character-reference">consume an HTML character reference</a><span>, in §6.4</span>
-   <li><a href="#cue">::cue</a><span>, in §8.2.1</span>
+   <li><a href="#selectordef-cue">::cue</a><span>, in §8.2.1</span>
    <li><a href="#cue-component-class-names">cue component class names</a><span>, in §4.2.2</span>
    <li><a href="#cue-computed-line">cue computed line</a><span>, in §3.3</span>
    <li><a href="#cue-computed-position">cue computed position</a><span>, in §3.3</span>
@@ -6046,7 +6046,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#cue-payload">cue payload</a><span>, in §4.1</span>
    <li><a href="#cue-region">::cue-region</a><span>, in §8.2.3</span>
    <li><a href="#cue-region-selector">::cue-region(selector)</a><span>, in §8.2.3</span>
-   <li><a href="#cue-selector">::cue(selector)</a><span>, in §8.2.1</span>
+   <li><a href="#selectordef-cue-selector">::cue(selector)</a><span>, in §8.2.1</span>
    <li><a href="#cue-text">cue text</a><span>, in §3.2</span>
    <li><a href="#enumdef-directionsetting">DirectionSetting</a><span>, in §9.1</span>
    <li>
@@ -8480,6 +8480,26 @@ title</a>
    <ul>
     <li><a href="#ref-for-webvtt-cue-background-box">7.4. Applying CSS properties to WebVTT Node Objects</a>
     <li><a href="#ref-for-webvtt-cue-background-box①">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-webvtt-cue-background-box②">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="selectordef-cue">
+   <b><a href="#selectordef-cue">#selectordef-cue</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-selectordef-cue">1.3. Styling captions</a>
+    <li><a href="#ref-for-selectordef-cue①">7.3. Obtaining CSS boxes</a>
+    <li><a href="#ref-for-selectordef-cue②">8.1. Introduction</a> <a href="#ref-for-selectordef-cue③">(2)</a>
+    <li><a href="#ref-for-selectordef-cue④">8.2. Processing model</a>
+    <li><a href="#ref-for-selectordef-cue⑤">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-selectordef-cue⑥">(2)</a>
+    <li><a href="#ref-for-selectordef-cue⑦">8.2.3. The ::cue-region pseudo-element</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="selectordef-cue-selector">
+   <b><a href="#selectordef-cue-selector">#selectordef-cue-selector</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-selectordef-cue-selector">1.3. Styling captions</a>
+    <li><a href="#ref-for-selectordef-cue-selector①">7.3. Obtaining CSS boxes</a>
+    <li><a href="#ref-for-selectordef-cue-selector②">8.1. Introduction</a> <a href="#ref-for-selectordef-cue-selector③">(2)</a> <a href="#ref-for-selectordef-cue-selector④">(3)</a> <a href="#ref-for-selectordef-cue-selector⑤">(4)</a> <a href="#ref-for-selectordef-cue-selector⑥">(5)</a> <a href="#ref-for-selectordef-cue-selector⑦">(6)</a>
+    <li><a href="#ref-for-selectordef-cue-selector⑧">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-selectordef-cue-selector⑨">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="enumdef-autokeyword">

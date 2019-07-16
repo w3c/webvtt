@@ -5295,7 +5295,7 @@ pseudo-elements defined below won't have any effect according to this specificat
 
 <h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
 
-<p>The <dfn>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
+<p>The <dfn selector>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
 corresponding to the 'background' shorthand must be applied to the <a>WebVTT cue background box</a>
 rather than the <a>list of WebVTT Node Objects</a>.</p>
@@ -5322,7 +5322,7 @@ set on the pseudo-element must be ignored:</p>
  widows, z-index -->
 </ul>
 
-<p>The <dfn>::cue(|selector|)</dfn> pseudo-element with an argument must have an argument that
+<p>The <dfn selector>::cue(|selector|)</dfn> pseudo-element with an argument must have an argument that
 consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal Node Object</a>
 constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
 being treated as follows:</p>
