@@ -5502,11 +5502,11 @@ track regions that are being rendered for the matched element.</p>
 <p class="note">If the matched element is not a video element, the pseudo-element defined below
 won't have any effect according to this specification.</p>
 
-<p>The <dfn>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a lt="WebVTT
+<p>The <dfn selector>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a lt="WebVTT
 region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
 
-<p>The <dfn>::cue-region(selector)</dfn> pseudo-element with an argument must have an argument that
+<p>The <dfn selector>::cue-region(|selector|)</dfn> pseudo-element with an argument must have an argument that
 consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT region
 object">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
 given CSS selector as follows:</p>
