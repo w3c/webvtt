@@ -1224,7 +1224,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version a3b64e58e069c2e8a9ffcadffb76601231663a47" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="6e879d21924800a2ff121612bb71bbd7a17bf76b" name="document-revision">
+  <meta content="b23625649a2c2b6599b2b32a0cb99b7cbcc1c0b4" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -5050,7 +5050,7 @@ given selector.</p>
 that match the given selector.</p>
    <p class="note" role="note">Similarly to all other pseudo-elements, these pseudo-elements are not directly
 present in the <code><a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video⑥">video</a></code> element’s document tree.</p>
-   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object⑨">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position" id="ref-for-current-playback-position①">current playback position</a>.</p>
+   <p>The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future">:future</a> pseudo-classes can be used in <span class="css">::cue(<var>selector</var>)</span> to match <a data-link-type="dfn" href="#webvtt-internal-node-object" id="ref-for-webvtt-internal-node-object⑨">WebVTT Internal Node Objects</a> based on the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position" id="ref-for-current-playback-position①">current playback position</a>.</p>
    <div class="example" id="example-cue-selector">
     <a class="self-link" href="#example-cue-selector"></a> 
     <p>The following table shows examples of what can be selected with a given selector, together with
@@ -5200,7 +5200,7 @@ Yellow!
      HTML.</p>
       <tr>
        <td class="long">
-        <p><a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo①">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo①">:future</a> pseudo-classes in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑦">::cue()</a></p>
+        <p><a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past①">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future①">:future</a> pseudo-classes in <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑦">::cue()</a></p>
 <pre>video::cue(:past) {
   color: yellow;
 }
@@ -5295,7 +5295,7 @@ that element is the <i>matched element</i>. The pseudo-elements defined in the f
 affect the styling of parts of <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③①">WebVTT cues</a> that are being rendered for the <i>matched element</i>.</p>
    <p class="note" role="note">If the <i>matched element</i> is not a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video" id="ref-for-video⑦">video</a> element, the
 pseudo-elements defined below won’t have any effect according to this specification.</p>
-   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⑧">text tracks</a> model must implement the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue④">::cue</a>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo②">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo②">:future</a> pseudo-classes.</p>
+   <p>A CSS user agent that implements the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track" id="ref-for-text-track①⑧">text tracks</a> model must implement the <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue④">::cue</a>, <span class="css">::cue(<var>selector</var>)</span>, <span class="css">::cue-region</span> and <span class="css">::cue-region(<var>selector</var>)</span> pseudo-elements, and the <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past②">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future②">:future</a> pseudo-classes.</p>
    <h4 class="heading settled" data-level="8.2.1" id="the-cue-pseudo-element"><span class="secno">8.2.1. </span><span class="content">The <a class="css" data-link-type="maybe" href="#selectordef-cue" id="ref-for-selectordef-cue⑤">::cue</a> pseudo-element</span><a class="self-link" href="#the-cue-pseudo-element"></a></h4>
    <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-cue">::cue</dfn> pseudo-element (with no argument) matches any <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects②⑤">list of WebVTT Node
 Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
@@ -5399,7 +5399,7 @@ being treated as follows:</p>
     <li>properties relating to the transition and animation features
    </ul>
    <p>In addition, the following properties apply to the <a class="css" data-link-type="maybe" href="#selectordef-cue-selector" id="ref-for-selectordef-cue-selector⑨">::cue()</a> pseudo-element with an argument
-when the selector does not contain the <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo③">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo③">:future</a> pseudo-classes:</p>
+when the selector does not contain the <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past③">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future③">:future</a> pseudo-classes:</p>
    <ul class="brief">
     <li>the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-fonts-3/#propdef-font" id="ref-for-propdef-font④">font</a> shorthand, including <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css2/visudet.html#propdef-line-height" id="ref-for-propdef-line-height②">line-height</a>
     <li><a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-text-4/#propdef-white-space" id="ref-for-propdef-white-space③">white-space</a>
@@ -5409,17 +5409,17 @@ when the selector does not contain the <a class="css" data-link-type="maybe" hre
    <p>Properties that do not apply must be ignored.</p>
    <p>As a special exception, the properties corresponding to the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background" id="ref-for-propdef-background⑥">background</a> shorthand, when they
 would have been applied to the <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③①">list of WebVTT Node Objects</a>, must instead be applied to the <a data-link-type="dfn" href="#webvtt-cue-background-box" id="ref-for-webvtt-cue-background-box②">WebVTT cue background box</a>.</p>
-   <h4 class="heading settled" data-level="8.2.2" id="the-past-and-future-pseudo-classes"><span class="secno">8.2.2. </span><span class="content">The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo④">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo④">:future</a> pseudo-classes</span><a class="self-link" href="#the-past-and-future-pseudo-classes"></a></h4>
-   <p>The <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#past-pseudo" id="ref-for-past-pseudo⑤">:past</a> and <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/selectors-4/#future-pseudo" id="ref-for-future-pseudo⑤">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑤">WebVTT
+   <h4 class="heading settled" data-level="8.2.2" id="the-past-and-future-pseudo-classes"><span class="secno">8.2.2. </span><span class="content">The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past④">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future④">:future</a> pseudo-classes</span><a class="self-link" href="#the-past-and-future-pseudo-classes"></a></h4>
+   <p>The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past⑤">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future⑤">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑤">WebVTT
 Node Objects</a>. <a data-link-type="biblio" href="#biblio-selectors4">[SELECTORS4]</a></p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport id="past">:past<a class="self-link" href="#past"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑥">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
-   <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑦">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport id="in-the-past">in the past<a class="self-link" href="#in-the-past"></a></dfn> if, in a
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-past">:past</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑥">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+   <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑦">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="abstract-op" data-export id="abstract-opdef-in-the-past">in the past<a class="self-link" href="#abstract-opdef-in-the-past"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③②">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③②">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object⑤">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position" id="ref-for-current-playback-position③">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①④">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑧">WebVTT Node Object</a> <var>c</var>.</p>
-   <p>The <dfn data-dfn-type="dfn" data-noexport id="future">:future<a class="self-link" href="#future"></a></dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑨">WebVTT Node
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-future">:future</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑨">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
-   <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object②⓪">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="dfn" data-noexport id="in-the-future">in the future<a class="self-link" href="#in-the-future"></a></dfn> if, in a
+   <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object②⓪">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="abstract-op" data-export id="abstract-opdef-in-the-future">in the future<a class="self-link" href="#abstract-opdef-in-the-future"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③③">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③③">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object⑥">WebVTT Timestamp Object</a> whose value is greater than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position" id="ref-for-current-playback-position④">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①⑤">media element</a> that is the <i>matched element</i>, entirely before the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object②①">WebVTT Node Object</a> <var>c</var>.</p>
@@ -6055,14 +6055,14 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
      <li><a href="#dom-alignsetting-end">enum-value for AlignSetting</a><span>, in §9.1</span>
      <li><a href="#dom-linealignsetting-end">enum-value for LineAlignSetting</a><span>, in §9.1</span>
     </ul>
-   <li><a href="#future">:future</a><span>, in §8.2.2</span>
+   <li><a href="#selectordef-future">:future</a><span>, in §8.2.2</span>
    <li><a href="#dom-vttcue-getcueashtml">getCueAsHTML()</a><span>, in §9.1</span>
    <li><a href="#html-character-reference-in-annotation-state">HTML character reference in annotation state</a><span>, in §6.4</span>
    <li><a href="#html-character-reference-in-data-state">HTML character reference in data state</a><span>, in §6.4</span>
    <li><a href="#dom-vttregion-id">id</a><span>, in §9.2</span>
    <li><a href="#incremental-webvtt-parser">incremental WebVTT parser</a><span>, in §6.1</span>
-   <li><a href="#in-the-future">in the future</a><span>, in §8.2.2</span>
-   <li><a href="#in-the-past">in the past</a><span>, in §8.2.2</span>
+   <li><a href="#abstract-opdef-in-the-future">in the future</a><span>, in §8.2.2</span>
+   <li><a href="#abstract-opdef-in-the-past">in the past</a><span>, in §8.2.2</span>
    <li><a href="#dom-alignsetting-left">"left"</a><span>, in §9.1</span>
    <li><a href="#dom-vttcue-line">line</a><span>, in §9.1</span>
    <li><a href="#dom-vttcue-linealign">lineAlign</a><span>, in §9.1</span>
@@ -6076,7 +6076,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li><a href="#obtain-a-set-of-css-boxes">obtain a set of CSS boxes</a><span>, in §7.3</span>
    <li><a href="#parse-a-percentage-string">parse a percentage string</a><span>, in §6.2</span>
    <li><a href="#parse-the-webvtt-cue-settings">parse the WebVTT cue settings</a><span>, in §6.3</span>
-   <li><a href="#past">:past</a><span>, in §8.2.2</span>
+   <li><a href="#selectordef-past">:past</a><span>, in §8.2.2</span>
    <li><a href="#dom-vttcue-position">position</a><span>, in §9.1</span>
    <li><a href="#dom-vttcue-positionalign">positionAlign</a><span>, in §9.1</span>
    <li><a href="#enumdef-positionalignsetting">PositionAlignSetting</a><span>, in §9.1</span>
@@ -6893,29 +6893,11 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
     <li><a href="#ref-for-sel-before">Styling-related privacy and security</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-future-pseudo">
-   <a href="https://drafts.csswg.org/selectors-4/#future-pseudo">https://drafts.csswg.org/selectors-4/#future-pseudo</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-future-pseudo">8.1. Introduction</a> <a href="#ref-for-future-pseudo①">(2)</a>
-    <li><a href="#ref-for-future-pseudo②">8.2. Processing model</a>
-    <li><a href="#ref-for-future-pseudo③">8.2.1. The ::cue pseudo-element</a>
-    <li><a href="#ref-for-future-pseudo④">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-future-pseudo⑤">(2)</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-lang-pseudo">
    <a href="https://drafts.csswg.org/selectors-4/#lang-pseudo">https://drafts.csswg.org/selectors-4/#lang-pseudo</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-lang-pseudo">8.1. Introduction</a>
     <li><a href="#ref-for-lang-pseudo①">8.2.1. The ::cue pseudo-element</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-past-pseudo">
-   <a href="https://drafts.csswg.org/selectors-4/#past-pseudo">https://drafts.csswg.org/selectors-4/#past-pseudo</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-past-pseudo">8.1. Introduction</a> <a href="#ref-for-past-pseudo①">(2)</a>
-    <li><a href="#ref-for-past-pseudo②">8.2. Processing model</a>
-    <li><a href="#ref-for-past-pseudo③">8.2.1. The ::cue pseudo-element</a>
-    <li><a href="#ref-for-past-pseudo④">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-past-pseudo⑤">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-attribute-selector">
@@ -7209,9 +7191,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html">[HTML]</a><
    <li>
     <a data-link-type="biblio">[SELECTORS4]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-future-pseudo" style="color:initial">:future</span>
      <li><span class="dfn-paneled" id="term-for-lang-pseudo" style="color:initial">:lang()</span>
-     <li><span class="dfn-paneled" id="term-for-past-pseudo" style="color:initial">:past</span>
      <li><span class="dfn-paneled" id="term-for-attribute-selector" style="color:initial">attribute selector</span>
      <li><span class="dfn-paneled" id="term-for-class-selector" style="color:initial">class selector</span>
      <li><span class="dfn-paneled" id="term-for-id-selector" style="color:initial">id selector</span>
@@ -8500,6 +8480,24 @@ title</a>
     <li><a href="#ref-for-selectordef-cue-selector①">7.3. Obtaining CSS boxes</a>
     <li><a href="#ref-for-selectordef-cue-selector②">8.1. Introduction</a> <a href="#ref-for-selectordef-cue-selector③">(2)</a> <a href="#ref-for-selectordef-cue-selector④">(3)</a> <a href="#ref-for-selectordef-cue-selector⑤">(4)</a> <a href="#ref-for-selectordef-cue-selector⑥">(5)</a> <a href="#ref-for-selectordef-cue-selector⑦">(6)</a>
     <li><a href="#ref-for-selectordef-cue-selector⑧">8.2.1. The ::cue pseudo-element</a> <a href="#ref-for-selectordef-cue-selector⑨">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="selectordef-past">
+   <b><a href="#selectordef-past">#selectordef-past</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-selectordef-past">8.1. Introduction</a> <a href="#ref-for-selectordef-past①">(2)</a>
+    <li><a href="#ref-for-selectordef-past②">8.2. Processing model</a>
+    <li><a href="#ref-for-selectordef-past③">8.2.1. The ::cue pseudo-element</a>
+    <li><a href="#ref-for-selectordef-past④">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-selectordef-past⑤">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="selectordef-future">
+   <b><a href="#selectordef-future">#selectordef-future</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-selectordef-future">8.1. Introduction</a> <a href="#ref-for-selectordef-future①">(2)</a>
+    <li><a href="#ref-for-selectordef-future②">8.2. Processing model</a>
+    <li><a href="#ref-for-selectordef-future③">8.2.1. The ::cue pseudo-element</a>
+    <li><a href="#ref-for-selectordef-future④">8.2.2. The :past and :future pseudo-classes</a> <a href="#ref-for-selectordef-future⑤">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="enumdef-autokeyword">
