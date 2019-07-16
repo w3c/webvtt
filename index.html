@@ -1224,7 +1224,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version a3b64e58e069c2e8a9ffcadffb76601231663a47" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="5ddbe7b6ce9eb6cf1e4240ec02c36e8d61559dca" name="document-revision">
+  <meta content="d2d7423be71cba03d361697976a9d302317fe9ac" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -2603,13 +2603,13 @@ together, which is particularly important when scrolling up.</p>
      <p>A list of zero or more <a data-link-type="dfn" href="#webvtt-region" id="ref-for-webvtt-region④">WebVTT regions</a>.</p>
    </dl>
    <h3 class="heading settled" data-level="3.5" id="chapter-cues"><span class="secno">3.5. </span><span class="content">WebVTT chapter cues</span><a class="self-link" href="#chapter-cues"></a></h3>
-   <p>A <dfn data-dfn-type="dfn" data-noexport id="webvtt-chapter-cue">WebVTT chapter cue<a class="self-link" href="#webvtt-chapter-cue"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①③">WebVTT cue</a> whose <a data-link-type="dfn" href="#cue-text" id="ref-for-cue-text③">cue text</a> is interpreted as a
+   <p>A <dfn data-dfn-type="dfn" data-export id="webvtt-chapter-cue">WebVTT chapter cue<a class="self-link" href="#webvtt-chapter-cue"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①③">WebVTT cue</a> whose <a data-link-type="dfn" href="#cue-text" id="ref-for-cue-text③">cue text</a> is interpreted as a
 chapter title that describes the chapter as a navigation target.</p>
    <p>Chapter cues mark up the timeline of a audio or video file in consecutive, non-overlapping
 intervals. It is further possible to subdivide these intervals into sub-chapters building a
 navigation tree.</p>
    <h3 class="heading settled" data-level="3.6" id="metadata-cues"><span class="secno">3.6. </span><span class="content">WebVTT metadata cues</span><a class="self-link" href="#metadata-cues"></a></h3>
-   <p>A <dfn data-dfn-type="dfn" data-noexport id="webvtt-metadata-cue">WebVTT metadata cue<a class="self-link" href="#webvtt-metadata-cue"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①④">WebVTT cue</a> whose <a data-link-type="dfn" href="#cue-text" id="ref-for-cue-text④">cue text</a> is interpreted as
+   <p>A <dfn data-dfn-type="dfn" data-export id="webvtt-metadata-cue">WebVTT metadata cue<a class="self-link" href="#webvtt-metadata-cue"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue①④">WebVTT cue</a> whose <a data-link-type="dfn" href="#cue-text" id="ref-for-cue-text④">cue text</a> is interpreted as
 time-aligned metadata.</p>
    <h2 class="heading settled" data-level="4" id="syntax"><span class="secno">4. </span><span class="content">Syntax</span><a class="self-link" href="#syntax"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="file-structure"><span class="secno">4.1. </span><span class="content">WebVTT file structure</span><a class="self-link" href="#file-structure"></a></h3>
@@ -3239,12 +3239,12 @@ mix of cues. However, only a small subset of WebVTT file types are typically aut
    <p>Conformance checkers, when validating <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file①⓪">WebVTT files</a>, may offer to restrict syntax checking
 for validating these types.</p>
    <h4 class="heading settled" data-level="4.6.1" id="file-using-metadata-content"><span class="secno">4.6.1. </span><span class="content">WebVTT file using metadata content</span><a class="self-link" href="#file-using-metadata-content"></a></h4>
-   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file①①">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload②">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text②">WebVTT metadata text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport id="webvtt-file-using-metadata-content">WebVTT file using metadata content<a class="self-link" href="#webvtt-file-using-metadata-content"></a></dfn>.</p>
+   <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file①①">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload②">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-metadata-text" id="ref-for-webvtt-metadata-text②">WebVTT metadata text</a> is said to be a <dfn data-dfn-type="dfn" data-export id="webvtt-file-using-metadata-content">WebVTT file using metadata content<a class="self-link" href="#webvtt-file-using-metadata-content"></a></dfn>.</p>
    <h4 class="heading settled" data-level="4.6.2" id="file-using-chapter-title-text"><span class="secno">4.6.2. </span><span class="content">WebVTT file using chapter title text</span><a class="self-link" href="#file-using-chapter-title-text"></a></h4>
-   <p>A <dfn data-dfn-type="dfn" data-noexport id="webvtt-file-using-chapter-title-text">WebVTT file using chapter title text<a class="self-link" href="#webvtt-file-using-chapter-title-text"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues" id="ref-for-webvtt-file-using-only-nested-cues②">WebVTT file using only nested cues</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload③">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text①">WebVTT chapter title text</a>.</p>
+   <p>A <dfn data-dfn-type="dfn" data-export id="webvtt-file-using-chapter-title-text">WebVTT file using chapter title text<a class="self-link" href="#webvtt-file-using-chapter-title-text"></a></dfn> is a <a data-link-type="dfn" href="#webvtt-file-using-only-nested-cues" id="ref-for-webvtt-file-using-only-nested-cues②">WebVTT file using only nested cues</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload③">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-chapter-title-text" id="ref-for-webvtt-chapter-title-text①">WebVTT chapter title text</a>.</p>
    <h4 class="heading settled" data-level="4.6.3" id="file-using-cue-text"><span class="secno">4.6.3. </span><span class="content">WebVTT file using caption or subtitle cue text</span><a class="self-link" href="#file-using-cue-text"></a></h4>
    <p>A <a data-link-type="dfn" href="#webvtt-file" id="ref-for-webvtt-file①②">WebVTT file</a> whose cues all have a <a data-link-type="dfn" href="#cue-payload" id="ref-for-cue-payload④">cue payload</a> that is <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue-text" id="ref-for-webvtt-caption-or-subtitle-cue-text③">WebVTT caption or
-subtitle cue text</a> is said to be a <dfn data-dfn-type="dfn" data-noexport id="webvtt-file-using-caption-or-subtitle-cue-text">WebVTT file using caption or subtitle cue text<a class="self-link" href="#webvtt-file-using-caption-or-subtitle-cue-text"></a></dfn>.</p>
+subtitle cue text</a> is said to be a <dfn data-dfn-type="dfn" data-export id="webvtt-file-using-caption-or-subtitle-cue-text">WebVTT file using caption or subtitle cue text<a class="self-link" href="#webvtt-file-using-caption-or-subtitle-cue-text"></a></dfn>.</p>
    <h2 class="heading settled" data-level="5" id="default-classes"><span class="secno">5. </span><span class="content">Default classes for WebVTT Caption or Subtitle Cue Components</span><a class="self-link" href="#default-classes"></a></h2>
    <p>Many captioning formats have simple ways of specifying a limited subset of text colors and
 background colors for text. Therefore, the WebVTT spec makes available a set of default <a data-link-type="dfn" href="#cue-component-class-names" id="ref-for-cue-component-class-names">cue
