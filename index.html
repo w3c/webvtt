@@ -1224,7 +1224,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version a3b64e58e069c2e8a9ffcadffb76601231663a47" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="36b5dd7c3f451ba8dc68b837d6607edcd0720cf4" name="document-revision">
+  <meta content="41a9d6dea396f7ab8f1c95149f0fc6fb9e122b18" name="document-revision">
 <style>
  samp {
    font-family: inherit;
@@ -1495,7 +1495,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2019-07-16">16 July 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2019-08-07">7 August 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4249,7 +4249,7 @@ value).</p>
        </dl>
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="html-character-reference-in-data-state">HTML character reference in data state</dfn>
       <dd>
-       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference">consume an HTML character reference</a>, with no <a data-link-type="dfn">additional allowed
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference">consume an HTML character reference</a>, with no <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character" id="ref-for-additional-allowed-character">additional allowed
     character</a>.</p>
        <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>result</var>.</p>
        <p>Otherwise, append the data of the character tokens that were returned to <var>result</var>.</p>
@@ -4375,7 +4375,7 @@ value).</p>
        </dl>
       <dt><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="html-character-reference-in-annotation-state">HTML character reference in annotation state</dfn>
       <dd>
-       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference①">consume an HTML character reference</a>, with the <a data-link-type="dfn">additional allowed
+       <p>Attempt to <a data-link-type="dfn" href="#consume-an-html-character-reference" id="ref-for-consume-an-html-character-reference①">consume an HTML character reference</a>, with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#additional-allowed-character" id="ref-for-additional-allowed-character①">additional allowed
     character</a> being U+003E GREATER-THAN SIGN (>).</p>
        <p>If nothing is returned, append a U+0026 AMPERSAND character (&amp;) to <var>buffer</var>.</p>
        <p>Otherwise, append the data of the character tokens that were returned to <var>buffer</var>.</p>
@@ -4418,7 +4418,7 @@ value).</p>
      <p>Jump to the step labeled <i>loop</i>.</p>
    </ol>
    <p>When the algorithm above says to attempt to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="consume-an-html-character-reference">consume an HTML character reference</dfn>, it
-means to attempt to <a data-link-type="dfn">consume a character reference</a> as defined in HTML. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
+means to attempt to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference" id="ref-for-consume-a-character-reference">consume a character reference</a> as defined in HTML. <a data-link-type="biblio" href="#biblio-html">[HTML]</a></p>
    <p>When the HTML specification says to consume a character, in this context, it means to advance <var>position</var> to the next character in <var>input</var>. When it says to unconsume a character, it means to move <var>position</var> back to the previous character in <var>input</var>. "EOF" is equivalent to the end-of-file marker
 in this specification. Finally, this context is <em>not</em> "as part of an attribute" (when it
 comes to handling a missing semicolon).</p>
