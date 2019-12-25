@@ -47,7 +47,11 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: text track showing
             text: rules for updating the text track rendering
             text: text track cue active flag
+            text: text track cue text
+            text: text track cue data
             text: text track cue display state
+            text: time marches on
+            text: playing the media resource; url: #list-of-newly-introduced-cues
             text: current playback position
             text: text track cue identifier
             text: text track cue pause-on-exit flag
@@ -4125,22 +4129,20 @@ follows:</p>
 
 <h2 id=rendering>Rendering</h2>
 
-<p class="note">This section describes in some detail how to visually render <a>WebVTT caption or
-subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
-HTML, where CSS is available. <a>User agents that do not support CSS</a> are expected to render
-plain text only, without styling and positioning features. <a>User agents that do not support a full
-HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
-with a full CSS engine would render.</p>
+<p>This section describes how to visually render WebVTT cues in a user agent. The processing model
+is tightly linked to media elements in HTML and follows the handling of cues when <a>playing the
+media resource</a>. When supporting WebVTT in media players that falls into the <a>User agents that
+do not support CSS</a> or <a>User agents that do not support a full HTML CSS engine</a> conformace
+classes, equivalent visual rendering will need to be implemented.</p>
 
 
 <h3 id=processing-model algorithm>Processing model</h3>
 
 <p>The <dfn>rules for updating the display of WebVTT text tracks</dfn> render the <a>text tracks</a>
-of a <a>media element</a> (specifically, a <a element>video</a> element), or of another playback
-mechanism, by applying the steps below. All the <a lt="text track">text tracks</a> that use these
-rules for a given <a>media element</a>, or other playback mechanism, are rendered together, to avoid
-overlapping subtitles from multiple tracks. A fallback language |language| may be set when calling
-this algorithm.</p>
+of a <a>media element</a> (specifically, a <a element>video</a> element) by applying the steps
+below. All the <a lt="text track">text tracks</a> that use these rules for a given <a>media
+element</a> are rendered together, to avoid overlapping subtitles from multiple tracks. A fallback
+language |language| may be set when calling this algorithm.</p>
 
 <p class="note">In HTML, audio elements don't have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
@@ -4157,7 +4159,7 @@ manner suiting the user.</p>
  <li><p>If the <a>media element</a> is an <a element>audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p></li>
 
- <li><p>Let |video| be the <a>media element</a> or other playback mechanism.</p></li>
+ <li><p>Let |video| be the <a>media element</a>.</p></li>
 
  <li><p>Let |output| be an empty list of absolutely positioned CSS block boxes.</p></li>
 
@@ -4931,8 +4933,8 @@ if the <a>text track</a> is being rendered for another media playback mechanism)
 properties on the root <a>list of WebVTT Node Objects</a> and the <a lt="WebVTT region
 object">WebVTT region objects</a> must take their initial values.</p>
 
-<p>If there are style sheets that apply to the <a>media element</a> or other playback mechanism,
-then they must be interpreted as defined in the next section.</p>
+<p>If there are style sheets that apply to the <a>media element</a>, then they must be interpreted
+as defined in the next section.</p>
 
 
 <h2 id=css-extensions>CSS extensions</h2>

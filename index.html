@@ -1447,7 +1447,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-03-30">30 March 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2018-04-02">2 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4451,18 +4451,16 @@ follows:</p>
  Objects</a> and their descendants.</p>
    </ol>
    <h2 class="heading settled" data-level="7" id="rendering"><span class="secno">7. </span><span class="content">Rendering</span><a class="self-link" href="#rendering"></a></h2>
-   <p class="note" role="note">This section describes in some detail how to visually render <a data-link-type="dfn" href="#webvtt-caption-or-subtitle-cue" id="ref-for-webvtt-caption-or-subtitle-cue-2">WebVTT caption or
-subtitle cues</a> in a user agent. The processing model is quite tightly linked to media elements in
-HTML, where CSS is available. <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">User agents that do not support CSS</a> are expected to render
-plain text only, without styling and positioning features. <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-2">User agents that do not support a full
-HTML CSS engine</a> are expected to render an equivalent visual representation to what a user agent
-with a full CSS engine would render.</p>
+   <p>This section describes how to visually render WebVTT cues in a user agent. The processing model
+is tightly linked to media elements in HTML and follows the handling of cues when <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#list-of-newly-introduced-cues">playing the
+media resource</a>. When supporting WebVTT in media players that falls into the <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-1">User agents that
+do not support CSS</a> or <a data-link-type="dfn" href="#user-agents-that-do-not-support-a-full-html-css-engine" id="ref-for-user-agents-that-do-not-support-a-full-html-css-engine-2">User agents that do not support a full HTML CSS engine</a> conformace
+classes, equivalent visual rendering will need to be implemented.</p>
    <h3 class="heading settled algorithm" data-algorithm="Processing model" data-level="7.1" id="processing-model"><span class="secno">7.1. </span><span class="content">Processing model</span><a class="self-link" href="#processing-model"></a></h3>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element), or of another playback
-mechanism, by applying the steps below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that use these
-rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>, or other playback mechanism, are rendered together, to avoid
-overlapping subtitles from multiple tracks. A fallback language <var>language</var> may be set when calling
-this algorithm.</p>
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="rules-for-updating-the-display-of-webvtt-text-tracks">rules for updating the display of WebVTT text tracks</dfn> render the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (specifically, a <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#video">video</a> element) by applying the steps
+below. All the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text tracks</a> that use these rules for a given <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media
+element</a> are rendered together, to avoid overlapping subtitles from multiple tracks. A fallback
+language <var>language</var> may be set when calling this algorithm.</p>
    <p class="note" role="note">In HTML, audio elements don’t have a visual rendering area and therefore, this
 algorithm will abort for audio elements. When authors do create WebVTT captions or subtitles for
 audio resources, they need to publish them in a video element for rendering by the user agent.</p>
@@ -4474,7 +4472,7 @@ manner suiting the user.</p>
      <p>If the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> is an <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#audio">audio</a> element, or is another playback
  mechanism with no rendering area, abort these steps.</p>
     <li>
-     <p>Let <var>video</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> or other playback mechanism.</p>
+     <p>Let <var>video</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>.</p>
     <li>
      <p>Let <var>output</var> be an empty list of absolutely positioned CSS block boxes.</p>
     <li>
@@ -4987,8 +4985,8 @@ settings:</p>
 the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-16">list of WebVTT Node Objects</a> must inherit their values from the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> for which the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue-29">WebVTT cue</a> is being rendered, if any. If there is no <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> (i.e.
 if the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#text-track">text track</a> is being rendered for another media playback mechanism), then inherited
 properties on the root <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects-17">list of WebVTT Node Objects</a> and the <a data-link-type="dfn" href="#webvtt-region-object" id="ref-for-webvtt-region-object-9">WebVTT region objects</a> must take their initial values.</p>
-   <p>If there are style sheets that apply to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a> or other playback mechanism,
-then they must be interpreted as defined in the next section.</p>
+   <p>If there are style sheets that apply to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element">media element</a>, then they must be interpreted
+as defined in the next section.</p>
    <h2 class="heading settled" data-level="8" id="css-extensions"><span class="secno">8. </span><span class="content">CSS extensions</span><a class="self-link" href="#css-extensions"></a></h2>
    <p class="note" role="note">This section specifies some CSS pseudo-elements and pseudo-classes and how they
 apply to WebVTT. This section does not apply to <a data-link-type="dfn" href="#user-agents-that-do-not-support-css" id="ref-for-user-agents-that-do-not-support-css-2">user agents that do not support CSS</a>.</p>
@@ -6635,7 +6633,6 @@ title</a>
    <b><a href="#webvtt-caption-or-subtitle-cue">#webvtt-caption-or-subtitle-cue</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-1">3.4. WebVTT caption or subtitle regions</a>
-    <li><a href="#ref-for-webvtt-caption-or-subtitle-cue-2">7. Rendering</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="webvtt-cue-box">
