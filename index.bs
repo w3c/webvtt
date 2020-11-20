@@ -54,6 +54,7 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: rules for extracting the chapter title
             text: text track cue start time
             text: text track cue end time
+            text: unbounded text track cue
             text: expose a user interface to the user
             text: text track cue order
             text: honor user preferences for automatic text track selection
@@ -5544,7 +5545,8 @@ enum DirectionSetting { "" /* horizontal */, "rl", "lr" };
 enum LineAlignSetting { "start", "center", "end" };
 enum PositionAlignSetting { "line-left", "center", "line-right", "auto" };
 enum AlignSetting { "start", "center", "end", "left", "right" };
-[Exposed=Window]
+[Exposed=Window,
+ Constructor(double startTime, unrestricted double endTime, DOMString text)]
 interface VTTCue : TextTrackCue {
   constructor(double startTime, double endTime, DOMString text);
   attribute VTTRegion? region;
@@ -5693,7 +5695,7 @@ interface VTTCue : TextTrackCue {
  interpreted as a time in seconds.</p></li>
 
  <li><p>Let |cue|'s <a>text track cue end time</a> be the value of the |endTime| argument,
- interpreted as a time in seconds.</p></li>
+ interpreted as a time in seconds or positive Infinity for an <a>unbounded text track cue</a>.</p></li>
 
  <li><p>Let |cue|'s <a>cue text</a> be the value of the |text| argument, and let the <a>rules for
  extracting the chapter title</a> be the <a>WebVTT rules for extracting the chapter
