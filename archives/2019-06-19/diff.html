@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Diff to HTML by rtfpessoa</title>
+
+  <!--
+      Diff to HTML (template.html)
+      Author: rtfpessoa
+  -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+  <style>
+.d2h-wrapper{text-align:left}.d2h-file-header{height:35px;padding:5px 10px;border-bottom:1px solid #d8d8d8;background-color:#f7f7f7}.d2h-file-stats{display:flex;margin-left:auto;font-size:14px}.d2h-lines-added{text-align:right;border:1px solid #b4e2b4;border-radius:5px 0 0 5px;color:#399839;padding:2px;vertical-align:middle}.d2h-lines-deleted{text-align:left;border:1px solid #e9aeae;border-radius:0 5px 5px 0;color:#c33;padding:2px;vertical-align:middle;margin-left:1px}.d2h-file-name-wrapper{display:flex;align-items:center;width:100%;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px}.d2h-file-name{white-space:nowrap;text-overflow:ellipsis;overflow-x:hidden}.d2h-file-wrapper{border:1px solid #ddd;border-radius:3px;margin-bottom:1em}.d2h-diff-table{width:100%;border-collapse:collapse;font-family:Menlo,Consolas,monospace;font-size:13px}.d2h-files-diff{display:block;width:100%;height:100%}.d2h-file-diff{overflow-y:hidden}.d2h-file-side-diff{display:inline-block;overflow-x:scroll;overflow-y:hidden;width:50%;margin-right:-4px;margin-bottom:-8px}.d2h-code-line{display:inline-block;white-space:nowrap;padding:0 8em}.d2h-code-side-line{display:inline-block;white-space:nowrap;padding:0 4.5em}.d2h-code-line del,.d2h-code-side-line del{display:inline-block;margin-top:-1px;text-decoration:none;background-color:#ffb6ba;border-radius:.2em}.d2h-code-line ins,.d2h-code-side-line ins{display:inline-block;margin-top:-1px;text-decoration:none;background-color:#97f295;border-radius:.2em;text-align:left}.d2h-code-line-prefix{display:inline;background:0 0;padding:0;word-wrap:normal;white-space:pre}.d2h-code-line-ctn{display:inline;background:0 0;padding:0;word-wrap:normal;white-space:pre}.line-num1{box-sizing:border-box;float:left;width:3.5em;overflow:hidden;text-overflow:ellipsis;padding:0 .5em 0 .5em}.line-num2{box-sizing:border-box;float:right;width:3.5em;overflow:hidden;text-overflow:ellipsis;padding:0 .5em 0 .5em}.d2h-code-linenumber{box-sizing:border-box;width:7.5em;position:absolute;display:inline-block;background-color:#fff;color:rgba(0,0,0,.3);text-align:right;border:solid #eee;border-width:0 1px 0 1px;cursor:pointer}.d2h-code-linenumber:after{content:'\200b'}.d2h-code-side-linenumber{position:absolute;display:inline-block;box-sizing:border-box;width:4em;background-color:#fff;color:rgba(0,0,0,.3);text-align:right;border:solid #eee;border-width:0 1px 0 1px;cursor:pointer;overflow:hidden;text-overflow:ellipsis}.d2h-code-side-linenumber:after{content:'\200b'}.d2h-code-side-emptyplaceholder,.d2h-emptyplaceholder{background-color:#f1f1f1;border-color:#e1e1e1}.d2h-del{background-color:#fee8e9;border-color:#e9aeae}.d2h-ins{background-color:#dfd;border-color:#b4e2b4}.d2h-info{background-color:#f8fafd;color:rgba(0,0,0,.3);border-color:#d5e4f2}.d2h-file-diff .d2h-del.d2h-change{background-color:#fdf2d0}.d2h-file-diff .d2h-ins.d2h-change{background-color:#ded}.d2h-file-list-wrapper{margin-bottom:10px}.d2h-file-list-wrapper a{text-decoration:none;color:#3572b0}.d2h-file-list-wrapper a:visited{color:#3572b0}.d2h-file-list-header{text-align:left}.d2h-file-list-title{font-weight:700}.d2h-file-list-line{display:flex;text-align:left}.d2h-file-list{display:block;list-style:none;padding:0;margin:0}.d2h-file-list>li{border-bottom:#ddd solid 1px;padding:5px 10px;margin:0}.d2h-file-list>li:last-child{border-bottom:none}.d2h-file-switch{display:none;font-size:10px;cursor:pointer}.d2h-icon{vertical-align:middle;margin-right:10px;fill:currentColor}.d2h-deleted{color:#c33}.d2h-added{color:#399839}.d2h-changed{color:#d0b44c}.d2h-moved{color:#3572b0}.d2h-tag{display:flex;font-size:10px;margin-left:5px;padding:0 2px;background-color:#fff}.d2h-deleted-tag{border:#c33 1px solid}.d2h-added-tag{border:#399839 1px solid}.d2h-changed-tag{border:#d0b44c 1px solid}.d2h-moved-tag{border:#3572b0 1px solid}.selecting-left .d2h-code-line,.selecting-left .d2h-code-line *,.selecting-left .d2h-code-side-line,.selecting-left .d2h-code-side-line *,.selecting-right td.d2h-code-linenumber,.selecting-right td.d2h-code-linenumber *,.selecting-right td.d2h-code-side-linenumber,.selecting-right td.d2h-code-side-linenumber *{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.selecting-left .d2h-code-line ::-moz-selection,.selecting-left .d2h-code-line::-moz-selection,.selecting-left .d2h-code-side-line ::-moz-selection,.selecting-left .d2h-code-side-line::-moz-selection,.selecting-right td.d2h-code-linenumber::-moz-selection,.selecting-right td.d2h-code-side-linenumber ::-moz-selection,.selecting-right td.d2h-code-side-linenumber::-moz-selection{background:0 0}.selecting-left .d2h-code-line ::selection,.selecting-left .d2h-code-line::selection,.selecting-left .d2h-code-side-line ::selection,.selecting-left .d2h-code-side-line::selection,.selecting-right td.d2h-code-linenumber::selection,.selecting-right td.d2h-code-side-linenumber ::selection,.selecting-right td.d2h-code-side-linenumber::selection{background:0 0}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/scala.min.js"></script>
+
+  <script>
+!function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){return o(e[i][1][r]||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}({1:[function(require,module,exports){(function(global){function Diff2HtmlUI(config){var cfg=config||{};cfg.diff?diffJson=Diff2Html.getJsonFromDiff(cfg.diff):cfg.json&&(diffJson=cfg.json),this._initSelection()}var highlightJS,diffJson,currentSelectionColumnId;highlightJS=require("./highlight.js-internals.js").HighlightJS,diffJson=null,currentSelectionColumnId=-1,Diff2HtmlUI.prototype.draw=function(targetId,config){var cfg=config||{};cfg.inputFormat="json";var $target=this._getTarget(targetId);$target.html(Diff2Html.getPrettyHtml(diffJson,cfg)),cfg.synchronisedScroll&&this.synchronisedScroll($target,cfg)},Diff2HtmlUI.prototype.synchronisedScroll=function(targetId){this._getTarget(targetId).find(".d2h-file-side-diff").scroll(function(){var $this=$(this);$this.closest(".d2h-file-wrapper").find(".d2h-file-side-diff").scrollLeft($this.scrollLeft())})},Diff2HtmlUI.prototype.fileListCloseable=function(targetId,startVisible){var $target=this._getTarget(targetId),hashTag=this._getHashTag(),$showBtn=$target.find(".d2h-show"),$hideBtn=$target.find(".d2h-hide"),$fileList=$target.find(".d2h-file-list");function show(){$showBtn.hide(),$hideBtn.show(),$fileList.show()}function hide(){$hideBtn.hide(),$showBtn.show(),$fileList.hide()}"files-summary-show"===hashTag?show():"files-summary-hide"===hashTag?hide():startVisible?show():hide(),$showBtn.click(show),$hideBtn.click(hide)},Diff2HtmlUI.prototype.highlightCode=function(targetId){this._getTarget(targetId).find(".d2h-file-wrapper").map(function(_i,file){var oldLinesState,newLinesState,$file=$(file),language=$file.data("lang");$file.find(".d2h-code-line-ctn").map(function(_j,line){var lineState,$line=$(line),text=line.textContent,lineParent=line.parentNode;lineState=-1!==lineParent.className.indexOf("d2h-del")?oldLinesState:newLinesState;var result=hljs.getLanguage(language)?hljs.highlight(language,text,!0,lineState):hljs.highlightAuto(text);-1!==lineParent.className.indexOf("d2h-del")?oldLinesState=result.top:(-1!==lineParent.className.indexOf("d2h-ins")||(oldLinesState=result.top),newLinesState=result.top);var originalStream=highlightJS.nodeStream(line);if(originalStream.length){var resultNode=document.createElementNS("http://www.w3.org/1999/xhtml","div");resultNode.innerHTML=result.value,result.value=highlightJS.mergeStreams(originalStream,highlightJS.nodeStream(resultNode),text)}$line.addClass("hljs"),$line.addClass(result.language),$line.html(result.value)})})},Diff2HtmlUI.prototype._getTarget=function(targetId){return"object"==typeof targetId&&targetId instanceof jQuery?targetId:"string"==typeof targetId?$(targetId):(console.error("Wrong target provided! Falling back to default value 'body'."),console.log("Please provide a jQuery object or a valid DOM query string."),$("body"))},Diff2HtmlUI.prototype._getHashTag=function(){var docUrl=document.URL,hashTagIndex=docUrl.indexOf("#"),hashTag=null;return-1!==hashTagIndex&&(hashTag=docUrl.substr(hashTagIndex+1)),hashTag},Diff2HtmlUI.prototype._distinct=function(collection){return collection.filter(function(v,i){return collection.indexOf(v)===i})},Diff2HtmlUI.prototype._initSelection=function(){var body=$("body"),that=this;body.on("mousedown",".d2h-diff-table",function(event){var target=$(event.target),table=target.closest(".d2h-diff-table");target.closest(".d2h-code-line,.d2h-code-side-line").length?(table.removeClass("selecting-left"),table.addClass("selecting-right"),currentSelectionColumnId=1):target.closest(".d2h-code-linenumber,.d2h-code-side-linenumber").length&&(table.removeClass("selecting-right"),table.addClass("selecting-left"),currentSelectionColumnId=0)}),body.on("copy",".d2h-diff-table",function(event){var clipboardData=event.originalEvent.clipboardData,text=that._getSelectedText();clipboardData.setData("text",text),event.preventDefault()})},Diff2HtmlUI.prototype._getSelectedText=function(){var doc=window.getSelection().getRangeAt(0).cloneContents(),nodes=doc.querySelectorAll("tr"),text="",idx=currentSelectionColumnId;return 0===nodes.length?text=doc.textContent:[].forEach.call(nodes,function(tr,i){var td=tr.cells[1===tr.cells.length?0:idx];text+=(i?"\n":"")+td.textContent.replace(/(?:\r\n|\r|\n)/g,"")}),text},module.exports.Diff2HtmlUI=Diff2HtmlUI,global.Diff2HtmlUI=Diff2HtmlUI}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./highlight.js-internals.js":2}],2:[function(require,module,exports){function HighlightJS(){}function escape(value){return value.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function tag(node){return node.nodeName.toLowerCase()}var ArrayProto;ArrayProto=[],HighlightJS.prototype.nodeStream=function(node){var result=[];return function _nodeStream(node,offset){for(var child=node.firstChild;child;child=child.nextSibling)3===child.nodeType?offset+=child.nodeValue.length:1===child.nodeType&&(result.push({event:"start",offset:offset,node:child}),offset=_nodeStream(child,offset),tag(child).match(/br|hr|img|input/)||result.push({event:"stop",offset:offset,node:child}));return offset}(node,0),result},HighlightJS.prototype.mergeStreams=function(original,highlighted,value){var processed=0,result="",nodeStack=[];function selectStream(){return original.length&&highlighted.length?original[0].offset!==highlighted[0].offset?original[0].offset<highlighted[0].offset?original:highlighted:"start"===highlighted[0].event?original:highlighted:original.length?original:highlighted}function open(node){result+="<"+tag(node)+ArrayProto.map.call(node.attributes,function(a){return" "+a.nodeName+'="'+escape(a.value)+'"'}).join("")+">"}function close(node){result+="</"+tag(node)+">"}function render(event){("start"===event.event?open:close)(event.node)}for(;original.length||highlighted.length;){var stream=selectStream();if(result+=escape(value.substring(processed,stream[0].offset)),processed=stream[0].offset,stream===original){for(nodeStack.reverse().forEach(close);render(stream.splice(0,1)[0]),(stream=selectStream())===original&&stream.length&&stream[0].offset===processed;);nodeStack.reverse().forEach(open)}else"start"===stream[0].event?nodeStack.push(stream[0].node):nodeStack.pop(),render(stream.splice(0,1)[0])}return result+escape(value.substr(processed))},module.exports.HighlightJS=new HighlightJS},{}]},{},[1]);
+</script>
+
+  <script>
+    $(document).ready(function() {
+      var diff2htmlUi = new Diff2HtmlUI();
+      diff2htmlUi.fileListCloseable("#diff", false);
+      diff2htmlUi.synchronisedScroll("#diff", false);
+      diff2htmlUi.highlightCode('#diff');
+    });
+  </script>
+</head>
+<body style="text-align: center; font-family: 'Source Sans Pro',sans-serif;">
+<h1>Diff to HTML by <a href="https://github.com/rtfpessoa">rtfpessoa</a></h1>
+
+<div id="diff">
+  <div class="d2h-file-list-wrapper">
+    <div class="d2h-file-list-header">
+        <span class="d2h-file-list-title">Files changed (2)</span>
+        <a class="d2h-file-switch d2h-hide">hide</a>
+        <a class="d2h-file-switch d2h-show">show</a>
+    </div>
+    <ol class="d2h-file-list">
+    <li class="d2h-file-list-line">
+    <span class="d2h-file-name-wrapper">
+      <svg aria-hidden="true" class="d2h-icon d2h-changed" height="16" title="modified" version="1.1"
+           viewBox="0 0 14 16" width="14">
+          <path d="M13 1H1C0.45 1 0 1.45 0 2v12c0 0.55 0.45 1 1 1h12c0.55 0 1-0.45 1-1V2c0-0.55-0.45-1-1-1z m0 13H1V2h12v12zM4 8c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z"></path>
+      </svg>      <a href="#d2h-322665" class="d2h-file-name">archives/2019-06-19/Overview.html</a>
+      <span class="d2h-file-stats">
+          <span class="d2h-lines-added">+23</span>
+          <span class="d2h-lines-deleted">-9</span>
+      </span>
+    </span>
+</li>
+<li class="d2h-file-list-line">
+    <span class="d2h-file-name-wrapper">
+      <svg aria-hidden="true" class="d2h-icon d2h-changed" height="16" title="modified" version="1.1"
+           viewBox="0 0 14 16" width="14">
+          <path d="M13 1H1C0.45 1 0 1.45 0 2v12c0 0.55 0.45 1 1 1h12c0.55 0 1-0.45 1-1V2c0-0.55-0.45-1-1-1z m0 13H1V2h12v12zM4 8c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z"></path>
+      </svg>      <a href="#d2h-461549" class="d2h-file-name">index.bs</a>
+      <span class="d2h-file-stats">
+          <span class="d2h-lines-added">+2</span>
+          <span class="d2h-lines-deleted">-2</span>
+      </span>
+    </span>
+</li>
+    </ol>
+</div><div class="d2h-wrapper">
+    <div id="d2h-322665" class="d2h-file-wrapper" data-lang="html">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">archives/2019-06-19/Overview.html</span>
+    <span class="d2h-tag d2h-changed d2h-changed-tag">CHANGED</span></span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -1481,14 +1481,14 @@ pre.highlight, pre &gt; code.highlight { display: block; padding: 1em; margin: .5em</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1481</div>
+<div class="line-num2">1481</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt&gt;Editor&#x27;s Draft:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1482</div>
+<div class="line-num2">1482</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dd&gt;&lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webvtt&#x2F;&quot;&gt;https:&#x2F;&#x2F;w3c.github.io&#x2F;webvtt&#x2F;&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1483</div>
+<div class="line-num2">1483</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt&gt;Previous Versions:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">1484</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">     &lt;dd&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;<del>2017</del>&#x2F;<del>WD</del>-webvtt1-<del>20170808</del>&#x2F;&quot; rel=&quot;prev&quot;&gt;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;<del>2017</del>&#x2F;<del>WD</del>-webvtt1-<del>20170808</del>&#x2F;&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1484</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">     &lt;dd&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;<ins>2019</ins>&#x2F;<ins>CR</ins>-webvtt1-<ins>20190404</ins>&#x2F;&quot; rel=&quot;prev&quot;&gt;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;<ins>2019</ins>&#x2F;<ins>CR</ins>-webvtt1-<ins>20190404</ins>&#x2F;&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1485</div>
+<div class="line-num2">1485</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt&gt;Test Suite:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1486</div>
+<div class="line-num2">1486</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dd&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;web-platform-tests&#x2F;wpt&#x2F;tree&#x2F;master&#x2F;webvtt&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;web-platform-tests&#x2F;wpt&#x2F;tree&#x2F;master&#x2F;webvtt&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1487</div>
+<div class="line-num2">1487</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt class=&quot;editor&quot;&gt;Editor:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">1488</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:<del>silvia.pfeiffer</del>@<del>data61</del>.<del>csiro.au</del>&quot;&gt;<del>Silvia</del> <del>Pfeiffer</del>&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;https:&#x2F;&#x2F;www.<del>csiro</del>.<del>au</del>&#x2F;&quot;&gt;<del>CSIRO&lt;&#x2F;</del>a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1488</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:<ins>w3c</ins>@<ins>gkatsev</ins>.<ins>com</ins>&quot;&gt;<ins>Gary</ins> <ins>Katsevman</ins>&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;https:&#x2F;&#x2F;www.<ins>brightcove</ins>.<ins>com</ins>&#x2F;&quot;&gt;<ins>Brightcove Inc.&lt;&#x2F;</ins>a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1489</div>
+<div class="line-num2">1489</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt class=&quot;editor&quot;&gt;Former Editors:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1490</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:silviapfeiffer1@gmail.com&quot;&gt;Silvia Pfeiffer&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;https:&#x2F;&#x2F;www.csiro.au&#x2F;&quot;&gt;NICTA CSIRO&lt;&#x2F;a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1490</div>
+<div class="line-num2">1491</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:simonp@opera.com&quot;&gt;Simon Pieters&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;http:&#x2F;&#x2F;www.opera.com&#x2F;&quot;&gt;Opera Software AS&lt;&#x2F;a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">1491</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:silviapfeiffer1@gmail.com&quot;&gt;Silvia Pfeiffer&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;http:&#x2F;&#x2F;nicta.com.au&#x2F;&quot;&gt;NICTA&lt;&#x2F;a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1492</div>
+<div class="line-num2">1492</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:philipj@opera.com&quot;&gt;Philip Jägenstedt&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;http:&#x2F;&#x2F;www.opera.com&#x2F;&quot;&gt;Opera Software ASA&lt;&#x2F;a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1493</div>
+<div class="line-num2">1493</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dd class=&quot;editor p-author h-card vcard&quot;&gt;&lt;a class=&quot;p-name fn u-email email&quot; href=&quot;mailto:ian@hixie.ch&quot;&gt;Ian Hickson&lt;&#x2F;a&gt; (&lt;a class=&quot;p-org org&quot; href=&quot;http:&#x2F;&#x2F;www.google.com&#x2F;&quot;&gt;Google&lt;&#x2F;a&gt;)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1494</div>
+<div class="line-num2">1494</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;dt&gt;Participate:</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -1548,6 +1548,10 @@ Group does not require that implementations are publicly available but encourage</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1548</div>
+<div class="line-num2">1548</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#collision-avoidance&quot;&gt;collision avoidance with snap-to-lines false&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1549</div>
+<div class="line-num2">1549</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#the-cue-region-pseudo-element&quot;&gt;::cue-region pseudo-element&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1550</div>
+<div class="line-num2">1550</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#the-past-and-future-pseudo-classes&quot;&gt;:past and :future pseudo-classes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1551</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#the-cue-pseudo-element&quot;&gt;text-combine-upright&lt;&#x2F;a&gt; CSS Property&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1552</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#applying-css-properties&quot;&gt;text-wrap: balance&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1553</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#webvtt-cue-line-alignment&quot;&gt;line alignment&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">1554</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;li&gt;&lt;a href=&quot;#webvtt-cue-position-alignment&quot;&gt;position alignment&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1551</div>
+<div class="line-num2">1555</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;&#x2F;ul&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1552</div>
+<div class="line-num2">1556</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">&lt;&#x2F;div&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">1553</div>
+<div class="line-num2">1557</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -3679,7 +3683,17 @@ Objects&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3679</div>
+<div class="line-num2">3683</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">          &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3680</div>
+<div class="line-num2">3684</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">           &lt;p&gt;Interpret &lt;var&gt;value&lt;&#x2F;var&gt; as an integer, and let &lt;var&gt;number&lt;&#x2F;var&gt; be that number.&lt;&#x2F;p&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3681</div>
+<div class="line-num2">3685</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">          &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">3682</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">           &lt;p&gt;Let &lt;var&gt;<del>region</del>&lt;&#x2F;var<del>&gt;’s</del> <del>&lt;a</del> <del>data-link-type=&quot;dfn&quot;</del> <del>href=&quot;#webvtt-region-lines&quot;</del> <del>id=&quot;ref-for-webvtt-region-lines-2&quot;&gt;WebVTT</del> <del>region</del> <del>lines&lt;&#x2F;a&gt;</del> <del>be</del> <del>&lt;var&gt;number&lt;&#x2F;var&gt;.&lt;&#x2F;p&gt;</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3686</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">           &lt;p<ins>&gt;&lt;i</ins>&gt;<ins>Conversion&lt;&#x2F;i&gt;: </ins>Let &lt;var&gt;<ins>S</ins>&lt;&#x2F;var<ins>&gt;</ins> <ins>be</ins> <ins>the</ins> <ins>set</ins> <ins>of</ins> <ins>finite</ins> <ins>IEEE</ins> <ins>754</ins> <ins>double-precision</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3687</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">       floating-point values except −0, but with two special values added: &lt;var&gt;2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt; and &lt;var&gt;−2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt;.&lt;&#x2F;p&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3688</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3689</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">           &lt;p&gt;Let &lt;var&gt;rounded-number&lt;&#x2F;var&gt; be the number in &lt;var&gt;S&lt;&#x2F;var&gt; that is closest to &lt;var&gt;number&lt;&#x2F;var&gt;,</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3690</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">       selecting the number with an even significand if there are two equally close</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3691</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">       values. (The two special values &lt;var&gt;2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt; and &lt;var&gt;−2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt; are considered to have even significands for this purpose.)&lt;&#x2F;p&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3692</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3693</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">           &lt;p&gt;If &lt;var&gt;rounded-number&lt;&#x2F;var&gt; is &lt;var&gt;2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt; or &lt;var&gt;−2&lt;sup&gt;1024&lt;&#x2F;sup&gt;&lt;&#x2F;var&gt;,</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3694</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">       jump to the step labeled &lt;i&gt;next setting&lt;&#x2F;i&gt;&lt;&#x2F;p&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3695</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">3696</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">           &lt;p&gt;Let &lt;var&gt;region&lt;&#x2F;var&gt;’s &lt;a data-link-type=&quot;dfn&quot; href=&quot;#webvtt-region-lines&quot; id=&quot;ref-for-webvtt-region-lines-2&quot;&gt;WebVTT region lines&lt;&#x2F;a&gt; be &lt;var&gt;rounded-number&lt;&#x2F;var&gt;.&lt;&#x2F;p&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3683</div>
+<div class="line-num2">3697</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">         &lt;&#x2F;ol&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3684</div>
+<div class="line-num2">3698</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">        &lt;dt&gt;Otherwise if &lt;var&gt;name&lt;&#x2F;var&gt; is a &lt;a data-link-type=&quot;dfn&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;html51&#x2F;infrastructure.html#case-sensitive&quot;&gt;case-sensitive&lt;&#x2F;a&gt; match for &quot;&lt;code&gt;regionanchor&lt;&#x2F;code&gt;&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">3685</div>
+<div class="line-num2">3699</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">        &lt;dd&gt;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -5776,7 +5790,7 @@ the &lt;a data-link-type=&quot;dfn&quot; href=&quot;#webvtt-cue-text-parsing-rules&quot; id=&quot;ref-for-we</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5776</div>
+<div class="line-num2">5790</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">&lt;span class=&quot;kt&quot;&gt;interface&lt;&#x2F;span&gt; &lt;dfn class=&quot;nv dfn-paneled idl-code&quot; data-dfn-type=&quot;interface&quot; data-export=&quot;&quot; id=&quot;vttregion&quot;&gt;&lt;code&gt;VTTRegion&lt;&#x2F;code&gt;&lt;&#x2F;dfn&gt; {</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5777</div>
+<div class="line-num2">5791</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-DOMString&quot;&gt;&lt;span class=&quot;kt&quot;&gt;DOMString&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;DOMString&quot; href=&quot;#dom-vttregion-id&quot; id=&quot;ref-for-dom-vttregion-id-1&quot;&gt;id&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5778</div>
+<div class="line-num2">5792</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-width&quot; id=&quot;ref-for-dom-vttregion-width-1&quot;&gt;width&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">5779</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-<del>unsigned-</del>long&quot;&gt;&lt;span class=&quot;kt&quot;&gt;<del>unsigned&lt;&#x2F;span&gt; &lt;span class=&quot;kt&quot;&gt;</del>long&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;<del>unsigned </del>long&quot; href=&quot;#dom-vttregion-lines&quot; id=&quot;ref-for-dom-vttregion-lines-1&quot;&gt;lines&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">5793</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-long&quot;&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;long&quot; href=&quot;#dom-vttregion-lines&quot; id=&quot;ref-for-dom-vttregion-lines-1&quot;&gt;lines&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5780</div>
+<div class="line-num2">5794</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-regionanchorx&quot; id=&quot;ref-for-dom-vttregion-regionanchorx-1&quot;&gt;regionAnchorX&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5781</div>
+<div class="line-num2">5795</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-regionanchory&quot; id=&quot;ref-for-dom-vttregion-regionanchory-1&quot;&gt;regionAnchorY&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5782</div>
+<div class="line-num2">5796</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-viewportanchorx&quot; id=&quot;ref-for-dom-vttregion-viewportanchorx-1&quot;&gt;viewportAnchorX&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -5898,9 +5912,9 @@ and registration with IANA.&lt;&#x2F;p&gt;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5898</div>
+<div class="line-num2">5912</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dt&gt;Subtype name:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5899</div>
+<div class="line-num2">5913</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;vtt</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5900</div>
+<div class="line-num2">5914</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dt&gt;Required parameters:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">5901</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;<del>No parameters</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">5915</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;<ins>N&#x2F;A</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5902</div>
+<div class="line-num2">5916</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dt&gt;Optional parameters:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">5903</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;<del>No parameters</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">5917</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;<ins>N&#x2F;A</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5904</div>
+<div class="line-num2">5918</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dt&gt;Encoding considerations:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5905</div>
+<div class="line-num2">5919</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dd&gt;8bit (always UTF-8)</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">5906</div>
+<div class="line-num2">5920</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;dt&gt;Security considerations:</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -6496,7 +6510,7 @@ originally specified. &lt;a data-link-type=&quot;biblio&quot; href=&quot;#biblio-html51&quot;&gt;[HTML51]&lt;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6496</div>
+<div class="line-num2">6510</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;a data-link-type=&quot;biblio&quot;&gt;[WebIDL]&lt;&#x2F;a&gt; defines the following terms:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6497</div>
+<div class="line-num2">6511</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;ul&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6498</div>
+<div class="line-num2">6512</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">     &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#Exposed&quot;&gt;Exposed&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">6499</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">     &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-<del>unsigned-</del>long&quot;&gt;<del>unsigned </del>long&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">6513</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">     &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-long&quot;&gt;long&lt;&#x2F;a&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6500</div>
+<div class="line-num2">6514</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;&#x2F;ul&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6501</div>
+<div class="line-num2">6515</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">   &lt;li&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6502</div>
+<div class="line-num2">6516</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">    &lt;a data-link-type=&quot;biblio&quot;&gt;[WEBIDL-1]&lt;&#x2F;a&gt; defines the following terms:</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -6619,7 +6633,7 @@ originally specified. &lt;a data-link-type=&quot;biblio&quot; href=&quot;#biblio-html51&quot;&gt;[HTML51]&lt;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6619</div>
+<div class="line-num2">6633</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">&lt;span class=&quot;kt&quot;&gt;interface&lt;&#x2F;span&gt; &lt;a class=&quot;nv&quot; href=&quot;#vttregion&quot;&gt;&lt;code&gt;VTTRegion&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; {</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6620</div>
+<div class="line-num2">6634</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-DOMString&quot;&gt;&lt;span class=&quot;kt&quot;&gt;DOMString&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;DOMString&quot; href=&quot;#dom-vttregion-id&quot;&gt;id&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6621</div>
+<div class="line-num2">6635</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-width&quot;&gt;width&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">6622</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-<del>unsigned-</del>long&quot;&gt;&lt;span class=&quot;kt&quot;&gt;<del>unsigned&lt;&#x2F;span&gt; &lt;span class=&quot;kt&quot;&gt;</del>long&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;<del>unsigned </del>long&quot; href=&quot;#dom-vttregion-lines&quot;&gt;lines&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">6636</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;heycam.github.io&#x2F;webidl&#x2F;#idl-long&quot;&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;long&quot; href=&quot;#dom-vttregion-lines&quot;&gt;lines&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6623</div>
+<div class="line-num2">6637</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-regionanchorx&quot;&gt;regionAnchorX&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6624</div>
+<div class="line-num2">6638</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-regionanchory&quot;&gt;regionAnchorY&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6625</div>
+<div class="line-num2">6639</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn">  &lt;span class=&quot;kt&quot;&gt;attribute&lt;&#x2F;span&gt; &lt;a class=&quot;n idl-code&quot; data-link-type=&quot;interface&quot; href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;WebIDL-1&#x2F;#idl-double&quot;&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;&#x2F;span&gt;&lt;&#x2F;a&gt; &lt;a class=&quot;nv idl-code&quot; data-link-type=&quot;attribute&quot; data-type=&quot;double&quot; href=&quot;#dom-vttregion-viewportanchorx&quot;&gt;viewportAnchorX&lt;&#x2F;a&gt;;</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="d2h-461549" class="d2h-file-wrapper" data-lang="bs">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">index.bs</span>
+    <span class="d2h-tag d2h-changed d2h-changed-tag">CHANGED</span></span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -6108,9 +6108,9 @@ and registration with IANA.&lt;&#x2F;p&gt;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6108</div>
+<div class="line-num2">6108</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dt&gt;Subtype name:&lt;&#x2F;dt&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6109</div>
+<div class="line-num2">6109</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;vtt&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6110</div>
+<div class="line-num2">6110</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dt&gt;Required parameters:&lt;&#x2F;dt&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">6111</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;<del>No parameters</del>&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">6111</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;<ins>N&#x2F;A</ins>&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6112</div>
+<div class="line-num2">6112</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dt&gt;Optional parameters:&lt;&#x2F;dt&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">6113</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;<del>No parameters</del>&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">6113</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;<ins>N&#x2F;A</ins>&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6114</div>
+<div class="line-num2">6114</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dt&gt;Encoding considerations:&lt;&#x2F;dt&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6115</div>
+<div class="line-num2">6115</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dd&gt;8bit (always UTF-8)&lt;&#x2F;dd&gt;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6116</div>
+<div class="line-num2">6116</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix"> </span>
+            <span class="d2h-code-line-ctn"> &lt;dt&gt;Security considerations:&lt;&#x2F;dt&gt;</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>
