@@ -1,26 +1,16 @@
-# Web Media Text Tracks Community Group
+# Contributor License Agreement
 
-This repository is being used for work in the Web Media Text Tracks Community Group, governed by the [W3C Community License
-Agreement (CLA)](http://www.w3.org/community/about/agreements/cla/). To contribute, you must join
-the CG.
+Contributions to this repository are intended to become part of Recommendation-track documents governed by the W3C Patent Policy and Document License. To contribute, you must either participate in the [Timed Text Working Group](https://www.w3.org/AudioVideo/TT/) or make a non-member patent licensing commitment.
 
-If you are not the sole contributor to a contribution (pull request), please identify all
-contributors in the pull request's body or in subsequent comments.
+If you are not the sole contributor to a contribution (pull request), please identify all contributors in the pull request's body or in subsequent comments.
 
 To add a contributor (other than yourself, that's automatic), mark them one per line as follows:
 
-```
 +@github_username
-```
-
 If you added a contributor by mistake, you can remove them in a comment with:
 
-```
 -@github_username
-```
-
-If you are making a pull request on behalf of someone else but you had no part in designing the
-feature, you can remove yourself with the above syntax.
+If you are making a pull request on behalf of someone else but you had no part in designing the feature, you can remove yourself with the above syntax.
 
 # Tests
 
