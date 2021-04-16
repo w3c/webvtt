@@ -5548,7 +5548,7 @@ enum AlignSetting { "start", "center", "end", "left", "right" };
 [Exposed=Window,
  Constructor(double startTime, unrestricted double endTime, DOMString text)]
 interface VTTCue : TextTrackCue {
-  constructor(double startTime, double endTime, DOMString text);
+  constructor(double startTime, unrestricted double endTime, DOMString text);
   attribute VTTRegion? region;
   attribute DirectionSetting vertical;
   attribute boolean snapToLines;
@@ -5734,6 +5734,13 @@ interface VTTCue : TextTrackCue {
  <li><p>Return the {{VTTCue}} object representing |cue|.</p></li>
 
 </ol>
+
+<p>The <dfn attribute for=VTTCue>endTime</dfn> attribute, on getting, must return the <a>text track
+cue end time</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents, in seconds or
+positive Infinity. On setting, if the new value is negative Infinity or a Not-a-Number (NaN) value,
+then throw a <a
+href="https://tc39.es/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError
+</a> exception. Otherwise, the <a>text track cue end time</a> must be set to the new value.</p>
 
 <p>The <dfn attribute for=VTTCue>region</dfn> attribute, on getting, must return the {{VTTRegion}}
 object representing the <a>WebVTT cue region</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object
