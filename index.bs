@@ -5569,7 +5569,8 @@ interface VTTCue : TextTrackCue {
  <dd>
   <p>Returns a new {{VTTCue}} object, for use with the {{TextTrack/addCue()}} method.</p>
   <p>The |startTime| argument sets the <a>text track cue start time</a>.</p>
-  <p>The |endTime| argument sets the <a>text track cue end time</a>.</p>
+  <p>The |endTime| argument sets the <a>text track cue end time</a>. In the case of the value being
+  positive Infinity, the {{VTTCue}} object represents an <a>unbounded text track cue</a>.</p>
   <p>The |text| argument sets the <a>cue text</a>.</p>
  </dd>
 
