@@ -28,6 +28,9 @@ Ignored Vars: seconds-frac, selector, fragment, seen cue
 </pre>
 
 <pre class=anchors>
+urlPrefix: https://dom.spec.whatwg.org/
+    type: dfn
+        text: namespaceURI
 urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: infrastructure.html
@@ -36,6 +39,7 @@ urlPrefix: https://html.spec.whatwg.org/multipage/
             text: skip whitespace
             text: alphanumeric ascii characters
             text: space character
+            text: case-sensitive
         urlPrefix: embedded-content.html
             text: text track kind
             text: text track cue
@@ -82,13 +86,13 @@ spec:css-fonts-3; type:property; text:font-style
 spec:css-fonts-3; type:property; text:font-weight
 spec:css-ruby-1; type:value; text:ruby
 spec:css-ruby-1; type:value; text:ruby-text
-spec:css22; type:property; text:min-height
-spec:css22; type:property; text:max-height
+spec:css2; type:selector; text::lang()
 spec:css-flexbox-1; type:value; text:inline-flex
 spec:selectors-3; type:selector; text:::before
 spec:selectors-3; type:selector; text:::after
 spec:css-display-3; type:property; text:display
 spec:html; type:element; text:style
+spec:css-align-3; type:value; for:justify-content; text:flex-end
 </pre>
 
 <pre class=biblio>
@@ -4095,7 +4099,7 @@ Node Objects</a> to DOM nodes:</p>
 </table>
 
 <p>HTML elements created as part of the mapping described above must have their
-{{Node/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
+{{Element/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
 in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a
 lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a
 element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
