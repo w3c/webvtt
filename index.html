@@ -5,7 +5,7 @@
   <title>WebVTT: The Web Video Text Tracks Format</title>
   <link href="logo/64x64.png" rel="icon" type="image/png">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version f043d3484, updated Fri Feb 17 10:53:48 2023 -0800" name="generator">
+  <meta content="Bikeshed version d9f9c3533, updated Fri Mar 10 11:31:29 2023 -0800" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
 <style>
  samp {
@@ -611,7 +611,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-02-27">27 February 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-03-10">10 March 2023</time></p>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -4528,12 +4528,12 @@ would have been applied to the <a data-link-type="dfn" href="#list-of-webvtt-nod
    <h4 class="heading settled" data-level="8.2.2" id="the-past-and-future-pseudo-classes"><span class="secno">8.2.2. </span><span class="content">The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past④">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future④">:future</a> pseudo-classes</span><a class="self-link" href="#the-past-and-future-pseudo-classes"></a></h4>
    <p>The <a class="css" data-link-type="maybe" href="#selectordef-past" id="ref-for-selectordef-past⑤">:past</a> and <a class="css" data-link-type="maybe" href="#selectordef-future" id="ref-for-selectordef-future⑤">:future</a> pseudo-classes sometimes match <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑤">WebVTT
 Node Objects</a>. <a data-link-type="biblio" href="#biblio-selectors4" title="Selectors Level 4">[SELECTORS4]</a></p>
-   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-past">:past</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑥">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-noexport id="selectordef-past">:past</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑥">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
    <p class="algorithm" data-algorithm="in the past">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑦">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="abstract-op" data-export id="abstract-opdef-in-the-past">in the past<a class="self-link" href="#abstract-opdef-in-the-past"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③②">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③②">list of WebVTT Node Objects</a>,
 there exists a <a data-link-type="dfn" href="#webvtt-timestamp-object" id="ref-for-webvtt-timestamp-object⑤">WebVTT Timestamp Object</a> whose value is less than the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position" id="ref-for-current-playback-position③">current playback
 position</a> of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①④">media element</a> that is the <i>matched element</i>, entirely after the <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑧">WebVTT Node Object</a> <var>c</var>.</p>
-   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-export id="selectordef-future">:future</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑨">WebVTT Node
+   <p>The <dfn class="dfn-paneled css" data-dfn-type="selector" data-noexport id="selectordef-future">:future</dfn> pseudo-class only matches <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object①⑨">WebVTT Node
 Objects</a> that are <i>in the future</i>.</p>
    <p class="algorithm" data-algorithm="in the future">A <a data-link-type="dfn" href="#webvtt-node-object" id="ref-for-webvtt-node-object②⓪">WebVTT Node Object</a> <var>c</var> is <dfn data-dfn-type="abstract-op" data-export id="abstract-opdef-in-the-future">in the future<a class="self-link" href="#abstract-opdef-in-the-future"></a></dfn> if, in a
 pre-order, depth-first traversal of the <a data-link-type="dfn" href="#webvtt-cue" id="ref-for-webvtt-cue③③">WebVTT cue</a>’s <a data-link-type="dfn" href="#list-of-webvtt-node-objects" id="ref-for-list-of-webvtt-node-objects③③">list of WebVTT Node Objects</a>,
