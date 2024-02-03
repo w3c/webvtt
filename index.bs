@@ -563,6 +563,62 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 </div>
 
+
+
+<div class="example">
+
+ <p>In this example, an optional WebVTT attributes object is used to define the source language and its label in a subtitle/caption selection menu.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: subtitles
+srclang: es-mx
+label: Español
+
+NOTE
+Standard subtitles (unlike CC or SDH captions) typically 
+translate spoken dialog or signage, but not audible sounds 
+effects like "dogs barking."
+
+1
+00:00:10.123 --> 00:00:15.432
+¡Hola! ¿Qué tál?
+ </pre>
+
+</div>
+
+
+<div class="example">
+
+ <p>In this example, an optional WebVTT attributes object is used to differentiate captions from standard subtitles.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: captions
+srclang: es-mx
+label: Español (SDH)
+
+NOTE
+Captions (SDH aka Subtitles for the Deaf and Hard-of-Hearing) 
+typically include spoken dialog as well as important audible 
+sounds such as "floor boards creak", "dogs barking", or in 
+this case, "music".
+
+1
+00:00:10.123 --> 00:00:15.432
+¡Hola! ¿Qué tál?
+
+2
+00:00:47.462 --> 00:01:04.028
+[♫ música ♫]
+ </pre>
+
+</div>
+
+
+
 <h3 id=introduction-comments>Comments in WebVTT</h3>
 
 <p><i>This section is non-normative.</i></p>
@@ -658,6 +714,32 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 </div>
 
+
+
+<div class="example">
+
+ <p>In this example, a WebVTT attributes object is used to indicate the text track cues represent video descriptions for the blind. Unlike subtitles or captions, these are not intended to be rendered visually.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: descriptions
+srclang: en-us
+label: English (AD)
+
+NOTE
+VTT-based descriptions are meant to render as text-to-speech audio or braille,
+for blind or deafblind audiences, not usually as visual captions on screen. 
+As such, the option/label might be displayed in an audio menu or elsewhere. 
+
+1
+00:00:10.123 --> 00:00:15.432
+A young girl tiptoes down a dark hallway.
+ </pre>
+
+</div>
+
+
 <h3 id=introduction-metadata>Metadata example</h3>
 
 <p><i>This section is non-normative.</i></p>
@@ -671,11 +753,14 @@ signifies the end of the WebVTT cue.</p>
 
 <div class="example">
 
- <p>In this example, a talk is split into each slide being a chapter.</p>
+ <p>In this example, topics mentioned in a talk are provided as URLs for reference.</p>
 
  <pre>
  WEBVTT
 
+ ATTRIBUTES
+ kind: metadata
+ 
  NOTE
  Thanks to http://output.jsbin.com/mugibo
 
@@ -700,6 +785,28 @@ signifies the end of the WebVTT cue.</p>
   "lat" : "36.198269",
   "long": "137.2315355"
  }
+ </pre>
+
+</div>
+
+<div class="example">
+
+ <p>In this example, a sequence of video thumbnails and their text alternative are made available for the playback UI.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: metadata
+type: video-thumbnails
+
+00:00:01.959 --> 00:00:02.938
+{
+ "src": "https://cdn.example.com/thumbnails.jpg#xywh=0,0,284,160",
+ "alt": {
+  "en-us": "Miguel crosses the marigold bridge to the land of the dead.",
+  "es-mx": "Miguel cruza el puente marigold hacia la tierra de los muertos."
+ }
+}
  </pre>
 
 </div>
@@ -1650,6 +1757,28 @@ SIGN).</p>
 
 <p>When interpreted as a number, a <a>WebVTT percentage</a> must be in the range 0..100.</p>
 
+<p>A <dfn>WebVTT attributes object</dfn> consists of the following components, in the given order:</p>
+<ol>
+ <li>The string "<code>ATTRIBUTES</code>".</li>
+ <li>
+  The following components, in the given order:
+  <ol>
+   <li>A <a>WebVTT line terminator</a>.</li>
+   <li>Zero or more key/value pairs, parsed in the given order:
+    <ol>
+     <li>A <dfn>WebVTT attribute key</dfn> consisting of any sequence of one or more (TODO: /A-Za-z/?) characters.</li>
+     <li>A single U+003A COLON character ("<code>:</code>").</li>
+     <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+     <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+     <li>A <a>WebVTT line terminator</a>.</li>
+    </ol>
+   </li>
+   <li>A final <a>WebVTT line terminator</a> to complete the WebVTT attributes object.</li>
+  </ol>
+ </li>
+</ol>
+
+
 <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given order:</p>
 
 <ol>
@@ -1687,7 +1816,7 @@ separated from the next by a <a>WebVTT line terminator</a>. (In other words, any
 have two consecutive <a lt="WebVTT line terminator">WebVTT line terminators</a> and does not start
 or end with a <a>WebVTT line terminator</a>.)</p>
 
-<p><a>WebVTT metadata text</a> cues are only useful for scripted applications (e.g. using the
+<p><a>WebVTT metadata text</a> cues were originally intended for scripted applications (e.g. using the
 <code>metadata</code> <a>text track kind</a> in a HTML <a>text track</a>).</p>
 
 
