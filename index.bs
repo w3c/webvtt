@@ -1766,10 +1766,10 @@ SIGN).</p>
    <li>A <a>WebVTT line terminator</a>.</li>
    <li>Zero or more key/value pairs, parsed in the given order:
     <ol>
-     <li>A <dfn>WebVTT attribute key</dfn> consisting of any sequence of one or more (TODO: /A-Za-z/?) characters.</li>
+     <li>A <dfn>WebVTT attribute key</dfn> consisting of any sequence of one or more (TODO: ref HTML tagname char or ECMAScript variable char ranges) characters.</li>
      <li>A single U+003A COLON character ("<code>:</code>").</li>
      <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
-     <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than U+000A LINE FEED (LF) characters and U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+     <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
      <li>A <a>WebVTT line terminator</a>.</li>
     </ol>
    </li>
