@@ -800,7 +800,7 @@ kind: metadata
 
 NOTE
 The Timed Text Working Group is discussing a registry for metadata `type` 
-values, such as `video-thumbnails` or `video-flash-avoidance`. 
+values, such as `type: video-thumbnails` or `type: video-flash-avoidance`. 
 See webvtt issues #511 and #512 for more info.
 
 00:00:01.959 --> 00:00:02.938
@@ -1773,7 +1773,7 @@ SIGN).</p>
    <li>A <a>WebVTT line terminator</a>.</li>
    <li>Zero or more key/value pairs, parsed in the given order:
     <ol>
-     <li>A <dfn>WebVTT attribute key</dfn> consisting of any sequence of one or more (TODO: ref HTML tagname char or ECMAScript variable char ranges) characters.</li>
+     <li>A <dfn>WebVTT attribute key</dfn> consisting of (TODO: ref HTML tagname or ECMAScript variable char ranges? or identifier regex <code>[a-zA-Z_][0-9a-zA-Z_]*</code>).</li>
      <li>A single U+003A COLON character ("<code>:</code>").</li>
      <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
      <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
