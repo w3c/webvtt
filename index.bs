@@ -1585,7 +1585,7 @@ with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>Two or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
  with the file magic and separate it from the rest of the body.</li>
 
- <li>Zero or one <a lt="WebVTT attributes object">WebVTT attributes object</a> followed by one or 
+ <li>Zero or one <a lt="WebVTT attributes block">WebVTT attributes block</a> followed by one or 
  more <a lt="WebVTT line terminator">WebVTT line terminators</a>.</li>
 
  <li>Zero or more <a lt="WebVTT region definition block">WebVTT region definition blocks</a>, <a
@@ -1764,7 +1764,7 @@ SIGN).</p>
 
 <p>When interpreted as a number, a <a>WebVTT percentage</a> must be in the range 0..100.</p>
 
-<p>A <dfn>WebVTT attributes object</dfn> consists of the following components, in the given order:</p>
+<p>A <dfn>WebVTT attributes block</dfn> consists of the following components, in the given order:</p>
 <ol>
  <li>The string "<code>ATTRIBUTES</code>".</li>
  <li>
@@ -1773,17 +1773,38 @@ SIGN).</p>
    <li>A <a>WebVTT line terminator</a>.</li>
    <li>Zero or more key/value pairs, parsed in the given order:
     <ol>
-     <li>A <dfn>WebVTT attribute key</dfn> consisting of (TODO: ref HTML tagname or ECMAScript variable char ranges? or identifier regex <code>[a-zA-Z_][0-9a-zA-Z_]*</code>).</li>
+     <li>A <dfn>WebVTT attribute key</dfn> consisting of <code>[A-Za-z_][0-9A_Za-z_]*</code>:
+      <ul>
+       <li>Any one of the following:
+        <ul>
+         <li>U+0041 LATIN CAPITAL LETTER A through U+005A LATIN CAPITAL LETTER Z</li>
+         <li>U+0061 LATIN CAPITAL SMALL A through U+007A LATIN SMALL LETTER A</li>
+         <li>U+005F LOW LINE _ ("underscore")</li>
+        </ul>
+       </li>
+       <li>Optionally followed by zero or more of the following:
+        <ul>
+         <li>U+0030 DIGIT ZERO ("0") through U+0039 DIGIT NINE ("9")</li>
+         <li>U+0041 LATIN CAPITAL LETTER A through U+005A LATIN CAPITAL LETTER Z</li>
+         <li>U+0061 LATIN CAPITAL SMALL A through U+007A LATIN SMALL LETTER A</li>
+         <li>U+005F LOW LINE ("_" underscore)</li>
+        </ul>
+       </li>
+       <li class="ednote">Editorial Note: Should this `key` token range be an external reference to the character range for HTML TagName or ECMAScript variables? If so, which reference?</li>
+      </ul>
+     </li>
      <li>A single U+003A COLON character ("<code>:</code>").</li>
      <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
      <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
      <li>A <a>WebVTT line terminator</a>.</li>
     </ol>
    </li>
-   <li>A final <a>WebVTT line terminator</a> to complete the WebVTT attributes object.</li>
+   <li>A final <a>WebVTT line terminator</a> to complete the WebVTT attributes block.</li>
   </ol>
  </li>
 </ol>
+
+<p>Process the <a>WebVTT attributes block</a> key/value pairs according to the <a>WebVTT attributes key/value parsing rules</a>.</p>
 
 
 <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given order:</p>
@@ -4263,6 +4284,47 @@ follows:</p>
  pre-order, depth-first traversal, excluding <a lt="WebVTT Ruby Text Object">WebVTT Ruby Text
  Objects</a> and their descendants.</p></li>
 
+</ol>
+
+
+<p>The <dfn>WebVTT attributes key/value parsing rules</dfn> consist of the following algorithm.</p>
+
+<ol algorithm="WebVTT attributes block parsing">
+ <li>Let |input| be the list of key/value pairs from a <a>WebVTT attributes block</a>.</li>
+ <li>
+  How the attribute is processed depends on its key name, as follows:
+  <dl>
+
+   <dt>If the key name is "<code>kind</code>"</dt>
+   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-kind">the kind attribute</a> of a track element according to the HTML Standard.</dd>
+
+   <dt>If the key name is "<code>srclang</code>"</dt>
+   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">the srclang attribute</a> of a track element according to the HTML Standard.</dd>
+
+   <dt>If the key name is "<code>label</code>"</dt>
+   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-label">the label attribute</a> of a track element according to the HTML Standard.</dd>
+
+   <dt>If the key name is "<code>type</code>" (TODO: For clarity, should this be "subkind" or "kind_subtype" instead?)</dt>
+   <dd>Process the value according to the <a>WebVTT type attribute parsing rules</a>.
+
+   <dt>Otherwise</dt>
+   <dd>Ignore the key/value pair.</dd>
+
+  </dl>
+ </li>
+</ol>
+
+<p>The <dfn>WebVTT type attribute parsing rules</dfn> consist of the following algorithm.</p>
+
+<ol algorithm="WebVTT type attribute attribute parsing">
+ <li>TODO: This could reference a new TBD W3C Note or Evergreen list of acknowledged kind subtypes, along with a reference to the specification for each, which clarify the usage or define further parsing rules of each type. For example:
+  <ul>
+   <li>metadata subtype: time-coded video poster thumbnails (common de facto use for scrubbing but no spec)</li>
+   <li>metadata subtype: <a href="https://github.com/w3c/webvtt/issues/512">WebVTT Issue 512: time-coded flash metadata</a></li>
+   <li>caption or description subtype: text equivalent of audio description audio track (used for braille displays)</li>
+   <li>etc.</li>
+  </ul>
+ </li>
 </ol>
 
 
