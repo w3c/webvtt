@@ -4300,33 +4300,12 @@ follows:</p>
    <dt>If the key name is "<code>label</code>"</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-label">the label attribute</a> of a track element according to the HTML Standard.</dd>
 
-<!-- See https://github.com/w3c/webvtt/issues/525
-   <dt>If the key name is "<code>type</code>" (TODO: For clarity, should this be "subkind" or "kind_subtype" instead?)</dt>
-   <dd>Process the value according to the <a>WebVTT type attribute parsing rules</a>.
--->
-
    <dt>Otherwise</dt>
    <dd>Ignore the key/value pair.</dd>
 
   </dl>
  </li>
 </ol>
-
-<!-- See https://github.com/w3c/webvtt/issues/525
-<p>The <dfn>WebVTT type attribute parsing rules</dfn> consist of the following algorithm.</p>
-
-<ol algorithm="WebVTT type attribute attribute parsing">
- <li>TODO: This could reference a new TBD W3C Note or Evergreen list of acknowledged kind subtypes, along with a reference to the specification for each, which clarify the usage or define further parsing rules of each type. For example:
-  <ul>
-   <li>metadata subtype: time-coded video poster thumbnails (<a href="https://github.com/w3c/webvtt/issues/511#issuecomment-1487497644">common de facto use for preview scrubbing</a> but no spec exists)</li>
-   <li>metadata subtype: <a href="https://github.com/w3c/webvtt/issues/512">WebVTT Issue 512: time-coded flash metadata</a></li>
-   <li>metadata subtype: <a href="https://github.com/w3ctag/design-reviews/issues/952">video chapter times, thumbnails, and titles</a>
-   <li>caption or description subtype: text equivalent of audio description dialogue audio track (<a href="https://www.w3.org/2022/09/14-audio-descriptions-minutes.html">VTT descriptions rendered on braille displays</a> used by blind and deafblind individuals)</li>
-   <li>etc.</li>
-  </ul>
- </li>
-</ol>
--->
 
 <h2 id=rendering>Rendering</h2>
 
