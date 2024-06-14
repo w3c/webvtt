@@ -4300,8 +4300,10 @@ follows:</p>
    <dt>If the key name is "<code>label</code>"</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-label">the label attribute</a> of a track element according to the HTML Standard.</dd>
 
+<!-- See https://github.com/w3c/webvtt/issues/525
    <dt>If the key name is "<code>type</code>" (TODO: For clarity, should this be "subkind" or "kind_subtype" instead?)</dt>
    <dd>Process the value according to the <a>WebVTT type attribute parsing rules</a>.
+-->
 
    <dt>Otherwise</dt>
    <dd>Ignore the key/value pair.</dd>
@@ -4310,6 +4312,7 @@ follows:</p>
  </li>
 </ol>
 
+<!-- See https://github.com/w3c/webvtt/issues/525
 <p>The <dfn>WebVTT type attribute parsing rules</dfn> consist of the following algorithm.</p>
 
 <ol algorithm="WebVTT type attribute attribute parsing">
@@ -4323,7 +4326,7 @@ follows:</p>
   </ul>
  </li>
 </ol>
-
+-->
 
 <h2 id=rendering>Rendering</h2>
 
