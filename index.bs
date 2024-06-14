@@ -578,7 +578,7 @@ label: Español
 
 NOTE
 Standard subtitles (unlike CC or SDH captions) typically 
-translate spoken dialog or signage, but not audible sounds 
+translate spoken dialog or signage, but not audible sound 
 effects like "dogs barking."
 
 1
@@ -1773,25 +1773,21 @@ SIGN).</p>
    <li>A <a>WebVTT line terminator</a>.</li>
    <li>Zero or more key/value pairs, parsed in the given order:
     <ol>
-     <li>A <dfn>WebVTT attribute key</dfn> consisting of <code>[A-Za-z_][0-9A_Za-z_]*</code>:
-      <ul>
+     <li>A <dfn>WebVTT attribute key</dfn> consisting of: (<code>[A-Za-z_][0-9A_Za-z_]*</code>)
+      <ol>
        <li>Any one of the following:
         <ul>
-         <li>U+0041 LATIN CAPITAL LETTER A through U+005A LATIN CAPITAL LETTER Z</li>
-         <li>U+0061 LATIN CAPITAL SMALL A through U+007A LATIN SMALL LETTER A</li>
-         <li>U+005F LOW LINE _ ("underscore")</li>
+         <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alpha">ASCII Alpha</a> character</li>
+         <li>U+005F LOW LINE ("_" underscore)</li>
         </ul>
        </li>
        <li>Optionally followed by zero or more of the following:
         <ul>
-         <li>U+0030 DIGIT ZERO ("0") through U+0039 DIGIT NINE ("9")</li>
-         <li>U+0041 LATIN CAPITAL LETTER A through U+005A LATIN CAPITAL LETTER Z</li>
-         <li>U+0061 LATIN CAPITAL SMALL A through U+007A LATIN SMALL LETTER A</li>
+         <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alphanumeric">ASCII Alphanumeric</a> character</li>
          <li>U+005F LOW LINE ("_" underscore)</li>
         </ul>
        </li>
-       <li class="ednote">Editorial Note: Should this `key` token range be an external reference to the character range for HTML TagName or ECMAScript variables? If so, which reference?</li>
-      </ul>
+      </ol>
      </li>
      <li>A single U+003A COLON character ("<code>:</code>").</li>
      <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
@@ -4319,9 +4315,10 @@ follows:</p>
 <ol algorithm="WebVTT type attribute attribute parsing">
  <li>TODO: This could reference a new TBD W3C Note or Evergreen list of acknowledged kind subtypes, along with a reference to the specification for each, which clarify the usage or define further parsing rules of each type. For example:
   <ul>
-   <li>metadata subtype: time-coded video poster thumbnails (common de facto use for scrubbing but no spec)</li>
+   <li>metadata subtype: time-coded video poster thumbnails (<a href="https://github.com/w3c/webvtt/issues/511#issuecomment-1487497644">common de facto use for preview scrubbing</a> but no spec exists)</li>
    <li>metadata subtype: <a href="https://github.com/w3c/webvtt/issues/512">WebVTT Issue 512: time-coded flash metadata</a></li>
-   <li>caption or description subtype: text equivalent of audio description audio track (used for braille displays)</li>
+   <li>metadata subtype: <a href="https://github.com/w3ctag/design-reviews/issues/952">video chapter times, thumbnails, and titles</a>
+   <li>caption or description subtype: text equivalent of audio description dialogue audio track (<a href="https://www.w3.org/2022/09/14-audio-descriptions-minutes.html">VTT descriptions rendered on braille displays</a> used by blind and deafblind individuals)</li>
    <li>etc.</li>
   </ul>
  </li>
