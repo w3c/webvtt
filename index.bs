@@ -573,7 +573,7 @@ WEBVTT
 
 ATTRIBUTES
 kind: subtitles
-srclang: es-mx
+lang: es-mx
 label: Español
 
 NOTE
@@ -597,7 +597,7 @@ WEBVTT
 
 ATTRIBUTES
 kind: captions
-srclang: es-mx
+lang: es-mx
 label: Español (SDH)
 
 NOTE
@@ -718,13 +718,13 @@ this case, "music".
 
 <div class="example">
 
- <p>In this example, a WebVTT attributes object is used to indicate the text track cues represent descriptions for the blind. Unlike subtitles or captions, these are not intended to be rendered visually.</p>
+ <p>In this example, a WebVTT attributes object is used to indicate the text track cues represent audible or braille descriptions for the blind. Unlike subtitles or captions, these are not intended to be rendered visually.</p>
  <pre>
 WEBVTT
 
 ATTRIBUTES
 kind: descriptions
-srclang: en-us
+lang: en-us
 label: English (AD)
 
 NOTE
@@ -798,11 +798,6 @@ WEBVTT
 ATTRIBUTES
 kind: metadata
 
-NOTE
-The Timed Text Working Group is discussing a registry for metadata `type` 
-values, such as `type: video-thumbnails` or `type: video-flash-avoidance`. 
-See webvtt issues #511 and #512 for more info.
-
 00:00:01.959 --> 00:00:02.938
 {
  "src": "https://cdn.example.com/thumbnails.jpg#xywh=0,0,284,160",
@@ -812,6 +807,11 @@ See webvtt issues #511 and #512 for more info.
  }
 }
  </pre>
+ 
+ <p class="note">The Timed Text Working Group is discussing a registry for metadata <code>type</code> 
+values, such as <code>type: video-thumbnails</code> or <code>type: video-flash-avoidance</code>. 
+See WebVTT issues <a href="https://github.com/w3c/webvtt/issues/511">#511</a> and <a href="https://github.com/w3c/webvtt/issues/512">#512</a> for more info.</p>
+
 
 </div>
 
@@ -4294,7 +4294,7 @@ follows:</p>
    <dt>If the key name is "<code>kind</code>"</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-kind">the kind attribute</a> of a track element according to the HTML Standard.</dd>
 
-   <dt>If the key name is "<code>srclang</code>"</dt>
+   <dt>If the key name is "<code>lang</code>"</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">the srclang attribute</a> of a track element according to the HTML Standard.</dd>
 
    <dt>If the key name is "<code>label</code>"</dt>
