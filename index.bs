@@ -4786,7 +4786,11 @@ constraints: [[!CSS22]]</p>
  sheets after their boxes are generated, as described below.)</li>
 
  <li>The children of the |nodes| must be wrapped in an anonymous box whose 'display' property has
- the value ''display/inline''. This is the <dfn>WebVTT cue background box</dfn>.</li>
+ the value ''display/inline''. This is the <dfn>WebVTT cue inline background box</dfn>.</li>
+
+ <li>The <a>WebVTT cue inline background box</a> must be wrapped in an anonymous box whose 'display'
+ property has the value ''display/block''. This is the <dfn>WebVTT cue block background
+ box</dfn>.</li>
 
  <li>Runs of children of <a lt="WebVTT Ruby Object">WebVTT Ruby Objects</a> that are not <a
  lt="WebVTT Ruby Text Object">WebVTT Ruby Text Objects</a> must be wrapped in anonymous boxes whose
@@ -4873,8 +4877,8 @@ corresponding <a lt="text track cue">cue</a>'s <a>WebVTT cue text alignment</a>:
 <p>The 'color' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''rgba(255,255,255,1)''. [[!CSS3-COLOR]]</p>
 
-<p>The 'background' shorthand property on the <a>WebVTT cue background box</a> and on <a>WebVTT Ruby
-Text Objects</a> must be set to ''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
+<p>The 'background' shorthand property on the <a>WebVTT cue inline background box</a> and on
+<a>WebVTT Ruby Text Objects</a> must be set to ''rgba(0,0,0,0.8)''. [[!CSS3-COLOR]]</p>
 
 <p>The 'white-space' property on the (root) <a>list of WebVTT Node Objects</a> must be set to
 ''white-space/pre-line''. [[!CSS22]]</p>
@@ -5302,10 +5306,10 @@ pseudo-elements defined below won't have any effect according to this specificat
 
 <h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
 
-<p>The <dfn selector>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
-Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
-corresponding to the 'background' shorthand must be applied to the <a>WebVTT cue background box</a>
-rather than the <a>list of WebVTT Node Objects</a>.</p>
+<p>The <dfn selector>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT
+Node Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
+corresponding to the 'background' shorthand must be applied to the <a>WebVTT cue inline background
+box</a> rather than the <a>list of WebVTT Node Objects</a>.</p>
 
 <p>The following properties apply to the ''::cue'' pseudo-element with no argument; other properties
 set on the pseudo-element must be ignored:</p>
@@ -5472,8 +5476,22 @@ when the selector does not contain the '':past'' and '':future'' pseudo-classes:
 
 <p>As a special exception, the properties corresponding to the 'background' shorthand, when they
 would have been applied to the <a>list of WebVTT Node Objects</a>, must instead be applied to the
-<a>WebVTT cue background box</a>.</p>
+<a>WebVTT cue inline background box</a>.</p>
 
+<h4 id=the-cue-pseudo-element>The ''::cue-container'' pseudo-element</h4>
+
+<p>The <dfn selector>::cue-container</dfn> pseudo-element (with no argument) matches the <a>WebVTT
+cue block background box</a> constructed for the <i>matched element</i>.</p>
+
+<p>The following properties apply to the ''::cue-container'' pseudo-element with no argument; other
+properties set on the pseudo-element must be ignored:</p>
+
+<ul class="brief">
+ <li>the properties corresponding to the 'background' shorthand</li>
+ <li>'padding'</li>
+ <li>the properties corresponding to the 'border' shorthand</li>
+ <!-- add more... -->
+</ul>
 
 <h4 id=the-past-and-future-pseudo-classes>The '':past'' and '':future'' pseudo-classes</h4>
 
