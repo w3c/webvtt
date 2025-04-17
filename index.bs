@@ -4283,6 +4283,7 @@ follows:</p>
 </ol>
 
 
+<h3 id="rules-for-parsing-attr-key-values-algorithm">WebVTT Attributes key/value Parsing Rules</h3>
 <p>The <dfn>WebVTT attributes key/value parsing rules</dfn> consist of the following algorithm.</p>
 
 <ol algorithm="WebVTT attributes block parsing">
@@ -4291,13 +4292,13 @@ follows:</p>
   How the attribute is processed depends on its key name, as follows:
   <dl>
 
-   <dt>If the key name is "<code>kind</code>"</dt>
+   <dt>If the key name is "<code>kind</code>" (case-insensitive)</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-kind">the kind attribute</a> of a track element according to the HTML Standard.</dd>
 
-   <dt>If the key name is "<code>lang</code>"</dt>
+   <dt>If the key name is "<code>lang</code>" (case-insensitive)</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">the srclang attribute</a> of a track element according to the HTML Standard.</dd>
 
-   <dt>If the key name is "<code>label</code>"</dt>
+   <dt>If the key name is "<code>label</code>" (case-insensitive)</dt>
    <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-label">the label attribute</a> of a track element according to the HTML Standard.</dd>
 
    <dt>Otherwise</dt>
