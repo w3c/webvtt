@@ -362,11 +362,99 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 </div>
 
+<h3 id=introduction-attributes-block>Attributes Block</h3>
+
+<p><i>This section is non-normative.</i></p>
+
+<p>WebVTT supports an Attributes block to provide additional information about the rendered text track, and to allow disambiguation of metadata tracks.</p>
+
+
+
+
+<div class="example">
+
+ <p>In this example, an optional WebVTT attributes object is used to define the source language and its label in a subtitle/caption selection menu.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: subtitles
+lang: es-mx
+label: Español
+
+NOTE
+Standard subtitles (unlike CC or SDH captions) typically 
+translate spoken dialog or signage, but not audible sound 
+effects like "dogs barking."
+
+1
+00:00:10.123 --> 00:00:15.432
+¡Hola! ¿Qué tál?
+ </pre>
+
+</div>
+
+
+<div class="example">
+
+ <p>In this example, an optional WebVTT attributes object is used to differentiate captions from standard subtitles.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: captions
+lang: es-mx
+label: Español (SDH)
+
+NOTE
+Captions (SDH aka Subtitles for the Deaf and Hard-of-Hearing) 
+typically include spoken dialog as well as important audible 
+sounds such as "floor boards creak", "dogs barking", or in 
+this case, "music".
+
+1
+00:00:10.123 --> 00:00:15.432
+¡Hola! ¿Qué tál?
+
+2
+00:00:47.462 --> 00:01:04.028
+[♫ música ♫]
+ </pre>
+
+</div>
+
+
+<div class="example">
+
+ <p>In this example, a WebVTT attributes object is used to indicate the text track cues represent audible or braille descriptions for the blind. Unlike subtitles or captions, these are not intended to be rendered visually.</p>
+ <pre>
+WEBVTT
+
+ATTRIBUTES
+kind: descriptions
+lang: en-us
+label: English (AD)
+
+NOTE
+VTT-based descriptions are meant to render as text-to-speech audio or braille,
+for blind or deafblind audiences, not usually as visual captions on screen. 
+As such, the option/label might be displayed in an audio menu or elsewhere. 
+
+1
+00:00:10.123 --> 00:00:15.432
+A young girl tiptoes down a dark hallway.
+ </pre>
+
+</div>
+
+
+
 <h3 id=introduction-other-features>Other caption and subtitling features</h3>
 
 <p><i>This section is non-normative.</i></p>
 
 <p>WebVTT also supports some less-often used features.</p>
+
 
 <div class="example">
 
@@ -565,60 +653,6 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 
 
-<div class="example">
-
- <p>In this example, an optional WebVTT attributes object is used to define the source language and its label in a subtitle/caption selection menu.</p>
- <pre>
-WEBVTT
-
-ATTRIBUTES
-kind: subtitles
-lang: es-mx
-label: Español
-
-NOTE
-Standard subtitles (unlike CC or SDH captions) typically 
-translate spoken dialog or signage, but not audible sound 
-effects like "dogs barking."
-
-1
-00:00:10.123 --> 00:00:15.432
-¡Hola! ¿Qué tál?
- </pre>
-
-</div>
-
-
-<div class="example">
-
- <p>In this example, an optional WebVTT attributes object is used to differentiate captions from standard subtitles.</p>
- <pre>
-WEBVTT
-
-ATTRIBUTES
-kind: captions
-lang: es-mx
-label: Español (SDH)
-
-NOTE
-Captions (SDH aka Subtitles for the Deaf and Hard-of-Hearing) 
-typically include spoken dialog as well as important audible 
-sounds such as "floor boards creak", "dogs barking", or in 
-this case, "music".
-
-1
-00:00:10.123 --> 00:00:15.432
-¡Hola! ¿Qué tál?
-
-2
-00:00:47.462 --> 00:01:04.028
-[♫ música ♫]
- </pre>
-
-</div>
-
-
-
 <h3 id=introduction-comments>Comments in WebVTT</h3>
 
 <p><i>This section is non-normative.</i></p>
@@ -715,31 +749,6 @@ this case, "music".
 </div>
 
 
-
-<div class="example">
-
- <p>In this example, a WebVTT attributes object is used to indicate the text track cues represent audible or braille descriptions for the blind. Unlike subtitles or captions, these are not intended to be rendered visually.</p>
- <pre>
-WEBVTT
-
-ATTRIBUTES
-kind: descriptions
-lang: en-us
-label: English (AD)
-
-NOTE
-VTT-based descriptions are meant to render as text-to-speech audio or braille,
-for blind or deafblind audiences, not usually as visual captions on screen. 
-As such, the option/label might be displayed in an audio menu or elsewhere. 
-
-1
-00:00:10.123 --> 00:00:15.432
-A young girl tiptoes down a dark hallway.
- </pre>
-
-</div>
-
-
 <h3 id=introduction-metadata>Metadata example</h3>
 
 <p><i>This section is non-normative.</i></p>
@@ -807,13 +816,11 @@ kind: metadata
  }
 }
  </pre>
+</div>
  
- <p class="note">The Timed Text Working Group is discussing a registry for metadata <code>type</code> 
+<p class="note">The Timed Text Working Group is discussing a registry for metadata <code>type</code> 
 values, such as <code>type: video-thumbnails</code> or <code>type: video-flash-avoidance</code>. 
 See WebVTT issues <a href="https://github.com/w3c/webvtt/issues/511">#511</a> and <a href="https://github.com/w3c/webvtt/issues/512">#512</a> for more info.</p>
-
-
-</div>
 
 
 <h2 id=conformance>Conformance</h2>
@@ -1800,7 +1807,7 @@ SIGN).</p>
  </li>
 </ol>
 
-<p>Process the <a>WebVTT attributes block</a> key/value pairs according to the <a>WebVTT attributes key/value parsing rules</a>.</p>
+<p>Process the <a>WebVTT attributes block</a> key/value pairs according to the <a>WebVTT rules for parsing attribute key/value pairs</a>.</p>
 
 
 <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given order:</p>
@@ -4283,8 +4290,8 @@ follows:</p>
 </ol>
 
 
-<h3 id="rules-for-parsing-attr-key-values-algorithm">WebVTT Attributes key/value Parsing Rules</h3>
-<p>The <dfn>WebVTT attributes key/value parsing rules</dfn> consist of the following algorithm.</p>
+<h3 id=rules-for-parsing-attr-key-values algorithm>WebVTT rules for parsing attribute key/value pairs</h3>
+<p>The <dfn>WebVTT rules for parsing attribute key/value pairs</dfn> consist of the following algorithm.</p>
 
 <ol algorithm="WebVTT attributes block parsing">
  <li>Let |input| be the list of key/value pairs from a <a>WebVTT attributes block</a>.</li>
