@@ -1774,40 +1774,40 @@ SIGN).</p>
 <p>A <dfn>WebVTT attributes block</dfn> consists of the following components, in the given order:</p>
 <ol>
  <li>The string "<code>ATTRIBUTES</code>".</li>
- <li>
-  The following components, in the given order:
+ <li>Zero or more U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+ <li>A <a>WebVTT attributes body block</a>.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+</ol>
+
+<p>A <dfn>WebVTT attributes body block</dfn> consists of the following components, in the given order:</p>
+<ol>
+ <li>Zero or more key/value pairs, parsed in the given order:
   <ol>
-   <li>A <a>WebVTT line terminator</a>.</li>
-   <li>Zero or more key/value pairs, parsed in the given order:
+   <li>A <dfn>WebVTT attribute key</dfn> consisting of: (<code>[A-Za-z_][0-9A_Za-z_]*</code>)
     <ol>
-     <li>A <dfn>WebVTT attribute key</dfn> consisting of: (<code>[A-Za-z_][0-9A_Za-z_]*</code>)
-      <ol>
-       <li>Any one of the following:
-        <ul>
-         <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alpha">ASCII Alpha</a> character</li>
-         <li>U+005F LOW LINE ("_" underscore)</li>
-        </ul>
-       </li>
-       <li>Optionally followed by zero or more of the following:
-        <ul>
-         <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alphanumeric">ASCII Alphanumeric</a> character</li>
-         <li>U+005F LOW LINE ("_" underscore)</li>
-        </ul>
-       </li>
-      </ol>
+     <li>Any one of the following:
+      <ul>
+       <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alpha">ASCII Alpha</a> character</li>
+       <li>U+005F LOW LINE ("_" underscore)</li>
+      </ul>
      </li>
-     <li>A single U+003A COLON character ("<code>:</code>").</li>
-     <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
-     <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
-     <li>A <a>WebVTT line terminator</a>.</li>
+     <li>Optionally followed by zero or more of the following:
+      <ul>
+       <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alphanumeric">ASCII Alphanumeric</a> character</li>
+       <li>U+005F LOW LINE ("_" underscore)</li>
+      </ul>
+     </li>
     </ol>
    </li>
-   <li>A final <a>WebVTT line terminator</a> to complete the WebVTT attributes block.</li>
+   <li>A single U+003A COLON character ("<code>:</code>").</li>
+   <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+   <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+   <li>A <a>WebVTT line terminator</a>.</li>
   </ol>
  </li>
 </ol>
-
-<p>Process the <a>WebVTT attributes block</a> key/value pairs according to the <a>WebVTT rules for parsing attribute key/value pairs</a>.</p>
+<p>Process the <a>WebVTT attributes body block</a> key/value pairs according to the <a>WebVTT rules for parsing attribute key/value pairs</a>.</p>
 
 
 <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given order:</p>
