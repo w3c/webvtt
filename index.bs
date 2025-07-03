@@ -1802,7 +1802,15 @@ SIGN).</p>
    </li>
    <li>A single U+003A COLON character ("<code>:</code>").</li>
    <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
-   <li>A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than unescaped U+000A LINE FEED (LF) characters and unescaped U+000D CARRIAGE RETURN (CR) characters, except that the entire resulting string must not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+   <li>
+    A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than the following:
+    <ul>
+     <li>unescaped LINE FEED (LF) characters (U+000A),</li>
+     <li>unescaped CARRIAGE RETURN (CR) characters (U+000D),</li>
+     <li>unescaped bi-directional formatting characters (U+202B, U+202C, U+202D, U+202E, U+2066, U++2067, U++2068, U+2069, U+200E, U+200F, U+061C), or</li>
+     <li>the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+    </ul>
+   </li>
    <li>A <a>WebVTT line terminator</a>.</li>
   </ol>
  </li>
