@@ -5043,8 +5043,7 @@ present in the <{video}> element's document tree.</p>
      </pre>
     </td>
     <td class=long>
-     <p><a>WebVTT Internal Node Objects</a> (except the root <a>list of WebVTT Node Objects</a>)
-     with the given name.</p>
+     <p><a>WebVTT Internal Node Objects</a> with the given name.</p>
 
      <pre>
      WEBVTT
@@ -5058,6 +5057,30 @@ present in the <{video}> element's document tree.</p>
      &lt;ruby>Yellow! &lt;rt>Yellow!&lt;/rt>&lt;/ruby>
      &lt;v Kathryn>Yellow!&lt;/v>
      &lt;lang en>Yellow!&lt;/lang>
+     </pre>
+    </td>
+   </tr>
+   <tr>
+    <td class=long>
+     <p><a>Universal selector</a> in ''::cue()''</p>
+
+     <pre>
+     video::cue(*:not(:root)) {
+       color: yellow;
+     }
+     </pre>
+    </td>
+    <td class=long>
+     <p>All <a>WebVTT Internal Node Objects</a></p>
+
+     <pre>
+     WEBVTT
+
+     00:00:00.000 --> 00:00:08.000
+     White!
+     &lt;c>Yellow!&lt;/c>
+     &lt;i>Yellow!&lt;/i>
+     &lt;u>Yellow!&lt;/u>
      </pre>
     </td>
    </tr>
@@ -5405,6 +5428,11 @@ being treated as follows:</p>
  <li><p>For the purposes of element type and universal selectors, <a lt="WebVTT Internal Node
  Object">WebVTT Internal Node Objects</a> are considered as being in the namespace expressed as the
  empty string.</p></li>
+
+ <li><p class=note>The <a>universal selector</a> matches all <a>WebVTT Internal Node Objects</a>, including the
+ root <a>list of WebVTT Node Objects</a>.</p></li>
+
+ <li><p class=note>''::cue(:root)'' is equivalent to ''::cue''.</p></li>
 
  <li><p>For the purposes of attribute selector matching, <a lt="WebVTT Internal Node Object">WebVTT
  Internal Node Objects</a> have no attributes, except for <a lt="WebVTT Voice Object">WebVTT Voice
