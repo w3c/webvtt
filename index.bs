@@ -1847,7 +1847,7 @@ SIGN).</p>
 
 <p class="note">The <code>kind</code> key is the only required key in a
 <a>WebVTT attributes block</a>. It must appear in the block to disambiguate the track kind.
-Without it, consumers cannot determine whether other well-known keys such as
+Without it, consumers cannot determine whether other common key names such as
 <code>language</code> and <code>label</code> apply to a recognized track kind, and may treat
 them as opaque. See <a href="#rules-for-parsing-attr-key-values">WebVTT rules for parsing
 attribute key/value pairs</a>.</p>
@@ -3085,7 +3085,7 @@ header</i> set, the user agent must run the following steps:</p>
  using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
  it.</p></li>
 
- <li><p>Otherwise, if |attributes| is not null, then <a>collect WebVTT attribute settings</a> from
+ <li><p>Otherwise, if |attributes| is not null, then <a>collect WebVTT attributes</a> from
  |buffer| using |attributes| for the results, and return |attributes|.</p></li>
 
  <!-- return new block types here -->
@@ -3228,11 +3228,11 @@ means that it is aborted at that point and returns nothing.</p>
 
 <h3 id=attributes-settings-parsing algorithm>WebVTT attributes settings parsing</h3>
 
-<p>When the <a>WebVTT parser algorithm</a> says to <dfn>collect WebVTT attribute settings</dfn>
+<p>When the <a>WebVTT parser algorithm</a> says to <dfn>collect WebVTT attributes</dfn>
 from a string |input| for a <a>WebVTT attributes object</a> |attributes|, the user agent must
 run the following steps:</p>
 
-<ol algorithm="collect WebVTT attribute settings">
+<ol algorithm="collect WebVTT attributes">
 
  <li><p>Let |lines| be the result of splitting |input| on U+000A LINE FEED (LF) characters.</p></li>
 
