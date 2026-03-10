@@ -1550,6 +1550,70 @@ together, which is particularly important when scrolling up.</p>
  </dd>
 </dl>
 
+<h3 id=attributes-object>WebVTT attributes object</h3>
+
+<p>A <dfn>WebVTT attributes object</dfn> represents the optional file-level metadata declared in a
+<a>WebVTT attributes block</a>. It consists of:</p>
+
+<dl>
+
+ <dt><dfn lt="WebVTT attributes object kind">A kind</dfn></dt>
+ <dd>
+  <p>A string giving the text track kind. If present, must be one of "<code>subtitles</code>",
+  "<code>captions</code>", "<code>descriptions</code>", "<code>chapters</code>", or
+  "<code>metadata</code>". Defaults to the empty string.</p>
+  <p class="note">The <code>kind</code> key is the only required key. Consumers that do not
+  recognise the <code>kind</code> value should treat the entire <a>WebVTT attributes object</a>
+  as opaque.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT attributes object type">A type</dfn></dt>
+ <dd>
+  <p>A string further differentiating the subtype within a <code>kind</code> (for example,
+  distinguishing varieties of <code>metadata</code> tracks). If present, must be either
+  "<code>custom</code>" or a string beginning with "<code>custom-</code>". All other values
+  are reserved for future standardization. Defaults to the empty string.</p>
+  <p class="note">The <code>type</code> key disambiguates the track kind subtype to resolve
+  naming conflicts for the other common key names often used by different types of metadata.</p>
+  <p class="note">Authors including
+  <a lt="WebVTT attributes object custom pairs">custom pairs</a> should provide a non-empty
+  <code>type</code> value to identify the application or schema those pairs belong to.
+  A <a>WebVTT attributes block</a> with non-empty
+  <a lt="WebVTT attributes object custom pairs">custom pairs</a> and an empty
+  <code>type</code> is valid but parsers may generate a warning.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT attributes object language">A language</dfn></dt>
+ <dd>
+  <p>A string giving the BCP 47 language tag of the track content. Defaults to the empty
+  string.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT attributes object label">A label</dfn></dt>
+ <dd>
+  <p>A human-readable string intended for use in a track selection menu. Defaults to the empty
+  string.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT attributes object custom pairs">Custom pairs</dfn></dt>
+ <dd>
+  <p>An ordered list of key/value string pairs for any unrecognized attribute keys. Defaults to
+  the empty list.</p>
+  <p class="note">Custom pairs should be accompanied by a non-empty
+  <a lt="WebVTT attributes object type">type</a> value so that consumers can identify the
+  schema to which the pairs belong. If custom pairs are present and <code>type</code> is the
+  empty string, parsing continues normally, but parsers may generate a warning.</p>
+ </dd>
+
+</dl>
+
+<p class="note">The <a>WebVTT attributes object</a>'s properties are intended to be used by
+the embedding context (e.g. HTML) to populate the corresponding internal text track concepts.
+How format-provided values interact with values specified in the embedding context (e.g.
+<code>&lt;track&gt;</code> element attributes) is defined by the embedding specification. See
+<a href="https://github.com/whatwg/html/issues/11665">whatwg/html issue #11665</a> for the
+ongoing HTML integration work.</p>
+
 <h3 id=chapter-cues>WebVTT chapter cues</h3>
 
 <p>A <dfn export>WebVTT chapter cue</dfn> is a <a>WebVTT cue</a> whose <a>cue text</a> is interpreted as a
@@ -1769,49 +1833,61 @@ SIGN).</p>
 
 <p>A <dfn>WebVTT attributes block</dfn> consists of the following components, in the given order:</p>
 <ol>
- <li>The string "<code>ATTRIBUTES</code>".</li>
+ <li>The string "<code>ATTRIBUTES</code>" (U+0041, U+0054, U+0054, U+0052, U+0049, U+0042, U+0055,
+ U+0054, U+0045, U+0053).</li>
  <li>Zero or more U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
  <li>A <a>WebVTT line terminator</a>.</li>
- <li>A <a>WebVTT attributes body block</a>.</li>
- <li>A <a>WebVTT line terminator</a>.</li>
+ <li>Zero or more <a lt="WebVTT attribute key/value pair">WebVTT attribute key/value pairs</a>,
+ each followed by a <a>WebVTT line terminator</a>.</li>
 </ol>
 
-<p>A <dfn>WebVTT attributes body block</dfn> consists of the following components, in the given order:</p>
+<p class="note">The <a>WebVTT attributes block</a> is terminated by a blank line (two consecutive
+<a lt="WebVTT line terminator">WebVTT line terminators</a>), exactly as for
+<a lt="WebVTT region definition block">WebVTT region definition blocks</a>.</p>
+
+<p class="note">The <code>kind</code> key is the only required key in a
+<a>WebVTT attributes block</a>. It must appear in the block to disambiguate the track kind.
+Without it, consumers cannot determine whether other well-known keys such as
+<code>language</code> and <code>label</code> apply to a recognized track kind, and may treat
+them as opaque. See <a href="#rules-for-parsing-attr-key-values">WebVTT rules for parsing
+attribute key/value pairs</a>.</p>
+
+<p>A <dfn>WebVTT attribute key/value pair</dfn> consists of the following components,
+in the given order:</p>
 <ol>
- <li>Zero or more key/value pairs, parsed in the given order:
-  <ol>
-   <li>A <dfn>WebVTT attribute key</dfn> consisting of: (<code>[A-Za-z_][0-9A_Za-z_]*</code>)
-    <ol>
-     <li>Any one of the following:
-      <ul>
-       <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alpha">ASCII Alpha</a> character</li>
-       <li>U+005F LOW LINE ("_" underscore)</li>
-      </ul>
-     </li>
-     <li>Optionally followed by zero or more of the following:
-      <ul>
-       <li>Any <a href="https://infra.spec.whatwg.org/#ascii-alphanumeric">ASCII Alphanumeric</a> character</li>
-       <li>U+005F LOW LINE ("_" underscore)</li>
-      </ul>
-     </li>
-    </ol>
-   </li>
-   <li>A single U+003A COLON character ("<code>:</code>").</li>
-   <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
-   <li>
-    A <dfn>WebVTT attribute value</dfn> consisting of any sequence of zero or more characters other than the following:
-    <ul>
-     <li>unescaped LINE FEED (LF) characters (U+000A),</li>
-     <li>unescaped CARRIAGE RETURN (CR) characters (U+000D),</li>
-     <li>unescaped bi-directional formatting characters (U+202B, U+202C, U+202D, U+202E, U+2066, U++2067, U++2068, U+2069, U+200E, U+200F, U+061C), or</li>
-     <li>the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
-    </ul>
-   </li>
-   <li>A <a>WebVTT line terminator</a>.</li>
-  </ol>
+ <li>A <dfn>WebVTT attribute key</dfn> consisting of one or more
+  <a href="https://infra.spec.whatwg.org/#ascii-alphanumeric">ASCII alphanumeric</a> characters or
+  U+005F LOW LINE (<code>_</code>) characters, where the first character is either an
+  <a href="https://infra.spec.whatwg.org/#ascii-alpha">ASCII alpha</a> character or U+005F LOW
+  LINE (<code>_</code>). In other words, matching the production
+  <code>[A-Za-z_][0-9A-Za-z_]*</code>.</li>
+ <li>A single U+003A COLON character ("<code>:</code>").</li>
+ <li>Zero or one U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <dfn>WebVTT attribute value</dfn>, which is any sequence of zero or more Unicode
+  characters, subject to the following constraints:
+  <ul>
+   <li>The characters U+000A LINE FEED (LF) and U+000D CARRIAGE RETURN (CR) must not appear
+    literally; they may be represented using the
+    <a href="https://html.spec.whatwg.org/multipage/syntax.html#character-references">numeric
+    character references</a> <code>&amp;#x000A;</code> and <code>&amp;#x000D;</code>
+    respectively.</li>
+   <li>The bidirectional formatting characters U+202B, U+202C, U+202D, U+202E, U+2066,
+    U+2067, U+2068, U+2069, U+200E, U+200F, and U+061C must not appear literally; they may
+    be represented using
+    <a href="https://html.spec.whatwg.org/multipage/syntax.html#character-references">numeric
+    character references</a> (e.g. <code>&amp;#x200E;</code>).</li>
+   <li>The resulting string, after escape processing, must not contain the substring
+    "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+  </ul>
  </li>
 </ol>
-<p>Process the <a>WebVTT attributes body block</a> key/value pairs according to the <a>WebVTT rules for parsing attribute key/value pairs</a>.</p>
+
+<p class="note">Keys are restricted to ASCII to ensure consistent case-folding and to avoid
+ambiguity in key matching. Values may contain any Unicode characters (subject to the constraints
+above) to support multilingual labels, language tags, and other internationalized content.</p>
+
+<p class="note">The numeric character reference escape convention above is the same as that used
+in WebVTT for bidi mark characters in cue payloads (e.g."<code>&amp;#x2068;</code>").</p>
 
 
 <p>A <dfn>WebVTT comment block</dfn> consists of the following components, in the given order:</p>
@@ -2614,11 +2690,13 @@ chapters, or metadata. Most of the steps will be skipped for chapters or metadat
 <h3 id=file-parsing algorithm>WebVTT file parsing</h3>
 
 <p>A <dfn>WebVTT parser</dfn>, given an input byte stream, a <a>text track list of cues</a>
-|output|, and a collection of <a spec=cssom>CSS style sheets</a> |stylesheets|, must decode the byte
-stream using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and then must parse the resulting
-string according to the <a>WebVTT parser algorithm</a> below. This results in <a>WebVTT cues</a>
-being added to |output|, and <a spec=cssom>CSS style sheets</a> being added to |stylesheets|.
-[[!RFC3629]]</p>
+|output|, a collection of <a spec=cssom>CSS style sheets</a> |stylesheets|, and optionally a
+slot |attributes| for a <a>WebVTT attributes object</a>, must decode the byte stream using the
+<a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and then must parse the resulting string
+according to the <a>WebVTT parser algorithm</a> below. This results in <a>WebVTT cues</a>
+being added to |output|, <a spec=cssom>CSS style sheets</a> being added to |stylesheets|, and
+if a <a>WebVTT attributes block</a> is present, a <a>WebVTT attributes object</a> being set in
+|attributes|. [[!RFC3629]]</p>
 
 <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
 asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -2713,6 +2791,9 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
 
    <li><p>Otherwise, if |block| is a <a>WebVTT region object</a>, add |block| to |regions|.</p></li>
 
+   <li><p>Otherwise, if |block| is a <a>WebVTT attributes object</a>, and |attributes| has been
+   provided to this invocation of the <a>WebVTT parser</a>, let |attributes| be |block|.</p></li>
+
    <!-- handle new block types here -->
 
    <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF)
@@ -2752,6 +2833,8 @@ header</i> set, the user agent must run the following steps:</p>
  <li><p>Let |stylesheet| be null.</p></li>
 
  <li><p>Let |region| be null.</p></li>
+
+ <li><p>Let |attributes| be null.</p></li>
 
  <li>
 
@@ -2934,7 +3017,40 @@ header</i> set, the user agent must run the following steps:</p>
 
        </li>
 
-       <!-- <li><p>Otherwise, (check for new block types here)</p></li> -->
+        <li>
+
+         <p>Otherwise, if |seen cue| is false and |buffer| starts with the substring
+         "<code>ATTRIBUTES</code>" (U+0041, U+0054, U+0054, U+0052, U+0049, U+0042, U+0055, U+0054,
+         U+0045, U+0053), and the remaining characters in |buffer| (if any) are all <a>ASCII
+         whitespace</a>, then run these substeps:</p>
+
+         <ol>
+
+          <li><p><i>Attributes creation</i>: Let |attributes| be a new <a>WebVTT attributes
+          object</a>.</p></li>
+
+          <li><p>Let |attributes|'s <a lt="WebVTT attributes object kind">kind</a> be the empty
+          string.</p></li>
+
+          <li><p>Let |attributes|'s <a lt="WebVTT attributes object type">type</a> be the empty
+          string.</p></li>
+
+          <li><p>Let |attributes|'s <a lt="WebVTT attributes object language">language</a> be the
+          empty string.</p></li>
+
+          <li><p>Let |attributes|'s <a lt="WebVTT attributes object label">label</a> be the empty
+          string.</p></li>
+
+          <li><p>Let |attributes|'s <a lt="WebVTT attributes object custom pairs">custom pairs</a>
+          be an empty list.</p></li>
+
+          <li><p>Let |buffer| be the empty string.</p></li>
+
+         </ol>
+
+        </li>
+
+        <!-- <li><p>Otherwise, (check for new block types here)</p></li> -->
 
       </ol>
 
@@ -2968,6 +3084,9 @@ header</i> set, the user agent must run the following steps:</p>
  <li><p>Otherwise, if |region| is not null, then <a>collect WebVTT region settings</a> from |buffer|
  using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
  it.</p></li>
+
+ <li><p>Otherwise, if |attributes| is not null, then <a>collect WebVTT attribute settings</a> from
+ |buffer| using |attributes| for the results, and return |attributes|.</p></li>
 
  <!-- return new block types here -->
 
@@ -3105,6 +3224,56 @@ means that it is aborted at that point and returns nothing.</p>
  <li><p>Return |percentage|.</p></li>
 </ol>
 
+
+
+<h3 id=attributes-settings-parsing algorithm>WebVTT attributes settings parsing</h3>
+
+<p>When the <a>WebVTT parser algorithm</a> says to <dfn>collect WebVTT attribute settings</dfn>
+from a string |input| for a <a>WebVTT attributes object</a> |attributes|, the user agent must
+run the following steps:</p>
+
+<ol algorithm="collect WebVTT attribute settings">
+
+ <li><p>Let |lines| be the result of splitting |input| on U+000A LINE FEED (LF) characters.</p></li>
+
+ <li>
+  <p>For each string |line| in |lines|, run the following substeps:</p>
+  <ol>
+
+   <li><p>If |line| does not contain a U+003A COLON character (<code>:</code>), then jump to
+   the step labeled <i>next line</i>.</p></li>
+
+   <li><p>Let |name| be the leading substring of |line| up to and excluding the first U+003A
+   COLON character.</p></li>
+
+   <li><p>If |name| is not a valid <a>WebVTT attribute key</a>, then jump to the step labeled
+   <i>next line</i>.</p></li>
+
+   <li><p>Let |value| be the trailing substring of |line| starting from the character
+   immediately after the first U+003A COLON character.</p></li>
+
+   <li><p>If |value| is not empty and its first character is a U+0020 SPACE or U+0009
+   CHARACTER TABULATION (tab) character, remove that first character from |value|.</p></li>
+
+   <li><p>Let |value| be the result of
+   <a href="https://html.spec.whatwg.org/multipage/syntax.html#character-references">parsing
+   character references</a> in |value|, with no <i>additional allowed character</i>.</p></li>
+
+   <li><p>Run the <a>WebVTT rules for parsing attribute key/value pairs</a> for |name| and
+   |value| against |attributes|.</p></li>
+
+   <li><p><i>Next line</i>: Continue.</p></li>
+
+  </ol>
+ </li>
+
+ <li>
+  <p>If |attributes|'s <a lt="WebVTT attributes object custom pairs">custom pairs</a> is not
+  empty and |attributes|'s <a lt="WebVTT attributes object type">type</a> is the empty string,
+  then, parsers may generate a warning.</p>
+ </li>
+
+</ol>
 
 <h3 id=cue-timings-and-settings-parsing algorithm>WebVTT cue timings and settings parsing</h3>
 
@@ -4294,32 +4463,81 @@ follows:</p>
 </ol>
 
 
-<h3 id=rules-for-parsing-attr-key-values algorithm>WebVTT rules for parsing attribute key/value pairs</h3>
-<p>The <dfn>WebVTT rules for parsing attribute key/value pairs</dfn> consist of the following algorithm.</p>
+<h3 id="rules-for-parsing-attr-key-values" algorithm>WebVTT rules for parsing attribute key/value pairs</h3>
 
-<ol algorithm="WebVTT attributes block parsing">
- <li>Let |input| be the list of key/value pairs from a <a>WebVTT attributes block</a>.</li>
+<p>The <dfn>WebVTT rules for parsing attribute key/value pairs</dfn> for a |name|/|value| pair
+against a <a>WebVTT attributes object</a> |attributes| are as follows:</p>
+
+<ol algorithm="WebVTT rules for parsing attribute key/value pairs">
  <li>
-  How the attribute is processed depends on its key name, as follows:
+  How the pair is processed depends on |name|, as follows:
   <dl>
 
-   <dt>If the key name is "<code>kind</code>" (<a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitive</a>)</dt>
-   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-kind">the kind attribute</a> of a track element according to the HTML Standard.</dd>
+   <dt>If |name| is an <a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII
+   case-insensitive</a> match for "<code>kind</code>"</dt>
+   <dd>
+    <p>Let |normalized| be the result of
+    <a href="https://infra.spec.whatwg.org/#ascii-lowercase">converting |value| to ASCII
+    lowercase</a>.</p>
+    <p>If |normalized| is one of "<code>subtitles</code>", "<code>captions</code>",
+    "<code>descriptions</code>", "<code>chapters</code>", or "<code>metadata</code>", set
+    |attributes|'s <a lt="WebVTT attributes object kind">kind</a> to |normalized|.</p>
+    <p>Otherwise, ignore the pair.</p>
+   </dd>
 
-   <dt>If the key name is "<code>lang</code>" (<a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitive</a>)</dt>
-   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang">the srclang attribute</a> of a track element according to the HTML Standard.</dd>
+   <dt>If |name| is an <a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII
+   case-insensitive</a> match for "<code>type</code>"</dt>
+   <dd>
+    <p>Let |normalized| be the result of
+    <a href="https://infra.spec.whatwg.org/#ascii-lowercase">converting |value| to ASCII
+    lowercase</a>.</p>
+    <p>If |normalized| is "<code>custom</code>" or starts with the prefix
+    "<code>custom-</code>" (U+0063, U+0075, U+0073, U+0074, U+006F, U+006D, U+002D), set
+    |attributes|'s <a lt="WebVTT attributes object type">type</a> to |normalized|.</p>
+    <p>Otherwise, if |normalized| is not the empty string, ignore the pair. All non-custom
+    type values are reserved for future standardization.</p>
+   </dd>
 
-   <dt>If the key name is "<code>label</code>" (<a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitive</a>)</dt>
-   <dd>Process the value as <a href="https://html.spec.whatwg.org/multipage/media.html#attr-track-label">the label attribute</a> of a track element according to the HTML Standard.</dd>
+   <dt>If |name| is an <a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII
+   case-insensitive</a> match for "<code>language</code>"</dt>
+   <dd>Set |attributes|'s <a lt="WebVTT attributes object language">language</a> to
+   |value|.</dd>
+
+   <dt>If |name| is an <a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII
+   case-insensitive</a> match for "<code>label</code>"</dt>
+   <dd>Set |attributes|'s <a lt="WebVTT attributes object label">label</a> to |value|.</dd>
 
    <dt>Otherwise</dt>
-   <dd>Ignore the key/value pair.</dd>
+   <dd>Append the pair (|name|, |value|) to |attributes|'s
+   <a lt="WebVTT attributes object custom pairs">custom pairs</a>.</dd>
 
   </dl>
  </li>
 </ol>
 
-<p class="note">These keys are case-insensitive to allow compatibility with large video distributors <!-- namely YouTube --> already using this pattern in production.</p>
+<p class="note">The <code>kind</code> key is the only required key in a
+<a>WebVTT attributes block</a>. It disambiguates the track kind and guards against naming
+conflicts: consumers that do not recognise a given <code>kind</code> value should treat the
+entire <a>WebVTT attributes object</a> as opaque. The <code>type</code> key further
+differentiates subtypes within a <code>kind</code> (for example, distinguishing varieties of
+<code>metadata</code> tracks). All non-custom <code>type</code> values are reserved for future
+standardization; authors needing custom subtypes must use "<code>custom</code>" or a value
+beginning with "<code>custom-</code>".</p>
+
+<p class="note">The <code>kind</code>, <code>type</code>, <code>language</code>, and
+<code>label</code> keys are matched
+<a href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitively</a>
+to allow compatibility with implementations already using this pattern in production.
+Unrecognized keys are preserved in the
+<a lt="WebVTT attributes object custom pairs">custom pairs</a> list for use by consuming
+applications.</p>
+
+<p class="note">The <a>WebVTT attributes object</a>'s properties are consumed by the embedding
+context. How <a lt="WebVTT attributes object kind">kind</a>,
+<a lt="WebVTT attributes object language">language</a>, and
+<a lt="WebVTT attributes object label">label</a> relate to the corresponding attributes of an
+HTML <code>&lt;track&gt;</code> element is defined by the HTML specification. See
+<a href="https://github.com/whatwg/html/issues/11665">whatwg/html issue #11665</a>.</p>
 
 
 <h2 id=rendering>Rendering</h2>
