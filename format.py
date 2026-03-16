@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import re
 import sys
@@ -32,8 +32,8 @@ def validate(path, source, tokens):
 
     def fail(reason, offset):
         lineno = source.count('\n', 0, offset) + 1
-        print '%s:%s: error: %s' % (path, lineno, reason)
-        print source.splitlines()[lineno - 1]
+        print('%s:%s: error: %s').format(path, lineno, reason)
+        print(source.splitlines()[lineno - 1])
         sys.exit(1)
 
     for token, start, end, name in tokens:
