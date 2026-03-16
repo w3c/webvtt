@@ -2,7 +2,7 @@
 
 all: index.html
 
-# build using api.csswg.org but not local bikeshed
+# build using spec-generator but not local bikeshed
 index.html: index.bs
-	curl https://api.csswg.org/bikeshed/ -F file=@index.bs -F output=err
-	curl https://api.csswg.org/bikeshed/ -F file=@index.bs -F force=1 > index.html | tee
+	curl https://www.w3.org/publications/spec-generator/ -F file=@index.bs -F type=bikeshed-spec -F output=messages
+	curl https://www.w3.org/publications/spec-generator/ -F file=@index.bs -F type=bikeshed-spec -F die-on=nothing > index.html | tee
