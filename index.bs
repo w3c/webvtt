@@ -1438,8 +1438,8 @@ together, which is particularly important when scrolling up.</p>
 
 <h3 id=chapter-cues>WebVTT chapter cues</h3>
 
-<p>A <dfn export>WebVTT chapter cue</dfn> is a <a>WebVTT cue</a> whose <a>cue text</a> is
-interpreted as a chapter title that describes the chapter as a navigation target.</p>
+<p>A <dfn export>WebVTT chapter cue</dfn> is a <a>WebVTT cue</a> whose <a>cue text</a> is interpreted as a
+chapter title that describes the chapter as a navigation target.</p>
 
 <p>Chapter cues mark up the timeline of a audio or video file in consecutive, non-overlapping
 intervals. It is further possible to subdivide these intervals into sub-chapters building a
@@ -1447,8 +1447,8 @@ navigation tree.</p>
 
 <h3 id=metadata-cues>WebVTT metadata cues</h3>
 
-<p>A <dfn export>WebVTT metadata cue</dfn> is a <a>WebVTT cue</a> whose <a>cue text</a> is
-interpreted as time-aligned metadata.</p>
+<p>A <dfn export>WebVTT metadata cue</dfn> is a <a>WebVTT cue</a> whose <a>cue text</a> is interpreted as
+time-aligned metadata.</p>
 
 
 <h2 id=syntax>Syntax</h2>
@@ -2285,15 +2285,14 @@ is said to be a <dfn export>WebVTT file using metadata content</dfn>.</p>
 
 <h4 id=file-using-chapter-title-text>WebVTT file using chapter title text</h4>
 
-<p>A <dfn export>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested
-cues</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
+<p>A <dfn export>WebVTT file using chapter title text</dfn> is a <a>WebVTT file using only nested cues</a>
+whose cues all have a <a>cue payload</a> that is <a>WebVTT chapter title text</a>.</p>
 
 
 <h4 id=file-using-cue-text>WebVTT file using caption or subtitle cue text</h4>
 
 <p>A <a>WebVTT file</a> whose cues all have a <a>cue payload</a> that is <a>WebVTT caption or
-subtitle cue text</a> is said to be a <dfn export>WebVTT file using caption or subtitle cue
-text</dfn>.</p>
+subtitle cue text</a> is said to be a <dfn export>WebVTT file using caption or subtitle cue text</dfn>.</p>
 
 
 <h2 id=default-classes>Default classes for WebVTT Caption or Subtitle Cue Components</h2>
@@ -4100,9 +4099,9 @@ Node Objects</a> to DOM nodes:</p>
 </table>
 
 <p>HTML elements created as part of the mapping described above must have their
-{{Element/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as
-defined in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has
-any <a lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a
+{{Element/namespaceURI}} set to the <a>HTML namespace</a>, use the appropriate IDL interface as defined
+in the HTML specification, and, if the corresponding <a>WebVTT Internal Node Object</a> has any <a
+lt="WebVTT Node Object's applicable classes">applicable classes</a>, must have a <a
 element-attr>class</a> attribute set to the string obtained by concatenating all those classes, each
 separated from the next by a single U+0020 SPACE character.</p>
 
@@ -5326,8 +5325,8 @@ pseudo-elements defined below won't have any effect according to this specificat
 
 <h4 id=the-cue-pseudo-element>The ''::cue'' pseudo-element</h4>
 
-<p>The <dfn selector>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT
-Node Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
+<p>The <dfn selector>::cue</dfn> pseudo-element (with no argument) matches any <a>list of WebVTT Node
+Objects</a> constructed for the <i>matched element</i>, with the exception that the properties
 corresponding to the 'background' shorthand must be applied to the <a>WebVTT cue background box</a>
 rather than the <a>list of WebVTT Node Objects</a>.</p>
 
@@ -5353,8 +5352,8 @@ set on the pseudo-element must be ignored:</p>
  widows, z-index -->
 </ul>
 
-<p>The <dfn selector>::cue(|selector|)</dfn> pseudo-element with an argument must have an argument
-that consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal Node Object</a>
+<p>The <dfn selector>::cue(|selector|)</dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector [[!SELECTORS4]]. It matches any <a>WebVTT Internal Node Object</a>
 constructed for the <i>matched element</i> that also matches the given CSS selector, with the nodes
 being treated as follows:</p>
 
@@ -5430,8 +5429,8 @@ being treated as follows:</p>
  Object">WebVTT Internal Node Objects</a> are considered as being in the namespace expressed as the
  empty string.</p></li>
 
- <li><p class=note>The <a>universal selector</a> matches all <a>WebVTT Internal Node Objects</a>,
- including the root <a>list of WebVTT Node Objects</a>.</p></li>
+ <li><p class=note>The <a>universal selector</a> matches all <a>WebVTT Internal Node Objects</a>, including the
+ root <a>list of WebVTT Node Objects</a>.</p></li>
 
  <li><p class=note>''::cue(:root)'' is equivalent to ''::cue''.</p></li>
 
@@ -5509,23 +5508,23 @@ would have been applied to the <a>list of WebVTT Node Objects</a>, must instead 
 <p>The '':past'' and '':future'' pseudo-classes sometimes match <a lt="WebVTT Node Object">WebVTT
 Node Objects</a>. [[!SELECTORS4]]</p>
 
-<p>The <dfn selector noexport>:past</dfn> pseudo-class only matches <a lt="WebVTT Node
-Object">WebVTT Node Objects</a> that are <i>in the past</i>.</p>
+<p>The <dfn selector noexport>:past</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node Objects</a>
+that are <i>in the past</i>.</p>
 
-<p algorithm="in the past">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the past</dfn> if,
-in a pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
+<p algorithm="in the past">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the past</dfn> if, in a
+pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
 there exists a <a>WebVTT Timestamp Object</a> whose value is less than the <a>current playback
 position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely after the
 <a>WebVTT Node Object</a> |c|.</p>
 
-<p>The <dfn selector noexport>:future</dfn> pseudo-class only matches <a lt="WebVTT Node
-Object">WebVTT Node Objects</a> that are <i>in the future</i>.</p>
+<p>The <dfn selector noexport>:future</dfn> pseudo-class only matches <a lt="WebVTT Node Object">WebVTT Node
+Objects</a> that are <i>in the future</i>.</p>
 
-<p algorithm="in the future">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the future</dfn>
-if, in a pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node
-Objects</a>, there exists a <a>WebVTT Timestamp Object</a> whose value is greater than the
-<a>current playback position</a> of the <a>media element</a> that is the <i>matched element</i>,
-entirely before the <a>WebVTT Node Object</a> |c|.</p>
+<p algorithm="in the future">A <a>WebVTT Node Object</a> |c| is <dfn abstract-op>in the future</dfn> if, in a
+pre-order, depth-first traversal of the <a>WebVTT cue</a>'s <a>list of WebVTT Node Objects</a>,
+there exists a <a>WebVTT Timestamp Object</a> whose value is greater than the <a>current playback
+position</a> of the <a>media element</a> that is the <i>matched element</i>, entirely before the
+<a>WebVTT Node Object</a> |c|.</p>
 
 
 <h4 id=the-cue-region-pseudo-element>The ''::cue-region'' pseudo-element</h4>
@@ -5537,14 +5536,14 @@ track regions that are being rendered for the matched element.</p>
 <p class="note">If the matched element is not a video element, the pseudo-element defined below
 won't have any effect according to this specification.</p>
 
-<p>The <dfn selector>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a
-lt="WebVTT region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
+<p>The <dfn selector>::cue-region</dfn> pseudo-element (with no argument) matches any list of <a lt="WebVTT
+region object">WebVTT region objects</a> constructed for the <i>matched element</i>.</p>
 
 
-<p>The <dfn selector>::cue-region(|selector|)</dfn> pseudo-element with an argument must have an
-argument that consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT
-region object">WebVTT region objects</a> constructed for the <i>matched element</i> that also
-matches the given CSS selector as follows:</p>
+<p>The <dfn selector>::cue-region(|selector|)</dfn> pseudo-element with an argument must have an argument that
+consists of a CSS selector [[!SELECTORS4]]. It matches any list of <a lt="WebVTT region
+object">WebVTT region objects</a> constructed for the <i>matched element</i> that also matches the
+given CSS selector as follows:</p>
 
 <ul>
  <li><p>Any region (list of <a>WebVTT region objects</a>) with a <a>WebVTT region identifier</a>
@@ -6251,11 +6250,11 @@ API. [[!CSSOM]]</p>
 way to execute script embedded in a WebVTT file.</p>
 
 <p>However, it is possible to construct and deliver a file that is designed not to present captions
-or subtitles, but instead to provide timed input (‘triggers’) to a script system. A poorly-written
-script or script system might then cause security, privacy or other problems; however, this
-consideration really applies to the script system. Since WebVTT supplies these triggers at their
-timestamps, a malicious file might present such triggers very rapidly, perhaps causing undue
-resource consumption.</p>
+or subtitles, but instead to provide timed input (‘triggers’) to a script system. A
+poorly-written script or script system might then cause security, privacy or other problems;
+however, this consideration really applies to the script system. Since WebVTT supplies these
+triggers at their timestamps, a malicious file might present such triggers very rapidly, perhaps
+causing undue resource consumption.</p>
 
 <h3 id=privacy-of-preference>Privacy of preference</h3>
 
