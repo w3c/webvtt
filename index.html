@@ -5,7 +5,7 @@
   <title>WebVTT: The Web Video Text Tracks Format</title>
   <link href="logo/64x64.png" rel="icon" type="image/png">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version 9e651ddb3, updated Fri Dec 12 15:40:37 2025 -0800" name="generator">
+  <meta content="Bikeshed version ffb4274fd, updated Thu Apr 16 23:47:54 2026 +0000" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
   <meta content="e0215aa507b22d4e3f4069efefc443c019078628" name="revision">
   <meta content="dark light" name="color-scheme">
@@ -316,7 +316,7 @@ pre .property::before, pre .property::after {
 </style>
 <style>/* Boilerplate: style-counters */
 body {
-    counter-reset: example figure issue;
+    counter-reset: example figure issue table;
 }
 .issue {
     counter-increment: issue;
@@ -341,6 +341,13 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
+}
+
+figure.table figcaption {
+    counter-increment: table;
+}
+figure.table figcaption:not(.no-marker)::before {
+    content: "Table " counter(table) " ";
 }
 </style>
 <style>/* Boilerplate: style-dfn-panel */
@@ -703,6 +710,30 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
     c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
 }
+
+@media print {
+    /* Darken colors for print that would otherwise print too faintly */
+    c-[c]  { color: #555555 } /* Comment */
+    c-[d]  { color: #555555 } /* Comment.Multiline */
+    c-[cp] { color: #555555 } /* Comment.Preproc */
+    c-[c1] { color: #555555 } /* Comment.Single */
+    c-[cs] { color: #555555 } /* Comment.Special */
+    c-[o]  { color: #222222 } /* Operator */
+    c-[p]  { color: #222222 } /* Punctuation */
+    c-[ow] { color: #222222 } /* Operator.Word */
+    c-[s]  { color: #664400 } /* Literal.String */
+    c-[t]  { color: #664400 } /* Literal.String.Single */
+    c-[u]  { color: #664400 } /* Literal.String.Double */
+    c-[sb] { color: #664400 } /* Literal.String.Backtick */
+    c-[sc] { color: #664400 } /* Literal.String.Char */
+    c-[sd] { color: #664400 } /* Literal.String.Doc */
+    c-[se] { color: #664400 } /* Literal.String.Escape */
+    c-[sh] { color: #664400 } /* Literal.String.Heredoc */
+    c-[si] { color: #664400 } /* Literal.String.Interpol */
+    c-[sx] { color: #664400 } /* Literal.String.Other */
+    c-[sr] { color: #664400 } /* Literal.String.Regex */
+    c-[ss] { color: #664400 } /* Literal.String.Symbol */
+}
 </style>
 <style>/* Boilerplate: style-var-click-highlighting */
 /*
@@ -751,7 +782,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   <div class="head">
    <h1 class="no-ref p-name" id="title">WebVTT: The Web Video Text Tracks Format</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2026-03-16">16 March 2026</time></p>
+    <time class="dt-updated" datetime="2026-04-22">22 April 2026</time></p>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -934,7 +965,7 @@ title</span></a>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
-      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Non-Normative References</span></a>
      </ol>
     <li><a href="#idl-index"><span class="secno"></span> <span class="content">IDL Index</span></a>
    </ol>
@@ -2042,8 +2073,8 @@ SPACE characters or U+0009 CHARACTER TABULATION (tab) characters. Each setting c
 following components, in the order given:</p>
    <ol>
     <li>A <a data-link-type="dfn" href="#webvtt-cue-setting-name" id="ref-for-webvtt-cue-setting-name">WebVTT cue setting name</a>.
-    <li>An optional U+003A COLON (colon) character.
-    <li>An optional <a data-link-type="dfn" href="#webvtt-cue-setting-value" id="ref-for-webvtt-cue-setting-value">WebVTT cue setting value</a>.
+    <li>A U+003A COLON (colon) character.
+    <li>A <a data-link-type="dfn" href="#webvtt-cue-setting-value" id="ref-for-webvtt-cue-setting-value">WebVTT cue setting value</a>.
    </ol>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="webvtt-cue-setting-name">WebVTT cue setting name</dfn> and a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="webvtt-cue-setting-value">WebVTT cue setting value</dfn> each consist of
 any sequence of one or more characters other than U+000A LINE FEED (LF) characters and - U+000D
@@ -4381,7 +4412,7 @@ Red or green?
      <p id="style-no-external-resources">For the purpose of resolving URLs in STYLE blocks of a WebVTT
   file, or any URLs in resources referenced from STYLE blocks of a WebVTT file, if the URL’s scheme
   is not "<code>data</code>", then the user agent must act as if the URL failed to resolve.</p>
-     <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-5/#at-ruledef-import" id="ref-for-at-ruledef-import">@import</a> or <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image" id="ref-for-propdef-background-image">background-image</a>
+     <p><strong class="advisement">Supporting external resources with <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-cascade-6/#at-ruledef-import" id="ref-for-at-ruledef-import">@import</a> or <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image" id="ref-for-propdef-background-image">background-image</a>
   would be a new ability for <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#media-element" id="ref-for-media-element①⓪">media elements</a> and <a data-link-type="element" href="https://html.spec.whatwg.org/multipage/media.html#the-track-element" id="ref-for-the-track-element">track</a> elements to issue
   network requests as the user watches the video, which could be a privacy issue.</strong></p>
     <li>
@@ -5831,13 +5862,9 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
      <li><span class="dfn-paneled" id="f831c141">background-image</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[CSS-CASCADE-5]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="4e55d7fb">@import</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[CSS-CASCADE-6]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="a803a89f">@import</span>
      <li><span class="dfn-paneled" id="de6d76c2">cascade</span>
     </ul>
    <li>
@@ -6070,8 +6097,6 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-align/"><cite>CSS Box Alignment Module Level 3</cite></a>. URL: <a href="https://drafts.csswg.org/css-align/">https://drafts.csswg.org/css-align/</a>
    <dt id="biblio-css-backgrounds-3">[CSS-BACKGROUNDS-3]
    <dd>Elika Etemad; Brad Kemper. <a href="https://drafts.csswg.org/css-backgrounds/"><cite>CSS Backgrounds and Borders Module Level 3</cite></a>. URL: <a href="https://drafts.csswg.org/css-backgrounds/">https://drafts.csswg.org/css-backgrounds/</a>
-   <dt id="biblio-css-cascade-5">[CSS-CASCADE-5]
-   <dd>Elika Etemad; Miriam Suzanne; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-cascade-5/"><cite>CSS Cascading and Inheritance Level 5</cite></a>. URL: <a href="https://drafts.csswg.org/css-cascade-5/">https://drafts.csswg.org/css-cascade-5/</a>
    <dt id="biblio-css-cascade-6">[CSS-CASCADE-6]
    <dd>Elika Etemad; Miriam Suzanne; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-cascade-6/"><cite>CSS Cascading and Inheritance Level 6</cite></a>. URL: <a href="https://drafts.csswg.org/css-cascade-6/">https://drafts.csswg.org/css-cascade-6/</a>
    <dt id="biblio-css-color-4">[CSS-COLOR-4]
@@ -6137,7 +6162,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Edgar Chen; Timothy Gu. <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
   </dl>
-  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-maur">[MAUR]
    <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. WD. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
@@ -6432,7 +6457,6 @@ let dfnPanelData = {
 "49a64d88": {"dfnID":"49a64d88","dfnText":"HTML elements","external":true,"refSections":[{"refs":[{"id":"ref-for-html-elements"}],"title":"9.1. The VTTCue interface"}],"url":"https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements"},
 "4c791d15": {"dfnID":"4c791d15","dfnText":"title","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-css-style-sheet-title"}],"title":"6.1. WebVTT file parsing"}],"url":"https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-title"},
 "4c9599fa": {"dfnID":"4c9599fa","dfnText":"min-height","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-min-height"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-sizing-3/#propdef-min-height"},
-"4e55d7fb": {"dfnID":"4e55d7fb","dfnText":"@import","external":true,"refSections":[{"refs":[{"id":"ref-for-at-ruledef-import"}],"title":"7.3. Obtaining CSS boxes"}],"url":"https://drafts.csswg.org/css-cascade-5/#at-ruledef-import"},
 "512e0279": {"dfnID":"512e0279","dfnText":"media","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-css-style-sheet-media"}],"title":"6.1. WebVTT file parsing"}],"url":"https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-media"},
 "5372cca8": {"dfnID":"5372cca8","dfnText":"boolean","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-boolean"}],"title":"9.1. The VTTCue interface"}],"url":"https://webidl.spec.whatwg.org/#idl-boolean"},
 "55282cd3": {"dfnID":"55282cd3","dfnText":"track","external":true,"refSections":[{"refs":[{"id":"ref-for-the-track-element"}],"title":"7.3. Obtaining CSS boxes"}],"url":"https://html.spec.whatwg.org/multipage/media.html#the-track-element"},
@@ -6479,6 +6503,7 @@ let dfnPanelData = {
 "9e39189b": {"dfnID":"9e39189b","dfnText":"max-height","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-max-height"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-sizing-3/#propdef-max-height"},
 "a4c58ad8": {"dfnID":"a4c58ad8","dfnText":"target","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-processinginstruction-target"}],"title":"6.5. WebVTT cue text DOM construction rules"}],"url":"https://dom.spec.whatwg.org/#dom-processinginstruction-target"},
 "a50e1fc6": {"dfnID":"a50e1fc6","dfnText":"current playback position","external":true,"refSections":[{"refs":[{"id":"ref-for-current-playback-position"}],"title":"4.1. WebVTT file structure"},{"refs":[{"id":"ref-for-current-playback-position\u2460"},{"id":"ref-for-current-playback-position\u2461"}],"title":"8.1. Introduction"},{"refs":[{"id":"ref-for-current-playback-position\u2462"},{"id":"ref-for-current-playback-position\u2463"}],"title":"8.2.2. The :past and :future pseudo-classes"}],"url":"https://html.spec.whatwg.org/multipage/embedded-content.html#current-playback-position"},
+"a803a89f": {"dfnID":"a803a89f","dfnText":"@import","external":true,"refSections":[{"refs":[{"id":"ref-for-at-ruledef-import"}],"title":"7.3. Obtaining CSS boxes"}],"url":"https://drafts.csswg.org/css-cascade-6/#at-ruledef-import"},
 "aa579b31": {"dfnID":"aa579b31","dfnText":"rt","external":true,"refSections":[{"refs":[{"id":"ref-for-the-rt-element"}],"title":"6.5. WebVTT cue text DOM construction rules"}],"url":"https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element"},
 "aa7bbf63": {"dfnID":"aa7bbf63","dfnText":"video","external":true,"refSections":[{"refs":[{"id":"ref-for-video"}],"title":"1.3. Styling captions"},{"refs":[{"id":"ref-for-video\u2460"},{"id":"ref-for-video\u2461"},{"id":"ref-for-video\u2462"}],"title":"7.1. Processing model"},{"refs":[{"id":"ref-for-video\u2463"},{"id":"ref-for-video\u2464"}],"title":"7.3. Obtaining CSS boxes"},{"refs":[{"id":"ref-for-video\u2465"}],"title":"8.1. Introduction"},{"refs":[{"id":"ref-for-video\u2466"}],"title":"8.2. Processing model"}],"url":"https://html.spec.whatwg.org/multipage/media.html#video"},
 "aabcd4f2": {"dfnID":"aabcd4f2","dfnText":"text track cue pause-on-exit flag","external":true,"refSections":[{"refs":[{"id":"ref-for-text-track-cue-pause-on-exit-flag"}],"title":"6.1. WebVTT file parsing"},{"refs":[{"id":"ref-for-text-track-cue-pause-on-exit-flag\u2460"}],"title":"9.1. The VTTCue interface"}],"url":"https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-pause-on-exit-flag"},
@@ -7315,7 +7340,7 @@ let refsData = {
 "https://drafts.csswg.org/css-backgrounds-3/#propdef-background": {"displayText":"background","export":true,"for_":[],"level":"3","normative":true,"shortname":"css-backgrounds","spec":"css-backgrounds-3","status":"current","text":"background","type":"property","url":"https://drafts.csswg.org/css-backgrounds-3/#propdef-background"},
 "https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color": {"displayText":"background-color","export":true,"for_":[],"level":"3","normative":true,"shortname":"css-backgrounds","spec":"css-backgrounds-3","status":"current","text":"background-color","type":"property","url":"https://drafts.csswg.org/css-backgrounds-3/#propdef-background-color"},
 "https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image": {"displayText":"background-image","export":true,"for_":[],"level":"3","normative":true,"shortname":"css-backgrounds","spec":"css-backgrounds-3","status":"current","text":"background-image","type":"property","url":"https://drafts.csswg.org/css-backgrounds-3/#propdef-background-image"},
-"https://drafts.csswg.org/css-cascade-5/#at-ruledef-import": {"displayText":"@import","export":true,"for_":[],"level":"5","normative":true,"shortname":"css-cascade","spec":"css-cascade-5","status":"current","text":"@import","type":"at-rule","url":"https://drafts.csswg.org/css-cascade-5/#at-ruledef-import"},
+"https://drafts.csswg.org/css-cascade-6/#at-ruledef-import": {"displayText":"@import","export":true,"for_":[],"level":"6","normative":true,"shortname":"css-cascade","spec":"css-cascade-6","status":"current","text":"@import","type":"at-rule","url":"https://drafts.csswg.org/css-cascade-6/#at-ruledef-import"},
 "https://drafts.csswg.org/css-cascade-6/#cascade": {"displayText":"cascade","export":true,"for_":[],"level":"6","normative":true,"shortname":"css-cascade","spec":"css-cascade-6","status":"current","text":"cascade","type":"dfn","url":"https://drafts.csswg.org/css-cascade-6/#cascade"},
 "https://drafts.csswg.org/css-color-4/#propdef-color": {"displayText":"color","export":true,"for_":[],"level":"4","normative":true,"shortname":"css-color","spec":"css-color-4","status":"current","text":"color","type":"property","url":"https://drafts.csswg.org/css-color-4/#propdef-color"},
 "https://drafts.csswg.org/css-color-4/#propdef-opacity": {"displayText":"opacity","export":true,"for_":[],"level":"4","normative":true,"shortname":"css-color","spec":"css-color-4","status":"current","text":"opacity","type":"property","url":"https://drafts.csswg.org/css-color-4/#propdef-opacity"},
