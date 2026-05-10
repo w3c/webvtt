@@ -2859,7 +2859,19 @@ Objects</a>.</p>
 
        <li><p>Interpret |value| as an integer, and let |number| be that number.</p></li>
 
-       <li><p>Let |region|'s <a>WebVTT region lines</a> be |number|.</p></li>
+       <li><p><i>Conversion</i>: Let <var>S</var> be the set of finite IEEE 754 double-precision
+       floating-point values except −0, but with two special values added:
+       <var>2<sup>1024</sup></var> and <var>−2<sup>1024</sup></var>.</p></li>
+
+       <li><p>Let |rounded-number| be the number in |S| that is closest to |number|,
+       selecting the number with an even significand if there are two equally close
+       values. (The two special values <var>2<sup>1024</sup></var> and <var>−2<sup>1024</sup></var>
+       are considered to have even significands for this purpose.)</p>
+
+       <li><p>If |rounded-number| is <var>2<sup>1024</sup></var> or <var>−2<sup>1024</sup></var>,
+       jump to the step labeled <i>next setting</i></p></li>
+
+       <li><p>Let |region|'s <a>WebVTT region lines</a> be |rounded-number|.</p></li>
       </ol>
      </dd>
 
