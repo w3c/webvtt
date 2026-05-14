@@ -5,9 +5,9 @@
   <title>WebVTT: The Web Video Text Tracks Format</title>
   <link href="logo/64x64.png" rel="icon" type="image/png">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version ffb4274fd, updated Thu Apr 16 23:47:54 2026 +0000" name="generator">
+  <meta content="Bikeshed version 0a3d88311, updated Mon May 4 18:07:03 2026 +0000" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="e0215aa507b22d4e3f4069efefc443c019078628" name="revision">
+  <meta content="92a85cc210e67c12645768f2175e33eefb0cb769" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
@@ -782,7 +782,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   <div class="head">
    <h1 class="no-ref p-name" id="title">WebVTT: The Web Video Text Tracks Format</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2026-04-22">22 April 2026</time></p>
+    <time class="dt-updated" datetime="2026-05-14">14 May 2026</time></p>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -792,12 +792,12 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
      <dt>Test Suite:
      <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/webvtt">https://github.com/web-platform-tests/wpt/tree/master/webvtt</a>
      <dt class="editor">Editor:
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:w3c@gkatsev.com">Gary Katsevman</a> (<span class="org p-org">Invited Expert</span>)
+     <dd class="editor h-card p-author vcard" data-editor-id="102836"><a class="email fn p-name u-email" href="mailto:w3c@gkatsev.com">Gary Katsevman</a> (<span class="org p-org">Invited Expert</span>)
      <dt class="editor">Former Editors:
      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="org p-org" href="https://www.csiro.au/">NICTA CSIRO</a>)
      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software AS</a>)
      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:philipj@opera.com">Philip Jägenstedt</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software ASA</a>)
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:ian@hixie.ch">Ian Hickson</a> (<a class="org p-org" href="https://www.google.com/">Google</a>)
+     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:ian@hixie.ch">Ian Hickson</a> (<a class="org p-org" href="http://www.google.com/">Google</a>)
      <dt>Participate:
      <dd><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (<a href="https://github.com/w3c/webvtt/issues/new">new issue</a>, <a href="https://github.com/w3c/webvtt/issues">open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---">legacy open bugs</a>)
      <dt>Commits:
@@ -808,9 +808,9 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2011-2026
 the Contributors to the WebVTT: The Web Video Text Tracks Format Specification, published by the
-<a href="https://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> under the
+<a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> under the
 <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
-A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.
+A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.
 </p>
    <hr title="Separator for header">
   </div>
@@ -822,16 +822,16 @@ WebVTT files provide captions or subtitles for video content, and also text vide
   </div>
   <h2 class="heading no-num no-ref no-toc settled" id="status"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
-   <p>This specification was published by the <a href="https://www.w3.org/community/texttracks/">Web
+   <p>This specification was published by the <a href="http://www.w3.org/community/texttracks/">Web
 Media Text Tracks Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards
 Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C
 Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions
-apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business
+apply. Learn more about <a href="http://www.w3.org/community/">W3C Community and Business
 Groups</a>.
 
 </p>
-   <p>Work on this specification is being undertaken both in the <a href="https://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> as well as
-in the <a href="https://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>. The latter group
+   <p>Work on this specification is being undertaken both in the <a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> as well as
+in the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>. The latter group
 works towards a W3C Recommendation for reference purposes with interoperability requirements, while
 the former is a Draft Community Group Report that continues to evolve.
 
@@ -1933,7 +1933,7 @@ together, which is particularly important when scrolling up.</p>
     <p>The following diagram illustrates how anchoring of a region to a video viewport works. The black
  cross is the anchor, orange explains the anchor’s offset within the region and green the anchor’s
  offset within the video viewport. Think of it as sticking a pin through a note onto a board:</p>
-    <p><img alt="visual explanation of WebVTT regions" height="499" longdesc="#regionsExplained" src="webvtt-region-diagram.png" width="862"></p>
+    <p><img alt="visual explanation of WebVTT regions" height="499" longdesc="#regionsExplained" src="images/webvtt-region-diagram.png" width="862"></p>
     <p id="regionsExplained">Image description: Within the video viewport, there is a WebVTT region.
  Inside the region, there is an anchor point marked with a black cross. The vertical and horizontal
  distance from the video viewport’s edges to the anchor is marked with green arrows, representing
@@ -4512,7 +4512,7 @@ set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-
     <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-position-3/#propdef-left" id="ref-for-propdef-left①">left</a> property must be set to <var>left</var>
     <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-position-3/#propdef-top" id="ref-for-propdef-top①">top</a> property must be set to <var>top</var>
     <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-display-3/#propdef-display" id="ref-for-propdef-display④">display</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex" id="ref-for-valdef-display-inline-flex">inline-flex</a>
-    <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-flexbox-1/#propdef-flex-flow" id="ref-for-propdef-flex-flow">flex-flow</a> property must be set to <span class="css">column</span>
+    <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-flexbox-2/#propdef-flex-flow" id="ref-for-propdef-flex-flow">flex-flow</a> property must be set to <span class="css">column</span>
     <li>the <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-align-3/#propdef-justify-content" id="ref-for-propdef-justify-content">justify-content</a> property must be set to <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-align-3/#valdef-self-position-flex-end" id="ref-for-valdef-self-position-flex-end">flex-end</a>
    </ul>
    <p>The variables <var>width</var>, <var>height</var>, <var>top</var>, and <var>left</var> are the values with those names determined by
@@ -5888,8 +5888,12 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
    <li>
     <a data-link-type="biblio">[CSS-FLEXBOX-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="3a74ed0c">flex-flow</span>
      <li><span class="dfn-paneled" id="82066a7f">inline-flex</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[CSS-FLEXBOX-2]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="4a369416">flex-flow</span>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS-FONTS-4]</a> defines the following terms:
@@ -6107,6 +6111,8 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
    <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://drafts.csswg.org/css-display-4/"><cite>CSS Display Module Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-display-4/">https://drafts.csswg.org/css-display-4/</a>
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
    <dd>Elika Etemad; Tab Atkins Jr.; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/"><cite>CSS Flexible Box Layout Module Level 1</cite></a>. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
+   <dt id="biblio-css-flexbox-2">[CSS-FLEXBOX-2]
+   <dd><a href="https://drafts.csswg.org/css-flexbox-2/"><cite>CSS Flexible Box Layout Module Level 2</cite></a>. Editor's Draft. URL: <a href="https://drafts.csswg.org/css-flexbox-2/">https://drafts.csswg.org/css-flexbox-2/</a>
    <dt id="biblio-css-fonts-4">[CSS-FONTS-4]
    <dd>Chris Lilley. <a href="https://drafts.csswg.org/css-fonts-4/"><cite>CSS Fonts Module Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-fonts-4/">https://drafts.csswg.org/css-fonts-4/</a>
    <dt id="biblio-css-overflow-3">[CSS-OVERFLOW-3]
@@ -6165,7 +6171,7 @@ originally specified. <a data-link-type="biblio" href="#biblio-html" title="HTML
   <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-maur">[MAUR]
-   <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. WD. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
+   <dd>Shane McCarron; Michael Cooper; Mark Sadecki. <a href="http://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. WD. URL: <a href="http://www.w3.org/TR/media-accessibility-reqs/">http://www.w3.org/TR/media-accessibility-reqs/</a>
    <dt id="biblio-wcag20">[WCAG20]
    <dd>Ben Caldwell; et al. <a href="https://www.w3.org/TR/WCAG20/"><cite>Web Content Accessibility Guidelines (WCAG) 2.0</cite></a>. 11 December 2008. REC. URL: <a href="https://www.w3.org/TR/WCAG20/">https://www.w3.org/TR/WCAG20/</a>
   </dl>
@@ -6448,13 +6454,13 @@ let dfnPanelData = {
 "36d4ed38": {"dfnID":"36d4ed38","dfnText":"text track cue start time","external":true,"refSections":[{"refs":[{"id":"ref-for-text-track-cue-start-time"}],"title":"6.3. WebVTT cue timings and settings parsing"},{"refs":[{"id":"ref-for-text-track-cue-start-time\u2460"},{"id":"ref-for-text-track-cue-start-time\u2461"}],"title":"9.1. The VTTCue interface"}],"url":"https://html.spec.whatwg.org/multipage/embedded-content.html#text-track-cue-start-time"},
 "385326d7": {"dfnID":"385326d7","dfnText":"writing-mode","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-writing-mode"},{"id":"ref-for-propdef-writing-mode\u2460"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-writing-modes-4/#propdef-writing-mode"},
 "39002d6e": {"dfnID":"39002d6e","dfnText":"media element","external":true,"refSections":[{"refs":[{"id":"ref-for-media-element"},{"id":"ref-for-media-element\u2460"},{"id":"ref-for-media-element\u2461"}],"title":"3.3. WebVTT caption or subtitle cues"},{"refs":[{"id":"ref-for-media-element\u2462"},{"id":"ref-for-media-element\u2463"},{"id":"ref-for-media-element\u2464"},{"id":"ref-for-media-element\u2465"},{"id":"ref-for-media-element\u2466"}],"title":"7.1. Processing model"},{"refs":[{"id":"ref-for-media-element\u2467"},{"id":"ref-for-media-element\u2468"},{"id":"ref-for-media-element\u2460\u24ea"}],"title":"7.3. Obtaining CSS boxes"},{"refs":[{"id":"ref-for-media-element\u2460\u2460"},{"id":"ref-for-media-element\u2460\u2461"},{"id":"ref-for-media-element\u2460\u2462"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"},{"refs":[{"id":"ref-for-media-element\u2460\u2463"},{"id":"ref-for-media-element\u2460\u2464"}],"title":"8.2.2. The :past and :future pseudo-classes"}],"url":"https://html.spec.whatwg.org/multipage/embedded-content.html#media-element"},
-"3a74ed0c": {"dfnID":"3a74ed0c","dfnText":"flex-flow","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-flex-flow"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-flexbox-1/#propdef-flex-flow"},
 "3c0f3699": {"dfnID":"3c0f3699","dfnText":"ownerDocument","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-node-ownerdocument"}],"title":"6.5. WebVTT cue text DOM construction rules"}],"url":"https://dom.spec.whatwg.org/#dom-node-ownerdocument"},
 "3d3e300e": {"dfnID":"3d3e300e","dfnText":"absolute","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-position-absolute"},{"id":"ref-for-valdef-position-absolute\u2460"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-position-3/#valdef-position-absolute"},
 "3f0015cc": {"dfnID":"3f0015cc","dfnText":"data","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-characterdata-data"},{"id":"ref-for-dom-characterdata-data\u2460"}],"title":"6.5. WebVTT cue text DOM construction rules"}],"url":"https://dom.spec.whatwg.org/#dom-characterdata-data"},
 "4356bfe3": {"dfnID":"4356bfe3","dfnText":"text-align","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-text-align"},{"id":"ref-for-propdef-text-align\u2460"},{"id":"ref-for-propdef-text-align\u2461"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-text-3/#propdef-text-align"},
 "49a2843d": {"dfnID":"49a2843d","dfnText":"DocumentFragment","external":true,"refSections":[{"refs":[{"id":"ref-for-documentfragment"},{"id":"ref-for-documentfragment\u2460"},{"id":"ref-for-documentfragment\u2461"}],"title":"6.5. WebVTT cue text DOM construction rules"},{"refs":[{"id":"ref-for-documentfragment\u2462"},{"id":"ref-for-documentfragment\u2463"},{"id":"ref-for-documentfragment\u2464"},{"id":"ref-for-documentfragment\u2465"}],"title":"9.1. The VTTCue interface"}],"url":"https://dom.spec.whatwg.org/#documentfragment"},
 "49a64d88": {"dfnID":"49a64d88","dfnText":"HTML elements","external":true,"refSections":[{"refs":[{"id":"ref-for-html-elements"}],"title":"9.1. The VTTCue interface"}],"url":"https://html.spec.whatwg.org/multipage/infrastructure.html#html-elements"},
+"4a369416": {"dfnID":"4a369416","dfnText":"flex-flow","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-flex-flow"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-flexbox-2/#propdef-flex-flow"},
 "4c791d15": {"dfnID":"4c791d15","dfnText":"title","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-css-style-sheet-title"}],"title":"6.1. WebVTT file parsing"}],"url":"https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-title"},
 "4c9599fa": {"dfnID":"4c9599fa","dfnText":"min-height","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-min-height"}],"title":"7.4. Applying CSS properties to WebVTT Node Objects"}],"url":"https://drafts.csswg.org/css-sizing-3/#propdef-min-height"},
 "512e0279": {"dfnID":"512e0279","dfnText":"media","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-css-style-sheet-media"}],"title":"6.1. WebVTT file parsing"}],"url":"https://drafts.csswg.org/cssom-1/#concept-css-style-sheet-media"},
@@ -7348,8 +7354,8 @@ let refsData = {
 "https://drafts.csswg.org/css-display-3/#propdef-display": {"displayText":"display","export":true,"for_":[],"level":"3","normative":true,"shortname":"css-display","spec":"css-display-3","status":"current","text":"display","type":"property","url":"https://drafts.csswg.org/css-display-3/#propdef-display"},
 "https://drafts.csswg.org/css-display-4/#propdef-visibility": {"displayText":"visibility","export":true,"for_":[],"level":"4","normative":true,"shortname":"css-display","spec":"css-display-4","status":"current","text":"visibility","type":"property","url":"https://drafts.csswg.org/css-display-4/#propdef-visibility"},
 "https://drafts.csswg.org/css-display-4/#valdef-display-inline": {"displayText":"inline","export":true,"for_":["display","<display-outside>"],"level":"4","normative":true,"shortname":"css-display","spec":"css-display-4","status":"current","text":"inline","type":"value","url":"https://drafts.csswg.org/css-display-4/#valdef-display-inline"},
-"https://drafts.csswg.org/css-flexbox-1/#propdef-flex-flow": {"displayText":"flex-flow","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-1","status":"current","text":"flex-flow","type":"property","url":"https://drafts.csswg.org/css-flexbox-1/#propdef-flex-flow"},
 "https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex": {"displayText":"inline-flex","export":true,"for_":["display"],"level":"1","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-1","status":"current","text":"inline-flex","type":"value","url":"https://drafts.csswg.org/css-flexbox-1/#valdef-display-inline-flex"},
+"https://drafts.csswg.org/css-flexbox-2/#propdef-flex-flow": {"displayText":"flex-flow","export":true,"for_":[],"level":"2","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-2","status":"current","text":"flex-flow","type":"property","url":"https://drafts.csswg.org/css-flexbox-2/#propdef-flex-flow"},
 "https://drafts.csswg.org/css-fonts-4/#propdef-font": {"displayText":"font","export":true,"for_":[],"level":"4","normative":true,"shortname":"css-fonts","spec":"css-fonts-4","status":"current","text":"font","type":"property","url":"https://drafts.csswg.org/css-fonts-4/#propdef-font"},
 "https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic": {"displayText":"italic","export":true,"for_":["font-style"],"level":"4","normative":true,"shortname":"css-fonts","spec":"css-fonts-4","status":"current","text":"italic","type":"value","url":"https://drafts.csswg.org/css-fonts-4/#valdef-font-style-italic"},
 "https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold": {"displayText":"bold","export":true,"for_":["font-weight"],"level":"4","normative":true,"shortname":"css-fonts","spec":"css-fonts-4","status":"current","text":"bold","type":"value","url":"https://drafts.csswg.org/css-fonts-4/#valdef-font-weight-bold"},
