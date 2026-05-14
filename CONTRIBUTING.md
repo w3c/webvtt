@@ -1,8 +1,10 @@
-# Web Media Text Tracks Community Group
+# Timed Text Working Group
 
-This repository is being used for work in the Web Media Text Tracks Community Group, governed by the [W3C Community License
-Agreement (CLA)](http://www.w3.org/community/about/agreements/cla/). To contribute, you must join
-the CG.
+Contributions to this repository are intended to become part of Recommendation-track documents 
+governed by the [W3C Patent Policy](https://www.w3.org/policies/patent-policy/20200915/) and
+[Document License](https://www.w3.org/copyright/document-license/). To contribute, you must 
+either participate in the relevant W3C Working Group or make a non-member patent licensing
+ commitment.
 
 If you are not the sole contributor to a contribution (pull request), please identify all
 contributors in the pull request's body or in subsequent comments.
