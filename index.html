@@ -3,11 +3,11 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>WebVTT: The Web Video Text Tracks Format</title>
-  <link href="logo/64x64.png" rel="icon" type="image/png">
-  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
+  <meta content="ED" name="w3c-status">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 0a3d88311, updated Mon May 4 18:07:03 2026 +0000" name="generator">
   <link href="https://www.w3.org/TR/webvtt1/" rel="canonical">
-  <meta content="92a85cc210e67c12645768f2175e33eefb0cb769" name="revision">
+  <meta content="064802512ff9d8cd22dea4aea2cd1508aa2cc679" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
@@ -780,66 +780,88 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 </style>
  <body class="h-entry">
   <div class="head">
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/">
+    <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+</a>
+</p>
    <h1 class="no-ref p-name" id="title">WebVTT: The Web Video Text Tracks Format</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2026-05-14">14 May 2026</time></p>
-   <div data-fill-with="spec-metadata">
-    <dl>
-     <dt>This version:
-     <dd><a class="u-url" href="https://w3c.github.io/webvtt/">https://w3c.github.io/webvtt/</a>
-     <dt>Latest published version:
-     <dd><a href="https://www.w3.org/TR/webvtt1/">https://www.w3.org/TR/webvtt1/</a>
-     <dt>Test Suite:
-     <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/webvtt">https://github.com/web-platform-tests/wpt/tree/master/webvtt</a>
-     <dt class="editor">Editor:
-     <dd class="editor h-card p-author vcard" data-editor-id="102836"><a class="email fn p-name u-email" href="mailto:w3c@gkatsev.com">Gary Katsevman</a> (<span class="org p-org">Invited Expert</span>)
-     <dt class="editor">Former Editors:
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="org p-org" href="https://www.csiro.au/">NICTA CSIRO</a>)
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software AS</a>)
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:philipj@opera.com">Philip Jägenstedt</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software ASA</a>)
-     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:ian@hixie.ch">Ian Hickson</a> (<a class="org p-org" href="http://www.google.com/">Google</a>)
-     <dt>Participate:
-     <dd><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (<a href="https://github.com/w3c/webvtt/issues/new">new issue</a>, <a href="https://github.com/w3c/webvtt/issues">open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---">legacy open bugs</a>)
-     <dt>Commits:
-     <dd><a href="https://github.com/w3c/webvtt/commits">GitHub w3c/webvtt/commits</a>
-     <dd><a href="https://twitter.com/webvtt">@webvtt</a>
-    </dl>
-   </div>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
+    <time class="dt-updated" datetime="2026-05-20">20 May 2026</time></p>
+   <details open>
+    <summary>More details about this document</summary>
+    <div data-fill-with="spec-metadata">
+     <dl>
+      <dt>This version:
+      <dd><a class="u-url" href="https://w3c.github.io/webvtt/">https://w3c.github.io/webvtt/</a>
+      <dt>Latest published version:
+      <dd><a href="https://www.w3.org/TR/webvtt1/">https://www.w3.org/TR/webvtt1/</a>
+      <dt>Implementation Report:
+      <dd><a href="https://www.w3.org/wiki/TimedText/WebVTT_Implementation_Report">https://www.w3.org/wiki/TimedText/WebVTT_Implementation_Report</a>
+      <dt>Test Suite:
+      <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/webvtt">https://github.com/web-platform-tests/wpt/tree/master/webvtt</a>
+      <dt>Feedback:
+      <dd><a href="https://github.com/w3c/webvtt/issues/">GitHub</a>
+      <dt class="editor">Editor:
+      <dd class="editor h-card p-author vcard" data-editor-id="102836"><a class="email fn p-name u-email" href="mailto:w3c@gkatsev.com">Gary Katsevman</a> (<span class="org p-org">Invited Expert</span>)
+      <dt class="editor">Former Editors:
+      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:silviapfeiffer1@gmail.com">Silvia Pfeiffer</a> (<a class="org p-org" href="https://www.csiro.au/">NICTA CSIRO</a>)
+      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:simonp@opera.com">Simon Pieters</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software AS</a>)
+      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:philipj@opera.com">Philip Jägenstedt</a> (<a class="org p-org" href="http://www.opera.com/">Opera Software ASA</a>)
+      <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:ian@hixie.ch">Ian Hickson</a> (<a class="org p-org" href="http://www.google.com/">Google</a>)
+      <dt>Participate:
+      <dd><a href="https://github.com/w3c/webvtt">GitHub w3c/webvtt</a> (<a href="https://github.com/w3c/webvtt/issues/new">new issue</a>, <a href="https://github.com/w3c/webvtt/issues">open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=TextTracks%20CG&amp;component=WebVTT&amp;resolution=---">legacy open bugs</a>)
+      <dt>Commits:
+      <dd><a href="https://github.com/w3c/webvtt/commits">GitHub w3c/webvtt/commits</a>
+      <dd><a href="https://twitter.com/webvtt">@webvtt</a>
+     </dl>
+    </div>
+   </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2011-2026
-the Contributors to the WebVTT: The Web Video Text Tracks Format Specification, published by the
-<a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> under the
-<a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
-A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply.
 </p>
    <hr title="Separator for header">
   </div>
-  <script async src="https://resources.whatwg.org/file-issue.js"></script>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This specification defines WebVTT, the Web Video Text Tracks format. Its main use is for marking up external text track resources in connection with the HTML &lt;track> element.
 WebVTT files provide captions or subtitles for video content, and also text video descriptions <a data-link-type="biblio" href="#biblio-maur" title="Media Accessibility User Requirements">[MAUR]</a>, chapters for content navigation, and more generally any form of metadata that is time-aligned with audio or video content.</p>
   </div>
-  <h2 class="heading no-num no-ref no-toc settled" id="status"><span class="content">Status of this document</span></h2>
+  <h2 class="heading no-num no-ref no-toc settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
-   <p>This specification was published by the <a href="http://www.w3.org/community/texttracks/">Web
-Media Text Tracks Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards
-Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C
-Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions
-apply. Learn more about <a href="http://www.w3.org/community/">W3C Community and Business
-Groups</a>.
-
+   <p>
+  <em>
+    This section describes the status of this document at the time of its publication. 
+    A list of current W3C publications and the latest revision of this technical report can be found in the 
+    <a href="https://www.w3.org/TR/">W3C standards and drafts index</a>.
+  </em>
 </p>
-   <p>Work on this specification is being undertaken both in the <a href="http://www.w3.org/community/texttracks/">Web Media Text Tracks Community Group</a> as well as
-in the <a href="http://www.w3.org/AudioVideo/TT/">W3C Timed Text Working Group</a>. The latter group
-works towards a W3C Recommendation for reference purposes with interoperability requirements, while
-the former is a Draft Community Group Report that continues to evolve.
-
+   <p>
+  This document was published by the <a href="https://www.w3.org/groups/wg/timed-text/"><abbr title="World Wide Web Consortium">W3C</abbr> Timed Text Working Group</a>
+  as a Editors' Draft. 
+  This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
 </p>
-   <p>If you wish to make comments regarding this document, please send them to <a href="mailto:public-texttracks@w3.org">public-texttracks@w3.org</a> (<a href="mailto:public-texttracks-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-texttracks/">archives</a>).
-
+   <p>
+  If you wish to make comments regarding this document, please send them to <a href="mailto:public-tt@w3.org?subject=%5Bwebvtt1%5D">public-tt@w3.org</a>
+  (<a href="mailto:public-tt-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-tt/">archives</a>) 
+  with <code>[webvtt1]</code> at the start of your email’s subject.
+  All comments are welcome.
 </p>
-   <p></p>
+   <p>
+  Publication as an Editors' Draft does not imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. 
+  This is a draft document and may be updated, replaced, or obsoleted by other documents at any time. 
+  It is inappropriate to cite this document as other than a work in progress.
+</p>
+   <p>
+  This document was produced by a group operating under the <a href="https://www.w3.org/policies/patent-policy/20200915/">W3C Patent Policy</a>.
+  W3C maintains a <a href="https://www.w3.org/groups/wg/timed-text/ipr" rel="disclosure">public list of any patent disclosures</a> 
+  made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. 
+  An individual who has actual knowledge of a patent that the individual believes contains <a href="https://www.w3.org/policies/patent-policy/20200915/#def-essential">Essential Claim(s)</a> 
+  must disclose the information in accordance with <a href="https://www.w3.org/policies/patent-policy/20200915/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.
+</p>
+   <p>
+  This document is governed by the <a href="https://www.w3.org/policies/process/20250818/" id="w3c_process_revision">18 August 2025 W3C Process Document</a>.
+</p>
+   <p>A cumulative summary of all changes applied to this version since the <a href="https://www.w3.org/TR/2014/WD-webvtt1-20141113/">WebVTT First Public Working Draft</a> was published is available at <a href="changes.html">Changes from FPWD WebVTT</a>.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
