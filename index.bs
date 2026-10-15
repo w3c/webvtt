@@ -86,8 +86,8 @@ urlPrefix: https://encoding.spec.whatwg.org/
 spec:dom; type:interface; text:Document
 spec:css-ruby-1; type:value; text:ruby-base
 spec:css-color-4; type:property; text:color
-spec:css-fonts-3; type:property; text:font-style
-spec:css-fonts-3; type:property; text:font-weight
+spec:css-fonts-4; type:property; text:font-style
+spec:css-fonts-4; type:property; text:font-weight
 spec:css-ruby-1; type:value; text:ruby
 spec:css-ruby-1; type:value; text:ruby-text
 spec:css2; type:selector; text::lang()
@@ -96,6 +96,9 @@ spec:selectors-3; type:selector; text:::before
 spec:selectors-3; type:selector; text:::after
 spec:css-display-3; type:property; text:display
 spec:html; type:element; text:style
+spec:html; type:element; text:ruby
+spec:html; type:element; text:rt
+spec:html; type:element; text:audio
 spec:css-align-3; type:value; for:justify-content; text:flex-end
 </pre>
 
@@ -5950,9 +5953,10 @@ text</a> of the <a>WebVTT cue</a> that the {{VTTCue}} object represents. On sett
 text</a> must be set to the new value.</p>
 
 <p>The <dfn method for=VTTCue>getCueAsHTML()</dfn> method must convert the <a>cue text</a> to a
-{{DocumentFragment}} for the <a>responsible document</a> specified by the <a>entry settings
-object</a> by applying the <a>WebVTT cue text DOM construction rules</a> to the result of applying
-the <a>WebVTT cue text parsing rules</a> to the <a>cue text</a>.</p>
+{{DocumentFragment}} for the <a>entry settings object</a>'s <a for="environment settings
+object">global object</a>'s <a>associated <code>Document</code></a> by applying the <a>WebVTT cue
+text DOM construction rules</a> to the result of applying the <a>WebVTT cue text parsing rules</a>
+to the <a>cue text</a>.</p>
 
 <p class=note>A fallback language is not provided for {{VTTCue/getCueAsHTML()}} since a
 {{DocumentFragment}} cannot expose language information.</p>
