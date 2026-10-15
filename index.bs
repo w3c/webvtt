@@ -152,6 +152,7 @@ that captions an interview:</p>
 
 <pre>
 WEBVTT
+kind: subtitles
 
 00:11.000 --> 00:13.000
 &lt;v Roger Bingham>We are in New York City
@@ -225,6 +226,7 @@ one line except when a line break is definitely necessary.</p>
 
  <pre>
  WEBVTT
+ kind: captions
 
  00:01.000 --> 00:04.000
  Never drink liquid nitrogen.
@@ -366,6 +368,63 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
 </div>
 
+<h3 id=introduction-header-metadata>WebVTT header metadata</h3>
+
+<p><i>This section is non-normative.</i></p>
+
+<p>A WebVTT file can include file-level metadata as key/value pairs on the lines immediately
+following the <code>WEBVTT</code> file header line. This is most useful for disambiguating the
+track <code>kind</code> and identifying the metadata schema in use, particularly for files
+delivered outside of an HTML context where a containing <code>&lt;track&gt;</code> element
+might not be available.</p>
+
+<div class="example">
+
+ <p>In this example, a captions track is identified with a kind, language, and human-readable
+ label.</p>
+
+ <pre>
+ WEBVTT
+ kind: captions
+ lang: es-MX
+ label: Español (SDH)
+
+ NOTE
+ Captions (SDH aka Subtitles for the Deaf and Hard-of-Hearing)
+ typically include spoken dialog as well as important audible
+ sounds such as "floor boards creak", "dogs barking", or in
+ this case, "[♫ música ♫]".
+
+ 1
+ 00:00:10.123 --> 00:00:15.432
+ ¡Hola! ¿Qué tál?
+
+ 2
+ 00:00:47.462 --> 00:01:04.028
+ [♫ música ♫]
+ </pre>
+
+</div>
+
+<div class="example">
+
+ <p>In this example, a descriptions track for blind or low-vision audiences is identified.
+ Descriptions are typically rendered as text-to-speech or braille rather than as on-screen
+ text.</p>
+
+ <pre>
+ WEBVTT
+ kind: descriptions
+ lang: en-US
+ label: English (AD)
+
+ 1
+ 00:00:10.123 --> 00:00:15.432
+ A young girl tiptoes down a dark hallway.
+ </pre>
+
+</div>
+
 <h3 id=introduction-other-features>Other caption and subtitling features</h3>
 
 <p><i>This section is non-normative.</i></p>
@@ -378,6 +437,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  test
  00:00.000 --> 00:02.000
@@ -421,6 +481,8 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
+ lang: fr-FR
 
  04:02.500 --> 04:05.000
  J'ai commencé le basket à l'âge de 13, 14 ans
@@ -440,6 +502,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  00:00.000 --> 00:02.000
  &lt;v.first.loud Esme>It's a blue apple tree!
@@ -473,6 +536,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  00:00:00.000 --> 00:00:04.000 position:10%,line-left align:left size:35%
  Where did he go?
@@ -527,6 +591,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  REGION
  id:fred
@@ -582,6 +647,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  00:01.000 --> 00:04.000
  Never drink liquid nitrogen.
@@ -601,6 +667,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: subtitles
 
  NOTE
  This file was written by Jill. I hope
@@ -639,6 +706,7 @@ CSS comment (e.g. <code>/**/</code>).</p>
 
  <pre>
  WEBVTT
+ kind: chapters
 
  NOTE
  This is from a talk Silvia gave about WebVTT.
@@ -675,10 +743,13 @@ signifies the end of the WebVTT cue.</p>
 
 <div class="example">
 
- <p>In this example, a talk is split into each slide being a chapter.</p>
+ <p>In this example, topics mentioned in a talk are provided as URLs for reference. The
+ <code>kind: metadata</code> <a>WebVTT header metadata</a> pair signals to consumers that the
+ cue payloads should be processed by a script rather than displayed as text.</p>
 
  <pre>
  WEBVTT
+ kind: metadata
 
  NOTE
  Thanks to http://output.jsbin.com/mugibo
@@ -1250,6 +1321,7 @@ fragment:</p>
 
    <pre>
    WEBVTT
+   kind: subtitles
 
    00:00:07.000 --> 00:00:09.000
    What was his name again?
@@ -1275,6 +1347,7 @@ fragment:</p>
 
    <pre>
    WEBVTT
+   kind: subtitles
 
    00:00:04.000 --> 00:00:08.000
    <bdo dir=ltr>I've read the book &#x5E0;&#x5D5;&#x5D9;&#x5DC;&#x5E0;&#x5D3; 3 times!</bdo>
@@ -1455,6 +1528,69 @@ navigation tree.</p>
 time-aligned metadata.</p>
 
 
+<h3 id=header-metadata>WebVTT header metadata</h3>
+
+<p><dfn>WebVTT header metadata</dfn> is an optional set of file-level key/value pairs declared at
+the start of a <a>WebVTT file</a>, immediately following the <code>WEBVTT</code> file header
+line and terminated by a blank line. It is represented as an ordered list of (key, value) string
+pairs.</p>
+
+<p>The keys listed below are reserved by this specification. Any pair whose key is not reserved
+but which satisfies the syntactic requirements for an unreserved key (see [[#syntax]] —
+in particular, the requirement that the key contain a U+002D HYPHEN-MINUS character and not
+start with one) is an <dfn>unrecognized header metadata pair</dfn> and is preserved for use by
+the consuming application. Pairs whose keys do not satisfy those requirements are dropped by
+the parser and not exposed to the consuming application; this reserves the unhyphenated
+key-name space for future standardization and prevents arbitrary applications from claiming
+short, unnamespaced keys.</p>
+
+<dl>
+
+ <dt><dfn lt="WebVTT header metadata lang|WebVTT header metadata language">lang</dfn></dt>
+ <dd>
+  <p>A <a href="https://www.rfc-editor.org/info/bcp47">BCP 47</a> language tag identifying the
+  primary language of the cue payloads. Mirrors the <code>srclang</code> attribute of the HTML
+  <code>&lt;track&gt;</code> element. [[!BCP47]]</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT header metadata kind">kind</dfn></dt>
+ <dd>
+  <p>One of "<code>subtitles</code>", "<code>captions</code>", "<code>descriptions</code>",
+  "<code>chapters</code>", or "<code>metadata</code>", identifying the intended use of the
+  cues. Mirrors the <code>kind</code> attribute of the HTML
+  <code>&lt;track&gt;</code> element.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT header metadata label">label</dfn></dt>
+ <dd>
+  <p>A human-readable label suitable for presentation in a track selection menu. Mirrors the
+  <code>label</code> attribute of the HTML <code>&lt;track&gt;</code> element.</p>
+ </dd>
+
+ <dt><dfn lt="WebVTT header metadata type">type</dfn></dt>
+ <dd>
+  <p>Reserved by this specification as the key used to identify the schema or application that
+  the <a lt="WebVTT metadata cue">metadata cues</a> or
+  <a lt="unrecognized header metadata pair">unrecognized header metadata pairs</a> conform to.</p>
+  <p class="note">This specification does not itself define any values for <code>type</code>;
+  the name is reserved so that a follow-up specification can define a registry of
+  <code>type</code> values without colliding with author-defined keys. The first such value is
+  expected to be defined alongside the time-coded flashing-content metadata work in
+  <a href="https://github.com/w3c/webvtt/issues/512">WebVTT issue #512</a> (e.g.
+  <code>video.strobing.general-flash</code>). Until at least one value is registered, the
+  <code>type</code> key has no defined behavior beyond reserving the name.</p>
+ </dd>
+
+</dl>
+
+<p class="note">How <a>WebVTT header metadata</a> values are exposed to, and combined with, the
+embedding context is defined by that context. In particular, HTML defines how
+<a lt="WebVTT header metadata lang">lang</a>, <a lt="WebVTT header metadata kind">kind</a>, and
+<a lt="WebVTT header metadata label">label</a> interact with the corresponding attributes of an
+HTML <code>&lt;track&gt;</code> element; see
+<a href="https://github.com/whatwg/html/issues/11665">whatwg/html issue #11665</a>.</p>
+
+
 <h2 id=syntax>Syntax</h2>
 
 
@@ -1475,8 +1611,13 @@ with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  followed by any number of characters that are not U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN
  (CR) characters.</li> <!-- allows for Emacs line -->
 
- <li>Two or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to terminate the line
- with the file magic and separate it from the rest of the body.</li>
+ <li>A <a>WebVTT line terminator</a>.</li>
+
+ <li>Zero or more <a lt="WebVTT header metadata pair">WebVTT header metadata pairs</a>, each
+ followed by a <a>WebVTT line terminator</a>.</li>
+
+ <li>One or more <a lt="WebVTT line terminator">WebVTT line terminators</a> to separate the file
+ header from the rest of the body.</li>
 
  <li>Zero or more <a lt="WebVTT region definition block">WebVTT region definition blocks</a>, <a
  lt="WebVTT style block">WebVTT style blocks</a> and <a lt="WebVTT comment block">WebVTT comment
@@ -1500,6 +1641,84 @@ with the <a>MIME type</a> <code>text/vtt</code>. [[!RFC3629]]</p>
  <li>A single U+000A LINE FEED (LF) character.</li>
  <li>A single U+000D CARRIAGE RETURN (CR) character.</li>
 </ul>
+
+<p>A <dfn>WebVTT header metadata pair</dfn> consists of the following components, in the given
+order:</p>
+
+<ol>
+ <li>A <a>WebVTT header metadata key</a>.</li>
+ <li>Zero or more U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT header metadata separator</a>.</li>
+ <li>Zero or more U+0020 SPACE or U+0009 CHARACTER TABULATION (tab) characters.</li>
+ <li>A <a>WebVTT header metadata value</a>.</li>
+</ol>
+
+<p>A <dfn>WebVTT header metadata key</dfn> is any sequence of one or more Unicode characters with
+all of the following properties:</p>
+
+<ul>
+ <li>It contains no U+000A LINE FEED (LF), U+000D CARRIAGE RETURN (CR), U+0009 CHARACTER
+ TABULATION (tab), or U+0020 SPACE characters.</li>
+ <li>It contains no U+003A COLON (<code>:</code>) or U+003D EQUALS SIGN (<code>=</code>)
+ characters.</li>
+ <li>It contains none of the following bidirectional formatting characters: U+061C ARABIC LETTER
+ MARK, U+200E LEFT-TO-RIGHT MARK, U+200F RIGHT-TO-LEFT MARK, U+202A LEFT-TO-RIGHT EMBEDDING,
+ U+202B RIGHT-TO-LEFT EMBEDDING, U+202C POP DIRECTIONAL FORMATTING, U+202D LEFT-TO-RIGHT
+ OVERRIDE, U+202E RIGHT-TO-LEFT OVERRIDE, U+2066 LEFT-TO-RIGHT ISOLATE, U+2067 RIGHT-TO-LEFT
+ ISOLATE, U+2068 FIRST STRONG ISOLATE, or U+2069 POP DIRECTIONAL ISOLATE.</li>
+ <li>It does not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
+ HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+ <li>It is <em>either</em> a reserved key, <em>or</em> matches the additional
+  hyphenated formatting requirements of a custom key:
+  <ul>
+   <li>reserved key: one of the keys reserved by this specification for <a>WebVTT header
+   metadata</a>; see [[#header-metadata]] for the current list of reserved keys.</li>
+   <li>custom key: contains at least one U+002D HYPHEN-MINUS character, and its first character
+   is not a U+002D HYPHEN-MINUS character.</li>
+  </ul>
+ </li>
+</ul>
+
+<p class="note">The hyphenated requirement only applies to custom keys that are not reserved by
+this specification, such as "data-foo". It allows application-specific usage while reserving
+the hyphen-free namespace for future standardization (for example, by the taxonomies anticipated
+in <a href="https://github.com/w3c/webvtt/issues/512">WebVTT issue #512</a>). Reserved keys
+(such as "<code>lang</code>") have no hyphen and remain valid.</p>
+
+<p>Keys are matched in a <a>case-sensitive</a> manner. Authors must use the
+lowercase form of reserved keys.</p>
+
+<p>A <dfn>WebVTT header metadata separator</dfn> is one of the following:</p>
+
+<ul class="brief">
+ <li>A U+003A COLON character ("<code>:</code>").</li>
+ <li>A U+003D EQUALS SIGN character ("<code>=</code>").</li>
+</ul>
+
+<p class="note">The U+003A COLON form is the recommended separator. The U+003D EQUALS SIGN form
+is permitted for compatibility with files originally authored for delivery via HLS
+(HTTP Live Streaming) and other transports that use the equals-sign convention; authoring tools
+should prefer the colon form.</p>
+
+<p>A <dfn>WebVTT header metadata value</dfn> is any sequence of zero or more Unicode characters
+with all of the following properties:</p>
+
+<ul>
+ <li>It contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters.</li>
+ <li>It contains none of the bidirectional formatting characters listed for
+ <a>WebVTT header metadata key</a>, above.</li>
+ <li>It does not contain the substring "<code>--></code>" (U+002D HYPHEN-MINUS, U+002D
+ HYPHEN-MINUS, U+003E GREATER-THAN SIGN).</li>
+ <li>Its first and last characters are not U+0020 SPACE or U+0009 CHARACTER TABULATION (tab)
+ characters.</li>
+</ul>
+
+<p>A <a>WebVTT header metadata pair</a> whose <a>WebVTT header metadata key</a> is reserved by
+this specification must use a <a>WebVTT header metadata value</a> that conforms to the
+constraints given for that key in [[#header-metadata]].</p>
+
+<p class="note">Note: Authors should avoid including multiple entries with same key in a single
+<a>WebVTT file</a>. Only the first such entry will be used, and any subsequent entries ignored.</p>
 
 <p>A <dfn>WebVTT region definition block</dfn> consists of the following components, in the given
 order:</p>
@@ -1691,8 +1910,12 @@ separated from the next by a <a>WebVTT line terminator</a>. (In other words, any
 have two consecutive <a lt="WebVTT line terminator">WebVTT line terminators</a> and does not start
 or end with a <a>WebVTT line terminator</a>.)</p>
 
-<p><a>WebVTT metadata text</a> cues are only useful for scripted applications (e.g. using the
-<code>metadata</code> <a>text track kind</a> in a HTML <a>text track</a>).</p>
+<p><a>WebVTT metadata text</a> cues are typically used by scripted applications (e.g. using the
+<code>metadata</code> <a>text track kind</a> in a HTML <a>text track</a>). Authors of metadata
+files delivered outside of an HTML context may declare a
+<a lt="WebVTT header metadata kind">kind</a> of "<code>metadata</code>" together with a
+<a lt="WebVTT header metadata type">type</a> identifying the schema in use; see
+[[#header-metadata]].</p>
 
 
 <h4 id=caption-text>WebVTT caption or subtitle cue text</h4>
@@ -2210,6 +2433,7 @@ using only nested cues</dfn>:</p>
 
  <pre>
  WEBVTT
+ kind: chapters
 
  00:00.000 --> 01:24.000
  Introduction
@@ -2259,6 +2483,7 @@ using only nested cues</dfn>:</p>
 
  <pre>
  WEBVTT
+ kind: chapters
 
  00:00.000 --> 01:00.000
  The First Minute
@@ -2454,11 +2679,14 @@ chapters, or metadata. Most of the steps will be skipped for chapters or metadat
 <h3 id=file-parsing algorithm>WebVTT file parsing</h3>
 
 <p>A <dfn>WebVTT parser</dfn>, given an input byte stream, a <a>text track list of cues</a>
-|output|, and a collection of <a spec=cssom>CSS style sheets</a> |stylesheets|, must decode the byte
-stream using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and then must parse the resulting
+|output|, a collection of <a spec=cssom>CSS style sheets</a> |stylesheets|, and optionally
+|header metadata| for a <a>WebVTT header metadata</a> object, must decode the byte stream
+using the <a lt="UTF-8 decode">UTF-8 decode</a> algorithm, and then must parse the resulting
 string according to the <a>WebVTT parser algorithm</a> below. This results in <a>WebVTT cues</a>
-being added to |output|, and <a spec=cssom>CSS style sheets</a> being added to |stylesheets|.
-[[!RFC3629]]</p>
+being added to |output|, <a spec=cssom>CSS style sheets</a> being added to |stylesheets|, and,
+if the file contains any <a lt="WebVTT header metadata pair">WebVTT header metadata pairs</a>,
+the resulting <a>WebVTT header metadata</a> being assigned to |header metadata| (when
+provided). [[!RFC3629]]</p>
 
 <p>A <a>WebVTT parser</a>, specifically its conversion and parsing steps, is typically run
 asynchronously, with the input byte stream being updated incrementally as the resource is
@@ -2529,9 +2757,25 @@ stream lacks this WebVTT file signature, then the parser aborts.</p>
  processed, but it contains no useful data and so no <a lt="WebVTT cue">WebVTT cues</a> were added
  to |output|.</p></li>
 
- <li><p><i>Header</i>: If the character indicated by |position| is not a U+000A LINE FEED (LF)
- character, then <a>collect a WebVTT block</a> with the <i>in header</i> flag set. Otherwise,
- advance |position| to the next character in |input|.</p></li>
+ <li>
+  <p><i>Header</i>: Run these substeps:</p>
+  <ol>
+   <li>
+    <p>If the character indicated by |position| is a U+000A LINE FEED (LF) character, then
+    advance |position| to the next character in |input| and skip the remaining substeps of
+    this step.</p>
+   </li>
+   <li>
+    <p>Let |header block| be the result of running the steps to <a lt="collect a WebVTT
+    block">collect a WebVTT block</a> with the <i>in header</i> flag set.</p>
+   </li>
+   <li>
+    <p>If |header block| is a <a>WebVTT header metadata</a> object and a |header metadata|
+    slot was provided to this <a>WebVTT parser</a>, then set the |header metadata| slot to
+    |header block|.</p>
+   </li>
+  </ol>
+ </li>
 
  <li><p><a>collect a sequence of code points</a> that are U+000A LINE FEED (LF) characters.</p></li>
 
@@ -2809,11 +3053,117 @@ header</i> set, the user agent must run the following steps:</p>
  using |region| for the results. Construct a <a>WebVTT Region Object</a> from |region|, and return
  it.</p></li>
 
+ <li><p>Otherwise, if <i>in header</i> is set, then let |header metadata| be the result of
+ <a lt="collect WebVTT header metadata">collecting WebVTT header metadata</a> from |buffer|,
+ and return |header metadata|.</p></li>
+
  <!-- return new block types here -->
 
  <li><p>Otherwise, return null.</p></li>
 
 </ol>
+
+
+<h3 id=header-metadata-parsing algorithm>WebVTT header metadata parsing</h3>
+
+<p>When the algorithm in [[#file-parsing]] says to <dfn>collect WebVTT header metadata</dfn> from a
+string |input|, the user agent must run the following algorithm. The algorithm returns either a
+<a>WebVTT header metadata</a> object or null.</p>
+
+<ol algorithm="collect WebVTT header metadata">
+
+ <li><p>Let |metadata| be a new <a>WebVTT header metadata</a> object, with each of its
+ reserved keys (see [[#header-metadata]]) unset and with an empty list of
+ <a lt="unrecognized header metadata pair">unrecognized header metadata pairs</a>.</p></li>
+
+ <li><p>Let |lines| be the result of splitting |input| on U+000A LINE FEED (LF)
+ characters.</p></li>
+
+ <li><p>Let |had pair| be false.</p></li>
+
+ <li>
+  <p>For each string |line| in |lines|, run the following substeps:</p>
+  <ol>
+
+   <li><p>If |line| does not contain either a U+003A COLON character ("<code>:</code>") or a
+   U+003D EQUALS SIGN character ("<code>=</code>"), then jump to the step labeled <i>next
+   line</i>.</p></li>
+
+   <li><p>Let |separator index| be the lowest index in |line| at which either a U+003A COLON
+   character or a U+003D EQUALS SIGN character appears.</p></li>
+
+   <li><p>Let |name| be the substring of |line| from the first character up to but not
+   including the character at |separator index|, with any trailing U+0020 SPACE and U+0009
+   CHARACTER TABULATION (tab) characters removed.</p></li>
+
+   <li><p>If |name| is not a <a>WebVTT header metadata key</a>, then jump to the step labeled
+   <i>next line</i>. Invalid lines are ignored individually; they do not invalidate other
+   pairs.</p></li>
+
+   <li><p>Let |value| be the substring of |line| starting from the character immediately after
+   |separator index| to the end of |line|, with any leading and trailing U+0020 SPACE and
+   U+0009 CHARACTER TABULATION (tab) characters removed.</p></li>
+
+   <li><p>If |value| is not a <a>WebVTT header metadata value</a>, then jump to the step
+   labeled <i>next line</i>.</p></li>
+
+   <li>
+    <p>Process |name| and |value| as follows:</p>
+    <dl>
+
+     <dt>If |name| is "<code>lang</code>"</dt>
+     <dd>If <a lt="WebVTT header metadata lang">lang</a> has already been set on |metadata|,
+     do nothing. Otherwise, set <a lt="WebVTT header metadata lang">lang</a> on |metadata| to
+     |value|.</dd>
+
+     <dt>If |name| is "<code>kind</code>"</dt>
+     <dd>If <a lt="WebVTT header metadata kind">kind</a> has already been set on |metadata|,
+     do nothing. Otherwise, if |value| is one of "<code>subtitles</code>",
+     "<code>captions</code>", "<code>descriptions</code>", "<code>chapters</code>", or
+     "<code>metadata</code>", set <a lt="WebVTT header metadata kind">kind</a> on |metadata|
+     to |value|. Otherwise, do nothing.</dd>
+
+     <dt>If |name| is "<code>label</code>"</dt>
+     <dd>If <a lt="WebVTT header metadata label">label</a> has already been set on |metadata|,
+     do nothing. Otherwise, set <a lt="WebVTT header metadata label">label</a> on |metadata|
+     to |value|.</dd>
+
+     <dt>If |name| is "<code>type</code>"</dt>
+     <dd>If <a lt="WebVTT header metadata type">type</a> has already been set on |metadata|,
+     do nothing. Otherwise, set <a lt="WebVTT header metadata type">type</a> on |metadata|
+     to |value|.</dd>
+
+     <dt>Otherwise</dt>
+     <dd>Append the pair (|name|, |value|) to |metadata|'s list of <a lt="unrecognized header
+     metadata pair">unrecognized header metadata pairs</a>.</dd>
+
+    </dl>
+   </li>
+
+   <li><p>Set |had pair| to true.</p></li>
+
+   <li><p><i>Next line</i>: Continue.</p></li>
+
+  </ol>
+ </li>
+
+ <li><p>If |had pair| is false, return null.</p></li>
+
+ <li><p>Return |metadata|.</p></li>
+
+</ol>
+
+<p class="note">String comparisons of key names in this algorithm are exact (i.e.
+<a>case-sensitive</a>). Reserved keys are defined exactly; an input that uses any
+other case (for example "<code>Lang</code>" or "<code>LANG</code>" matches none of the
+reserved-key clauses). Furthermore, because such an input lacks a hyphen, it also fails the
+syntactic requirements for an unreserved key and is therefore ignored by the parser.</p>
+
+<p class="note">Parsers are not required to produce warnings for invalid or unrecognized
+header metadata pairs. Pairs that fail validation are dropped without further effect; pairs
+that pass validation but use a key not understood by the consuming application are surfaced
+through the <a lt="unrecognized header metadata pair">unrecognized header metadata pairs</a>
+list for that application to interpret as it sees fit.</p>
 
 
 <h3 id=region-settings-parsing algorithm>WebVTT region settings parsing</h3>
